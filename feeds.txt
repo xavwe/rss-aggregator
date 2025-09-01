@@ -1,0 +1,6 @@
+https://www.jeffgeerling.com/blog.xml
+https://blog.vaxry.net/feed
+https://simonwillison.net/atom/everything
+https://drewdevault.com/blog/index.xml
+https://lukesmith.xyz/index.xml
+https://www.dkriesel.com/feed.php?linkto=current&content=html&mode=blogtng&blog=blog-de

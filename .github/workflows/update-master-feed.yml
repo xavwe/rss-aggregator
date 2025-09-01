@@ -1,0 +1,75 @@
+name: Update Master Feed
+
+on:
+  schedule:
+    - cron: "0 * * * *"  # Runs at the top of every hour
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  update-master-feed:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      - name: Install GitHub CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install gh -y
+
+      - name: Determine Release Tag
+        id: release_tag
+        run: |
+          if [ -n "${{ github.event.release.tag_name }}" ]; then
+            echo "Using release tag from event: ${{ github.event.release.tag_name }}"
+            echo "tag=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            LATEST_TAG=$(gh release list --limit 1 | awk 'NR==1 {print $1}')
+            if [ -z "$LATEST_TAG" ]; then
+              echo "No releases found. Exiting."
+              exit 0
+            else
+              echo "Using latest release tag: $LATEST_TAG"
+              echo "tag=$LATEST_TAG" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Download Release Asset using GitHub CLI
+        run: |
+          gh release download "${{ steps.release_tag.outputs.tag }}" --pattern "rss-generator" --dir .
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+          GH_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+
+      - name: Verify Downloaded Asset
+        run: |
+          if [ ! -f "rss-generator" ]; then
+            echo "Release asset 'rss-generator' not found. Exiting."
+            exit 0
+          fi
+
+      - name: Make Asset Executable
+        run: chmod +x rss-generator
+
+      - name: Run Release Binary to Generate master_feed.xml
+        run: ./rss-generator
+
+      - name: Commit changes if master_feed.xml updated
+        env:
+          RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          if [ -n "$(git status --porcelain master_feed.xml)" ]; then
+            git add master_feed.xml
+            git commit -m "chore: update master feed [skip ci]"
+            # Use the RELEASE_TOKEN in the push URL to authenticate
+            git push https://${RELEASE_TOKEN}@github.com/xavwe/rss-aggregator.git HEAD:main
+          else
+            echo "No changes in master_feed.xml, skipping commit."
+          fi
