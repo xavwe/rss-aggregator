@@ -239,12 +239,14 @@ fn build_opml_feed_list(feeds: &[FeedData], repo_name: &str) -> Result<String, B
         outline_elem.push_attribute(("text", feed.title.as_str()));
         outline_elem.push_attribute(("title", feed.title.as_str()));
         outline_elem.push_attribute(("type", "rss"));
-        outline_elem.push_attribute(("xmlUrl", feed.url.as_str()));
         
-        // Generate the individual feed URL for htmlUrl
+        // Generate the individual feed URL for xmlUrl (RSS readers will fetch from our archive)
         let unique_filename = generate_unique_filename_for_feed(&feed.url, &feed.title);
-        let html_url = format!("https://raw.githubusercontent.com/{}/refs/heads/main/feeds/{}.xml", repo_name, unique_filename);
-        outline_elem.push_attribute(("htmlUrl", html_url.as_str()));
+        let archived_feed_url = format!("https://raw.githubusercontent.com/{}/refs/heads/main/feeds/{}.xml", repo_name, unique_filename);
+        outline_elem.push_attribute(("xmlUrl", archived_feed_url.as_str()));
+        
+        // Use original feed URL for htmlUrl (for human browsing to original site)
+        outline_elem.push_attribute(("htmlUrl", feed.url.as_str()));
         
         writer.write_event(Event::Empty(outline_elem))?;
     }
