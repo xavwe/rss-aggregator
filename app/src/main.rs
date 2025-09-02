@@ -63,8 +63,8 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     // Sort items by publication date (newest first)
     all_items.sort_by(|a, b| b.pub_date.cmp(&a.pub_date));
 
-    // Limit the list to the maximum number of items specified
-    if all_items.len() > max_items {
+    // Limit the list to the maximum number of items specified (0 means unlimited)
+    if max_items > 0 && all_items.len() > max_items {
         all_items.truncate(max_items);
     }
 

@@ -5,7 +5,7 @@ Welcome to the **GitHub RSS Aggregator** – a simple, open-source, GitHub-hoste
 ## Features
 
 - **Multi-Feed Support:** Reads feed URLs from a `feeds.txt` file (one URL per line).
-- **Configurable:** Uses a `config.toml` file to set options (currently, the maximum number of items to sync).
+- **Configurable:** Uses a `config.toml` file to set options (currently, the maximum number of items to sync - set to 0 for unlimited).
 - **Concurrent Fetching:** Uses asynchronous Rust with Tokio to fetch feeds in parallel.
 - **Master Feed Creation:** Aggregates, deduplicates, and sorts feed items by publication date.
 - **GitHub Actions Integration:**
@@ -17,6 +17,12 @@ Welcome to the **GitHub RSS Aggregator** – a simple, open-source, GitHub-hoste
 
 - Update link to repo in feeds/master.xml and in GitHub Action.
 - Add URLs (one per line) to the `feeds.txt` file and commit the changes.
+
+## Configuration
+
+The `config.toml` file allows you to configure the RSS aggregator:
+
+- `max_items`: Maximum number of items to include in the master feed. Set to `0` for unlimited items (default: 300 if not specified).
 
 ## Setting Up the Project with a PAT
 
