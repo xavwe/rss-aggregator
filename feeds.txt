@@ -10,3 +10,4 @@ https://nixos.org/blog/newsletters-rss.xml
 https://nixos.org/blog/announcements-rss.xml
 https://nixos.org/blog/stories-rss.xml
 https://andrewkelley.me/rss.xml
+https://www.ccc.de/de/rss/updates.xml
