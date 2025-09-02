@@ -13,3 +13,5 @@ https://www.ccc.de/de/rss/updates.xml
 https://aliabdaal.com/newsletter/feed/
 https://aliabdaal.com/feed/
 https://blog.gitbutler.com/rss
+https://scottchacon.com/atom.xml
+https://medium.com/feed/@chacon
