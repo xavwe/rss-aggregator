@@ -13,3 +13,4 @@ https://andrewkelley.me/rss.xml
 https://www.ccc.de/de/rss/updates.xml
 https://aliabdaal.com/newsletter/feed/
 https://aliabdaal.com/feed/
+https://blog.gitbutler.com/rss
