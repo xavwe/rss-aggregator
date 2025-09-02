@@ -9,3 +9,4 @@ https://ziglang.org/devlog/index.xml
 https://nixos.org/blog/newsletters-rss.xml
 https://nixos.org/blog/announcements-rss.xml
 https://nixos.org/blog/stories-rss.xml
+https://andrewkelley.me/rss.xml
