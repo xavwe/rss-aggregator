@@ -22,7 +22,8 @@ Welcome to the **GitHub RSS Aggregator** – a simple, open-source, GitHub-hoste
 
 The `config.toml` file allows you to configure the RSS aggregator:
 
-- `max_items`: Maximum number of items to include in the master feed. Set to `0` for unlimited items (default: 300 if not specified).
+- `max_items`: Maximum number of items to include in feeds. Set to `0` for unlimited items (default: 300 if not specified). This limit applies to both the master feed and individual feed files.
+- `repo_name`: GitHub repository name in format `owner/repo` (optional, default: "xavwe/rss-aggregator"). Used for generating feed URLs in RSS channels.
 
 ## Setting Up the Project with a PAT
 
