@@ -4,3 +4,8 @@ https://simonwillison.net/atom/everything
 https://drewdevault.com/blog/index.xml
 https://lukesmith.xyz/index.xml
 https://www.dkriesel.com/feed.php?linkto=current&content=html&mode=blogtng&blog=blog-de
+https://ziglang.org/news/index.xml
+https://ziglang.org/devlog/index.xml
+https://nixos.org/blog/newsletters-rss.xml
+https://nixos.org/blog/announcements-rss.xml
+https://nixos.org/blog/stories-rss.xml
