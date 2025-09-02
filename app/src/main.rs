@@ -9,6 +9,9 @@ use chrono::{DateTime, FixedOffset, Utc};
 use tokio;
 use serde::Deserialize;
 use regex::Regex;
+use quick_xml::Writer;
+use quick_xml::events::{Event, BytesEnd, BytesStart, BytesText};
+use std::io::Cursor;
 
 // Config struct for deserializing config.toml
 #[derive(Debug, Deserialize)]
@@ -73,15 +76,25 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
         all_items.truncate(max_items);
     }
 
-    // Build a master RSS feed from the aggregated items
-    let channel = build_master_feed(&all_items, &repo_name);
-
-    // Write the generated RSS feed to a file
-    if let Err(e) = fs::write("feeds/master.xml", channel.to_string()) {
-        eprintln!("Error writing master feed: {}", e);
+    // Generate OPML feed list instead of master RSS feed
+    let opml_content = build_opml_feed_list(&feed_data_list, &repo_name)?;
+    
+    // Write the generated OPML file
+    if let Err(e) = fs::write("feeds/master.opml", opml_content) {
+        eprintln!("Error writing master OPML file: {}", e);
         return Err(e.into());
     }
-    println!("Master feed generated with {} items", all_items.len());
+    println!("Master OPML feed list generated with {} feeds", feed_data_list.len());
+
+    // Remove the old master.xml file if it exists
+    let master_xml_path = "feeds/master.xml";
+    if std::path::Path::new(master_xml_path).exists() {
+        if let Err(e) = fs::remove_file(master_xml_path) {
+            eprintln!("Warning: Could not remove old master.xml: {}", e);
+        } else {
+            println!("Removed old master.xml file");
+        }
+    }
 
     // Clean up old individual feed files
     cleanup_old_feeds(&feed_data_list)?;
@@ -185,29 +198,62 @@ async fn fetch_feed_data(url: String) -> Result<FeedData, Box<dyn Error + Send +
     })
 }
 
-/// Builds an RSS channel (master feed) from the provided items.
-fn build_master_feed(items: &[FeedItem], repo_name: &str) -> Channel {
-    let rss_items: Vec<Item> = items
-        .iter()
-        .map(|fi| {
-            let mut builder = ItemBuilder::default();
-            builder.title(fi.title.clone());
-            builder.link(fi.link.clone());
-            if let Some(desc) = &fi.description {
-                builder.description(desc.clone());
-            }
-            // Format the publication date as RFC 2822 for RSS
-            builder.pub_date(fi.pub_date.to_rfc2822());
-            builder.build()
-        })
-        .collect();
-
-    ChannelBuilder::default()
-        .title("Master RSS Feed")
-        .link(format!("https://raw.githubusercontent.com/{}/refs/heads/main/feeds/master.xml", repo_name))
-        .description("Aggregated RSS feed")
-        .items(rss_items)
-        .build()
+/// Builds an OPML document listing all the feeds.
+fn build_opml_feed_list(feeds: &[FeedData], repo_name: &str) -> Result<String, Box<dyn Error + Send + Sync>> {
+    let mut writer = Writer::new(Cursor::new(Vec::new()));
+    
+    // XML declaration
+    writer.write_event(Event::Decl(quick_xml::events::BytesDecl::new("1.0", Some("UTF-8"), None)))?;
+    
+    // Root opml element
+    let mut opml_elem = BytesStart::new("opml");
+    opml_elem.push_attribute(("version", "2.0"));
+    writer.write_event(Event::Start(opml_elem))?;
+    
+    // Head element
+    writer.write_event(Event::Start(BytesStart::new("head")))?;
+    
+    writer.write_event(Event::Start(BytesStart::new("title")))?;
+    writer.write_event(Event::Text(BytesText::new("RSS Feed Collection")))?;
+    writer.write_event(Event::End(BytesEnd::new("title")))?;
+    
+    let now = Utc::now();
+    let date_created = now.format("%a, %d %b %Y %H:%M:%S GMT").to_string();
+    
+    writer.write_event(Event::Start(BytesStart::new("dateCreated")))?;
+    writer.write_event(Event::Text(BytesText::new(&date_created)))?;
+    writer.write_event(Event::End(BytesEnd::new("dateCreated")))?;
+    
+    writer.write_event(Event::Start(BytesStart::new("dateModified")))?;
+    writer.write_event(Event::Text(BytesText::new(&date_created)))?;
+    writer.write_event(Event::End(BytesEnd::new("dateModified")))?;
+    
+    writer.write_event(Event::End(BytesEnd::new("head")))?;
+    
+    // Body element
+    writer.write_event(Event::Start(BytesStart::new("body")))?;
+    
+    // Add each feed as an outline element
+    for feed in feeds {
+        let mut outline_elem = BytesStart::new("outline");
+        outline_elem.push_attribute(("text", feed.title.as_str()));
+        outline_elem.push_attribute(("title", feed.title.as_str()));
+        outline_elem.push_attribute(("type", "rss"));
+        outline_elem.push_attribute(("xmlUrl", feed.url.as_str()));
+        
+        // Generate the individual feed URL for htmlUrl
+        let unique_filename = generate_unique_filename_for_feed(&feed.url, &feed.title);
+        let html_url = format!("https://raw.githubusercontent.com/{}/refs/heads/main/feeds/{}.xml", repo_name, unique_filename);
+        outline_elem.push_attribute(("htmlUrl", html_url.as_str()));
+        
+        writer.write_event(Event::Empty(outline_elem))?;
+    }
+    
+    writer.write_event(Event::End(BytesEnd::new("body")))?;
+    writer.write_event(Event::End(BytesEnd::new("opml")))?;
+    
+    let result = writer.into_inner().into_inner();
+    Ok(String::from_utf8(result)?)
 }
 
 /// Builds an RSS channel for an individual feed.
@@ -305,16 +351,17 @@ fn cleanup_old_feeds(current_feeds: &[FeedData]) -> Result<(), Box<dyn Error + S
         current_filenames.insert(format!("{}.xml", unique_filename));
     }
     
-    // Always preserve master.xml
-    current_filenames.insert("master.xml".to_string());
+    // Always preserve master.opml and .gitkeep
+    current_filenames.insert("master.opml".to_string());
+    current_filenames.insert(".gitkeep".to_string());
 
-    // Read directory and remove files not in current feeds
+    // Read directory and remove files not in current set
     for entry in fs::read_dir(feeds_dir)? {
         let entry = entry?;
         let filename = entry.file_name().to_string_lossy().to_string();
         
-        // Only remove XML files that aren't in our current set
-        if filename.ends_with(".xml") && !current_filenames.contains(&filename) {
+        // Only remove XML files that aren't in our current set, and remove old master.xml
+        if (filename.ends_with(".xml") && !current_filenames.contains(&filename)) || filename == "master.xml" {
             if let Err(e) = fs::remove_file(entry.path()) {
                 eprintln!("Warning: Could not remove old feed file {}: {}", filename, e);
             } else {

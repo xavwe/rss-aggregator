@@ -56,7 +56,7 @@ jobs:
       - name: Make Asset Executable
         run: chmod +x rss-generator
 
-      - name: Run Release Binary to Generate feeds/master.xml
+      - name: Run Release Binary to Generate feeds/master.opml
         run: ./rss-generator
 
       - name: Commit changes if feeds updated
