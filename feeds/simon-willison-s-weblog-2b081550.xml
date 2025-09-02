@@ -91,7 +91,8 @@ Released a few days ago (August 28th), <code>gpt-realtime</code> is OpenAI's new
     </tbody>
 </table>
 
-<p>The mini model also has a much longer 128,000 token context window.
+<p>The mini model also has a much longer 128,000 token context window.</p>
+<p><strong>Update</strong>: Turns out that was <a href="https://twitter.com/_agamble/status/1962839472837361807">a mistake in the documentation</a>, that mini model has a 16,000 token context size.
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/audio">audio</a>, <a href="https://simonwillison.net/tags/realtime">realtime</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/multi-modal-output">multi-modal-output</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 1 Sep 2025 17:34:55 +0000</pubDate></item><item><title>Cloudflare Radar: AI Insights</title><link>https://simonwillison.net/2025/Sep/1/cloudflare-radar-ai-insights/#atom-everything</link><description><![CDATA[<p><strong><a href="https://radar.cloudflare.com/ai-insights">Cloudflare Radar: AI Insights</a></strong></p>
