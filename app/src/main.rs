@@ -7,6 +7,7 @@ use std::fs;
 use chrono::{DateTime, FixedOffset, Utc};
 use tokio;
 use serde::Deserialize;
+use regex::Regex;
 
 // Config struct for deserializing config.toml
 #[derive(Debug, Deserialize)]
@@ -40,17 +41,21 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
 
     // Concurrently fetch and parse feeds
     let mut all_items = Vec::new();
+    let mut feed_data_list = Vec::new();
     let mut handles = Vec::new();
     for url in feed_urls {
         let url_owned = url.to_string();
-        let handle = tokio::spawn(async move { fetch_feed_items(url_owned).await });
+        let handle = tokio::spawn(async move { fetch_feed_data(url_owned).await });
         handles.push(handle);
     }
 
     // Collect results from tasks
     for handle in handles {
         match handle.await? {
-            Ok(mut feed_items) => all_items.append(&mut feed_items),
+            Ok(feed_data) => {
+                all_items.extend(feed_data.items.clone());
+                feed_data_list.push(feed_data);
+            },
             Err(e) => eprintln!("Error fetching feed: {}", e),
         }
     }
@@ -70,6 +75,16 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     fs::write("feeds/master.xml", channel.to_string())?;
     println!("Master feed generated with {} items", all_items.len());
 
+    // Generate individual feed files
+    for feed_data in feed_data_list {
+        let filename = to_kebab_case(&feed_data.title);
+        let filepath = format!("feeds/{}.xml", filename);
+        
+        let individual_channel = build_individual_feed(&feed_data);
+        fs::write(&filepath, individual_channel.to_string())?;
+        println!("Generated individual feed: {} ({} items)", filepath, feed_data.items.len());
+    }
+
     Ok(())
 }
 
@@ -82,11 +97,24 @@ struct FeedItem {
     pub_date: DateTime<FixedOffset>,
 }
 
-/// Fetches a feed from the given URL and parses its items.
-async fn fetch_feed_items(url: String) -> Result<Vec<FeedItem>, Box<dyn Error + Send + Sync>> {
+// Struct to hold both feed metadata and items
+#[derive(Debug)]
+struct FeedData {
+    title: String,
+    url: String,
+    items: Vec<FeedItem>,
+}
+
+/// Fetches a feed from the given URL and parses its items and metadata.
+async fn fetch_feed_data(url: String) -> Result<FeedData, Box<dyn Error + Send + Sync>> {
     let response = reqwest::get(&url).await?;
     let bytes = response.bytes().await?;
     let feed = parser::parse(bytes.as_ref())?;
+
+    // Extract feed title
+    let feed_title = feed.title
+        .map(|t| t.content)
+        .unwrap_or_else(|| url.clone());
 
     // Create a FixedOffset with zero offset.
     let offset = FixedOffset::east_opt(0).unwrap();
@@ -122,7 +150,11 @@ async fn fetch_feed_items(url: String) -> Result<Vec<FeedItem>, Box<dyn Error + 
         });
     }
 
-    Ok(items)
+    Ok(FeedData {
+        title: feed_title,
+        url,
+        items,
+    })
 }
 
 /// Builds an RSS channel (master feed) from the provided items.
@@ -148,4 +180,40 @@ fn build_master_feed(items: &[FeedItem]) -> Channel {
         .description("Aggregated RSS feed")
         .items(rss_items)
         .build()
+}
+
+/// Builds an RSS channel for an individual feed.
+fn build_individual_feed(feed_data: &FeedData) -> Channel {
+    let rss_items: Vec<Item> = feed_data.items
+        .iter()
+        .map(|fi| {
+            let mut builder = ItemBuilder::default();
+            builder.title(fi.title.clone());
+            builder.link(fi.link.clone());
+            if let Some(desc) = &fi.description {
+                builder.description(desc.clone());
+            }
+            // Format the publication date as RFC 2822 for RSS
+            builder.pub_date(fi.pub_date.to_rfc2822());
+            builder.build()
+        })
+        .collect();
+
+    let filename = to_kebab_case(&feed_data.title);
+    let github_link = format!("https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/{}.xml", filename);
+
+    ChannelBuilder::default()
+        .title(feed_data.title.clone())
+        .link(github_link)
+        .description(format!("Archived feed from {}", feed_data.url))
+        .items(rss_items)
+        .build()
+}
+
+/// Converts a string to kebab-case for use as a filename.
+fn to_kebab_case(input: &str) -> String {
+    let re = Regex::new(r"[^a-zA-Z0-9]+").unwrap();
+    re.replace_all(input.to_lowercase().as_str(), "-")
+        .trim_matches('-')
+        .to_string()
 }
