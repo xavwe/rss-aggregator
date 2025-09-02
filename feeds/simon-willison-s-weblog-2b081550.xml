@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Rich Pixels</title><link>https://simonwillison.net/2025/Sep/2/rich-pixels/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/darrenburns/rich-pixels">Rich Pixels</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Making XML human-readable without XSLT</title><link>https://simonwillison.net/2025/Sep/2/making-xml-human-readable-without-xslt/#atom-everything</link><description><![CDATA[<p><strong><a href="https://jakearchibald.com/2025/making-xml-human-readable-without-xslt/">Making XML human-readable without XSLT</a></strong></p>
+In response to the <a href="https://simonwillison.net/2025/Aug/19/xslt/">recent discourse</a> about XSLT support in browsers, Jake Archibald shares a new-to-me alternative trick for making an XML document readable in a browser: adding the following element near the top of the XML:</p>
+<pre><code>&lt;script
+  xmlns="http://www.w3.org/1999/xhtml"
+  src="script.js" defer="" /&gt;
+</code></pre>
+<p>That <code>script.js</code> will then be executed by the browser, and can swap out the XML with HTML by creating new elements using the correct namespace:</p>
+<pre><code>const htmlEl = document.createElementNS(
+  'http://www.w3.org/1999/xhtml',
+  'html',
+);
+document.documentElement.replaceWith(htmlEl);
+// Now populate the new DOM
+</code></pre>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/rss">rss</a>, <a href="https://simonwillison.net/tags/xml">xml</a>, <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/jake-archibald">jake-archibald</a></p>]]></description><pubDate>Tue, 2 Sep 2025 19:32:57 +0000</pubDate></item><item><title>Rich Pixels</title><link>https://simonwillison.net/2025/Sep/2/rich-pixels/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/darrenburns/rich-pixels">Rich Pixels</a></strong></p>
 Neat Python library by Darren Burns adding pixel image support to the Rich terminal library, using tricks to render an image using full or half-height colored blocks.</p>
 <p>Here's <a href="https://github.com/darrenburns/rich-pixels/blob/a0745ebcc26b966d9dbac5875720364ee5c6a1d3/rich_pixels/_renderer.py#L123C25-L123C26">the key trick</a> - it renders Unicode ▄ (U+2584, "lower half block") characters after setting a foreground and background color for the two pixels it needs to display.</p>
 <p>I got GPT-5 to <a href="https://chatgpt.com/share/68b6c443-2408-8006-8f4a-6862755cd1e4">vibe code up</a> a <code>show_image.py</code> terminal command which resizes the provided image to fit the width and height of the current terminal and displays it using Rich Pixels. That <a href="https://github.com/simonw/tools/blob/main/python/show_image.py">script is here</a>, you can run it with <code>uv</code> like this:</p>
@@ -403,22 +419,4 @@ As promised in their <a href="https://simonwillison.net/2025/Aug/4/qwen-image/">
 
 <p>Digging into those XSLT stylesheets leads to <code>billres-details.xsl</code> - <a href="https://gist.github.com/simonw/64c9f172533203c09acbcf13a0bb67c4">gist copy here</a> - which starts with a huge changelog comment with notes dating all the way back to 2004!</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/political-hacking">political-hacking</a>, <a href="https://simonwillison.net/tags/web-standards">web-standards</a>, <a href="https://simonwillison.net/tags/html">html</a></p>]]></description><pubDate>Tue, 19 Aug 2025 20:40:50 +0000</pubDate></item><item><title>llama.cpp guide: running gpt-oss with llama.cpp</title><link>https://simonwillison.net/2025/Aug/19/gpt-oss-with-llama-cpp/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/ggml-org/llama.cpp/discussions/15396">llama.cpp guide: running gpt-oss with llama.cpp</a></strong></p>
-Really useful official guide to running the OpenAI gpt-oss models using <code>llama-server</code> from <code>llama.cpp</code> - which provides an OpenAI-compatible localhost API and a neat web interface for interacting with the models.</p>
-<p>TLDR version for macOS to run the smaller <code>gpt-oss-20b</code> model:</p>
-<pre><code>brew install llama.cpp
-llama-server -hf ggml-org/gpt-oss-20b-GGUF \
-  --ctx-size 0 --jinja -ub 2048 -b 2048 -ngl 99 -fa
-</code></pre>
-<p>This downloads a 12GB model file from <a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/tree/main">ggml-org/gpt-oss-20b-GGUF</a> on Hugging Face, stores it in <code>~/Library/Caches/llama.cpp/</code> and starts it running on port 8080.</p>
-<p>You can then visit this URL to start interacting with the model:</p>
-<pre><code>http://localhost:8080/
-</code></pre>
-<p>On my 64GB M2 MacBook Pro <a href="https://gist.github.com/simonw/85ea67cba9fce0c7e63951dda5117268">it runs at around</a> 82 tokens/second.</p>
-<p><img alt="Screenshot of a chat interface with filename &quot;llama.cpp&quot; showing a conversation about creating an SVG of a pelican on a bicycle. The conversation includes detailed coordinates for drawing the pelican (body ellipse center at 250,140 with rx=35, ry=50, head circle at 260,110 with r=20, beak triangle points, wings, and tail specifications), implementation notes about layering bicycle elements then pelican, and ends with a code block showing the beginning of SVG code with XML declaration, svg tag with viewBox=&quot;0 0 500 300&quot;, style definitions for .bg, .wheel, .frame, .crossbar, .seat, .handlebar, .pedal, .pelican-body, and .pelican-head classes with various fill and stroke properties. Below the code is explanatory text: &quot;Below is a compact, self-contained SVG that shows a stylised pelican perched on a bicycle. Copy the code into an .svg file or paste it directly into an HTML page to view it.&quot; At the bottom is a message input field with &quot;Type a message (Shift+Enter to add a new line)&quot; placeholder text." src="https://static.simonwillison.net/static/2025/llama-cpp-screenshot.jpg" /></p>
-<p>The guide also includes notes for running on NVIDIA and AMD hardware.
-
-    <p><small></small>Via <a href="https://twitter.com/ggerganov/status/1957821440633282642">@ggerganov</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llama-cpp">llama-cpp</a>, <a href="https://simonwillison.net/tags/gpt-oss">gpt-oss</a></p>]]></description><pubDate>Tue, 19 Aug 2025 19:01:13 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/political-hacking">political-hacking</a>, <a href="https://simonwillison.net/tags/web-standards">web-standards</a>, <a href="https://simonwillison.net/tags/html">html</a></p>]]></description><pubDate>Tue, 19 Aug 2025 20:40:50 +0000</pubDate></item></channel></rss>
