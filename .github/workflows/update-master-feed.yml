@@ -59,17 +59,17 @@ jobs:
       - name: Run Release Binary to Generate feeds/master.xml
         run: ./rss-generator
 
-      - name: Commit changes if feeds/master.xml updated
+      - name: Commit changes if feeds updated
         env:
           RELEASE_TOKEN: ${{ secrets.RELEASE_TOKEN }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          if [ -n "$(git status --porcelain feeds/master.xml)" ]; then
-            git add feeds/master.xml
-            git commit -m "chore: update master feed [skip ci]"
+          if [ -n "$(git status --porcelain feeds/)" ]; then
+            git add feeds/
+            git commit -m "chore: update feeds [skip ci]"
             # Use the RELEASE_TOKEN in the push URL to authenticate
             git push https://${RELEASE_TOKEN}@github.com/xavwe/rss-aggregator.git HEAD:main
           else
-            echo "No changes in feeds/master.xml, skipping commit."
+            echo "No changes in feeds/, skipping commit."
           fi
