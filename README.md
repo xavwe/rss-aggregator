@@ -19,8 +19,8 @@ Many RSS feeds only contain the latest 10-20 articles, meaning you lose access t
 - **Individual Feed Files:** Creates separate archived XML files for each feed source.
 - **OPML Subscription File:** Generates `feeds/master.opml` that points RSS readers to your archived feeds.
 - **GitHub Actions Integration:**
-  - **Build Release:** Automatically builds the release binary on pull requests.
-  - **Update Archives:** Periodically runs the archiver, updating all feed archives and the OPML file.
+  - **Build Release:** Automatically builds and creates releases with the archiver binary on pushes and pull requests.
+  - **Update Archives:** Downloads the latest release binary and runs it hourly to update all feed archives and the OPML file.
   - **Direct Import:** Import the generated OPML file directly into any RSS reader to access your complete archived feeds.
 
 ## Usage
@@ -29,8 +29,12 @@ Many RSS feeds only contain the latest 10-20 articles, meaning you lose access t
 2. **Update repository references:** 
    - Update `repo_name` in `config.toml` to match your fork (`your-username/rss-aggregator`)
    - Update the GitHub Action workflows to reference your repository
-3. **Add your feeds:** Add RSS/Atom feed URLs (one per line) to the `feeds.txt` file and commit the changes.
-4. **Import OPML:** Once the archiver runs, import the generated `feeds/master.opml` file into your RSS reader to access all your archived feeds with complete history.
+3. **Set up the PAT token** (see section below) as a repository secret named `RELEASE_TOKEN`.
+4. **Add your feeds:** Add RSS/Atom feed URLs (one per line) to the `feeds.txt` file and commit the changes.
+5. **Wait for automation:** The workflow will automatically:
+   - Create a release with the archiver binary (triggered by your push)
+   - Run the archiver hourly to update feeds and generate the OPML file
+6. **Import OPML:** Import the generated `feeds/master.opml` file into your RSS reader to access all your archived feeds with complete history.
 
 ## Configuration
 
@@ -67,6 +71,14 @@ Once configured, the workflows will automatically use the `RELEASE_TOKEN` secret
 
 ## How It Works
 
+### Automated Workflow
+1. **Release Creation:** When you push changes, GitHub Actions automatically builds the Rust binary and creates a new release
+2. **Hourly Updates:** Every hour (and after each new release), the "Update Master Feed" workflow:
+   - Downloads the latest release binary
+   - Runs it to fetch all RSS feeds and update archives
+   - Commits any changes back to the repository
+
+### Feed Processing
 1. **Feed Fetching:** The archiver reads URLs from `feeds.txt` and fetches each RSS/Atom feed concurrently
 2. **Content Preservation:** Unlike original feeds that typically only show recent items, all fetched articles are preserved in individual XML files
 3. **OPML Generation:** Creates a master OPML file where `xmlUrl` points to your archived feeds (what RSS readers fetch) and `htmlUrl` points to original sources (for reference)
