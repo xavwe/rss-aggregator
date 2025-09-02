@@ -84,4 +84,8 @@ Once configured, the workflows will automatically use the `RELEASE_TOKEN` secret
 3. **OPML Generation:** Creates a master OPML file where `xmlUrl` points to your archived feeds (what RSS readers fetch) and `htmlUrl` points to original sources (for reference)
 4. **RSS Reader Integration:** Import the OPML into any RSS reader to subscribe to your complete archived feeds instead of the limited original ones
 
-Enjoy archiving your RSS feeds and never lose an article again!
+Enjoy archiving your RSS feeds and never lose an article again! 🚀
+
+## Credits
+
+This project is forked from [therecluse26/rss-aggregator](https://github.com/therecluse26/rss-aggregator) and has been modified to focus on RSS feed archiving rather than aggregation.
