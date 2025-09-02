@@ -144,7 +144,7 @@ fn build_master_feed(items: &[FeedItem]) -> Channel {
 
     ChannelBuilder::default()
         .title("Master RSS Feed")
-        .link("https://yourrepo.github.io/master_feed.xml")
+        .link("https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/master_feed.xml")
         .description("Aggregated RSS feed")
         .items(rss_items)
         .build()
