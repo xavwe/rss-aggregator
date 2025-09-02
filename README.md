@@ -1,40 +1,54 @@
-# GitHub RSS Aggregator
+# GitHub RSS Feed Archiver
 
-Welcome to the **GitHub RSS Aggregator** – a simple, open-source, GitHub-hosted RSS feed aggregator written in Rust. It fetches multiple RSS feeds concurrently, aggregates and sorts their items, and generates an OPML feed list file (`feeds/master.opml`). It requires no backend or database—just pure goodness running completely in your GitHub repo!
+Welcome to the **GitHub RSS Feed Archiver** – a simple, open-source, GitHub-hosted RSS feed archiver written in Rust. It fetches multiple RSS feeds, archives their complete history, and generates both individual archived feeds and an OPML subscription file that points to your archived feeds instead of the original limited ones. It requires no backend or database—just pure goodness running completely in your GitHub repo!
+
+## Purpose
+
+Many RSS feeds only contain the latest 10-20 articles, meaning you lose access to older content over time. This tool solves that problem by:
+
+- **Archiving Complete Feed History:** Downloads and preserves all articles from RSS feeds, not just the latest ones
+- **Individual Feed Archives:** Creates separate archived XML files for each feed with full article history
+- **OPML Generation:** Creates an OPML subscription file that points RSS readers to your archived feeds instead of the originals
 
 ## Features
 
 - **Multi-Feed Support:** Reads feed URLs from a `feeds.txt` file (one URL per line).
-- **Configurable:** Uses a `config.toml` file to set options (currently, the maximum number of items to sync - set to 0 for unlimited).
+- **Complete Feed Archiving:** Preserves full article history, not just recent items like original feeds.
+- **Configurable:** Uses a `config.toml` file to set options (maximum number of items to archive - set to 0 for unlimited).
 - **Concurrent Fetching:** Uses asynchronous Rust with Tokio to fetch feeds in parallel.
-- **OPML Feed List Creation: Creates an OPML file listing all feeds with their metadata instead of aggregating content.
+- **Individual Feed Files:** Creates separate archived XML files for each feed source.
+- **OPML Subscription File:** Generates `feeds/master.opml` that points RSS readers to your archived feeds.
 - **GitHub Actions Integration:**
   - **Build Release:** Automatically builds the release binary on pull requests.
-  - **Update Master Feed:** Periodically runs the aggregator, updating `feeds/master.opml` and pushing changes back to the repo.
-  - **Direct RSS Link:** The GitHub link to the `feeds/master.opml` file can be imported into RSS readers that support OPML subscription lists.
+  - **Update Archives:** Periodically runs the archiver, updating all feed archives and the OPML file.
+  - **Direct Import:** Import the generated OPML file directly into any RSS reader to access your complete archived feeds.
 
 ## Usage
 
-- Update link to repo in feeds/master.opml and in GitHub Action.
-- Add URLs (one per line) to the `feeds.txt` file and commit the changes.
+1. **Fork this repository** to your own GitHub account.
+2. **Update repository references:** 
+   - Update `repo_name` in `config.toml` to match your fork (`your-username/rss-aggregator`)
+   - Update the GitHub Action workflows to reference your repository
+3. **Add your feeds:** Add RSS/Atom feed URLs (one per line) to the `feeds.txt` file and commit the changes.
+4. **Import OPML:** Once the archiver runs, import the generated `feeds/master.opml` file into your RSS reader to access all your archived feeds with complete history.
 
 ## Configuration
 
-The `config.toml` file allows you to configure the RSS aggregator:
+The `config.toml` file allows you to configure the RSS archiver:
 
-- `max_items`: Maximum number of items to include in feeds. Set to `0` for unlimited items (default: 300 if not specified). This limit applies to both the master feed and individual feed files.
-- `repo_name`: GitHub repository name in format `owner/repo` (optional, default: "xavwe/rss-aggregator"). Used for generating feed URLs in RSS channels.
+- `max_items`: Maximum number of items to archive per feed. Set to `0` for unlimited items (default: 300 if not specified). This controls how many articles are preserved in each archived feed.
+- `repo_name`: GitHub repository name in format `owner/repo` (optional, default: "xavwe/rss-aggregator"). Used for generating URLs to your archived feeds in the OPML file.
 
 ## Setting Up the Project with a PAT
 
-For the GitHub Actions workflows to successfully create releases and push updates (such as updating `feeds/master.opml`), you need to configure a Personal Access Token (PAT) and add it as a secret named `RELEASE_TOKEN` in your repository. This token is used by the workflows to authenticate operations that modify the repository.
+For the GitHub Actions workflows to successfully create releases and push updates (such as updating archived feeds and `feeds/master.opml`), you need to configure a Personal Access Token (PAT) and add it as a secret named `RELEASE_TOKEN` in your repository. This token is used by the workflows to authenticate operations that modify the repository.
 
 ### Required PAT Permissions
 
 Your PAT must have the following scopes:
 - **repo** — Grants full control of private repositories (and is sufficient for public repositories as well). This scope allows the workflows to:
   - Create and upload release assets.
-  - Push changes (for example, updating `feeds/master.opml`).
+  - Push changes (for example, updating archived feeds and `feeds/master.opml`).
 
 ### Configuring the PAT
 
@@ -51,4 +65,11 @@ Your PAT must have the following scopes:
 
 Once configured, the workflows will automatically use the `RELEASE_TOKEN` secret for release creation and pushing updates to the repository.
 
-Enjoy aggregating your RSS feeds and happy coding! 🚀
+## How It Works
+
+1. **Feed Fetching:** The archiver reads URLs from `feeds.txt` and fetches each RSS/Atom feed concurrently
+2. **Content Preservation:** Unlike original feeds that typically only show recent items, all fetched articles are preserved in individual XML files
+3. **OPML Generation:** Creates a master OPML file where `xmlUrl` points to your archived feeds (what RSS readers fetch) and `htmlUrl` points to original sources (for reference)
+4. **RSS Reader Integration:** Import the OPML into any RSS reader to subscribe to your complete archived feeds instead of the limited original ones
+
+Enjoy archiving your RSS feeds and never lose an article again!
