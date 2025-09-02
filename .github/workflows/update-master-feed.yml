@@ -68,6 +68,9 @@ jobs:
           if [ -n "$(git status --porcelain feeds/)" ]; then
             git add feeds/
             git commit -m "chore: update feeds [skip ci]"
+            # Fetch latest changes and rebase before pushing to avoid conflicts
+            git fetch https://${RELEASE_TOKEN}@github.com/xavwe/rss-aggregator.git main
+            git rebase FETCH_HEAD
             # Use the RELEASE_TOKEN in the push URL to authenticate
             git push https://${RELEASE_TOKEN}@github.com/xavwe/rss-aggregator.git HEAD:main
           else
