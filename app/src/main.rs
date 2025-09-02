@@ -67,7 +67,7 @@ async fn main() -> Result<(), Box<dyn Error + Send + Sync>> {
     let channel = build_master_feed(&all_items);
 
     // Write the generated RSS feed to a file
-    fs::write("master_feed.xml", channel.to_string())?;
+    fs::write("feeds/master.xml", channel.to_string())?;
     println!("Master feed generated with {} items", all_items.len());
 
     Ok(())
@@ -144,7 +144,7 @@ fn build_master_feed(items: &[FeedItem]) -> Channel {
 
     ChannelBuilder::default()
         .title("Master RSS Feed")
-        .link("https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/master_feed.xml")
+        .link("https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/master.xml")
         .description("Aggregated RSS feed")
         .items(rss_items)
         .build()
