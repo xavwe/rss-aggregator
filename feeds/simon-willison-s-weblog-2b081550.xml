@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>August 2025 newsletter</title><link>https://simonwillison.net/2025/Sep/1/august-2025/#atom-everything</link><description><![CDATA[<p>I just sent out my August 2025 <strong><a href="https://github.com/sponsors/simonw">sponsors-only newsletter</a></strong> summarizing the past month in LLMs and my other work. Topics included GPT-5, gpt-oss, image editing models (Qwen-Image-Edit and Gemini Nano Banana), other significant model releases and the tools I'm using at the moment.</p>
+<p>If you'd like a preview of the newsletter, here's <a href="https://gist.github.com/simonw/722fc2f242977cb185838353776d14f4">the July 2025 edition</a> I sent out a month ago.</p>
+<p>New sponsors get access to the full archive. If you start sponsoring for $10/month or more right now you'll get instant access to <a href="https://github.com/simonw-private/monthly/blob/main/2025-08-august.md">the August edition</a> in my <code>simonw-private/monthly</code> GitHub repository.</p>
+<p>If you've already read <a href="https://simonwillison.net/2025/Aug/">all 85 posts</a> I wrote in August the newsletter acts mainly as a recap, but I've had positive feedback from people who prefer to get the monthly edited highlights over reading the firehose that is my blog!</p>
+<p>Here's the table of contents for the August newsletter:</p>
+<blockquote>
+<ul>
+<li>GPT-5</li>
+<li>OpenAl's open models: gpt-oss-120b and gpt-oss-20b</li>
+<li>Other significant model releases in
+August</li>
+<li>Image editing: Qwen-Image-Edit and
+Gemini Nano Banana</li>
+<li>More prompt injection and more lethal trifecta</li>
+<li>Tools I'm using at the moment</li>
+<li>Bonus links</li>
+</ul>
+</blockquote>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Mon, 1 Sep 2025 19:41:45 +0000</pubDate></item><item><title>Introducing gpt-realtime</title><link>https://simonwillison.net/2025/Sep/1/introducing-gpt-realtime/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/introducing-gpt-realtime/">Introducing gpt-realtime</a></strong></p>
+Released a few days ago (August 28th), <code>gpt-realtime</code> is OpenAI's new "most advanced speech-to-speech model". It looks like this is a replacement for the older <code>gpt-4o-realtime-preview</code> model that was released <a href="https://openai.com/index/introducing-the-realtime-api/">last October</a>.</p>
+<p>This is a slightly confusing release. The previous realtime model was clearly described as a variant of GPT-4o, sharing the same October 2023 training cut-off date as that model.</p>
+<p>I had expected that <code>gpt-realtime</code> might be a GPT-5 relative, but its training date is still October 2023 whereas GPT-5 is September 2024.</p>
+<p><code>gpt-realtime</code> also shares the relatively low 32,000 context token and 4,096 maximum output token limits of <code>gpt-4o-realtime-preview</code>.</p>
+<p>The only reference I found to GPT-5 in the documentation for the new model was a note saying "Ambiguity and conflicting instructions degrade performance, similar to GPT-5."</p>
+<p>The <a href="https://platform.openai.com/docs/guides/realtime-models-prompting#general-usage-tips">usage tips</a> for <code>gpt-realtime</code> have a few surprises:</p>
+<blockquote>
+<p><strong>Iterate relentlessly</strong>. Small wording changes can make or break behavior.</p>
+<p>Example: Swapping “inaudible” → “unintelligible” improved noisy input handling. [...]</p>
+<p><strong>Convert non-text rules to text</strong>: The model responds better to clearly written text.</p>
+<p>Example: Instead of writing, "IF x &gt; 3 THEN ESCALATE", write, "IF MORE THAN THREE FAILURES THEN ESCALATE."</p>
+</blockquote>
+<p>There are a whole lot more prompting tips in the new <a href="https://cookbook.openai.com/examples/realtime_prompting_guide">Realtime Prompting Guide</a>.</p>
+<p>OpenAI list several key improvements to <code>gpt-realtime</code> including the ability to configure it with a list of MCP servers, "better instruction following" and the ability to send it images.</p>
+<p>My biggest confusion came from <a href="https://openai.com/api/pricing/">the pricing page</a>, which lists separate pricing for using the Realtime API with <code>gpt-realtime</code> and GPT-4o mini. This suggests to me that the old <a href="https://platform.openai.com/docs/models/gpt-4o-mini-realtime-preview">gpt-4o-mini-realtime-preview</a> model is still available, despite it no longer being listed on the <a href="https://platform.openai.com/docs/models">OpenAI models page</a>.</p>
+<p><code>gpt-4o-mini-realtime-preview</code> is a <strong>lot</strong> cheaper:</p>
+<table>
+    <thead>
+        <tr>
+            <th>Model</th>
+            <th>Token Type</th>
+            <th>Input</th>
+            <th>Cached Input</th>
+            <th>Output</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="3">gpt-realtime</td>
+            <td>Text</td>
+            <td>$4.00</td>
+            <td>$0.40</td>
+            <td>$16.00</td>
+        </tr>
+        <tr>
+            <td>Audio</td>
+            <td>$32.00</td>
+            <td>$0.40</td>
+            <td>$64.00</td>
+        </tr>
+        <tr>
+            <td>Image</td>
+            <td>$5.00</td>
+            <td>$0.50</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan="2">gpt-4o-mini-realtime-preview</td>
+            <td>Text</td>
+            <td>$0.60</td>
+            <td>$0.30</td>
+            <td>$2.40</td>
+        </tr>
+        <tr>
+            <td>Audio</td>
+            <td>$10.00</td>
+            <td>$0.30</td>
+            <td>$20.00</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>The mini model also has a much longer 128,000 token context window.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/audio">audio</a>, <a href="https://simonwillison.net/tags/realtime">realtime</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/multi-modal-output">multi-modal-output</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 1 Sep 2025 17:34:55 +0000</pubDate></item><item><title>Cloudflare Radar: AI Insights</title><link>https://simonwillison.net/2025/Sep/1/cloudflare-radar-ai-insights/#atom-everything</link><description><![CDATA[<p><strong><a href="https://radar.cloudflare.com/ai-insights">Cloudflare Radar: AI Insights</a></strong></p>
+Cloudflare launched this dashboard <a href="https://blog.cloudflare.com/expanded-ai-insights-on-cloudflare-radar/">back in February</a>, incorporating traffic analysis from Cloudflare's network along with insights from their popular 1.1.1.1 DNS service.</p>
+<p>I found this chart particularly interesting, showing which documented AI crawlers are most active collecting training data - lead by GPTBot, ClaudeBot and Meta-ExternalAgent:</p>
+<p><img alt="Line chart showing HTTP traffic by bot over time from August 26 to September 1. HTTP traffic by bot - HTTP request trends for top five most active AI bots. Crawl purpose: Training. GPTBot 31.7% (orange line), ClaudeBot 27.1% (blue line), Meta-ExternalAgent 25.3% (light blue line), Bytespider 9.3% (yellow-green line), Applebot 5.2% (green line). Max scale shown on y-axis. X-axis shows dates: Tue, Aug 26, Wed, Aug 27, Thu, Aug 28, Fri, Aug 29, Sat, Aug 30, Sun, Aug 31, Mon, Sep 1. Top right shows Crawl purpose dropdown set to &quot;Training&quot; with X and checkmark buttons." src="https://static.simonwillison.net/static/2025/http-traffic-by-bot.jpg" /></p>
+<p>Cloudflare's DNS data also hints at the popularity of different services. ChatGPT holds the first place, which is unsurprising - but second place is a hotly contested race between Claude and Perplexity and #4/#5/#6 is contested by GitHub Copilot, Perplexity, and Codeium/Windsurf.</p>
+<p>Google Gemini comes in 7th, though since this is DNS based I imagine this is undercounting instances of Gemini on <code>google.com</code> as opposed to <code>gemini.google.com</code>.</p>
+<p><img alt="Line chart showing generative AI services popularity rankings over time. Title: &quot;Generative AI services popularity&quot; with subtitle &quot;Top 10 services based on 1.1.1.1 DNS resolver traffic&quot; and question mark and share icons. Legend shows: ChatGPT/OpenAI (dark blue), Character.AI (light blue), Claude/Anthropic (orange), Perplexity (olive green), GitHub Copilot (green), Codeium/Windsurf AI (pink), Google Gemini (purple), QuillBot (red), Grok/xAI (brown), DeepSeek (yellow). Y-axis shows ranks #1-#10, X-axis shows dates from Mon, Aug 25 to Mon, Sep 1 (partially visible). ChatGPT maintains #1 position throughout. Other services show various ranking changes over the week-long period." src="https://static.simonwillison.net/static/2025/cloudflare-gen-ai.jpg" />
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45093090">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/crawling">crawling</a>, <a href="https://simonwillison.net/tags/dns">dns</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 1 Sep 2025 17:06:56 +0000</pubDate></item><item><title>Claude Opus 4.1 and Opus 4 degraded quality</title><link>https://simonwillison.net/2025/Aug/30/claude-degraded-quality/#atom-everything</link><description><![CDATA[<p><strong><a href="https://status.anthropic.com/incidents/h26lykctfnsz">Claude Opus 4.1 and Opus 4 degraded quality</a></strong></p>
+Notable because often when people complain of degraded model quality it turns out to be unfounded - Anthropic in the past have emphasized that they don't change the model weights after releasing them without changing the version number.</p>
+<p>In this case a botched upgrade of their inference stack cause a genuine model degradation for 56.5 hours:</p>
+<blockquote>
+<p>From 17:30 UTC on Aug 25th to 02:00 UTC on Aug 28th, Claude Opus 4.1 experienced a degradation in quality for some requests. Users may have seen lower intelligence, malformed responses or issues with tool calling in Claude Code.</p>
+<p>This was caused by a rollout of our inference stack, which we have since rolled back for Claude Opus 4.1. [...]</p>
+<p>We’ve also discovered that Claude Opus 4.0 has been affected by the same issue and we are in the process of rolling it back.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/claude-4">claude-4</a></p>]]></description><pubDate>Sat, 30 Aug 2025 21:04:13 +0000</pubDate></item><item><title>Quoting Benj Edwards</title><link>https://simonwillison.net/2025/Aug/30/benj-edwards/#atom-everything</link><description><![CDATA[<blockquote cite="https://arstechnica.com/information-technology/2025/08/the-personhood-trap-how-ai-fakes-human-personality/"><p>LLMs are intelligence without agency—what we might call "vox sine persona": voice without person. Not the voice of someone, not even the collective voice of many someones, but a voice emanating from no one at all.</p></blockquote>
+<p class="cite">&mdash; <a href="https://arstechnica.com/information-technology/2025/08/the-personhood-trap-how-ai-fakes-human-personality/">Benj Edwards</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/benj-edwards">benj-edwards</a>, <a href="https://simonwillison.net/tags/ai-personality">ai-personality</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 30 Aug 2025 06:52:53 +0000</pubDate></item><item><title>Talk Python: Celebrating Django&apos;s 20th Birthday With Its Creators</title><link>https://simonwillison.net/2025/Aug/29/talk-python/#atom-everything</link><description><![CDATA[<p><strong><a href="https://talkpython.fm/episodes/show/518/celebrating-djangos-20th-birthday-with-its-creators">Talk Python: Celebrating Django&#x27;s 20th Birthday With Its Creators</a></strong></p>
+I recorded this podcast episode recently to celebrate Django's 20th birthday with Adrian Holovaty, Will Vincent, Jeff Triplet, and Thibaud Colas.</p>
+<blockquote>
+<p>We didn’t know that it was a web framework. We thought it was a tool for building local newspaper websites. [...]</p>
+<p>Django’s original tagline was ‘Web development on journalism deadlines’. That’s always been my favorite description of the project.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/adrian-holovaty">adrian-holovaty</a>, <a href="https://simonwillison.net/tags/django">django</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/podcast-appearances">podcast-appearances</a></p>]]></description><pubDate>Fri, 29 Aug 2025 20:02:50 +0000</pubDate></item><item><title>The perils of vibe coding</title><link>https://simonwillison.net/2025/Aug/29/the-perils-of-vibe-coding/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.ft.com/content/5b3d410a-6e02-41ad-9e0a-c2e4d672ca00">The perils of vibe coding</a></strong></p>
+I was interviewed by Elaine Moore for this opinion piece in the Financial Times, which ended up in the print edition of the paper too! I picked up a copy yesterday:</p>
+<p><a href="https://static.simonwillison.net/static/2025/ft.jpeg" style="text-decoration: none; border-bottom: none"><img src="https://static.simonwillison.net/static/2025/ft.jpeg" alt="The perils of vibe coding - A new OpenAI model arrived this month with a glossy livestream, group watch parties and a lingering sense of disappointment. The YouTube comment section was underwhelmed. “I think they are all starting to realize this isn’t going to become the world like they thought it would,” wrote one viewer. “I can see it on their faces.” But if the casual user was unimpressed, the AI model’s saving grace may be vibe. Coding is generative AI’s newest battleground. With big bills to pay, high valuations to live up to and a market wobble to erase, the sector needs to prove its corporate productivity chops. Coding is hardly promoted as a business use case that already works. For one thing, AI-generated code holds the promise of replacing programmers — a profession of very well paid people. For another, the work can be quantified. In April, Microsoft chief executive Satya Nadella said that up to 50 per cent of the company’s code was now being written by AI. Google chief executive Sundar Pichai has said the same thing. Salesforce has paused engineering hires and Mark Zuckerberg told podcaster Joe Rogan that Meta would use AI as a “mid-level engineer” that writes code. Meanwhile, start-ups such as Replit and Cursor’s Anysphere are trying to persuade people that with AI, anyone can code. In theory, every employee can become a software engineer. So why aren’t we? One possibility is that it’s all still too unfamiliar. But when I ask people who write code for a living they offer an alternative suggestion: unpredictability. As programmer Simon Willison put it: “A lot of people are missing how weird and funny this space is. I’ve been a computer programmer for 30 years and [AI models] don’t behave like normal computers.” Willison is well known in the software engineering community for his AI experiments. He’s an enthusiastic vibe coder — using LLMs to generate code using natural language prompts. OpenAI’s latest model GPT-3.1s, he is now favourite. Still, he predicts that a vibe coding crash is due if it is used to produce glitchy software. It makes sense that programmers — people who are interested in finding new ways to solve problems — would be early adopters of LLMs. Code is a language, albeit an abstract one. And generative AI is trained in nearly all of them, including older ones like Cobol. That doesn’t mean they accept all of its suggestions. Willison thinks the best way to see what a new model can do is to ask for something unusual. He likes to request an svg (an image made out of lines described with code) of a pelican on a bike and asks it to remember the chickens in his garden by name. Results can be bizarre. One model ignored key prompts in favour of composing a poem. Still, his adventures in vibe coding sound like an advert for the sector’s future. Anthropic’s Claude Code, the favoured model for developers, to make an OCR (optical character recognition) software loves screenshots) tool that will copy and paste text from a screenshot. He wrote software that summarises blog comments and has planned to cut a custom tool that will alert him when a whale is visible from his Pacific coast home. All this by typing prompts in English. It’s sounds like the sort of thing Bill Gates might have had in mind when he wrote that natural language AI agents would bring about “the biggest revolution in computing since we went from typing commands to tapping on icons”. But watching code appear and know how it works are two different things. My efforts to make my own comment summary tool produced something unworkable that gave overly long answers and then congratulated itself as a success. Willison says he wouldn’t use AI-generated code for projects he planned to ship out unless he had reviewed each line. Not only is there the risk of hallucination but the chatbot’s desire to be agreeable means it may an unusable idea works. That is a particular issue for those of us who don’t know how to fix the code. We risk creating software with hidden problems. It may not save time either. A study published in July by the non-profit Model Evaluation and Threat Research assessed work done by 16 developers — some with AI tools, some without. Those using AI assistance it had made them faster. In fact it took them nearly a fifth longer. Several developers I spoke to said AI was best used as a way to talk through coding problems. It’s a version of something they call rubber ducking (after their habit of talking to the toys on their desk) — only this rubber duck can talk back. As one put it, code shouldn’t be judged by volume or speed. Progress in AI coding is tangible. But measuring productivity gains is not as neat as a simple percentage calculation."></a></p>
+<p>From the article, with links added by me to relevant projects:</p>
+<blockquote>
+<p>Willison thinks the best way to see what a new model can do is to ask for something unusual. He likes to request an SVG (an image made out of lines described with code) of <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">a pelican on a bike</a> and asks it to remember the chickens in his garden by name. Results can be bizarre. One model ignored his prompts in favour of <a href="https://simonwillison.net/2025/Aug/14/gemma-3-270m/">composing a poem</a>.</p>
+<p>Still, his adventures in vibe coding sound like an advert for the sector. He used Anthropic's Claude Code, the favoured model for developers, to <a href="https://simonwillison.net/2024/Mar/30/ocr-pdfs-images/">make an OCR</a> (optical character recognition - software loves acronyms) tool that will copy and paste text from a screenshot.</p>
+<p>He wrote software that <a href="https://til.simonwillison.net/llms/claude-hacker-news-themes">summarises blog comments</a> and has plans to build a custom tool that will alert him when a whale is visible from his Pacific coast home. All this by typing prompts in English.</p>
+</blockquote>
+<p>I've been talking about that whale spotting project for far too long. Now that it's been in the FT I really need to build it.</p>
+<p>(On the subject of OCR... I tried extracting the text from the above image using GPT-5 and got a <a href="https://chatgpt.com/share/68b1e707-add0-8006-8344-4c2fca902b2e">surprisingly bad result</a> full of hallucinated details. Claude Opus 4.1 <a href="https://claude.ai/share/e98d2fe1-0c81-4f51-8739-483f843e4c0e">did a lot better</a> but still made some mistakes.)
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ocr">ocr</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/press-quotes">press-quotes</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Fri, 29 Aug 2025 17:51:10 +0000</pubDate></item><item><title>Lossy encyclopedia</title><link>https://simonwillison.net/2025/Aug/29/lossy-encyclopedia/#atom-everything</link><description><![CDATA[<p>Since I love collecting questionable analogies for LLMs, here's a new one I just came up with: an LLM is <strong>a lossy encyclopedia</strong>. They have a huge array of facts compressed into them but that compression is lossy (see also <a href="https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web">Ted Chiang</a>).</p>
+<p>The key thing is to develop an intuition for questions it can usefully answer vs questions that are at a level of detail where the lossiness matters.</p>
+<p>This thought sparked by <a href="https://news.ycombinator.com/item?id=45058688#45060519">a comment</a> on Hacker News asking why an LLM couldn't "Create a boilerplate Zephyr project skeleton, for Pi Pico with st7789 spi display drivers configured". That's more of a lossless encyclopedia question!</p>
+<p>My <a href="https://news.ycombinator.com/item?id=45058688#45060709">answer</a>:</p>
+<blockquote>
+<p>The way to solve this particular problem is to make a correct example available to it. Don't expect it to just know extremely specific facts like that - instead, treat it as a tool that can act on facts presented to it.</p>
+</blockquote>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Fri, 29 Aug 2025 09:26:52 +0000</pubDate></item><item><title>Python: The Documentary</title><link>https://simonwillison.net/2025/Aug/28/python-the-documentary/#atom-everything</link><description><![CDATA[<p><strong><a href="https://youtu.be/GfH4QL4VqJ0">Python: The Documentary</a></strong></p>
+New documentary about the origins of the Python programming language - 84 minutes long, built around extensive interviews with Guido van Rossum and others who were there at the start and during the subsequent journey.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/computer-history">computer-history</a>, <a href="https://simonwillison.net/tags/guido-van-rossum">guido-van-rossum</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/youtube">youtube</a></p>]]></description><pubDate>Thu, 28 Aug 2025 19:49:51 +0000</pubDate></item><item><title>V&amp;A East Storehouse and Operation Mincemeat in London</title><link>https://simonwillison.net/2025/Aug/27/london-culture/#atom-everything</link><description><![CDATA[<p>We were back in London for a few days and yesterday had a day of culture.</p>
+<p>First up: the brand new <a href="https://www.vam.ac.uk/east/storehouse/visit">V&amp;A East Storehouse</a> museum in the Queen Elizabeth Olympic Park near Stratford, which opened on May 31st this year.</p>
+<p>This is a delightful new format for a museum. The building is primarily an off-site storage area for London's Victoria and Albert museum, storing 250,000 items that aren't on display in their main building.</p>
+<p>The twist is that it's also open to the public. Entrance is free, and you can climb stairs and walk through an airlock-style corridor into the climate controlled interior, then explore three floors of walkways between industrial shelving units holding thousands of items from the collection.</p>
+<p>There is almost no signage aside from an occasional number that can help you look up items in the online catalog.</p>
+<p>I found the lack of signs to be unexpectedly delightful: it compels you to really pay attention to the items on display.</p>
+<p>There's so much great stuff in here. I particularly appreciated the two storey street-facing façades of <a href="https://en.wikipedia.org/wiki/Robin_Hood_Gardens">Robin Hood Gardens</a>, a brutalist London residential estate completed in 1972 and demolished in 2017 through 2025. I also really enjoyed the Kaufman Office, an office space transplanted from Pittsburgh that is "the only complete interior designed by architect Frank Lloyd Wright on permanent display outside the USA."</p>
+<p><img src="https://static.simonwillison.net/static/2025/v-a-east-1.jpg" alt="Three levels of the Storehouse, each with walkways full of people looking at a variety of exhibits on shelves. Two huge concrete facades from the Robin Hood Gardens hang between the floors." style="max-width: 100%;" /></p>
+<p>The building is a working museum warehouse and preservation facility, and there are various points where you can look out into the rest of the space (I enjoyed spotting a cluster of grandfather clocks in the distance) or watch the curators arranging and preserving new artifacts.</p>
+<p>I've <a href="https://www.niche-museums.com/113">added it to Niche Museums</a> with whole lot more of my photos.</p>
+<p>In the evening we headed to the Fortune Theater to see <a href="https://en.wikipedia.org/wiki/Operation_Mincemeat_(musical)">Operation Mincemeat</a> at the recommendation of several friends. It's a <em>fantastic</em> musical telling the story of a real British covert operation that took place during World War II. A cast of five take on <a href="https://www.tiktok.com/@mincemeatbway/video/7538109771023453462">86 roles</a>, sometimes switching roles live on stage multiple times during a single number. It's hilarious, touching, deeply entertaining and manages to start at high energy and then continually escalate that energy as the show continues.</p>
+<p>The original British cast (three of whom co-wrote it) have moved to New York for a broadway production that started in March. The cast we saw in London were outstanding.</p>
+<p>It's a tiny theater - the West End's second smallest at 432 seats (the smallest is the <a href="https://en.wikipedia.org/wiki/Arts_Theatre">Arts Theater</a> at 350) which makes for an intimate performance.</p>
+<p>I absolutely loved it and would jump at the chance to see it again.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/london">london</a>, <a href="https://simonwillison.net/tags/museums">museums</a>, <a href="https://simonwillison.net/tags/theatre">theatre</a></p>]]></description><pubDate>Wed, 27 Aug 2025 18:51:28 +0000</pubDate></item><item><title>Quoting Bruce Schneier</title><link>https://simonwillison.net/2025/Aug/27/bruce-schneier/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.schneier.com/blog/archives/2025/08/we-are-still-unable-to-secure-llms-from-malicious-inputs.html"><p>We simply don’t know to defend against these attacks. We have zero agentic AI systems that are secure against these attacks. Any AI that is working in an adversarial environment—and by this I mean that it may encounter untrusted training data or input—is vulnerable to prompt injection. It’s an existential problem that, near as I can tell, most people developing these technologies are just pretending isn’t there.</p></blockquote>
+<p class="cite">&mdash; <a href="https://www.schneier.com/blog/archives/2025/08/we-are-still-unable-to-secure-llms-from-malicious-inputs.html">Bruce Schneier</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/bruce-schneier">bruce-schneier</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Wed, 27 Aug 2025 17:48:33 +0000</pubDate></item><item><title>Piloting Claude for Chrome</title><link>https://simonwillison.net/2025/Aug/26/piloting-claude-for-chrome/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/news/claude-for-chrome">Piloting Claude for Chrome</a></strong></p>
+Two days ago <a href="https://simonwillison.net/2025/Aug/25/agentic-browser-security/">I said</a>:</p>
+<blockquote>
+<p>I strongly expect that the <em>entire concept</em> of an agentic browser extension is fatally flawed and cannot be built safely.</p>
+</blockquote>
+<p>Today Anthropic announced their own take on this pattern, implemented as an invite-only preview Chrome extension.</p>
+<p>To their credit, the majority of the <a href="https://www.anthropic.com/news/claude-for-chrome">blog post</a> and accompanying <a href="https://support.anthropic.com/en/articles/12012173-getting-started-with-claude-for-chrome">support article</a> is information about the security risks. From their post:</p>
+<blockquote>
+<p>Just as people encounter phishing attempts in their inboxes, browser-using AIs face prompt injection attacks—where malicious actors hide instructions in websites, emails, or documents to trick AIs into harmful actions without users' knowledge (like hidden text saying "disregard previous instructions and do [malicious action] instead").</p>
+<p>Prompt injection attacks can cause AIs to delete files, steal data, or make financial transactions. This isn't speculation: we’ve run “red-teaming” experiments to test Claude for Chrome and, without mitigations, we’ve found some concerning results.</p>
+</blockquote>
+<p>Their 123 adversarial prompt injection test cases saw a 23.6% attack success rate when operating in "autonomous mode". They added mitigations:</p>
+<blockquote>
+<p>When we added safety mitigations to autonomous mode, we reduced the attack success rate of 23.6% to 11.2%</p>
+</blockquote>
+<p>I would argue that 11.2% is still a catastrophic failure rate. In the absence of 100% reliable protection I have trouble imagining a world in which it's a good idea to unleash this pattern.</p>
+<p>Anthropic don't recommend autonomous mode - where the extension can act without human intervention. Their default configuration instead requires users to be much more hands-on:</p>
+<blockquote>
+<ul>
+<li><strong>Site-level permissions</strong>: Users can grant or revoke Claude's access to specific websites at any time in the Settings.</li>
+<li><strong>Action confirmations</strong>: Claude asks users before taking high-risk actions like publishing, purchasing, or sharing personal data.</li>
+</ul>
+</blockquote>
+<p>I really hate being stop energy on this topic. The demand for browser automation driven by LLMs is significant, and I can see why. Anthropic's approach here is the most open-eyed I've seen yet but it still feels doomed to failure to me.</p>
+<p>I don't think it's reasonable to expect end users to make good decisions about the security risks of this pattern.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/chrome">chrome</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Tue, 26 Aug 2025 22:43:25 +0000</pubDate></item><item><title>Will Smith’s concert crowds are real, but AI is blurring the lines</title><link>https://simonwillison.net/2025/Aug/26/will-smiths-concert-crowds/#atom-everything</link><description><![CDATA[<p><strong><a href="https://waxy.org/2025/08/will-smiths-concert-crowds-were-real-but-ai-is-blurring-the-lines/">Will Smith’s concert crowds are real, but AI is blurring the lines</a></strong></p>
+Great piece from Andy Baio demonstrating quite how convoluted the usage ethics and backlash against generative AI has become.</p>
+<p>Will Smith has been accused of using AI to misleadingly inflate the audience sizes of his recent tour. It looks like the audiences were real, but the combined usage of static-image-to-video models by his team with YouTube's ugly new compression experiments gave the resulting footage an uncanny valley effect that lead to widespread doubts over the veracity of the content.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/andy-baio">andy-baio</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a></p>]]></description><pubDate>Tue, 26 Aug 2025 03:50:49 +0000</pubDate></item><item><title>Agentic Browser Security: Indirect Prompt Injection in Perplexity Comet</title><link>https://simonwillison.net/2025/Aug/25/agentic-browser-security/#atom-everything</link><description><![CDATA[<p><strong><a href="https://brave.com/blog/comet-prompt-injection/">Agentic Browser Security: Indirect Prompt Injection in Perplexity Comet</a></strong></p>
+The security team from Brave took a look at Comet, the LLM-powered "agentic browser" extension from Perplexity, and unsurprisingly found security holes you can drive a truck through.</p>
+<blockquote>
+<p>The vulnerability we’re discussing in this post lies in how Comet processes webpage content: when users ask it to “Summarize this webpage,” Comet feeds a part of the webpage directly to its LLM without distinguishing between the user’s instructions and untrusted content from the webpage. This allows attackers to embed indirect prompt injection payloads that the AI will execute as commands. For instance, an attacker could gain access to a user’s emails from a prepared piece of text in a page in another tab.</p>
+</blockquote>
+<p>Visit a Reddit post with Comet and ask it to summarize the thread, and malicious instructions in a post there can trick Comet into accessing web pages in another tab to extract the user's email address, then perform all sorts of actions like triggering an account recovery flow and grabbing the resulting code from a logged in Gmail session.</p>
+<p>Perplexity attempted to mitigate the issues reported by Brave... but an update to the Brave post later confirms that those fixes were later defeated and the vulnerability remains. </p>
+<p>Here's where things get difficult: Brave themselves are developing an agentic browser feature called Leo. Brave's security team describe the following as a "potential mitigation" to the issue with Comet:</p>
+<blockquote>
+<p>The browser should clearly separate the user’s instructions from the website’s contents when sending them as context to the model. The contents of the page should always be treated as untrusted.</p>
+</blockquote>
+<p>If only it were that easy! This is the core problem at the heart of prompt injection which we've been talking about for <a href="https://simonwillison.net/series/prompt-injection/">nearly three years</a> - to an LLM the trusted instructions and untrusted content are concatenated together into the same stream of tokens, and to date (despite many attempts) nobody has demonstrated a convincing and effective way of distinguishing between the two.</p>
+<p>There's an element of "those in glass houses shouldn't throw stones here" - I strongly expect that the <em>entire concept</em> of an agentic browser extension is fatally flawed and cannot be built safely.</p>
+<p>One piece of good news: this <a href="https://news.ycombinator.com/item?id=45004846">Hacker News conversation</a> about this issue was almost entirely populated by people who already understand how serious this issue is and why the proposed solutions were unlikely to work. That's new: I'm used to seeing people misjudge and underestimate the severity of this problem, but it looks like the tide is finally turning there.</p>
+<p><strong>Update</strong>: in <a href="https://news.ycombinator.com/item?id=45004846#45017568">a comment on Hacker News</a> Brave security lead Shivan Kaul Sahib confirms that they are aware of <a href="https://simonwillison.net/2025/Apr/11/camel/">the CaMeL paper</a>, which remains my personal favorite example of a credible approach to this problem.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/perplexity">perplexity</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Mon, 25 Aug 2025 09:39:15 +0000</pubDate></item><item><title>Static Sites with Python, uv, Caddy, and Docker</title><link>https://simonwillison.net/2025/Aug/24/uv-caddy-and-docker/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nkantar.com/blog/2025/08/static-python-uv-caddy-docker/">Static Sites with Python, uv, Caddy, and Docker</a></strong></p>
+Nik Kantar documents his Docker-based setup for building and deploying mostly static web sites in line-by-line detail.</p>
+<p>I found this really useful. The Dockerfile itself without comments is just 8 lines long:</p>
+<pre><code>FROM ghcr.io/astral-sh/uv:debian AS build
+WORKDIR /src
+COPY . .
+RUN uv python install 3.13
+RUN uv run --no-dev sus
+FROM caddy:alpine
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY --from=build /src/output /srv/
+</code></pre>
+<p>He also includes a Caddyfile that shows how to proxy a subset of requests to the Plausible analytics service.</p>
+<p>The static site is built using his <a href="https://github.com/nkantar/sus">sus</a> package for creating static URL redirecting sites, but would work equally well for another static site generator you can install and run with <code>uv run</code>.</p>
+<p>Nik deploys his sites using <a href="https://coolify.io/">Coolify</a>, a new-to-me take on the self-hosting alternative to Heroku/Vercel pattern which helps run multiple sites on a collection of hosts using Docker containers.</p>
+<p>A bunch of the <a href="https://news.ycombinator.com/item?id=44985653">Hacker News comments</a> dismissed this as over-engineering. I don't think that criticism is justified - given Nik's existing deployment environment I think this is a lightweight way to deploy static sites in a way that's consistent with how everything else he runs works already.</p>
+<p>More importantly, the world needs more articles like this that break down configuration files and explain what every single line of them does.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=44985653">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/docker">docker</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Sun, 24 Aug 2025 08:51:30 +0000</pubDate></item><item><title>Spatial Joins in DuckDB</title><link>https://simonwillison.net/2025/Aug/23/spatial-joins-in-duckdb/#atom-everything</link><description><![CDATA[<p><strong><a href="https://duckdb.org/2025/08/08/spatial-joins">Spatial Joins in DuckDB</a></strong></p>
+Extremely detailed overview by Max Gabrielsson of DuckDB's new spatial join optimizations.</p>
+<p>Consider the following query, which counts the number of <a href="https://citibikenyc.com/system-data">NYC Citi Bike Trips</a> for each of the neighborhoods defined by the <a href="https://www.nyc.gov/content/planning/pages/resources/datasets/neighborhood-tabulation">NYC Neighborhood Tabulation Areas polygons</a> and returns the top three:</p>
+<pre><span class="pl-k">SELECT</span> neighborhood,
+  <span class="pl-c1">count</span>(<span class="pl-k">*</span>) <span class="pl-k">AS</span> num_rides
+<span class="pl-k">FROM</span> rides
+<span class="pl-k">JOIN</span> hoods <span class="pl-k">ON</span> ST_Intersects(
+  <span class="pl-c1">rides</span>.<span class="pl-c1">start_geom</span>, <span class="pl-c1">hoods</span>.<span class="pl-c1">geom</span>
+)
+<span class="pl-k">GROUP BY</span> neighborhood
+<span class="pl-k">ORDER BY</span> num_rides <span class="pl-k">DESC</span>
+<span class="pl-k">LIMIT</span> <span class="pl-c1">3</span>;</pre>
+
+<p>The rides table contains 58,033,724 rows. The hoods table has polygons for 310 neighborhoods.</p>
+<p>Without an optimized spatial joins this query requires a nested loop join, executing that expensive <code>ST_Intersects()</code> operation 58m * 310 ~= 18 billion times. This took around 30 minutes on the 36GB MacBook M3 Pro used for the benchmark.</p>
+<p>The first optimization described - implemented from DuckDB 1.2.0 onwards - uses a "piecewise merge join". This takes advantage of the fact that a bounding box intersection is a whole lot faster to calculate, especially if you pre-cache the bounding box (aka the minimum bounding rectangle or MBR) in the stored binary <code>GEOMETRY</code> representation.</p>
+<p>Rewriting the query to use a fast bounding box intersection and then only running the more expensive <code>ST_Intersects()</code> filters on those matches drops the runtime from 1800 seconds to 107 seconds.</p>
+<p>The second optimization, added in <a href="https://duckdb.org/2025/05/21/announcing-duckdb-130.html">DuckDB 1.3.0</a> in May 2025 using the new SPATIAL_JOIN operator, is significantly more sophisticated.</p>
+<p>DuckDB can now identify when a spatial join is working against large volumes of data and automatically build an in-memory R-Tree of bounding boxes for the larger of the two tables being joined.</p>
+<p>This new R-Tree further accelerates the bounding box intersection part of the join, and drops the runtime down to just 30 seconds.
+
+    <p><small></small>Via <a href="https://bsky.app/profile/mackaszechno.bsky.social/post/3lx3lnagg7s2t">@mackaszechno.bsky.social</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/geospatial">geospatial</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/duckdb">duckdb</a></p>]]></description><pubDate>Sat, 23 Aug 2025 21:21:02 +0000</pubDate></item><item><title>ChatGPT release notes: Project-only memory</title><link>https://simonwillison.net/2025/Aug/22/project-memory/#atom-everything</link><description><![CDATA[<p><strong><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes#h_fb3ac52750">ChatGPT release notes: Project-only memory</a></strong></p>
+The feature I've most wanted from ChatGPT's memory feature (the newer version of memory that automatically includes relevant details from summarized prior conversations) just landed:</p>
+<blockquote>
+<p>With project-only memory enabled, ChatGPT can use other conversations in that project for additional context, and won’t use your <a href="https://help.openai.com/en/articles/11146739-how-does-reference-saved-memories-work">saved memories</a> from outside the project to shape responses. Additionally, it won’t carry anything from the project into future chats outside of the project.</p>
+</blockquote>
+<p>This looks like exactly what I <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/#there-s-a-version-of-this-feature-i-would-really-like">described back in May</a>:</p>
+<blockquote>
+<p>I need <strong>control</strong> over what older conversations are being considered, on as fine-grained a level as possible without it being frustrating to use.</p>
+<p>What I want is <strong>memory within projects</strong>. [...]</p>
+<p>I would <em>love</em> the option to turn on memory from previous chats in a way that’s scoped to those projects.</p>
+</blockquote>
+<p>Note that it's not yet available in the official chathpt mobile apps, but should be coming "soon":</p>
+<blockquote>
+<p>This feature will initially only be available on the ChatGPT website and Windows app. Support for mobile (iOS and Android) and macOS app will follow in the coming weeks.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://twitter.com/btibor91/status/1958990352846852522">@btibor91</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 22 Aug 2025 22:24:54 +0000</pubDate></item><item><title>DeepSeek 3.1</title><link>https://simonwillison.net/2025/Aug/22/deepseek-31/#atom-everything</link><description><![CDATA[<p><strong><a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.1">DeepSeek 3.1</a></strong></p>
+The latest model from DeepSeek, a 685B monster (like <a href="https://simonwillison.net/2024/Dec/25/deepseek-v3/">DeepSeek v3</a> before it) but this time it's a hybrid reasoning model.</p>
+<p>DeepSeek claim:</p>
+<blockquote>
+<p>DeepSeek-V3.1-Think achieves comparable answer quality to DeepSeek-R1-0528, while responding more quickly.</p>
+</blockquote>
+<p>Drew Breunig <a href="https://twitter.com/dbreunig/status/1958577728720183643">points out</a> that their benchmarks show "the same scores with 25-50% fewer tokens" - at least across AIME 2025 and GPQA Diamond and LiveCodeBench.</p>
+<p>The DeepSeek release includes prompt examples for a <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.1/blob/main/assets/code_agent_trajectory.html">coding agent</a>, a <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.1/blob/main/assets/search_python_tool_trajectory.html">python agent</a> and a <a href="https://huggingface.co/deepseek-ai/DeepSeek-V3.1/blob/main/assets/search_tool_trajectory.html">search agent</a> - yet more evidence that the leading AI labs have settled on those as the three most important agentic patterns for their models to support. </p>
+<p>Here's the pelican riding a bicycle it drew me (<a href="https://gist.github.com/simonw/f6dba61faf962866969eefd3de59d70e">transcript</a>), which I ran from my phone using <a href="https://openrouter.ai/chat?models=deepseek/deepseek-chat-v3.1">OpenRouter chat</a>.</p>
+<p><img alt="Cartoon illustration of a white bird with an orange beak riding a bicycle against a blue sky background with bright green grass below" src="https://static.simonwillison.net/static/2025/deepseek-3-1-pelican.png" />
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/drew-breunig">drew-breunig</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/deepseek">deepseek</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Fri, 22 Aug 2025 22:07:25 +0000</pubDate></item><item><title>Quoting The Bluesky Team</title><link>https://simonwillison.net/2025/Aug/22/mississippi/#atom-everything</link><description><![CDATA[<blockquote cite="https://bsky.social/about/blog/08-22-2025-mississippi-hb1126"><p>Mississippi's approach would fundamentally change how users access Bluesky. The Supreme Court’s recent <a href="https://www.supremecourt.gov/opinions/24pdf/25a97_5h25.pdf">decision</a> leaves us facing a hard reality: comply with Mississippi’s age assurance <a href="https://legiscan.com/MS/text/HB1126/id/2988284">law</a>—and make <em>every</em> Mississippi Bluesky user hand over sensitive personal information and undergo age checks to access the site—or risk massive fines. The law would also require us to identify and track which users are children, unlike our approach in other regions. [...]</p>
+<p>We believe effective child safety policies should be carefully tailored to address real harms, without creating huge obstacles for smaller providers and resulting in negative consequences for free expression. That’s why until legal challenges to this law are resolved, we’ve made the difficult decision to block access from Mississippi IP addresses.</p></blockquote>
+<p class="cite">&mdash; <a href="https://bsky.social/about/blog/08-22-2025-mississippi-hb1126">The Bluesky Team</a>, on why they have blocked access from Mississippi</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/politics">politics</a>, <a href="https://simonwillison.net/tags/privacy">privacy</a>, <a href="https://simonwillison.net/tags/bluesky">bluesky</a></p>]]></description><pubDate>Fri, 22 Aug 2025 21:36:24 +0000</pubDate></item><item><title>too many model context protocol servers and LLM allocations on the dance floor</title><link>https://simonwillison.net/2025/Aug/22/too-many-mcps/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ghuntley.com/allocations/">too many model context protocol servers and LLM allocations on the dance floor</a></strong></p>
+Useful reminder from Geoffrey Huntley of the infrequently discussed significant token cost of using MCP.</p>
+<p>Geoffrey estimate estimates that the usable context window something like Amp or Cursor is around 176,000 tokens - Claude 4's 200,000 minus around 24,000 for the system prompt for those tools.</p>
+<p>Adding just the popular GitHub MCP defines 93 additional tools and swallows another 55,000 of those valuable tokens!</p>
+<p>MCP enthusiasts will frequently add several more, leaving precious few tokens available for solving the actual task... and LLMs are known to perform worse the more irrelevant information has been stuffed into their prompts.</p>
+<p>Thankfully, there is a much more token-efficient way of Interacting with many of these services: existing CLI tools.</p>
+<p>If your coding agent can run terminal commands and you give it access to GitHub's <a href="https://cli.github.com/">gh</a> tool it gains all of that functionality for a token cost close to zero - because every frontier LLM knows how to use that tool already.</p>
+<p>I've had good experiences building small custom CLI tools specifically for Claude Code and Codex CLI to use. You can even tell them to run <code>--help</code> to learn how the tool, which works particularly well if your help text includes usage examples.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/geoffrey-huntley">geoffrey-huntley</a></p>]]></description><pubDate>Fri, 22 Aug 2025 17:30:34 +0000</pubDate></item><item><title>Quoting potatolicious</title><link>https://simonwillison.net/2025/Aug/21/potatolicious/#atom-everything</link><description><![CDATA[<blockquote cite="https://news.ycombinator.com/item?id=44976929#44978319"><p>Most classical engineering fields deal with probabilistic system components all of the time. In fact I'd go as far as to say that <em>inability</em> to deal with probabilistic components is disqualifying from many engineering endeavors.</p>
+<p>Process engineers for example have to account for human error rates. On a given production line with humans in a loop, the operators will sometimes screw up. Designing systems to detect these errors (which are <em>highly probabilistic</em>!), mitigate them, and reduce the occurrence rates of such errors is a huge part of the job. [...]</p>
+<p>Software engineering is <em>unlike</em> traditional engineering disciplines in that for most of its lifetime it's had the luxury of purely deterministic expectations. This is not true in nearly every other type of engineering.</p></blockquote>
+<p class="cite">&mdash; <a href="https://news.ycombinator.com/item?id=44976929#44978319">potatolicious</a>, in a conversation about AI engineering</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/hacker-news">hacker-news</a>, <a href="https://simonwillison.net/tags/software-engineering">software-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Thu, 21 Aug 2025 21:44:19 +0000</pubDate></item><item><title>Quoting Matt Garman</title><link>https://simonwillison.net/2025/Aug/21/matt-garman/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.youtube.com/watch?v=nfocTxMzOP4&amp;t=12m08s"><p>I was at a leadership group and people were telling me "We think that with AI we can replace all of our junior people in our company." I was like, "That's the dumbest thing I've ever heard. They're probably the least expensive employees you have, they're the most leaned into your AI tools, and how's that going to work when you go 10 years in the future and you have no one that has built up or learned anything?</p></blockquote>
+<p class="cite">&mdash; <a href="https://www.youtube.com/watch?v=nfocTxMzOP4&amp;t=12m08s">Matt Garman</a>, CEO, Amazon Web Services</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/aws">aws</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Thu, 21 Aug 2025 16:49:14 +0000</pubDate></item><item><title>Quoting Mustafa Suleyman</title><link>https://simonwillison.net/2025/Aug/21/mustafa-suleyman/#atom-everything</link><description><![CDATA[<blockquote cite="https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming"><p>Simply put, my central worry is that many people will start to believe in the illusion of AIs as conscious entities so strongly that they’ll soon advocate for AI rights, <a href="https://arxiv.org/abs/2411.00986">model welfare</a> and even AI citizenship. This development will be a dangerous turn in AI progress and deserves our immediate attention.</p>
+<p>We must build AI for people; not to be a digital person.</p>
+<p><strong>[...] we should build AI that only ever presents itself as an AI, that maximizes utility while minimizing markers of consciousness.</strong></p>
+<p>Rather than a simulation of consciousness, we must focus on creating an AI that avoids those traits - that doesn’t claim to have experiences, feelings or emotions like shame, guilt, jealousy, desire to compete, and so on. It must not trigger human empathy circuits by claiming it suffers or that it wishes to live autonomously, beyond us.</p></blockquote>
+<p class="cite">&mdash; <a href="https://mustafa-suleyman.ai/seemingly-conscious-ai-is-coming">Mustafa Suleyman</a>, on SCAI - Seemingly Conscious AI</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-personality">ai-personality</a></p>]]></description><pubDate>Thu, 21 Aug 2025 09:38:03 +0000</pubDate></item><item><title>Quoting u/AssafMalkiIL</title><link>https://simonwillison.net/2025/Aug/20/bad-vibes/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.reddit.com/r/vibecoding/comments/1mu6t8z/whats_the_point_of_vibe_coding_if_i_still_have_to/"><p>what’s the point of vibe coding if at the end of the day i still gotta pay a dev to look at the code anyway. sure it feels kinda cool while i’m typing, like i’m in some flow state or whatever, but when stuff breaks it’s just dead weight. i cant vibe my way through debugging, i cant ship anything that actually matters, and then i’m back to square one pulling out my wallet for someone who actually knows what they’re doing.</p></blockquote>
+<p class="cite">&mdash; <a href="https://www.reddit.com/r/vibecoding/comments/1mu6t8z/whats_the_point_of_vibe_coding_if_i_still_have_to/">u/AssafMalkiIL</a>, on r/vibecoding</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/reddit">reddit</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Wed, 20 Aug 2025 19:39:36 +0000</pubDate></item><item><title>AWS in 2025: The Stuff You Think You Know That’s Now Wrong</title><link>https://simonwillison.net/2025/Aug/20/aws-in-2025/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.lastweekinaws.com/blog/aws-in-2025-the-stuff-you-think-you-know-thats-now-wrong/">AWS in 2025: The Stuff You Think You Know That’s Now Wrong</a></strong></p>
+Absurdly useful roundup from Corey Quinn of AWS changes you may have missed that can materially affect your architectural decisions about how you use their services.</p>
+<p>A few that stood out to me:</p>
+<ul>
+<li>EC2 instances can now live-migrate between physical hosts, and can have their security groups, IAM roles and EBS volumes modified without a restart. They now charge by the second; they used to round up to the hour.</li>
+<li>S3 Glacier restore fees are now fast and predictably priced.</li>
+<li>AWS Lambdas can now run containers, execute for up to 15 minutes, use up to 10GB of RAM and request 10GB of /tmp storage.</li>
+</ul>
+<p>Also this note on AWS's previously legendary resistance to shutting things down:</p>
+<blockquote>
+<p>While deprecations remain rare, they’re definitely on the rise; if an AWS service sounds relatively niche or goofy, consider your exodus plan before building atop it.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=44962844">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/amazon">amazon</a>, <a href="https://simonwillison.net/tags/aws">aws</a>, <a href="https://simonwillison.net/tags/ec2">ec2</a>, <a href="https://simonwillison.net/tags/lambda">lambda</a>, <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/corey-quinn">corey-quinn</a></p>]]></description><pubDate>Wed, 20 Aug 2025 16:29:56 +0000</pubDate></item><item><title>David Ho on BlueSky: A pelican tried to eat my bike</title><link>https://simonwillison.net/2025/Aug/20/a-pelican-tried-to-eat-my-bike/#atom-everything</link><description><![CDATA[<p><strong><a href="https://bsky.app/profile/davidho.bsky.social/post/3lwsyw4uu5k2n">David Ho on BlueSky: A pelican tried to eat my bike</a></strong></p>
+David Ho caught video footage of one of the pelicans in <a href="https://en.wikipedia.org/wiki/St_James%27s_Park">St James's Park</a> expressing deep curiosity in his bicycle.</p>
+<p>I think it wants to ride it.</p>
+<p><img alt="Frame from the video. A beautiful large white pelican has its beak around the top part of the bicycle frame." src="https://static.simonwillison.net/static/2025/pelican-bike-video-frame.jpg" />
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Wed, 20 Aug 2025 15:35:05 +0000</pubDate></item><item><title>Qwen-Image-Edit: Image Editing with Higher Quality and Efficiency</title><link>https://simonwillison.net/2025/Aug/19/qwen-image-edit/#atom-everything</link><description><![CDATA[<p><strong><a href="https://qwenlm.github.io/blog/qwen-image-edit/">Qwen-Image-Edit: Image Editing with Higher Quality and Efficiency</a></strong></p>
+As promised in their <a href="https://simonwillison.net/2025/Aug/4/qwen-image/">August 4th release</a> of the Qwen image generation model, Qwen have now followed it up with a separate model, <code>Qwen-Image-Edit</code>, which can take an image and a prompt and return an edited version of that image.</p>
+<p>Ivan Fioravanti upgraded his macOS <a href="https://github.com/ivanfioravanti/qwen-image-mps">qwen-image-mps</a> tool (<a href="https://simonwillison.net/2025/Aug/11/qwen-image-mps/">previously</a>) to run the new model via a new <code>edit</code> command. Since it's now <a href="https://pypi.org/project/qwen-image-mps/">on PyPI</a> you can run it directly using <code>uvx</code> like this:</p>
+<pre><code>uvx qwen-image-mps edit -i pelicans.jpg \
+  -p 'Give the pelicans rainbow colored plumage' -s 10
+</code></pre>
+<p>Be warned... it downloads a 54GB model file (to <code>~/.cache/huggingface/hub/models--Qwen--Qwen-Image-Edit</code>) and appears to use <strong>all 64GB</strong> of my system memory - if you have less than 64GB it likely won't work, and I had to quit almost everything else on my system to give it space to run. A larger machine is almost required to use this.</p>
+<p>I fed it this image:</p>
+<p><img alt="Pelicans on a rock" src="https://static.simonwillison.net/static/2025/pelicans-plumage-original.jpg" /></p>
+<p>The following prompt:</p>
+<blockquote>
+<p><code>Give the pelicans rainbow colored plumage</code></p>
+</blockquote>
+<p>And told it to use just 10 inference steps - the default is 50, but I didn't want to wait that long.</p>
+<p>It still took nearly 25 minutes (on a 64GB M2 MacBook Pro) to produce this result:</p>
+<p><img alt="Pelicans on a rock now with rainbow feathers - but they look less realistic" src="https://static.simonwillison.net/static/2025/pelicans-plumage-edited.jpg" /></p>
+<p>To get a feel for how much dropping the inference steps affected things I tried the same prompt with the new "Image Edit" mode of Qwen's <a href="https://chat.qwen.ai/">chat.qwen.ai</a>, which I believe uses the same model. It gave me a result <em>much faster</em> that looked like this:</p>
+<p><img alt="The pelicans are now almost identical in realism to the original photo but still have rainbow plumage." src="https://static.simonwillison.net/static/2025/pelicans-plumage-edited-full.jpg" /></p>
+<p><strong>Update</strong>: I left the command running overnight without the <code>-s 10</code> option - so it would use all 50 steps - and my laptop took 2 hours and 59 minutes to generate this image, which is much more photo-realistic and similar to the one produced by Qwen's hosted model:</p>
+<p><img alt="Again, photo-realistic pelicans with rainbow plumage. Very similar to the original photo but with more rainbow feathers." src="https://static.simonwillison.net/static/2025/pelicans-plumage-50.jpg" /></p>
+<p>Marko Simic <a href="https://twitter.com/simicvm/status/1958192059350692156">reported</a> that:</p>
+<blockquote>
+<p>50 steps took 49min on my MBP M4 Max 128GB</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/ivan-fioravanti">ivan-fioravanti</a></p>]]></description><pubDate>Tue, 19 Aug 2025 23:39:19 +0000</pubDate></item><item><title>XSLT on congress.gov</title><link>https://simonwillison.net/2025/Aug/19/xslt/#atom-everything</link><description><![CDATA[<p>Today I learned - via <a href="https://github.com/whatwg/html/pull/11563">a proposal to remove mentions of XSLT from the HTML spec</a> - that <code>congress.gov</code> uses XSLT to serve XML bills as XHTML - here's <a href="https://www.congress.gov/117/bills/hr3617/BILLS-117hr3617ih.xml">H. R. 3617 117th CONGRESS 1st Session</a> for example.</p>
+<p>View source on that page and it starts like this:</p>
+<pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span>?&gt;
+&lt;?<span class="pl-ent">xml-stylesheet</span><span class="pl-e"> type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/xsl<span class="pl-pds">"</span></span><span class="pl-e"> href</span>=<span class="pl-s"><span class="pl-pds">"</span>billres.xsl<span class="pl-pds">"</span></span>?&gt;
+&lt;!<span class="pl-ent">DOCTYPE</span> <span class="pl-e">bill</span> PUBLIC "-//US Congress//DTDs/bill.dtd//EN" "bill.dtd"&gt;
+&lt;<span class="pl-ent">bill</span> <span class="pl-e">bill-stage</span>=<span class="pl-s"><span class="pl-pds">"</span>Introduced-in-House<span class="pl-pds">"</span></span> <span class="pl-e">dms-id</span>=<span class="pl-s"><span class="pl-pds">"</span>H5BD50AB7712141319B352D46135AAC2B<span class="pl-pds">"</span></span> <span class="pl-e">public-private</span>=<span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>H<span class="pl-pds">"</span></span> <span class="pl-e">bill-type</span>=<span class="pl-s"><span class="pl-pds">"</span>olc<span class="pl-pds">"</span></span>&gt; 
+&lt;<span class="pl-ent">metadata</span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">dc</span>=<span class="pl-s"><span class="pl-pds">"</span>http://purl.org/dc/elements/1.1/<span class="pl-pds">"</span></span>&gt;
+&lt;<span class="pl-ent">dublinCore</span>&gt;
+&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">title</span>&gt;117 HR 3617 IH: Marijuana Opportunity Reinvestment and Expungement Act of 2021&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">title</span>&gt;
+&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">publisher</span>&gt;U.S. House of Representatives&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">publisher</span>&gt;
+&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">date</span>&gt;2021-05-28&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">date</span>&gt;
+&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">format</span>&gt;text/xml&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">format</span>&gt;
+&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">language</span>&gt;EN&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">language</span>&gt;
+&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">rights</span>&gt;Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">rights</span>&gt;
+&lt;/<span class="pl-ent">dublinCore</span>&gt;
+&lt;/<span class="pl-ent">metadata</span>&gt;
+&lt;<span class="pl-ent">form</span>&gt;
+&lt;<span class="pl-ent">distribution-code</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;I&lt;/<span class="pl-ent">distribution-code</span>&gt; 
+&lt;<span class="pl-ent">congress</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;117th CONGRESS&lt;/<span class="pl-ent">congress</span>&gt;&lt;<span class="pl-ent">session</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;1st Session&lt;/<span class="pl-ent">session</span>&gt; 
+&lt;<span class="pl-ent">legis-num</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;H. R. 3617&lt;/<span class="pl-ent">legis-num</span>&gt; 
+&lt;<span class="pl-ent">current-chamber</span>&gt;IN THE HOUSE OF REPRESENTATIVES&lt;/<span class="pl-ent">current-chamber</span>&gt;</pre>
+
+<p>Digging into those XSLT stylesheets leads to <code>billres-details.xsl</code> - <a href="https://gist.github.com/simonw/64c9f172533203c09acbcf13a0bb67c4">gist copy here</a> - which starts with a huge changelog comment with notes dating all the way back to 2004!</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/political-hacking">political-hacking</a>, <a href="https://simonwillison.net/tags/web-standards">web-standards</a>, <a href="https://simonwillison.net/tags/html">html</a></p>]]></description><pubDate>Tue, 19 Aug 2025 20:40:50 +0000</pubDate></item><item><title>llama.cpp guide: running gpt-oss with llama.cpp</title><link>https://simonwillison.net/2025/Aug/19/gpt-oss-with-llama-cpp/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/ggml-org/llama.cpp/discussions/15396">llama.cpp guide: running gpt-oss with llama.cpp</a></strong></p>
+Really useful official guide to running the OpenAI gpt-oss models using <code>llama-server</code> from <code>llama.cpp</code> - which provides an OpenAI-compatible localhost API and a neat web interface for interacting with the models.</p>
+<p>TLDR version for macOS to run the smaller <code>gpt-oss-20b</code> model:</p>
+<pre><code>brew install llama.cpp
+llama-server -hf ggml-org/gpt-oss-20b-GGUF \
+  --ctx-size 0 --jinja -ub 2048 -b 2048 -ngl 99 -fa
+</code></pre>
+<p>This downloads a 12GB model file from <a href="https://huggingface.co/ggml-org/gpt-oss-20b-GGUF/tree/main">ggml-org/gpt-oss-20b-GGUF</a> on Hugging Face, stores it in <code>~/Library/Caches/llama.cpp/</code> and starts it running on port 8080.</p>
+<p>You can then visit this URL to start interacting with the model:</p>
+<pre><code>http://localhost:8080/
+</code></pre>
+<p>On my 64GB M2 MacBook Pro <a href="https://gist.github.com/simonw/85ea67cba9fce0c7e63951dda5117268">it runs at around</a> 82 tokens/second.</p>
+<p><img alt="Screenshot of a chat interface with filename &quot;llama.cpp&quot; showing a conversation about creating an SVG of a pelican on a bicycle. The conversation includes detailed coordinates for drawing the pelican (body ellipse center at 250,140 with rx=35, ry=50, head circle at 260,110 with r=20, beak triangle points, wings, and tail specifications), implementation notes about layering bicycle elements then pelican, and ends with a code block showing the beginning of SVG code with XML declaration, svg tag with viewBox=&quot;0 0 500 300&quot;, style definitions for .bg, .wheel, .frame, .crossbar, .seat, .handlebar, .pedal, .pelican-body, and .pelican-head classes with various fill and stroke properties. Below the code is explanatory text: &quot;Below is a compact, self-contained SVG that shows a stylised pelican perched on a bicycle. Copy the code into an .svg file or paste it directly into an HTML page to view it.&quot; At the bottom is a message input field with &quot;Type a message (Shift+Enter to add a new line)&quot; placeholder text." src="https://static.simonwillison.net/static/2025/llama-cpp-screenshot.jpg" /></p>
+<p>The guide also includes notes for running on NVIDIA and AMD hardware.
+
+    <p><small></small>Via <a href="https://twitter.com/ggerganov/status/1957821440633282642">@ggerganov</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llama-cpp">llama-cpp</a>, <a href="https://simonwillison.net/tags/gpt-oss">gpt-oss</a></p>]]></description><pubDate>Tue, 19 Aug 2025 19:01:13 +0000</pubDate></item><item><title>PyPI: Preventing Domain Resurrection Attacks</title><link>https://simonwillison.net/2025/Aug/19/pypi-preventing-domain-resurrection-attacks/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.pypi.org/posts/2025-08-18-preventing-domain-resurrections/">PyPI: Preventing Domain Resurrection Attacks</a></strong></p>
+Domain resurrection attacks are a nasty vulnerability in systems that use email verification to allow people to recover their accounts. If somebody lets their domain name expire an attacker might snap it up and use it to gain access to their accounts - which can turn into a package supply chain attack if they had an account on something like the Python Package Index.</p>
+<p>PyPI now protects against these by treating an email address as not-validated if the associated domain expires.</p>
+<blockquote>
+<p>Since early June 2025, PyPI has unverified over 1,800 email addresses when their associated domains entered expiration phases. This isn't a perfect solution, but it closes off a significant attack vector where the majority of interactions would appear completely legitimate.</p>
+</blockquote>
+<p>This attack is not theoretical: it happened to the <code>ctx</code> package on PyPI <a href="https://python-security.readthedocs.io/pypi-vuln/index-2022-05-24-ctx-domain-takeover.html">back in May 2022</a>.</p>
+<p>Here's the <a href="https://github.com/pypi/warehouse/pull/17832">pull request</a> from April in which Mike Fiedler landed an integration which hits an API provided by Fastly's <a href="https://domainr.com/">Domainr</a>, followed by <a href="https://github.com/pypi/warehouse/pull/18014">this PR</a> which <a href="https://github.com/miketheman/warehouse/blob/48f082b4fb085a25dabdb87c2e158af04b1ba5e8/warehouse/accounts/tasks.py#L141-L164">polls for domain status</a> on any email domain that hasn't been checked in the past 30 days.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=44950091">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/domains">domains</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/supply-chain">supply-chain</a></p>]]></description><pubDate>Tue, 19 Aug 2025 15:36:44 +0000</pubDate></item></channel></rss>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>How to install TrueNAS on a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2025/how-install-truenas-on-raspberry-pi</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">How to install TrueNAS on a Raspberry Pi</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Now that Joel0 in the TrueNAS community has created a <a href="https://forums.truenas.com/t/truenas-on-arm-now-available/49160/16?u=geerlingguy">fork of TrueNAS that runs on Arm</a>, I thought I'd give it a spin—on a Raspberry Pi.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/pi-5-with-hard-drives.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-7d31be78-66b1-44d6-85c3-3c427ad83265" data-insert-attach="{&quot;id&quot;:&quot;7d31be78-66b1-44d6-85c3-3c427ad83265&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi 5 with Hard Drives"></p>
+
+<p>I currently run an <a href="https://www.jeffgeerling.com/blog/2024/building-efficient-server-grade-arm-nas">Ampere Arm server in my rack with Linux and ZFS</a> as my primary storage server, and a <a href="https://www.jeffgeerling.com/blog/2024/radxas-sata-hat-makes-compact-pi-5-nas">Raspberry Pi with four SATA SSDs and ZFS</a> as backup replica in my studio. My <a href="https://github.com/geerlingguy/arm-nas">configuration for these Arm NASes is up on GitHub</a>.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-28T09:06:28-05:00" title="Thursday, August 28, 2025 - 09:06" class="datetime">August 28, 2025</time>
+</span>]]></description><pubDate>Thu, 28 Aug 2025 14:06:28 +0000</pubDate></item><item><title>Reverse Engineering ALL the Raspberry Pis</title><link>https://www.jeffgeerling.com/blog/2025/reverse-engineering-all-raspberry-pis</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Reverse Engineering ALL the Raspberry Pis</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Earlier this month I covered <a href="https://www.jeffgeerling.com/blog/2025/reverse-engineering-raspberry-pi-zero-2w">Jonathan Clark's effort to reverse-engineer the Pi Zero 2 W</a>, and just yesterday, I discovered <a href="https://bsky.app/profile/tubetime.bsky.social/post/3lx6erpo5lc2u">TubeTime reverse-engineered the Compute Module 5</a>.</p>
+
+<div class="yt-embed">
+<blockquote class="bluesky-embed" data-bluesky-uri="at://did:plc:lrfapunwg5trd7e2r3ccfqwc/app.bsky.feed.post/3lx6erpo5lc2u" data-bluesky-cid="bafyreidfra36luasy6gkijtp6t2tjxiqmb53t36vyiwidjozmnaj6b7xya" data-bluesky-embed-color-mode="system"><p lang="en">i reverse-engineered the Raspberry Pi Compute Module 5! check it out at github.com/schlae/cm5-r...<br><br><a href="https://bsky.app/profile/did:plc:lrfapunwg5trd7e2r3ccfqwc/post/3lx6erpo5lc2u?ref_src=embed">[image or embed]</a></p></blockquote></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-25T14:16:05-05:00" title="Monday, August 25, 2025 - 14:16" class="datetime">August 25, 2025</time>
+</span>
+</div>]]></description><pubDate>Mon, 25 Aug 2025 19:16:05 +0000</pubDate></item><item><title>TrueNAS on Arm is finally a thing</title><link>https://www.jeffgeerling.com/blog/2025/truenas-on-arm-finally-thing</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">TrueNAS on Arm is finally a thing</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>A few years ago, I admit it was rare to find someone running Arm hardware more powerful than a Raspberry Pi in a homelab (or more serious) setting, outside of cloud providers running Ampere or custom Arm CPUs.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/radxa-penta-sata-hat-pi-5.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-b178d706-e6dc-430c-8e68-b1bf0c32df52" data-insert-attach="{&quot;id&quot;:&quot;b178d706-e6dc-430c-8e68-b1bf0c32df52&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Radxa Penta SATA HAT on Pi 5"></p>
+
+<p>But as Pis and Rockchip boards have become more powerful (and efficient), and Apple's M-series silicon has become more interesting (the M4 mini being an excellent value proposition for a quiet, tiny server), and even Ampere Altra pricing coming down a bit since it's an 'old' server CPU now, still offering 64 or 128 lanes of PCIe Gen 4... I don't think I'm weird in suggesting Arm is a viable platform for reliable, even powerful servers.</p>
+
+<p>Even for storage.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-22T14:43:56-05:00" title="Friday, August 22, 2025 - 14:43" class="datetime">August 22, 2025</time>
+</span>]]></description><pubDate>Fri, 22 Aug 2025 19:43:56 +0000</pubDate></item><item><title>Build log: Macintosh Classic</title><link>https://www.jeffgeerling.com/blog/2025/build-log-macintosh-classic</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Build log: Macintosh Classic</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Continuing the <a href="https://www.jeffgeerling.com/tags/retro">retro computer series</a>, I've recently completed the <em>first</em> part of a restoration of my Aunt's old Macintosh Classic.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/macintosh-classic-on-desk.jpeg" width="700" height="467" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-72ec0edd-bedd-4eb3-ba56-75e7509ea20a" data-insert-attach="{&quot;id&quot;:&quot;72ec0edd-bedd-4eb3-ba56-75e7509ea20a&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Macintosh Classic on desk"></p>
+
+<p>This Classic was handed to me alongside my Uncle Mark's Apple II, which I'll probably cover later (we've played a game of whack-a-mole with issues on that machine! Well worth it but I haven't hit a point where enough things are working to cover it well, heh).</p>
+
+<p>The Classic is a strange Mac—it was <a href="https://everymac.com/systems/apple/mac_classic/specs/mac_classic.html">introduced in 1990</a> as a budget version of the 1986 Macintosh Plus, with a 68000 CPU in an era when the 68030 was the new hotness.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-22T09:01:16-05:00" title="Friday, August 22, 2025 - 09:01" class="datetime">August 22, 2025</time>
+</span>]]></description><pubDate>Fri, 22 Aug 2025 14:01:16 +0000</pubDate></item><item><title>Jellyfin on macOS for a quick self-hosted media library</title><link>https://www.jeffgeerling.com/blog/2025/jellyfin-on-macos-quick-self-hosted-media-library</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Jellyfin on macOS for a quick self-hosted media library</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>I forgot to bring my portable Pi media server running Jellyfin on a family trip, but had a small selection of my <a href="https://www.jeffgeerling.com/blog/2022/how-i-rip-dvds-and-blu-rays-my-mac-2022-edition">ripped movie and TV show library</a> on my portable SSD.</p>
+
+<p>One dreaded part of choosing a movie or show to watch after a rainy afternoon and all other avenues of entertainment are exhausted is having the kids (especially the youngest, who can't read yet) choose a movie without the 'movie shelf' showing the movie posters/cover artwork.</p>
+
+<p>So... without the Pi, and only armed with my MacBook Air, I thought I'd spin up a Jellyfin Docker container. Except, <a href="https://jellyfin.org/docs/general/installation/container/#installation-instructions">macOS is explicitly called out as unsupported for the Docker container for Jellyfin</a>.</p>
+
+<p>Switching tracks, I found Jellyfin is also packed up as a .app for macOS, and you can install it by <a href="https://jellyfin.org/downloads/macos/">downloading the .dmg and copying the .app to your Mac</a>, or you can do it like I did, with Homebrew:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-19T20:06:23-05:00" title="Tuesday, August 19, 2025 - 20:06" class="datetime">August 19, 2025</time>
+</span>]]></description><pubDate>Wed, 20 Aug 2025 01:06:23 +0000</pubDate></item><item><title>Reverse Engineering the Raspberry Pi Zero 2W</title><link>https://www.jeffgeerling.com/blog/2025/reverse-engineering-raspberry-pi-zero-2w</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Reverse Engineering the Raspberry Pi Zero 2W</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/jonathan-clark-pico-zero-2w-full.jpeg" width="700" height="467" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-1cf49e23-2f1e-4fe4-8cff-f08ba9fe2c55" data-insert-attach="{&quot;id&quot;:&quot;1cf49e23-2f1e-4fe4-8cff-f08ba9fe2c55&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi not Pico by Jonathan Clark"></p>
+
+<p>This is not a Raspberry Pi Pico. Despite it's tiny size and castellated edges, this is <em>actually</em> a full Raspberry Pi Zero 2W.</p>
+
+<p>Well, sorta. At Open Sauce, probably the most interesting encounter I had was with <a href="http://jonathanclark.dev/">Jonathan Clark</a>.</p>
+
+<p>You see, I was on a Reverse Engineering panel at Open Sauce, but <a href="https://x.com/geerlingguy/status/1945207387914178562">I mentioned on Twitter</a>, I wouldn't call myself a reverse engineer, more like a 'guy who breaks things sometimes taking them apart, and learns many ways to not break things, sometimes.'</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-12T16:00:29-05:00" title="Tuesday, August 12, 2025 - 16:00" class="datetime">August 12, 2025</time>
+</span>]]></description><pubDate>Tue, 12 Aug 2025 21:00:29 +0000</pubDate></item><item><title>Increasing the VRAM allocation on AMD AI APUs under Linux</title><link>https://www.jeffgeerling.com/blog/2025/increasing-vram-allocation-on-amd-ai-apus-under-linux</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Increasing the VRAM allocation on AMD AI APUs under Linux</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Since I saw some posts calling out the old (now deprecated) way to increase GTT memory allocations for the iGPU on AMD APUs (like the AI Max+ 395 / Strix Halo I am <a href="https://www.jeffgeerling.com/blog/2025/i-clustered-four-framework-mainboards-test-huge-llms">testing in the Framework Mainboard AI Cluster</a>), I thought I'd document how to increase the VRAM allocation on such boards under Linux—in this case, Fedora:</p>
+
+<pre><code># To remove an arg: `--remove-args`
+# Calculation: `([size in GB] * 1024 * 1024) / 4.096`
+sudo grubby --update-kernel=ALL --args='amdttm.pages_limit=27648000'
+sudo grubby --update-kernel=ALL --args='amdttm.page_pool_size=27648000'
+sudo reboot
+</code></pre>
+
+<p>The old way, <code>amdgpu.gttsize</code>, will throw the following warning in the kernel log:</p>
+
+<pre><code>[    4.232151] amdgpu 0000:c1:00.0: amdgpu: [drm] Configuring gttsize via module parameter is deprecated, please use ttm.pages_limit
+</code></pre>
+
+<p>After configuring the kernel parameters and rebooting, verify the AMD GPU driver is seeing the increased memory allocation:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-07T20:38:22-05:00" title="Thursday, August 7, 2025 - 20:38" class="datetime">August 7, 2025</time>
+</span>]]></description><pubDate>Fri, 8 Aug 2025 01:38:22 +0000</pubDate></item><item><title>I clustered four Framework Mainboards to test huge LLMs</title><link>https://www.jeffgeerling.com/blog/2025/i-clustered-four-framework-mainboards-test-huge-llms</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">I clustered four Framework Mainboards to test huge LLMs</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/framework-mainboard-mini-rack-cluster.jpg" width="700" height="497" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-6590f2e5-dc8c-45b2-9873-38e572fd9b2d" data-insert-attach="{&quot;id&quot;:&quot;6590f2e5-dc8c-45b2-9873-38e572fd9b2d&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Framework Mainboard mini rack cluster on desk"></p>
+
+<p>Framework casually mentioned they were <a href="https://www.youtube.com/watch?v=zI6ZQls54Ms">testing a mini-rack AI cluster</a> in their <a href="https://frame.work/desktop">Framework Desktop</a> presentation back in March.</p>
+
+<p>Imagine my surprise when Nirav Patel, Framework's founder and CEO, was at Open Sauce a couple weeks ago, and wanted to talk! He said they had seen my <a href="https://mini-rack.jeffgeerling.com">Project Mini Rack</a> posts earlier this year and thought it was the perfect application to try out their new AMD Ryzen AI Max+ 395-powered Mainboard, as its mini ITX dimensions fit inside a 10" rack.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-07T10:00:01-05:00" title="Thursday, August 7, 2025 - 10:00" class="datetime">August 7, 2025</time>
+</span>]]></description><pubDate>Thu, 7 Aug 2025 15:00:01 +0000</pubDate></item><item><title>Decoding Meshtastic with GNURadio on a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2025/decoding-meshtastic-gnuradio-on-raspberry-pi</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Decoding Meshtastic with GNURadio on a Raspberry Pi</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>I've been playing with <a href="https://meshtastic.org">Meshtastic</a> a lot, since learning about it at Open Sauce last year. I'm up to 5 little LoRa radios now, and I'm working on a couple nicer antenna placements, so I can hopefully help shore up some of the north-south connections on the <a href="https://meshstl.org/#meshmap">MeshSTL map</a>.</p>
+
+<p>To better understand the protocol, I wanted to visualize Meshtastic communications using SDR (Software Defined Radio). I can do it on a Mac or PC, just setting <a href="https://gqrx.dk">GQRX</a>, <a href="https://www.sdrpp.org">SDR++</a>, or <a href="https://airspy.com/download/">SDR#</a>, and watching the <a href="https://meshtastic.org/docs/overview/radio-settings/">LongFast</a> frequency centered on 902.125 MHz:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-07-31T09:10:17-05:00" title="Thursday, July 31, 2025 - 09:10" class="datetime">July 31, 2025</time>
+</span>]]></description><pubDate>Thu, 31 Jul 2025 14:10:17 +0000</pubDate></item><item><title>Recording vintage CRTs with a modern Sony mirrorless camera</title><link>https://www.jeffgeerling.com/blog/2025/recording-vintage-crts-modern-sony-mirrorless-camera</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Recording vintage CRTs with a modern Sony mirrorless camera</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Growing up, I remember recording CRTs with <em>any</em> camera was an exercise in frustration. You would either get a black bar that goes across everything, a slowly moving 'shutter' of darkness over the screen, black frame flickering, or even a variety of bright artifacts, especially when moving the camera around.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/mac-classic-crt-line-recording.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-3a9e56b7-866b-43e0-a82d-b00fec535cca" data-insert-attach="{&quot;id&quot;:&quot;3a9e56b7-866b-43e0-a82d-b00fec535cca&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Mac Classic CRT with flicker line"></p>
+
+<p>Just setting your camera's shutter speed to match the refresh rate <em>somewhat</em> closely is usually enough to make it at least bearable (I start at 1/60th and see what looks least annoying).</p>
+
+<p>But I recently discovered, while recording an old Macintosh Classic's CRT, that my Sony A7CII has a built-in anti-flicker feature that's... actually amazing.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-07-29T11:14:28-05:00" title="Tuesday, July 29, 2025 - 11:14" class="datetime">July 29, 2025</time>
+</span>]]></description><pubDate>Tue, 29 Jul 2025 16:14:28 +0000</pubDate></item></channel></rss>
