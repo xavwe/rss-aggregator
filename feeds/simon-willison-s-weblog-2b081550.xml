@@ -1,4 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Making XML human-readable without XSLT</title><link>https://simonwillison.net/2025/Sep/2/making-xml-human-readable-without-xslt/#atom-everything</link><description><![CDATA[<p><strong><a href="https://jakearchibald.com/2025/making-xml-human-readable-without-xslt/">Making XML human-readable without XSLT</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>gov.uscourts.dcd.223205.1436.0_1.pdf</title><link>https://simonwillison.net/2025/Sep/3/antitrust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.223205/gov.uscourts.dcd.223205.1436.0_1.pdf">gov.uscourts.dcd.223205.1436.0_1.pdf</a></strong></p>
+Here's the 230 page PDF ruling on the 2023 <a href="https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2023)">United States v. Google LLC federal antitrust case</a> - the case that could have resulted in Google selling off Chrome and cutting most of Mozilla's funding.</p>
+<p>I made it through the first dozen pages - it's actually quite readable.</p>
+<p>It opens with a clear summary of the case so far, bold highlights mine:</p>
+<blockquote>
+<p>Last year, this court ruled that Defendant Google LLC had violated Section 2 of the Sherman Act: “Google is a monopolist, and it has acted as one to maintain its monopoly.” <strong>The court found that, for more than a decade, Google had entered into distribution agreements with browser developers, original equipment manufacturers, and wireless carriers to be the out-of-the box, default general search engine (“GSE”) at key search access points</strong>. These access points were the most efficient channels for distributing a GSE, and Google paid billions to lock them up. The agreements harmed competition. <strong>They prevented rivals from accumulating the queries and associated data, or scale, to effectively compete and discouraged investment and entry into the market</strong>. And they enabled Google to earn monopoly profits from its search text ads, to amass an unparalleled volume of scale to improve its search product, and to remain the default GSE without fear of being displaced. Taken together, these agreements effectively “froze” the search ecosystem, resulting in markets in which Google has “no true competitor.”</p>
+</blockquote>
+<p>There's an interesting generative AI twist: when the case was first argued in 2023 generative AI wasn't an influential issue, but more recently Google seem to be arguing that it is an existential threat that they need to be able to take on without additional hindrance:</p>
+<blockquote>
+<p>The emergence of GenAl changed the course of this case. No witness at the liability trial testified that GenAl products posed a near-term threat to GSEs. <strong>The very first witness at the remedies hearing, by contrast, placed GenAl front and center as a nascent competitive threat</strong>. These remedies proceedings thus have been as much about promoting competition among GSEs as ensuring that Google’s dominance in search does not carry over into the GenAlI space. Many of Plaintiffs’ proposed remedies are crafted with that latter objective in mind.</p>
+</blockquote>
+<p>I liked this note about the court's challenges in issuing effective remedies:</p>
+<blockquote>
+<p>Notwithstanding this power, courts must approach the task of crafting remedies with a healthy dose of humility. This court has done so. It has no expertise in the business of GSEs, the buying and selling of search text ads, or the engineering of GenAl technologies. <strong>And, unlike the typical case where the court’s job is to resolve a dispute based on historic facts, here the court is asked to gaze into a crystal ball and look to the future. Not exactly a judge’s forte</strong>.</p>
+</blockquote>
+<p>On to the remedies. These ones looked particularly important to me:</p>
+<blockquote>
+<ul>
+<li>Google will be barred from entering or maintaining any exclusive contract
+relating to the distribution of Google Search, Chrome, Google Assistant,
+and the Gemini app. [...]</li>
+<li>Google will not be required to divest Chrome; nor will the court include a
+contingent divestiture of the Android operating system in the final
+judgment. Plaintiffs overreached in seeking forced divesture of these key
+assets, which Google did not use to effect any illegal restraints. [...]</li>
+</ul>
+</blockquote>
+<p>I guess Perplexity <a href="https://www.bbc.co.uk/news/articles/c3dpr0kkyz4o">won't be buying Chrome</a> then!</p>
+<blockquote>
+<ul>
+<li>Google will not be barred from making payments or offering other
+consideration to distribution partners for preloading or placement of Google
+Search, Chrome, or its GenAl products. <strong>Cutting off payments from Google
+almost certainly will impose substantial —in some cases, crippling—
+downstream harms to distribution partners</strong>, related markets, and consumers,
+which counsels against a broad payment ban.</li>
+</ul>
+</blockquote>
+<p>That looks like a huge sigh of relief for Mozilla, who were at risk of losing a sizable portion of their income if Google's search distribution revenue were to be cut off.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45108548">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/chrome">chrome</a>, <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/law">law</a>, <a href="https://simonwillison.net/tags/mozilla">mozilla</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Wed, 3 Sep 2025 08:56:30 +0000</pubDate></item><item><title>Making XML human-readable without XSLT</title><link>https://simonwillison.net/2025/Sep/2/making-xml-human-readable-without-xslt/#atom-everything</link><description><![CDATA[<p><strong><a href="https://jakearchibald.com/2025/making-xml-human-readable-without-xslt/">Making XML human-readable without XSLT</a></strong></p>
 In response to the <a href="https://simonwillison.net/2025/Aug/19/xslt/">recent discourse</a> about XSLT support in browsers, Jake Archibald shares a new-to-me alternative trick for making an XML document readable in a browser: adding the following element near the top of the XML:</p>
 <pre><code>&lt;script
   xmlns="http://www.w3.org/1999/xhtml"
@@ -395,28 +438,4 @@ As promised in their <a href="https://simonwillison.net/2025/Aug/4/qwen-image/">
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/ivan-fioravanti">ivan-fioravanti</a></p>]]></description><pubDate>Tue, 19 Aug 2025 23:39:19 +0000</pubDate></item><item><title>XSLT on congress.gov</title><link>https://simonwillison.net/2025/Aug/19/xslt/#atom-everything</link><description><![CDATA[<p>Today I learned - via <a href="https://github.com/whatwg/html/pull/11563">a proposal to remove mentions of XSLT from the HTML spec</a> - that <code>congress.gov</code> uses XSLT to serve XML bills as XHTML - here's <a href="https://www.congress.gov/117/bills/hr3617/BILLS-117hr3617ih.xml">H. R. 3617 117th CONGRESS 1st Session</a> for example.</p>
-<p>View source on that page and it starts like this:</p>
-<pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span>?&gt;
-&lt;?<span class="pl-ent">xml-stylesheet</span><span class="pl-e"> type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/xsl<span class="pl-pds">"</span></span><span class="pl-e"> href</span>=<span class="pl-s"><span class="pl-pds">"</span>billres.xsl<span class="pl-pds">"</span></span>?&gt;
-&lt;!<span class="pl-ent">DOCTYPE</span> <span class="pl-e">bill</span> PUBLIC "-//US Congress//DTDs/bill.dtd//EN" "bill.dtd"&gt;
-&lt;<span class="pl-ent">bill</span> <span class="pl-e">bill-stage</span>=<span class="pl-s"><span class="pl-pds">"</span>Introduced-in-House<span class="pl-pds">"</span></span> <span class="pl-e">dms-id</span>=<span class="pl-s"><span class="pl-pds">"</span>H5BD50AB7712141319B352D46135AAC2B<span class="pl-pds">"</span></span> <span class="pl-e">public-private</span>=<span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span> <span class="pl-e">key</span>=<span class="pl-s"><span class="pl-pds">"</span>H<span class="pl-pds">"</span></span> <span class="pl-e">bill-type</span>=<span class="pl-s"><span class="pl-pds">"</span>olc<span class="pl-pds">"</span></span>&gt; 
-&lt;<span class="pl-ent">metadata</span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">dc</span>=<span class="pl-s"><span class="pl-pds">"</span>http://purl.org/dc/elements/1.1/<span class="pl-pds">"</span></span>&gt;
-&lt;<span class="pl-ent">dublinCore</span>&gt;
-&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">title</span>&gt;117 HR 3617 IH: Marijuana Opportunity Reinvestment and Expungement Act of 2021&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">title</span>&gt;
-&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">publisher</span>&gt;U.S. House of Representatives&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">publisher</span>&gt;
-&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">date</span>&gt;2021-05-28&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">date</span>&gt;
-&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">format</span>&gt;text/xml&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">format</span>&gt;
-&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">language</span>&gt;EN&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">language</span>&gt;
-&lt;<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">rights</span>&gt;Pursuant to Title 17 Section 105 of the United States Code, this file is not subject to copyright protection and is in the public domain.&lt;/<span class="pl-ent">dc</span><span class="pl-ent">:</span><span class="pl-ent">rights</span>&gt;
-&lt;/<span class="pl-ent">dublinCore</span>&gt;
-&lt;/<span class="pl-ent">metadata</span>&gt;
-&lt;<span class="pl-ent">form</span>&gt;
-&lt;<span class="pl-ent">distribution-code</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;I&lt;/<span class="pl-ent">distribution-code</span>&gt; 
-&lt;<span class="pl-ent">congress</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;117th CONGRESS&lt;/<span class="pl-ent">congress</span>&gt;&lt;<span class="pl-ent">session</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;1st Session&lt;/<span class="pl-ent">session</span>&gt; 
-&lt;<span class="pl-ent">legis-num</span> <span class="pl-e">display</span>=<span class="pl-s"><span class="pl-pds">"</span>yes<span class="pl-pds">"</span></span>&gt;H. R. 3617&lt;/<span class="pl-ent">legis-num</span>&gt; 
-&lt;<span class="pl-ent">current-chamber</span>&gt;IN THE HOUSE OF REPRESENTATIVES&lt;/<span class="pl-ent">current-chamber</span>&gt;</pre>
-
-<p>Digging into those XSLT stylesheets leads to <code>billres-details.xsl</code> - <a href="https://gist.github.com/simonw/64c9f172533203c09acbcf13a0bb67c4">gist copy here</a> - which starts with a huge changelog comment with notes dating all the way back to 2004!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/political-hacking">political-hacking</a>, <a href="https://simonwillison.net/tags/web-standards">web-standards</a>, <a href="https://simonwillison.net/tags/html">html</a></p>]]></description><pubDate>Tue, 19 Aug 2025 20:40:50 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/ivan-fioravanti">ivan-fioravanti</a></p>]]></description><pubDate>Tue, 19 Aug 2025 23:39:19 +0000</pubDate></item></channel></rss>
