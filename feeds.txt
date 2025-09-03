@@ -16,3 +16,4 @@ https://blog.gitbutler.com/rss
 https://scottchacon.com/atom.xml
 https://medium.com/feed/@chacon
 https://mitchellh.com/feed.xml
+https://www.joshwcomeau.com/rss.xml
