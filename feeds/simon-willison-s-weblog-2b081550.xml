@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Google antitrust remedies</title><link>https://simonwillison.net/2025/Sep/3/antitrust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.223205/gov.uscourts.dcd.223205.1436.0_1.pdf">gov.uscourts.dcd.223205.1436.0_1.pdf</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Beyond Vibe Coding</title><link>https://simonwillison.net/2025/Sep/4/beyond-vibe-coding/#atom-everything</link><description><![CDATA[<p><strong><a href="https://beyond.addy.ie/">Beyond Vibe Coding</a></strong></p>
+Back in May I wrote <a href="https://simonwillison.net/2025/May/1/not-vibe-coding/">Two publishers and three authors fail to understand what “vibe coding” means</a> where I called out the authors of two forthcoming books on "vibe coding" for abusing that term to refer to all forms of AI-assisted development, when <a href="https://simonwillison.net/2025/Mar/19/vibe-coding/">Not all AI-assisted programming is vibe coding</a> based on the <a href="https://twitter.com/karpathy/status/1886192184808149383">original Karpathy definition</a>.</p>
+<p>I'll be honest: I don't feel great about that post. I made an example of those two books to push my own agenda of encouraging "vibe coding" to avoid <a href="https://simonwillison.net/2025/Mar/23/semantic-diffusion/">semantic diffusion</a> but it felt (and feels) a bit mean.</p>
+<p>... but maybe it had an effect? I recently spotted that Addy Osmani's book "Vibe Coding: The Future of Programming" has a new title, it's now called "Beyond Vibe Coding: From Coder to AI-Era Developer".</p>
+<p>This title is <strong>so much better</strong>. Setting aside my earlier opinions, this positioning as a book to help people go <em>beyond</em> vibe coding and use LLMs as part of a professional engineering practice is a really great hook!</p>
+<p>From Addy's new description of the book:</p>
+<blockquote>
+<p>Vibe coding was never meant to describe all AI-assisted coding. It's a specific approach where you don't read the AI's code before running it. There's much more to consider beyond the prototype for production systems. [...]</p>
+<p>AI-assisted engineering is a more structured approach that combines the creativity of vibe coding with the rigor of traditional engineering practices. It involves specs, rigor and emphasizes collaboration between human developers and AI tools, ensuring that the final product is not only functional but also maintainable and secure.</p>
+</blockquote>
+<p>Amazon <a href="https://www.amazon.com/Beyond-Vibe-Coding-Leveraging-AI-Assisted/dp/B0F6S5425Y">lists it</a> as releasing on September 23rd. I'm looking forward to it.</p>
+<p><img alt="O'Reilly book cover: Beyond Vibe Coding: From Coder to AI-Era Developer, by Addy Osmani. Features two hummingbirds, presumably because their wings vibrate!" src="https://static.simonwillison.net/static/2025/beyond-vibe-coding.jpg" />
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/books">books</a>, <a href="https://simonwillison.net/tags/oreilly">oreilly</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/addy-osmani">addy-osmani</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Thu, 4 Sep 2025 20:58:21 +0000</pubDate></item><item><title>Google antitrust remedies</title><link>https://simonwillison.net/2025/Sep/3/antitrust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.223205/gov.uscourts.dcd.223205.1436.0_1.pdf">gov.uscourts.dcd.223205.1436.0_1.pdf</a></strong></p>
 Here's the 230 page PDF ruling on the 2023 <a href="https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2023)">United States v. Google LLC federal antitrust case</a> - the case that could have resulted in Google selling off Chrome and cutting most of Mozilla's funding.</p>
 <p>I made it through the first dozen pages - it's actually quite readable.</p>
 <p>It opens with a clear summary of the case so far, bold highlights mine:</p>
@@ -412,30 +426,4 @@ David Ho caught video footage of one of the pelicans in <a href="https://en.wiki
 <p><img alt="Frame from the video. A beautiful large white pelican has its beak around the top part of the bicycle frame." src="https://static.simonwillison.net/static/2025/pelican-bike-video-frame.jpg" />
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Wed, 20 Aug 2025 15:35:05 +0000</pubDate></item><item><title>Qwen-Image-Edit: Image Editing with Higher Quality and Efficiency</title><link>https://simonwillison.net/2025/Aug/19/qwen-image-edit/#atom-everything</link><description><![CDATA[<p><strong><a href="https://qwenlm.github.io/blog/qwen-image-edit/">Qwen-Image-Edit: Image Editing with Higher Quality and Efficiency</a></strong></p>
-As promised in their <a href="https://simonwillison.net/2025/Aug/4/qwen-image/">August 4th release</a> of the Qwen image generation model, Qwen have now followed it up with a separate model, <code>Qwen-Image-Edit</code>, which can take an image and a prompt and return an edited version of that image.</p>
-<p>Ivan Fioravanti upgraded his macOS <a href="https://github.com/ivanfioravanti/qwen-image-mps">qwen-image-mps</a> tool (<a href="https://simonwillison.net/2025/Aug/11/qwen-image-mps/">previously</a>) to run the new model via a new <code>edit</code> command. Since it's now <a href="https://pypi.org/project/qwen-image-mps/">on PyPI</a> you can run it directly using <code>uvx</code> like this:</p>
-<pre><code>uvx qwen-image-mps edit -i pelicans.jpg \
-  -p 'Give the pelicans rainbow colored plumage' -s 10
-</code></pre>
-<p>Be warned... it downloads a 54GB model file (to <code>~/.cache/huggingface/hub/models--Qwen--Qwen-Image-Edit</code>) and appears to use <strong>all 64GB</strong> of my system memory - if you have less than 64GB it likely won't work, and I had to quit almost everything else on my system to give it space to run. A larger machine is almost required to use this.</p>
-<p>I fed it this image:</p>
-<p><img alt="Pelicans on a rock" src="https://static.simonwillison.net/static/2025/pelicans-plumage-original.jpg" /></p>
-<p>The following prompt:</p>
-<blockquote>
-<p><code>Give the pelicans rainbow colored plumage</code></p>
-</blockquote>
-<p>And told it to use just 10 inference steps - the default is 50, but I didn't want to wait that long.</p>
-<p>It still took nearly 25 minutes (on a 64GB M2 MacBook Pro) to produce this result:</p>
-<p><img alt="Pelicans on a rock now with rainbow feathers - but they look less realistic" src="https://static.simonwillison.net/static/2025/pelicans-plumage-edited.jpg" /></p>
-<p>To get a feel for how much dropping the inference steps affected things I tried the same prompt with the new "Image Edit" mode of Qwen's <a href="https://chat.qwen.ai/">chat.qwen.ai</a>, which I believe uses the same model. It gave me a result <em>much faster</em> that looked like this:</p>
-<p><img alt="The pelicans are now almost identical in realism to the original photo but still have rainbow plumage." src="https://static.simonwillison.net/static/2025/pelicans-plumage-edited-full.jpg" /></p>
-<p><strong>Update</strong>: I left the command running overnight without the <code>-s 10</code> option - so it would use all 50 steps - and my laptop took 2 hours and 59 minutes to generate this image, which is much more photo-realistic and similar to the one produced by Qwen's hosted model:</p>
-<p><img alt="Again, photo-realistic pelicans with rainbow plumage. Very similar to the original photo but with more rainbow feathers." src="https://static.simonwillison.net/static/2025/pelicans-plumage-50.jpg" /></p>
-<p>Marko Simic <a href="https://twitter.com/simicvm/status/1958192059350692156">reported</a> that:</p>
-<blockquote>
-<p>50 steps took 49min on my MBP M4 Max 128GB</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/ivan-fioravanti">ivan-fioravanti</a></p>]]></description><pubDate>Tue, 19 Aug 2025 23:39:19 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Wed, 20 Aug 2025 15:35:05 +0000</pubDate></item></channel></rss>
