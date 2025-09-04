@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>How to install TrueNAS on a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2025/how-install-truenas-on-raspberry-pi</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">How to install TrueNAS on a Raspberry Pi</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>I bought the cheapest EV (a used Nissan Leaf)</title><link>https://www.jeffgeerling.com/blog/2025/i-bought-cheapest-ev-used-nissan-leaf</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">I bought the cheapest EV (a used Nissan Leaf)</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/jeff-buys-nissan-leaf-sv-plus.jpg" width="350" height="330" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-a463435a-cfd8-4cbb-976e-31ecec4fadb8" data-insert-attach="{&quot;id&quot;:&quot;a463435a-cfd8-4cbb-976e-31ecec4fadb8&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Jeff Geerling with Nissan Leaf SV Plus at Dealership"></p>
+
+<p>I bought a used 2023 Nissan Leaf in 2025, my first 'new' car in 15 years. The above photo was taken by the dealership; apparently their social media team likes to post photos of all purchasers.</p>
+
+<p>I test drove a Tesla in 2012, and quickly realized my mistake. No gasoline-powered car (outside of supercars, maybe? Never drove one of those) could match the feel of pressing the throttle on an electric.</p>
+
+<p>I started out with a used minivan, which I drove into the ground. Then I bought a used Olds that I drove into the ground. Then I bought a used Camry that I bought before we had kids, when I had a 16 mile commute.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-04T09:00:20-05:00" title="Thursday, September 4, 2025 - 09:00" class="datetime">September 4, 2025</time>
+</span>]]></description><pubDate>Thu, 4 Sep 2025 14:00:20 +0000</pubDate></item><item><title>How to install TrueNAS on a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2025/how-install-truenas-on-raspberry-pi</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">How to install TrueNAS on a Raspberry Pi</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Now that Joel0 in the TrueNAS community has created a <a href="https://forums.truenas.com/t/truenas-on-arm-now-available/49160/16?u=geerlingguy">fork of TrueNAS that runs on Arm</a>, I thought I'd give it a spin—on a Raspberry Pi.</p>
 
@@ -95,15 +106,4 @@ sudo reboot
 <p>To better understand the protocol, I wanted to visualize Meshtastic communications using SDR (Software Defined Radio). I can do it on a Mac or PC, just setting <a href="https://gqrx.dk">GQRX</a>, <a href="https://www.sdrpp.org">SDR++</a>, or <a href="https://airspy.com/download/">SDR#</a>, and watching the <a href="https://meshtastic.org/docs/overview/radio-settings/">LongFast</a> frequency centered on 902.125 MHz:</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-07-31T09:10:17-05:00" title="Thursday, July 31, 2025 - 09:10" class="datetime">July 31, 2025</time>
-</span>]]></description><pubDate>Thu, 31 Jul 2025 14:10:17 +0000</pubDate></item><item><title>Recording vintage CRTs with a modern Sony mirrorless camera</title><link>https://www.jeffgeerling.com/blog/2025/recording-vintage-crts-modern-sony-mirrorless-camera</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Recording vintage CRTs with a modern Sony mirrorless camera</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Growing up, I remember recording CRTs with <em>any</em> camera was an exercise in frustration. You would either get a black bar that goes across everything, a slowly moving 'shutter' of darkness over the screen, black frame flickering, or even a variety of bright artifacts, especially when moving the camera around.</p>
-
-<p><img src="https://www.jeffgeerling.com/sites/default/files/images/mac-classic-crt-line-recording.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-3a9e56b7-866b-43e0-a82d-b00fec535cca" data-insert-attach="{&quot;id&quot;:&quot;3a9e56b7-866b-43e0-a82d-b00fec535cca&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Mac Classic CRT with flicker line"></p>
-
-<p>Just setting your camera's shutter speed to match the refresh rate <em>somewhat</em> closely is usually enough to make it at least bearable (I start at 1/60th and see what looks least annoying).</p>
-
-<p>But I recently discovered, while recording an old Macintosh Classic's CRT, that my Sony A7CII has a built-in anti-flicker feature that's... actually amazing.</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-07-29T11:14:28-05:00" title="Tuesday, July 29, 2025 - 11:14" class="datetime">July 29, 2025</time>
-</span>]]></description><pubDate>Tue, 29 Jul 2025 16:14:28 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Thu, 31 Jul 2025 14:10:17 +0000</pubDate></item></channel></rss>
