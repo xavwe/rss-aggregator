@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>AI mode is good, actually</title><link>https://simonwillison.net/2025/Sep/7/ai-mode/#atom-everything</link><description><![CDATA[<p>When I wrote about <a href="https://simonwillison.net/2025/Sep/6/research-goblin/">how good ChatGPT with GPT-5</a> is at search yesterday I nearly added a note about how comparatively disappointing Google's efforts around this are.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The SIFT method</title><link>https://simonwillison.net/2025/Sep/7/the-sift-method/#atom-everything</link><description><![CDATA[<p><strong><a href="https://guides.lib.uchicago.edu/c.php?g=1241077&amp;p=9082322">The SIFT method</a></strong></p>
+The SIFT method is "an evaluation strategy developed by digital literacy expert, Mike Caulfield, to help determine whether online content can be trusted for credible or reliable sources of information."</p>
+<p>This looks <em>extremely</em> useful as a framework for helping people more effectively consume information online (increasingly gathered with <a href="https://simonwillison.net/tags/ai-assisted-search/">the help of LLMs</a>).</p>
+<ul>
+<li><strong>Stop</strong>. "Be aware of your emotional response to the headline or information in the article" to protect against clickbait, and don't read further or share until you've applied the other three steps.</li>
+<li><strong>Investigate the Source</strong>. Apply <a href="https://pressbooks.pub/webliteracy/chapter/what-reading-laterally-means/">lateral reading</a>, checking what others say about the source rather than just trusting their "about" page.</li>
+<li><strong>Find Better Coverage</strong>. "Use lateral reading to see if you can find other sources corroborating the same information or disputing it" and consult trusted fact checkers if necessary.</li>
+<li><strong>Trace Claims, Quotes, and Media to their Original Context</strong>. Try to find the original report or referenced material to learn more and check it isn't being represented out of context.</li>
+</ul>
+<p>This framework really resonates with me: it formally captures a bunch of informal procedures I've tried to apply in my own work.
+
+    <p><small></small>Via <a href="https://bsky.app/profile/anildash.com/post/3lyavuu6ku22r">@anildash.com</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/research">research</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a></p>]]></description><pubDate>Sun, 7 Sep 2025 20:51:31 +0000</pubDate></item><item><title>AI mode is good, actually</title><link>https://simonwillison.net/2025/Sep/7/ai-mode/#atom-everything</link><description><![CDATA[<p>When I wrote about <a href="https://simonwillison.net/2025/Sep/6/research-goblin/">how good ChatGPT with GPT-5</a> is at search yesterday I nearly added a note about how comparatively disappointing Google's efforts around this are.</p>
 <p>I'm glad I left that out, because it turns out Google's new "AI mode" is genuinely really good! It feels  very similar to GPT-5 search but returns results <em>much</em> faster.</p>
 <p><strong><a href="https://www.google.com/ai">www.google.com/ai</a></strong> (not available in the EU, as I found out this morning since I'm staying in France for a few days.)</p>
 <p>Here's <a href="https://share.google/aimode/SZNHD7Owi0Wv9d3Ci">what I got</a> for the following question:</p>
@@ -583,23 +597,4 @@ Extremely detailed overview by Max Gabrielsson of DuckDB's new spatial join opti
     <p><small></small>Via <a href="https://bsky.app/profile/mackaszechno.bsky.social/post/3lx3lnagg7s2t">@mackaszechno.bsky.social</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/geospatial">geospatial</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/duckdb">duckdb</a></p>]]></description><pubDate>Sat, 23 Aug 2025 21:21:02 +0000</pubDate></item><item><title>ChatGPT release notes: Project-only memory</title><link>https://simonwillison.net/2025/Aug/22/project-memory/#atom-everything</link><description><![CDATA[<p><strong><a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes#h_fb3ac52750">ChatGPT release notes: Project-only memory</a></strong></p>
-The feature I've most wanted from ChatGPT's memory feature (the newer version of memory that automatically includes relevant details from summarized prior conversations) just landed:</p>
-<blockquote>
-<p>With project-only memory enabled, ChatGPT can use other conversations in that project for additional context, and won’t use your <a href="https://help.openai.com/en/articles/11146739-how-does-reference-saved-memories-work">saved memories</a> from outside the project to shape responses. Additionally, it won’t carry anything from the project into future chats outside of the project.</p>
-</blockquote>
-<p>This looks like exactly what I <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/#there-s-a-version-of-this-feature-i-would-really-like">described back in May</a>:</p>
-<blockquote>
-<p>I need <strong>control</strong> over what older conversations are being considered, on as fine-grained a level as possible without it being frustrating to use.</p>
-<p>What I want is <strong>memory within projects</strong>. [...]</p>
-<p>I would <em>love</em> the option to turn on memory from previous chats in a way that’s scoped to those projects.</p>
-</blockquote>
-<p>Note that it's not yet available in the official chathpt mobile apps, but should be coming "soon":</p>
-<blockquote>
-<p>This feature will initially only be available on the ChatGPT website and Windows app. Support for mobile (iOS and Android) and macOS app will follow in the coming weeks.</p>
-</blockquote>
-
-    <p><small></small>Via <a href="https://twitter.com/btibor91/status/1958990352846852522">@btibor91</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 22 Aug 2025 22:24:54 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/geospatial">geospatial</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/duckdb">duckdb</a></p>]]></description><pubDate>Sat, 23 Aug 2025 21:21:02 +0000</pubDate></item></channel></rss>
