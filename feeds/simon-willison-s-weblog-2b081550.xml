@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The SIFT method</title><link>https://simonwillison.net/2025/Sep/7/the-sift-method/#atom-everything</link><description><![CDATA[<p><strong><a href="https://guides.lib.uchicago.edu/c.php?g=1241077&amp;p=9082322">The SIFT method</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Is the LLM response wrong, or have you just failed to iterate it?</title><link>https://simonwillison.net/2025/Sep/7/is-the-llm-response-wrong-or-have-you-just-failed-to-iterate-it/#atom-everything</link><description><![CDATA[<p><strong><a href="https://mikecaulfield.substack.com/p/is-the-llm-response-wrong-or-have">Is the LLM response wrong, or have you just failed to iterate it?</a></strong></p>
+More from Mike Caulfield (see also <a href="https://simonwillison.net/2025/Sep/7/the-sift-method/">the SIFT method</a>). He starts with a <em>fantastic</em> example of Google's <a href="https://simonwillison.net/2025/Sep/7/ai-mode/">AI mode</a> usually correctly handling a common piece of misinformation but occasionally falling for it (the curse of non-deterministic systems), then shows an example if what he calls a "sorting prompt" as a follow-up:</p>
+<blockquote>
+<p>What is the evidence for and against this being a real photo of Shirley Slade?</p>
+</blockquote>
+<p>The response starts with a non-committal "there is compelling evidence for and against...", then by the end has firmly convinced itself that the photo is indeed a fake. It reads like a fact-checking variant of "think step by step".</p>
+<p>Mike neatly describes a problem I've also observed recently where "hallucination" is frequently mis-applied as meaning any time a model makes a mistake:</p>
+<blockquote>
+<p>The term hallucination has become nearly worthless in the LLM discourse. It initially described a very weird, mostly non-humanlike behavior where LLMs would make up things out of whole cloth that did not seem to exist as claims referenced any known source material or claims inferable from any known source material. Hallucinations as stuff made up out of nothing. Subsequently people began calling any error or imperfect summary a hallucination, rendering the term worthless.</p>
+</blockquote>
+<p>In this example is the initial incorrect answers were not hallucinations: they correctly summarized online content that contained misinformation. The trick then is to encourage the model to look further, using "sorting prompts" like these:</p>
+<blockquote>
+<ul>
+<li>Facts and misconceptions and hype about what I posted</li>
+<li>What is the evidence for and against the claim I posted</li>
+<li>Look at the most recent information on this issue, summarize how it shifts the analysis (if at all), and provide link to the latest info</li>
+</ul>
+</blockquote>
+<p>I appreciated this closing footnote:</p>
+<blockquote>
+<p>Should platforms have more features to nudge users to this sort of iteration? Yes. They should. Getting people to iterate investigation rather than argue with LLMs would be a good first step out of this mess that the chatbot model has created.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://bsky.app/profile/mikecaulfield.bsky.social/post/3lya2nv7xi226">@mikecaulfield.bsky.social</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a>, <a href="https://simonwillison.net/tags/hallucinations">hallucinations</a>, <a href="https://simonwillison.net/tags/digital-literacy">digital-literacy</a></p>]]></description><pubDate>Sun, 7 Sep 2025 21:45:04 +0000</pubDate></item><item><title>Quoting Anil Dash</title><link>https://simonwillison.net/2025/Sep/7/anil-dash/#atom-everything</link><description><![CDATA[<blockquote cite="https://bsky.app/profile/anildash.com/post/3lybkmj7ast2c"><p>I agree with the intellectual substance of virtually every common critique of AI. And it's very clear that turning those critiques into a competition about who can frame them in the most scathing way online has done <em>zero</em> to slow down adoption, even if much of that is due to default bundling.</p>
+<p>At what point are folks going to try literally any other tactic than condescending rants? Does it matter that LLM apps are at the top of virtually every app store nearly every day because individual people are choosing to download them, and the criticism hasn't been effective in slowing that?</p></blockquote>
+<p class="cite">&mdash; <a href="https://bsky.app/profile/anildash.com/post/3lybkmj7ast2c">Anil Dash</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/anil-dash">anil-dash</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 7 Sep 2025 21:32:09 +0000</pubDate></item><item><title>The SIFT method</title><link>https://simonwillison.net/2025/Sep/7/the-sift-method/#atom-everything</link><description><![CDATA[<p><strong><a href="https://guides.lib.uchicago.edu/c.php?g=1241077&amp;p=9082322">The SIFT method</a></strong></p>
 The SIFT method is "an evaluation strategy developed by digital literacy expert, Mike Caulfield, to help determine whether online content can be trusted for credible or reliable sources of information."</p>
 <p>This looks <em>extremely</em> useful as a framework for helping people more effectively consume information online (increasingly gathered with <a href="https://simonwillison.net/tags/ai-assisted-search/">the help of LLMs</a>).</p>
 <ul>
@@ -12,7 +42,7 @@ The SIFT method is "an evaluation strategy developed by digital literacy expert,
     <p><small></small>Via <a href="https://bsky.app/profile/anildash.com/post/3lyavuu6ku22r">@anildash.com</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/research">research</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a></p>]]></description><pubDate>Sun, 7 Sep 2025 20:51:31 +0000</pubDate></item><item><title>AI mode is good, actually</title><link>https://simonwillison.net/2025/Sep/7/ai-mode/#atom-everything</link><description><![CDATA[<p>When I wrote about <a href="https://simonwillison.net/2025/Sep/6/research-goblin/">how good ChatGPT with GPT-5</a> is at search yesterday I nearly added a note about how comparatively disappointing Google's efforts around this are.</p>
+    <p>Tags: <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/research">research</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a>, <a href="https://simonwillison.net/tags/digital-literacy">digital-literacy</a></p>]]></description><pubDate>Sun, 7 Sep 2025 20:51:31 +0000</pubDate></item><item><title>AI mode is good, actually</title><link>https://simonwillison.net/2025/Sep/7/ai-mode/#atom-everything</link><description><![CDATA[<p>When I wrote about <a href="https://simonwillison.net/2025/Sep/6/research-goblin/">how good ChatGPT with GPT-5</a> is at search yesterday I nearly added a note about how comparatively disappointing Google's efforts around this are.</p>
 <p>I'm glad I left that out, because it turns out Google's new "AI mode" is genuinely really good! It feels  very similar to GPT-5 search but returns results <em>much</em> faster.</p>
 <p><strong><a href="https://www.google.com/ai">www.google.com/ai</a></strong> (not available in the EU, as I found out this morning since I'm staying in France for a few days.)</p>
 <p>Here's <a href="https://share.google/aimode/SZNHD7Owi0Wv9d3Ci">what I got</a> for the following question:</p>
@@ -552,49 +582,4 @@ The security team from Brave took a look at Comet, the LLM-powered "agentic brow
 <p><strong>Update</strong>: in <a href="https://news.ycombinator.com/item?id=45004846#45017568">a comment on Hacker News</a> Brave security lead Shivan Kaul Sahib confirms that they are aware of <a href="https://simonwillison.net/2025/Apr/11/camel/">the CaMeL paper</a>, which remains my personal favorite example of a credible approach to this problem.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/perplexity">perplexity</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Mon, 25 Aug 2025 09:39:15 +0000</pubDate></item><item><title>Static Sites with Python, uv, Caddy, and Docker</title><link>https://simonwillison.net/2025/Aug/24/uv-caddy-and-docker/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nkantar.com/blog/2025/08/static-python-uv-caddy-docker/">Static Sites with Python, uv, Caddy, and Docker</a></strong></p>
-Nik Kantar documents his Docker-based setup for building and deploying mostly static web sites in line-by-line detail.</p>
-<p>I found this really useful. The Dockerfile itself without comments is just 8 lines long:</p>
-<pre><code>FROM ghcr.io/astral-sh/uv:debian AS build
-WORKDIR /src
-COPY . .
-RUN uv python install 3.13
-RUN uv run --no-dev sus
-FROM caddy:alpine
-COPY Caddyfile /etc/caddy/Caddyfile
-COPY --from=build /src/output /srv/
-</code></pre>
-<p>He also includes a Caddyfile that shows how to proxy a subset of requests to the Plausible analytics service.</p>
-<p>The static site is built using his <a href="https://github.com/nkantar/sus">sus</a> package for creating static URL redirecting sites, but would work equally well for another static site generator you can install and run with <code>uv run</code>.</p>
-<p>Nik deploys his sites using <a href="https://coolify.io/">Coolify</a>, a new-to-me take on the self-hosting alternative to Heroku/Vercel pattern which helps run multiple sites on a collection of hosts using Docker containers.</p>
-<p>A bunch of the <a href="https://news.ycombinator.com/item?id=44985653">Hacker News comments</a> dismissed this as over-engineering. I don't think that criticism is justified - given Nik's existing deployment environment I think this is a lightweight way to deploy static sites in a way that's consistent with how everything else he runs works already.</p>
-<p>More importantly, the world needs more articles like this that break down configuration files and explain what every single line of them does.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=44985653">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/docker">docker</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Sun, 24 Aug 2025 08:51:30 +0000</pubDate></item><item><title>Spatial Joins in DuckDB</title><link>https://simonwillison.net/2025/Aug/23/spatial-joins-in-duckdb/#atom-everything</link><description><![CDATA[<p><strong><a href="https://duckdb.org/2025/08/08/spatial-joins">Spatial Joins in DuckDB</a></strong></p>
-Extremely detailed overview by Max Gabrielsson of DuckDB's new spatial join optimizations.</p>
-<p>Consider the following query, which counts the number of <a href="https://citibikenyc.com/system-data">NYC Citi Bike Trips</a> for each of the neighborhoods defined by the <a href="https://www.nyc.gov/content/planning/pages/resources/datasets/neighborhood-tabulation">NYC Neighborhood Tabulation Areas polygons</a> and returns the top three:</p>
-<pre><span class="pl-k">SELECT</span> neighborhood,
-  <span class="pl-c1">count</span>(<span class="pl-k">*</span>) <span class="pl-k">AS</span> num_rides
-<span class="pl-k">FROM</span> rides
-<span class="pl-k">JOIN</span> hoods <span class="pl-k">ON</span> ST_Intersects(
-  <span class="pl-c1">rides</span>.<span class="pl-c1">start_geom</span>, <span class="pl-c1">hoods</span>.<span class="pl-c1">geom</span>
-)
-<span class="pl-k">GROUP BY</span> neighborhood
-<span class="pl-k">ORDER BY</span> num_rides <span class="pl-k">DESC</span>
-<span class="pl-k">LIMIT</span> <span class="pl-c1">3</span>;</pre>
-
-<p>The rides table contains 58,033,724 rows. The hoods table has polygons for 310 neighborhoods.</p>
-<p>Without an optimized spatial joins this query requires a nested loop join, executing that expensive <code>ST_Intersects()</code> operation 58m * 310 ~= 18 billion times. This took around 30 minutes on the 36GB MacBook M3 Pro used for the benchmark.</p>
-<p>The first optimization described - implemented from DuckDB 1.2.0 onwards - uses a "piecewise merge join". This takes advantage of the fact that a bounding box intersection is a whole lot faster to calculate, especially if you pre-cache the bounding box (aka the minimum bounding rectangle or MBR) in the stored binary <code>GEOMETRY</code> representation.</p>
-<p>Rewriting the query to use a fast bounding box intersection and then only running the more expensive <code>ST_Intersects()</code> filters on those matches drops the runtime from 1800 seconds to 107 seconds.</p>
-<p>The second optimization, added in <a href="https://duckdb.org/2025/05/21/announcing-duckdb-130.html">DuckDB 1.3.0</a> in May 2025 using the new SPATIAL_JOIN operator, is significantly more sophisticated.</p>
-<p>DuckDB can now identify when a spatial join is working against large volumes of data and automatically build an in-memory R-Tree of bounding boxes for the larger of the two tables being joined.</p>
-<p>This new R-Tree further accelerates the bounding box intersection part of the join, and drops the runtime down to just 30 seconds.
-
-    <p><small></small>Via <a href="https://bsky.app/profile/mackaszechno.bsky.social/post/3lx3lnagg7s2t">@mackaszechno.bsky.social</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/geospatial">geospatial</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/duckdb">duckdb</a></p>]]></description><pubDate>Sat, 23 Aug 2025 21:21:02 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/perplexity">perplexity</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Mon, 25 Aug 2025 09:39:15 +0000</pubDate></item></channel></rss>
