@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Recreating the Apollo AI adoption rate chart with GPT-5, Python and Pyodide</title><link>https://simonwillison.net/2025/Sep/9/apollo-ai-adoption/#atom-everything</link><description><![CDATA[<p>Apollo Global Management's "Chief Economist" Dr. Torsten Sløk released <a href="https://www.apolloacademy.com/ai-adoption-rate-trending-down-for-large-companies/">this interesting chart</a> which appears to show a slowdown in AI adoption rates among large (&gt;250 employees) companies:</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The 2025 PSF Board Election is Open!</title><link>https://simonwillison.net/2025/Sep/9/psf-board-election/#atom-everything</link><description><![CDATA[<p><strong><a href="https://pyfound.blogspot.com/2025/09/the-2025-psf-board-election-is-open.html">The 2025 PSF Board Election is Open!</a></strong></p>
+The Python Software Foundation's annual board member election is taking place right now, with votes (from previously affirmed voting members) accepted from September 2nd, 2:00 pm UTC through Tuesday, September 16th, 2:00 pm UTC.</p>
+<p>I've served on the board since 2022 and I'm running for a second term. Here's the opening section of my <a href="https://www.python.org/nominations/elections/2025-python-software-foundation-board/nominees/">nomination statement</a>.</p>
+<blockquote>
+<p>Hi, I'm Simon Willison. I've been a board member of the Python Software Foundation since 2022 and I'm running for re-election in 2025.</p>
+<p>Last year I wrote a detailed article about <a href="https://simonwillison.net/2024/Sep/18/board-of-the-python-software-foundation/">Things I’ve learned serving on the board of the Python Software Foundation</a>. I hope to continue learning and sharing what I've learned for a second three-year term.</p>
+<p>One of my goals for a second term is to help deepen the relationship between the AI research world and the Python Software Foundation. There is an enormous amount of value being created in the AI space using Python and I would like to see more of that value flow back into the rest of the Python ecosystem.</p>
+<p>I see the Python Package Index (PyPI) as one of the most impactful projects of the Python Software Foundation and plan to continue to advocate for further investment in the PyPI team and infrastructure.</p>
+<p>As a California resident I'm excited to see PyCon return to the West Coast, and I'm looking forward to getting involved in helping make PyCon 2026 and 2027 in Long Beach, California as successful as possible.</p>
+</blockquote>
+<p>I'm delighted to have been endorsed this year by <a href="https://inventwithpython.com/blog/psf-candidate-endorsements-2025.html">Al Sweigart</a>, <a href="https://fosstodon.org/@lorenipsum/115170249309856873">Loren Crary</a> and <a href="https://social.coop/@chrisjrn/115135449245231588">Christopher Neugebauer</a>. If you are a voting member I hope I have earned your vote this year.</p>
+<p>You can watch video introductions from several of the other nominees <a href="https://www.youtube.com/watch?v=MM9lLXH-GjA">in this six minute YouTube video</a>.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/psf">psf</a></p>]]></description><pubDate>Tue, 9 Sep 2025 10:13:33 +0000</pubDate></item><item><title>Geoffrey Huntley is cursed</title><link>https://simonwillison.net/2025/Sep/9/cursed/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ghuntley.com/cursed/">I ran Claude in a loop for three months, and it created a genz programming language called cursed</a></strong></p>
+Geoffrey Huntley vibe-coded an entirely new programming language using Claude:</p>
+<blockquote>
+<p>The programming language is called "cursed". It's cursed in its lexical structure, it's cursed in how it was built, it's cursed that this is possible, it's cursed in how cheap this was, and it's cursed through how many times I've sworn at Claude.</p>
+</blockquote>
+<p>Geoffrey's initial prompt:</p>
+<blockquote>
+<p><code>Hey, can you make me a programming language like Golang but all the lexical keywords are swapped so they're Gen Z slang?</code></p>
+</blockquote>
+<p>Then he pushed it to keep on iterating over a three month period.</p>
+<p>Here's Hello World:</p>
+<pre><code>vibe main
+yeet "vibez"
+
+slay main() {
+    vibez.spill("Hello, World!")
+}
+</code></pre>
+<p>And here's <a href="https://github.com/ghuntley/cursed/blob/ecda33d496e1562e0e02efb25b6936ad94e79b72/test_suite/leetcode_comprehensive_suite/binary_search/704_binary_search_backup.%F0%9F%92%80">binary search</a>, part of <a href="https://github.com/ghuntley/cursed/tree/zig/test_suite/leetcode_comprehensive_suite">17+ LeetCode problems</a> that run as part of the test suite:</p>
+<pre><code>slay binary_search(nums normie[], target normie) normie {
+    sus left normie = 0
+    sus right normie = len(nums) - 1    
+    bestie (left &lt;= right) {
+        sus mid normie = left + (right - left) / 2
+        ready (nums[mid] == target) {
+            damn mid
+        }
+        ready (nums[mid] &lt; target) {
+            left = mid + 1
+        } otherwise {
+            right = mid - 1
+        }
+    }
+    damn -1
+}
+</code></pre>
+<p>This is a <em>substantial</em> project. The repository currently has <a href="https://github.com/ghuntley/cursed/commits/zig/">1,198 commits</a>. It has both an interpreter mode and a compiler mode, and can compile programs to native binaries (via LLVM) for macOS, Linux and Windows.</p>
+<p>It looks like it was mostly built using Claude running via <a href="https://ampcode.com/">Sourcegraph's Amp</a>, which produces <a href="https://github.com/ghuntley/cursed/commit/ec5be8a4c4f6e82f6b93774a9b3b3f88308680dd">detailed commit messages</a>. The commits include links to archived Amp sessions but sadly those don't appear to be publicly visible.</p>
+<p>The first version was written in C, then Geoffrey had Claude port it to Rust and then Zig. <a href="https://twitter.com/GeoffreyHuntley/status/1965295152962097550">His cost estimate</a>:</p>
+<blockquote>
+<p>Technically it costs about 5k usd to build your own compiler now because cursed was implemented first in c, then rust, now zig. So yeah, it’s not one compiler it’s three editions of it. For a total of $14k USD.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://x.com/GeoffreyHuntley/status/1965258228314636524">@GeoffreyHuntley</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/c">c</a>, <a href="https://simonwillison.net/tags/programming-languages">programming-languages</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/zig">zig</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/geoffrey-huntley">geoffrey-huntley</a></p>]]></description><pubDate>Tue, 9 Sep 2025 09:31:21 +0000</pubDate></item><item><title>Recreating the Apollo AI adoption rate chart with GPT-5, Python and Pyodide</title><link>https://simonwillison.net/2025/Sep/9/apollo-ai-adoption/#atom-everything</link><description><![CDATA[<p>Apollo Global Management's "Chief Economist" Dr. Torsten Sløk released <a href="https://www.apolloacademy.com/ai-adoption-rate-trending-down-for-large-companies/">this interesting chart</a> which appears to show a slowdown in AI adoption rates among large (&gt;250 employees) companies:</p>
 <p><img src="https://static.simonwillison.net/static/2025/apollo-ai-chart.jpg" alt="AI adoption rates starting to decline for larger firms. A chart of AI adoption rate by firm size. Includes lines for 250+, 100-249, 50-99, 20-49, 10-19, 5-8 and 1-4 sized organizations. Chart starts in November 2023 with percentages ranging from 3 to 5, then all groups grow through August 2025 albeit with the 250+ group having a higher score thn the others. That 25[+ group peaks in Jul5 2025 at around 14% and then appears to slope slightly downwards to 12% by August. Some of the other lines alsso start to tip down, though not as much.]" style="max-width: 100%;" /></p>
 <p>Here's the full description that accompanied the chart:</p>
 <blockquote>
@@ -711,16 +771,4 @@ I was interviewed by Elaine Moore for this opinion piece in the Financial Times,
 <p>(On the subject of OCR... I tried extracting the text from the above image using GPT-5 and got a <a href="https://chatgpt.com/share/68b1e707-add0-8006-8344-4c2fca902b2e">surprisingly bad result</a> full of hallucinated details. Claude Opus 4.1 <a href="https://claude.ai/share/e98d2fe1-0c81-4f51-8739-483f843e4c0e">did a lot better</a> but still made some mistakes. Gemini 2.5 <a href="https://aistudio.google.com/app/prompts?state=%257B%2522ids%2522:%255B%25221MOzgBJI-FJF1uyile_7h2zL4F6lD0sgK%2522%255D,%2522action%2522:%2522open%2522,%2522userId%2522:%2522106366615678321494423%2522,%2522resourceKeys%2522:%257B%257D%257D&amp;usp=sharing,%20https://drive.google.com/file/d/1ffD88ORjgjFzbPsvQ-Z52Exhb_Z9MgtL/view?usp=sharing">did much better</a>.)
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ocr">ocr</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/press-quotes">press-quotes</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Fri, 29 Aug 2025 17:51:10 +0000</pubDate></item><item><title>Lossy encyclopedia</title><link>https://simonwillison.net/2025/Aug/29/lossy-encyclopedia/#atom-everything</link><description><![CDATA[<p>Since I love collecting questionable analogies for LLMs, here's a new one I just came up with: an LLM is <strong>a lossy encyclopedia</strong>. They have a huge array of facts compressed into them but that compression is lossy (see also <a href="https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web">Ted Chiang</a>).</p>
-<p>The key thing is to develop an intuition for questions it can usefully answer vs questions that are at a level of detail where the lossiness matters.</p>
-<p>This thought sparked by <a href="https://news.ycombinator.com/item?id=45058688#45060519">a comment</a> on Hacker News asking why an LLM couldn't "Create a boilerplate Zephyr project skeleton, for Pi Pico with st7789 spi display drivers configured". That's more of a lossless encyclopedia question!</p>
-<p>My <a href="https://news.ycombinator.com/item?id=45058688#45060709">answer</a>:</p>
-<blockquote>
-<p>The way to solve this particular problem is to make a correct example available to it. Don't expect it to just know extremely specific facts like that - instead, treat it as a tool that can act on facts presented to it.</p>
-</blockquote>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Fri, 29 Aug 2025 09:26:52 +0000</pubDate></item><item><title>Python: The Documentary</title><link>https://simonwillison.net/2025/Aug/28/python-the-documentary/#atom-everything</link><description><![CDATA[<p><strong><a href="https://youtu.be/GfH4QL4VqJ0">Python: The Documentary</a></strong></p>
-New documentary about the origins of the Python programming language - 84 minutes long, built around extensive interviews with Guido van Rossum and others who were there at the start and during the subsequent journey.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/computer-history">computer-history</a>, <a href="https://simonwillison.net/tags/guido-van-rossum">guido-van-rossum</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/youtube">youtube</a></p>]]></description><pubDate>Thu, 28 Aug 2025 19:49:51 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ocr">ocr</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/press-quotes">press-quotes</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Fri, 29 Aug 2025 17:51:10 +0000</pubDate></item></channel></rss>
