@@ -17,6 +17,7 @@
 <p>In a particularly egregious example of AI companies being terrible at naming features, the official name for this one really does appear to be <strong>Upgraded file creation and analysis</strong>. Sigh.</p>
 <p>This is quite a confusing release, because Claude <em>already</em> had a variant of this feature, <a href="https://www.anthropic.com/news/analysis-tool">released in October 2024</a> with the weak but more sensible name <strong>Analysis tool</strong>. Here are <a href="https://simonwillison.net/2024/Oct/24/claude-analysis-tool/">my notes from when that came out</a>. That tool worked by generating and executing JavaScript in the user's own browser.</p>
 <p>The new tool works entirely differently. It's much closer in implementation to OpenAI's Code Interpreter: Claude now has access to a server-side container environment in which it can run shell commands and execute Python and Node.js code to manipulate data and both read and generate files.</p>
+<p>It's worth noting that Anthropic have a similar feature in their API called <a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool">Code execution tool</a>, but today is the first time end-users of Claude have been able to execute arbitrary code in a server-side container.</p>
 <ul>
   <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#switching-it-on-in-settings-features">Switching it on in settings/features</a></li>
   <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#exploring-the-environment">Exploring the environment</a></li>
@@ -166,7 +167,7 @@ http_proxy=http://21.0.0.167:15001
 </blockquote>
 <p>This time it used the <code>antialiased=True</code> and <code>solid_capstyle='round'</code> options in matplotlib, which again wasn't what I was after. I tried one more thing:</p>
 <blockquote>
-<p>I did not mean smooth the rendering of the lines. I meant that I wanted curved and not straight lines between points.</p>
+<p><code>I did not mean smooth the rendering of the lines. I meant that I wanted curved and not straight lines between points.</code></p>
 </blockquote>
 <p>(Normally if I have to argue this much with a model I'll start a fresh session and try a different prompting strategy from the start.)</p>
 <p>But this did give me what I was looking for:</p>
