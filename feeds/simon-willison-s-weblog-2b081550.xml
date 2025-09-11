@@ -1,8 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Kumar Aditya</title><link>https://simonwillison.net/2025/Sep/11/kumar-aditya/#atom-everything</link><description><![CDATA[<blockquote cite="https://labs.quansight.org/blog/scaling-asyncio-on-free-threaded-python"><p>In Python 3.14, I have implemented several changes to fix thread safety of <code>asyncio</code> and enable it to scale effectively on the free-threaded build of CPython. It is now implemented using lock-free data structures and per-thread state, allowing for highly efficient task management and execution across multiple threads. In the general case of multiple event loops running in parallel, there is no lock contention and performance scales linearly with the number of threads. [...]</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Defeating Nondeterminism in LLM Inference</title><link>https://simonwillison.net/2025/Sep/11/defeating-nondeterminism/#atom-everything</link><description><![CDATA[<p><strong><a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/">Defeating Nondeterminism in LLM Inference</a></strong></p>
+A very common question I see about LLMs concerns why they can't be made to deliver the same response to the same prompt by setting a fixed random number seed.</p>
+<p>Like many others I had been lead to believe this was due to the non-associative nature of floating point arithmetic, where <code>(a + b) + c ≠ a + (b + c)</code>, combining with unpredictable calculation orders on concurrent GPUs. This new paper calls that the "concurrency + floating point hypothesis":</p>
+<blockquote>
+<p>One common hypothesis is that some combination of floating-point non-associativity and concurrent execution leads to nondeterminism based on which concurrent core finishes first. We will call this the “concurrency + floating point” hypothesis for LLM inference nondeterminism.</p>
+</blockquote>
+<p>It then convincingly argues that this is <em>not</em> the core of the problem, because "in the typical forward pass of an LLM, there is usually not a single atomic add present."</p>
+<p>Why are LLMs so often non-deterministic then?</p>
+<blockquote>
+<p>[...] <strong>the primary reason nearly all LLM inference endpoints are nondeterministic is that the load (and thus batch-size) nondeterministically varies!</strong> This nondeterminism is not unique to GPUs — LLM inference endpoints served from CPUs or TPUs will also have this source of nondeterminism.</p>
+</blockquote>
+<p>The <a href="https://github.com/thinking-machines-lab/batch_invariant_ops">thinking-machines-lab/batch_invariant_ops</a> code that accompanies this paper addresses this by providing a PyTorch implementation of invariant kernels and demonstrates them running Qwen3-8B deterministically under vLLM.</p>
+<p>This paper is the first public output from Thinking Machines,  the AI Lab founded in February 2025 by Mira Murati, OpenAI's former CTO (and interim CEO for <a href="https://openai.com/index/openai-announces-leadership-transition/">a few days</a>). It's unrelated to <a href="https://en.m.wikipedia.org/wiki/Thinking_Machines_Corporation">Thinking Machines Corporation</a>, the last employer of Richard Feynman (as described in this <a href="https://longnow.org/ideas/richard-feynman-and-the-connection-machine/">most excellent story by Danny Hillis</a>).
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45200925">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/pytorch">pytorch</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a></p>]]></description><pubDate>Thu, 11 Sep 2025 06:53:42 +0000</pubDate></item><item><title>Quoting Kumar Aditya</title><link>https://simonwillison.net/2025/Sep/11/kumar-aditya/#atom-everything</link><description><![CDATA[<blockquote cite="https://labs.quansight.org/blog/scaling-asyncio-on-free-threaded-python"><p>In Python 3.14, I have implemented several changes to fix thread safety of <code>asyncio</code> and enable it to scale effectively on the free-threaded build of CPython. It is now implemented using lock-free data structures and per-thread state, allowing for highly efficient task management and execution across multiple threads. In the general case of multiple event loops running in parallel, there is no lock contention and performance scales linearly with the number of threads. [...]</p>
 <p>For a deeper dive into the implementation, check out the <a href="https://github.com/python/cpython/blob/main/InternalDocs/asyncio.md#python-314-implementation">internal docs for asyncio</a>.</p></blockquote>
 <p class="cite">&mdash; <a href="https://labs.quansight.org/blog/scaling-asyncio-on-free-threaded-python">Kumar Aditya</a>, Scaling asyncio on Free-Threaded Python</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/threading">threading</a>, <a href="https://simonwillison.net/tags/async">async</a>, <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/gil">gil</a></p>]]></description><pubDate>Thu, 11 Sep 2025 03:07:16 +0000</pubDate></item><item><title>Claude API: Web fetch tool</title><link>https://simonwillison.net/2025/Sep/10/claude-web-fetch-tool/#atom-everything</link><description><![CDATA[<p><strong><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-fetch-tool">Claude API: Web fetch tool</a></strong></p>
+    <p>Tags: <a href="https://simonwillison.net/tags/async">async</a>, <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/gil">gil</a>, <a href="https://simonwillison.net/tags/threads">threads</a></p>]]></description><pubDate>Thu, 11 Sep 2025 03:07:16 +0000</pubDate></item><item><title>Claude API: Web fetch tool</title><link>https://simonwillison.net/2025/Sep/10/claude-web-fetch-tool/#atom-everything</link><description><![CDATA[<p><strong><a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/web-fetch-tool">Claude API: Web fetch tool</a></strong></p>
 New in the Claude API: if you pass the <code>web-fetch-2025-09-10</code> beta header you can add <code>{"type": "web_fetch_20250910",  "name": "web_fetch", "max_uses": 5}</code> to your <code>"tools"</code> list and Claude will gain the ability to fetch content from URLs as part of responding to your prompt.</p>
 <p>What's particularly interesting here is their approach to safety for this feature:</p>
 <blockquote>
@@ -916,76 +933,4 @@ Gemini Nano Banana</li>
 </ul>
 </blockquote>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Mon, 1 Sep 2025 19:41:45 +0000</pubDate></item><item><title>Introducing gpt-realtime</title><link>https://simonwillison.net/2025/Sep/1/introducing-gpt-realtime/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/introducing-gpt-realtime/">Introducing gpt-realtime</a></strong></p>
-Released a few days ago (August 28th), <code>gpt-realtime</code> is OpenAI's new "most advanced speech-to-speech model". It looks like this is a replacement for the older <code>gpt-4o-realtime-preview</code> model that was released <a href="https://openai.com/index/introducing-the-realtime-api/">last October</a>.</p>
-<p>This is a slightly confusing release. The previous realtime model was clearly described as a variant of GPT-4o, sharing the same October 2023 training cut-off date as that model.</p>
-<p>I had expected that <code>gpt-realtime</code> might be a GPT-5 relative, but its training date is still October 2023 whereas GPT-5 is September 2024.</p>
-<p><code>gpt-realtime</code> also shares the relatively low 32,000 context token and 4,096 maximum output token limits of <code>gpt-4o-realtime-preview</code>.</p>
-<p>The only reference I found to GPT-5 in the documentation for the new model was a note saying "Ambiguity and conflicting instructions degrade performance, similar to GPT-5."</p>
-<p>The <a href="https://platform.openai.com/docs/guides/realtime-models-prompting#general-usage-tips">usage tips</a> for <code>gpt-realtime</code> have a few surprises:</p>
-<blockquote>
-<p><strong>Iterate relentlessly</strong>. Small wording changes can make or break behavior.</p>
-<p>Example: Swapping “inaudible” → “unintelligible” improved noisy input handling. [...]</p>
-<p><strong>Convert non-text rules to text</strong>: The model responds better to clearly written text.</p>
-<p>Example: Instead of writing, "IF x &gt; 3 THEN ESCALATE", write, "IF MORE THAN THREE FAILURES THEN ESCALATE."</p>
-</blockquote>
-<p>There are a whole lot more prompting tips in the new <a href="https://cookbook.openai.com/examples/realtime_prompting_guide">Realtime Prompting Guide</a>.</p>
-<p>OpenAI list several key improvements to <code>gpt-realtime</code> including the ability to configure it with a list of MCP servers, "better instruction following" and the ability to send it images.</p>
-<p>My biggest confusion came from <a href="https://openai.com/api/pricing/">the pricing page</a>, which lists separate pricing for using the Realtime API with <code>gpt-realtime</code> and GPT-4o mini. This suggests to me that the old <a href="https://platform.openai.com/docs/models/gpt-4o-mini-realtime-preview">gpt-4o-mini-realtime-preview</a> model is still available, despite it no longer being listed on the <a href="https://platform.openai.com/docs/models">OpenAI models page</a>.</p>
-<p><code>gpt-4o-mini-realtime-preview</code> is a <strong>lot</strong> cheaper:</p>
-<table>
-    <thead>
-        <tr>
-            <th>Model</th>
-            <th>Token Type</th>
-            <th>Input</th>
-            <th>Cached Input</th>
-            <th>Output</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td rowspan="3">gpt-realtime</td>
-            <td>Text</td>
-            <td>$4.00</td>
-            <td>$0.40</td>
-            <td>$16.00</td>
-        </tr>
-        <tr>
-            <td>Audio</td>
-            <td>$32.00</td>
-            <td>$0.40</td>
-            <td>$64.00</td>
-        </tr>
-        <tr>
-            <td>Image</td>
-            <td>$5.00</td>
-            <td>$0.50</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td rowspan="2">gpt-4o-mini-realtime-preview</td>
-            <td>Text</td>
-            <td>$0.60</td>
-            <td>$0.30</td>
-            <td>$2.40</td>
-        </tr>
-        <tr>
-            <td>Audio</td>
-            <td>$10.00</td>
-            <td>$0.30</td>
-            <td>$20.00</td>
-        </tr>
-    </tbody>
-</table>
-
-<p>The mini model also has a much longer 128,000 token context window.</p>
-<p><strong>Update</strong>: Turns out that was <a href="https://twitter.com/_agamble/status/1962839472837361807">a mistake in the documentation</a>, that mini model has a 16,000 token context size.</p>
-<p><strong>Update 2</strong>: OpenAI's <a href="https://twitter.com/pbbakkum/status/1962901822135525695">Peter Bakkum clarifies</a>:</p>
-<blockquote>
-<p>There are different voice models in API and ChatGPT, but they share some recent improvements. The voices are also different.</p>
-<p>gpt-realtime has a mix of data specific enough to itself that its not really 4o or 5</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/audio">audio</a>, <a href="https://simonwillison.net/tags/realtime">realtime</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/multi-modal-output">multi-modal-output</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 1 Sep 2025 17:34:55 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Mon, 1 Sep 2025 19:41:45 +0000</pubDate></item></channel></rss>
