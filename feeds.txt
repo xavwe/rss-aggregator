@@ -18,3 +18,4 @@ https://medium.com/feed/@chacon
 https://mitchellh.com/feed.xml
 https://www.joshwcomeau.com/rss.xml
 https://kill-the-newsletter.com/feeds/kdsrf8k480ycyc8tcjiy.xml
+https://notashelf.dev/rss.xml
