@@ -1,4 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Qwen3-Next-80B-A3B: 🐧🦩 Who needs legs?!</title><link>https://simonwillison.net/2025/Sep/12/qwen3-next/#atom-everything</link><description><![CDATA[<p><strong><a href="https://x.com/Alibaba_Qwen/status/1966197643904000262">Qwen3-Next-80B-A3B</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Comparing the memory implementations of Claude and ChatGPT</title><link>https://simonwillison.net/2025/Sep/12/claude-memory/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.shloked.com/writing/claude-memory">Claude Memory: A Different Philosophy</a></strong></p>
+Shlok Khemani has been doing excellent work reverse-engineering LLM systems and documenting his discoveries.</p>
+<p>Last week he <a href="https://www.shloked.com/writing/chatgpt-memory-bitter-lesson">wrote about ChatGPT memory</a>. This week it's Claude.</p>
+<blockquote>
+<p>Claude's memory system has two fundamental characteristics. First, it starts every conversation with a blank slate, without any preloaded user profiles or conversation history. Memory only activates when you explicitly invoke it. Second, Claude recalls by only referring to your raw conversation history. There are no AI-generated summaries or compressed profiles—just real-time searches through your actual past chats.</p>
+</blockquote>
+<p>Claude's memory is implemented as two new function tools that are made available for a Claude to call. I <a href="https://claude.ai/share/18754235-198d-446b-afc6-26191ea62d27">confirmed this myself</a> with the prompt "<code>Show me a list of tools that you have available to you, duplicating their original names and descriptions</code>" which gave me back these:</p>
+<blockquote>
+<p><strong>conversation_search</strong>: Search through past user conversations to find relevant context and information
+<strong>recent_chats</strong>:  Retrieve recent chat conversations with customizable sort order (chronological or reverse chronological), optional pagination using 'before' and 'after' datetime filters, and project filtering</p>
+</blockquote>
+<p>The good news here is <em>transparency</em> - Claude's memory feature is implemented as visible tool calls, which means you can see exactly when and how it is accessing previous context.</p>
+<p>This helps address my big complaint about ChatGPT memory (see <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/">I really don’t like ChatGPT’s new memory dossier</a> back in May) - I like to understand as much as possible about what's going into my context so I can better anticipate how it is likely to affect the model.</p>
+<p>The OpenAI system is <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/#how-this-actually-works"><em>very</em> different</a>: rather than letting the model decide when to access memory via tools, OpenAI instead automatically include details of previous conversations at the start of every conversation.</p>
+<p><a href="https://www.shloked.com/writing/chatgpt-memory-bitter-lesson">Shlok's notes on ChatGPT's memory</a> did include one detail that I had previously missed that I find reassuring:</p>
+<blockquote>
+<p>Recent Conversation Content is a history of your latest conversations with ChatGPT, each timestamped with topic and selected messages. [...] Interestingly, only the user's messages are surfaced, not the assistant's responses.</p>
+</blockquote>
+<p>One of my big worries about memory was that it could harm my "clean slate" approach to chats: if I'm working on code and the model starts going down the wrong path (getting stuck in a bug loop for example) I'll start a fresh chat to wipe that rotten context away. I had worried that ChatGPT memory would bring that bad context along to the next chat, but omitting the LLM responses makes that much less of a risk than I had anticipated.</p>
+<p><strong>Update</strong>: Here's a slightly confusing twist: yesterday in <a href="https://www.anthropic.com/news/memory">Bringing memory to teams at work</a> Anthropic revealed an <em>additional</em> memory feature, currently only available to Team and Enterprise accounts, with a feature checkbox labeled "Generate memory of chat history" that looks much more similar to the OpenAI implementation:</p>
+<blockquote>
+<p>With memory, Claude focuses on learning your professional context and work patterns to maximize productivity. It remembers your team’s processes, client needs, project details, and priorities. [...]</p>
+<p>Claude uses a memory summary to capture all its memories in one place for you to view and edit. In your settings, you can see exactly what Claude remembers from your conversations, and update the summary at any time by chatting with Claude.</p>
+</blockquote>
+<p>I haven't experienced this feature myself yet as it isn't part of my Claude subscription. I'm glad to hear it's fully transparent and can be edited by the user, resolving another of my complaints about the ChatGPT implementation.</p>
+<p>This version of Claude memory also takes Claude Projects into account:</p>
+<blockquote>
+<p>If you use projects, <strong>Claude creates a separate memory for each project</strong>. This ensures that your product launch planning stays separate from client work, and confidential discussions remain separate from general operations.</p>
+</blockquote>
+<p>I <a href="https://simonwillison.net/2025/Aug/22/project-memory/">praised OpenAI for adding this</a> a few weeks ago.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45214908">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llm-memory">llm-memory</a></p>]]></description><pubDate>Fri, 12 Sep 2025 07:34:36 +0000</pubDate></item><item><title>Qwen3-Next-80B-A3B: 🐧🦩 Who needs legs?!</title><link>https://simonwillison.net/2025/Sep/12/qwen3-next/#atom-everything</link><description><![CDATA[<p><strong><a href="https://x.com/Alibaba_Qwen/status/1966197643904000262">Qwen3-Next-80B-A3B</a></strong></p>
 Qwen announced two new models via their Twitter account (nothing on <a href="https://qwenlm.github.io/blog/">their blog</a> yet): <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct">Qwen3-Next-80B-A3B-Instruct</a> and <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking">Qwen3-Next-80B-A3B-Thinking</a>.</p>
 <p>They make some big claims on performance:</p>
 <blockquote>
@@ -956,15 +990,4 @@ document.documentElement.replaceWith(htmlEl);
 </code></pre>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/rss">rss</a>, <a href="https://simonwillison.net/tags/xml">xml</a>, <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/jake-archibald">jake-archibald</a></p>]]></description><pubDate>Tue, 2 Sep 2025 19:32:57 +0000</pubDate></item><item><title>Rich Pixels</title><link>https://simonwillison.net/2025/Sep/2/rich-pixels/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/darrenburns/rich-pixels">Rich Pixels</a></strong></p>
-Neat Python library by Darren Burns adding pixel image support to the Rich terminal library, using tricks to render an image using full or half-height colored blocks.</p>
-<p>Here's <a href="https://github.com/darrenburns/rich-pixels/blob/a0745ebcc26b966d9dbac5875720364ee5c6a1d3/rich_pixels/_renderer.py#L123C25-L123C26">the key trick</a> - it renders Unicode ▄ (U+2584, "lower half block") characters after setting a foreground and background color for the two pixels it needs to display.</p>
-<p>I got GPT-5 to <a href="https://chatgpt.com/share/68b6c443-2408-8006-8f4a-6862755cd1e4">vibe code up</a> a <code>show_image.py</code> terminal command which resizes the provided image to fit the width and height of the current terminal and displays it using Rich Pixels. That <a href="https://github.com/simonw/tools/blob/main/python/show_image.py">script is here</a>, you can run it with <code>uv</code> like this:</p>
-<pre><code>uv run https://tools.simonwillison.net/python/show_image.py \
-  image.jpg
-</code></pre>
-<p>Here's what I got when I ran it against my V&amp;A East Storehouse photo from <a href="https://simonwillison.net/2025/Aug/27/london-culture/">this post</a>:</p>
-<p><img alt="Terminal window. I ran that command and it spat out quite a pleasing and recognizable pixel art version of the photograph." src="https://static.simonwillison.net/static/2025/pixel-storehouse.jpg" />
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ascii-art">ascii-art</a>, <a href="https://simonwillison.net/tags/cli">cli</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/rich">rich</a></p>]]></description><pubDate>Tue, 2 Sep 2025 11:05:23 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/rss">rss</a>, <a href="https://simonwillison.net/tags/xml">xml</a>, <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/jake-archibald">jake-archibald</a></p>]]></description><pubDate>Tue, 2 Sep 2025 19:32:57 +0000</pubDate></item></channel></rss>
