@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Defeating Nondeterminism in LLM Inference</title><link>https://simonwillison.net/2025/Sep/11/defeating-nondeterminism/#atom-everything</link><description><![CDATA[<p><strong><a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/">Defeating Nondeterminism in LLM Inference</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Qwen3-Next-80B-A3B: 🐧🦩 Who needs legs?!</title><link>https://simonwillison.net/2025/Sep/12/qwen3-next/#atom-everything</link><description><![CDATA[<p><strong><a href="https://x.com/Alibaba_Qwen/status/1966197643904000262">Qwen3-Next-80B-A3B</a></strong></p>
+Qwen announced two new models via their Twitter account (nothing on <a href="https://qwenlm.github.io/blog/">their blog</a> yet): <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct">Qwen3-Next-80B-A3B-Instruct</a> and <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking">Qwen3-Next-80B-A3B-Thinking</a>.</p>
+<p>They make some big claims on performance:</p>
+<blockquote>
+<ul>
+<li>Qwen3-Next-80B-A3B-Instruct approaches our 235B flagship.</li>
+<li>Qwen3-Next-80B-A3B-Thinking outperforms Gemini-2.5-Flash-Thinking.</li>
+</ul>
+</blockquote>
+<p>The name "80B-A3B" indicates 80 billion parameters of which only 3 billion are active at a time. You still need to have enough GPU-accessible RAM to hold all 80 billion in memory at once but only 3 billion will be used for each round of inference, which provides a <em>significant</em> speedup in responding to prompts.</p>
+<p>More details from their tweet:</p>
+<blockquote>
+<ul>
+<li>80B params, but only 3B activated per token → 10x cheaper training, 10x faster inference than Qwen3-32B.(esp. @ 32K+ context!)</li>
+<li>Hybrid Architecture: Gated DeltaNet + Gated Attention → best of speed &amp; recall</li>
+<li>Ultra-sparse MoE: 512 experts, 10 routed + 1 shared</li>
+<li>Multi-Token Prediction → turbo-charged speculative decoding</li>
+<li>Beats Qwen3-32B in perf, rivals Qwen3-235B in reasoning &amp; long-context</li>
+</ul>
+</blockquote>
+<p>The models on Hugging Face are around 150GB each so I decided to try them out via <a href="https://openrouter.ai/">OpenRouter</a> rather than on my own laptop (<a href="https://openrouter.ai/qwen/qwen3-next-80b-a3b-thinking">Thinking</a>, <a href="https://openrouter.ai/qwen/qwen3-next-80b-a3b-instruct">Instruct</a>).</p>
+<p>I'm used my <a href="https://github.com/simonw/llm-openrouter">llm-openrouter</a> plugin. I installed it like this:</p>
+<pre><code>llm install llm-openrouter
+llm keys set openrouter
+# paste key here
+</code></pre>
+<p>Then found the model IDs with this command:</p>
+<pre><code>llm models -q next
+</code></pre>
+<p>Which output:</p>
+<pre><code>OpenRouter: openrouter/qwen/qwen3-next-80b-a3b-thinking
+OpenRouter: openrouter/qwen/qwen3-next-80b-a3b-instruct
+</code></pre>
+<p>I have an LLM <a href="https://llm.datasette.io/en/stable/templates.html">prompt template</a> saved called <code>pelican-svg</code> which I created like this:</p>
+<pre><code>llm "Generate an SVG of a pelican riding a bicycle" --save pelican-svg
+</code></pre>
+<p>This means I can run <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">my pelican benchmark</a> like this:</p>
+<pre><code>llm -t pelican-svg -m openrouter/qwen/qwen3-next-80b-a3b-thinking
+</code></pre>
+<p>Or like this:</p>
+<pre><code>llm -t pelican-svg -m openrouter/qwen/qwen3-next-80b-a3b-instruct
+</code></pre>
+<p>Here's the <a href="https://gist.github.com/simonw/d1a0d0ff719d609bc6fad2e133e7cbe9">thinking model output</a> (exported with <code>llm logs -c | pbcopy</code> after I ran the prompt):</p>
+<p><img alt="The bicycle is too simple and way too wide. The pelican is two circles, two orange triangular feed and a big triangle for the beak." src="https://static.simonwillison.net/static/2025/qwen3-next-80b-a3b-thinking.png" /></p>
+<p>I enjoyed the "Whimsical style with smooth curves and friendly proportions (no anatomical accuracy needed for bicycle riding!)" note in <a href="https://gist.github.com/simonw/d1a0d0ff719d609bc6fad2e133e7cbe9#prompt">the transcript</a>.</p>
+<p>The instruct (non-reasoning) model <a href="https://gist.github.com/simonw/cc740a45beed5655faffa69da1e999f5">gave me this</a>:</p>
+<p><img alt="Blue background, brown ground, bicycle looks more like a wheelchair, pelican is actually quite good though - has thin grey wings and a perky yellow long triangular beak. Above the pelican is the caption Who needs legs?! with an emoji sequence of penguin then flamingo." src="https://static.simonwillison.net/static/2025/qwen3-next-80b-a3b-instruct.png" /></p>
+<p>"Who needs legs!?" indeed! I like the penguin-flamingo emoji sequence it's decided on for pelicans.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Fri, 12 Sep 2025 04:07:32 +0000</pubDate></item><item><title>Defeating Nondeterminism in LLM Inference</title><link>https://simonwillison.net/2025/Sep/11/defeating-nondeterminism/#atom-everything</link><description><![CDATA[<p><strong><a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/">Defeating Nondeterminism in LLM Inference</a></strong></p>
 A very common question I see about LLMs concerns why they can't be made to deliver the same response to the same prompt by setting a fixed random number seed.</p>
 <p>Like many others I had been lead to believe this was due to the non-associative nature of floating point arithmetic, where <code>(a + b) + c ≠ a + (b + c)</code>, combining with unpredictable calculation orders on concurrent GPUs. This new paper calls that the "concurrency + floating point hypothesis":</p>
 <blockquote>
@@ -917,23 +967,4 @@ Neat Python library by Darren Burns adding pixel image support to the Rich termi
 <p><img alt="Terminal window. I ran that command and it spat out quite a pleasing and recognizable pixel art version of the photograph." src="https://static.simonwillison.net/static/2025/pixel-storehouse.jpg" />
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ascii-art">ascii-art</a>, <a href="https://simonwillison.net/tags/cli">cli</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/rich">rich</a></p>]]></description><pubDate>Tue, 2 Sep 2025 11:05:23 +0000</pubDate></item><item><title>August 2025 newsletter</title><link>https://simonwillison.net/2025/Sep/1/august-2025/#atom-everything</link><description><![CDATA[<p>I just sent out my August 2025 <strong><a href="https://github.com/sponsors/simonw">sponsors-only newsletter</a></strong> summarizing the past month in LLMs and my other work. Topics included GPT-5, gpt-oss, image editing models (Qwen-Image-Edit and Gemini Nano Banana), other significant model releases and the tools I'm using at the moment.</p>
-<p>If you'd like a preview of the newsletter, here's <a href="https://gist.github.com/simonw/722fc2f242977cb185838353776d14f4">the July 2025 edition</a> I sent out a month ago.</p>
-<p>New sponsors get access to the full archive. If you start sponsoring for $10/month or more right now you'll get instant access to <a href="https://github.com/simonw-private/monthly/blob/main/2025-08-august.md">the August edition</a> in my <code>simonw-private/monthly</code> GitHub repository.</p>
-<p>If you've already read <a href="https://simonwillison.net/2025/Aug/">all 85 posts</a> I wrote in August the newsletter acts mainly as a recap, but I've had positive feedback from people who prefer to get the monthly edited highlights over reading the firehose that is my blog!</p>
-<p>Here's the table of contents for the August newsletter:</p>
-<blockquote>
-<ul>
-<li>GPT-5</li>
-<li>OpenAl's open models: gpt-oss-120b and gpt-oss-20b</li>
-<li>Other significant model releases in
-August</li>
-<li>Image editing: Qwen-Image-Edit and
-Gemini Nano Banana</li>
-<li>More prompt injection and more lethal trifecta</li>
-<li>Tools I'm using at the moment</li>
-<li>Bonus links</li>
-</ul>
-</blockquote>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Mon, 1 Sep 2025 19:41:45 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ascii-art">ascii-art</a>, <a href="https://simonwillison.net/tags/cli">cli</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/rich">rich</a></p>]]></description><pubDate>Tue, 2 Sep 2025 11:05:23 +0000</pubDate></item></channel></rss>
