@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>London Transport Museum Depot Open Days</title><link>https://simonwillison.net/2025/Sep/12/transport-museum-depot/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.ltmuseum.co.uk/whats-on/depot-open-days">London Transport Museum Depot Open Days</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Matt Webb</title><link>https://simonwillison.net/2025/Sep/12/matt-webb/#atom-everything</link><description><![CDATA[<blockquote cite="https://interconnected.org/home/2025/09/12/claude"><p>The trick with Claude Code is to give it large, but not too large, extremely well defined problems.</p>
+<p>(If the problems are too large then you are now vibe coding… which (a) frequently goes wrong, and (b) is a one-way street: once vibes enter your app, you end up with tangled, write-only code which functions perfectly but can no longer be edited by humans. Great for prototyping, bad for foundations.)</p></blockquote>
+<p class="cite">&mdash; <a href="https://interconnected.org/home/2025/09/12/claude">Matt Webb</a>, What I think about when I think about Claude Code</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/matt-webb">matt-webb</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Fri, 12 Sep 2025 21:59:33 +0000</pubDate></item><item><title>London Transport Museum Depot Open Days</title><link>https://simonwillison.net/2025/Sep/12/transport-museum-depot/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.ltmuseum.co.uk/whats-on/depot-open-days">London Transport Museum Depot Open Days</a></strong></p>
 I just found out about this (<a href="https://chatgpt.com/share/68c3dd56-3544-8006-bf0f-e3c7828acb9c">thanks, ChatGPT</a>) and I'm heart-broken to learn that I'm in London a week too early! If you are in London next week (Thursday 18th through Sunday 21st 2025) you should definitely know about it:</p>
 <blockquote>
 <p>The Museum Depot in Acton is our working museum store, and a treasure trove of over 320,000 objects.</p>
@@ -944,47 +948,4 @@ Back in May I wrote <a href="https://simonwillison.net/2025/May/1/not-vibe-codin
 <p><img alt="O'Reilly book cover: Beyond Vibe Coding: From Coder to AI-Era Developer, by Addy Osmani. Features two hummingbirds, presumably because their wings vibrate!" src="https://static.simonwillison.net/static/2025/beyond-vibe-coding.jpg" />
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/books">books</a>, <a href="https://simonwillison.net/tags/oreilly">oreilly</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/addy-osmani">addy-osmani</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Thu, 4 Sep 2025 20:58:21 +0000</pubDate></item><item><title>Google antitrust remedies</title><link>https://simonwillison.net/2025/Sep/3/antitrust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://storage.courtlistener.com/recap/gov.uscourts.dcd.223205/gov.uscourts.dcd.223205.1436.0_1.pdf">gov.uscourts.dcd.223205.1436.0_1.pdf</a></strong></p>
-Here's the 230 page PDF ruling on the 2023 <a href="https://en.wikipedia.org/wiki/United_States_v._Google_LLC_(2023)">United States v. Google LLC federal antitrust case</a> - the case that could have resulted in Google selling off Chrome and cutting most of Mozilla's funding.</p>
-<p>I made it through the first dozen pages - it's actually quite readable.</p>
-<p>It opens with a clear summary of the case so far, bold highlights mine:</p>
-<blockquote>
-<p>Last year, this court ruled that Defendant Google LLC had violated Section 2 of the Sherman Act: “Google is a monopolist, and it has acted as one to maintain its monopoly.” <strong>The court found that, for more than a decade, Google had entered into distribution agreements with browser developers, original equipment manufacturers, and wireless carriers to be the out-of-the box, default general search engine (“GSE”) at key search access points</strong>. These access points were the most efficient channels for distributing a GSE, and Google paid billions to lock them up. The agreements harmed competition. <strong>They prevented rivals from accumulating the queries and associated data, or scale, to effectively compete and discouraged investment and entry into the market</strong>. And they enabled Google to earn monopoly profits from its search text ads, to amass an unparalleled volume of scale to improve its search product, and to remain the default GSE without fear of being displaced. Taken together, these agreements effectively “froze” the search ecosystem, resulting in markets in which Google has “no true competitor.”</p>
-</blockquote>
-<p>There's an interesting generative AI twist: when the case was first argued in 2023 generative AI wasn't an influential issue, but more recently Google seem to be arguing that it is an existential threat that they need to be able to take on without additional hindrance:</p>
-<blockquote>
-<p>The emergence of GenAl changed the course of this case. No witness at the liability trial testified that GenAl products posed a near-term threat to GSEs. <strong>The very first witness at the remedies hearing, by contrast, placed GenAl front and center as a nascent competitive threat</strong>. These remedies proceedings thus have been as much about promoting competition among GSEs as ensuring that Google’s dominance in search does not carry over into the GenAlI space. Many of Plaintiffs’ proposed remedies are crafted with that latter objective in mind.</p>
-</blockquote>
-<p>I liked this note about the court's challenges in issuing effective remedies:</p>
-<blockquote>
-<p>Notwithstanding this power, courts must approach the task of crafting remedies with a healthy dose of humility. This court has done so. It has no expertise in the business of GSEs, the buying and selling of search text ads, or the engineering of GenAl technologies. <strong>And, unlike the typical case where the court’s job is to resolve a dispute based on historic facts, here the court is asked to gaze into a crystal ball and look to the future. Not exactly a judge’s forte</strong>.</p>
-</blockquote>
-<p>On to the remedies. These ones looked particularly important to me:</p>
-<blockquote>
-<ul>
-<li>Google will be barred from entering or maintaining any exclusive contract
-relating to the distribution of Google Search, Chrome, Google Assistant,
-and the Gemini app. [...]</li>
-<li>Google will not be required to divest Chrome; nor will the court include a
-contingent divestiture of the Android operating system in the final
-judgment. Plaintiffs overreached in seeking forced divesture of these key
-assets, which Google did not use to effect any illegal restraints. [...]</li>
-</ul>
-</blockquote>
-<p>I guess Perplexity <a href="https://www.bbc.co.uk/news/articles/c3dpr0kkyz4o">won't be buying Chrome</a> then!</p>
-<blockquote>
-<ul>
-<li>Google will not be barred from making payments or offering other
-consideration to distribution partners for preloading or placement of Google
-Search, Chrome, or its GenAl products. <strong>Cutting off payments from Google
-almost certainly will impose substantial —in some cases, crippling—
-downstream harms to distribution partners</strong>, related markets, and consumers,
-which counsels against a broad payment ban.</li>
-</ul>
-</blockquote>
-<p>That looks like a huge sigh of relief for Mozilla, who were at risk of losing a sizable portion of their income if Google's search distribution revenue were to be cut off.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45108548">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/chrome">chrome</a>, <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/law">law</a>, <a href="https://simonwillison.net/tags/mozilla">mozilla</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Wed, 3 Sep 2025 08:56:30 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/books">books</a>, <a href="https://simonwillison.net/tags/oreilly">oreilly</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/addy-osmani">addy-osmani</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Thu, 4 Sep 2025 20:58:21 +0000</pubDate></item></channel></rss>
