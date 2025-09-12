@@ -19,8 +19,8 @@ Shlok Khemani has been doing excellent work reverse-engineering LLM systems and 
 </blockquote>
 <p>Claude's memory is implemented as two new function tools that are made available for a Claude to call. I <a href="https://claude.ai/share/18754235-198d-446b-afc6-26191ea62d27">confirmed this myself</a> with the prompt "<code>Show me a list of tools that you have available to you, duplicating their original names and descriptions</code>" which gave me back these:</p>
 <blockquote>
-<p><strong>conversation_search</strong>: Search through past user conversations to find relevant context and information
-<strong>recent_chats</strong>:  Retrieve recent chat conversations with customizable sort order (chronological or reverse chronological), optional pagination using 'before' and 'after' datetime filters, and project filtering</p>
+<p><strong>conversation_search</strong>: Search through past user conversations to find relevant context and information</p>
+<p><strong>recent_chats</strong>:  Retrieve recent chat conversations with customizable sort order (chronological or reverse chronological), optional pagination using 'before' and 'after' datetime filters, and project filtering</p>
 </blockquote>
 <p>The good news here is <em>transparency</em> - Claude's memory feature is implemented as visible tool calls, which means you can see exactly when and how it is accessing previous context.</p>
 <p>This helps address my big complaint about ChatGPT memory (see <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/">I really don’t like ChatGPT’s new memory dossier</a> back in May) - I like to understand as much as possible about what's going into my context so I can better anticipate how it is likely to affect the model.</p>
