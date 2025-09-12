@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Comparing the memory implementations of Claude and ChatGPT</title><link>https://simonwillison.net/2025/Sep/12/claude-memory/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.shloked.com/writing/claude-memory">Claude Memory: A Different Philosophy</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>London Transport Museum Depot Open Days</title><link>https://simonwillison.net/2025/Sep/12/transport-museum-depot/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.ltmuseum.co.uk/whats-on/depot-open-days">London Transport Museum Depot Open Days</a></strong></p>
+I just found out about this (<a href="https://chatgpt.com/share/68c3dd56-3544-8006-bf0f-e3c7828acb9c">thanks, ChatGPT</a>) and I'm heart-broken to learn that I'm in London a week too early! If you are in London next week (Thursday 18th through Sunday 21st 2025) you should definitely know about it:</p>
+<blockquote>
+<p>The Museum Depot in Acton is our working museum store, and a treasure trove of over 320,000 objects.</p>
+<p>Three times a year, we throw open the doors and welcome thousands of visitors to explore. Discover rare road and rail vehicles spanning over 100 years, signs, ceramic tiles, original posters, ephemera, ticket machines, and more.</p>
+</blockquote>
+<p>And if you can go on Saturday 20th or Sunday 21st you can ride the small-scale railway there!</p>
+<blockquote>
+<p>The Depot is also home to the <a href="https://www.ltmuseum.co.uk/visit/museum-depot/london-transport-miniature-railway">London Transport Miniature Railway</a>, a working miniature railway based on real London Underground locomotives, carriages, signals and signs run by our volunteers.</p>
+</blockquote>
+<p>Note that this "miniature railway" is not the same thing as a model railway - it uses a 7¼ in gauge railway and you can sit on top of and ride the carriages.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/london">london</a>, <a href="https://simonwillison.net/tags/museums">museums</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a></p>]]></description><pubDate>Fri, 12 Sep 2025 08:46:31 +0000</pubDate></item><item><title>Comparing the memory implementations of Claude and ChatGPT</title><link>https://simonwillison.net/2025/Sep/12/claude-memory/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.shloked.com/writing/claude-memory">Claude Memory: A Different Philosophy</a></strong></p>
 Shlok Khemani has been doing excellent work reverse-engineering LLM systems and documenting his discoveries.</p>
 <p>Last week he <a href="https://www.shloked.com/writing/chatgpt-memory-bitter-lesson">wrote about ChatGPT memory</a>. This week it's Claude.</p>
 <blockquote>
@@ -974,20 +987,4 @@ which counsels against a broad payment ban.</li>
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45108548">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/chrome">chrome</a>, <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/law">law</a>, <a href="https://simonwillison.net/tags/mozilla">mozilla</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Wed, 3 Sep 2025 08:56:30 +0000</pubDate></item><item><title>Making XML human-readable without XSLT</title><link>https://simonwillison.net/2025/Sep/2/making-xml-human-readable-without-xslt/#atom-everything</link><description><![CDATA[<p><strong><a href="https://jakearchibald.com/2025/making-xml-human-readable-without-xslt/">Making XML human-readable without XSLT</a></strong></p>
-In response to the <a href="https://simonwillison.net/2025/Aug/19/xslt/">recent discourse</a> about XSLT support in browsers, Jake Archibald shares a new-to-me alternative trick for making an XML document readable in a browser: adding the following element near the top of the XML:</p>
-<pre><code>&lt;script
-  xmlns="http://www.w3.org/1999/xhtml"
-  src="script.js" defer="" /&gt;
-</code></pre>
-<p>That <code>script.js</code> will then be executed by the browser, and can swap out the XML with HTML by creating new elements using the correct namespace:</p>
-<pre><code>const htmlEl = document.createElementNS(
-  'http://www.w3.org/1999/xhtml',
-  'html',
-);
-document.documentElement.replaceWith(htmlEl);
-// Now populate the new DOM
-</code></pre>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/rss">rss</a>, <a href="https://simonwillison.net/tags/xml">xml</a>, <a href="https://simonwillison.net/tags/xslt">xslt</a>, <a href="https://simonwillison.net/tags/jake-archibald">jake-archibald</a></p>]]></description><pubDate>Tue, 2 Sep 2025 19:32:57 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/chrome">chrome</a>, <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/law">law</a>, <a href="https://simonwillison.net/tags/mozilla">mozilla</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Wed, 3 Sep 2025 08:56:30 +0000</pubDate></item></channel></rss>
