@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>CubeSats are fascinating learning tools for space</title><link>https://www.jeffgeerling.com/blog/2025/cubesats-are-fascinating-learning-tools-space</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">CubeSats are fascinating learning tools for space</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Digging deeper into YouTube&apos;s view count discrepancy</title><link>https://www.jeffgeerling.com/blog/2025/digging-deeper-youtubes-view-count-discrepancy</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Digging deeper into YouTube's view count discrepancy</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>For a great many tech YouTube channels, <a href="https://www.jeffgeerling.com/blog/2025/youtube-views-are-down-dont-panic">views have been markedly down</a> from desktop ("computer") users since August 10th (or so).</p>
+
+<p>This month-long event has kicked up some dust—enough that two British YouTubers, <a href="https://www.youtube.com/watch?v=MGTKaALdHzc">Spiffing Brit</a> and <a href="https://www.youtube.com/watch?v=YX1eEe8erkQ">Josh Strife Hayes</a> are having a very British argument<sup id="british"><a href="#fn:british" class="footnote-ref" role="doc-noteref">1</a></sup> over who's right about the root cause.</p>
+
+<p>Spiffing Brit argued it's a mix of YouTube's seasonality (it's back to school season) and channels falling off, or as TechLinked puts it, "<a href="https://www.youtube.com/watch?v=gZ5pATTvc2o">git gud</a>", while Josh Strife Hayes points out the massive number of channels which identified a <em>historic</em> shift down in desktop views (compared to mobile, tablet, and TV) starting after August 10. This data was <a href="https://www.youtube.com/watch?v=8FUJwXeuCGc">corroborated by this Moist Critical video</a> as well.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-16T14:55:20-05:00" title="Tuesday, September 16, 2025 - 14:55" class="datetime">September 16, 2025</time>
+</span>]]></description><pubDate>Tue, 16 Sep 2025 19:55:20 +0000</pubDate></item><item><title>CubeSats are fascinating learning tools for space</title><link>https://www.jeffgeerling.com/blog/2025/cubesats-are-fascinating-learning-tools-space</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">CubeSats are fascinating learning tools for space</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/four-cubesats-together.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-fbd23249-1ddc-40cf-a157-77b2ea4f0c6e" data-insert-attach="{&quot;id&quot;:&quot;fbd23249-1ddc-40cf-a157-77b2ea4f0c6e&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Cubesats together"></p>
 
@@ -91,23 +100,4 @@
 <p>You see, I was on a Reverse Engineering panel at Open Sauce, but <a href="https://x.com/geerlingguy/status/1945207387914178562">I mentioned on Twitter</a>, I wouldn't call myself a reverse engineer, more like a 'guy who breaks things sometimes taking them apart, and learns many ways to not break things, sometimes.'</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-12T16:00:29-05:00" title="Tuesday, August 12, 2025 - 16:00" class="datetime">August 12, 2025</time>
-</span>]]></description><pubDate>Tue, 12 Aug 2025 21:00:29 +0000</pubDate></item><item><title>Increasing the VRAM allocation on AMD AI APUs under Linux</title><link>https://www.jeffgeerling.com/blog/2025/increasing-vram-allocation-on-amd-ai-apus-under-linux</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Increasing the VRAM allocation on AMD AI APUs under Linux</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Since I saw some posts calling out the old (now deprecated) way to increase GTT memory allocations for the iGPU on AMD APUs (like the AI Max+ 395 / Strix Halo I am <a href="https://www.jeffgeerling.com/blog/2025/i-clustered-four-framework-mainboards-test-huge-llms">testing in the Framework Mainboard AI Cluster</a>), I thought I'd document how to increase the VRAM allocation on such boards under Linux—in this case, Fedora:</p>
-
-<pre><code># To remove an arg: `--remove-args`
-# Calculation: `([size in GB] * 1024 * 1024) / 4.096`
-sudo grubby --update-kernel=ALL --args='amdttm.pages_limit=27648000'
-sudo grubby --update-kernel=ALL --args='amdttm.page_pool_size=27648000'
-sudo reboot
-</code></pre>
-
-<p>The old way, <code>amdgpu.gttsize</code>, will throw the following warning in the kernel log:</p>
-
-<pre><code>[    4.232151] amdgpu 0000:c1:00.0: amdgpu: [drm] Configuring gttsize via module parameter is deprecated, please use ttm.pages_limit
-</code></pre>
-
-<p>After configuring the kernel parameters and rebooting, verify the AMD GPU driver is seeing the increased memory allocation:</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-07T20:38:22-05:00" title="Thursday, August 7, 2025 - 20:38" class="datetime">August 7, 2025</time>
-</span>]]></description><pubDate>Fri, 8 Aug 2025 01:38:22 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Tue, 12 Aug 2025 21:00:29 +0000</pubDate></item></channel></rss>
