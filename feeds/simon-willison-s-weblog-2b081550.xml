@@ -7,6 +7,7 @@
 
     <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/varnish">varnish</a>, <a href="https://simonwillison.net/tags/copyright">copyright</a></p>]]></description><pubDate>Mon, 15 Sep 2025 21:03:33 +0000</pubDate></item><item><title>GPT‑5-Codex and upgrades to Codex</title><link>https://simonwillison.net/2025/Sep/15/gpt-5-codex/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/introducing-upgrades-to-codex/">GPT‑5-Codex and upgrades to Codex</a></strong></p>
 OpenAI half-released a new model today: GPT‑5-Codex, a fine-tuned GPT-5 variant explicitly designed for their various AI-assisted programming tools.</p>
+<p><em><strong>Update</strong>: OpenAI call it a "version of GPT-5", they don't explicitly describe it as a fine-tuned model. Calling it a fine-tune was my mistake here. </em></p>
 <p>I say half-released because it's not yet available via their API, but they "plan to make GPT‑5-Codex available in the API soon".</p>
 <p>I wrote about <a href="https://simonwillison.net/2025/May/16/openai-codex/">the confusing array of OpenAI products that share the name Codex</a> a few months ago. This new model adds yet another, though at least "GPT-5-Codex" (using two hyphens) is unambiguous enough not to add to much more to the confusion.</p>
 <p>At this point it's best to think of <strong>Codex</strong> as OpenAI's brand name for their coding family of models and tools.</p>
