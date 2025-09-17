@@ -24,9 +24,13 @@ OpenAI half-released a new model today: GPT‑5-Codex, a fine-tuned GPT-5 varian
 <li>"GPT‑5-Codex adapts how much time it spends thinking more dynamically based on the complexity of the task." Simple tasks (like "list files in this directory") should run faster. Large, complex tasks should use run for much longer - OpenAI report Codex crunching for seven hours in some cases!</li>
 <li>Increased score on their proprietary "code refactoring evaluation" from 33.9% for GPT-5 (high) to 51.3% for GPT-5-Codex (high). It's hard to evaluate this without seeing the details of the eval but it does at least illustrate that refactoring performance is something they've focused on here.</li>
 <li>"GPT‑5-Codex also shows significant improvements in human preference evaluations when creating mobile websites" - in the past I've habitually prompted models to "make it mobile-friendly", maybe I don't need to do that any more.</li>
-<li>"We find that comments by GPT‑5-Codex are less likely to be incorrect or unimportant" - less unimportant comments in code is definitely an improvement!</li>
+<li>"We find that comments by GPT‑5-Codex are less likely to be incorrect or unimportant" - I originally misinterpreted this as referring to comments in code but it's actually about comments left on code reviews.</li>
 </ul>
 <p>The <a href="https://github.com/openai/codex/blob/rust-v0.36.0/codex-rs/core/gpt_5_codex_prompt.md">system prompt for GPT-5-Codex</a> in Codex CLI is worth a read. It's notably shorter than the <a href="https://github.com/openai/codex/blob/rust-v0.36.0/codex-rs/core/prompt.md">system prompt for other models</a> - <a href="https://gist.github.com/simonw/042f1428ce22ad55ac5bc9010263a4f4/revisions">here's a diff</a>.</p>
+<p>Here's the section of the updated system prompt that talks about comments:</p>
+<blockquote>
+<p><code>Add succinct code comments that explain what is going on if code is not self-explanatory. You should not add comments like "Assigns the value to the variable", but a brief comment might be useful ahead of a complex code block that the user would otherwise have to spend time parsing out. Usage of these comments should be rare.</code></p>
+</blockquote>
 <p>Theo Browne <a href="https://www.youtube.com/watch?v=j9wvCrON3XA">has a video review</a> of the model and accompanying features. He was generally impressed but noted that it was surprisingly bad at using the Codex CLI search tool to navigate code. Hopefully that's something that can fix with a system prompt update.</p>
 <p>Finally, can it drew a pelican riding a bicycle? Without API access I instead got Codex Cloud to <a href="https://chatgpt.com/s/cd_68c85f433cc881918acfd8a4aeda1cc4">have a go</a> by prompting:</p>
 <blockquote>
