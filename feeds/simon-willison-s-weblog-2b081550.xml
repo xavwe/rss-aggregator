@@ -35,7 +35,7 @@
 <p>And in March OpenAI <a href="https://openai.com/index/new-tools-for-building-agents/">launched an Agents SDK</a> with libraries in Python (<a href="https://pypi.org/project/openai-agents/">openai-agents</a>) and JavaScript (<a href="https://www.npmjs.com/package/@openai/agents">@openai/agents</a>). This one is a much closer fit to the "tools in a loop" idea.</p>
 <p>It may be too late for OpenAI to unify their definitions at this point. I'm going to ignore their various other definitions and stick with tools in a loop!</p>
 <h4 id="there-s-already-a-meme-for-this">There's already a meme for this</h4>
-<p>Josh Bickett <a href="">tweeted this</a> in November 2023:</p>
+<p>Josh Bickett <a href="https://twitter.com/josh_bickett/status/1725556267014595032">tweeted this</a> in November 2023:</p>
 <blockquote>
 <p>What is an AI agent?</p>
 <p><img src="https://static.simonwillison.net/static/2025/agents-meme-card.jpg" alt="Meme showing a normal distribution curve with IQ scores from 55 to 145 on x-axis, featuring cartoon characters at different points: a calm face at low end labeled &quot;An LLM in a loop with an objective&quot;, a stressed face with glasses and tears in the middle peak with a complex flowchart showing &quot;AGENT Performance Standard&quot; with boxes for Critic, feedback, Learning element, Problem Generator, Sensors, Performance element, Experiments, Effectors, Percepts, Environment, and actions connected by arrows.... and a hooded figure at high end also labeled &quot;An LLM in a loop with an objective&quot;." style="max-width: 100%;" /></p>
