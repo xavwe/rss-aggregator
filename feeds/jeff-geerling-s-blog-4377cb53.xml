@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Digging deeper into YouTube&apos;s view count discrepancy</title><link>https://www.jeffgeerling.com/blog/2025/digging-deeper-youtubes-view-count-discrepancy</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Digging deeper into YouTube's view count discrepancy</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Save video still frames from QuickTime Player with a shortcut</title><link>https://www.jeffgeerling.com/blog/2025/save-video-still-frames-quicktime-player-shortcut</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Save video still frames from QuickTime Player with a shortcut</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Almost 15 years ago, I wrote <a href="https://www.jeffgeerling.com/blogs/jeff-geerling/grab-single-frame-video">Grab a Single Frame from a Video in QuickTime X</a>. And for many years since, I slightly modified that workflow. Instead of using Preview, I would use <a href="https://github.com/jcsalterego/pngpaste"><code>pngpaste</code></a>, and paste the copied frame from QuickTime player into a file.</p>
+
+<p>For example:</p>
+
+<ol>
+<li>Open a video in QuickTime and scrub to the frame you would like to save as an image.</li>
+<li>Press Command-C</li>
+<li>Switch to Terminal</li>
+<li>Run <code>pngpaste image-name-here.jpg</code></li>
+<li>Profit!</li>
+</ol>
+
+<p>However, there are two problems with that workflow:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-17T23:23:20-05:00" title="Wednesday, September 17, 2025 - 23:23" class="datetime">September 17, 2025</time>
+</span>]]></description><pubDate>Thu, 18 Sep 2025 04:23:20 +0000</pubDate></item><item><title>Digging deeper into YouTube&apos;s view count discrepancy</title><link>https://www.jeffgeerling.com/blog/2025/digging-deeper-youtubes-view-count-discrepancy</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Digging deeper into YouTube's view count discrepancy</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>For a great many tech YouTube channels, <a href="https://www.jeffgeerling.com/blog/2025/youtube-views-are-down-dont-panic">views have been markedly down</a> from desktop ("computer") users since August 10th (or so).</p>
 
@@ -89,15 +106,4 @@
 <p>Switching tracks, I found Jellyfin is also packed up as a .app for macOS, and you can install it by <a href="https://jellyfin.org/downloads/macos/">downloading the .dmg and copying the .app to your Mac</a>, or you can do it like I did, with Homebrew:</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-19T20:06:23-05:00" title="Tuesday, August 19, 2025 - 20:06" class="datetime">August 19, 2025</time>
-</span>]]></description><pubDate>Wed, 20 Aug 2025 01:06:23 +0000</pubDate></item><item><title>Reverse Engineering the Raspberry Pi Zero 2W</title><link>https://www.jeffgeerling.com/blog/2025/reverse-engineering-raspberry-pi-zero-2w</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Reverse Engineering the Raspberry Pi Zero 2W</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/jonathan-clark-pico-zero-2w-full.jpeg" width="700" height="467" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-1cf49e23-2f1e-4fe4-8cff-f08ba9fe2c55" data-insert-attach="{&quot;id&quot;:&quot;1cf49e23-2f1e-4fe4-8cff-f08ba9fe2c55&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi not Pico by Jonathan Clark"></p>
-
-<p>This is not a Raspberry Pi Pico. Despite it's tiny size and castellated edges, this is <em>actually</em> a full Raspberry Pi Zero 2W.</p>
-
-<p>Well, sorta. At Open Sauce, probably the most interesting encounter I had was with <a href="http://jonathanclark.dev/">Jonathan Clark</a>.</p>
-
-<p>You see, I was on a Reverse Engineering panel at Open Sauce, but <a href="https://x.com/geerlingguy/status/1945207387914178562">I mentioned on Twitter</a>, I wouldn't call myself a reverse engineer, more like a 'guy who breaks things sometimes taking them apart, and learns many ways to not break things, sometimes.'</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-12T16:00:29-05:00" title="Tuesday, August 12, 2025 - 16:00" class="datetime">August 12, 2025</time>
-</span>]]></description><pubDate>Tue, 12 Aug 2025 21:00:29 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Wed, 20 Aug 2025 01:06:23 +0000</pubDate></item></channel></rss>
