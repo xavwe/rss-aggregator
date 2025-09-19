@@ -26016,7 +26016,7 @@ I (try to) prevent them from happening twice.</p>
 release processes - stuff that basically amounts to tagging a commit, pushing
 it, and calling it a day. But even this gets tedious, and I&rsquo;d often make a
 mistake when picking the correct version number. So, I wrote a small script:
-<a href="https://git.sr.ht/~sircmpwn/dotfiles/tree/master/bin/semver">semver</a>. <code>semver patch</code> bumps the patch version, <code>semver minor</code> bumps the minor version, and
+<a href="https://paste.sr.ht/~sircmpwn/34bd575b4c37ae6102d6ede2a4ba17b2e1bb9cf8">semver</a>. <code>semver patch</code> bumps the patch version, <code>semver minor</code> bumps the minor version, and
 <code>semver major</code> bumps the major version, based on semantic versioning. I got into
 the habit of using this script instead of making the tags manually. The next
 fuckup soon presented itself: when preparing the
@@ -26062,7 +26062,7 @@ a release without pulling first, and when I pushed, git happily rejected my
 branch and accepted the tag - shipping an outdated commit as the release. Update
 the script to <code>git pull</code> first&hellip;</p>
 <p>I am doomed to creatively outsmart my tools in releases. If you&rsquo;d like to save
-yourself from some of the mistakes I&rsquo;ve made, you can <a href="https://git.sr.ht/~sircmpwn/dotfiles/tree/master/bin/semver">find my semver script
+yourself from some of the mistakes I&rsquo;ve made, you can <a href="https://paste.sr.ht/~sircmpwn/34bd575b4c37ae6102d6ede2a4ba17b2e1bb9cf8">find my semver script
 here</a>.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
