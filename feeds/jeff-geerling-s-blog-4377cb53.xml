@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>I regret building this $3000 Pi AI cluster</title><link>https://www.jeffgeerling.com/blog/2025/i-regret-building-3000-pi-ai-cluster</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">I regret building this $3000 Pi AI cluster</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>You can finally manage Macs with FileVault remotely in Tahoe</title><link>https://www.jeffgeerling.com/blog/2025/you-can-finally-manage-macs-filevault-remotely-tahoe</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">You can finally manage Macs with FileVault remotely in Tahoe</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>For years, I've had a couple Macs running at home and at my studio, which I use to remotely manage my video projects or some coding project.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/mac-mini-m4-power-button-workbench.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-0697a89b-d2f6-4c1b-9d59-9ccfdf8f37b4" data-insert-attach="{&quot;id&quot;:&quot;0697a89b-d2f6-4c1b-9d59-9ccfdf8f37b4&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="M4 Mac mini workbench powering on"></p>
+
+<p>It's nice to have a workstation set up that you can access anywhere via Screen Sharing to check on progress, jot down a note, etc.—and not be tied to a web app or some cloud service.</p>
+
+<p>I run a Wireguard VPN at home and at my studio, so I can remotely log into any of my infrastructure through the VPN—Macs included.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-19T13:44:01-05:00" title="Friday, September 19, 2025 - 13:44" class="datetime">September 19, 2025</time>
+</span>]]></description><pubDate>Fri, 19 Sep 2025 18:44:01 +0000</pubDate></item><item><title>I regret building this $3000 Pi AI cluster</title><link>https://www.jeffgeerling.com/blog/2025/i-regret-building-3000-pi-ai-cluster</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">I regret building this $3000 Pi AI cluster</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/raspberry-pi-compute-blade-10-node-ai-server.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-1c81ed77-5e91-4b90-aed5-0b13581d214a" data-insert-attach="{&quot;id&quot;:&quot;1c81ed77-5e91-4b90-aed5-0b13581d214a&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi AI 10 node compute blade server"></p>
 
@@ -93,15 +104,4 @@
 <p>Even for storage.</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-22T14:43:56-05:00" title="Friday, August 22, 2025 - 14:43" class="datetime">August 22, 2025</time>
-</span>]]></description><pubDate>Fri, 22 Aug 2025 19:43:56 +0000</pubDate></item><item><title>Build log: Macintosh Classic</title><link>https://www.jeffgeerling.com/blog/2025/build-log-macintosh-classic</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Build log: Macintosh Classic</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Continuing the <a href="https://www.jeffgeerling.com/tags/retro">retro computer series</a>, I've recently completed the <em>first</em> part of a restoration of my Aunt's old Macintosh Classic.</p>
-
-<p><img src="https://www.jeffgeerling.com/sites/default/files/images/macintosh-classic-on-desk.jpeg" width="700" height="467" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-72ec0edd-bedd-4eb3-ba56-75e7509ea20a" data-insert-attach="{&quot;id&quot;:&quot;72ec0edd-bedd-4eb3-ba56-75e7509ea20a&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Macintosh Classic on desk"></p>
-
-<p>This Classic was handed to me alongside my Uncle Mark's Apple II, which I'll probably cover later (we've played a game of whack-a-mole with issues on that machine! Well worth it but I haven't hit a point where enough things are working to cover it well, heh).</p>
-
-<p>The Classic is a strange Mac—it was <a href="https://everymac.com/systems/apple/mac_classic/specs/mac_classic.html">introduced in 1990</a> as a budget version of the 1986 Macintosh Plus, with a 68000 CPU in an era when the 68030 was the new hotness.</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-08-22T09:01:16-05:00" title="Friday, August 22, 2025 - 09:01" class="datetime">August 22, 2025</time>
-</span>]]></description><pubDate>Fri, 22 Aug 2025 14:01:16 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Fri, 22 Aug 2025 19:43:56 +0000</pubDate></item></channel></rss>
