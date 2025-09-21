@@ -1,4 +1,46 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>httpjail</title><link>https://simonwillison.net/2025/Sep/19/httpjail/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/coder/httpjail">httpjail</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>llm-openrouter 0.5</title><link>https://simonwillison.net/2025/Sep/21/llm-openrouter/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/llm-openrouter/releases/tag/0.5">llm-openrouter 0.5</a></strong></p>
+New release of my <a href="https://llm.datasette.io/">LLM</a> plugin for accessing models made available via <a href="https://openrouter.ai/">OpenRouter</a>. The release notes in full:</p>
+<blockquote>
+<ul>
+<li>Support for <a href="https://llm.datasette.io/en/stable/tools.html">tool calling</a>. Thanks, <a href="https://github.com/jamessanford">James Sanford</a>. <a href="https://github.com/simonw/llm-openrouter/pull/43">#43</a></li>
+<li>Support for reasoning options, for example <code>llm -m openrouter/openai/gpt-5 'prove dogs exist' -o reasoning_effort medium</code>. <a href="https://github.com/simonw/llm-openrouter/issues/45">#45</a></li>
+</ul>
+</blockquote>
+<p>Tool calling is a really big deal, as it means you can now use the plugin to try out tools (and <a href="https://simonwillison.net/2025/Sep/18/agents/">build agents, if you like</a>) against any of the 179 tool-enabled models on that platform:</p>
+<pre><code>llm install llm-openrouter
+llm keys set openrouter
+# Paste key here
+llm models --tools | grep 'OpenRouter:' | wc -l
+# Outputs 179
+</code></pre>
+<p>Quite a few of the models hosted on OpenRouter can be accessed for free. Here's a tool-usage example using the <a href="https://github.com/simonw/llm-tools-datasette">llm-tools-datasette plugin</a> against the new <a href="https://simonwillison.net/2025/Sep/20/grok-4-fast/">Grok 4 Fast model</a>:</p>
+<pre><code>llm install llm-tools-datasette
+llm -m openrouter/x-ai/grok-4-fast:free -T 'Datasette("https://datasette.io/content")' 'Count available plugins'
+</code></pre>
+<p>Outputs:</p>
+<blockquote>
+<p>There are 154 available plugins.</p>
+</blockquote>
+<p><a href="https://gist.github.com/simonw/43c56203887dd0d07351443a2ba18f29">The output</a> of <code>llm logs -cu</code> shows the tool calls and SQL queries it executed to get that result.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a></p>]]></description><pubDate>Sun, 21 Sep 2025 00:24:05 +0000</pubDate></item><item><title>Grok 4 Fast</title><link>https://simonwillison.net/2025/Sep/20/grok-4-fast/#atom-everything</link><description><![CDATA[<p><strong><a href="https://x.ai/news/grok-4-fast">Grok 4 Fast</a></strong></p>
+New hosted vision-enabled reasoning model from xAI that's designed to be fast and extremely competitive on price. It has a 2 million token context window and "was trained end-to-end with tool-use reinforcement learning".</p>
+<p>It's priced at $0.20/million input tokens and $0.50/million output tokens - 15x less than Grok 4 (which is $3/million input and $15/million output). That puts it cheaper than GPT-5 mini and Gemini 2.5 Flash on <a href="https://www.llm-prices.com/">llm-prices.com</a>.</p>
+<p>The same model weights handle reasoning and non-reasoning based on a parameter passed to the model.</p>
+<p>I've been trying it out via my updated <a href="https://github.com/simonw/llm-openrouter">llm-openrouter</a> plugin, since Grok 4 Fast is available <a href="https://openrouter.ai/x-ai/grok-4-fast">for free on OpenRouter</a> for a limited period.</p>
+<p>The <a href="https://gist.github.com/simonw/6a52e6585cb3c45e64ae23b9c5ebafe9">non-reasoning model</a>:</p>
+<pre><code>llm -m openrouter/x-ai/grok-4-fast:free "Generate an SVG of a pelican riding a bicycle"
+</code></pre>
+<p><img alt="Described by Grok 4 Fast: A simple digital illustration of a yellow duck with outstretched wings riding a black bicycle on green grass under a blue sky, no text." src="https://static.simonwillison.net/static/2025/grok-4-fast.png" /></p>
+<p>And <a href="https://gist.github.com/simonw/539719a1495253bbd27f3107931e6dd3">the reasoning model</a>:</p>
+<pre><code>llm -m openrouter/x-ai/grok-4-fast:free "Generate an SVG of a pelican riding a bicycle" -o reasoning_enabled true
+</code></pre>
+<p><img alt="Described by Grok 4 Fast: A simple line drawing of a white pelican with a yellow beak holding a yellow object, riding a black bicycle on green grass under a blue sky with white clouds." src="https://static.simonwillison.net/static/2025/grok-4-fast-reasoning.png" /></p>
+<p>In related news, the New York Times had a story a couple of days ago about Elon's recent focus on xAI: <a href="https://www.nytimes.com/2025/09/18/technology/elon-musk-artificial-intelligence-xai.html">Since Leaving Washington, Elon Musk Has Been All In on His A.I. Company</a>.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/grok">grok</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a></p>]]></description><pubDate>Sat, 20 Sep 2025 23:59:33 +0000</pubDate></item><item><title>httpjail</title><link>https://simonwillison.net/2025/Sep/19/httpjail/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/coder/httpjail">httpjail</a></strong></p>
 Here's a promising new (experimental) project in the sandboxing space from Ammar Bandukwala at <a href="https://coder.com/">Coder</a>. <code>httpjail</code> provides a Rust CLI tool for running an individual process against a custom configured HTTP proxy.</p>
 <p>The initial goal is to help run coding agents like Claude Code and Codex CLI with extra rules governing how they interact with outside services. From Ammar's blog post that introduces the new tool, <a href="https://ammar.io/blog/httpjail">Fine-grained HTTP filtering for Claude Code</a>:</p>
 <blockquote>
@@ -849,33 +891,4 @@ git clone https://huggingface.co/onnx-community/Llama-3.2-1B-Instruct-q4f16
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45168953#45173297">My Hacker News comment</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llama">llama</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/transformers-js">transformers-js</a>, <a href="https://simonwillison.net/tags/webgpu">webgpu</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Mon, 8 Sep 2025 20:53:52 +0000</pubDate></item><item><title>Quoting James Luan</title><link>https://simonwillison.net/2025/Sep/8/james-luan/#atom-everything</link><description><![CDATA[<blockquote cite="https://zilliz.com/blog/will-amazon-s3-vectors-kill-vector-databases-or-save-them"><p>I recently spoke with the CTO of a popular AI note-taking app who told me something surprising: they spend <strong><em>twice</em></strong> <em>as much</em> on vector search as they do on OpenAI API calls. Think about that for a second. Running the retrieval layer costs them more than paying for the LLM itself.</p></blockquote>
-<p class="cite">&mdash; <a href="https://zilliz.com/blog/will-amazon-s3-vectors-kill-vector-databases-or-save-them">James Luan</a>, Engineering architect of Milvus</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/vector-search">vector-search</a>, <a href="https://simonwillison.net/tags/embeddings">embeddings</a></p>]]></description><pubDate>Mon, 8 Sep 2025 16:24:24 +0000</pubDate></item><item><title>Is the LLM response wrong, or have you just failed to iterate it?</title><link>https://simonwillison.net/2025/Sep/7/is-the-llm-response-wrong-or-have-you-just-failed-to-iterate-it/#atom-everything</link><description><![CDATA[<p><strong><a href="https://mikecaulfield.substack.com/p/is-the-llm-response-wrong-or-have">Is the LLM response wrong, or have you just failed to iterate it?</a></strong></p>
-More from Mike Caulfield (see also <a href="https://simonwillison.net/2025/Sep/7/the-sift-method/">the SIFT method</a>). He starts with a <em>fantastic</em> example of Google's <a href="https://simonwillison.net/2025/Sep/7/ai-mode/">AI mode</a> usually correctly handling a common piece of misinformation but occasionally falling for it (the curse of non-deterministic systems), then shows an example if what he calls a "sorting prompt" as a follow-up:</p>
-<blockquote>
-<p>What is the evidence for and against this being a real photo of Shirley Slade?</p>
-</blockquote>
-<p>The response starts with a non-committal "there is compelling evidence for and against...", then by the end has firmly convinced itself that the photo is indeed a fake. It reads like a fact-checking variant of "think step by step".</p>
-<p>Mike neatly describes a problem I've also observed recently where "hallucination" is frequently mis-applied as meaning any time a model makes a mistake:</p>
-<blockquote>
-<p>The term hallucination has become nearly worthless in the LLM discourse. It initially described a very weird, mostly non-humanlike behavior where LLMs would make up things out of whole cloth that did not seem to exist as claims referenced any known source material or claims inferable from any known source material. Hallucinations as stuff made up out of nothing. Subsequently people began calling any error or imperfect summary a hallucination, rendering the term worthless.</p>
-</blockquote>
-<p>In this example is the initial incorrect answers were not hallucinations: they correctly summarized online content that contained misinformation. The trick then is to encourage the model to look further, using "sorting prompts" like these:</p>
-<blockquote>
-<ul>
-<li>Facts and misconceptions and hype about what I posted</li>
-<li>What is the evidence for and against the claim I posted</li>
-<li>Look at the most recent information on this issue, summarize how it shifts the analysis (if at all), and provide link to the latest info</li>
-</ul>
-</blockquote>
-<p>I appreciated this closing footnote:</p>
-<blockquote>
-<p>Should platforms have more features to nudge users to this sort of iteration? Yes. They should. Getting people to iterate investigation rather than argue with LLMs would be a good first step out of this mess that the chatbot model has created.</p>
-</blockquote>
-
-    <p><small></small>Via <a href="https://bsky.app/profile/mikecaulfield.bsky.social/post/3lya2nv7xi226">@mikecaulfield.bsky.social</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a>, <a href="https://simonwillison.net/tags/hallucinations">hallucinations</a>, <a href="https://simonwillison.net/tags/digital-literacy">digital-literacy</a></p>]]></description><pubDate>Sun, 7 Sep 2025 21:45:04 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llama">llama</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/transformers-js">transformers-js</a>, <a href="https://simonwillison.net/tags/webgpu">webgpu</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Mon, 8 Sep 2025 20:53:52 +0000</pubDate></item></channel></rss>
