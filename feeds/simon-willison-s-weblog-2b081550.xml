@@ -29,10 +29,11 @@ New hosted vision-enabled reasoning model from xAI that's designed to be fast an
 <p>It's priced at $0.20/million input tokens and $0.50/million output tokens - 15x less than Grok 4 (which is $3/million input and $15/million output). That puts it cheaper than GPT-5 mini and Gemini 2.5 Flash on <a href="https://www.llm-prices.com/">llm-prices.com</a>.</p>
 <p>The same model weights handle reasoning and non-reasoning based on a parameter passed to the model.</p>
 <p>I've been trying it out via my updated <a href="https://github.com/simonw/llm-openrouter">llm-openrouter</a> plugin, since Grok 4 Fast is available <a href="https://openrouter.ai/x-ai/grok-4-fast">for free on OpenRouter</a> for a limited period.</p>
-<p>The <a href="https://gist.github.com/simonw/6a52e6585cb3c45e64ae23b9c5ebafe9">non-reasoning model</a>:</p>
-<pre><code>llm -m openrouter/x-ai/grok-4-fast:free "Generate an SVG of a pelican riding a bicycle"
+<p>Here's output from the <a href="https://gist.github.com/simonw/7f9a5e5c780b1d5bfe98b4f4ad540551">non-reasoning model</a>. This actually output an invalid SVG - I had to make <a href="https://gist.github.com/simonw/7f9a5e5c780b1d5bfe98b4f4ad540551?permalink_comment_id=5768049#gistcomment-5768049">a tiny manual tweak</a> to the XML to get it to render.</p>
+<pre><code>llm -m openrouter/x-ai/grok-4-fast:free "Generate an SVG of a pelican riding a bicycle" -o reasoning_enabled false
 </code></pre>
-<p><img alt="Described by Grok 4 Fast: A simple digital illustration of a yellow duck with outstretched wings riding a black bicycle on green grass under a blue sky, no text." src="https://static.simonwillison.net/static/2025/grok-4-fast.png" /></p>
+<p><img alt="Described by Grok 4 Fast: Simple line drawing of a white bird with a long yellow beak riding a bicycle, pedaling with its orange legs." src="https://static.simonwillison.net/static/2025/grok-4-no-reasoning.png" /></p>
+<p>(I initially ran this without that <code>-o reasoning_enabled false</code> flag, but then I saw that <a href="https://x.com/OpenRouterAI/status/1969427723098435738">OpenRouter enable reasoning by default</a> for that model. Here's my <a href="https://gist.github.com/simonw/6a52e6585cb3c45e64ae23b9c5ebafe9">previous invalid result</a>.)</p>
 <p>And <a href="https://gist.github.com/simonw/539719a1495253bbd27f3107931e6dd3">the reasoning model</a>:</p>
 <pre><code>llm -m openrouter/x-ai/grok-4-fast:free "Generate an SVG of a pelican riding a bicycle" -o reasoning_enabled true
 </code></pre>
