@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Four new releases from Qwen</title><link>https://simonwillison.net/2025/Sep/22/qwen/#atom-everything</link><description><![CDATA[<p>It's been an <em>extremely</em> busy day for team Qwen. Within the last 24 hours (all links to Twitter, which seems to be their preferred platform for these announcements):</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Why AI systems might never be secure</title><link>https://simonwillison.net/2025/Sep/23/why-ai-systems-might-never-be-secure/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.economist.com/science-and-technology/2025/09/22/why-ai-systems-might-never-be-secure">Why AI systems might never be secure</a></strong></p>
+The Economist have a new piece out about LLM security, with this headline and subtitle:</p>
+<blockquote>
+<p><strong>Why AI systems might never be secure</strong></p>
+<p>A “lethal trifecta” of conditions opens them to abuse</p>
+</blockquote>
+<p>I talked with their AI Writer <a href="https://mediadirectory.economist.com/people/alex-hern/">Alex Hern</a> for this piece.</p>
+<blockquote>
+<p>The gullibility of LLMs had been spotted before ChatGPT was even made public. In the summer of 2022, Mr Willison and others independently coined the term “prompt injection” to describe the behaviour, and real-world examples soon followed. In January 2024, for example, DPD, a logistics firm, chose to turn off its AI customer-service bot after customers realised it would follow their commands to reply with foul language.</p>
+<p>That abuse was annoying rather than costly. But Mr Willison reckons it is only a matter of time before something expensive happens. As he puts it, “we’ve not yet had millions of dollars stolen because of this”. It may not be until such a heist occurs, he worries, that people start taking the risk seriously. The industry does not, however, seem to have got the message. Rather than locking down their systems in response to such examples, it is doing the opposite, by rolling out powerful new tools with the lethal trifecta built in from the start.</p>
+</blockquote>
+<p>This is the clearest explanation yet I've seen of these problems in a mainstream publication. Fingers crossed relevant people with decision-making authority finally start taking this seriously!
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a>, <a href="https://simonwillison.net/tags/press-quotes">press-quotes</a></p>]]></description><pubDate>Tue, 23 Sep 2025 00:37:49 +0000</pubDate></item><item><title>Quoting Kate Niederhoffer, Gabriella Rosen Kellerman, Angela Lee, Alex Liebscher, Kristina Rapuano and Jeffrey T. Hancock</title><link>https://simonwillison.net/2025/Sep/22/workslop/#atom-everything</link><description><![CDATA[<blockquote cite="https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity"><p>We define workslop as <em>AI generated work content that masquerades as good work, but lacks the substance to meaningfully advance a given task</em>.</p>
+<p>Here’s how this happens. As AI tools become more accessible, workers are increasingly able to quickly produce polished output: well-formatted slides, long, structured reports, seemingly articulate summaries of academic papers by non-experts, and usable code. But while some employees are using this ability to polish good work, others use it to create content that is actually unhelpful, incomplete, or missing crucial context about the project at hand. The insidious effect of workslop is that it shifts the burden of the work downstream, requiring the receiver to interpret, correct, or redo the work. In other words, it transfers the effort from creator to receiver.</p></blockquote>
+<p class="cite">&mdash; <a href="https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity">Kate Niederhoffer, Gabriella Rosen Kellerman, Angela Lee, Alex Liebscher, Kristina Rapuano and Jeffrey T. Hancock</a>, Harvard Business Review</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/productivity">productivity</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 22 Sep 2025 23:21:49 +0000</pubDate></item><item><title>Four new releases from Qwen</title><link>https://simonwillison.net/2025/Sep/22/qwen/#atom-everything</link><description><![CDATA[<p>It's been an <em>extremely</em> busy day for team Qwen. Within the last 24 hours (all links to Twitter, which seems to be their preferred platform for these announcements):</p>
 <ul>
 <li><a href="https://twitter.com/Alibaba_Qwen/status/1970052154330353857">Qwen3-Next-80B-A3B-Instruct-FP8 and Qwen3-Next-80B-A3B-Thinking-FP8</a> - official FP8 quantized versions of their <a href="https://huggingface.co/collections/Qwen/qwen3-next-68c25fd6838e585db8eeea9d">Qwen3-Next</a> models. On Hugging Face <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct/tree/main">Qwen3-Next-80B-A3B-Instruct</a> is 163GB and <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct-FP8/tree/main">Qwen3-Next-80B-A3B-Instruct-FP8</a> is 82.1GB. I wrote <a href="https://simonwillison.net/2025/Sep/12/qwen3-next/">about Qwen3-Next on Friday 12th September</a>.</li>
 <li><a href="https://twitter.com/Alibaba_Qwen/status/1970163551676592430">Qwen3-TTS-Flash</a> provides "multi-timbre, multi-lingual, and multi-dialect speech synthesis" according to <a href="https://qwen.ai/blog?id=b4264e11fb80b5e37350790121baf0a0f10daf82&amp;from=research.latest-advancements-list">their blog announcement</a>. It's not available as open weights, you have to access it via their API instead. Here's <a href="https://huggingface.co/spaces/Qwen/Qwen3-TTS-Demo">a free live demo</a>.</li>
@@ -676,64 +694,4 @@ http_proxy=http://21.0.0.167:15001
 <p>Anthropic already used the bad name "Analysis tool" for a different implementation, and now have the somehow-worse name "Upgraded file creation and analysis". Their launch announcement avoids even talking about code execution, focusing exclusively on the tool's ability to generate spreadsheets and PDFs!</p>
 <p>I wonder if any of the AI labs will crack the code on how to name and explain this thing? I feel like it's still a very under-appreciated feature of LLMs, despite having been around for more than two years now.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/node">node</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/visualization">visualization</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Tue, 9 Sep 2025 18:11:32 +0000</pubDate></item><item><title>The 2025 PSF Board Election is Open!</title><link>https://simonwillison.net/2025/Sep/9/psf-board-election/#atom-everything</link><description><![CDATA[<p><strong><a href="https://pyfound.blogspot.com/2025/09/the-2025-psf-board-election-is-open.html">The 2025 PSF Board Election is Open!</a></strong></p>
-The Python Software Foundation's annual board member election is taking place right now, with votes (from previously affirmed voting members) accepted from September 2nd, 2:00 pm UTC through Tuesday, September 16th, 2:00 pm UTC.</p>
-<p>I've served on the board since 2022 and I'm running for a second term. Here's the opening section of my <a href="https://www.python.org/nominations/elections/2025-python-software-foundation-board/nominees/">nomination statement</a>.</p>
-<blockquote>
-<p>Hi, I'm Simon Willison. I've been a board member of the Python Software Foundation since 2022 and I'm running for re-election in 2025.</p>
-<p>Last year I wrote a detailed article about <a href="https://simonwillison.net/2024/Sep/18/board-of-the-python-software-foundation/">Things I’ve learned serving on the board of the Python Software Foundation</a>. I hope to continue learning and sharing what I've learned for a second three-year term.</p>
-<p>One of my goals for a second term is to help deepen the relationship between the AI research world and the Python Software Foundation. There is an enormous amount of value being created in the AI space using Python and I would like to see more of that value flow back into the rest of the Python ecosystem.</p>
-<p>I see the Python Package Index (PyPI) as one of the most impactful projects of the Python Software Foundation and plan to continue to advocate for further investment in the PyPI team and infrastructure.</p>
-<p>As a California resident I'm excited to see PyCon return to the West Coast, and I'm looking forward to getting involved in helping make PyCon 2026 and 2027 in Long Beach, California as successful as possible.</p>
-</blockquote>
-<p>I'm delighted to have been endorsed this year by <a href="https://inventwithpython.com/blog/psf-candidate-endorsements-2025.html">Al Sweigart</a>, <a href="https://fosstodon.org/@lorenipsum/115170249309856873">Loren Crary</a> and <a href="https://social.coop/@chrisjrn/115135449245231588">Christopher Neugebauer</a>. If you are a voting member I hope I have earned your vote this year.</p>
-<p>You can watch video introductions from several of the other nominees <a href="https://www.youtube.com/watch?v=MM9lLXH-GjA">in this six minute YouTube video</a> and <a href="https://www.youtube.com/playlist?list=PLFIcqSiijithlBSVBvZzrlGwhGfuT8uzp">this playlist</a>.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/psf">psf</a></p>]]></description><pubDate>Tue, 9 Sep 2025 10:13:33 +0000</pubDate></item><item><title>Geoffrey Huntley is cursed</title><link>https://simonwillison.net/2025/Sep/9/cursed/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ghuntley.com/cursed/">I ran Claude in a loop for three months, and it created a genz programming language called cursed</a></strong></p>
-Geoffrey Huntley vibe-coded an entirely new programming language using Claude:</p>
-<blockquote>
-<p>The programming language is called "cursed". It's cursed in its lexical structure, it's cursed in how it was built, it's cursed that this is possible, it's cursed in how cheap this was, and it's cursed through how many times I've sworn at Claude.</p>
-</blockquote>
-<p>Geoffrey's initial prompt:</p>
-<blockquote>
-<p><code>Hey, can you make me a programming language like Golang but all the lexical keywords are swapped so they're Gen Z slang?</code></p>
-</blockquote>
-<p>Then he pushed it to keep on iterating over a three month period.</p>
-<p>Here's Hello World:</p>
-<pre><code>vibe main
-yeet "vibez"
-
-slay main() {
-    vibez.spill("Hello, World!")
-}
-</code></pre>
-<p>And here's <a href="https://github.com/ghuntley/cursed/blob/ecda33d496e1562e0e02efb25b6936ad94e79b72/test_suite/leetcode_comprehensive_suite/binary_search/704_binary_search_backup.%F0%9F%92%80">binary search</a>, part of <a href="https://github.com/ghuntley/cursed/tree/zig/test_suite/leetcode_comprehensive_suite">17+ LeetCode problems</a> that run as part of the test suite:</p>
-<pre><code>slay binary_search(nums normie[], target normie) normie {
-    sus left normie = 0
-    sus right normie = len(nums) - 1    
-    bestie (left &lt;= right) {
-        sus mid normie = left + (right - left) / 2
-        ready (nums[mid] == target) {
-            damn mid
-        }
-        ready (nums[mid] &lt; target) {
-            left = mid + 1
-        } otherwise {
-            right = mid - 1
-        }
-    }
-    damn -1
-}
-</code></pre>
-<p>This is a <em>substantial</em> project. The repository currently has <a href="https://github.com/ghuntley/cursed/commits/zig/">1,198 commits</a>. It has both an interpreter mode and a compiler mode, and can compile programs to native binaries (via LLVM) for macOS, Linux and Windows.</p>
-<p>It looks like it was mostly built using Claude running via <a href="https://ampcode.com/">Sourcegraph's Amp</a>, which produces <a href="https://github.com/ghuntley/cursed/commit/ec5be8a4c4f6e82f6b93774a9b3b3f88308680dd">detailed commit messages</a>. The commits include links to archived Amp sessions but sadly those don't appear to be publicly visible.</p>
-<p>The first version was written in C, then Geoffrey had Claude port it to Rust and then Zig. <a href="https://twitter.com/GeoffreyHuntley/status/1965295152962097550">His cost estimate</a>:</p>
-<blockquote>
-<p>Technically it costs about 5k usd to build your own compiler now because cursed was implemented first in c, then rust, now zig. So yeah, it’s not one compiler it’s three editions of it. For a total of $14k USD.</p>
-</blockquote>
-
-    <p><small></small>Via <a href="https://x.com/GeoffreyHuntley/status/1965258228314636524">@GeoffreyHuntley</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/c">c</a>, <a href="https://simonwillison.net/tags/programming-languages">programming-languages</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/zig">zig</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/geoffrey-huntley">geoffrey-huntley</a></p>]]></description><pubDate>Tue, 9 Sep 2025 09:31:21 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/node">node</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/visualization">visualization</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Tue, 9 Sep 2025 18:11:32 +0000</pubDate></item></channel></rss>
