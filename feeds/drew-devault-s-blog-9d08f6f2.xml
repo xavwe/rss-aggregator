@@ -1,4 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>A better future for JavaScript that won&apos;t happen</title><link>https://drewdevault.com/2025/09/17/2025-09-17-An-impossible-future-for-JS.html</link><description><![CDATA[<p>In the wake of <a href="https://www.ox.security/blog/npm-2-0-hack-40-npm-packages-hit-in-major-supply-chain-attack/">the largest supply-chain attack in history</a>, the JavaScript
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>Cloudflare bankrolls fascists</title><link>https://drewdevault.com/2025/09/24/2025-09-24-Cloudflare-and-fascists.html</link><description><![CDATA[<p>US politics has been pretty fascist lately. The state is filling up
+concentration camps, engaging in mass state violence against people on the basis
+of racialized traits, deporting them to random countries without any respect for
+habeas corpus, exerting state pressure on the free press to censor speech
+critical of the current administration, and Trump is openly floating the idea of
+an unconstitutional third term.</p>
+<p>Fascism is clearly on the rise, and they&rsquo;re winning more and more power.
+None of this is far removed from us in the FOSS community &ndash; there are a number
+of fascists working in FOSS, same as the rest of society. I don&rsquo;t call them
+fascists baselessly &ndash; someone who speaks out in support of and expresses
+solidarity with fascists, or who uses fascists dog-whistles or promotes fascist
+ideology and talking points, or boosts fascist conspiracy theories &ndash; well,
+they&rsquo;re a fascist.</p>
+<p>If one consistently speaks in support of a certain political position and
+against the opponents of that position then it is correct to identify them with
+this political position. Facts, as it were, don&rsquo;t care about feelings, namely
+the feelings that get hurt when someone is called a fascist. Fascists naturally
+do not want to be identified as such and will reject the label, but we shouldn&rsquo;t
+take their word for it. People should be much more afraid of being called out as
+fascist than they are afraid of calling someone a fascist. If someone doesn&rsquo;t
+want to be called a fascist, they shouldn&rsquo;t act like one.</p>
+<p>It&rsquo;s in this disturbing political context that I saw an odd post from the
+Cloudflare blog pop up in my circles this week: <a href="https://blog.cloudflare.com/supporting-the-future-of-the-open-web/">Supporting the future of the
+open web: Cloudflare is sponsoring Ladybird and Omarchy</a>. Based on
+<a href="https://ladybird.org/#faq">Ladybird&rsquo;s sponsorship terms</a> we can assume that these
+projects received on the order of $100,000 USD from Cloudflare. I find this odd
+for a few reasons, in particular because one thing that I know these two
+projects have in common is that they are both run by fascists.</p>
+<p>Even at face value this is an unusual pair of projects to fund. I&rsquo;m all for FOSS
+projects getting funded, of course, and I won&rsquo;t complain about a project&rsquo;s
+funding on the solitary basis that it&rsquo;s an odd choice. I will point out that
+these are odd choices, though, especially Omarchy.</p>
+<p>Ladybird makes some sense, given that it&rsquo;s aligned in principle with
+Cloudflare&rsquo;s stated objective to &ldquo;support the open web&rdquo;, though I remain bearish
+that new web browser engines are even <a href="https://drewdevault.com/2020/03/18/Reckless-limitless-scope.html">possible to make</a>.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> Omarchy is a
+bizarre choice, though &ndash; do we really need another pre-customized Arch Linux
+distribution? And if we do, do we really need a big corporation like Cloudflare
+to bankroll it? Everyone on /r/unixporn manages to make Arch Linux look pretty
+for free.</p>
+<p>Omarchy is a <em>very</em> weird project to fund, come to think of it. Making an Arch
+Linux spin technically requires <em>some</em> work, and work is work, I won&rsquo;t deny it,
+but most of the work done here is from Arch Linux and Hyprland. Why not fund
+those, instead? Well, don&rsquo;t fund Hyprland, since it&rsquo;s also <a href="https://drewdevault.com/2023/09/17/Hyprland-toxicity.html">run by</a> a <a href="https://drewdevault.com/2024/04/09/2024-04-09-FDO-conduct-enforcement.html">bunch
+of fascists</a>, but you get my point.</p>
+<p>Anyway, Omarchy and Ladybird are both run by fascists. Omarchy makes this pretty
+obvious from the outset &ndash; on <a href="https://omarchy.org/">the home page</a> the big YouTube poster image
+<a href="https://redacted.moe/f/ba0d7a6b.png">prominently features</a> SuperGrok, which is
+a pathetically transparent dog-whistle to signal alliance with Elon Musk&rsquo;s
+fascist politics. Omarchy is the pet project of David Heinemeier Hansson, aka
+DHH, who is well known as a rich <a href="https://davidcel.is/articles/rails-needs-new-governance">fascist</a> <a href="https://tekin.co.uk/2025/09/the-ruby-community-has-a-dhh-problem">weirdo</a>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> One need only consult <a href="https://world.hey.com/dhh">his blog</a> to browse his <a href="https://world.hey.com/dhh/as-i-remember-london-e7d38e64">weird, racist views
+on immigration</a>, <a href="https://world.hey.com/dhh/the-beauty-of-ideals-b3dccf72">fat-shaming objections to diverse representation</a>,
+<a href="https://world.hey.com/dhh/the-parental-dead-end-of-consent-morality-e4e8a8ee">vaguely anti-feminist/homophobic/rapey rants on consent</a>, and, recently,
+<a href="https://world.hey.com/dhh/the-parental-dead-end-of-consent-morality-e4e8a8ee">tone-policing antifascists</a> who celebrate the death of notable fascist
+Charlie Kirk.</p>
+<p>Speaking of tributes to Charlie Kirk, that brings us to Andreas Kling, the
+project lead for Ladybird, who tweeted on the occasion of his assassination:</p>
+<blockquote>
+<p>RIP Charlie Kirk</p>
+<p>I hope many more debate nerds carry on his quest to engage young people with
+words, not fists.</p></blockquote>
+<p>&ndash; <a href="https://nitter.net/awesomekling/status/1966456391146606806">@awesomekling</a></p>
+<p>Kling has had a few things to say about Kirk on Twitter lately. <a href="https://nitter.net/awesomekling/status/1967178708852097278">Here&rsquo;s another
+one</a> &ndash; give you
+three guesses as to which &ldquo;[group]&rdquo; he objects to punching. You may also recall
+that Kling achieved some notoriety for his obnoxious response as the maintainer
+of SerenityOS when someone proposed gender-neutral language for the
+documentation:</p>
+<p><a href="https://github.com/SerenityOS/serenity/pull/6814"><img src="https://redacted.moe/f/d57df43b.png" alt="Screenshot of the interaction on GitHub. Kling responds &ldquo;This project is not an appropriate arena to advertise your personal politics.&rdquo;"></a></p>
+<p>Replacing &ldquo;he&rdquo; with &ldquo;they&rdquo; in one sentence of the documentation is the kind of
+&ldquo;ideologically motivated change&rdquo; that Serenity&rsquo;s <a href="https://github.com/SerenityOS/serenity/blob/master/CONTRIBUTING.md#on-ideologically-motivated-changes">CONTRIBUTING.md</a> apparently
+aims to prevent, a classic case of the sexist &ldquo;identities that are not men are
+inherently political&rdquo; nonsense. Ladybird has a <a href="https://github.com/LadybirdBrowser/ladybird/blob/master/CONTRIBUTING.md#on-neutrality">similar, weirdly defensive
+policy</a> on &ldquo;neutrality&rdquo;, and a milquetoast <a href="https://github.com/LadybirdBrowser/ladybird/blob/master/CODE_OF_CONDUCT.md">code of
+conduct</a>, which is based on the Ruby Community Conduct Guideline,
+which has been itself the subject of many controversies due to its inadequacy
+leading to real-world incidents of harassment and abuse.</p>
+<p>Here&rsquo;s another one &ndash; Kling endorsing white replacement theory in June:</p>
+<blockquote>
+<blockquote>
+<p>White males are actively discriminated against in tech.</p>
+<p>It’s an open secret of Silicon Valley.</p></blockquote>
+<p>One of the last meetings I attended before leaving Apple (in 2017) was
+management asking us to &ldquo;keep the corporate diversity targets in mind&rdquo; when
+interviewing potential new hires.</p>
+<p>The phrasing was careful, but the implication was pretty clear.</p>
+<p>I knew in my heart this wasn&rsquo;t wholesome, but I was too scared to rock the
+boat at the time.</p></blockquote>
+<p>&ndash; <a href="https://nitter.net/awesomekling/status/1874518295350837401">@awesomekling</a> replying to @danheld<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
+<p>And in a moment of poetic irony, a few days ago Kling <a href="https://nitter.net/awesomekling/status/1969350008538370216">spoke in
+solidarity</a> with DHH over his &ldquo;persecution&rdquo; for &ldquo;banal, mainstream
+positions&rdquo; on Twitter just a few days ago, in response to DHH&rsquo;s tweet
+signal-boosting another <a href="https://www.youtube.com/watch?v=mhqeuO9RKKk">notable reactionary tech fascist</a>, Bryan
+Lunduke.</p>
+<p>So, to sum it up, Kling wears his mask a bit better than DHH, but as far as I&rsquo;m
+concerned it seems clear that both projects are run by fascists. If it walks
+like a fascist and quacks like a fascist&hellip; then why is Cloudflare giving them
+hundreds of thousands of dollars?</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I did think it was cute that Kling used a screenshot of Ladybird rendering
+my blog post <a href="https://awesomekling.substack.com/p/how-were-building-a-browser-when">back in 2023</a>
+to headline one of his articles on Ladybird, though.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>And a multi-millionaire who can fund his &ldquo;Arch Linux for Obnoxious
+Reactionary Assholes&rdquo; project his own damn self, in my opinion. He also
+<a href="https://world.hey.com/dhh/the-spells-are-spent-beaa675b">does not want</a> to be called a fascist, in which case he should probably
+stop being so fucking faschy.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Who is ultimately responding to @shaunmmaguire&rsquo;s tweet <a href="https://nitter.net/shaunmmaguire/status/1872479474157252767#m">lying about
+being told he wouldn&rsquo;t be promoted at Google for being white</a>.
+Shaun also posts about <a href="https://nitter.net/shaunmmaguire/status/1970195581797826769">the threat</a> of
+&ldquo;Radical Islamist&rdquo; &ldquo;Marxists&rdquo; to whom Europe &ldquo;will be lost&rdquo;,
+<a href="https://www.yahoo.com/news/articles/doj-deletes-own-study-website-032537612.html">falsely</a>
+<a href="https://nitter.net/shaunmmaguire/status/1969615941282775120">accuse</a> the
+&ldquo;far left&rdquo; of committing &ldquo;almost all mass murders and political violence&rdquo; in
+the last few years, and <a href="https://nitter.net/shaunmmaguire/status/1968476676603732293">praise</a>
+Trump for classifying antifascists as terrorists.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>]]></description><pubDate>Wed, 24 Sep 2025 00:00:00 +0000</pubDate></item><item><title>A better future for JavaScript that won&apos;t happen</title><link>https://drewdevault.com/2025/09/17/2025-09-17-An-impossible-future-for-JS.html</link><description><![CDATA[<p>In the wake of <a href="https://www.ox.security/blog/npm-2-0-hack-40-npm-packages-hit-in-major-supply-chain-attack/">the largest supply-chain attack in history</a>, the JavaScript
 community could have a moment of reckoning and decide: never again. As the panic
 and shame subsides, after compromised developers finish re-provisioning their
 workstations and rotating their keys, the ecosystem might re-orient itself
