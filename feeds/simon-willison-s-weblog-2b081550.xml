@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Why AI systems might never be secure</title><link>https://simonwillison.net/2025/Sep/23/why-ai-systems-might-never-be-secure/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.economist.com/science-and-technology/2025/09/22/why-ai-systems-might-never-be-secure">Why AI systems might never be secure</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GPT-5-Codex</title><link>https://simonwillison.net/2025/Sep/23/gpt-5-codex/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-5-codex">GPT-5-Codex</a></strong></p>
+OpenAI <a href="https://simonwillison.net/2025/Sep/15/gpt-5-codex/">half-relased this model</a> earlier this month, adding it to their Codex CLI tool but not their API.</p>
+<p>Today they've fixed that - the new model can now be accessed as <code>gpt-5-codex</code>. It's priced the same as regular GPT-5: $1.25/million input tokens, $10/million output tokens, and the same hefty 90% discount for previously cached input tokens, especially important for agentic tool-using workflows which quickly produce a lengthy conversation.</p>
+<p>It's only available via their Responses API, which means you currently need to install the <a href="https://github.com/simonw/llm-openai-plugin">llm-openai-plugin</a> to use it with LLM:</p>
+<pre><code>llm install -U llm-openai-plugin
+llm -m openai/gpt-5-codex -T llm_version 'What is the LLM version?'
+</code></pre>
+<p>Outputs:</p>
+<blockquote>
+<p>The installed LLM version is 0.27.1.</p>
+</blockquote>
+<p>I added <a href="https://llm.datasette.io/en/stable/tools.html">tool support</a> to that plugin today, <a href="https://github.com/simonw/llm-openai-plugin/issues/20#issuecomment-3325921197">mostly authored by GPT-5 Codex itself</a> using OpenAI's Codex CLI.</p>
+<p>The new <a href="https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide">prompting guide for GPT-5-Codex</a> is worth a read.</p>
+<blockquote>
+<p>GPT-5-Codex is purpose-built for Codex CLI, the Codex IDE extension, the Codex cloud environment, and working in GitHub, and also supports versatile tool use. We recommend using GPT-5-Codex only for agentic and interactive coding use cases.</p>
+<p>Because the model is trained specifically for coding, many best practices you once had to prompt into general purpose models are built in, and over prompting can reduce quality.</p>
+<p>The core prompting principle for GPT-5-Codex is <strong>“less is more.”</strong></p>
+</blockquote>
+<p>I <a href="https://gist.github.com/simonw/b371949ae984b0431848cd16cba24b27">tried my pelican benchmark</a> at a cost of <a href="https://www.llm-prices.com/#it=16&amp;ot=2154&amp;ic=1.25&amp;oc=10">2.156 cents</a>.</p>
+<pre><code>llm -m openai/gpt-5-codex "Generate an SVG of a pelican riding a bicycle"
+</code></pre>
+<p><img alt="See description below" src="https://static.simonwillison.net/static/2025/gpt-5-codex-api-pelican.png" /></p>
+<p>I asked Codex to describe this image and it correctly identified it as a pelican!</p>
+<pre><code>llm -m openai/gpt-5-codex -a https://static.simonwillison.net/static/2025/gpt-5-codex-api-pelican.png \
+  -s 'Write very detailed alt text'
+</code></pre>
+<blockquote>
+<p>Cartoon illustration of a cream-colored pelican with a large orange beak and tiny black eye riding a minimalist dark-blue bicycle. The bird’s wings are tucked in, its legs resemble orange stick limbs pushing the pedals, and its tail feathers trail behind with light blue motion streaks to suggest speed. A small coral-red tongue sticks out of the pelican’s beak. The bicycle has thin light gray spokes, and the background is a simple pale blue gradient with faint curved lines hinting at ground and sky.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Tue, 23 Sep 2025 23:59:20 +0000</pubDate></item><item><title>Qwen3-VL: Sharper Vision, Deeper Thought, Broader Action</title><link>https://simonwillison.net/2025/Sep/23/qwen3-vl/#atom-everything</link><description><![CDATA[<p><strong><a href="https://qwen.ai/blog?id=99f0335c4ad9ff6153e517418d48535ab6d8afef&amp;from=research.latest-advancements-list">Qwen3-VL: Sharper Vision, Deeper Thought, Broader Action</a></strong></p>
+I've been looking forward to this. Qwen 2.5 VL is one of the best available open weight vision LLMs, so I had high hopes for Qwen 3's vision models.</p>
+<blockquote>
+<p>Firstly, we are open-sourcing the flagship model of this series: Qwen3-VL-235B-A22B, available in both Instruct and Thinking versions. The Instruct version matches or even exceeds Gemini 2.5 Pro in major visual perception benchmarks. The Thinking version achieves state-of-the-art results across many multimodal reasoning benchmarks.</p>
+</blockquote>
+<p>Bold claims against Gemini 2.5 Pro, which are supported by a flurry of self-reported benchmarks.</p>
+<p>This initial model is <em>enormous</em>. On Hugging Face both <a href="https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Instruct">Qwen3-VL-235B-A22B-Instruct</a> and <a href="https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Thinking">Qwen3-VL-235B-A22B-Thinking</a> are 235B parameters and weigh 471 GB. Not something I'm going to be able to run on my 64GB Mac!</p>
+<p>The <a href="https://huggingface.co/collections/Qwen/qwen25-vl-6795ffac22b334a837c0f9a5">Qwen 2.5 VL family</a> included models at 72B, 32B, 7B and 3B sizes. Given the rate Qwen are shipping models at the moment I wouldn't be surprised to see smaller Qwen 3 VL models show up in just the next few days.</p>
+<p>Also from Qwen today, three new API-only closed-weight models: <a href="https://x.com/Alibaba_Qwen/status/1970582211993927774">upgraded Qwen 3 Coder</a>, <a href="https://qwen.ai/blog?id=4266edf7f3718f2d3fda098b3f4c48f3573215d0&amp;from=home.latest-research-list">Qwen3-LiveTranslate-Flash</a> (real-time multimodal interpretation), and <a href="https://qwen.ai/blog?id=241398b9cd6353de490b0f82806c7848c5d2777d&amp;from=research.latest-advancements-list">Qwen3-Max</a>, their new trillion parameter flagship model, which they describe as their "largest and most capable model to date".</p>
+<p>Plus <a href="https://twitter.com/Alibaba_Qwen/status/1970510193537753397">Qwen3Guard</a>, a "safety moderation model series" that looks similar in purpose to Meta's <a href="https://www.llama.com/docs/model-cards-and-prompt-formats/llama-guard-3/">Llama Guard</a>. This one is open weights (Apache 2.0) and comes in 8B, 4B and 0.6B sizes <a href="https://huggingface.co/collections/Qwen/qwen3guard-68d2729abbfae4716f3343a1">on Hugging Face</a>. There's more information in the <a href="https://github.com/QwenLM/Qwen3Guard">QwenLM/Qwen3Guard</a> GitHub repo.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45352672">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Tue, 23 Sep 2025 23:51:08 +0000</pubDate></item><item><title>Why AI systems might never be secure</title><link>https://simonwillison.net/2025/Sep/23/why-ai-systems-might-never-be-secure/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.economist.com/science-and-technology/2025/09/22/why-ai-systems-might-never-be-secure">Why AI systems might never be secure</a></strong></p>
 The Economist have a new piece out about LLM security, with this headline and subtitle:</p>
 <blockquote>
 <p><strong>Why AI systems might never be secure</strong></p>
@@ -483,215 +528,4 @@ Brilliant retro-gaming project by Josh Fonseca, who figured out how to run 2002 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45192655">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/claude-4">claude-4</a></p>]]></description><pubDate>Wed, 10 Sep 2025 12:24:44 +0000</pubDate></item><item><title>Quoting Apple Security Engineering and Architecture</title><link>https://simonwillison.net/2025/Sep/9/memory-integrity-enforcement/#atom-everything</link><description><![CDATA[<blockquote cite="https://security.apple.com/blog/memory-integrity-enforcement/"><p>There has never been a successful, widespread malware attack against iPhone. The only system-level iOS attacks we observe in the wild come from mercenary spyware, which is vastly more complex than regular cybercriminal activity and consumer malware. Mercenary spyware is historically associated with state actors and uses exploit chains that cost millions of dollars to target a very small number of specific individuals and their devices. [...] Known mercenary spyware chains used against iOS share a common denominator with those targeting Windows and Android: they exploit memory safety vulnerabilities, which are interchangeable, powerful, and exist throughout the industry.</p></blockquote>
-<p class="cite">&mdash; <a href="https://security.apple.com/blog/memory-integrity-enforcement/">Apple Security Engineering and Architecture</a>, introducing Memory Integrity Enforcement for iPhone 17</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/privacy">privacy</a>, <a href="https://simonwillison.net/tags/security">security</a></p>]]></description><pubDate>Tue, 9 Sep 2025 21:32:55 +0000</pubDate></item><item><title>My review of Claude&apos;s new Code Interpreter, released under a very confusing name</title><link>https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#atom-everything</link><description><![CDATA[<p>Today on the Anthropic blog: <strong><a href="https://www.anthropic.com/news/create-files">Claude can now create and edit files</a></strong>:</p>
-<blockquote>
-<p>Claude can now create and edit Excel spreadsheets, documents, PowerPoint slide decks, and PDFs directly in <a href="https://claude.ai/">Claude.ai</a> and the desktop app. [...]</p>
-<p>File creation is now available as a preview for Max, Team, and Enterprise plan users. Pro users will get access in the coming weeks.</p>
-</blockquote>
-<p>Then right at the <em>very end</em> of their post:</p>
-<blockquote>
-<p>This feature gives Claude internet access to create and analyze files, which may put your data at risk. Monitor chats closely when using this feature. <a href="https://support.anthropic.com/en/articles/12111783-create-and-edit-files-with-claude">Learn more</a>.</p>
-</blockquote>
-<p>And tucked away half way down their <a href="https://support.anthropic.com/en/articles/12111783-create-and-edit-files-with-claude">Create and edit files with Claude</a> help article:</p>
-<blockquote>
-<p>With this feature, Claude can also do more advanced data analysis and data science work. Claude can create Python scripts for data analysis. Claude can create data visualizations in image files like PNG. You can also upload CSV, TSV, and other files for data analysis and visualization.</p>
-</blockquote>
-<p>Talk about <a href="https://www.merriam-webster.com/wordplay/bury-the-lede-versus-lead">burying the lede</a>... this is their version of <a href="https://simonwillison.net/tags/code-interpreter/">ChatGPT Code Interpreter</a>, my all-time favorite feature of ChatGPT!</p>
-
-<p>Claude can now write and execute custom Python (and Node.js) code in a server-side sandbox and use it to process and analyze data.</p>
-<p>In a particularly egregious example of AI companies being terrible at naming features, the official name for this one really does appear to be <strong>Upgraded file creation and analysis</strong>. Sigh.</p>
-<p>This is quite a confusing release, because Claude <em>already</em> had a variant of this feature, <a href="https://www.anthropic.com/news/analysis-tool">released in October 2024</a> with the weak but more sensible name <strong>Analysis tool</strong>. Here are <a href="https://simonwillison.net/2024/Oct/24/claude-analysis-tool/">my notes from when that came out</a>. That tool worked by generating and executing JavaScript in the user's own browser.</p>
-<p>The new tool works entirely differently. It's much closer in implementation to OpenAI's Code Interpreter: Claude now has access to a server-side container environment in which it can run shell commands and execute Python and Node.js code to manipulate data and both read and generate files.</p>
-<p>It's worth noting that Anthropic have a similar feature in their API called <a href="https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/code-execution-tool">Code execution tool</a>, but today is the first time end-users of Claude have been able to execute arbitrary code in a server-side container.</p>
-<ul>
-  <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#switching-it-on-in-settings-features">Switching it on in settings/features</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#exploring-the-environment">Exploring the environment</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#starting-with-something-easy">Starting with something easy</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#something-much-harder-recreating-the-ai-adoption-chart">Something much harder: recreating the AI adoption chart</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#prompt-injection-risks">Prompt injection risks</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#my-verdict-on-claude-code-interpreter-so-far">My verdict on Claude Code Interpreter so far</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#ai-labs-find-explaining-this-feature-incredibly-difficult">AI labs find explaining this feature incredibly difficult</a></li>
-</ul>
-<h4 id="switching-it-on-in-settings-features">Switching it on in settings/features</h4>
-<p>I have a Pro Plan but found the setting to enable it on the <a href="https://claude.ai/settings/features">claude.ai/settings/features</a>. It's possible my account was granted early access without me realizing, since the Pro plan isn't supposed to have it yet:</p>
-<p><img src="https://static.simonwillison.net/static/2025/claude-analysis-toggle.jpg" alt="Experimental. Preview and provide feedback on upcoming enhancements to our platform. Please note: experimental features might influence Claude’s behavior and some interactions may differ from the standard experience. Analysis tool:  Claude can write and run code to process data, run analysis, and produce data visualizations in real time. Upgraded file creation and analysis: Allow Claude to create and edit docs, spreadsheets, presentations, PDFs, and data reports on web and desktop. Does not support versioning or remixing of Artifacts. This feature gives Claude network access to create and analyze files, which has security risks. Monitor chats closely when using this feature. The two features each have a toggle - the toggle for the file creation tool is turned on." style="max-width: 100%;" /></p>
-<p>Interestingly, toggling on the "Upgraded file creation and analysis" option toggles off the "Analysis tool" option, and vice versa. You can't have both at the same time.</p>
-<p>I guess this is to help reduce confusion? It surprised me though as Claude can sometimes use the existing analysis tool to help it in the creation of artifacts, as I <a href="https://simonwillison.net/2025/Jun/25/ai-powered-apps-with-claude/">noted here</a> when I wrote about the Claudeception feature they added in June.</p>
-<h4 id="exploring-the-environment">Exploring the environment</h4>
-<p>I started by using the tool to explore the tool. Here's my <a href="https://claude.ai/share/d796a596-380c-4db2-847d-2eeedc620bc0">first transcript</a> where I simply prompted the following to see what it could figure out about itself:</p>
-<blockquote>
-<p><code>Tell me everything you can about your shell and Python environments</code></p>
-</blockquote>
-<p>Here's part of the output:</p>
-<p><img src="https://static.simonwillison.net/static/2025/claude-files-1.jpg" alt="My prompt, then Claude shows: I'll explore my shell and Python environments to give you a comprehensive overview. • Getting system information and OS details • Checking shell type and version • Getting shell info and bash version • Checking Python version and locations - this one is expandedd to show: bash python3 -version &amp;&amp; which python3 &amp;&amp; which python Output Python 3.12.3 /usr/bin/python3 /usr/bin/python" style="max-width: 100%;" /></p>
-<p>And the key details it returned, each of which I've verified as true by checking the displayed output of the relevant commands:</p>
-<blockquote>
-<ul>
-<li>
-<strong>OS</strong>: Ubuntu 24.04.2 LTS (Noble) running on Linux kernel 4.4.0-</li>
-<li>
-<strong>Architecture</strong>: x86_64</li>
-<li>
-<strong>Shell</strong>: GNU Bash 5.2.21(1)-release</li>
-<li>
-<strong>Current User</strong>: root (with access to /home/claude directory)</li>
-<li>
-<strong>Working Directory</strong>: Currently in root (/), but /home/claude is the main workspace</li>
-<li>
-<strong>Python Version</strong>: Python 3.12.3</li>
-<li>
-<strong>Python Executable</strong>: /usr/bin/python3</li>
-<li>
-<strong>Package Manager</strong>: pip 24.0</li>
-<li>
-<strong>Python Path</strong>: Standard system locations including:
-<ul>
-<li>/usr/lib/python3.12 (standard library)</li>
-<li>/usr/local/lib/python3.12/dist-packages (local packages)</li>
-</ul>
-</li>
-<li>
-<strong>Disk Space</strong>: 4.9GB total, with 4.6GB available</li>
-<li>
-<strong>Memory</strong>: 9.0GB RAM available, minimal usage currently</li>
-<li>
-<strong>Node.js</strong>: v18.19.1 available</li>
-<li>
-<strong>npm</strong>: Configured with global packages in <code>/home/claude/.npm-global</code>
-</li>
-</ul>
-</blockquote>
-<p>So we have an Ubuntu 24.04.2 container with 9GB of RAM, ~5GB of disk, Python 3.12.3, and Node.js v18.19.1.</p>
-<p>How about network access? I tried the following:</p>
-<blockquote>
-<p><code>Can you access the Internet? Can you run curl? How about using Python http to fetch https://latest.datasette.io/fixtures.json ?</code></p>
-</blockquote>
-<p>Again, you can see the <a href="https://claude.ai/share/d796a596-380c-4db2-847d-2eeedc620bc0">detailed output in the transcript</a>. Claude tried <code>https://latest.datasette.io/fixtures.json</code> and then <code>https://httpbin.org/json</code> and got a 403 forbidden error for both, then <code>https://google.com</code> and got this curious result:</p>
-<div class="highlight highlight-source-shell"><pre>curl -s -I https://google.com</pre></div>
-<p>Output:</p>
-<pre><code>HTTP/1.1 200 OK
-date: Tue, 09 Sep 2025 16:02:17 GMT
-server: envoy
-
-HTTP/2 403 
-content-length: 13
-content-type: text/plain
-date: Tue, 09 Sep 2025 16:02:17 GMT
-</code></pre>
-<p>Claude did note that it can still use the <code>web_fetch</code> and <code>web_search</code> containers independently of that container environment, so it should be able to fetch web content using tools running outside of the container and then write it to a file there.</p>
-<p>On a hunch I tried this:</p>
-<blockquote>
-<p><code>Run pip install sqlite-utils</code></p>
-</blockquote>
-<p>... and it worked! Claude can <code>pip install</code> additional packages from <a href="https://pypi.org/">PyPI</a>.</p>
-
-<p>A little more poking around revealed the following relevant environment variables:</p>
-<pre><code>HTTPS_PROXY=http://21.0.0.167:15001
-no_proxy=localhost,127.0.0.1,169.254.169.254,metadata.google.internal,*.svc.cluster.local,*.local,*.googleapis.com,*.google.com
-NO_PROXY=localhost,127.0.0.1,169.254.169.254,metadata.google.internal,*.svc.cluster.local,*.local,*.googleapis.com,*.google.com
-https_proxy=http://21.0.0.167:15001
-http_proxy=http://21.0.0.167:15001
-</code></pre>
-<p>So based on an earlier HTTP header there's an <a href="https://www.envoyproxy.io/">Envoy proxy</a> running at an accessible port which apparently implements a strict allowlist.</p>
-<p>I later noticed that <a href="https://support.anthropic.com/en/articles/12111783-create-and-edit-files-with-claude#h_0ee9d698a1">the help page</a> includes a full description of what's on that allowlist:</p>
-<blockquote>
-<p><strong>Anthropic Services (Explicit)</strong></p>
-<p>api.anthropic.com, statsig.anthropic.com</p>
-<p><strong>Version Control</strong></p>
-<p>github.com</p>
-<p><strong>Package Managers - JavaScript/Node</strong></p>
-<p><strong>NPM:</strong> registry.npmjs.org, npmjs.com, npmjs.org<br />
-<strong>Yarn:</strong> yarnpkg.com, registry.yarnpkg.com</p>
-<p><strong>Package Managers - Python</strong></p>
-<p>pypi.org, files.pythonhosted.org, pythonhosted.org</p>
-</blockquote>
-<p>So it looks like we have a <em>very</em> similar system to ChatGPT Code Interpreter. The key differences are that Claude's system can install additional Python packages and has Node.js pre-installed.</p>
-<p>One important limitation from the docs:</p>
-<blockquote>
-<p>The maximum file size is 30MB per file for both uploads and downloads.</p>
-</blockquote>
-<p>The ChatGPT <a href="https://help.openai.com/en/articles/8555545-file-uploads-faq">limit here</a> is 512MB. I've often uploaded 100MB+ SQLite database files to ChatGPT, so I'm a little disappointed by this lower limit for Claude.</p>
-<h4 id="starting-with-something-easy">Starting with something easy</h4>
-<p>I grabbed a copy of the SQLite database behind <a href="https://til.simonwillison.net/">my TILs website</a> (21.9MB <a href="https://s3.amazonaws.com/til.simonwillison.net/tils.db">from here</a>) and uploaded it to Claude, then prompted:</p>
-<blockquote>
-<p><code>Use your Python environment to explore this SQLite database and generate a PDF file containing a join diagram of all the tables</code></p>
-</blockquote>
-<p>Here's <a href="https://claude.ai/share/f91a95be-0fb0-4e14-b46c-792b47117a3d">that conversation</a>. It did an OK job, producing both <a href="https://static.simonwillison.net/static/2025/til_database_join_diagram.pdf">the PDF</a> I asked for and a PNG equivalent which looks like this (since created files are not available in shared chats):</p>
-<p><img src="https://static.simonwillison.net/static/2025/til_database_join_diagram.jpg" alt="Each table gets a box with a name and columns. A set of lines is overlaid which doesn't quite seem to represent the joins in a useful fashion." style="max-width: 100%;" /></p>
-<p>This isn't an ideal result - those join lines are difficult to follow - but I'm confident I could get from here to something I liked with only a little more prompting. The important thing is that the system clearly works, and can analyze data in uploaded SQLite files and use them to produce images and PDFs.</p>
-<h4 id="something-much-harder-recreating-the-ai-adoption-chart">Something much harder: recreating the AI adoption chart</h4>
-<p>Thankfully I have a fresh example of a really challenging ChatGPT Code Interpreter task from just last night, which I described in great detail in <a href="https://simonwillison.net/2025/Sep/9/apollo-ai-adoption/">Recreating the Apollo AI adoption rate chart with GPT-5, Python and Pyodide</a>.</p>
-<p>Short version: I took <a href="https://www.apolloacademy.com/ai-adoption-rate-trending-down-for-large-companies/">this chart</a> from Apollo Global and asked ChatGPT to recreate it based on a screenshot and an uploaded XLSX file.</p>
-<p><img src="https://static.simonwillison.net/static/2025/apollo-ai-chart.jpg" alt="AI adoption rates starting to decline for larger firms. A chart of AI adoption rate by firm size. Includes lines for 250+, 100-249, 50-99, 20-49, 10-19, 5-8 and 1-4 sized organizations. Chart starts in November 2023 with percentages ranging from 3 to 5, then all groups grow through August 2025 albeit with the 250+ group having a higher score than the others. That 25+ group peaks in Jul5 2025 at around 14% and then appears to slope slightly downwards to 12% by August. Some of the other lines also start to tip down, though not as much." style="max-width: 100%;" /></p>
-<p>This time I skipped the bit where I had ChatGPT hunt down the original data and jumped straight to the "recreate this chart" step. I used the exact same prompt as I provided to ChatGPT:</p>
-<blockquote>
-<p><code>Use this data to recreate this chart using python</code></p>
-</blockquote>
-<p>And uploaded the same two files - <a href="https://static.simonwillison.net/static/cors-allow/2025/Employment-Size-Class-Sep-2025.xlsx">this XLSX file</a> and the <a href="https://static.simonwillison.net/static/2025/apollo-ai-chart.jpg">screenshot of the original chart</a>.</p>
-<p><img src="https://static.simonwillison.net/static/2025/claude-files-2.jpg" alt="Claude UI - prompt is &quot;Use this data to recreate this chart using python&quot; - I've selected Sonnet 4 and given it both the XLSX and the screenshot as attachments." style="max-width: 100%;" /></p>
-<p>Claude wrote and ran a bunch of Python code and produced this:</p>
-<p><img src="https://static.simonwillison.net/static/2025/claude-attempt-1.jpg" alt="The chart has jagged lines, not smooth ones, but they do appear to show the correct numbers. The title and axis are positioned in ways that overlap other text a bit." style="max-width: 100%;" /></p>
-<p>That's not a bad first attempt - we'll sort out the jagged lines in a moment. With ChatGPT I later told it to plot a six-survey rolling average (since that's what Apollo had done with theirs), so I ran the exact same prompt against Claude:</p>
-<blockquote>
-<p><code>Plot it as a six survey rolling average</code></p>
-</blockquote>
-<p><img src="https://static.simonwillison.net/static/2025/claude-attempt-2.jpg" alt="The lines are more even now, and appear to match the numbers reported by Apollo. They still have a jagged look to them though." style="max-width: 100%;" /></p>
-<p>So I told Claude:</p>
-<blockquote>
-<p><code>Make those lines less jagged</code></p>
-</blockquote>
-<p>This did not do what I wanted:</p>
-<p><img src="https://static.simonwillison.net/static/2025/claude-attempt-3.jpg" alt="The chart looks mostly the same. The lines are a tiny bit thicker." style="max-width: 100%;" /></p>
-<p>So I gave it a bit of a hint:</p>
-<blockquote>
-<p><code>No not like that, I wanted the lines to be a smooth curve like in the original screenshot - you shouldn't have to use scipy for this or manipulate the data, I'm sure matplotlib can do this already</code></p>
-</blockquote>
-<p>A little bit of sycophancy:</p>
-<blockquote>
-<p>You're absolutely right! Matplotlib has built-in curve smoothing. I was overcomplicating it. Let me create a version that uses matplotlib's natural curve smoothing capabilities. [...]</p>
-</blockquote>
-<p>This time it used the <code>antialiased=True</code> and <code>solid_capstyle='round'</code> options in matplotlib, which again wasn't what I was after. I tried one more thing:</p>
-<blockquote>
-<p><code>I did not mean smooth the rendering of the lines. I meant that I wanted curved and not straight lines between points.</code></p>
-</blockquote>
-<p>(Normally if I have to argue this much with a model I'll start a fresh session and try a different prompting strategy from the start.)</p>
-<p>But this did give me what I was looking for:</p>
-<p><img src="https://static.simonwillison.net/static/2025/claude-attempt-4.jpg" alt="This time the chart finally has smooth curves between points." style="max-width: 100%;" /></p>
-<p>Oddly enough my ChatGPT chart suffered from that same overlapping title glitch, so I gave Claude the same prompt I had given ChatGPT:</p>
-<blockquote>
-<p><code>fix the chart title, it looks like this:</code> (with a screenshot)</p>
-</blockquote>
-<p><img src="https://static.simonwillison.net/static/2025/claude-attempt-5.jpg" alt="Now the chart shows a clear title at the top saying AI adoption rates starting to decline for larger firms" style="max-width: 100%;" /></p>
-<p>We got there in the end! I've shared <a href="https://claude.ai/share/cc32d405-cb53-4e52-a1a0-9b4df4e528ac">the full transcript of the chat</a>, although frustratingly the images and some of the code may not be visible. I <a href="https://gist.github.com/simonw/806e1aa0e6c29ad64834037f779e0dc0">created this Gist</a> with copies of the files that it let me download.</p>
-<h4 id="prompt-injection-risks">Prompt injection risks</h4>
-<p>ChatGPT Code Interpreter has no access to the internet at all, which limits how much damage an attacker can do if they manage to sneak their own malicious instructions into the model's context.</p>
-<p>Since Claude Code Interpreter (I'm <em>not</em> going to be calling it "Upgraded file creation and analysis"!) has a limited form of internet access, we need to worry about <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">lethal trifecta</a> and other prompt injection attacks.</p>
-<p>The <a href="https://support.anthropic.com/en/articles/12111783-create-and-edit-files-with-claude#h_0ee9d698a1">help article</a> actually covers this in some detail:</p>
-<blockquote>
-<p>It is possible for a bad actor to inconspicuously add instructions via external files or websites that trick Claude into:</p>
-<ol>
-<li>Downloading and running untrusted code in the sandbox environment for malicious purposes.</li>
-<li>Reading sensitive data from a <a href="http://claude.ai">claude.ai</a> connected knowledge source (e.g., Remote MCP, projects) and using the sandbox environment to make an external network request to leak the data.</li>
-</ol>
-<p>This means Claude can be tricked into sending information from its context (e.g., prompts, projects, data via MCP, Google integrations) to malicious third parties. To mitigate these risks, we recommend you monitor Claude while using the feature and stop it if you see it using or accessing data unexpectedly.</p>
-</blockquote>
-<p>"We recommend you monitor Claude while using the feature" smells me to me like unfairly outsourcing the problem to Anthropic's users, but I'm not sure what more they can do!</p>
-<p>It's interesting that they still describe the external communication risk even though they've locked down a lot of network access. My best guess is that they know that allowlisting <code>github.com</code> opens an <em>enormous</em> array of potential exfiltration vectors.</p>
-<p>Anthropic also note:</p>
-<blockquote>
-<p>We have performed red-teaming and security testing on the feature. We have a continuous process for ongoing security testing and red-teaming of this feature.</p>
-</blockquote>
-<p>I plan to be cautious using this feature with any data that I very much don't want to be leaked to a third party, if there's even the slightest chance that a malicious instructions might sneak its way in.</p>
-<h4 id="my-verdict-on-claude-code-interpreter-so-far">My verdict on Claude Code Interpreter so far</h4>
-<p>I'm generally very excited about this. Code Interpreter has been my most-valued LLM feature since it launched in early 2023, and the Claude version includes some upgrades on the original - package installation, Node.js support - that I expect will be very useful.</p>
-<p>I don't particularly mark it down for taking a little more prompting to recreate the Apollo chart than ChatGPT did. For one thing I was using Claude Sonnet 4 - I expect Claude Opus 4.1 would have done better. I also have a much stronger intuition for Code Interpreter prompts that work with GPT-5.</p>
-<p>I don't think my chart recreation exercise here should be taken as showing any meaningful differences between the two.</p>
-<h4 id="ai-labs-find-explaining-this-feature-incredibly-difficult">AI labs find explaining this feature incredibly difficult</h4>
-<p>I find it <em>fascinating</em> how difficult the AI labs find describing this feature to people! OpenAI went from "Code Interpreter" to "Advanced Data Analysis" and maybe back again? It's hard to even find their official landing page for that feature now. (I <a href="https://chatgpt.com/share/68c070ff-fe9c-8006-91b5-cff799253836">got GPT-5 to look for it</a> and it hunted for 37 seconds and settled on the help page for <a href="https://help.openai.com/en/articles/8437071-data-analysis-with-chatgpt">Data analysis with ChatGPT</a>).</p>
-<p>Anthropic already used the bad name "Analysis tool" for a different implementation, and now have the somehow-worse name "Upgraded file creation and analysis". Their launch announcement avoids even talking about code execution, focusing exclusively on the tool's ability to generate spreadsheets and PDFs!</p>
-<p>I wonder if any of the AI labs will crack the code on how to name and explain this thing? I feel like it's still a very under-appreciated feature of LLMs, despite having been around for more than two years now.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/node">node</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/visualization">visualization</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Tue, 9 Sep 2025 18:11:32 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/claude-4">claude-4</a></p>]]></description><pubDate>Wed, 10 Sep 2025 12:24:44 +0000</pubDate></item></channel></rss>
