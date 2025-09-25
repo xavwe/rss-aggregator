@@ -1,4 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Don&apos;t hide your best documentation</title><link>https://simonwillison.net/2025/Sep/25/documentation/#atom-everything</link><description><![CDATA[<p>If you hide the system prompt and tool descriptions for your LLM agent, what you're actually doing is deliberately hiding the most useful documentation describing your service from your most sophisticated users!</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Improved Gemini 2.5 Flash and Flash-Lite</title><link>https://simonwillison.net/2025/Sep/25/improved-gemini-25-flash-and-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/">Improved Gemini 2.5 Flash and Flash-Lite</a></strong></p>
+Two new preview models from Google - updates to their fast and inexpensive Flash and Flash Lite families:</p>
+<blockquote>
+<p>The latest version of Gemini 2.5 Flash-Lite was trained and built based on three key themes:</p>
+<ul>
+<li><strong>Better instruction following</strong>: The model is significantly better at following complex instructions and system prompts.</li>
+<li><strong>Reduced verbosity</strong>: It now produces more concise answers, a key factor in reducing token costs and latency for high-throughput applications (see charts above).</li>
+<li><strong>Stronger multimodal &amp; translation capabilities</strong>: This update features more accurate audio transcription, better image understanding, and improved translation quality.</li>
+</ul>
+<p>[...]</p>
+<p>This latest 2.5 Flash model comes with improvements in two key areas we heard consistent feedback on:</p>
+<ul>
+<li><strong>Better agentic tool use</strong>: We've improved how the model uses tools, leading to better performance in more complex, agentic and multi-step applications. This model shows noticeable improvements on key agentic benchmarks, including a 5% gain on SWE-Bench Verified, compared to our last release (48.9% → 54%).</li>
+<li><strong>More efficient</strong>: With thinking on, the model is now significantly more cost-efficient—achieving higher quality outputs while using fewer tokens, reducing latency and cost (see charts above).</li>
+</ul>
+</blockquote>
+<p>They also added two new convenience model IDs: <code>gemini-flash-latest</code> and <code>gemini-flash-lite-latest</code>, which will always resolve to the most recent model in that family.</p>
+<p>I released <a href="https://github.com/simonw/llm-gemini/releases/tag/0.26">llm-gemini 0.26</a> adding support for the new models and new aliases. I also used the <code>response.set_resolved_model()</code> method <a href="https://github.com/simonw/llm/issues/1117">added in LLM 0.27</a> to ensure that the correct model ID would be recorded for those <code>-latest</code> uses.</p>
+<pre><code>llm install -U llm-gemini
+</code></pre>
+<p>Both of these models support optional reasoning tokens. I had them draw me pelicans riding bicycles in both thinking and non-thinking mode, using commands that looked like this:</p>
+<pre><code>llm -m gemini-2.5-flash-preview-09-2025 -o thinking_budget 4000 "Generate an SVG of a pelican riding a bicycle"
+</code></pre>
+<p>I then got each model to describe the image it had drawn using commands like this:</p>
+<pre><code>llm -a https://static.simonwillison.net/static/2025/gemini-2.5-flash-preview-09-2025-thinking.png -m gemini-2.5-flash-preview-09-2025 -o thinking_budget 2000 'Detailed single line alt text for this image'
+</code></pre>
+<p><a href="https://gist.github.com/simonw/e9dc9c18008106b4ae2e0be287709f5c"><strong>gemini-2.5-flash-preview-09-2025-thinking</strong></a></p>
+<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-preview-09-2025-thinking.png" /></p>
+<blockquote>
+<p>A minimalist stick figure graphic depicts a person with a white oval body and a dot head cycling a gray bicycle, carrying a large, bright yellow rectangular box resting high on their back.</p>
+</blockquote>
+<p><a href="https://gist.github.com/simonw/e357eac5f12e995a6dcb50711241a478"><strong>gemini-2.5-flash-preview-09-2025</strong></a></p>
+<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-preview-09-2025.png" /></p>
+<blockquote>
+<p>A simple cartoon drawing of a pelican riding a bicycle, with the text "A Pelican Riding a Bicycle" above it.</p>
+</blockquote>
+<p><a href="https://gist.github.com/simonw/29aff037b58fe62baf5a3cb7cf3b0ca9"><strong>gemini-2.5-flash-lite-preview-09-2025-thinking</strong></a></p>
+<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-lite-preview-09-2025-thinking.png" /></p>
+<blockquote>
+<p>A quirky, simplified cartoon illustration of a white bird with a round body, black eye, and bright yellow beak, sitting astride a dark gray, two-wheeled vehicle with its peach-colored feet dangling below.</p>
+</blockquote>
+<p><a href="https://gist.github.com/simonw/0eb5b9dc5515657a0a3c9d16bb5d46f6"><strong>gemini-2.5-flash-lite-preview-09-2025</strong></a></p>
+<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-lite-preview-09-2025.png" /></p>
+<blockquote>
+<p>A minimalist, side-profile illustration of a stylized yellow chick or bird character riding a dark-wheeled vehicle on a green strip against a white background.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45375845">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Thu, 25 Sep 2025 19:27:43 +0000</pubDate></item><item><title>Don&apos;t hide your best documentation</title><link>https://simonwillison.net/2025/Sep/25/documentation/#atom-everything</link><description><![CDATA[<p>If you hide the system prompt and tool descriptions for your LLM agent, what you're actually doing is deliberately hiding the most useful documentation describing your service from your most sophisticated users!</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Thu, 25 Sep 2025 00:24:53 +0000</pubDate></item><item><title>Quoting Stanford CS221 Autumn 2025</title><link>https://simonwillison.net/2025/Sep/24/stanford/#atom-everything</link><description><![CDATA[<blockquote cite="https://stanford-cs221.github.io/autumn2025/assignments/hw1_foundations/index.html"><p>[2 points] <strong>Learn basic NumPy operations with an AI tutor!</strong> Use an AI chatbot (e.g., ChatGPT, Claude, Gemini, or Stanford AI Playground) to teach yourself how to do basic vector and matrix operations in NumPy (import numpy as np). AI tutors have become exceptionally good at creating interactive tutorials, and this year in CS221, we're testing how they can help you learn fundamentals more interactively than traditional static exercises.</p></blockquote>
 <p class="cite">&mdash; <a href="https://stanford-cs221.github.io/autumn2025/assignments/hw1_foundations/index.html">Stanford CS221 Autumn 2025</a>, Problem 1: Linear Algebra</p>
@@ -477,21 +527,4 @@ OpenRouter: openrouter/qwen/qwen3-next-80b-a3b-instruct
 <p>"🐧🦩 Who needs legs!?" indeed! I like that penguin-flamingo emoji sequence it's decided on for pelicans.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Fri, 12 Sep 2025 04:07:32 +0000</pubDate></item><item><title>Defeating Nondeterminism in LLM Inference</title><link>https://simonwillison.net/2025/Sep/11/defeating-nondeterminism/#atom-everything</link><description><![CDATA[<p><strong><a href="https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/">Defeating Nondeterminism in LLM Inference</a></strong></p>
-A very common question I see about LLMs concerns why they can't be made to deliver the same response to the same prompt by setting a fixed random number seed.</p>
-<p>Like many others I had been lead to believe this was due to the non-associative nature of floating point arithmetic, where <code>(a + b) + c ≠ a + (b + c)</code>, combining with unpredictable calculation orders on concurrent GPUs. This new paper calls that the "concurrency + floating point hypothesis":</p>
-<blockquote>
-<p>One common hypothesis is that some combination of floating-point non-associativity and concurrent execution leads to nondeterminism based on which concurrent core finishes first. We will call this the “concurrency + floating point” hypothesis for LLM inference nondeterminism.</p>
-</blockquote>
-<p>It then convincingly argues that this is <em>not</em> the core of the problem, because "in the typical forward pass of an LLM, there is usually not a single atomic add present."</p>
-<p>Why are LLMs so often non-deterministic then?</p>
-<blockquote>
-<p>[...] <strong>the primary reason nearly all LLM inference endpoints are nondeterministic is that the load (and thus batch-size) nondeterministically varies!</strong> This nondeterminism is not unique to GPUs — LLM inference endpoints served from CPUs or TPUs will also have this source of nondeterminism.</p>
-</blockquote>
-<p>The <a href="https://github.com/thinking-machines-lab/batch_invariant_ops">thinking-machines-lab/batch_invariant_ops</a> code that accompanies this paper addresses this by providing a PyTorch implementation of invariant kernels and demonstrates them running Qwen3-8B deterministically under vLLM.</p>
-<p>This paper is the first public output from Thinking Machines,  the AI Lab founded in February 2025 by Mira Murati, OpenAI's former CTO (and interim CEO for <a href="https://openai.com/index/openai-announces-leadership-transition/">a few days</a>). It's unrelated to <a href="https://en.m.wikipedia.org/wiki/Thinking_Machines_Corporation">Thinking Machines Corporation</a>, the last employer of Richard Feynman (as described in this <a href="https://longnow.org/ideas/richard-feynman-and-the-connection-machine/">most excellent story by Danny Hillis</a>).
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45200925">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/pytorch">pytorch</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a></p>]]></description><pubDate>Thu, 11 Sep 2025 06:53:42 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Fri, 12 Sep 2025 04:07:32 +0000</pubDate></item></channel></rss>
