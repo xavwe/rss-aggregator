@@ -22,3 +22,4 @@ https://notashelf.dev/rss.xml
 https://elixir-lang.org/atom.xml
 https://www.charlespetzold.com/rss.xml
 https://blog.pragmaticengineer.com/rss/
+https://skyfall.dev/rss.xml
