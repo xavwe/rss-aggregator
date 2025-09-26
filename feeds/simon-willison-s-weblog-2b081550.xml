@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GitHub Copilot CLI is now in public preview</title><link>https://simonwillison.net/2025/Sep/25/github-copilot-cli/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.blog/changelog/2025-09-25-github-copilot-cli-is-now-in-public-preview/">GitHub Copilot CLI is now in public preview</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>How to stop AI’s “lethal trifecta”</title><link>https://simonwillison.net/2025/Sep/26/how-to-stop-ais-lethal-trifecta/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.economist.com/leaders/2025/09/25/how-to-stop-ais-lethal-trifecta">How to stop AI’s “lethal trifecta”</a></strong></p>
+This is the second mention of <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">the lethal trifecta</a> in the Economist in just the last week! Their earlier coverage was <a href="https://www.economist.com/science-and-technology/2025/09/22/why-ai-systems-might-never-be-secure">Why AI systems may never be secure</a> on September 22nd - I <a href="https://simonwillison.net/2025/Sep/23/why-ai-systems-might-never-be-secure/">wrote about that here</a>, where I called it "the clearest explanation yet I've seen of these problems in a mainstream publication".</p>
+<p>I like this new article a lot less.</p>
+<p>It makes an argument that I <em>mostly</em> agree with: building software on top of LLMs is more like traditional physical engineering - since LLMs are non-deterministic we need to think in terms of tolerances and redundancy:</p>
+<blockquote>
+<p>The great works of Victorian England were erected by engineers who could not be sure of the properties of the materials they were using. In particular, whether by incompetence or malfeasance, the iron of the period was often not up to snuff. As a consequence, engineers erred on the side of caution, overbuilding to incorporate redundancy into their creations. The result was a series of centuries-spanning masterpieces.</p>
+<p>AI-security providers do not think like this. Conventional coding is a deterministic practice. Security vulnerabilities are seen as errors to be fixed, and when fixed, they go away. AI engineers, inculcated in this way of thinking from their schooldays, therefore often act as if problems can be solved just with more training data and more astute system prompts.</p>
+</blockquote>
+<p>My problem with the article is that I don't think this approach is appropriate when it comes to security!</p>
+<p>As I've said several times before, <a href="https://simonwillison.net/2023/May/2/prompt-injection-explained/#prompt-injection.015">In application security, 99% is a failing grade</a>. If there's a 1% chance of an attack getting through, an adversarial attacker will find that attack.</p>
+<p>The whole point of the lethal trifecta framing is that the <em>only way</em> to reliably prevent that class of attacks is to cut off one of the three legs!</p>
+<p>Generally the easiest leg to remove is the exfiltration vectors - the ability for the LLM agent to transmit stolen data back to the attacker.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45387155">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/exfiltration-attacks">exfiltration-attacks</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a></p>]]></description><pubDate>Fri, 26 Sep 2025 17:30:44 +0000</pubDate></item><item><title>GitHub Copilot CLI is now in public preview</title><link>https://simonwillison.net/2025/Sep/25/github-copilot-cli/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.blog/changelog/2025-09-25-github-copilot-cli-is-now-in-public-preview/">GitHub Copilot CLI is now in public preview</a></strong></p>
 GitHub now have their own entry in the coding terminal CLI agent space: <a href="https://github.com/features/copilot/cli">Copilot CLI</a>.</p>
 <p>It's the same basic shape as Claude Code, Codex CLI, Gemini CLI and a growing number of other tools in this space. It's a terminal UI which you accepts instructions and can modify files, run commands and integrate with GitHub's MCP server and other MCP servers that you configure.</p>
 <p>Two notable features compared to many of the others:</p>
@@ -463,38 +479,4 @@ I just found out about this (<a href="https://chatgpt.com/share/68c3dd56-3544-80
 <p>Note that this "miniature railway" is not the same thing as a model railway - it uses a 7¼ in gauge railway and you can sit on top of and ride the carriages.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/london">london</a>, <a href="https://simonwillison.net/tags/museums">museums</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a></p>]]></description><pubDate>Fri, 12 Sep 2025 08:46:31 +0000</pubDate></item><item><title>Comparing the memory implementations of Claude and ChatGPT</title><link>https://simonwillison.net/2025/Sep/12/claude-memory/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.shloked.com/writing/claude-memory">Claude Memory: A Different Philosophy</a></strong></p>
-Shlok Khemani has been doing excellent work reverse-engineering LLM systems and documenting his discoveries.</p>
-<p>Last week he <a href="https://www.shloked.com/writing/chatgpt-memory-bitter-lesson">wrote about ChatGPT memory</a>. This week it's Claude.</p>
-<blockquote>
-<p>Claude's memory system has two fundamental characteristics. First, it starts every conversation with a blank slate, without any preloaded user profiles or conversation history. Memory only activates when you explicitly invoke it. Second, Claude recalls by only referring to your raw conversation history. There are no AI-generated summaries or compressed profiles—just real-time searches through your actual past chats.</p>
-</blockquote>
-<p>Claude's memory is implemented as two new function tools that are made available for a Claude to call. I <a href="https://claude.ai/share/18754235-198d-446b-afc6-26191ea62d27">confirmed this myself</a> with the prompt "<code>Show me a list of tools that you have available to you, duplicating their original names and descriptions</code>" which gave me back these:</p>
-<blockquote>
-<p><strong>conversation_search</strong>: Search through past user conversations to find relevant context and information</p>
-<p><strong>recent_chats</strong>:  Retrieve recent chat conversations with customizable sort order (chronological or reverse chronological), optional pagination using 'before' and 'after' datetime filters, and project filtering</p>
-</blockquote>
-<p>The good news here is <em>transparency</em> - Claude's memory feature is implemented as visible tool calls, which means you can see exactly when and how it is accessing previous context.</p>
-<p>This helps address my big complaint about ChatGPT memory (see <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/">I really don’t like ChatGPT’s new memory dossier</a> back in May) - I like to understand as much as possible about what's going into my context so I can better anticipate how it is likely to affect the model.</p>
-<p>The OpenAI system is <a href="https://simonwillison.net/2025/May/21/chatgpt-new-memory/#how-this-actually-works"><em>very</em> different</a>: rather than letting the model decide when to access memory via tools, OpenAI instead automatically include details of previous conversations at the start of every conversation.</p>
-<p><a href="https://www.shloked.com/writing/chatgpt-memory-bitter-lesson">Shlok's notes on ChatGPT's memory</a> did include one detail that I had previously missed that I find reassuring:</p>
-<blockquote>
-<p>Recent Conversation Content is a history of your latest conversations with ChatGPT, each timestamped with topic and selected messages. [...] Interestingly, only the user's messages are surfaced, not the assistant's responses.</p>
-</blockquote>
-<p>One of my big worries about memory was that it could harm my "clean slate" approach to chats: if I'm working on code and the model starts going down the wrong path (getting stuck in a bug loop for example) I'll start a fresh chat to wipe that rotten context away. I had worried that ChatGPT memory would bring that bad context along to the next chat, but omitting the LLM responses makes that much less of a risk than I had anticipated.</p>
-<p><strong>Update</strong>: Here's a slightly confusing twist: yesterday in <a href="https://www.anthropic.com/news/memory">Bringing memory to teams at work</a> Anthropic revealed an <em>additional</em> memory feature, currently only available to Team and Enterprise accounts, with a feature checkbox labeled "Generate memory of chat history" that looks much more similar to the OpenAI implementation:</p>
-<blockquote>
-<p>With memory, Claude focuses on learning your professional context and work patterns to maximize productivity. It remembers your team’s processes, client needs, project details, and priorities. [...]</p>
-<p>Claude uses a memory summary to capture all its memories in one place for you to view and edit. In your settings, you can see exactly what Claude remembers from your conversations, and update the summary at any time by chatting with Claude.</p>
-</blockquote>
-<p>I haven't experienced this feature myself yet as it isn't part of my Claude subscription. I'm glad to hear it's fully transparent and can be edited by the user, resolving another of my complaints about the ChatGPT implementation.</p>
-<p>This version of Claude memory also takes Claude Projects into account:</p>
-<blockquote>
-<p>If you use projects, <strong>Claude creates a separate memory for each project</strong>. This ensures that your product launch planning stays separate from client work, and confidential discussions remain separate from general operations.</p>
-</blockquote>
-<p>I <a href="https://simonwillison.net/2025/Aug/22/project-memory/">praised OpenAI for adding this</a> a few weeks ago.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45214908">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llm-memory">llm-memory</a></p>]]></description><pubDate>Fri, 12 Sep 2025 07:34:36 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/london">london</a>, <a href="https://simonwillison.net/tags/museums">museums</a>, <a href="https://simonwillison.net/tags/ai-assisted-search">ai-assisted-search</a></p>]]></description><pubDate>Fri, 12 Sep 2025 08:46:31 +0000</pubDate></item></channel></rss>
