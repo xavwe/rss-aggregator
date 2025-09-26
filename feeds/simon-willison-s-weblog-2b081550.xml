@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Improved Gemini 2.5 Flash and Flash-Lite</title><link>https://simonwillison.net/2025/Sep/25/improved-gemini-25-flash-and-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/">Improved Gemini 2.5 Flash and Flash-Lite</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GitHub Copilot CLI is now in public preview</title><link>https://simonwillison.net/2025/Sep/25/github-copilot-cli/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.blog/changelog/2025-09-25-github-copilot-cli-is-now-in-public-preview/">GitHub Copilot CLI is now in public preview</a></strong></p>
+GitHub now have their own entry in the coding terminal CLI agent space: <a href="https://github.com/features/copilot/cli">Copilot CLI</a>.</p>
+<p>It's the same basic shape as Claude Code, Codex CLI, Gemini CLI and a growing number of other tools in this space. It's a terminal UI which you accepts instructions and can modify files, run commands and integrate with GitHub's MCP server and other MCP servers that you configure.</p>
+<p>Two notable features compared to many of the others:</p>
+<ul>
+<li>It works against the <a href="https://docs.github.com/en/github-models">GitHub Models</a> backend. It defaults to Claude Sonnet 4 but you can set <code>COPILOT_MODEL=gpt-5</code> to switch to GPT-5. Presumably other models will become available soon.</li>
+<li>It's billed against your existing GitHub Copilot account. <a href="https://github.com/features/copilot/plans">Pricing details are here</a> - they're split into "Agent mode" requests and "Premium" requests. Different plans get different allowances, which are shared with other products in the GitHub Copilot family.</li>
+</ul>
+<p>The best available documentation right now is the <code>copilot --help</code> screen - <a href="https://gist.github.com/simonw/bc739b8c67aa6e7a5f4f519942e66671">here's a copy of that in a Gist</a>.</p>
+<p>It's a competent entry into the market, though it's missing features like the ability to paste in images which have been introduced to Claude Code and Codex CLI over the past few months.</p>
+<p><em>Disclosure: I got a preview of this at an event at Microsoft's offices in Seattle last week. They did not pay me for my time but they did cover my flight, hotel and some dinners.</em>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/github-copilot">github-copilot</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/disclosures">disclosures</a></p>]]></description><pubDate>Thu, 25 Sep 2025 23:58:34 +0000</pubDate></item><item><title>Improved Gemini 2.5 Flash and Flash-Lite</title><link>https://simonwillison.net/2025/Sep/25/improved-gemini-25-flash-and-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/">Improved Gemini 2.5 Flash and Flash-Lite</a></strong></p>
 Two new preview models from Google - updates to their fast and inexpensive Flash and Flash Lite families:</p>
 <blockquote>
 <p>The latest version of Gemini 2.5 Flash-Lite was trained and built based on three key themes:</p>
@@ -484,54 +497,4 @@ Shlok Khemani has been doing excellent work reverse-engineering LLM systems and 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45214908">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llm-memory">llm-memory</a></p>]]></description><pubDate>Fri, 12 Sep 2025 07:34:36 +0000</pubDate></item><item><title>Qwen3-Next-80B-A3B: 🐧🦩 Who needs legs?!</title><link>https://simonwillison.net/2025/Sep/12/qwen3-next/#atom-everything</link><description><![CDATA[<p><strong><a href="https://x.com/Alibaba_Qwen/status/1966197643904000262">Qwen3-Next-80B-A3B</a></strong></p>
-Qwen announced two new models via their Twitter account (and here's <a href="https://qwen.ai/blog?id=4074cca80393150c248e508aa62983f9cb7d27cd&amp;from=research.latest-advancements-list">their blog</a>): <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct">Qwen3-Next-80B-A3B-Instruct</a> and <a href="https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Thinking">Qwen3-Next-80B-A3B-Thinking</a>.</p>
-<p>They make some big claims on performance:</p>
-<blockquote>
-<ul>
-<li>Qwen3-Next-80B-A3B-Instruct approaches our 235B flagship.</li>
-<li>Qwen3-Next-80B-A3B-Thinking outperforms Gemini-2.5-Flash-Thinking.</li>
-</ul>
-</blockquote>
-<p>The name "80B-A3B" indicates 80 billion parameters of which only 3 billion are active at a time. You still need to have enough GPU-accessible RAM to hold all 80 billion in memory at once but only 3 billion will be used for each round of inference, which provides a <em>significant</em> speedup in responding to prompts.</p>
-<p>More details from their tweet:</p>
-<blockquote>
-<ul>
-<li>80B params, but only 3B activated per token → 10x cheaper training, 10x faster inference than Qwen3-32B.(esp. @ 32K+ context!)</li>
-<li>Hybrid Architecture: Gated DeltaNet + Gated Attention → best of speed &amp; recall</li>
-<li>Ultra-sparse MoE: 512 experts, 10 routed + 1 shared</li>
-<li>Multi-Token Prediction → turbo-charged speculative decoding</li>
-<li>Beats Qwen3-32B in perf, rivals Qwen3-235B in reasoning &amp; long-context</li>
-</ul>
-</blockquote>
-<p>The models on Hugging Face are around 150GB each so I decided to try them out via <a href="https://openrouter.ai/">OpenRouter</a> rather than on my own laptop (<a href="https://openrouter.ai/qwen/qwen3-next-80b-a3b-thinking">Thinking</a>, <a href="https://openrouter.ai/qwen/qwen3-next-80b-a3b-instruct">Instruct</a>).</p>
-<p>I'm used my <a href="https://github.com/simonw/llm-openrouter">llm-openrouter</a> plugin. I installed it like this:</p>
-<pre><code>llm install llm-openrouter
-llm keys set openrouter
-# paste key here
-</code></pre>
-<p>Then found the model IDs with this command:</p>
-<pre><code>llm models -q next
-</code></pre>
-<p>Which output:</p>
-<pre><code>OpenRouter: openrouter/qwen/qwen3-next-80b-a3b-thinking
-OpenRouter: openrouter/qwen/qwen3-next-80b-a3b-instruct
-</code></pre>
-<p>I have an LLM <a href="https://llm.datasette.io/en/stable/templates.html">prompt template</a> saved called <code>pelican-svg</code> which I created like this:</p>
-<pre><code>llm "Generate an SVG of a pelican riding a bicycle" --save pelican-svg
-</code></pre>
-<p>This means I can run <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">my pelican benchmark</a> like this:</p>
-<pre><code>llm -t pelican-svg -m openrouter/qwen/qwen3-next-80b-a3b-thinking
-</code></pre>
-<p>Or like this:</p>
-<pre><code>llm -t pelican-svg -m openrouter/qwen/qwen3-next-80b-a3b-instruct
-</code></pre>
-<p>Here's the <a href="https://gist.github.com/simonw/d1a0d0ff719d609bc6fad2e133e7cbe9">thinking model output</a> (exported with <code>llm logs -c | pbcopy</code> after I ran the prompt):</p>
-<p><img alt="The bicycle is too simple and way too wide. The pelican is two circles, two orange triangular feed and a big triangle for the beak." src="https://static.simonwillison.net/static/2025/qwen3-next-80b-a3b-thinking.png" /></p>
-<p>I enjoyed the "Whimsical style with smooth curves and friendly proportions (no anatomical accuracy needed for bicycle riding!)" note in <a href="https://gist.github.com/simonw/d1a0d0ff719d609bc6fad2e133e7cbe9#prompt">the transcript</a>.</p>
-<p>The instruct (non-reasoning) model <a href="https://gist.github.com/simonw/cc740a45beed5655faffa69da1e999f5">gave me this</a>:</p>
-<p><img alt="Blue background, brown ground, bicycle looks more like a wheelchair, pelican is actually quite good though - has thin grey wings and a perky yellow long triangular beak. Above the pelican is the caption Who needs legs?! with an emoji sequence of penguin then flamingo." src="https://static.simonwillison.net/static/2025/qwen3-next-80b-a3b-instruct.png" /></p>
-<p>"🐧🦩 Who needs legs!?" indeed! I like that penguin-flamingo emoji sequence it's decided on for pelicans.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Fri, 12 Sep 2025 04:07:32 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llm-memory">llm-memory</a></p>]]></description><pubDate>Fri, 12 Sep 2025 07:34:36 +0000</pubDate></item></channel></rss>
