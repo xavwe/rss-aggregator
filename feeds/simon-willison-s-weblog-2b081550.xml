@@ -1,4 +1,123 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Armin Ronacher: 90%</title><link>https://simonwillison.net/2025/Sep/29/armin-ronacher-90/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lucumr.pocoo.org/2025/9/29/90-percent/">Armin Ronacher: 90%</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Claude Sonnet 4.5 is probably the &quot;best coding model in the world&quot; (at least for now)</title><link>https://simonwillison.net/2025/Sep/29/claude-sonnet-4-5/#atom-everything</link><description><![CDATA[<p>Anthropic <a href="https://www.anthropic.com/news/claude-sonnet-4-5">released Claude Sonnet 4.5 today</a>, with a <em>very</em> bold set of claims:</p>
+<blockquote>
+<p>Claude Sonnet 4.5 is the best coding model in the world. It's the strongest model for building complex agents. It’s the best model at using computers. And it shows substantial gains in reasoning and math.</p>
+</blockquote>
+<p>Anthropic gave me access to a preview version of a "new model" over the weekend which turned out to be Sonnet 4.5. My initial impressions were that it felt like a better model for code than GPT-5-Codex, which has been my preferred coding model since <a href="https://simonwillison.net/2025/Sep/23/gpt-5-codex/">it launched a few weeks ago</a>. This space moves <em>so fast</em> - Gemini 3 is rumored to land soon so who knows how long Sonnet 4.5 will continue to hold the "best coding model" crown.</p>
+<p>The pricing is the same as the previous Sonnet: $3/million input tokens and $15/million output tokens. This remains significantly cheaper than Claude Opus - $15/$75 - but still quite a bit more than GPT-5 and GPT-5-Codex, both at $1.25/$10.</p>
+<h4 id="it-really-shines-with-claude-ai-code-interpreter">It really shines with Claude.ai Code Interpreter</h4>
+<p>The <a href="https://claude.ai/">claude.ai</a> web interface (not yet the Claude iPhone native app) recently added the ability for Claude to write and then directly execute code in a sandboxed server environment, using Python and Node.js. I <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">wrote about that in detail</a> three weeks ago.</p>
+<p>Anthropic's implementation of this code interpreter pattern is more powerful than ChatGPT's equivalent because it can directly clone code from GitHub and install software packages from NPM and PyPI.</p>
+<p>Sonnet 4.5 <em>absolutely shines</em> at using this tool!</p>
+<p>Here's my most ambitious experiment with it. I started like this:</p>
+<blockquote>
+<p><code>Checkout https://github.com/simonw/llm and run the tests with</code></p>
+<p><code>pip install -e '.[test]'</code><br />
+<code>pytest</code></p>
+</blockquote>
+<p>It did exactly as I asked, checking out my <a href="https://github.com/simonw/llm">LLM repo</a>, installing it along with all of its dependencies, and running the tests.</p>
+<blockquote>
+<p>✅ All 466 tests passed in 167.69 seconds (about 2 minutes 47 seconds)</p>
+</blockquote>
+<p>Then I posed it a <em>wildly</em> ambitious challenge:</p>
+<blockquote>
+<p><code>The tool stores prompts and responses in a SQLite database. It currently uses a single conversation row and a linear collection of responses within that conversation. Experiment with the idea of adding a parent_response_id column to that responses table and using it to model the responses in a conversation as a tree instead. Use new pytest tests which you execute individually (to save time on the whole test suite) to exercise your design. Write a tree_notes.md file which you first populate with your plan and then use for notes as you go along.</code></p>
+</blockquote>
+<p>As you can see in <a href="https://claude.ai/share/9d5b0729-b58d-4b15-9e45-ab1e7152b89e">the resulting conversation transcript</a>, it did a really impressive job of this! It churned away across <em>dozens</em> of different tool calls, eventually outputting the following summary of its activity:</p>
+<blockquote>
+<p>I've successfully experimented with adding tree-structured conversations to the LLM CLI tool. Here's what was accomplished:</p>
+<h3 id="-implementation-complete">✅ <strong>Implementation Complete</strong>
+</h3>
+<p><strong>1. Database Schema Enhancement</strong></p>
+<ul>
+<li>Added <code>parent_response_id</code> column to the <code>responses</code> table via migration <code>m022_parent_response_id</code>
+</li>
+<li>Enables tree-structured (branching) conversations instead of just linear sequences</li>
+<li>Fully backward compatible - existing data unaffected</li>
+</ul>
+<p><strong>2. Comprehensive Utility Module</strong> (<code>tree_utils.py</code>)</p>
+<ul>
+<li>12 helper functions for tree operations:
+<ul>
+<li>Navigation (children, parent, siblings, paths)</li>
+<li>Analysis (depth, descendants, size)</li>
+<li>Queries (roots, leaves, statistics)</li>
+<li>Visualization (ASCII tree display)</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. Complete Test Suite</strong> (<code>test_tree_conversations.py</code>)</p>
+<ul>
+<li>16 tests covering all tree operations</li>
+<li>Tests linear chains, branching, multiple roots, forests</li>
+<li>Includes realistic debugging scenario</li>
+<li><strong>All tests pass ✅</strong></li>
+</ul>
+<p><strong>4. Integration Verification</strong></p>
+<ul>
+<li>Updated existing migration tests to expect new column</li>
+<li>All 6 migration tests pass</li>
+<li><strong>Total: 22/22 tests passing ✅</strong></li>
+</ul>
+<h3 id="-deliverables-7-files-in-mnt-user-data-outputs-">📦 <strong>Deliverables</strong> (7 files in <code>/mnt/user-data/outputs/</code>)</h3>
+<ol>
+<li>
+<strong>README.md</strong> - Quick start guide</li>
+<li>
+<strong>IMPLEMENTATION_SUMMARY.md</strong> - Complete technical overview</li>
+<li>
+<strong>MIGRATION_CODE.md</strong> - Database migration details</li>
+<li>
+<strong>TEST_RESULTS.md</strong> - Full test coverage report</li>
+<li>
+<strong>tree_notes.md</strong> - Design decisions and development notes</li>
+<li>
+<strong>tree_utils.py</strong> - Utility functions module</li>
+<li>
+<strong>test_tree_conversations.py</strong> - Test suite</li>
+</ol>
+<h3 id="-key-features">🎯 <strong>Key Features</strong>
+</h3>
+<ul>
+<li>Multiple branches from any conversation point</li>
+<li>Multiple roots per conversation (forest structure)</li>
+<li>Rich analytics (depth, branching factor, tree size)</li>
+<li>ASCII tree visualization</li>
+<li>Cycle detection for safety</li>
+</ul>
+<h3 id="-ready-for-integration">🚀 <strong>Ready for Integration</strong>
+</h3>
+<p>The implementation is production-ready with comprehensive testing. Next steps would be:</p>
+<ol>
+<li>Integrate <code>tree_utils.py</code> into LLM package</li>
+<li>Add CLI commands (<code>llm branch</code>, <code>llm tree</code>)</li>
+<li>Update <code>Response.log()</code> to accept <code>parent_response_id</code>
+</li>
+</ol>
+<p>All code is tested, documented, and ready to use!</p>
+</blockquote>
+<p>Did I mention I kicked off this experiment by entering prompts on my phone?</p>
+<p>I told it to <code>Give me a zip file of everything you have done so far</code> - you can explore the contents of the file it made me <a href="https://gist.github.com/simonw/f9d0f870e8d1af399a7f366a7f87b8b4">in this Gist</a>.</p>
+<h4 id="pelicans">Pelicans</h4>
+<p>I released <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.19">llm-anthropic 0.19</a> adding support for the new model. Then I ran my <a href="">classic pelican benchmark</a>, first <a href="https://gist.github.com/simonw/52a5bb478fa743daede12d97173cb817">with thinking turned on</a>:</p>
+<div class="highlight highlight-source-shell"><pre>llm -m claude-sonnet-4.5 -o thinking 1 -o thinking_budget 4000 \
+  <span class="pl-s"><span class="pl-pds">'</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">'</span></span></pre></div>
+<p><img src="https://static.simonwillison.net/static/2025/claude-sonnet-4.5-thinking.png" alt="" style="max-width: 100%;" /></p>
+<p>And then <a href="https://gist.github.com/simonw/449619ea8f0c112e3faa72e99fcb16ee">without</a>:</p>
+<div class="highlight highlight-source-shell"><pre>llm -m claude-sonnet-4.5 \
+  <span class="pl-s"><span class="pl-pds">'</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">'</span></span></pre></div>
+<p><img src="https://static.simonwillison.net/static/2025/claude-sonnet-4.5.png" alt="" style="max-width: 100%;" /></p>
+<p>These are pretty good - they are recognizably pelicans! - though not quite as good <a href="https://simonwillison.net/2025/Sep/23/gpt-5-codex/">as GPT-5-Codex</a> which is better at drawing bicycles.</p>
+<p>I also tried having it describe this image:</p>
+<p><img src="https://static.simonwillison.net/static/2024/pelicans.jpg" alt="A whole mess of pelicans, described below." style="max-width: 100%;" /></p>
+<div class="highlight highlight-source-shell"><pre>llm -m claude-sonnet-4.5 <span class="pl-s"><span class="pl-pds">'</span>describe this image<span class="pl-pds">'</span></span> -a https://static.simonwillison.net/static/2024/pelicans.jpg</pre></div>
+<blockquote>
+<p>This image shows a large gathering of pelicans crowded together along what appears to be a waterfront or shoreline. The birds are densely packed, creating a chaotic scene with dozens of brown pelicans visible. Their distinctive long bills and pouches are clearly visible among the mass of feathered bodies. In the background, there's calm water and a dark tree line or forested area. The lighting suggests this was taken during early morning or late afternoon, giving the scene a golden, warm tone. The pelicans appear to be resting or congregating together, which is typical behavior for these colonial seabirds.</p>
+</blockquote>
+<h4 id="anthropic-are-rolling-this-out-everywhere">Anthropic are rolling this out everywhere</h4>
+<p>The release of this model has been <em>very</em> well coordinated. My embargo on talking about it was due to lift at 10am Pacific today, and I got an email from them linking to their blog post at 10am on the dot. It's also already <a href="https://openrouter.ai/anthropic/claude-sonnet-4.5">live on OpenRouter</a> and <a href="https://x.com/cursor_ai/status/1972713190074261949">in Cursor</a> and <a href="https://github.blog/changelog/2025-09-29-anthropic-claude-sonnet-4-5-is-in-public-preview-for-github-copilot/">GitHub Copilot</a> and no doubt a whole bunch of other places as well.</p>
+<p>Anthropic also shipped a <a href="https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code">new Claude Code VS Code extension</a> today, plus a big upgrade to the Claude Code terminal app. Plus they rebranded their confusingly named Claude Code SDK to the <a href="https://docs.claude.com/en/api/agent-sdk/overview">Claude Agent SDK</a> instead, emphasizing that it's a tool for building agents beyond just customizing the existing Claude Code product. That's available for both <a href="https://docs.claude.com/en/api/agent-sdk/typescript">TypeScript</a> and <a href="https://docs.claude.com/en/api/agent-sdk/python">Python</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 29 Sep 2025 18:11:39 +0000</pubDate></item><item><title>Armin Ronacher: 90%</title><link>https://simonwillison.net/2025/Sep/29/armin-ronacher-90/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lucumr.pocoo.org/2025/9/29/90-percent/">Armin Ronacher: 90%</a></strong></p>
 The idea of AI writing "90% of the code" to-date has mostly been expressed by people who sell AI tooling.</p>
 <p>Over the last few months, I've increasingly seen the same idea come coming much more credible sources.</p>
 <p>Armin is the creator of a bewildering array of valuable open source projects 
@@ -479,9 +598,4 @@ Anthropic had a very bad month in terms of model reliability:</p>
 <p>For OpenAI, the models had access to a code execution sandbox, so they could compile and test out their solutions. That was it though; no internet access.</p>
 </blockquote>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 17 Sep 2025 22:52:10 +0000</pubDate></item><item><title>Announcing the 2025 PSF Board Election Results!</title><link>https://simonwillison.net/2025/Sep/16/the-2025-psf-board-election-results/#atom-everything</link><description><![CDATA[<p><strong><a href="https://pyfound.blogspot.com/2025/09/announcing-2025-psf-board-election.html">Announcing the 2025 PSF Board Election Results!</a></strong></p>
-I'm happy to share that I've been re-elected for  second term on the board of directors of the Python Software Foundation.</p>
-<p>Jannis Leidel was also re-elected and Abigail Dogbe and Sheena O’Connell will be joining the board for the first time.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/psf">psf</a></p>]]></description><pubDate>Tue, 16 Sep 2025 20:39:41 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 17 Sep 2025 22:52:10 +0000</pubDate></item></channel></rss>
