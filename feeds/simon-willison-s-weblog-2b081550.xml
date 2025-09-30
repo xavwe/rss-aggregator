@@ -193,6 +193,7 @@ shot-scraper http://www.example.com/ -w 800 -o example.jpg
 </blockquote>
 <p>Did I mention I kicked off this experiment by entering prompts on my phone?</p>
 <p>I told it to <code>Give me a zip file of everything you have done so far</code> - you can explore the contents of the file it made me <a href="https://gist.github.com/simonw/f9d0f870e8d1af399a7f366a7f87b8b4">in this Gist</a>.</p>
+<p><strong>Update</strong>: I shared a <a href="https://claude.ai/share/9d5b0729-b58d-4b15-9e45-ab1e7152b89e">longer version</a> of this experiment where I had the model experiment with a complex message hashing mechanism as well. I've <a href="https://claude.ai/share/9d5b0729-b58d-4b15-9e45-ab1e7152b89e">pushed the code to a branch</a>, which is best explained by the <a href="https://github.com/simonw/llm/blob/697636222a277f892dfffef86b2471cc89c95576/message_matching_notes.md">message_matching_notes.md</a> document written by Claude.</p>
 <h4 id="pelicans">Pelicans</h4>
 <p>I released <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.19">llm-anthropic 0.19</a> adding support for the new model. Then I ran my <a href="">classic pelican benchmark</a>, first <a href="https://gist.github.com/simonw/52a5bb478fa743daede12d97173cb817">with thinking turned on</a>:</p>
 <div class="highlight highlight-source-shell"><pre>llm -m claude-sonnet-4.5 -o thinking 1 -o thinking_budget 4000 \
