@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Not all OCuLink eGPU docks are created equal</title><link>https://www.jeffgeerling.com/blog/2025/not-all-oculink-egpu-docks-are-created-equal</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Not all OCuLink eGPU docks are created equal</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>The Emperor Has No Clothes</title><link>https://www.jeffgeerling.com/blog/2025/emperor-has-no-clothes</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">The Emperor Has No Clothes</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/ai-influencer-deal-offer.png" width="400" height="auto" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-7bac7114-4965-4f33-8f5e-bcc8d3b6d165" data-insert-attach="{&quot;id&quot;:&quot;7bac7114-4965-4f33-8f5e-bcc8d3b6d165&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="AI influencer deal offer"></p>
+
+<p>If the size of the current AI bubble can be estimated by how many</p>
+
+<ul>
+<li>AI job offers</li>
+<li>AI product review offers</li>
+<li>AI service paid sponsorship offers</li>
+<li>AI creator representation offers</li>
+</ul>
+
+<p>I receive per day... then I'd say we're nearing the pop.</p>
+
+<p>There is no way the trillions of dollars of valuation placed on AI companies can be backed by any amount of future profit.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-29T23:13:29-05:00" title="Monday, September 29, 2025 - 23:13" class="datetime">September 29, 2025</time>
+</span>]]></description><pubDate>Tue, 30 Sep 2025 04:13:29 +0000</pubDate></item><item><title>Not all OCuLink eGPU docks are created equal</title><link>https://www.jeffgeerling.com/blog/2025/not-all-oculink-egpu-docks-are-created-equal</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Not all OCuLink eGPU docks are created equal</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>I recently tried using the <a href="https://amzn.to/46Y65Wo">Minisforum DEG1 GPU Dock</a> with a Raspberry Pi 500+, using an M.2 to OCuLink adapter, and <a href="https://amzn.to/48CZlyl">this chenyang SFF-8611 Cable</a>.</p>
 
@@ -91,15 +109,4 @@
 <p>But this was <em>substantial</em>.</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-07T12:51:20-05:00" title="Sunday, September 7, 2025 - 12:51" class="datetime">September 7, 2025</time>
-</span>]]></description><pubDate>Sun, 7 Sep 2025 17:51:20 +0000</pubDate></item><item><title>I bought the cheapest EV (a used Nissan Leaf)</title><link>https://www.jeffgeerling.com/blog/2025/i-bought-cheapest-ev-used-nissan-leaf</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">I bought the cheapest EV (a used Nissan Leaf)</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/jeff-buys-nissan-leaf-sv-plus.jpg" width="350" height="330" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-a463435a-cfd8-4cbb-976e-31ecec4fadb8" data-insert-attach="{&quot;id&quot;:&quot;a463435a-cfd8-4cbb-976e-31ecec4fadb8&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Jeff Geerling with Nissan Leaf SV Plus at Dealership"></p>
-
-<p>I bought a used 2023 Nissan Leaf in 2025, my first 'new' car in 15 years. The above photo was taken by the dealership; apparently their social media team likes to post photos of all purchasers.</p>
-
-<p>I test drove a Tesla in 2012, and quickly realized my mistake. No gasoline-powered car (outside of supercars, maybe? Never drove one of those) could match the feel of pressing the throttle on an electric.</p>
-
-<p>I started out with a used minivan, which I drove into the ground. Then I bought a used Olds that I drove into the ground. Then I bought a used Camry that I bought before we had kids, when I had a 16 mile commute.</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-04T09:00:20-05:00" title="Thursday, September 4, 2025 - 09:00" class="datetime">September 4, 2025</time>
-</span>]]></description><pubDate>Thu, 4 Sep 2025 14:00:20 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Sun, 7 Sep 2025 17:51:20 +0000</pubDate></item></channel></rss>
