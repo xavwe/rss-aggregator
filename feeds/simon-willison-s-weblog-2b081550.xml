@@ -5,8 +5,10 @@ Curl maintainer Daniel Stenberg on Mastodon:</p>
 <p>I have already landed 22(!) bugfixes thanks to this, and I have over twice that amount of issues left to go through. Wade through perhaps.</p>
 <p>Credited "Reported in Joshua's sarif data" if you want to look for yourself</p>
 </blockquote>
-<p>I searched for <code>is:pr sarif is:closed</code> in the <code>curl</code> GitHub repository <a href="https://github.com/curl/curl/pulls?q=is%3Apr+sarif+is%3Aclosed">and found 55 completed PRs so far</a>.</p>
-<p>This is especially notable because Daniel has been outspoken about the deluge of junk AI-assisted reports on "security issues" that curl has received in the past. In <a href="https://simonwillison.net/2025/May/6/daniel-stenberg/">May this year</a>, concerning HackerOne:</p>
+<p>I searched for <code>is:pr Joshua sarif data is:closed</code> in the <code>curl</code> GitHub repository <a href="https://github.com/curl/curl/pulls?q=is%3Apr+Joshua+sarif+data+is%3Aclosed">and found 49 completed PRs so far</a>.</p>
+<p>Joshua's own post about this: <a href="https://joshua.hu/llm-engineer-review-sast-security-ai-tools-pentesters">Hacking with AI SASTs: An overview of 'AI Security Engineers' / 'LLM Security Scanners' for Penetration Testers and Security Teams</a>. The <a href="https://joshua.hu/files/AI_SAST_PRESENTATION.pdf">accompanying presentation PDF</a> includes screenshots of some of the tools he used, which included Almanax, Amplify Security, Corgea, Gecko Security, and ZeroPath. Here's his vendor summary:</p>
+<p><img alt="Screenshot of a presentation slide titled &quot;General Results&quot; with &quot;RACEDAY&quot; in top right corner. Three columns compare security tools: &quot;Almanax&quot; - Excellent single-function &quot;obvious&quot; results. Not so good at large/complicated code. Great at simple malicious code detection. Raw-bones solutions, not yet a mature product. &quot;Gorgoa&quot; - Discovered nearly all &quot;test-case&quot; issues. Discovered real vulns in big codebases. Tons of F/Ps. Malicious detection sucks. Excellent UI &amp; reports. Tons of bugs in UI. PR reviews failed hard. &quot;ZeroPath&quot; - Discovered all &quot;test-case&quot; issues. Intimidatingly good bug and vuln findings. Excellent PR scanning. In-built issue chatbot. Even better with policies. Extremely slow UI. Complex issuedescriptions." src="https://static.simonwillison.net/static/2025/security-vendor-slide.jpg" /></p>
+<p>This result is especially notable because Daniel has been outspoken about the deluge of junk AI-assisted reports on "security issues" that curl has received in the past. In <a href="https://simonwillison.net/2025/May/6/daniel-stenberg/">May this year</a>, concerning HackerOne:</p>
 <blockquote>
 <p>We now ban every reporter INSTANTLY who submits reports we deem AI slop. A threshold has been reached. We are effectively being DDoSed. If we could, we would charge them for this waste of our time.</p>
 </blockquote>
@@ -62,6 +64,14 @@ Albert Avetisian runs this repository on GitHub which uses the Github Search API
 <td><a href="https://github.com/search?q=is%3Apr+in%3Abody+%22chatgpt.com%22+label%3Acodex+is%3Amerged&amp;type=pullrequests&amp;s=created&amp;o=asc">1,600,000</a></td>
 <td>84.2%</td>
 <td><a href="https://github.com/adrianadiwidjaja/my-flask-app/pull/1">April 23rd</a></td>
+</tr>
+<tr>
+<td><a href="https://jules.google/">Google Jules</a></td>
+<td><code>is:pr author:google-labs-jules[bot]</code></td>
+<td><a href="https://github.com/search?q=is%3Apr+author%3Agoogle-labs-jules%5Bbot%5D&amp;type=pullrequests&amp;s=created&amp;o=asc">35,400</a></td>
+<td><a href="https://github.com/search?q=is%3Apr+author%3Agoogle-labs-jules%5Bbot%5D+is%3Amerged&amp;type=pullrequests&amp;s=created&amp;o=asc">27,800</a></td>
+<td>78.5%</td>
+<td><a href="https://github.com/yukikurage/memento-proto/pull/2">May 22nd</a></td>
 </tr>
 </tbody>
 </table>
