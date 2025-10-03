@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Sora 2 prompt injection</title><link>https://simonwillison.net/2025/Oct/3/cameo-prompt-injections/#atom-everything</link><description><![CDATA[<p>It turns out <a href="https://openai.com/index/sora-2/">Sora 2</a> is vulnerable to prompt injection!</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Litestream v0.5.0 is Here</title><link>https://simonwillison.net/2025/Oct/3/litestream/#atom-everything</link><description><![CDATA[<p><strong><a href="https://fly.io/blog/litestream-v050-is-here/">Litestream v0.5.0 is Here</a></strong></p>
+I've been running <a href="https://litestream.io">Litestream</a> to backup SQLite databases in production for a couple of years now without incident. The new version has been a long time coming - Ben Johnson took <a href="https://simonwillison.net/2022/Sep/21/introducing-litefs/">a detour</a> into the FUSE-based <a href="https://github.com/superfly/litefs">LiteFS</a> before deciding that the single binary Litestream approach is more popular - and Litestream 0.5 just landed with this very detailed blog posts describing the improved architecture.</p>
+<p>SQLite stores data in pages - 4096 (by default) byte blocks of data. Litestream replicates modified pages to a backup location - usually object storage like S3.</p>
+<p>Most SQLite tables have an auto-incrementing primary key, which is used to decide which page the row's data should be stored in. This means sequential inserts to a small table are sent to the same page, which caused previous Litestream to replicate many slightly different copies of that page block in succession.</p>
+<p>The new LTX format - borrowed from LiteFS - addresses that by adding compaction, which Ben describes as follows:</p>
+<blockquote>
+<p>We can use LTX compaction to compress a bunch of LTX files into a single file with no duplicated pages. And Litestream now uses this capability to create a hierarchy of compactions:</p>
+<ul>
+<li>at Level 1, we compact all the changes in a 30-second time window</li>
+<li>at Level 2, all the Level 1 files in a 5-minute window</li>
+<li>at Level 3, all the Level 2’s over an hour.</li>
+</ul>
+<p>Net result: we can restore a SQLite database to any point in time, <em>using only a dozen or so files on average</em>.</p>
+</blockquote>
+<p>I'm most looking forward to trying out the feature that isn't quite landed yet: read-replicas, implemented using a SQLite <a href="https://www.sqlite.org/vfs.html">VFS extension</a>:</p>
+<blockquote>
+<p>The next major feature we’re building out is a Litestream VFS for read replicas. This will let you instantly spin up a copy of the database and immediately read pages from S3 while the rest of the database is hydrating in the background.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45453936">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/fly">fly</a>, <a href="https://simonwillison.net/tags/litestream">litestream</a>, <a href="https://simonwillison.net/tags/ben-johnson">ben-johnson</a></p>]]></description><pubDate>Fri, 3 Oct 2025 15:10:21 +0000</pubDate></item><item><title>Sora 2 prompt injection</title><link>https://simonwillison.net/2025/Oct/3/cameo-prompt-injections/#atom-everything</link><description><![CDATA[<p>It turns out <a href="https://openai.com/index/sora-2/">Sora 2</a> is vulnerable to prompt injection!</p>
 <p>When you onboard to Sora you get the option to create your own "cameo" - a virtual video recreation of yourself. Here's mine <a href="https://sora.chatgpt.com/p/s_68dde7529584819193b31947e46f61ee">singing opera at the Royal Albert Hall</a>.</p>
 <p>You can use your cameo in your own generated videos, and you can also grant your friends permission to use it in theirs.</p>
 <p>(OpenAI sensibly prevent video creation from a photo of any human who hasn't opted-in by creating a cameo of themselves. They confirm this by having you read a sequence of numbers as part of the creation process.)</p>
@@ -635,30 +657,4 @@ Handy new iOS app by Adrien Grondin for running local LLMs on your phone. It jus
 <p>The app can also run a variety of other models using MLX, including members of the Gemma, Llama 3.2, and and Qwen families.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/ios">ios</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/mlx">mlx</a></p>]]></description><pubDate>Sun, 21 Sep 2025 23:56:14 +0000</pubDate></item><item><title>llm-openrouter 0.5</title><link>https://simonwillison.net/2025/Sep/21/llm-openrouter/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/llm-openrouter/releases/tag/0.5">llm-openrouter 0.5</a></strong></p>
-New release of my <a href="https://llm.datasette.io/">LLM</a> plugin for accessing models made available via <a href="https://openrouter.ai/">OpenRouter</a>. The release notes in full:</p>
-<blockquote>
-<ul>
-<li>Support for <a href="https://llm.datasette.io/en/stable/tools.html">tool calling</a>. Thanks, <a href="https://github.com/jamessanford">James Sanford</a>. <a href="https://github.com/simonw/llm-openrouter/pull/43">#43</a></li>
-<li>Support for reasoning options, for example <code>llm -m openrouter/openai/gpt-5 'prove dogs exist' -o reasoning_effort medium</code>. <a href="https://github.com/simonw/llm-openrouter/issues/45">#45</a></li>
-</ul>
-</blockquote>
-<p>Tool calling is a really big deal, as it means you can now use the plugin to try out tools (and <a href="https://simonwillison.net/2025/Sep/18/agents/">build agents, if you like</a>) against any of the 179 tool-enabled models on that platform:</p>
-<pre><code>llm install llm-openrouter
-llm keys set openrouter
-# Paste key here
-llm models --tools | grep 'OpenRouter:' | wc -l
-# Outputs 179
-</code></pre>
-<p>Quite a few of the models hosted on OpenRouter can be accessed for free. Here's a tool-usage example using the <a href="https://github.com/simonw/llm-tools-datasette">llm-tools-datasette plugin</a> against the new <a href="https://simonwillison.net/2025/Sep/20/grok-4-fast/">Grok 4 Fast model</a>:</p>
-<pre><code>llm install llm-tools-datasette
-llm -m openrouter/x-ai/grok-4-fast:free -T 'Datasette("https://datasette.io/content")' 'Count available plugins'
-</code></pre>
-<p>Outputs:</p>
-<blockquote>
-<p>There are 154 available plugins.</p>
-</blockquote>
-<p><a href="https://gist.github.com/simonw/43c56203887dd0d07351443a2ba18f29">The output</a> of <code>llm logs -cu</code> shows the tool calls and SQL queries it executed to get that result.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a></p>]]></description><pubDate>Sun, 21 Sep 2025 00:24:05 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/ios">ios</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/mlx">mlx</a></p>]]></description><pubDate>Sun, 21 Sep 2025 23:56:14 +0000</pubDate></item></channel></rss>
