@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>The AI Emperor Has No Clothes</title><link>https://www.jeffgeerling.com/blog/2025/ai-emperor-has-no-clothes</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">The AI Emperor Has No Clothes</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/ai-influencer-deal-offer.png" width="400" height="auto" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-7bac7114-4965-4f33-8f5e-bcc8d3b6d165" data-insert-attach="{&quot;id&quot;:&quot;7bac7114-4965-4f33-8f5e-bcc8d3b6d165&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="AI influencer deal offer"></p>
+
+<p>If the size of the current AI bubble can be estimated by how many</p>
+
+<ul>
+<li>AI job offers</li>
+<li>AI product review offers</li>
+<li>AI service paid sponsorship offers</li>
+<li>AI creator representation offers</li>
+</ul>
+
+<p>I receive per day... then I'd say we're nearing the pop.</p>
+
+<p>There is no way the trillions of dollars of valuation placed on AI companies can be backed by any amount of future profit.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-29T23:13:29-05:00" title="Monday, September 29, 2025 - 23:13" class="datetime">September 29, 2025</time>
+</span>]]></description><pubDate>Tue, 30 Sep 2025 04:13:29 +0000</pubDate></item><item><title>Not all OCuLink eGPU docks are created equal</title><link>https://www.jeffgeerling.com/blog/2025/not-all-oculink-egpu-docks-are-created-equal</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Not all OCuLink eGPU docks are created equal</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>I recently tried using the <a href="https://amzn.to/46Y65Wo">Minisforum DEG1 GPU Dock</a> with a Raspberry Pi 500+, using an M.2 to OCuLink adapter, and <a href="https://amzn.to/48CZlyl">this chenyang SFF-8611 Cable</a>.</p>
+
+<p>After figuring out there's a power button on the DEG1 (which needs to be turned on), and after fiddling around with the switches on the PCB (hidden under the large metal plate on the bottom; TGX to OFF was the most important setting), I was able to get the Raspberry Pi's PCIe bus to at least tell the graphics card installed in the eGPU dock to spin up its fans and initialize.</p>
+
+<p>But I wasn't able to get any output from the card (using <a href="https://github.com/geerlingguy/raspberry-pi-pcie-devices/discussions/756">this Linux kernel patch</a>), and <code>lspci</code> did not show it. (Nor were there any logs showing errors in <code>dmesg</code>).</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-29T09:39:02-05:00" title="Monday, September 29, 2025 - 09:39" class="datetime">September 29, 2025</time>
+</span>]]></description><pubDate>Mon, 29 Sep 2025 14:39:02 +0000</pubDate></item><item><title>Full eGPU acceleration on the Pi 500+ with a 15-line patch</title><link>https://www.jeffgeerling.com/blog/2025/full-egpu-acceleration-on-pi-500-15-line-patch</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Full eGPU acceleration on the Pi 500+ with a 15-line patch</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/pi500plus-egpu-on-desk.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-dbd99baf-db52-43b5-9fed-d33da560021e" data-insert-attach="{&quot;id&quot;:&quot;dbd99baf-db52-43b5-9fed-d33da560021e&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi 500+ eGPU setup on Desk"></p>
+
+<p>Instead of a traditional review of a new Pi product, I thought I'd split things up on my blog, and write two separate posts; this one about hacking in an eGPU on the Pi 500+, for a massive uplift in gaming performance and local LLMs, and a <a href="https://www.jeffgeerling.com/blog/2025/testing-raspberry-pi-500s-new-mechanical-keyboard">separate post about the Pi 500+'s new mechanical keyboard</a>.</p>
+
+<p>The <a href="https://www.raspberrypi.com/products/raspberry-pi-500-plus/">Raspberry Pi 500+</a> was announced today, sells for $200, and adds on the following over what was present in the regular Pi 500:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-25T02:00:58-05:00" title="Thursday, September 25, 2025 - 02:00" class="datetime">September 25, 2025</time>
+</span>]]></description><pubDate>Thu, 25 Sep 2025 07:00:58 +0000</pubDate></item><item><title>Testing the Raspberry Pi 500+&apos;s new mechanical keyboard</title><link>https://www.jeffgeerling.com/blog/2025/testing-raspberry-pi-500s-new-mechanical-keyboard</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Testing the Raspberry Pi 500+'s new mechanical keyboard</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/pi500plus-keyboard-typing.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-3eaf6b2c-d3af-4466-a7ae-500136ecd3af" data-insert-attach="{&quot;id&quot;:&quot;3eaf6b2c-d3af-4466-a7ae-500136ecd3af&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi 500+ typing on keyboard rainbow LED backlight"></p>
+
+<p>Instead of a traditional review of a new Pi product, I thought I'd split things up on my blog, and write two separate posts; this one about the Pi 500+'s new mechanical keyboard, and a separate post about <a href="https://www.jeffgeerling.com/blog/2025/full-egpu-acceleration-on-pi-500-15-line-patch">hacking in an eGPU on the Pi 500+</a>, for a massive uplift in gaming performance and local LLMs.</p>
+
+<p>The <a href="https://www.raspberrypi.com/products/raspberry-pi-500-plus/">Raspberry Pi 500+</a> was announced today, sells for $200, and adds on the following over what was present in the regular Pi 500:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-25T02:00:45-05:00" title="Thursday, September 25, 2025 - 02:00" class="datetime">September 25, 2025</time>
+</span>]]></description><pubDate>Thu, 25 Sep 2025 07:00:45 +0000</pubDate></item><item><title>You can finally manage Macs with FileVault remotely in Tahoe</title><link>https://www.jeffgeerling.com/blog/2025/you-can-finally-manage-macs-filevault-remotely-tahoe</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">You can finally manage Macs with FileVault remotely in Tahoe</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>For years, I've had a couple Macs running at home and at my studio, which I use to remotely manage my video projects or some coding project.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/mac-mini-m4-power-button-workbench.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-0697a89b-d2f6-4c1b-9d59-9ccfdf8f37b4" data-insert-attach="{&quot;id&quot;:&quot;0697a89b-d2f6-4c1b-9d59-9ccfdf8f37b4&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="M4 Mac mini workbench powering on"></p>
+
+<p>It's nice to have a workstation set up that you can access anywhere via Screen Sharing to check on progress, jot down a note, etc.—and not be tied to a web app or some cloud service.</p>
+
+<p>I run a Wireguard VPN at home and at my studio, so I can remotely log into any of my infrastructure through the VPN—Macs included.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-19T13:44:01-05:00" title="Friday, September 19, 2025 - 13:44" class="datetime">September 19, 2025</time>
+</span>]]></description><pubDate>Fri, 19 Sep 2025 18:44:01 +0000</pubDate></item><item><title>I regret building this $3000 Pi AI cluster</title><link>https://www.jeffgeerling.com/blog/2025/i-regret-building-3000-pi-ai-cluster</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">I regret building this $3000 Pi AI cluster</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/raspberry-pi-compute-blade-10-node-ai-server.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-1c81ed77-5e91-4b90-aed5-0b13581d214a" data-insert-attach="{&quot;id&quot;:&quot;1c81ed77-5e91-4b90-aed5-0b13581d214a&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi AI 10 node compute blade server"></p>
+
+<p>I ordered a set of 10 Compute Blades in April 2023 (two years ago), and they just arrived a few weeks ago. In that time Raspberry Pi upgraded the CM4 to a CM5, so I ordered a set of 10 16GB CM5 Lite modules for my blade cluster. That should give me 160 GB of total RAM to play with.</p>
+
+<p>This was the biggest Pi cluster I've built, and it set me back around $3,000, shipping included:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-19T09:12:36-05:00" title="Friday, September 19, 2025 - 09:12" class="datetime">September 19, 2025</time>
+</span>]]></description><pubDate>Fri, 19 Sep 2025 14:12:36 +0000</pubDate></item><item><title>Save video still frames from QuickTime Player with a shortcut</title><link>https://www.jeffgeerling.com/blog/2025/save-video-still-frames-quicktime-player-shortcut</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Save video still frames from QuickTime Player with a shortcut</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Almost 15 years ago, I wrote <a href="https://www.jeffgeerling.com/blogs/jeff-geerling/grab-single-frame-video">Grab a Single Frame from a Video in QuickTime X</a>. And for many years since, I slightly modified that workflow. Instead of using Preview, I would use <a href="https://github.com/jcsalterego/pngpaste"><code>pngpaste</code></a>, and paste the copied frame from QuickTime player into a file.</p>
+
+<p>For example:</p>
+
+<ol>
+<li>Open a video in QuickTime and scrub to the frame you would like to save as an image.</li>
+<li>Press Command-C</li>
+<li>Switch to Terminal</li>
+<li>Run <code>pngpaste image-name-here.jpg</code></li>
+<li>Profit!</li>
+</ol>
+
+<p>However, there are two problems with that workflow:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-17T23:23:20-05:00" title="Wednesday, September 17, 2025 - 23:23" class="datetime">September 17, 2025</time>
+</span>]]></description><pubDate>Thu, 18 Sep 2025 04:23:20 +0000</pubDate></item><item><title>Digging deeper into YouTube&apos;s view count discrepancy</title><link>https://www.jeffgeerling.com/blog/2025/digging-deeper-youtubes-view-count-discrepancy</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Digging deeper into YouTube's view count discrepancy</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>For a great many tech YouTube channels, <a href="https://www.jeffgeerling.com/blog/2025/youtube-views-are-down-dont-panic">views have been markedly down</a> from desktop ("computer") users since August 10th (or so).</p>
+
+<p>This month-long event has kicked up some dust—enough that two British YouTubers, <a href="https://www.youtube.com/watch?v=MGTKaALdHzc">Spiffing Brit</a> and <a href="https://www.youtube.com/watch?v=YX1eEe8erkQ">Josh Strife Hayes</a> are having a very British argument<sup id="british"><a href="#fn:british" class="footnote-ref" role="doc-noteref">1</a></sup> over who's right about the root cause.</p>
+
+<p>Spiffing Brit argued it's a mix of YouTube's seasonality (it's back to school season) and channels falling off, or as TechLinked puts it, "<a href="https://www.youtube.com/watch?v=gZ5pATTvc2o">git gud</a>", while Josh Strife Hayes points out the massive number of channels which identified a <em>historic</em> shift down in desktop views (compared to mobile, tablet, and TV) starting after August 10. This data was <a href="https://www.youtube.com/watch?v=8FUJwXeuCGc">corroborated by this Moist Critical video</a> as well.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-16T14:55:20-05:00" title="Tuesday, September 16, 2025 - 14:55" class="datetime">September 16, 2025</time>
+</span>]]></description><pubDate>Tue, 16 Sep 2025 19:55:20 +0000</pubDate></item><item><title>CubeSats are fascinating learning tools for space</title><link>https://www.jeffgeerling.com/blog/2025/cubesats-are-fascinating-learning-tools-space</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">CubeSats are fascinating learning tools for space</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/four-cubesats-together.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-fbd23249-1ddc-40cf-a157-77b2ea4f0c6e" data-insert-attach="{&quot;id&quot;:&quot;fbd23249-1ddc-40cf-a157-77b2ea4f0c6e&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Cubesats together"></p>
+
+<p>These are CubeSats. Satellites that are going to space—or at least, the ones I have here are <em>prototypes</em>. But these have one thing in common: they're all powered by either a Raspberry Pi, or a microcontroller.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-12T09:01:41-05:00" title="Friday, September 12, 2025 - 09:01" class="datetime">September 12, 2025</time>
+</span>]]></description><pubDate>Fri, 12 Sep 2025 14:01:41 +0000</pubDate></item><item><title>YouTube views are down (don&apos;t panic)</title><link>https://www.jeffgeerling.com/blog/2025/youtube-views-are-down-dont-panic</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">YouTube views are down (don't panic)</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><blockquote>
+  <p><strong>September 15 update</strong>: <a href="https://x.com/YouTubeInsider/status/1967588485201600800">@YouTubeInsider confirmed</a> that the issue is related to viewers who have adblockers enabled—YouTube's <a href="https://www.youtube.com/watch?v=YX1eEe8erkQ">been in an arms race with ad blocking tools</a>, and the fallout is a substantial cut in counted views for creators who have a large audience watching from desktop.</p>
+</blockquote>
+
+<p>Many YouTube content creators, myself included, noticed something in early to mid-August: views were down.</p>
+
+<p>After being on the platform since 2006 (though for me, not being a 'professional' YouTuber until about 5 years ago), I'm used to seasonal dips, adjustments after new tweaks to the algorithm or layout/design changes.</p>
+
+<p>But this was <em>substantial</em>.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-07T12:51:20-05:00" title="Sunday, September 7, 2025 - 12:51" class="datetime">September 7, 2025</time>
+</span>]]></description><pubDate>Sun, 7 Sep 2025 17:51:20 +0000</pubDate></item></channel></rss>
