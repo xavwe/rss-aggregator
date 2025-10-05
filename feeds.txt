@@ -24,3 +24,4 @@ https://www.charlespetzold.com/rss.xml
 https://blog.pragmaticengineer.com/rss/
 https://skyfall.dev/rss.xml
 https://blog.deployor.dev/rss.xml
+https://www.theerlangelist.com/rss
