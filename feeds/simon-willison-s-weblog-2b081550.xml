@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GPT-5 pro</title><link>https://simonwillison.net/2025/Oct/6/gpt-5-pro/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-5-pro">GPT-5 pro</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>gpt-image-1-mini</title><link>https://simonwillison.net/2025/Oct/6/gpt-image-1-mini/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-image-1-mini">gpt-image-1-mini</a></strong></p>
+OpenAI released a new image model today: <code>gpt-image-1-mini</code>, which they describe as "A smaller image generation model that’s 80% less expensive than the large model."</p>
+<p>They released it very quietly - I didn't hear about this in the DevDay keynote but I later spotted it on the <a href="https://openai.com/devday/">DevDay 2025 announcements page</a>.</p>
+<p>It wasn't instantly obvious to me how to use this via their API. I ended up vibe coding a Python CLI tool for it so I could try it out.</p>
+<p>I dumped the <a href="https://github.com/openai/openai-python/commit/9ada2c74f3f5865a2bfb19afce885cc98ad6a4b3.diff">plain text diff version</a> of the commit to the OpenAI Python library titled <a href="https://github.com/openai/openai-python/commit/9ada2c74f3f5865a2bfb19afce885cc98ad6a4b3">feat(api): dev day 2025 launches</a> into ChatGPT GPT-5 Thinking and worked with it to figure out how to use the new image model and build a script for it. Here's <a href="https://chatgpt.com/share/68e44023-7fc4-8006-8991-3be661799c9f">the transcript</a> and the <a href="https://github.com/simonw/tools/blob/main/python/openai_image.py">the openai_image.py script</a> it wrote.</p>
+<p>I had it add inline script dependencies, so you can run it with <code>uv</code> like this:</p>
+<pre><code>export OPENAI_API_KEY="$(llm keys get openai)"
+uv run https://tools.simonwillison.net/python/openai_image.py "A pelican riding a bicycle"
+</code></pre>
+<p>It picked this illustration style without me specifying it:</p>
+<p><img alt="A nice illustration of a pelican riding a bicycle, both pelican and bicycle are exactly as you would hope. Looks sketched, maybe colored pencils? The pelican's two legs are on the pedals but it also has a weird sort of paw on an arm on the handlebars." src="https://static.simonwillison.net/static/2025/gpt-image-1-mini-pelican.jpg" /></p>
+<p>(This is a very different test from my normal "Generate an SVG of a pelican riding a bicycle" since it's using a dedicated image generator, not having a text-based model try to generate SVG code.)</p>
+<p>My tool accepts a prompt, and optionally a filename (if you don't provide one it saves to a filename like <code>/tmp/image-621b29.png</code>).</p>
+<p>It also accepts options for model and dimensions and output quality - the <code>--help</code> output lists those, you can <a href="https://tools.simonwillison.net/python/#openai_imagepy">see that here</a>.</p>
+<p>OpenAI's pricing is a little confusing. The <a href="https://platform.openai.com/docs/models/gpt-image-1-mini">model page</a> claims low quality images should cost around half a cent and medium quality around a cent and a half. It also lists an image token price of $8/million tokens. It turns out there's a default "high" quality setting - most of the images I've generated have reported between 4,000 and 6,000 output tokens, which costs between <a href="https://www.llm-prices.com/#ot=4000&amp;oc=8">3.2</a> and <a href="https://www.llm-prices.com/#ot=6000&amp;oc=8">4.8 cents</a>.</p>
+<p>One last demo, this time using <code>--quality low</code>:</p>
+<pre><code> uv run https://tools.simonwillison.net/python/openai_image.py \
+  'racoon eating cheese wearing a top hat, realistic photo' \
+  /tmp/racoon-hat-photo.jpg \
+  --size 1024x1024 \
+  --output-format jpeg \
+  --quality low
+</code></pre>
+<p>This saved the following:</p>
+<p><img alt="It's a square photo of a raccoon eating cheese and wearing a top hat. It looks pretty realistic." src="https://static.simonwillison.net/static/2025/racoon-hat-photo.jpg" /></p>
+<p>And reported this to standard error:</p>
+<pre><code>{
+  "background": "opaque",
+  "created": 1759790912,
+  "generation_time_in_s": 20.87331541599997,
+  "output_format": "jpeg",
+  "quality": "low",
+  "size": "1024x1024",
+  "usage": {
+    "input_tokens": 17,
+    "input_tokens_details": {
+      "image_tokens": 0,
+      "text_tokens": 17
+    },
+    "output_tokens": 272,
+    "total_tokens": 289
+  }
+}
+</code></pre>
+<p>This took 21s, but I'm on an unreliable conference WiFi connection so I don't trust that measurement very much.</p>
+<p>272 output tokens = <a href="https://www.llm-prices.com/#ot=272&amp;oc=8">0.2 cents</a> so this is much closer to the expected pricing from the model page.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Mon, 6 Oct 2025 22:54:32 +0000</pubDate></item><item><title>GPT-5 pro</title><link>https://simonwillison.net/2025/Oct/6/gpt-5-pro/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-5-pro">GPT-5 pro</a></strong></p>
 Here's OpenAI's model documentation for their GPT-5 pro model, released to their API today at their DevDay event.</p>
 <p>It has similar base characteristics to <a href="https://platform.openai.com/docs/models/gpt-5">GPT-5</a>: both share a September 30, 2024 knowledge cutoff and 400,000 context limit.</p>
 <p>GPT-5 pro has maximum output tokens 272,000 max, an increase from 128,000 for GPT-5.</p>
@@ -654,18 +702,4 @@ llm -m openai/gpt-5-codex -T llm_version 'What is the LLM version?'
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Tue, 23 Sep 2025 23:59:20 +0000</pubDate></item><item><title>Qwen3-VL: Sharper Vision, Deeper Thought, Broader Action</title><link>https://simonwillison.net/2025/Sep/23/qwen3-vl/#atom-everything</link><description><![CDATA[<p><strong><a href="https://qwen.ai/blog?id=99f0335c4ad9ff6153e517418d48535ab6d8afef&amp;from=research.latest-advancements-list">Qwen3-VL: Sharper Vision, Deeper Thought, Broader Action</a></strong></p>
-I've been looking forward to this. Qwen 2.5 VL is one of the best available open weight vision LLMs, so I had high hopes for Qwen 3's vision models.</p>
-<blockquote>
-<p>Firstly, we are open-sourcing the flagship model of this series: Qwen3-VL-235B-A22B, available in both Instruct and Thinking versions. The Instruct version matches or even exceeds Gemini 2.5 Pro in major visual perception benchmarks. The Thinking version achieves state-of-the-art results across many multimodal reasoning benchmarks.</p>
-</blockquote>
-<p>Bold claims against Gemini 2.5 Pro, which are supported by a flurry of self-reported benchmarks.</p>
-<p>This initial model is <em>enormous</em>. On Hugging Face both <a href="https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Instruct">Qwen3-VL-235B-A22B-Instruct</a> and <a href="https://huggingface.co/Qwen/Qwen3-VL-235B-A22B-Thinking">Qwen3-VL-235B-A22B-Thinking</a> are 235B parameters and weigh 471 GB. Not something I'm going to be able to run on my 64GB Mac!</p>
-<p>The <a href="https://huggingface.co/collections/Qwen/qwen25-vl-6795ffac22b334a837c0f9a5">Qwen 2.5 VL family</a> included models at 72B, 32B, 7B and 3B sizes. Given the rate Qwen are shipping models at the moment I wouldn't be surprised to see smaller Qwen 3 VL models show up in just the next few days.</p>
-<p>Also from Qwen today, three new API-only closed-weight models: <a href="https://x.com/Alibaba_Qwen/status/1970582211993927774">upgraded Qwen 3 Coder</a>, <a href="https://qwen.ai/blog?id=4266edf7f3718f2d3fda098b3f4c48f3573215d0&amp;from=home.latest-research-list">Qwen3-LiveTranslate-Flash</a> (real-time multimodal interpretation), and <a href="https://qwen.ai/blog?id=241398b9cd6353de490b0f82806c7848c5d2777d&amp;from=research.latest-advancements-list">Qwen3-Max</a>, their new trillion parameter flagship model, which they describe as their "largest and most capable model to date".</p>
-<p>Plus <a href="https://twitter.com/Alibaba_Qwen/status/1970510193537753397">Qwen3Guard</a>, a "safety moderation model series" that looks similar in purpose to Meta's <a href="https://www.llama.com/docs/model-cards-and-prompt-formats/llama-guard-3/">Llama Guard</a>. This one is open weights (Apache 2.0) and comes in 8B, 4B and 0.6B sizes <a href="https://huggingface.co/collections/Qwen/qwen3guard-68d2729abbfae4716f3343a1">on Hugging Face</a>. There's more information in the <a href="https://github.com/QwenLM/Qwen3Guard">QwenLM/Qwen3Guard</a> GitHub repo.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45352672">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Tue, 23 Sep 2025 23:51:08 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Tue, 23 Sep 2025 23:59:20 +0000</pubDate></item></channel></rss>
