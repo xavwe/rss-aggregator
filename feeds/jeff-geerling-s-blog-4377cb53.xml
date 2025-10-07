@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>The AI Emperor Has No Clothes</title><link>https://www.jeffgeerling.com/blog/2025/ai-emperor-has-no-clothes</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">The AI Emperor Has No Clothes</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Qualcomm&apos;s buying Arduino – what it means for makers</title><link>https://www.jeffgeerling.com/blog/2025/qualcomms-buying-arduino-%E2%80%93-what-it-means-makers</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Qualcomm's buying Arduino – what it means for makers</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/arduino-uno-q.jpg" width="700" height="371" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-882c9b1d-c545-4621-88d2-567b161572e6" data-insert-attach="{&quot;id&quot;:&quot;882c9b1d-c545-4621-88d2-567b161572e6&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Arduino Uno Q SBC microcontroller board"></p>
+
+<p><a href="https://www.qualcomm.com/news/releases/2025/10/qualcomm-to-acquire-arduino-accelerating-developers--access-to-i">Qualcomm just announced they're acquiring Arduino</a>, the company that introduced a whole generation of tinkerers to microcontrollers and embedded electronics.</p>
+
+<p>The <a href="https://amzn.to/46FlNpp">Uno R3</a> was the first microcontroller board I owned. Over a decade ago, I blinked my first LED with an Uno; the <a href="https://github.com/geerlingguy/blinky">code for that is actually still up on my GitHub</a>.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-07T08:01:08-05:00" title="Tuesday, October 7, 2025 - 08:01" class="datetime">October 7, 2025</time>
+</span>]]></description><pubDate>Tue, 7 Oct 2025 13:01:08 +0000</pubDate></item><item><title>The AI Emperor Has No Clothes</title><link>https://www.jeffgeerling.com/blog/2025/ai-emperor-has-no-clothes</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">The AI Emperor Has No Clothes</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/ai-influencer-deal-offer.png" width="400" height="auto" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-7bac7114-4965-4f33-8f5e-bcc8d3b6d165" data-insert-attach="{&quot;id&quot;:&quot;7bac7114-4965-4f33-8f5e-bcc8d3b6d165&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="AI influencer deal offer"></p>
 
@@ -96,17 +105,4 @@
 <p>These are CubeSats. Satellites that are going to space—or at least, the ones I have here are <em>prototypes</em>. But these have one thing in common: they're all powered by either a Raspberry Pi, or a microcontroller.</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-12T09:01:41-05:00" title="Friday, September 12, 2025 - 09:01" class="datetime">September 12, 2025</time>
-</span>]]></description><pubDate>Fri, 12 Sep 2025 14:01:41 +0000</pubDate></item><item><title>YouTube views are down (don&apos;t panic)</title><link>https://www.jeffgeerling.com/blog/2025/youtube-views-are-down-dont-panic</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">YouTube views are down (don't panic)</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><blockquote>
-  <p><strong>September 15 update</strong>: <a href="https://x.com/YouTubeInsider/status/1967588485201600800">@YouTubeInsider confirmed</a> that the issue is related to viewers who have adblockers enabled—YouTube's <a href="https://www.youtube.com/watch?v=YX1eEe8erkQ">been in an arms race with ad blocking tools</a>, and the fallout is a substantial cut in counted views for creators who have a large audience watching from desktop.</p>
-</blockquote>
-
-<p>Many YouTube content creators, myself included, noticed something in early to mid-August: views were down.</p>
-
-<p>After being on the platform since 2006 (though for me, not being a 'professional' YouTuber until about 5 years ago), I'm used to seasonal dips, adjustments after new tweaks to the algorithm or layout/design changes.</p>
-
-<p>But this was <em>substantial</em>.</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-07T12:51:20-05:00" title="Sunday, September 7, 2025 - 12:51" class="datetime">September 7, 2025</time>
-</span>]]></description><pubDate>Sun, 7 Sep 2025 17:51:20 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Fri, 12 Sep 2025 14:01:41 +0000</pubDate></item></channel></rss>
