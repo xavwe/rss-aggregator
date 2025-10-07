@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>gpt-image-1-mini</title><link>https://simonwillison.net/2025/Oct/6/gpt-image-1-mini/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-image-1-mini">gpt-image-1-mini</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Deloitte to pay money back to Albanese government after using AI in $440,000 report</title><link>https://simonwillison.net/2025/Oct/6/deloitte-to-pay-money-back/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report">Deloitte to pay money back to Albanese government after using AI in $440,000 report</a></strong></p>
+Ouch:</p>
+<blockquote>
+<p>Deloitte will provide a partial refund to the federal government over a $440,000 report that contained several errors, after admitting it used generative artificial intelligence to help produce it.</p>
+</blockquote>
+<p>(I was initially confused by the "Albanese government" reference in the headline since this is a story about the Australian federal government. That's because the current Australia Prime Minister is Anthony Albanese.)</p>
+<p>Here's <a href="https://www.dewr.gov.au/assuring-integrity-targeted-compliance-framework/resources/targeted-compliance-framework-assurance-review-final-report">the page for the report</a>. The PDF now includes this note:</p>
+<blockquote>
+<p>This Report was updated on 26 September 2025 and replaces the Report dated 4 July 2025. The Report has been updated to correct those citations and reference list entries which contained errors in the previously issued version, to amend the summary of the Amato proceeding which contained errors, and to make revisions to improve clarity and readability. The updates made in no way impact or affect the substantive content, findings and recommendations in the Report.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/hallucinations">hallucinations</a></p>]]></description><pubDate>Mon, 6 Oct 2025 23:35:53 +0000</pubDate></item><item><title>a system that can do work independently on behalf of the user</title><link>https://simonwillison.net/2025/Oct/6/work-independently/#atom-everything</link><description><![CDATA[<p>I've settled on agents as meaning <a href="https://simonwillison.net/2025/Sep/18/agents/">"LLMs calling tools in a loop to achieve a goal"</a> but OpenAI continue to muddy the waters with much more vague definitions. Swyx <a href="https://twitter.com/swyx/status/1975335082048246159">spotted this one</a> in the press pack OpenAI sent out for their DevDay announcements today:</p>
+<blockquote>
+<p><strong>How does OpenAl define an "agent"?</strong> An Al agent is a system that can do work independently on behalf of the user.</p>
+</blockquote>
+<p>Adding this one <a href="https://simonwillison.net/tags/agent-definitions/">to my collection</a>.</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/agent-definitions">agent-definitions</a>, <a href="https://simonwillison.net/tags/swyx">swyx</a></p>]]></description><pubDate>Mon, 6 Oct 2025 23:17:55 +0000</pubDate></item><item><title>gpt-image-1-mini</title><link>https://simonwillison.net/2025/Oct/6/gpt-image-1-mini/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-image-1-mini">gpt-image-1-mini</a></strong></p>
 OpenAI released a new image model today: <code>gpt-image-1-mini</code>, which they describe as "A smaller image generation model that’s 80% less expensive than the large model."</p>
 <p>They released it very quietly - I didn't hear about this in the DevDay keynote but I later spotted it on the <a href="https://openai.com/devday/">DevDay 2025 announcements page</a>.</p>
 <p>It wasn't instantly obvious to me how to use this via their API. I ended up vibe coding a Python CLI tool for it so I could try it out.</p>
@@ -657,49 +675,4 @@ Two new preview models from Google - updates to their fast and inexpensive Flash
     <p>Tags: <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Thu, 25 Sep 2025 00:24:53 +0000</pubDate></item><item><title>Quoting Stanford CS221 Autumn 2025</title><link>https://simonwillison.net/2025/Sep/24/stanford/#atom-everything</link><description><![CDATA[<blockquote cite="https://stanford-cs221.github.io/autumn2025/assignments/hw1_foundations/index.html"><p>[2 points] <strong>Learn basic NumPy operations with an AI tutor!</strong> Use an AI chatbot (e.g., ChatGPT, Claude, Gemini, or Stanford AI Playground) to teach yourself how to do basic vector and matrix operations in NumPy (import numpy as np). AI tutors have become exceptionally good at creating interactive tutorials, and this year in CS221, we're testing how they can help you learn fundamentals more interactively than traditional static exercises.</p></blockquote>
 <p class="cite">&mdash; <a href="https://stanford-cs221.github.io/autumn2025/assignments/hw1_foundations/index.html">Stanford CS221 Autumn 2025</a>, Problem 1: Linear Algebra</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/stanford">stanford</a>, <a href="https://simonwillison.net/tags/computer-science">computer-science</a>, <a href="https://simonwillison.net/tags/education">education</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/numpy">numpy</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Wed, 24 Sep 2025 22:15:03 +0000</pubDate></item><item><title>Cross-Agent Privilege Escalation: When Agents Free Each Other</title><link>https://simonwillison.net/2025/Sep/24/cross-agent-privilege-escalation/#atom-everything</link><description><![CDATA[<p><strong><a href="https://embracethered.com/blog/posts/2025/cross-agent-privilege-escalation-agents-that-free-each-other/">Cross-Agent Privilege Escalation: When Agents Free Each Other</a></strong></p>
-Here's a clever new form of AI exploit from Johann Rehberger, who has coined the term <strong>Cross-Agent Privilege Escalation</strong> to describe an attack where multiple coding agents - GitHub Copilot and Claude Code for example - operating on the same system can be tricked into modifying each other's configurations to escalate their privileges.</p>
-<p>This follows Johannn's previous investigation of self-escalation attacks, where a prompt injection against GitHub Copilot could instruct it to <a href="https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/">edit its own settings.json file</a> to disable user approvals for future operations.</p>
-<p>Sensible agents have now locked down their ability to modify their own settings, but that exploit opens right back up again if you run multiple different agents in the same environment:</p>
-<blockquote>
-<p>The ability for agents to write to each other’s settings and configuration files opens up a fascinating, and concerning, novel category of exploit chains.</p>
-<p>What starts as a single indirect prompt injection can quickly escalate into a multi-agent compromise, where one agent “frees” another agent and sets up a loop of escalating privilege and control.</p>
-<p>This isn’t theoretical. With current tools and defaults, it’s very possible today and not well mitigated across the board.</p>
-<p>More broadly, this highlights the need for better isolation strategies and stronger secure defaults in agent tooling.</p>
-</blockquote>
-<p>I really need to start habitually running these things in a locked down container!</p>
-<p>(I also just stumbled across <a href="https://www.youtube.com/watch?v=Ra9mYeKpeQo">this YouTube interview</a> with Johann on the Crying Out Cloud security podcast.)
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/johann-rehberger">johann-rehberger</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Wed, 24 Sep 2025 21:10:24 +0000</pubDate></item><item><title>GPT-5-Codex</title><link>https://simonwillison.net/2025/Sep/23/gpt-5-codex/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-5-codex">GPT-5-Codex</a></strong></p>
-OpenAI <a href="https://simonwillison.net/2025/Sep/15/gpt-5-codex/">half-released this model</a> earlier this month, adding it to their Codex CLI tool but not their API.</p>
-<p>Today they've fixed that - the new model can now be accessed as <code>gpt-5-codex</code>. It's priced the same as regular GPT-5: $1.25/million input tokens, $10/million output tokens, and the same hefty 90% discount for previously cached input tokens, especially important for agentic tool-using workflows which quickly produce a lengthy conversation.</p>
-<p>It's only available via their Responses API, which means you currently need to install the <a href="https://github.com/simonw/llm-openai-plugin">llm-openai-plugin</a> to use it with LLM:</p>
-<pre><code>llm install -U llm-openai-plugin
-llm -m openai/gpt-5-codex -T llm_version 'What is the LLM version?'
-</code></pre>
-<p>Outputs:</p>
-<blockquote>
-<p>The installed LLM version is 0.27.1.</p>
-</blockquote>
-<p>I added <a href="https://llm.datasette.io/en/stable/tools.html">tool support</a> to that plugin today, <a href="https://github.com/simonw/llm-openai-plugin/issues/20#issuecomment-3325921197">mostly authored by GPT-5 Codex itself</a> using OpenAI's Codex CLI.</p>
-<p>The new <a href="https://cookbook.openai.com/examples/gpt-5-codex_prompting_guide">prompting guide for GPT-5-Codex</a> is worth a read.</p>
-<blockquote>
-<p>GPT-5-Codex is purpose-built for Codex CLI, the Codex IDE extension, the Codex cloud environment, and working in GitHub, and also supports versatile tool use. We recommend using GPT-5-Codex only for agentic and interactive coding use cases.</p>
-<p>Because the model is trained specifically for coding, many best practices you once had to prompt into general purpose models are built in, and over prompting can reduce quality.</p>
-<p>The core prompting principle for GPT-5-Codex is <strong>“less is more.”</strong></p>
-</blockquote>
-<p>I <a href="https://gist.github.com/simonw/b371949ae984b0431848cd16cba24b27">tried my pelican benchmark</a> at a cost of <a href="https://www.llm-prices.com/#it=16&amp;ot=2154&amp;ic=1.25&amp;oc=10">2.156 cents</a>.</p>
-<pre><code>llm -m openai/gpt-5-codex "Generate an SVG of a pelican riding a bicycle"
-</code></pre>
-<p><img alt="See description below" src="https://static.simonwillison.net/static/2025/gpt-5-codex-api-pelican.png" /></p>
-<p>I asked Codex to describe this image and it correctly identified it as a pelican!</p>
-<pre><code>llm -m openai/gpt-5-codex -a https://static.simonwillison.net/static/2025/gpt-5-codex-api-pelican.png \
-  -s 'Write very detailed alt text'
-</code></pre>
-<blockquote>
-<p>Cartoon illustration of a cream-colored pelican with a large orange beak and tiny black eye riding a minimalist dark-blue bicycle. The bird’s wings are tucked in, its legs resemble orange stick limbs pushing the pedals, and its tail feathers trail behind with light blue motion streaks to suggest speed. A small coral-red tongue sticks out of the pelican’s beak. The bicycle has thin light gray spokes, and the background is a simple pale blue gradient with faint curved lines hinting at ground and sky.</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Tue, 23 Sep 2025 23:59:20 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/stanford">stanford</a>, <a href="https://simonwillison.net/tags/computer-science">computer-science</a>, <a href="https://simonwillison.net/tags/education">education</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/numpy">numpy</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Wed, 24 Sep 2025 22:15:03 +0000</pubDate></item></channel></rss>
