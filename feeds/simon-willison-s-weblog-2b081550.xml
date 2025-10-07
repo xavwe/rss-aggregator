@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Thomas Klausner</title><link>https://simonwillison.net/2025/Oct/7/thomas-klausner/#atom-everything</link><description><![CDATA[<blockquote cite="https://domm.plix.at/perl/2025_10_braincoded_static_image_gallery.html"><p>For quite some I wanted to write a small static image gallery so I can share my pictures with friends and family. Of course there are a gazillion tools like this, but, well, sometimes I just want to roll my own. [...]</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Retraction</title><link>https://simonwillison.net/2025/Oct/7/gemini-25-computer-use-captchas/#atom-everything</link><description><![CDATA[<p>Google released a new <a href="https://blog.google/technology/google-deepmind/gemini-computer-use-model/">Gemini 2.5 Computer Use model</a> today, specially designed to help operate a GUI interface by interacting with visible elements using a virtual mouse and keyboard.</p>
+<p>I tried the demo hosted by Browserbase at <a href="https://gemini.browserbase.com/">gemini.browserbase.com</a> and was delighted and slightly horrified when it appeared to kick things off by first navigating to Google.com and solving their CAPTCHA in order to run a search!</p>
+
+<p>I wrote a post about it and included <a href="https://static.simonwillison.net/static/2025/captcha-solve-gemini-2.jpg">this screenshot</a>, but then learned that Browserbase itself has CAPTCHA solving built in and, as shown <a href="https://static.simonwillison.net/static/2025/browserbase-captcha.mp4">in this longer video</a>, it was Browserbase that solved the CAPTCHA even while Gemini was thinking about doing so itself.</p>
+
+<p>I deeply regret this error. I've deleted various social media posts about the original entry and linked back to this retraction instead.</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a></p>]]></description><pubDate>Tue, 7 Oct 2025 22:00:28 +0000</pubDate></item><item><title>Quoting Thomas Klausner</title><link>https://simonwillison.net/2025/Oct/7/thomas-klausner/#atom-everything</link><description><![CDATA[<blockquote cite="https://domm.plix.at/perl/2025_10_braincoded_static_image_gallery.html"><p>For quite some I wanted to write a small static image gallery so I can share my pictures with friends and family. Of course there are a gazillion tools like this, but, well, sometimes I just want to roll my own. [...]</p>
 <p>I used the old, well tested technique I call <strong>brain coding</strong>, where you start with an empty vim buffer and type some code (Perl, HTML, CSS) until you're happy with the result. It helps to think a bit (aka use your brain) during this process.</p></blockquote>
 <p class="cite">&mdash; <a href="https://domm.plix.at/perl/2025_10_braincoded_static_image_gallery.html">Thomas Klausner</a>, coining "brain coding"</p>
 
@@ -653,61 +660,4 @@ GitHub now have their own entry in the coding terminal CLI agent space: <a href=
 <p><em>Disclosure: I got a preview of this at an event at Microsoft's offices in Seattle last week. They did not pay me for my time but they did cover my flight, hotel and some dinners.</em>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/github-copilot">github-copilot</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/disclosures">disclosures</a></p>]]></description><pubDate>Thu, 25 Sep 2025 23:58:34 +0000</pubDate></item><item><title>Improved Gemini 2.5 Flash and Flash-Lite</title><link>https://simonwillison.net/2025/Sep/25/improved-gemini-25-flash-and-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.googleblog.com/en/continuing-to-bring-you-our-latest-models-with-an-improved-gemini-2-5-flash-and-flash-lite-release/">Improved Gemini 2.5 Flash and Flash-Lite</a></strong></p>
-Two new preview models from Google - updates to their fast and inexpensive Flash and Flash Lite families:</p>
-<blockquote>
-<p>The latest version of Gemini 2.5 Flash-Lite was trained and built based on three key themes:</p>
-<ul>
-<li><strong>Better instruction following</strong>: The model is significantly better at following complex instructions and system prompts.</li>
-<li><strong>Reduced verbosity</strong>: It now produces more concise answers, a key factor in reducing token costs and latency for high-throughput applications (see charts above).</li>
-<li><strong>Stronger multimodal &amp; translation capabilities</strong>: This update features more accurate audio transcription, better image understanding, and improved translation quality.</li>
-</ul>
-<p>[...]</p>
-<p>This latest 2.5 Flash model comes with improvements in two key areas we heard consistent feedback on:</p>
-<ul>
-<li><strong>Better agentic tool use</strong>: We've improved how the model uses tools, leading to better performance in more complex, agentic and multi-step applications. This model shows noticeable improvements on key agentic benchmarks, including a 5% gain on SWE-Bench Verified, compared to our last release (48.9% → 54%).</li>
-<li><strong>More efficient</strong>: With thinking on, the model is now significantly more cost-efficient—achieving higher quality outputs while using fewer tokens, reducing latency and cost (see charts above).</li>
-</ul>
-</blockquote>
-<p>They also added two new convenience model IDs: <code>gemini-flash-latest</code> and <code>gemini-flash-lite-latest</code>, which will always resolve to the most recent model in that family.</p>
-<p>I released <a href="https://github.com/simonw/llm-gemini/releases/tag/0.26">llm-gemini 0.26</a> adding support for the new models and new aliases. I also used the <code>response.set_resolved_model()</code> method <a href="https://github.com/simonw/llm/issues/1117">added in LLM 0.27</a> to ensure that the correct model ID would be recorded for those <code>-latest</code> uses.</p>
-<pre><code>llm install -U llm-gemini
-</code></pre>
-<p>Both of these models support optional reasoning tokens. I had them draw me pelicans riding bicycles in both thinking and non-thinking mode, using commands that looked like this:</p>
-<pre><code>llm -m gemini-2.5-flash-preview-09-2025 -o thinking_budget 4000 "Generate an SVG of a pelican riding a bicycle"
-</code></pre>
-<p>I then got each model to describe the image it had drawn using commands like this:</p>
-<pre><code>llm -a https://static.simonwillison.net/static/2025/gemini-2.5-flash-preview-09-2025-thinking.png -m gemini-2.5-flash-preview-09-2025 -o thinking_budget 2000 'Detailed single line alt text for this image'
-</code></pre>
-<p><a href="https://gist.github.com/simonw/e9dc9c18008106b4ae2e0be287709f5c"><strong>gemini-2.5-flash-preview-09-2025-thinking</strong></a></p>
-<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-preview-09-2025-thinking.png" /></p>
-<blockquote>
-<p>A minimalist stick figure graphic depicts a person with a white oval body and a dot head cycling a gray bicycle, carrying a large, bright yellow rectangular box resting high on their back.</p>
-</blockquote>
-<p><a href="https://gist.github.com/simonw/e357eac5f12e995a6dcb50711241a478"><strong>gemini-2.5-flash-preview-09-2025</strong></a></p>
-<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-preview-09-2025.png" /></p>
-<blockquote>
-<p>A simple cartoon drawing of a pelican riding a bicycle, with the text "A Pelican Riding a Bicycle" above it.</p>
-</blockquote>
-<p><a href="https://gist.github.com/simonw/29aff037b58fe62baf5a3cb7cf3b0ca9"><strong>gemini-2.5-flash-lite-preview-09-2025-thinking</strong></a></p>
-<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-lite-preview-09-2025-thinking.png" /></p>
-<blockquote>
-<p>A quirky, simplified cartoon illustration of a white bird with a round body, black eye, and bright yellow beak, sitting astride a dark gray, two-wheeled vehicle with its peach-colored feet dangling below.</p>
-</blockquote>
-<p><a href="https://gist.github.com/simonw/0eb5b9dc5515657a0a3c9d16bb5d46f6"><strong>gemini-2.5-flash-lite-preview-09-2025</strong></a></p>
-<p><img alt="" src="https://static.simonwillison.net/static/2025/gemini-2.5-flash-lite-preview-09-2025.png" /></p>
-<blockquote>
-<p>A minimalist, side-profile illustration of a stylized yellow chick or bird character riding a dark-wheeled vehicle on a green strip against a white background.</p>
-</blockquote>
-<p>Artificial Analysis posted <a href="https://twitter.com/ArtificialAnlys/status/1971273380335845683">a detailed review</a>, including these interesting notes about reasoning efficiency and speed:</p>
-<blockquote>
-<ul>
-<li>In reasoning mode, Gemini 2.5 Flash and Flash-Lite Preview 09-2025 are more token-efficient, using fewer output tokens than their predecessors to run the Artificial Analysis Intelligence Index. Gemini 2.5 Flash-Lite Preview 09-2025 uses 50% fewer output tokens than its predecessor, while Gemini 2.5 Flash Preview 09-2025 uses 24% fewer output tokens.</li>
-<li>Google Gemini 2.5 Flash-Lite Preview 09-2025 (Reasoning) is ~40% faster than the prior July release, delivering ~887 output tokens/s on Google AI Studio in our API endpoint performance benchmarking. This makes the new Gemini 2.5 Flash-Lite the fastest proprietary model we have benchmarked on the Artificial Analysis website</li>
-</ul>
-</blockquote>
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45375845">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/artificial-analysis">artificial-analysis</a></p>]]></description><pubDate>Thu, 25 Sep 2025 19:27:43 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/github-copilot">github-copilot</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/disclosures">disclosures</a></p>]]></description><pubDate>Thu, 25 Sep 2025 23:58:34 +0000</pubDate></item></channel></rss>
