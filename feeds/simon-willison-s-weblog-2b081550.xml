@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Python 3.14</title><link>https://simonwillison.net/2025/Oct/8/python-314/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.python.org/downloads/release/python-3140/">Python 3.14</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Why NetNewsWire Is Not a Web App</title><link>https://simonwillison.net/2025/Oct/8/why-netnewswire-is-not-a-web-app/#atom-everything</link><description><![CDATA[<p><strong><a href="https://inessential.com/2025/10/04/why-netnewswire-is-not-web-app.html">Why NetNewsWire Is Not a Web App</a></strong></p>
+In the wake of Apple <a href="https://daringfireball.net/2025/10/iceblock_removed_from_app_store">removing ICEBlock from the App Store</a>, Brent Simmons talks about why he still thinks his veteran (and actively maintained) <a href="https://netnewswire.com/">NetNewsWire</a> feed reader app should remain a native application.</p>
+<p>Part of the reason is cost - NetNewsWire is free these days (<a href="">MIT licensed in fact</a>) and the cost to Brent is an annual Apple developer subscription:</p>
+<blockquote>
+<p>If it were a web app instead, I could drop the developer membership, but I’d have to pay way more money for web and database hosting. [...] I could charge for NetNewsWire, but that would go against my political goal of making sure there’s a good and <em>free</em> RSS reader available to everyone.</p>
+</blockquote>
+<p>A bigger reason is around privacy and protecting users:</p>
+<blockquote>
+<p>Second issue. Right now, if law enforcement comes to me and demands I turn over a given user’s subscriptions list, I can’t. Literally can’t. I don’t have an encrypted version, even — I have nothing at all. The list lives on their machine (iOS or macOS).</p>
+</blockquote>
+<p>And finally it's about the principle of what a personal computing device should mean:</p>
+<blockquote>
+<p>My computer is <em>not</em> a terminal. It’s a world I get to control, and I can use — and, especially, <em>make</em> — whatever I want. I’m not stuck using just what’s provided to me on some other machines elsewhere: I’m not dialing into a mainframe or doing the modern equivalent of using only websites that other people control.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/brent-simmons">brent-simmons</a>, <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/netnewswire">netnewswire</a>, <a href="https://simonwillison.net/tags/ios">ios</a></p>]]></description><pubDate>Wed, 8 Oct 2025 16:12:14 +0000</pubDate></item><item><title>Python 3.14</title><link>https://simonwillison.net/2025/Oct/8/python-314/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.python.org/downloads/release/python-3140/">Python 3.14</a></strong></p>
 This year's major Python version, Python 3.14, just made its first stable release!</p>
 <p>As usual the <a href="https://docs.python.org/3.14/whatsnew/3.14.html">what's new in Python 3.14</a> document is the best place to get familiar with the new release:</p>
 <blockquote>
@@ -15,10 +31,20 @@ uvx python@3.14
 <p>Or for free-threaded Python 3.1;:</p>
 <pre><code>uvx python@3.14t
 </code></pre>
-<p>The <code>uv</code> team wrote <a href="https://astral.sh/blog/python-3.14">about their Python 3.14 highlights</a> in their announcement of Python 3.14's availability via <code>uv</code>.
+<p>The <code>uv</code> team wrote <a href="https://astral.sh/blog/python-3.14">about their Python 3.14 highlights</a> in their announcement of Python 3.14's availability via <code>uv</code>.</p>
+<p>The GitHub Actions <a href="https://github.com/actions/setup-python">setup-python action</a> includes Python 3.14 now too, so the following YAML snippet in will run tests on all currently supported versions:</p>
+<pre><code>strategy:
+  matrix:
+    python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+steps:
+- uses: actions/setup-python@v6
+  with:
+    python-version: ${{ matrix.python-version }}
+</code></pre>
+<p><a href="https://github.com/simonw/datasette-pretty-traces/blob/3edddecab850d6ac47ed128a400b6a0ff8b0c012/.github/workflows/test.yml">Full example here</a> for one of my many Datasette plugin repos.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/gil">gil</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/psf">psf</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Wed, 8 Oct 2025 04:10:06 +0000</pubDate></item><item><title>Retraction</title><link>https://simonwillison.net/2025/Oct/7/gemini-25-computer-use-captchas/#atom-everything</link><description><![CDATA[<p>Google released a new <a href="https://blog.google/technology/google-deepmind/gemini-computer-use-model/">Gemini 2.5 Computer Use model</a> today, specially designed to help operate a GUI interface by interacting with visible elements using a virtual mouse and keyboard.</p>
+    <p>Tags: <a href="https://simonwillison.net/tags/gil">gil</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/github-actions">github-actions</a>, <a href="https://simonwillison.net/tags/psf">psf</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Wed, 8 Oct 2025 04:10:06 +0000</pubDate></item><item><title>Retraction</title><link>https://simonwillison.net/2025/Oct/7/gemini-25-computer-use-captchas/#atom-everything</link><description><![CDATA[<p>Google released a new <a href="https://blog.google/technology/google-deepmind/gemini-computer-use-model/">Gemini 2.5 Computer Use model</a> today, specially designed to help operate a GUI interface by interacting with visible elements using a virtual mouse and keyboard.</p>
 <p>I tried the demo hosted by Browserbase at <a href="https://gemini.browserbase.com/">gemini.browserbase.com</a> and was delighted and slightly horrified when it appeared to kick things off by first navigating to Google.com and solving their CAPTCHA in order to run a search!</p>
 
 <p>I wrote a post about it and included <a href="https://static.simonwillison.net/static/2025/captcha-solve-gemini-2.jpg">this screenshot</a>, but then learned that Browserbase itself has CAPTCHA solving built in and, as shown <a href="https://static.simonwillison.net/static/2025/browserbase-captcha.mp4">in this longer video</a>, it was Browserbase that solved the CAPTCHA even while Gemini was thinking about doing so itself.</p>
@@ -653,20 +679,4 @@ Classic lethal trifecta image exfiltration bug reported against Salesforce Agent
     <p><small></small>Via <a href="https://twitter.com/rez0__/status/1971652576509874231">@rez0__</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/salesforce">salesforce</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/exfiltration-attacks">exfiltration-attacks</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a>, <a href="https://simonwillison.net/tags/content-security-policy">content-security-policy</a></p>]]></description><pubDate>Fri, 26 Sep 2025 23:26:10 +0000</pubDate></item><item><title>How to stop AI’s “lethal trifecta”</title><link>https://simonwillison.net/2025/Sep/26/how-to-stop-ais-lethal-trifecta/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.economist.com/leaders/2025/09/25/how-to-stop-ais-lethal-trifecta">How to stop AI’s “lethal trifecta”</a></strong></p>
-This is the second mention of <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">the lethal trifecta</a> in the Economist in just the last week! Their earlier coverage was <a href="https://www.economist.com/science-and-technology/2025/09/22/why-ai-systems-might-never-be-secure">Why AI systems may never be secure</a> on September 22nd - I <a href="https://simonwillison.net/2025/Sep/23/why-ai-systems-might-never-be-secure/">wrote about that here</a>, where I called it "the clearest explanation yet I've seen of these problems in a mainstream publication".</p>
-<p>I like this new article a lot less.</p>
-<p>It makes an argument that I <em>mostly</em> agree with: building software on top of LLMs is more like traditional physical engineering - since LLMs are non-deterministic we need to think in terms of tolerances and redundancy:</p>
-<blockquote>
-<p>The great works of Victorian England were erected by engineers who could not be sure of the properties of the materials they were using. In particular, whether by incompetence or malfeasance, the iron of the period was often not up to snuff. As a consequence, engineers erred on the side of caution, overbuilding to incorporate redundancy into their creations. The result was a series of centuries-spanning masterpieces.</p>
-<p>AI-security providers do not think like this. Conventional coding is a deterministic practice. Security vulnerabilities are seen as errors to be fixed, and when fixed, they go away. AI engineers, inculcated in this way of thinking from their schooldays, therefore often act as if problems can be solved just with more training data and more astute system prompts.</p>
-</blockquote>
-<p>My problem with the article is that I don't think this approach is appropriate when it comes to security!</p>
-<p>As I've said several times before, <a href="https://simonwillison.net/2023/May/2/prompt-injection-explained/#prompt-injection.015">In application security, 99% is a failing grade</a>. If there's a 1% chance of an attack getting through, an adversarial attacker will find that attack.</p>
-<p>The whole point of the lethal trifecta framing is that the <em>only way</em> to reliably prevent that class of attacks is to cut off one of the three legs!</p>
-<p>Generally the easiest leg to remove is the exfiltration vectors - the ability for the LLM agent to transmit stolen data back to the attacker.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45387155">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/exfiltration-attacks">exfiltration-attacks</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a></p>]]></description><pubDate>Fri, 26 Sep 2025 17:30:44 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/salesforce">salesforce</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/exfiltration-attacks">exfiltration-attacks</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a>, <a href="https://simonwillison.net/tags/content-security-policy">content-security-policy</a></p>]]></description><pubDate>Fri, 26 Sep 2025 23:26:10 +0000</pubDate></item></channel></rss>
