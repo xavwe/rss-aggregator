@@ -1,4 +1,168 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Python 3.14 Is Here. How Fast Is It?</title><link>https://simonwillison.net/2025/Oct/8/python-314-is-here-how-fast-is-it/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.miguelgrinberg.com/post/python-3-14-is-here-how-fast-is-it">Python 3.14 Is Here. How Fast Is It?</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Claude can write complete Datasette plugins now</title><link>https://simonwillison.net/2025/Oct/8/claude-datasette-plugins/#atom-everything</link><description><![CDATA[<p>This isn't necessarily surprising, but it's worth noting anyway. Claude Sonnet 4.5 is capable of building a full Datasette plugin now.</p>
+<p>I've seen models complete aspects of this in the past, but today is the first time I've shipped a new plugin where every line of code and test was written by Claude, with minimal prompting from myself.</p>
+<p>The plugin is called <strong><a href="https://github.com/datasette/datasette-os-info">datasette-os-info</a></strong>. It's a simple debugging tool - all it does is add a <code>/-/os</code> JSON page which dumps out as much information as it can about the OS it's running on. Here's a <a href="https://til.simonwillison.net/-/os">live demo</a> on my TIL website.</p>
+<p>I built it to help experiment with changing the Docker base container that Datasette uses to <a href="https://docs.datasette.io/en/stable/publish.html">publish images</a> to one that uses Python 3.14.</p>
+<p>Here's the full set of commands I used to create the plugin. I started with my <a href="https://github.com/simonw/datasette-plugin">datasette-plugin</a> cookiecutter template:</p>
+<div class="highlight highlight-source-shell"><pre>uvx cookiecutter gh:simonw/datasette-plugin
+
+  [1/8] <span class="pl-en">plugin_name</span> (): os-info
+  [2/8] <span class="pl-en">description</span> (): Information about the current OS
+  [3/8] hyphenated (os-info): 
+  [4/8] underscored (os_info): 
+  [5/8] <span class="pl-en">github_username</span> (): datasette
+  [6/8] <span class="pl-en">author_name</span> (): Simon Willison
+  [7/8] <span class="pl-en">include_static_directory</span> (): 
+  [8/8] <span class="pl-en">include_templates_directory</span> (): </pre></div>
+<p>This created a <code>datasette-os-info</code> directory with the initial <code>pyproject.toml</code> and <code>tests/</code> and <code>datasette_os_info/__init__.py</code> files. Here's an example of <a href="https://github.com/simonw/datasette-plugin-template-demo">that starter template</a>.</p>
+<p>I created a <code>uv</code> virtual environment for it, installed the initial test dependencies and ran <code>pytest</code> to check that worked:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> datasette-os-info
+uv venv
+uv sync --extra <span class="pl-c1">test</span>
+uv run pytest</pre></div>
+<p>Then I fired up <a href="https://www.claude.com/product/claude-code">Claude Code</a> in that directory in YOLO mode:</p>
+<div class="highlight highlight-source-shell"><pre>claude --dangerously-skip-permissions</pre></div>
+<p>(I actually used my <code>claude-yolo</code> shortcut which runs the above.)</p>
+<p>Then, in Claude, I told it how to run the tests:</p>
+<blockquote>
+<p><code>Run uv run pytest</code></p>
+</blockquote>
+<p>When that worked, I told it to build the plugin:</p>
+<blockquote>
+<p><code>This is a Datasette plugin which should add a new page /-/os which returns pretty-printed JSON about the current operating system - implement it. I want to pick up as many details as possible across as many OS as possible, including if possible figuring out the base image if it is in a docker container - otherwise the Debian OS release name and suchlike would be good</code></p>
+</blockquote>
+<p>... and that was it! Claude <a href="https://github.com/datasette/datasette-os-info/blob/0.1/datasette_os_info/__init__.py">implemented the plugin</a> using Datasette's <a href="https://docs.datasette.io/en/stable/plugin_hooks.html#register-routes-datasette">register_routes() plugin hook</a> to add the <code>/-/os</code> page,and then without me prompting it to do so <a href="https://github.com/datasette/datasette-os-info/blob/0.1/tests/test_os_info.py">built this basic test as well</a>.</p>
+<p>It ran the new test, spotted a bug (it had guessed a non-existent <code>Response(..., default_repr=)</code> parameter), fixed the bug and declared itself done.</p>
+<p>I built myself a wheel:</p>
+<div class="highlight highlight-source-shell"><pre>uv pip install build
+uv run python -m build</pre></div>
+<p>Then uploaded that to an S3 bucket and deployed it to test it out using <code>datasette publish ... --install URL-to-wheel</code>.  It did exactly what I had hoped - here's what that <code>/-/os</code> page looked like:</p>
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-ent">"platform"</span>: {
+    <span class="pl-ent">"system"</span>: <span class="pl-s"><span class="pl-pds">"</span>Linux<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"release"</span>: <span class="pl-s"><span class="pl-pds">"</span>4.4.0<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>#1 SMP Sun Jan 10 15:06:54 PST 2016<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"machine"</span>: <span class="pl-s"><span class="pl-pds">"</span>x86_64<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"processor"</span>: <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"architecture"</span>: [
+      <span class="pl-s"><span class="pl-pds">"</span>64bit<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>
+    ],
+    <span class="pl-ent">"platform"</span>: <span class="pl-s"><span class="pl-pds">"</span>Linux-4.4.0-x86_64-with-glibc2.41<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"python_version"</span>: <span class="pl-s"><span class="pl-pds">"</span>3.14.0<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"python_implementation"</span>: <span class="pl-s"><span class="pl-pds">"</span>CPython<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ent">"hostname"</span>: <span class="pl-s"><span class="pl-pds">"</span>localhost<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"cpu_count"</span>: <span class="pl-c1">2</span>,
+  <span class="pl-ent">"linux"</span>: {
+    <span class="pl-ent">"os_release"</span>: {
+      <span class="pl-ent">"PRETTY_NAME"</span>: <span class="pl-s"><span class="pl-pds">"</span>Debian GNU/Linux 13 (trixie)<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"NAME"</span>: <span class="pl-s"><span class="pl-pds">"</span>Debian GNU/Linux<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"VERSION_ID"</span>: <span class="pl-s"><span class="pl-pds">"</span>13<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"VERSION"</span>: <span class="pl-s"><span class="pl-pds">"</span>13 (trixie)<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"VERSION_CODENAME"</span>: <span class="pl-s"><span class="pl-pds">"</span>trixie<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"DEBIAN_VERSION_FULL"</span>: <span class="pl-s"><span class="pl-pds">"</span>13.1<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"ID"</span>: <span class="pl-s"><span class="pl-pds">"</span>debian<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"HOME_URL"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://www.debian.org/<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"SUPPORT_URL"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://www.debian.org/support<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"BUG_REPORT_URL"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://bugs.debian.org/<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"debian_version"</span>: <span class="pl-s"><span class="pl-pds">"</span>13.1<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"kernel"</span>: {
+      <span class="pl-ent">"sysname"</span>: <span class="pl-s"><span class="pl-pds">"</span>Linux<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"nodename"</span>: <span class="pl-s"><span class="pl-pds">"</span>localhost<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"release"</span>: <span class="pl-s"><span class="pl-pds">"</span>4.4.0<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>#1 SMP Sun Jan 10 15:06:54 PST 2016<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"machine"</span>: <span class="pl-s"><span class="pl-pds">"</span>x86_64<span class="pl-pds">"</span></span>
+    },
+    <span class="pl-ent">"cpu_model"</span>: <span class="pl-s"><span class="pl-pds">"</span>unknown<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"memory"</span>: {
+      <span class="pl-ent">"MemTotal"</span>: <span class="pl-s"><span class="pl-pds">"</span>1048576 kB<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"MemFree"</span>: <span class="pl-s"><span class="pl-pds">"</span>958244 kB<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"MemAvailable"</span>: <span class="pl-s"><span class="pl-pds">"</span>958244 kB<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"SwapTotal"</span>: <span class="pl-s"><span class="pl-pds">"</span>0 kB<span class="pl-pds">"</span></span>,
+      <span class="pl-ent">"SwapFree"</span>: <span class="pl-s"><span class="pl-pds">"</span>0 kB<span class="pl-pds">"</span></span>
+    }
+  },
+  <span class="pl-ent">"environment"</span>: {
+    <span class="pl-ent">"HOME"</span>: <span class="pl-s"><span class="pl-pds">"</span>/root<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"PATH"</span>: <span class="pl-s"><span class="pl-pds">"</span>/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin<span class="pl-pds">"</span></span>
+  },
+  <span class="pl-ent">"python_executable"</span>: <span class="pl-s"><span class="pl-pds">"</span>/usr/local/bin/python3.14<span class="pl-pds">"</span></span>
+}</pre></div>
+<p>I dread to think how long it would have taken me to figure out all of those different useful OS details!</p>
+<p>To finish up, I had Claude fill out the README via a couple of extra prompts:</p>
+<blockquote>
+<p><code>Add usage instructions to the README (about the /-/os page)</code></p>
+</blockquote>
+<p>Then had a brief conversation about how safe the output was:</p>
+<blockquote>
+<p><code>Is there anything potentially sensitive in that output?</code></p>
+</blockquote>
+<p>Claude said:</p>
+<blockquote>
+<p>Yes, there are several potentially sensitive items in the output:</p>
+<p>Most sensitive:</p>
+<ul>
+<li>hostname - Could reveal internal naming schemes or organization details</li>
+<li>Environment variables:
+<ul>
+<li>HOME - Reveals user's home directory path</li>
+<li>USER - Reveals the username</li>
+<li>PATH - Reveals filesystem structure and software installation locations</li>
+<li>VIRTUAL_ENV - Could reveal project paths and directory structure</li>
+</ul>
+</li>
+<li>python_executable - Reveals filesystem paths and user directories</li>
+</ul>
+<p>Moderately sensitive:</p>
+<ul>
+<li>CPU count and memory info - Could reveal infrastructure capacity</li>
+<li>Kernel version details - Could potentially be used to identify specific vulnerabilities</li>
+</ul>
+<p>Considerations:</p>
+<ol>
+<li>This endpoint is accessible without authentication by default (at /-/os)</li>
+<li>If you're running Datasette on a public server, this information would be visible to anyone</li>
+<li>The information could help attackers understand your infrastructure setup</li>
+</ol>
+<p>Suggestions:</p>
+<p>You might want to:</p>
+<ol>
+<li>Add authentication requirements to this endpoint</li>
+<li>Make certain fields optional/configurable</li>
+<li>Add a warning in the README that this exposes system information</li>
+<li>Consider filtering out or redacting sensitive paths (replace usernames with ***, etc.)</li>
+</ol>
+<p>Would you like me to add any of these protections to the plugin?</p>
+</blockquote>
+<p>In this case I'm fine with the current behavior provided people understand the risks, so I told it:</p>
+<blockquote>
+<p><code>Add the warning to the README</code></p>
+</blockquote>
+<p>And then (because the warning it added was quite long):</p>
+<blockquote>
+<p><code>Drop the bit about configuring the permission system, just have a short warning telling people to review what it exposes</code></p>
+</blockquote>
+<p>And requested an extra README note:</p>
+<blockquote>
+<p><code>Add a note that you can also see the output by running: datasette --get /-/os</code></p>
+</blockquote>
+<p>Three last prompts:</p>
+<ul>
+<li><code>Add uv.lock to gitignore</code></li>
+<li><code>Drop Python 3.9 and add Python 3.14 - to the GitHub workflows, also min version in pyproject.toml</code></li>
+<li><code>Bump to setup-python@v6</code></li>
+</ul>
+<p>... and that was the project finished. I pushed it <a href="https://github.com/datasette/datasette-os-info">to GitHub</a>, <a href="https://til.simonwillison.net/pypi/pypi-releases-from-github">configured Trusted Publishing</a> for it on PyPI and posted <a href="https://github.com/datasette/datasette-os-info/releases/tag/0.1">the 0.1 release</a>, which ran <a href="https://github.com/datasette/datasette-os-info/blob/0.1/.github/workflows/publish.yml">this GitHub Actions publish.yml</a> and deployed that release <a href="https://pypi.org/project/datasette-os-info/">to datasette-os-info on PyPI</a>.</p>
+<p>Now that it's live you can try it out without even installing Datasette using a <code>uv</code> one-liner like this:</p>
+<div class="highlight highlight-source-shell"><pre>uv run --isolated \
+  --with datasette-os-info \
+  datasette --get /-/os</pre></div>
+<p>That's using the <code>--get PATH</code> CLI option to show what that path in the Datasette instance would return, as <a href="https://docs.datasette.io/en/stable/cli-reference.html#datasette-get">described in the Datasette documentation</a>.</p>
+<p>I've shared <a href="https://gist.github.com/simonw/85fd7a76589dc01950e71d8e606cd5dd">my full Claude Code transcript</a> in a Gist.</p>
+<p>A year ago I'd have been <em>very</em> impressed by this. Today I wasn't even particularly surprised that this worked - the coding agent pattern implemented by Claude Code is spectacularly effective when you combine it with pre-existing templates, and Datasette has been aroung for long enough now that plenty of examples of plugins have made it into the training data for the leading models.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 8 Oct 2025 23:43:43 +0000</pubDate></item><item><title>Python 3.14 Is Here. How Fast Is It?</title><link>https://simonwillison.net/2025/Oct/8/python-314-is-here-how-fast-is-it/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.miguelgrinberg.com/post/python-3-14-is-here-how-fast-is-it">Python 3.14 Is Here. How Fast Is It?</a></strong></p>
 Miguel Grinberg uses some basic benchmarks (like <code>fib(40)</code>) to test the new Python 3.14 on Linux and macOS and finds some substantial speedups over Python 3.13 - around 27% faster.</p>
 <p>The optional JIT didn't make a meaningful difference to his benchmarks. On a threaded benchmark he got 3.09x speedup with 4 threads using the free threading build - for Python 3.13 the free threading build only provided a 2.2x improvement.
 
@@ -638,34 +802,4 @@ The idea of AI writing "90% of the code" to-date has mostly been expressed by pe
 <p>Routing happens on a per-message basis; switching from the default model happens on a temporary basis. ChatGPT will tell you which model is active when asked.</p></blockquote>
 <p class="cite">&mdash; <a href="https://twitter.com/nickaturley/status/1972031684913799355">Nick Turley</a>, Head of ChatGPT, OpenAI</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/nick-turley">nick-turley</a></p>]]></description><pubDate>Sun, 28 Sep 2025 18:24:13 +0000</pubDate></item><item><title>Video models are zero-shot learners and reasoners</title><link>https://simonwillison.net/2025/Sep/27/video-models-are-zero-shot-learners-and-reasoners/#atom-everything</link><description><![CDATA[<p><strong><a href="https://video-zero-shot.github.io/">Video models are zero-shot learners and reasoners</a></strong></p>
-Fascinating new paper from Google DeepMind which makes a very convincing case that their Veo 3 model - and generative video models in general - serve a similar role in the machine learning visual ecosystem as LLMs do for text.</p>
-<p>LLMs took the ability to predict the next token and turned it into general purpose foundation models for all manner of tasks that used to be handled by dedicated models - summarization, translation, parts of speech tagging etc can now all be handled by single huge models, which are getting both more powerful and cheaper as time progresses.</p>
-<p>Generative video models like Veo 3 may well serve the same role for vision and image reasoning tasks.</p>
-<p>From the paper:</p>
-<blockquote>
-<p>We believe that video models will become unifying, general-purpose foundation models for machine vision just like large language models (LLMs) have become  foundation models for natural language processing (NLP). [...]</p>
-<p>Machine vision today in many ways resembles the state of NLP a few years ago: There are excellent task-specific models like “Segment Anything” for segmentation or YOLO variants for object detection. While attempts to unify some vision tasks exist, no existing model can solve any problem just by prompting. However, the exact same primitives that enabled zero-shot learning in NLP also apply to today’s generative video models—large-scale training with a generative objective (text/video continuation) on web-scale data. [...]</p>
-<ol>
-<li>Analyzing 18,384 generated videos across 62 qualitative and 7 quantitative tasks, we report that Veo 3 can solve a wide range of tasks that it was neither trained nor adapted for.</li>
-<li>Based on its ability to perceive, model, and manipulate the visual world, Veo 3 shows early forms of “chain-of-frames (CoF)” visual reasoning like maze and symmetry solving.</li>
-<li>While task-specific bespoke models still outperform a zero-shot video model, we observe a substantial and consistent performance improvement from Veo 2 to Veo 3, indicating a rapid advancement in the capabilities of video models.</li>
-</ol>
-</blockquote>
-<p>I particularly enjoyed the way they coined the new term <em>chain-of-frames</em> to reflect chain-of-thought in LLMs. A chain-of-frames is how a video generation model can "reason" about the visual world:</p>
-<blockquote>
-<p><em>Perception</em>, <em>modeling</em>, and <em>manipulation</em> all integrate to tackle <em>visual reasoning</em>. While language models manipulate human-invented symbols, video models can apply changes across the dimensions of the real world: time and space. Since these changes are applied frame-by-frame in a generated video, this parallels chain-of-thought in LLMs and could therefore be called <strong>chain-of-frames</strong>, or CoF for short. In the language domain, chain-of-thought enabled models to tackle reasoning problems. Similarly, chain-of-frames (a.k.a. video generation) might enable video models to solve challenging visual problems that require step-by-step reasoning across time and space.</p>
-</blockquote>
-<p>They note that, while video models remain expensive to run today, it's likely they will follow a similar pricing trajectory as LLMs. I've been tracking this for a few years now and it really is a huge difference - a 1,200x drop in price between GPT-3 in 2022 ($60/million tokens) and GPT-5-Nano today ($0.05/million tokens).</p>
-<p>The PDF is 45 pages long but the main paper is just the first 9.5 pages - the rest is mostly appendices. Reading those first 10 pages will give you the full details of their argument.</p>
-<p>The <a href="https://video-zero-shot.github.io/">accompanying website</a> has dozens of video demos which are worth spending some time with to get a feel for the different applications of the Veo 3 model.</p>
-<p><img alt="Diagram showing six computer vision techniques with example parrot images: Edge detection (line drawing of parrots and tropical plants), Segmentation (silhouette of two parrots on branch), Keypoint localization (black background with bright blue point), Super-resolution (pixelated parrot image), Blind deblurring (blurred parrot image), Blind denoising (clear photo of red, yellow and blue parrot in green foliage)" src="https://static.simonwillison.net/static/2025/veo3-perception.jpg" /></p>
-<p>It's worth skimming through the appendixes in the paper as well to see examples of some of the prompts they used. They compare some of the exercises against equivalent attempts using Google's Nano Banana image generation model.</p>
-<p>For edge detection, for example:</p>
-<blockquote>
-<p><strong>Veo</strong>: All edges in this image become more salient by transforming into black outlines. Then, all objects fade away, with just the edges remaining on a white background. Static camera perspective, no zoom or pan.</p>
-<p><strong>Nano Banana</strong>: Outline all edges in the image in black, make everything else white.</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/video">video</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/paper-review">paper-review</a>, <a href="https://simonwillison.net/tags/video-models">video-models</a></p>]]></description><pubDate>Sat, 27 Sep 2025 23:59:30 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/nick-turley">nick-turley</a></p>]]></description><pubDate>Sun, 28 Sep 2025 18:24:13 +0000</pubDate></item></channel></rss>
