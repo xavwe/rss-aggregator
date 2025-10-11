@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>simonw/claude-skills</title><link>https://simonwillison.net/2025/Oct/10/claude-skills/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/claude-skills">simonw/claude-skills</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>An MVCC-like columnar table on S3 with constant-time deletes</title><link>https://simonwillison.net/2025/Oct/11/mvcc-s3/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.shayon.dev/post/2025/277/an-mvcc-like-columnar-table-on-s3-with-constant-time-deletes/">An MVCC-like columnar table on S3 with constant-time deletes</a></strong></p>
+s3's support for conditional writes (<a href="https://simonwillison.net/2024/Nov/26/s3-conditional-writes/">previously</a>) makes it an interesting, scalable and often inexpensive platform for all kinds of database patterns.</p>
+<p>Shayon Mukherjee presents an ingenious design for a Parquet-backed database in S3 which accepts concurrent writes, presents a single atomic view for readers and even supports reliable row deletion despite Parquet requiring a complete file rewrite in order to remove data.</p>
+<p>The key to the design is a <code>_latest_manifest</code> JSON file at the top of the bucket, containing an integer version number. Clients use compare-and-swap to increment that version - only one client can succeed at this, so the incremented version they get back is guaranteed unique to them.</p>
+<p>Having reserved a version number the client can write a unique manifest file for that version - <code>manifest/v00000123.json</code> - with a more complex data structure referencing the current versions of every persisted file, including the one they just uploaded.</p>
+<p>Deleted rows are written to tombstone files as either a list of primary keys or a list of of ranges. Clients consult these when executing reads, filtering out deleted rows as part of resolving a query.</p>
+<p>The pricing estimates are especially noteworthy:</p>
+<blockquote>
+<p>For a workload ingesting 6 TB/day with 2 TB of deletes and 50K queries/day:</p>
+<ul>
+<li>PUT requests: ~380K/day (≈4 req/s) = $1.88/day</li>
+<li>GET requests: highly variable, depends on partitioning effectiveness<ul>
+<li>Best case (good time-based partitioning): ~100K-200K/day = $0.04-$0.08/day</li>
+<li>Worst case (poor partitioning, scanning many files): ~2M/day = $0.80/day</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>~$3/day for ingesting 6TB of data is pretty fantastic!</p>
+<p>Watch out for storage costs though - each new TB of data at $0.023/GB/month adds $23.55 to the ongoing monthly bill.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45493158">Hacked News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/aws">aws</a>, <a href="https://simonwillison.net/tags/databases">databases</a>, <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/parquet">parquet</a></p>]]></description><pubDate>Sat, 11 Oct 2025 03:47:16 +0000</pubDate></item><item><title>simonw/claude-skills</title><link>https://simonwillison.net/2025/Oct/10/claude-skills/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/claude-skills">simonw/claude-skills</a></strong></p>
 One of the tips I picked up from <a href="">Jesse Vincent's Claude Code Superpowers post</a> (<a href="https://simonwillison.net/2025/Oct/10/superpowers/">previously</a>) was this:</p>
 <blockquote>
 <p>Skills are what give your agents Superpowers.</p>
@@ -667,19 +691,4 @@ Albert Avetisian runs this repository on GitHub which uses the Github Search API
 <p>Here's <a href="https://gist.github.com/simonw/5cf05165fc721b5f7eac3b10eeff20d5">the pelican</a> for that:</p>
 <p><img alt="Claude Sonnet 4.5 says: Illustration of a white seagull with an orange beak and yellow feet riding a bicycle against a light blue sky background with white clouds and a yellow sun." src="https://static.simonwillison.net/static/2025/glm-4.6.png" /></p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/deepseek">deepseek</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Wed, 1 Oct 2025 23:39:07 +0000</pubDate></item><item><title>September monthly sponsors newsletter</title><link>https://simonwillison.net/2025/Oct/1/sponsors-only-newsletter/#atom-everything</link><description><![CDATA[<p>I just sent out the September edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a>. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2025-09-september.md">access a copy here</a>. The sections this month are:</p>
-<ul>
-<li>Best model for code? GPT-5-Codex... then Claude 4.5 Sonnet</li>
-<li>I've grudgingly accepted a definition for "agent"</li>
-<li>GPT-5 Research Goblin and Google AI Mode</li>
-<li>Claude has Code Interpreter now</li>
-<li>The lethal trifecta in the Economist</li>
-<li>Other significant model releases</li>
-<li>Notable AI success stories</li>
-<li>Video models are zero-shot learners and reasoners</li>
-<li>Tools I'm using at the moment</li>
-<li>Other bits and pieces</li>
-</ul>
-<p>Here's <a href="https://gist.github.com/simonw/43bf3bd7f9951a8e82a9e61b53399ede">a copy of the August newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Wed, 1 Oct 2025 05:33:03 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/deepseek">deepseek</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Wed, 1 Oct 2025 23:39:07 +0000</pubDate></item></channel></rss>
