@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</title><link>https://simonwillison.net/2025/Oct/10/a-retrospective-survey/#atom-everything</link><description><![CDATA[<p><strong><a href="https://words.filippo.io/compromise-survey/">A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>simonw/claude-skills</title><link>https://simonwillison.net/2025/Oct/10/claude-skills/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/claude-skills">simonw/claude-skills</a></strong></p>
+One of the tips I picked up from <a href="">Jesse Vincent's Claude Code Superpowers post</a> (<a href="https://simonwillison.net/2025/Oct/10/superpowers/">previously</a>) was this:</p>
+<blockquote>
+<p>Skills are what give your agents Superpowers.</p>
+<p>The first time they really popped up on my radar was a few weeks ago when Anthropic rolled out improved Office document creation. When the feature rolled out, I went poking around a bit -- I asked Claude to tell me all about its new skills. And it was <a href="https://claude.ai/share/0fe5a9c0-4e5a-42a1-9df7-c5b7636dad92">only too happy to dish</a>.</p>
+</blockquote>
+<p>In that transcript Jesse asks how the skill system works and Claude replies:</p>
+<blockquote>
+<p>Looking at the skills system, here's how it works:</p>
+<p><strong>Current Skills</strong> (in <code>/mnt/skills/public/</code>):</p>
+<ul>
+<li><strong>docx</strong> - Word document handling</li>
+<li><strong>pdf</strong> - PDF processing and form filling</li>
+<li><strong>pptx</strong> - PowerPoint presentations</li>
+<li><strong>xlsx</strong> - Excel spreadsheets</li>
+</ul>
+</blockquote>
+<p>This looks like it's part of Claude's brand new Code Interpreter feature! I <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">wrote about that extensively</a> last month, but I missed that there was a <code>/mnt/skills/public/</code> folder full of fascinating implementation details.</p>
+<p>So I fired up a fresh Claude instance (fun fact: Code Interpreter also works in the Claude iOS app now, which it didn't when they first launched) and prompted:</p>
+<blockquote>
+<p><code>Create a zip file of everything in your /mnt/skills folder</code></p>
+</blockquote>
+<p>This worked, and gave me a <code>.zip</code> to download. You can <a href="https://claude.ai/new?q=Create%20a%20zip%20file%20of%20everything%20in%20your%20%2Fmnt%2Fskills%20folder">run the prompt yourself here</a>, though you'll need to <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#switching-it-on-in-settings-features">enable the new feature first</a>.</p>
+<p>I've pushed the contents of that zip to my <a href="https://github.com/simonw/claude-skills">new simonw/claude-skills GitHub repo</a>.</p>
+<p>So now you can see the prompts Anthropic wrote to enable the creation and manipulation of the following files in their Claude consumer applications:</p>
+<ul>
+<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/pdf/SKILL.md">pdf</a> - PDF files</li>
+<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/docx/SKILL.md">docx</a> - Microsoft Word</li>
+<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/pptx/SKILL.md">pptx</a> - Microsoft PowerPoint decks</li>
+<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/xlsx/SKILL.md">xlsx</a> - Microsoft Excel</li>
+</ul>
+<p>In each case the prompts spell out detailed instructions for manipulating those file types using Python, using libraries that come pre-installed on Claude's containers.</p>
+<p>Skills are more than just prompts though: the repository also includes dozens of pre-written Python scripts for performing common operations.</p>
+<p><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/pdf/scripts/fill_fillable_fields.py">pdf/scripts/fill_fillable_fields.py</a> for example is a custom CLI tool that uses <a href="https://pypi.org/project/pypdf/">pypdf</a> to find and then fill in a bunch of PDF form fields, specified as JSON, then render out the resulting combined PDF.</p>
+<p>This is a really sophisticated set of tools for document manipulation, and I love that Anthropic have made those visible - presumably deliberately - to users of Claude who know how to ask for them.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/pdf">pdf</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:57:19 +0000</pubDate></item><item><title>Superpowers: How I&apos;m using coding agents in October 2025</title><link>https://simonwillison.net/2025/Oct/10/superpowers/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.fsck.com/2025/10/09/superpowers/">Superpowers: How I&#x27;m using coding agents in October 2025</a></strong></p>
+A follow-up to Jesse Vincent's post <a href="https://blog.fsck.com/2025/10/05/how-im-using-coding-agents-in-september-2025/">about September</a>, but this is a really significant piece in its own right.</p>
+<p>Jesse is one of the most creative users of coding agents (Claude Code in particular) that I know. He's put a great amount of work into evolving an effective process for working with them, encourage red/green TDD (watch the test fail first), planning steps, self-updating memory notes and even implementing a <a href="https://blog.fsck.com/2025/05/28/dear-diary-the-user-asked-me-if-im-alive/">feelings journal</a> ("I feel engaged and curious about this project" - Claude).</p>
+<p>Claude Code <a href="https://www.anthropic.com/news/claude-code-plugins">just launched plugins</a>, and Jesse is celebrating by wrapping up a whole host of his accumulated tricks as a new plugin called <a href="https://github.com/obra/superpowers">Superpowers</a>. You can add it to your Claude Code like this:</p>
+<pre><code>/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace
+</code></pre>
+<p>There's a lot in here! It's worth spending some time <a href="https://github.com/obra/superpowers">browsing the repository</a> - here's just one fun example, in <a href="https://github.com/obra/superpowers/blob/main/skills/debugging/root-cause-tracing/SKILL.md">skills/debugging/root-cause-tracing/SKILL.md</a>:</p>
+<blockquote>
+<pre><code>---
+name: Root Cause Tracing
+description: Systematically trace bugs backward through call stack to find original trigger
+when_to_use: Bug appears deep in call stack but you need to find where it originates
+version: 1.0.0
+languages: all
+---
+</code></pre>
+<p><strong>Overview</strong></p>
+<p>Bugs often manifest deep in the call stack (git init in wrong directory, file created in wrong location, database opened with wrong path). Your instinct is to fix where the error appears, but that's treating a symptom.</p>
+<p><strong>Core principle:</strong> Trace backward through the call chain until you find the original trigger, then fix at the source.</p>
+<p><strong>When to Use</strong></p>
+<pre><code>digraph when_to_use {
+    "Bug appears deep in stack?" [shape=diamond];
+    "Can trace backwards?" [shape=diamond];
+    "Fix at symptom point" [shape=box];
+    "Trace to original trigger" [shape=box];
+    "BETTER: Also add defense-in-depth" [shape=box];
+
+    "Bug appears deep in stack?" -&gt; "Can trace backwards?" [label="yes"];
+    "Can trace backwards?" -&gt; "Trace to original trigger" [label="yes"];
+    "Can trace backwards?" -&gt; "Fix at symptom point" [label="no - dead end"];
+    "Trace to original trigger" -&gt; "BETTER: Also add defense-in-depth";
+}
+</code></pre>
+<p>[...]</p>
+</blockquote>
+<p>This one is particularly fun because it then includes a <a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language)">Graphviz DOT graph</a> illustrating the process - it turns out Claude can interpret those as workflow instructions just fine, and Jesse has been <a href="https://blog.fsck.com/2025/09/29/using-graphviz-for-claudemd/">wildly experimenting with them</a>.</p>
+<p>I <a href="https://claude.ai/share/2b78a93e-cdc3-4b1d-9b02-457eb62140a5">vibe-coded up</a> a quick URL-based DOT visualizer, <a href="https://tools.simonwillison.net/dot#digraph%20when_to_use%20%7B%0A%20%20%20%20%22Bug%20appears%20deep%20in%20stack%3F%22%20%5Bshape%3Ddiamond%5D%3B%0A%20%20%20%20%22Can%20trace%20backwards%3F%22%20%5Bshape%3Ddiamond%5D%3B%0A%20%20%20%20%22Fix%20at%20symptom%20point%22%20%5Bshape%3Dbox%5D%3B%0A%20%20%20%20%22Trace%20to%20original%20trigger%22%20%5Bshape%3Dbox%5D%3B%0A%20%20%20%20%22BETTER%3A%20Also%20add%20defense-in-depth%22%20%5Bshape%3Dbox%5D%3B%0A%0A%20%20%20%20%22Bug%20appears%20deep%20in%20stack%3F%22%20-%3E%20%22Can%20trace%20backwards%3F%22%20%5Blabel%3D%22yes%22%5D%3B%0A%20%20%20%20%22Can%20trace%20backwards%3F%22%20-%3E%20%22Trace%20to%20original%20trigger%22%20%5Blabel%3D%22yes%22%5D%3B%0A%20%20%20%20%22Can%20trace%20backwards%3F%22%20-%3E%20%22Fix%20at%20symptom%20point%22%20%5Blabel%3D%22no%20-%20dead%20end%22%5D%3B%0A%20%20%20%20%22Trace%20to%20original%20trigger%22%20-%3E%20%22BETTER%3A%20Also%20add%20defense-in-depth%22%3B%0A%7D">here's that one rendered</a>:</p>
+<p><img alt="The above DOT rendered as an image" src="https://static.simonwillison.net/static/2025/jesse-dot.jpg" /></p>
+<p>There is <em>so much</em> to learn about putting these tools to work in the most effective way possible. Jesse is way ahead of the curve, so it's absolutely worth spending some time exploring what he's shared so far.</p>
+<p>And if you're worried about filling up your context with a bunch of extra stuff, here's <a href="https://bsky.app/profile/s.ly/post/3m2srmkergc2p">a reassuring note from Jesse</a>:</p>
+<blockquote>
+<p>The core of it is VERY token light. It pulls in one doc of fewer than 2k tokens. As it needs bits of the process, it runs a shell script to search for them.  The long end to end chat for the planning and implementation process for that todo list app was 100k tokens.</p>
+<p>It uses subagents to manage token-heavy stuff, including all the actual implementation.</p>
+</blockquote>
+<p>(Jesse's post also tipped me off about Claude's <code>/mnt/skills/public</code> folder, see <a href="https://simonwillison.net/2025/Oct/10/claude-skills/">my notes here</a>.)
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/sub-agents">sub-agents</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:30:14 +0000</pubDate></item><item><title>A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</title><link>https://simonwillison.net/2025/Oct/10/a-retrospective-survey/#atom-everything</link><description><![CDATA[<p><strong><a href="https://words.filippo.io/compromise-survey/">A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</a></strong></p>
 Filippo Valsorda surveyed 18 incidents from the past year of open source supply chain attacks, where package updates were infected with malware thanks to a compromise of the project itself.</p>
 <p>These are important lessons:</p>
 <blockquote>
@@ -445,7 +530,7 @@ llm -m openai/gpt-5-pro "Generate an SVG of a pelican riding a bicycle"
 </blockquote>
 <p>I've tried this a few times with good results: give the agent a genuinely difficult task against a large codebase, with no intention of actually landing its code, just to get ideas from which files it modifies and how it approaches the problem.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a></p>]]></description><pubDate>Sun, 5 Oct 2025 12:06:55 +0000</pubDate></item><item><title>Let the LLM Write the Prompts: An Intro to DSPy in Compound Al Pipelines</title><link>https://simonwillison.net/2025/Oct/4/drew-on-dspy/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.youtube.com/watch?v=I9ZtkgYZnOw">Let the LLM Write the Prompts: An Intro to DSPy in Compound Al Pipelines</a></strong></p>
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Sun, 5 Oct 2025 12:06:55 +0000</pubDate></item><item><title>Let the LLM Write the Prompts: An Intro to DSPy in Compound Al Pipelines</title><link>https://simonwillison.net/2025/Oct/4/drew-on-dspy/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.youtube.com/watch?v=I9ZtkgYZnOw">Let the LLM Write the Prompts: An Intro to DSPy in Compound Al Pipelines</a></strong></p>
 I've had trouble getting my head around <a href="https://dspy.ai">DSPy</a> in the past. This half hour talk by Drew Breunig at the recent Databricks Data + AI Summit is the clearest explanation I've seen yet of the kinds of problems it can help solve.</p>
 <p>Here's Drew's <a href="https://www.dbreunig.com/2025/06/10/let-the-model-write-the-prompt.html">written version of the talk</a>.</p>
 <p>Drew works on Overture Maps, which combines Point Of Interest data from numerous providers to create a single unified POI database. This is an example of <strong>conflation</strong>, a notoriously difficult task in GIS where multiple datasets are deduped and merged together.</p>
@@ -597,102 +682,4 @@ Albert Avetisian runs this repository on GitHub which uses the Github Search API
 </ul>
 <p>Here's <a href="https://gist.github.com/simonw/43bf3bd7f9951a8e82a9e61b53399ede">a copy of the August newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Wed, 1 Oct 2025 05:33:03 +0000</pubDate></item><item><title>Sora 2</title><link>https://simonwillison.net/2025/Sep/30/sora-2/#atom-everything</link><description><![CDATA[<p>Having watched this morning's <a href="https://www.youtube.com/watch?v=gzneGhpXwjU">Sora 2 introduction video</a>, the most notable feature (aside from audio generation - original Sora was silent, Google's Veo 3 supported audio in May 2025) looks to be what OpenAI are calling "cameos" - the ability to easily capture a video version of yourself or your friends and then use them as characters in generated videos.</p>
-<p>My guess is that they are leaning into this based on the <em>incredible</em> success of ChatGPT image generation <a href="https://simonwillison.net/2025/Jun/6/six-months-in-llms/#ai-worlds-fair-2025-20.jpeg">in March</a> - possibly the most successful product launch of all time, signing up 100 million new users in just the first week after release.</p>
-<p>The driving factor for that success? People <em>love</em> being able to create personalized images of themselves, their friends and their family members.</p>
-<p>Google saw a similar effect with their Nano Banana image generation model. Gemini VP Josh Woodward <a href="https://twitter.com/joshwoodward/status/1970894369562796420">tweeted</a> on 24th September:</p>
-<blockquote>
-<p>🍌 @GeminiApp just passed 5 billion images in less than a month.</p>
-</blockquote>
-<p>Sora 2 cameos looks to me like an attempt to capture that same viral magic but for short-form videos, not images.</p>
-<p><strong>Update</strong>: I got an invite. Here's <a href="https://sora.chatgpt.com/p/s_68dde7529584819193b31947e46f61ee">"simonw performing opera on stage at the royal albert hall in a very fine purple suit with crows flapping around his head dramatically standing in front of a night orchestrion"</a> (it was meant to be a <em>mighty</em> orchestrion but I had a typo.)</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/video-models">video-models</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a></p>]]></description><pubDate>Tue, 30 Sep 2025 18:03:49 +0000</pubDate></item><item><title>Designing agentic loops</title><link>https://simonwillison.net/2025/Sep/30/designing-agentic-loops/#atom-everything</link><description><![CDATA[<p>Coding agents like Anthropic's <a href="https://claude.com/product/claude-code">Claude Code</a> and OpenAI's <a href="https://github.com/openai/codex">Codex CLI</a> represent a genuine step change in how useful LLMs can be for producing working code. These agents can now directly exercise the code they are writing, correct errors, dig through existing implementation details, and even run experiments to find effective code solutions to problems.</p>
-<p>As is so often the case with modern AI, there is a great deal of depth involved in unlocking the full potential of these new tools.</p>
-<p>A critical new skill to develop is <strong>designing agentic loops</strong>.</p>
-<p>One way to think about coding agents is that they are brute force tools for finding solutions to coding problems. If you can reduce your problem to a clear goal and a set of tools that can iterate towards that goal a coding agent can often brute force its way to an effective solution.</p>
-<p>My preferred definition of an LLM agent is something that <a href="https://simonwillison.net/2025/Sep/18/agents/">runs tools in a loop to achieve a goal</a>. The art of using them well is to carefully design the tools and loop for them to use.</p>
-<ul>
-  <li><a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/#the-joy-of-yolo-mode">The joy of YOLO mode</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/#picking-the-right-tools-for-the-loop">Picking the right tools for the loop</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/#issuing-tightly-scoped-credentials">Issuing tightly scoped credentials</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/#when-to-design-an-agentic-loop">When to design an agentic loop</a></li>
-  <li><a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/#this-is-still-a-very-fresh-area">This is still a very fresh area</a></li>
-</ul>
-<h4 id="the-joy-of-yolo-mode">The joy of YOLO mode</h4>
-<p>Agents are inherently dangerous - they can make poor decisions or fall victim to malicious <a href="https://simonwillison.net/tags/prompt-injection/">prompt injection attacks</a>, either of which can result in harmful results from tool calls. Since the most powerful coding agent tool is "run this command in the shell" a rogue agent can do anything that you could do by running a command yourself.</p>
-<p>To <a href="https://simonwillison.net/2025/Jun/5/wrecking-its-environment-in-a-loop/">quote Solomon Hykes</a>:</p>
-<blockquote>
-<p><strong>An AI agent is an LLM wrecking its environment in a loop.</strong></p>
-</blockquote>
-<p>Coding agents like Claude Code counter this by defaulting to asking you for approval of almost every command that they run.</p>
-<p>This is kind of tedious, but more importantly, it dramatically reduces their effectiveness at solving problems through brute force.</p>
-<p>Each of these tools provides its own version of what I like to call YOLO mode, where everything gets approved by default.</p>
-<p>This is <em>so dangerous</em>, but it's also key to getting the most productive results!</p>
-<p>Here are three key risks to consider from unattended YOLO mode.</p>
-<ol>
-<li>Bad shell commands deleting or mangling things you care about.</li>
-<li>Exfiltration attacks where something steals files or data visible to the agent - source code or secrets held in environment variables are particularly vulnerable here.</li>
-<li>Attacks that use your machine as a proxy to attack another target - for DDoS or to disguise the source of other hacking attacks.</li>
-</ol>
-<p>If you want to run YOLO mode anyway, you have a few options:</p>
-<ol>
-<li>Run your agent in a secure sandbox that restricts the files and secrets it can access and the network connections it can make.</li>
-<li>Use someone else's computer. That way if your agent goes rogue, there's only so much damage they can do, including wasting someone else's CPU cycles.</li>
-<li>Take a risk! Try to avoid exposing it to potential sources of malicious instructions and hope you catch any mistakes before they cause any damage.</li>
-</ol>
-<p>Most people choose option 3.</p>
-<p>Despite the existence of <a href="https://attack.mitre.org/techniques/T1611/">container escapes</a> I think option 1 using Docker or the new Apple <a href="https://github.com/apple/container">container tool</a> is a reasonable risk to accept for most people.</p>
-<p>Option 2 is my favorite. I like to use <a href="https://github.com/features/codespaces">GitHub Codespaces</a> for this - it provides a full container environment on-demand that's accessible through your browser and has a generous free tier too. If anything goes wrong it's a Microsoft Azure machine somewhere that's burning CPU and the worst that can happen is code you checked out into the environment might be exfiltrated by an attacker, or bad code might be pushed to the attached GitHub repository.</p>
-<p>There are plenty of other agent-like tools that run code on other people's computers. <a href="https://simonwillison.net/tags/code-interpreter/">Code Interpreter</a> mode in both ChatGPT and <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">Claude</a> can go a surprisingly long way here. I've also had a lot of success (ab)using OpenAI's <a href="https://chatgpt.com/features/codex">Codex Cloud</a>.</p>
-<p>Coding agents themselves implement various levels of sandboxing, but so far I've not seen convincing enough documentation of these to trust them.</p>
-<p><strong>Update</strong>: It turns out Anthropic have their own documentation on <a href="https://www.anthropic.com/engineering/claude-code-best-practices#d-safe-yolo-mode">Safe YOLO mode</a> for Claude Code which says:</p>
-<blockquote>
-<p>Letting Claude run arbitrary commands is risky and can result in data loss, system corruption, or even data exfiltration (e.g., via prompt injection attacks). To minimize these risks, use <code>--dangerously-skip-permissions</code> in a container without internet access. You can follow this <a href="https://github.com/anthropics/claude-code/tree/main/.devcontainer">reference implementation</a> using Docker Dev Containers.</p>
-</blockquote>
-<p>Locking internet access down to a <a href="https://github.com/anthropics/claude-code/blob/5062ed93fc67f9322f807ecbf391ae4376cf8e83/.devcontainer/init-firewall.sh#L66-L75">list of trusted hosts</a> is a great way to prevent exfiltration attacks from stealing your private source code.</p>
-<h4 id="picking-the-right-tools-for-the-loop">Picking the right tools for the loop</h4>
-<p>Now that we've found a safe (enough) way to run in YOLO mode, the next step is to decide which tools we need to make available to the coding agent.</p>
-<p>You can bring <a href="https://modelcontextprotocol.io/">MCP</a> into the mix at this point, but I find it's usually more productive to think in terms of shell commands instead. Coding agents are <em>really good</em> at running shell commands!</p>
-<p>If your environment allows them the necessary network access, they can also pull down additional packages from NPM and PyPI and similar. Ensuring your agent runs in an environment where random package installs don't break things on your main computer is an important consideration as well!</p>
-<p>Rather than leaning on MCP, I like to create an <a href="https://agents.md/">AGENTS.md</a> (or equivalent) file with details of packages I think they may need to use.</p>
-<p>For a project that involved taking screenshots of various websites I installed my own <a href="https://shot-scraper.datasette.io/">shot-scraper</a> CLI tool and dropped the following in <code>AGENTS.md</code>:</p>
-<pre><code>To take a screenshot, run:
-
-shot-scraper http://www.example.com/ -w 800 -o example.jpg
-</code></pre>
-<p>Just that one example is enough for the agent to guess how to swap out the URL and filename for other screenshots.</p>
-<p>Good LLMs already know how to use a bewildering array of existing tools. If you say "use <a href="https://playwright.dev/python/">playwright python</a>" or "use ffmpeg" most models will use those effectively - and since they're running in a loop they can usually recover from mistakes they make at first and figure out the right incantations without extra guidance.</p>
-<h4 id="issuing-tightly-scoped-credentials">Issuing tightly scoped credentials</h4>
-<p>In addition to exposing the right commands, we also need to consider what credentials we should expose to those commands.</p>
-<p>Ideally we wouldn't need any credentials at all - plenty of work can be done without signing into anything or providing an API key - but certain problems will require authenticated access.</p>
-<p>This is a deep topic in itself, but I have two key recommendations here:</p>
-<ol>
-<li>Try to provide credentials to test or staging environments where any damage can be well contained.</li>
-<li>If a credential can spend money, set a tight budget limit.</li>
-</ol>
-<p>I'll use an example to illustrate. A while ago I was investigating slow cold start times for a scale-to-zero application I was running on <a href="https://fly.io/">Fly.io</a>.</p>
-<p>I realized I could work a lot faster if I gave Claude Code the ability to directly edit Dockerfiles, deploy them to a Fly account and measure how long they took to launch.</p>
-<p>Fly allows you to create organizations, and you can set a budget limit for those organizations and issue a Fly API key that can only create or modify apps within that organization...</p>
-<p>So I created a dedicated organization for just this one investigation, set a $5 budget, issued an API key and set Claude Code loose on it!</p>
-<p>In that particular case the results weren't useful enough to describe in more detail, but this was the project where I first realized that "designing an agentic loop" was an important skill to develop.</p>
-<h4 id="when-to-design-an-agentic-loop">When to design an agentic loop</h4>
-<p>Not every problem responds well to this pattern of working. The thing to look out for here are problems with <strong>clear success criteria</strong> where finding a good solution is likely to involve (potentially slightly tedious) <strong>trial and error</strong>.</p>
-<p>Any time you find yourself thinking "ugh, I'm going to have to try a lot of variations here" is a strong signal that an agentic loop might be worth trying!</p>
-<p>A few examples:</p>
-<ul>
-<li>
-<strong>Debugging</strong>: a test is failing and you need to investigate the root cause. Coding agents that can already run your tests can likely do this without any extra setup.</li>
-<li>
-<strong>Performance optimization</strong>: this SQL query is too slow, would adding an index help? Have your agent benchmark the query and then add and drop indexes (in an isolated development environment!) to measure their impact.</li>
-<li>
-<strong>Upgrading dependencies</strong>: you've fallen behind on a bunch of dependency upgrades? If your test suite is solid an agentic loop can upgrade them all for you and make any minor updates needed to reflect breaking changes. Make sure a copy of the relevant  release notes is available, or that the agent knows where to find them itself.</li>
-<li>
-<strong>Optimizing container sizes</strong>: Docker container feeling uncomfortably large? Have your agent try different base images and iterate on the Dockerfile to try to shrink it, while keeping the tests passing.</li>
-</ul>
-<p>A common theme in all of these is <strong>automated tests</strong>. The value you can get from coding agents and other LLM coding tools is massively amplified by a good, cleanly passing test suite. Thankfully LLMs are great for accelerating the process of putting one of those together, if you don't have one yet.</p>
-<h4 id="this-is-still-a-very-fresh-area">This is still a very fresh area</h4>
-<p><strong>Designing agentic loops</strong> is a very new skill - Claude Code was <a href="https://www.anthropic.com/news/claude-3-7-sonnet">first released</a> in just February 2025!</p>
-<p>I'm hoping that giving it a clear name can help us have productive conversations about it. There's <em>so much more</em> to figure out about how to use these tools as effectively as possible.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Tue, 30 Sep 2025 15:20:46 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Wed, 1 Oct 2025 05:33:03 +0000</pubDate></item></channel></rss>
