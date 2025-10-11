@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Note on 11th October 2025</title><link>https://simonwillison.net/2025/Oct/11/uncomfortable/#atom-everything</link><description><![CDATA[<p>I'm beginning to suspect that a key skill in working effectively with coding agents is developing an intuition for when you <em>don't</em> need to closely review every line of code they produce. This feels deeply uncomfortable!</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Vibing a Non-Trivial Ghostty Feature</title><link>https://simonwillison.net/2025/Oct/11/vibing-a-non-trivial-ghostty-feature/#atom-everything</link><description><![CDATA[<p><strong><a href="https://mitchellh.com/writing/non-trivial-vibing">Vibing a Non-Trivial Ghostty Feature</a></strong></p>
+Mitchell Hashimoto provides a comprehensive answer to the <em>frequent</em> demand for a detailed description of shipping a non-trivial production feature to an existing project using AI-assistance. In this case it's a slick unobtrusive auto-update UI for his <a href="https://ghostty.org/">Ghostty</a> terminal emulator, written in Swift.</p>
+<p>Mitchell shares full transcripts of the 16 coding sessions he carried out using <a href="https://ampcode.com/">Amp Code</a> across 2 days and around 8 hours of computer time, at a token cost of $15.98.</p>
+<p>Amp has the nicest shared transcript feature of any of the coding agent tools, as seen <a href="https://ampcode.com/threads/T-9fc3eb88-5aa2-45e4-8f6d-03697f53102d">in this example</a>. I'd love to see Claude Code and Codex CLI and Gemini CLI and friends imitate this.</p>
+<p>There are plenty of useful tips in here. I like this note about the importance of a cleanup step:</p>
+<blockquote>
+<p>The cleanup step is really important. To cleanup effectively you have to have a pretty good understanding of the code, so this forces me to not blindly accept AI-written code. Subsequently, better organized and documented code helps future agentic sessions perform better.</p>
+<p>I sometimes tongue-in-cheek refer to this as the "anti-slop session".</p>
+</blockquote>
+<p>And this on how sometimes you can write manual code in a way that puts the agent the right track:</p>
+<blockquote>
+<p>I spent some time manually restructured the view model. This involved switching to a tagged union rather than the struct with a bunch of optionals. I renamed some types, moved stuff around.</p>
+<p>I knew from experience that this small bit of manual work in the middle would set the agents up for success in future sessions for both the frontend and backend. After completing it, I continued with a marathon set of cleanup sessions.</p>
+</blockquote>
+<p>Here's one of those refactoring prompts:</p>
+<blockquote>
+<p><code>Turn each @macos/Sources/Features/Update/UpdatePopoverView.swift case into a dedicated fileprivate Swift view that takes the typed value as its parameter so that we can remove the guards.</code></p>
+</blockquote>
+<p>Mitchell advises ending every session with a prompt like this one, asking the agent about any obvious omissions:</p>
+<blockquote>
+<p><code>Are there any other improvements you can see to be made with the @macos/Sources/Features/Update feature? Don't write any code. Consult the oracle. Consider parts of the code that can also get more unit tests added.</code></p>
+</blockquote>
+<p>("Consult the oracle" is an Amp-specific pattern for running a task through a more expensive, more capable model.)</p>
+<p>Is this all worthwhile? Mitchell thinks so:</p>
+<blockquote>
+<p>Many people on the internet argue whether AI enables you to work faster or not. In this case, I think I shipped this faster than I would have if I had done it all myself, in particular because iterating on minor SwiftUI styling is so tedious and time consuming for me personally and AI does it so well.</p>
+<p>I think the faster/slower argument for me personally is missing the thing I like the most: the AI can work for me while I step away to do other things.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://twitter.com/mitchellh/status/1977016133409820684">@mitchellh</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/mitchell-hashimoto">mitchell-hashimoto</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Sat, 11 Oct 2025 16:33:59 +0000</pubDate></item><item><title>Note on 11th October 2025</title><link>https://simonwillison.net/2025/Oct/11/uncomfortable/#atom-everything</link><description><![CDATA[<p>I'm beginning to suspect that a key skill in working effectively with coding agents is developing an intuition for when you <em>don't</em> need to closely review every line of code they produce. This feels deeply uncomfortable!</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 11 Oct 2025 12:31:09 +0000</pubDate></item><item><title>An MVCC-like columnar table on S3 with constant-time deletes</title><link>https://simonwillison.net/2025/Oct/11/mvcc-s3/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.shayon.dev/post/2025/277/an-mvcc-like-columnar-table-on-s3-with-constant-time-deletes/">An MVCC-like columnar table on S3 with constant-time deletes</a></strong></p>
 s3's support for conditional writes (<a href="https://simonwillison.net/2024/Nov/26/s3-conditional-writes/">previously</a>) makes it an interesting, scalable and often inexpensive platform for all kinds of database patterns.</p>
@@ -621,62 +653,4 @@ Curl maintainer Daniel Stenberg on Mastodon:</p>
     <p>Tags: <a href="https://simonwillison.net/tags/curl">curl</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/daniel-stenberg">daniel-stenberg</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a></p>]]></description><pubDate>Thu, 2 Oct 2025 15:00:09 +0000</pubDate></item><item><title>Quoting Nadia Eghbal</title><link>https://simonwillison.net/2025/Oct/2/nadia-eghbal/#atom-everything</link><description><![CDATA[<blockquote cite="https://discourse.llvm.org/t/rfc-llvm-ai-tool-policy-start-small-no-slop/88476"><p>When attention is being appropriated, producers need to weigh the costs and benefits of the transaction. To assess whether the appropriation of attention is net-positive, it’s useful to distinguish between extractive and non-extractive contributions. <strong>Extractive contributions</strong> are those where the marginal cost of reviewing and merging that contribution is greater than the marginal benefit to the project’s producers. In the case of a code contribution, it might be a pull request that’s too complex or unwieldy to review, given the potential upside</p></blockquote>
 <p class="cite">&mdash; <a href="https://discourse.llvm.org/t/rfc-llvm-ai-tool-policy-start-small-no-slop/88476">Nadia Eghbal</a>, <em>Working in Public</em>, via the draft LLVM AI tools policy</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/definitions">definitions</a></p>]]></description><pubDate>Thu, 2 Oct 2025 12:44:59 +0000</pubDate></item><item><title>aavetis/PRarena</title><link>https://simonwillison.net/2025/Oct/1/prarena/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/aavetis/PRarena">aavetis/PRarena</a></strong></p>
-Albert Avetisian runs this repository on GitHub which uses the Github Search API to track the number of PRs that can be credited to a collection of different coding agents. The repo runs <a href="https://github.com/aavetis/PRarena/blob/main/collect_data.py">this collect_data.py script</a> every three hours <a href="https://github.com/aavetis/PRarena/blob/main/.github/workflows/pr%E2%80%91stats.yml">using GitHub Actions</a> to collect the data, then updates the <a href="https://prarena.ai/">PR Arena site</a> with a visual leaderboard.</p>
-<p>The result is this neat chart showing adoption of different agents over time, along with their PR success rate:</p>
-<p><img alt="Line and bar chart showing PR metrics over time from 05/26 to 10/01. The left y-axis shows &quot;Number of PRs&quot; from 0 to 1,800,000, the right y-axis shows &quot;Success Rate (%)&quot; from 0% to 100%, and the x-axis shows &quot;Time&quot; with dates. Five line plots track success percentages: &quot;Copilot Success % (Ready)&quot; and &quot;Copilot Success % (All)&quot; (both blue, top lines around 90-95%), &quot;Codex Success % (Ready)&quot; and &quot;Codex Success % (All)&quot; (both brown/orange, middle lines declining from 80% to 60%), and &quot;Cursor Success % (Ready)&quot; and &quot;Cursor Success % (All)&quot; (both purple, middle lines around 75-85%), &quot;Devin Success % (Ready)&quot; and &quot;Devin Success % (All)&quot; (both teal/green, lower lines around 65%), and &quot;Codegen Success % (Ready)&quot; and &quot;Codegen Success % (All)&quot; (both brown, declining lines). Stacked bar charts show total and merged PRs for each tool: light blue and dark blue for Copilot, light red and dark red for Codex, light purple and dark purple for Cursor, light green and dark green for Devin, and light orange for Codegen. The bars show increasing volumes over time, with the largest bars appearing at 10/01 reaching approximately 1,700,000 total PRs." src="https://static.simonwillison.net/static/2025/ai-agents-chart.jpg" /></p>
-<p>I found this today while trying to pull off the exact same trick myself! I got as far as creating the following table before finding Albert's work and abandoning my own project.</p>
-<table>
-<thead>
-<tr>
-<th>Tool</th>
-<th>Search term</th>
-<th>Total PRs</th>
-<th>Merged PRs</th>
-<th>% merged</th>
-<th>Earliest</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://claude.com/product/claude-code">Claude Code</a></td>
-<td><code>is:pr in:body "Generated with Claude Code"</code></td>
-<td><a href="https://github.com/search?q=is%3Apr+in%3Abody+%22Generated+with+Claude+Code%22&amp;type=pullrequests&amp;s=created&amp;o=asc">146,000</a></td>
-<td><a href="https://github.com/search?q=is%3Apr+in%3Abody+%22Generated+with+Claude+Code%22+is%3Amerged&amp;type=pullrequests&amp;s=created&amp;o=asc">123,000</a></td>
-<td>84.2%</td>
-<td><a href="https://github.com/turlockmike/hataraku/pull/83">Feb 21st</a></td>
-</tr>
-<tr>
-<td><a href="https://github.com/features/copilot">GitHub Copilot</a></td>
-<td><code>is:pr author:copilot-swe-agent[bot]</code></td>
-<td><a href="https://github.com/search?q=is%3Apr+author%3Acopilot-swe-agent%5Bbot%5D&amp;type=pullrequests&amp;s=created&amp;o=asc">247,000</a></td>
-<td><a href="https://github.com/search?q=is%3Apr+author%3Acopilot-swe-agent%5Bbot%5D+is%3Amerged&amp;type=pullrequests&amp;s=created&amp;o=asc">152,000</a></td>
-<td>61.5%</td>
-<td><a href="https://github.com/abbhardwa/Relational-Database-Query-Parser/pull/2">March 7th</a></td>
-</tr>
-<tr>
-<td><a href="https://developers.openai.com/codex/cloud/">Codex Cloud</a></td>
-<td><code>is:pr in:body "chatgpt.com" label:codex</code></td>
-<td><a href="https://github.com/search?q=is%3Apr+in%3Abody+%22chatgpt.com%22+label%3Acodex&amp;type=pullrequests&amp;s=created&amp;o=asc">1,900,000</a></td>
-<td><a href="https://github.com/search?q=is%3Apr+in%3Abody+%22chatgpt.com%22+label%3Acodex+is%3Amerged&amp;type=pullrequests&amp;s=created&amp;o=asc">1,600,000</a></td>
-<td>84.2%</td>
-<td><a href="https://github.com/adrianadiwidjaja/my-flask-app/pull/1">April 23rd</a></td>
-</tr>
-<tr>
-<td><a href="https://jules.google/">Google Jules</a></td>
-<td><code>is:pr author:google-labs-jules[bot]</code></td>
-<td><a href="https://github.com/search?q=is%3Apr+author%3Agoogle-labs-jules%5Bbot%5D&amp;type=pullrequests&amp;s=created&amp;o=asc">35,400</a></td>
-<td><a href="https://github.com/search?q=is%3Apr+author%3Agoogle-labs-jules%5Bbot%5D+is%3Amerged&amp;type=pullrequests&amp;s=created&amp;o=asc">27,800</a></td>
-<td>78.5%</td>
-<td><a href="https://github.com/yukikurage/memento-proto/pull/2">May 22nd</a></td>
-</tr>
-</tbody>
-</table>
-
-<p>(Those "earliest" links are a little questionable, I tried to filter out false positives and find the oldest one that appeared to really be from the agent in question.)</p>
-<p>It looks like OpenAI's Codex Cloud is <em>massively</em> ahead of the competition right now in terms of numbers of PRs both opened and merged on GitHub.</p>
-<p><strong>Update</strong>: To clarify, these numbers are for the category of <strong>autonomous coding agents</strong> - those systems where you assign a cloud-based agent a task or issue and the output is a PR against your repository. They do not (and cannot) capture the popularity of many forms of AI tooling that don't result in an easily identifiable pull request.</p>
-<p>Claude Code for example will be dramatically under-counted here because its version of an autonomous coding agent comes in the form of a somewhat obscure GitHub Actions workflow <a href="https://docs.claude.com/en/docs/claude-code/github-actions">buried in the documentation</a>.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/git-scraping">git-scraping</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 1 Oct 2025 23:59:40 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/definitions">definitions</a></p>]]></description><pubDate>Thu, 2 Oct 2025 12:44:59 +0000</pubDate></item></channel></rss>
