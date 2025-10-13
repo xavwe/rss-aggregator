@@ -26,3 +26,4 @@ https://skyfall.dev/rss.xml
 https://blog.deployor.dev/rss.xml
 https://www.theerlangelist.com/rss
 https://singhkays.com/index.xml
+https://notthebe.ee/rss.xml
