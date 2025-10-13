@@ -100,7 +100,7 @@ s3's support for conditional writes (<a href="https://simonwillison.net/2024/Nov
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/aws">aws</a>, <a href="https://simonwillison.net/tags/databases">databases</a>, <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/parquet">parquet</a></p>]]></description><pubDate>Sat, 11 Oct 2025 03:47:16 +0000</pubDate></item><item><title>simonw/claude-skills</title><link>https://simonwillison.net/2025/Oct/10/claude-skills/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/claude-skills">simonw/claude-skills</a></strong></p>
-One of the tips I picked up from <a href="">Jesse Vincent's Claude Code Superpowers post</a> (<a href="https://simonwillison.net/2025/Oct/10/superpowers/">previously</a>) was this:</p>
+One of the tips I picked up from <a href="https://blog.fsck.com/2025/10/09/superpowers/">Jesse Vincent's Claude Code Superpowers post</a> (<a href="https://simonwillison.net/2025/Oct/10/superpowers/">previously</a>) was this:</p>
 <blockquote>
 <p>Skills are what give your agents Superpowers.</p>
 <p>The first time they really popped up on my radar was a few weeks ago when Anthropic rolled out improved Office document creation. When the feature rolled out, I went poking around a bit -- I asked Claude to tell me all about its new skills. And it was <a href="https://claude.ai/share/0fe5a9c0-4e5a-42a1-9df7-c5b7636dad92">only too happy to dish</a>.</p>
