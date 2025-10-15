@@ -1,4 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Just Talk To It - the no-bs Way of Agentic Engineering</title><link>https://simonwillison.net/2025/Oct/14/agentic-engineering/#atom-everything</link><description><![CDATA[<p><strong><a href="https://steipete.me/posts/just-talk-to-it">Just Talk To It - the no-bs Way of Agentic Engineering</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>NVIDIA DGX Spark: great hardware, early days for the ecosystem</title><link>https://simonwillison.net/2025/Oct/14/nvidia-dgx-spark/#atom-everything</link><description><![CDATA[<p>NVIDIA sent me a preview unit of their new <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">DGX Spark</a> desktop "AI supercomputer". I've never had hardware to review before! You can consider this my first ever sponsored post if you like, but they did not pay me any cash and aside from an embargo date they did not request (nor would I grant) any editorial input into what I write about the device.</p>
+<p>The device retails for around $4,000. They officially go on sale tomorrow.</p>
+<p>First impressions are that this is a snazzy little computer. It's similar in size to a Mac mini, but with an exciting textured surface that feels refreshingly different and a little bit <a href="https://www.indiewire.com/awards/industry/devs-cinematography-rob-hardy-alex-garland-1234583396/">science fiction</a>.</p>
+<p><img src="https://static.simonwillison.net/static/2025/nvidia-spark.jpg" alt="A rectangular small computer, sitting horizontally on a box. It is about the width of a Mac Mini. It has a NVIDIA logo on  a reflective handle portion, then textured silver metal front, then another reflective handle at the other end. It's pretty and a bit weird looking. It sits on the box it came in, which has NVIDIA DGX Spark written on it in white text on green." style="max-width: 100%;" /></p>
+<p>There is a <em>very</em> powerful machine tucked into that little box. Here are the specs, which I had Claude Code figure out for me by <a href="https://gist.github.com/simonw/021651a14e6c5bf9876c9c4244ed6c2d">poking around on the device itself</a>:</p>
+<blockquote>
+<p><strong>Hardware Specifications</strong></p>
+<ul>
+<li>Architecture: aarch64 (ARM64)</li>
+<li>CPU: 20 cores
+<ul>
+<li>10x Cortex-X925 (performance cores)</li>
+<li>10x Cortex-A725 (efficiency cores)</li>
+</ul>
+</li>
+<li>RAM: 119 GB total (112 GB available) - <em>I’m not sure why Claude reported it differently here, the machine is listed as 128GB</em>
+</li>
+<li>Storage: 3.7 TB (6% used, 3.3 TB available)</li>
+</ul>
+<p><strong>GPU Specifications</strong></p>
+<ul>
+<li>Model: NVIDIA GB10 (Blackwell architecture)</li>
+<li>Compute Capability: sm_121 (12.1)</li>
+<li>Memory: 119.68 GB</li>
+<li>Multi-processor Count: 48 streaming multiprocessors</li>
+<li>Architecture: Blackwell</li>
+</ul>
+</blockquote>
+<p>Short version: this is an ARM64 device with 128GB of memory that's available to both the GPU and the 20 CPU cores at the same time, strapped onto a 4TB NVMe SSD.</p>
+<p>The Spark is firmly targeted at “AI researchers”. It’s designed for both training and running models.</p>
+<h4 id="the-tricky-bit-cuda-on-arm64">The tricky bit: CUDA on ARM64</h4>
+<p>Until now almost all of my own model running experiments have taken place on a Mac. This has gotten far less painful over the past year and a half thanks to the amazing work of the <a href="https://simonwillison.net/tags/mlx/">MLX</a> team and community, but it's still left me deeply frustrated at my lack of access to the NVIDIA CUDA ecosystem. I've lost count of the number of libraries and tutorials which expect you to be able to use Hugging Face Transformers or PyTorch with CUDA, and leave you high and dry if you don't have an NVIDIA GPU to run things on.</p>
+<p>Armed (ha) with my new NVIDIA GPU I was excited to dive into this world that had long eluded me... only to find that there was another assumption baked in to much of this software: x86 architecture for the rest of the machine.</p>
+<p>This resulted in all kinds of unexpected new traps for me to navigate. I eventually managed to get a PyTorch 2.7 wheel for CUDA on ARM, but failed to do so for 2.8. I'm not confident there because the wheel itself is unavailable but I'm finding navigating the PyTorch ARM ecosystem pretty confusing.</p>
+<p>NVIDIA are trying to make this easier, with mixed success. A lot of my initial challenges got easier when I found their <a href="https://docs.nvidia.com/dgx/dgx-spark/nvidia-container-runtime-for-docker.html">official Docker container</a>, so now I'm figuring out how best to use Docker with GPUs. Here's the current incantation that's been working for me:</p>
+<div class="highlight highlight-source-shell"><pre>docker run -it --gpus=all \
+  -v /usr/local/cuda:/usr/local/cuda:ro \
+  nvcr.io/nvidia/cuda:13.0.1-devel-ubuntu24.04 \
+  bash</pre></div>
+<p>I have not yet got my head around the difference between CUDA 12 and 13. 13 appears to be very new, and a lot of the existing tutorials and libraries appear to expect 12.</p>
+<h4 id="the-missing-documentation-isn-t-missing-any-more">The missing documentation isn't missing any more</h4>
+<p>When I first received this machine around a month ago there was very little in the way of documentation to help get me started. This meant climbing the steep NVIDIA+CUDA learning curve mostly on my own.</p>
+<p>This has changed <em>substantially</em> in just the last week. NVIDIA now have extensive guides for getting things working on the Spark and they are a huge breath of fresh air - exactly the information I needed when I started exploring this hardware.</p>
+<p>Here's the <a href="https://developer.nvidia.com/topics/ai/dgx-spark">getting started guide</a> and the essential collection of <a href="https://build.nvidia.com/spark">playbooks</a>. There's still a lot I haven't tried yet just in this official set of guides.</p>
+<h4 id="claude-code-for-everything">Claude Code for everything</h4>
+<p><a href="https://www.claude.com/product/claude-code">Claude Code</a> was an absolute lifesaver for me while I was trying to figure out how best to use this device. My Ubuntu skills were a little rusty, and I also needed to figure out CUDA drivers and Docker incantations and how to install the right versions of PyTorch. Claude 4.5 Sonnet is <em>much better than me</em> at all of these things.</p>
+<p>Since many of my experiments took place in disposable Docker containers I had no qualms at all about running it in YOLO mode:</p>
+<div class="highlight highlight-source-shell"><pre>claude --dangerously-skip-permissions</pre></div>
+<p>Claude understandably won't let you do this as root, even in a Docker container, so I found myself using the following incantation in a fresh <code>nvcr.io/nvidia/cuda:13.0.1-devel-ubuntu24.04</code> instance pretty often:</p>
+<div class="highlight highlight-source-shell"><pre>apt-get update <span class="pl-k">&amp;&amp;</span> apt-get install -y sudo
+<span class="pl-c"><span class="pl-c">#</span> pick the first free UID &gt;=1000</span>
+U=<span class="pl-s"><span class="pl-pds">$(</span>for i <span class="pl-k">in</span> <span class="pl-s"><span class="pl-pds">$(</span>seq 1000 65000<span class="pl-pds">)</span></span><span class="pl-k">;</span> <span class="pl-k">do</span> <span class="pl-k">if</span> <span class="pl-k">!</span> getent passwd <span class="pl-smi">$i</span> <span class="pl-k">&gt;</span>/dev/null<span class="pl-k">;</span> <span class="pl-k">then</span> <span class="pl-c1">echo</span> <span class="pl-smi">$i</span><span class="pl-k">;</span> <span class="pl-c1">break</span><span class="pl-k">;</span> <span class="pl-k">fi</span><span class="pl-k">;</span> done<span class="pl-pds">)</span></span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Chosen UID: <span class="pl-smi">$U</span><span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> same for a GID</span>
+G=<span class="pl-s"><span class="pl-pds">$(</span>for i <span class="pl-k">in</span> <span class="pl-s"><span class="pl-pds">$(</span>seq 1000 65000<span class="pl-pds">)</span></span><span class="pl-k">;</span> <span class="pl-k">do</span> <span class="pl-k">if</span> <span class="pl-k">!</span> getent group <span class="pl-smi">$i</span> <span class="pl-k">&gt;</span>/dev/null<span class="pl-k">;</span> <span class="pl-k">then</span> <span class="pl-c1">echo</span> <span class="pl-smi">$i</span><span class="pl-k">;</span> <span class="pl-c1">break</span><span class="pl-k">;</span> <span class="pl-k">fi</span><span class="pl-k">;</span> done<span class="pl-pds">)</span></span>
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Chosen GID: <span class="pl-smi">$G</span><span class="pl-pds">"</span></span>
+<span class="pl-c"><span class="pl-c">#</span> create user+group</span>
+groupadd -g <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$G</span><span class="pl-pds">"</span></span> devgrp
+useradd -m -u <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$U</span><span class="pl-pds">"</span></span> -g <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$G</span><span class="pl-pds">"</span></span> -s /bin/bash dev
+<span class="pl-c"><span class="pl-c">#</span> enable password-less sudo:</span>
+<span class="pl-c1">printf</span> <span class="pl-s"><span class="pl-pds">'</span>dev ALL=(ALL) NOPASSWD:ALL\n<span class="pl-pds">'</span></span> <span class="pl-k">&gt;</span> /etc/sudoers.d/90-dev-nopasswd
+chmod 0440 /etc/sudoers.d/90-dev-nopasswd
+<span class="pl-c"><span class="pl-c">#</span> Install npm</span>
+DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y npm
+<span class="pl-c"><span class="pl-c">#</span> Install Claude</span>
+npm install -g @anthropic-ai/claude-code</pre></div>
+<p>Then switch to the <code>dev</code> user and run Claude for the first time:</p>
+<div class="highlight highlight-source-shell"><pre>su - dev
+claude --dangerously-skip-permissions</pre></div>
+<p>This will provide a URL which you can visit to authenticate with your Anthropic account, confirming by copying back a token and pasting it into the terminal.</p>
+<p>Docker tip: you can create a snapshot of the current image (with Claude installed) by running <code>docker ps</code> to get the container ID and then:</p>
+<div class="highlight highlight-source-shell"><pre>docker commit --pause=false <span class="pl-k">&lt;</span>container_id<span class="pl-k">&gt;</span> cc:snapshot</pre></div>
+<p>Then later you can start a similar container using:</p>
+<div class="highlight highlight-source-shell"><pre>docker run -it \
+  --gpus=all \
+  -v /usr/local/cuda:/usr/local/cuda:ro \
+  cc:snapshot bash</pre></div>
+<p>Here's an example of the kinds of prompts I've been running in Claude Code inside the container:</p>
+<blockquote>
+<p><code>I want to run https://huggingface.co/unsloth/Qwen3-4B-GGUF using llama.cpp - figure out how to get llama cpp working on this machine  such that it runs with the GPU, then install it in this directory and get that model to work to serve a prompt. Goal is to get this  command to run: llama-cli -hf unsloth/Qwen3-4B-GGUF -p "I believe the meaning of life is" -n 128 -no-cnv</code></p>
+</blockquote>
+<p>That one worked flawlessly - Claude checked out the <code>llama.cpp</code> repo, compiled it for me and iterated on it until it could run that model on the GPU. Here's a <a href="https://gist.github.com/simonw/3e7d28d9ed222d842f729bfca46d6673">full transcript</a>, converted from Claude's <code>.jsonl</code> log format to Markdown using a script I <a href="https://github.com/simonw/tools/blob/main/python/claude_to_markdown.py">vibe coded just now</a>.</p>
+<p>I later told it:</p>
+<blockquote>
+<p><code>Write out a markdown file with detailed notes on what you did. Start with the shortest form of notes on how to get a successful build, then add a full account of everything you tried, what went wrong and how you fixed it.</code></p>
+</blockquote>
+<p>Which produced <a href="https://gist.github.com/simonw/0942d96f616b9e328568ab27d911c8ed">this handy set of notes</a>.</p>
+<h4 id="tailscale-was-made-for-this">Tailscale was made for this</h4>
+<p>Having a machine like this on my local network is neat, but what's even neater is being able to access it from anywhere else in the world, from both my phone and my laptop.</p>
+<p><a href="https://tailscale.com/">Tailscale</a> is <em>perfect</em> for this. I installed it on the Spark (using the <a href="https://tailscale.com/kb/1031/install-linux">Ubuntu instructions here</a>), signed in with my SSO account (via Google)... and the Spark showed up in the "Network Devices" panel on my laptop and phone instantly.</p>
+<p>I can SSH in from my laptop or using the <a href="https://termius.com/free-ssh-client-for-iphone">Termius iPhone app</a> on my phone. I've also been running tools like <a href="https://openwebui.com/">Open WebUI</a> which give me a mobile-friendly web interface for interacting with LLMs on the Spark.</p>
+<h4 id="here-comes-the-ecosystem">Here comes the ecosystem</h4>
+<p>The embargo on these devices dropped yesterday afternoon, and it turns out a whole bunch of relevant projects have had similar preview access to myself. This is <em>fantastic news</em> as many of the things I've been trying to figure out myself suddenly got a whole lot easier.</p>
+<p>Four particularly notable examples:</p>
+<ul>
+<li>Ollama <a href="https://ollama.com/blog/nvidia-spark">works out of the box</a>. They actually had a build that worked a few weeks ago, and were the first success I had running an LLM on the machine.</li>
+<li>
+<code>llama.cpp</code> creator Georgi Gerganov just published  <a href="https://github.com/ggml-org/llama.cpp/discussions/16578">extensive benchmark results</a> from running <code>llama.cpp</code> on a Spark. He's getting ~3,600 tokens/second to read the prompt and ~59 tokens/second to generate a response with the MXFP4 version of GPT-OSS 20B and ~817 tokens/second to read and ~18 tokens/second to generate for GLM-4.5-Air-GGUF.</li>
+<li>LM Studio now have <a href="https://lmstudio.ai/blog/dgx-spark">a build for the Spark</a>. I haven't tried this one yet as I'm currently using my machine exclusively via SSH.</li>
+<li>vLLM - one of the most popular engines for serving production LLMs - had <a href="https://x.com/eqhylxx/status/1977928690945360049">early access</a> and there's now an official <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/vllm?version=25.09-py3">NVIDIA vLLM NGC Container</a> for running their stack.</li>
+</ul>
+<h4 id="should-you-get-one-">Should you get one?</h4>
+<p>It's a bit too early for me to provide a confident recommendation concerning this machine. As indicated above, I've had a tough time figuring out how best to put it to use, largely through my own inexperience with CUDA, ARM64 and Ubuntu GPU machines in general.</p>
+<p>The ecosystem improvements in just the past 24 hours have been very reassuring though. I expect it will be clear within a few weeks how well supported this machine is going to be.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/hardware">hardware</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/tailscale">tailscale</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/nvidia">nvidia</a>, <a href="https://simonwillison.net/tags/ollama">ollama</a>, <a href="https://simonwillison.net/tags/llama-cpp">llama-cpp</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a>, <a href="https://simonwillison.net/tags/disclosures">disclosures</a></p>]]></description><pubDate>Tue, 14 Oct 2025 23:36:21 +0000</pubDate></item><item><title>Just Talk To It - the no-bs Way of Agentic Engineering</title><link>https://simonwillison.net/2025/Oct/14/agentic-engineering/#atom-everything</link><description><![CDATA[<p><strong><a href="https://steipete.me/posts/just-talk-to-it">Just Talk To It - the no-bs Way of Agentic Engineering</a></strong></p>
 Peter Steinberger's long, detailed description of his current process for using Codex CLI and GPT-5 Codex. This is information dense and full of actionable tips, plus plenty of strong opinions about the differences between Claude 4.5 an GPT-5:</p>
 <blockquote>
 <p>While Claude reacts well to 🚨 SCREAMING ALL-CAPS 🚨 commands that threaten it that it will imply ultimate failure and 100 kittens will die if it runs command X, that freaks out GPT-5. (Rightfully so). So drop all of that and just use words like a human.</p>
@@ -675,14 +780,4 @@ llm -m openai/gpt-5-pro "Generate an SVG of a pelican riding a bicycle"
 <p>I've tried this a few times with good results: give the agent a genuinely difficult task against a large codebase, with no intention of actually landing its code, just to get ideas from which files it modifies and how it approaches the problem.</p>
 <p>Peter Steinberger's <a href="https://steipete.me/posts/just-talk-to-it">Just Talk To It - the no-bs Way of Agentic Engineering</a> provides a very detailed description of his current process built around Codex CLI.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Sun, 5 Oct 2025 12:06:55 +0000</pubDate></item><item><title>Let the LLM Write the Prompts: An Intro to DSPy in Compound Al Pipelines</title><link>https://simonwillison.net/2025/Oct/4/drew-on-dspy/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.youtube.com/watch?v=I9ZtkgYZnOw">Let the LLM Write the Prompts: An Intro to DSPy in Compound Al Pipelines</a></strong></p>
-I've had trouble getting my head around <a href="https://dspy.ai">DSPy</a> in the past. This half hour talk by Drew Breunig at the recent Databricks Data + AI Summit is the clearest explanation I've seen yet of the kinds of problems it can help solve.</p>
-<p>Here's Drew's <a href="https://www.dbreunig.com/2025/06/10/let-the-model-write-the-prompt.html">written version of the talk</a>.</p>
-<p>Drew works on Overture Maps, which combines Point Of Interest data from numerous providers to create a single unified POI database. This is an example of <strong>conflation</strong>, a notoriously difficult task in GIS where multiple datasets are deduped and merged together.</p>
-<p>Drew uses an inexpensive local model, <a href="https://huggingface.co/Qwen/Qwen3-0.6B">Qwen3-0.6B</a>, to compare 70 million addresses and identity matches, for example between <code>Place(address="3359 FOOTHILL BLVD", name="RESTAURANT LOS ARCOS")</code> and <code>Place(address="3359 FOOTHILL BLVD", name="Los Arcos Taqueria"')</code>.</p>
-<p>DSPy's role is to optimize the prompt used for that smaller model. Drew used GPT-4.1 and the <a href="https://dspy.ai/api/optimizers/MIPROv2/">dspy.MIPROv2</a> optimizer, producing a 700 token prompt that increased the score from 60.7% to 82%.</p>
-<p><img alt="Determine if two points of interest refer to the same place. Arrow to optimized prompt: Given two records representing places or businesses-each with at least a name and address-analyze the information and determine if they refer to the same real-world entity. Consider minor differences such as case, diacritics, transliteration, abbreviations, or formatting as potential matches if both the name and address are otherwise strongly similar. Only output &quot;True&quot; if both fields are a close match; if there are significant differences in either the name or address, even if one field matches exactly, output &quot;False&quot;. Your decision should be robust to common variations and errors and should work across multiple languages and scripts." src="https://static.simonwillison.net/static/2025/optimized-prompt.jpeg" /></p>
-<p>Why bother? Drew points out that having a prompt optimization pipeline makes it trivial to evaluate and switch to other models if they can score higher with a custom optimized prompt - without needing to execute that trial-and-error optimization by hand.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/geospatial">geospatial</a>, <a href="https://simonwillison.net/tags/gis">gis</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/drew-breunig">drew-breunig</a>, <a href="https://simonwillison.net/tags/overture">overture</a>, <a href="https://simonwillison.net/tags/dspy">dspy</a></p>]]></description><pubDate>Sat, 4 Oct 2025 22:48:59 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Sun, 5 Oct 2025 12:06:55 +0000</pubDate></item></channel></rss>
