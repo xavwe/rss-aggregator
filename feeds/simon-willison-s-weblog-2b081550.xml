@@ -28,8 +28,7 @@ Alex Edwards writes about the new <code>http.CrossOriginProtection</code> middle
 <li>10x Cortex-A725 (efficiency cores)</li>
 </ul>
 </li>
-<li>RAM: 119 GB total (112 GB available) - <em>I’m not sure why Claude reported it differently here, the machine is listed as 128GB</em>
-</li>
+<li>RAM: 119 GB total (112 GB available) - <em>I’m not sure why Claude reported it differently here, the machine is listed as 128GB - it looks like a <a href="https://news.ycombinator.com/item?id=45586776#45588329">128GB == 119GiB thing</a> because Claude <a href="https://gist.github.com/simonw/021651a14e6c5bf9876c9c4244ed6c2d#file-nvidia-claude-code-txt-L41">used free -h</a></em></li>
 <li>Storage: 3.7 TB (6% used, 3.3 TB available)</li>
 </ul>
 <p><strong>GPU Specifications</strong></p>
@@ -60,7 +59,14 @@ Alex Edwards writes about the new <code>http.CrossOriginProtection</code> middle
 <h4 id="claude-code-for-everything">Claude Code for everything</h4>
 <p><a href="https://www.claude.com/product/claude-code">Claude Code</a> was an absolute lifesaver for me while I was trying to figure out how best to use this device. My Ubuntu skills were a little rusty, and I also needed to figure out CUDA drivers and Docker incantations and how to install the right versions of PyTorch. Claude 4.5 Sonnet is <em>much better than me</em> at all of these things.</p>
 <p>Since many of my experiments took place in disposable Docker containers I had no qualms at all about running it in YOLO mode:</p>
-<div class="highlight highlight-source-shell"><pre>claude --dangerously-skip-permissions</pre></div>
+<div class="highlight highlight-source-shell"><pre>IS_SANDBOX=1 claude --dangerously-skip-permissions</pre></div>
+
+<p>The <code>IS_SANDBOX=1</code> environment variable stops Claude from complaining about running as root.</p>
+
+<details><summary style="font-style: italic">Before I found out about IS_SANDBOX</summary>
+
+<p><br /><em>I was <a href="https://twitter.com/lawrencecchen/status/1978255934938886409">tipped off</a> about IS_SANDBOX after I published this article. Here's my original workaround:</em></p>
+
 <p>Claude understandably won't let you do this as root, even in a Docker container, so I found myself using the following incantation in a fresh <code>nvcr.io/nvidia/cuda:13.0.1-devel-ubuntu24.04</code> instance pretty often:</p>
 <div class="highlight highlight-source-shell"><pre>apt-get update <span class="pl-k">&amp;&amp;</span> apt-get install -y sudo
 <span class="pl-c"><span class="pl-c">#</span> pick the first free UID &gt;=1000</span>
@@ -82,6 +88,9 @@ npm install -g @anthropic-ai/claude-code</pre></div>
 <p>Then switch to the <code>dev</code> user and run Claude for the first time:</p>
 <div class="highlight highlight-source-shell"><pre>su - dev
 claude --dangerously-skip-permissions</pre></div>
+
+</details><br />
+
 <p>This will provide a URL which you can visit to authenticate with your Anthropic account, confirming by copying back a token and pasting it into the terminal.</p>
 <p>Docker tip: you can create a snapshot of the current image (with Claude installed) by running <code>docker ps</code> to get the container ID and then:</p>
 <div class="highlight highlight-source-shell"><pre>docker commit --pause=false <span class="pl-k">&lt;</span>container_id<span class="pl-k">&gt;</span> cc:snapshot</pre></div>
