@@ -124,6 +124,7 @@ claude --dangerously-skip-permissions</pre></div>
 <li>LM Studio now have <a href="https://lmstudio.ai/blog/dgx-spark">a build for the Spark</a>. I haven't tried this one yet as I'm currently using my machine exclusively via SSH.</li>
 <li>vLLM - one of the most popular engines for serving production LLMs - had <a href="https://x.com/eqhylxx/status/1977928690945360049">early access</a> and there's now an official <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/vllm?version=25.09-py3">NVIDIA vLLM NGC Container</a> for running their stack.</li>
 </ul>
+<p>Here's <a href="https://docs.unsloth.ai/new/fine-tuning-llms-with-nvidia-dgx-spark-and-unsloth">a tutorial from Unsloth</a> on fine-tuning gpt-oss-20b on the Spark.</p>
 <h4 id="should-you-get-one-">Should you get one?</h4>
 <p>It's a bit too early for me to provide a confident recommendation concerning this machine. As indicated above, I've had a tough time figuring out how best to put it to use, largely through my own inexperience with CUDA, ARM64 and Ubuntu GPU machines in general.</p>
 <p>The ecosystem improvements in just the past 24 hours have been very reassuring though. I expect it will be clear within a few weeks how well supported this machine is going to be.</p>
