@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Catherine Wu</title><link>https://simonwillison.net/2025/Oct/15/catherine-wu/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/_catwu/status/1978509174897053925"><p>While Sonnet 4.5 remains the default [in Claude Code], Haiku 4.5 now powers the Explore subagent which can rapidly gather context on your codebase to build apps even faster.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Riana Pfefferkorn</title><link>https://simonwillison.net/2025/Oct/16/riana-pfefferkorn/#atom-everything</link><description><![CDATA[<blockquote cite="https://cyberlaw.stanford.edu/blog/2025/10/whos-submitting-ai-tainted-filings-in-court/"><p>Pro se litigants account for the majority of the cases in the United States where a party submitted a court filing containing AI hallucinations. In a country where legal representation is <a href="https://law.stanford.edu/2024/06/13/justice-for-all-why-we-have-an-access-to-justice-gap-in-america-and-what-can-we-do-about-it/">unaffordable</a> for most people, it is no wonder that pro se litigants are depending on free or low-cost AI tools. But it is a scandal that so many have been betrayed by them, to the detriment of the cases they are litigating all on their own.</p></blockquote>
+<p class="cite">&mdash; <a href="https://cyberlaw.stanford.edu/blog/2025/10/whos-submitting-ai-tainted-filings-in-court/">Riana Pfefferkorn</a>, analyzing the <a href="https://www.damiencharlotin.com/hallucinations/">AI Hallucination Cases</a> database for CIS at Stanford Law</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/law">law</a>, <a href="https://simonwillison.net/tags/hallucinations">hallucinations</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 16 Oct 2025 04:16:45 +0000</pubDate></item><item><title>Coding without typing the code</title><link>https://simonwillison.net/2025/Oct/16/coding-without-typing-the-code/#atom-everything</link><description><![CDATA[<p>Last year the most useful exercise for getting a feel for how good LLMs were at writing code was vibe coding (before that name had even been coined) - seeing if you could create a useful small application through prompting alone.</p>
+<p>Today I think there's a new, more ambitious and significantly more intimidating exercise: spend a day working on <strong>real production code</strong> through prompting alone, making no manual edits yourself.</p>
+<p>This doesn't mean you can't control exactly what goes into each file - you can even tell the model "update line 15 to use this instead" if you have to - but it's a great way to get more of a feel for how well the latest coding agents can wield their edit tools.</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 16 Oct 2025 03:58:31 +0000</pubDate></item><item><title>Quoting Catherine Wu</title><link>https://simonwillison.net/2025/Oct/15/catherine-wu/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/_catwu/status/1978509174897053925"><p>While Sonnet 4.5 remains the default [in Claude Code], Haiku 4.5 now powers the Explore subagent which can rapidly gather context on your codebase to build apps even faster.</p>
 <p>You can select Haiku 4.5 to be your default model in /model. When selected, you’ll automatically use Sonnet 4.5 in Plan mode and Haiku 4.5 for execution for smarter plans and faster results.</p></blockquote>
 <p class="cite">&mdash; <a href="https://twitter.com/_catwu/status/1978509174897053925">Catherine Wu</a>, Claude Code PM, Anthropic</p>
 
@@ -713,68 +720,4 @@ Ouch:</p>
 </blockquote>
 <p>Adding this one <a href="https://simonwillison.net/tags/agent-definitions/">to my collection</a>.</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/agent-definitions">agent-definitions</a>, <a href="https://simonwillison.net/tags/swyx">swyx</a></p>]]></description><pubDate>Mon, 6 Oct 2025 23:17:55 +0000</pubDate></item><item><title>gpt-image-1-mini</title><link>https://simonwillison.net/2025/Oct/6/gpt-image-1-mini/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-image-1-mini">gpt-image-1-mini</a></strong></p>
-OpenAI released a new image model today: <code>gpt-image-1-mini</code>, which they describe as "A smaller image generation model that’s 80% less expensive than the large model."</p>
-<p>They released it very quietly - I didn't hear about this in the DevDay keynote but I later spotted it on the <a href="https://openai.com/devday/">DevDay 2025 announcements page</a>.</p>
-<p>It wasn't instantly obvious to me how to use this via their API. I ended up vibe coding a Python CLI tool for it so I could try it out.</p>
-<p>I dumped the <a href="https://github.com/openai/openai-python/commit/9ada2c74f3f5865a2bfb19afce885cc98ad6a4b3.diff">plain text diff version</a> of the commit to the OpenAI Python library titled <a href="https://github.com/openai/openai-python/commit/9ada2c74f3f5865a2bfb19afce885cc98ad6a4b3">feat(api): dev day 2025 launches</a> into ChatGPT GPT-5 Thinking and worked with it to figure out how to use the new image model and build a script for it. Here's <a href="https://chatgpt.com/share/68e44023-7fc4-8006-8991-3be661799c9f">the transcript</a> and the <a href="https://github.com/simonw/tools/blob/main/python/openai_image.py">the openai_image.py script</a> it wrote.</p>
-<p>I had it add inline script dependencies, so you can run it with <code>uv</code> like this:</p>
-<pre><code>export OPENAI_API_KEY="$(llm keys get openai)"
-uv run https://tools.simonwillison.net/python/openai_image.py "A pelican riding a bicycle"
-</code></pre>
-<p>It picked this illustration style without me specifying it:</p>
-<p><img alt="A nice illustration of a pelican riding a bicycle, both pelican and bicycle are exactly as you would hope. Looks sketched, maybe colored pencils? The pelican's two legs are on the pedals but it also has a weird sort of paw on an arm on the handlebars." src="https://static.simonwillison.net/static/2025/gpt-image-1-mini-pelican.jpg" /></p>
-<p>(This is a very different test from my normal "Generate an SVG of a pelican riding a bicycle" since it's using a dedicated image generator, not having a text-based model try to generate SVG code.)</p>
-<p>My tool accepts a prompt, and optionally a filename (if you don't provide one it saves to a filename like <code>/tmp/image-621b29.png</code>).</p>
-<p>It also accepts options for model and dimensions and output quality - the <code>--help</code> output lists those, you can <a href="https://tools.simonwillison.net/python/#openai_imagepy">see that here</a>.</p>
-<p>OpenAI's pricing is a little confusing. The <a href="https://platform.openai.com/docs/models/gpt-image-1-mini">model page</a> claims low quality images should cost around half a cent and medium quality around a cent and a half. It also lists an image token price of $8/million tokens. It turns out there's a default "high" quality setting - most of the images I've generated have reported between 4,000 and 6,000 output tokens, which costs between <a href="https://www.llm-prices.com/#ot=4000&amp;oc=8">3.2</a> and <a href="https://www.llm-prices.com/#ot=6000&amp;oc=8">4.8 cents</a>.</p>
-<p>One last demo, this time using <code>--quality low</code>:</p>
-<pre><code> uv run https://tools.simonwillison.net/python/openai_image.py \
-  'racoon eating cheese wearing a top hat, realistic photo' \
-  /tmp/racoon-hat-photo.jpg \
-  --size 1024x1024 \
-  --output-format jpeg \
-  --quality low
-</code></pre>
-<p>This saved the following:</p>
-<p><img alt="It's a square photo of a raccoon eating cheese and wearing a top hat. It looks pretty realistic." src="https://static.simonwillison.net/static/2025/racoon-hat-photo.jpg" /></p>
-<p>And reported this to standard error:</p>
-<pre><code>{
-  "background": "opaque",
-  "created": 1759790912,
-  "generation_time_in_s": 20.87331541599997,
-  "output_format": "jpeg",
-  "quality": "low",
-  "size": "1024x1024",
-  "usage": {
-    "input_tokens": 17,
-    "input_tokens_details": {
-      "image_tokens": 0,
-      "text_tokens": 17
-    },
-    "output_tokens": 272,
-    "total_tokens": 289
-  }
-}
-</code></pre>
-<p>This took 21s, but I'm on an unreliable conference WiFi connection so I don't trust that measurement very much.</p>
-<p>272 output tokens = <a href="https://www.llm-prices.com/#ot=272&amp;oc=8">0.2 cents</a> so this is much closer to the expected pricing from the model page.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Mon, 6 Oct 2025 22:54:32 +0000</pubDate></item><item><title>GPT-5 pro</title><link>https://simonwillison.net/2025/Oct/6/gpt-5-pro/#atom-everything</link><description><![CDATA[<p><strong><a href="https://platform.openai.com/docs/models/gpt-5-pro">GPT-5 pro</a></strong></p>
-Here's OpenAI's model documentation for their GPT-5 pro model, released to their API today at their DevDay event.</p>
-<p>It has similar base characteristics to <a href="https://platform.openai.com/docs/models/gpt-5">GPT-5</a>: both share a September 30, 2024 knowledge cutoff and 400,000 context limit.</p>
-<p>GPT-5 pro has maximum output tokens 272,000 max, an increase from 128,000 for GPT-5.</p>
-<blockquote>
-<p>As our most advanced reasoning model, GPT-5 pro defaults to (and only supports) <code>reasoning.effort: high</code></p>
-</blockquote>
-<p>It's only available via OpenAI's Responses API. My <a href="https://llm.datasette.io/">LLM</a> tool doesn't support that in core yet, but the <a href="https://github.com/simonw/llm-openai-plugin">llm-openai-plugin</a> plugin does. I released <a href="https://github.com/simonw/llm-openai-plugin/releases/tag/0.7">llm-openai-plugin 0.7</a> adding support for the new model, then ran this:</p>
-<pre><code>llm install -U llm-openai-plugin
-llm -m openai/gpt-5-pro "Generate an SVG of a pelican riding a bicycle"
-</code></pre>
-<p>It's very, very slow. The model took 6 minutes 8 seconds to respond and charged me for 16 input and 9,205 output tokens. At $15/million input and $120/million output this pelican <a href="https://www.llm-prices.com/#it=16&amp;ot=9205&amp;ic=15&amp;oc=120&amp;sb=output&amp;sd=descending">cost me $1.10</a>!</p>
-<p><img alt="It's obviously a pelican riding a bicycle. Half the spokes are missing on each wheel and the pelican is a bit squat looking." src="https://static.simonwillison.net/static/2025/gpt-5-pro.png" /></p>
-<p>Here's <a href="https://gist.github.com/simonw/9a06ab36f486f31401fec1fc104a8ce5">the full transcript</a>. It looks visually pretty simpler to the much, much cheaper result I <a href="https://simonwillison.net/2025/Aug/7/gpt-5/#and-some-svgs-of-pelicans">got from GPT-5</a>.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Mon, 6 Oct 2025 19:48:45 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/agent-definitions">agent-definitions</a>, <a href="https://simonwillison.net/tags/swyx">swyx</a></p>]]></description><pubDate>Mon, 6 Oct 2025 23:17:55 +0000</pubDate></item></channel></rss>
