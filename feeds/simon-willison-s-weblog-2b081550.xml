@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>NVIDIA DGX Spark + Apple Mac Studio = 4x Faster LLM Inference with EXO 1.0</title><link>https://simonwillison.net/2025/Oct/16/nvidia-dgx-spark-apple-mac-studio/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.exolabs.net/nvidia-dgx-spark">NVIDIA DGX Spark + Apple Mac Studio = 4x Faster LLM Inference with EXO 1.0</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Claude Skills are awesome, maybe a bigger deal than MCP</title><link>https://simonwillison.net/2025/Oct/16/claude-skills/#atom-everything</link><description><![CDATA[<p>Anthropic this morning <a href="https://www.anthropic.com/news/skills">introduced Claude Skills</a>, a new pattern for making new abilities available to their models:</p>
+<blockquote>
+<p>Claude can now use <em>Skills</em> to improve how it performs specific tasks. Skills are folders that include instructions, scripts, and resources that Claude can load when needed.</p>
+<p>Claude will only access a skill when it's relevant to the task at hand. When used, skills make Claude better at specialized tasks like working with Excel or following your organization's brand guidelines.</p>
+</blockquote>
+<p>Their engineering blog has a <a href="https://www.anthropic.com/engineering/equipping-agents-for-the-real-world-with-agent-skills">more detailed explanation</a>. There's also a new <a href="https://github.com/anthropics/skills">anthropic/skills</a> GitHub repo.</p>
+<p>(I inadvertently preempted their announcement of this feature when I reverse engineered and <a href="https://simonwillison.net/2025/Oct/10/claude-skills/">wrote about it last Friday</a>!)</p>
+<p>Skills are conceptually extremely simple: a skill is a Markdown file telling the model how to do something, optionally accompanied by extra documents and pre-written scripts that the model can run to help it accomplish the tasks described by the skill.</p>
+<p>Claude's new <a href="https://www.anthropic.com/news/create-files">document creation abilities</a>, which accompanied <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">their new code interpreter feature</a> in September, turned out to be entirely implemented using skills. Those are <a href="https://github.com/anthropics/skills/tree/main/document-skills">now available Anthropic's repo</a> covering <code>.pdf</code>, <code>.docx</code>, <code>.xlsx</code>, and <code>.pptx</code> files.</p>
+<p>There's one extra detail that makes this a feature, not just a bunch of files in disk. At the start of a session Claude's various harnesses can scan all available skill files and read a short explanation for each one from the frontmatter YAML in the Markdown file. This is <em>very</em> token efficient: each skill only takes up a few dozen extra tokens, with the full details only loaded in should the user request a task that the skill can help solve.</p>
+<ul>
+  <li><a href="https://simonwillison.net/2025/Oct/16/claude-skills/#trying-out-the-slack-gif-creator-skill">Trying out the slack-gif-creator skill</a></li>
+  <li><a href="https://simonwillison.net/2025/Oct/16/claude-skills/#skills-depend-on-a-coding-environment">Skills depend on a coding environment</a></li>
+  <li><a href="https://simonwillison.net/2025/Oct/16/claude-skills/#claude-as-a-general-agent">Claude as a General Agent</a></li>
+  <li><a href="https://simonwillison.net/2025/Oct/16/claude-skills/#skills-compared-to-mcp">Skills compared to MCP</a></li>
+  <li><a href="https://simonwillison.net/2025/Oct/16/claude-skills/#here-come-the-skills">Here come the Skills</a></li>
+
+</ul>
+<h4 id="trying-out-the-slack-gif-creator-skill">Trying out the slack-gif-creator skill</h4>
+<p>Here's that metadata for an example <a href="https://github.com/anthropics/skills/blob/main/slack-gif-creator/SKILL.md">slack-gif-creator skill</a> that Anthropic published this morning:</p>
+<blockquote>
+<p>Toolkit for creating animated GIFs optimized for Slack, with validators for size constraints and composable animation primitives. This skill applies when users request animated GIFs or emoji animations for Slack from descriptions like "make me a GIF for Slack of X doing Y".</p>
+</blockquote>
+<p>I just tried this skill out in the Claude mobile web app, against Sonnet 4.5. First I enabled the slack-gif-creator skill <a href="https://claude.ai/settings/capabilities">in the settings</a>, then I prompted:</p>
+<blockquote>
+<p><code>Make me a gif for slack about how Skills are way cooler than MCPs</code></p>
+</blockquote>
+<p>And Claude <a href="https://claude.ai/share/eff7ae7b-b386-417b-9fa0-213fa76ace6e">made me this GIF</a>. Click to play (it's almost epilepsy inducing, hence the click-to-play mechanism):</p>
+<p><img
+  src="https://static.simonwillison.net/static/2025/skills_vs_mcps_still.gif"
+  data-still="https://static.simonwillison.net/static/2025/skills_vs_mcps_still.gif"
+  data-gif="https://static.simonwillison.net/static/2025/skills_vs_mcps.gif"
+  data-state="stopped"
+  role="button"
+  aria-pressed="false"
+  tabindex="0"
+  style="cursor:pointer;max-width:100%"
+  onload="(new Image).src=this.getAttribute('data-gif')"
+  onclick="(function(el){
+    if (el.getAttribute('data-state') !== 'playing') {
+      var c = el.cloneNode(true);
+      c.src = el.getAttribute('data-gif');
+      c.setAttribute('data-state','playing');
+      c.setAttribute('aria-pressed','true');
+      el.parentNode.replaceChild(c, el);
+    } else {
+      el.setAttribute('data-state','stopped');
+      el.setAttribute('aria-pressed','false');
+      el.src = el.getAttribute('data-still');
+    }
+  })(this)"
+  onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();this.onclick(event);}"
+/></p>
+<p>OK, this particular GIF is terrible, but the great thing about skills is that they're very easy to iterate on to make them better.</p>
+<p>Here are some noteworthy snippets from <a href="https://gist.github.com/simonw/ef35bb9e6c514d1d596dac9227da482b">the Python script it wrote</a>, comments mine:</p>
+<pre><span class="pl-c"># Start by adding the skill's directory to the Python path</span>
+<span class="pl-k">import</span> <span class="pl-s1">sys</span>
+<span class="pl-s1">sys</span>.<span class="pl-c1">path</span>.<span class="pl-c1">insert</span>(<span class="pl-c1">0</span>, <span class="pl-s">'/mnt/skills/examples/slack-gif-creator'</span>)
+
+<span class="pl-k">from</span> <span class="pl-c1">PIL</span> <span class="pl-k">import</span> <span class="pl-v">Image</span>, <span class="pl-v">ImageDraw</span>, <span class="pl-v">ImageFont</span>
+<span class="pl-c"># This class lives in the core/ directory for the skill</span>
+<span class="pl-k">from</span> <span class="pl-s1">core</span>.<span class="pl-s1">gif_builder</span> <span class="pl-k">import</span> <span class="pl-v">GIFBuilder</span>
+
+<span class="pl-c"># ... code that builds the GIF ...</span>
+
+<span class="pl-c"># Save it to disk:</span>
+<span class="pl-s1">info</span> <span class="pl-c1">=</span> <span class="pl-s1">builder</span>.<span class="pl-c1">save</span>(<span class="pl-s">'/mnt/user-data/outputs/skills_vs_mcps.gif'</span>, 
+                    <span class="pl-s1">num_colors</span><span class="pl-c1">=</span><span class="pl-c1">128</span>, 
+                    <span class="pl-s1">optimize_for_emoji</span><span class="pl-c1">=</span><span class="pl-c1">False</span>)
+
+<span class="pl-en">print</span>(<span class="pl-s">f"GIF created successfully!"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Size: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">info</span>[<span class="pl-s">'size_kb'</span>]:.1f<span class="pl-kos">}</span></span> KB (<span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">info</span>[<span class="pl-s">'size_mb'</span>]:.2f<span class="pl-kos">}</span></span> MB)"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Frames: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">info</span>[<span class="pl-s">'frame_count'</span>]<span class="pl-kos">}</span></span>"</span>)
+<span class="pl-en">print</span>(<span class="pl-s">f"Duration: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">info</span>[<span class="pl-s">'duration_seconds'</span>]:.1f<span class="pl-kos">}</span></span>s"</span>)
+
+<span class="pl-c"># Use the check_slack_size() function to confirm it's small enough for Slack:</span>
+<span class="pl-s1">passes</span>, <span class="pl-s1">check_info</span> <span class="pl-c1">=</span> <span class="pl-en">check_slack_size</span>(<span class="pl-s">'/mnt/user-data/outputs/skills_vs_mcps.gif'</span>, <span class="pl-s1">is_emoji</span><span class="pl-c1">=</span><span class="pl-c1">False</span>)
+<span class="pl-k">if</span> <span class="pl-s1">passes</span>:
+    <span class="pl-en">print</span>(<span class="pl-s">"✓ Ready for Slack!"</span>)
+<span class="pl-k">else</span>:
+    <span class="pl-en">print</span>(<span class="pl-s">f"⚠ File size: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">check_info</span>[<span class="pl-s">'size_kb'</span>]:.1f<span class="pl-kos">}</span></span> KB (limit: <span class="pl-s1"><span class="pl-kos">{</span><span class="pl-s1">check_info</span>[<span class="pl-s">'limit_kb'</span>]<span class="pl-kos">}</span></span> KB)"</span>)</pre>
+<p>This is pretty neat. Slack GIFs need to be a maximum of 2MB, so the skill includes a validation function which the model can use to check the file size. If it's too large the model can have another go at making it smaller.</p>
+<h4 id="skills-depend-on-a-coding-environment">Skills depend on a coding environment</h4>
+<p>The skills mechanism is <em>entirely dependent</em> on the model having access to a filesystem, tools to navigate it and the ability to execute commands in that environment.</p>
+<p>This is a common pattern for LLM tooling these days - ChatGPT Code Interpreter was the first big example of this <a href="https://simonwillison.net/2023/Apr/12/code-interpreter/">back in early 2023</a>, and the pattern later extended to local machines via coding agent tools such as Cursor, Claude Code, Codex CLI and Gemini CLI.</p>
+<p>This requirement is the biggest difference between skills and other previous attempts at expanding the abilities of LLMs, such as MCP and <a href="https://simonwillison.net/tags/chatgpt-plugins/">ChatGPT Plugins</a>. It's a significant dependency, but it's somewhat bewildering how much new capability it unlocks.</p>
+<p>The fact that skills are so powerful and simple to create is yet another argument in favor of making safe coding environments available to LLMs. The word <strong>safe</strong> there is doing a <em>lot</em> of work though! We really need to figure out how best to sandbox these environments such that attacks such as prompt injections are limited to an acceptable amount of damage.</p>
+<h4 id="claude-as-a-general-agent">Claude as a General Agent</h4>
+<p>Back in January I <a href="https://simonwillison.net/2025/Jan/10/ai-predictions/">made some foolhardy predictions about AI/LLMs</a>, including that "agents" would once again fail to happen:</p>
+<blockquote>
+<p>I think we are going to see a <em>lot</em> more froth about agents in 2025, but I expect the results will be a great disappointment to most of the people who are excited about this term. I expect a lot of money will be lost chasing after several different poorly defined dreams that share that name.</p>
+</blockquote>
+<p>I was entirely wrong about that. 2025 really has been the year of "agents", no matter which of the many <a href="https://simonwillison.net/tags/agent-definitions/">conflicting definitions</a> you decide to use (I eventually settled on "<a href="https://simonwillison.net/2025/Sep/18/agents/">tools in a loop</a>").</p>
+<p><a href="https://www.claude.com/product/claude-code">Claude Code</a> is, with hindsight, poorly named. It's not purely a coding tool: it's a tool for general computer automation. <em>Anything</em> you can achieve by typing commands into a computer is something that can now be automated by Claude Code. It's best described as a <strong>general agent</strong>. Skills make this a whole lot more obvious and explicit.</p>
+<p>I find the potential applications of this trick somewhat dizzying. Just thinking about this with my data journalism hat on: imagine a folder full of skills that covers tasks like the following:</p>
+<ul>
+<li>Where to get US census data from and how to understand its structure</li>
+<li>How to load data from different formats into SQLite or DuckDB using appropriate Python libraries</li>
+<li>How to publish data online, as Parquet files in S3 or pushed as tables to Datasette Cloud</li>
+<li>A skill defined by an experienced data reporter talking about how best to find the interesting stories in a new set of data</li>
+<li>A skill that describes how to build clean, readable data visualizations using D3</li>
+</ul>
+<p>Congratulations, you just built a "data journalism agent" that can discover and help publish stories against fresh drops of US census data. And you did it with a folder full of Markdown files and maybe a couple of example Python scripts.</p>
+<h4 id="skills-compared-to-mcp">Skills compared to MCP</h4>
+<p><a href="https://modelcontextprotocol.io/">Model Context Protocol</a> has attracted an enormous amount of buzz since its initial release back <a href="https://simonwillison.net/2024/Nov/25/model-context-protocol/">in November last year</a>. I like to joke that one of the reasons it took off is that every company knew they needed an "AI strategy", and building (or announcing) an MCP implementation was an easy way to tick that box.</p>
+<p>Over time the limitations of MCP have started to emerge. The most significant is in terms of token usage: GitHub's official MCP on its own famously consumes tens of thousands of tokens of context, and once you've added a few more to that there's precious little space left for the LLM to actually do useful work.</p>
+<p>My own interest in MCPs has waned ever since I started taking coding agents seriously. Almost everything I might achieve with an MCP can be handled by a CLI tool instead. LLMs know how to call <code>cli-tool --help</code>, which means you don't have to spend many tokens describing how to use them - the model can figure it out later when it needs to.</p>
+<p>Skills have exactly the same advantage, only now I don't even need to implement a new CLI tool. I can drop a Markdown file in describing how to do a task instead, adding extra scripts only if they'll help make things more reliable or efficient.</p>
+<h4 id="here-come-the-skills">Here come the Skills</h4>
+<p>One of the most exciting things about Skills is how easy they are to share. I expect many skills will be implemented as a single file - more sophisticated ones will be a folder with a few more.</p>
+<p>Anthropic have <a href="https://docs.claude.com/en/docs/agents-and-tools/agent-skills/overview">Agent Skills documentation</a> and a <a href="https://github.com/anthropics/claude-cookbooks/tree/main/skills">Claude Skills Cookbook</a>. I'm already thinking through ideas of skills I might build myself, like one on <a href="https://simonwillison.net/2025/Oct/8/claude-datasette-plugins/">how to build Datasette plugins</a>.</p>
+<p>Something else I love about the design of skills is there is nothing at all preventing them from being used with other models.</p>
+<p>You can grab a skills folder right now, point Codex CLI or Gemini CLI at it and say "read pdf/SKILL.md and then create me a PDF describing this project" and it will work, despite those tools and models having no baked in knowledge of the skills system.</p>
+<p>I expect we'll see a Cambrian explosion in Skills which will make this year's MCP rush look pedestrian by comparison.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Thu, 16 Oct 2025 21:25:18 +0000</pubDate></item><item><title>NVIDIA DGX Spark + Apple Mac Studio = 4x Faster LLM Inference with EXO 1.0</title><link>https://simonwillison.net/2025/Oct/16/nvidia-dgx-spark-apple-mac-studio/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.exolabs.net/nvidia-dgx-spark">NVIDIA DGX Spark + Apple Mac Studio = 4x Faster LLM Inference with EXO 1.0</a></strong></p>
 EXO Labs wired a 256GB M3 Ultra Mac Studio up to an NVIDIA DGX Spark and got a 2.8x performance boost serving Llama-3.1 8B (FP16) with an 8,192 token prompt.</p>
 <p>Their detailed explanation taught me a lot about LLM performance.</p>
 <p>There are two key steps in executing a prompt. The first is the <strong>prefill</strong> phase that reads the incoming prompt and builds a KV cache for each of the transformer layers in the model. This is compute-bound as it needs to process every token in the input and perform large matrix multiplications across all of the layers to initialize the model's internal state.</p>
@@ -358,7 +473,7 @@ One of the tips I picked up from <a href="https://blog.fsck.com/2025/10/09/super
 <p>This is a really sophisticated set of tools for document manipulation, and I love that Anthropic have made those visible - presumably deliberately - to users of Claude who know how to ask for them.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/pdf">pdf</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:57:19 +0000</pubDate></item><item><title>Superpowers: How I&apos;m using coding agents in October 2025</title><link>https://simonwillison.net/2025/Oct/10/superpowers/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.fsck.com/2025/10/09/superpowers/">Superpowers: How I&#x27;m using coding agents in October 2025</a></strong></p>
+    <p>Tags: <a href="https://simonwillison.net/tags/pdf">pdf</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:57:19 +0000</pubDate></item><item><title>Superpowers: How I&apos;m using coding agents in October 2025</title><link>https://simonwillison.net/2025/Oct/10/superpowers/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.fsck.com/2025/10/09/superpowers/">Superpowers: How I&#x27;m using coding agents in October 2025</a></strong></p>
 A follow-up to Jesse Vincent's post <a href="https://blog.fsck.com/2025/10/05/how-im-using-coding-agents-in-september-2025/">about September</a>, but this is a really significant piece in its own right.</p>
 <p>Jesse is one of the most creative users of coding agents (Claude Code in particular) that I know. He's put a great amount of work into evolving an effective process for working with them, encourage red/green TDD (watch the test fail first), planning steps, self-updating memory notes and even implementing a <a href="https://blog.fsck.com/2025/05/28/dear-diary-the-user-asked-me-if-im-alive/">feelings journal</a> ("I feel engaged and curious about this project" - Claude).</p>
 <p>Claude Code <a href="https://www.anthropic.com/news/claude-code-plugins">just launched plugins</a>, and Jesse is celebrating by wrapping up a whole host of his accumulated tricks as a new plugin called <a href="https://github.com/obra/superpowers">Superpowers</a>. You can add it to your Claude Code like this:</p>
@@ -406,7 +521,7 @@ languages: all
 <p>(Jesse's post also tipped me off about Claude's <code>/mnt/skills/public</code> folder, see <a href="https://simonwillison.net/2025/Oct/10/claude-skills/">my notes here</a>.)
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/sub-agents">sub-agents</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:30:14 +0000</pubDate></item><item><title>A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</title><link>https://simonwillison.net/2025/Oct/10/a-retrospective-survey/#atom-everything</link><description><![CDATA[<p><strong><a href="https://words.filippo.io/compromise-survey/">A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</a></strong></p>
+    <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/sub-agents">sub-agents</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:30:14 +0000</pubDate></item><item><title>A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</title><link>https://simonwillison.net/2025/Oct/10/a-retrospective-survey/#atom-everything</link><description><![CDATA[<p><strong><a href="https://words.filippo.io/compromise-survey/">A Retrospective Survey of 2024/2025 Open Source Supply Chain Compromises</a></strong></p>
 Filippo Valsorda surveyed 18 incidents from the past year of open source supply chain attacks, where package updates were infected with malware thanks to a compromise of the project itself.</p>
 <p>These are important lessons:</p>
 <blockquote>
@@ -715,16 +830,4 @@ steps:
 <p>I've tried in the past to get terms like <strong><a href="https://simonwillison.net/tags/ai-assisted-programming/">AI-assisted programming</a></strong> to stick, with approximately zero success. May as well try rubbing some vibes on it and see what happens.</p>
 <p>I also really like the clear mismatch between "vibes" and "engineering". It makes the combined term self-contradictory in a way that I find mischievous and (hopefully) sticky.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/code-review">code-review</a>, <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/software-engineering">software-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a></p>]]></description><pubDate>Tue, 7 Oct 2025 14:32:25 +0000</pubDate></item><item><title>Deloitte to pay money back to Albanese government after using AI in $440,000 report</title><link>https://simonwillison.net/2025/Oct/6/deloitte-to-pay-money-back/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.theguardian.com/australia-news/2025/oct/06/deloitte-to-pay-money-back-to-albanese-government-after-using-ai-in-440000-report">Deloitte to pay money back to Albanese government after using AI in $440,000 report</a></strong></p>
-Ouch:</p>
-<blockquote>
-<p>Deloitte will provide a partial refund to the federal government over a $440,000 report that contained several errors, after admitting it used generative artificial intelligence to help produce it.</p>
-</blockquote>
-<p>(I was initially confused by the "Albanese government" reference in the headline since this is a story about the Australian federal government. That's because the current Australia Prime Minister is Anthony Albanese.)</p>
-<p>Here's <a href="https://www.dewr.gov.au/assuring-integrity-targeted-compliance-framework/resources/targeted-compliance-framework-assurance-review-final-report">the page for the report</a>. The PDF now includes this note:</p>
-<blockquote>
-<p>This Report was updated on 26 September 2025 and replaces the Report dated 4 July 2025. The Report has been updated to correct those citations and reference list entries which contained errors in the previously issued version, to amend the summary of the Amato proceeding which contained errors, and to make revisions to improve clarity and readability. The updates made in no way impact or affect the substantive content, findings and recommendations in the Report.</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/hallucinations">hallucinations</a></p>]]></description><pubDate>Mon, 6 Oct 2025 23:35:53 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/code-review">code-review</a>, <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/software-engineering">software-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a></p>]]></description><pubDate>Tue, 7 Oct 2025 14:32:25 +0000</pubDate></item></channel></rss>
