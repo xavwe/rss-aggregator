@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Resizeable BAR support on the Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2025/resizeable-bar-support-on-raspberry-pi</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Resizeable BAR support on the Raspberry Pi</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>VCF Midwest was even better than I expected</title><link>https://www.jeffgeerling.com/blog/2025/vcf-midwest-was-even-better-i-expected</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">VCF Midwest was even better than I expected</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/macintosh-powerbook-520.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-09536783-4164-4391-b60a-6bf8163f3f6d" data-insert-attach="{&quot;id&quot;:&quot;09536783-4164-4391-b60a-6bf8163f3f6d&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Macintosh PowerBook 520"></p>
+
+<p>Earlier this year, I inherited a bunch of old Macs and computer parts, including the PowerBook 520 pictured above. And, for the past three years I've been trying to visit VCF Midwest up in Chicago, where there's this odd blend of old computers, radio, broadcast gear... Honestly, it's hard to pin down exactly <em>what</em> it is.</p>
+
+<p>And I also had no idea how overwhelming the two-day event would be. Overwhelmingly <em>awesome</em>, that is.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-16T09:03:39-05:00" title="Thursday, October 16, 2025 - 09:03" class="datetime">October 16, 2025</time>
+</span>]]></description><pubDate>Thu, 16 Oct 2025 14:03:39 +0000</pubDate></item><item><title>Resizeable BAR support on the Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2025/resizeable-bar-support-on-raspberry-pi</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Resizeable BAR support on the Raspberry Pi</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>While not an <em>absolute</em> requirement for modern graphics card support on Linux, <a href="https://www.intel.com/content/www/us/en/support/articles/000090831/graphics.html">Resizeable BAR</a> support makes GPUs go faster, by allowing GPUs to throw data back and forth on the PCIe bus in chunks larger than 256 MB.</p>
 
@@ -90,21 +99,4 @@
 <p>This was the biggest Pi cluster I've built, and it set me back around $3,000, shipping included:</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-19T09:12:36-05:00" title="Friday, September 19, 2025 - 09:12" class="datetime">September 19, 2025</time>
-</span>]]></description><pubDate>Fri, 19 Sep 2025 14:12:36 +0000</pubDate></item><item><title>Save video still frames from QuickTime Player with a shortcut</title><link>https://www.jeffgeerling.com/blog/2025/save-video-still-frames-quicktime-player-shortcut</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Save video still frames from QuickTime Player with a shortcut</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Almost 15 years ago, I wrote <a href="https://www.jeffgeerling.com/blogs/jeff-geerling/grab-single-frame-video">Grab a Single Frame from a Video in QuickTime X</a>. And for many years since, I slightly modified that workflow. Instead of using Preview, I would use <a href="https://github.com/jcsalterego/pngpaste"><code>pngpaste</code></a>, and paste the copied frame from QuickTime player into a file.</p>
-
-<p>For example:</p>
-
-<ol>
-<li>Open a video in QuickTime and scrub to the frame you would like to save as an image.</li>
-<li>Press Command-C</li>
-<li>Switch to Terminal</li>
-<li>Run <code>pngpaste image-name-here.jpg</code></li>
-<li>Profit!</li>
-</ol>
-
-<p>However, there are two problems with that workflow:</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-17T23:23:20-05:00" title="Wednesday, September 17, 2025 - 23:23" class="datetime">September 17, 2025</time>
-</span>]]></description><pubDate>Thu, 18 Sep 2025 04:23:20 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Fri, 19 Sep 2025 14:12:36 +0000</pubDate></item></channel></rss>
