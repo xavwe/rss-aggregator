@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Barry Zhang</title><link>https://simonwillison.net/2025/Oct/16/barry-zhang/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/barry_zyj/status/1978951690452615413"><p>Skills actually came out of a prototype I built demonstrating that Claude Code is a general-purpose agent :-) </p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Should form labels be wrapped or separate?</title><link>https://simonwillison.net/2025/Oct/17/form-labels/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.tpgi.com/should-form-labels-be-wrapped-or-separate/">Should form labels be wrapped or separate?</a></strong></p>
+James Edwards notes that wrapping a form input in a label event like this has a significant downside:</p>
+<pre><code>&lt;label&gt;Name &lt;input type="text"&gt;&lt;/label&gt;
+</code></pre>
+<p>It turns out both Dragon Naturally Speaking for Windows and Voice Control for macOS and iOS fail to understand this relationship!</p>
+<p>You need to use the explicit <code>&lt;label for="element_id"&gt;</code> syntax to ensure those screen readers correctly understand the relationship between label and form field. You can still nest the input inside the label if you like:</p>
+<pre><code>&lt;label for="idField"&gt;Name
+  &lt;input id="idField" type="text"&gt;
+&lt;/label&gt;
+</code></pre>
+
+    <p><small></small>Via <a href="https://gomakethings.com/implicit-labels-arent/">Chris Ferdinandi</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/accessibility">accessibility</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/screen-readers">screen-readers</a></p>]]></description><pubDate>Fri, 17 Oct 2025 18:25:45 +0000</pubDate></item><item><title>Quoting Barry Zhang</title><link>https://simonwillison.net/2025/Oct/16/barry-zhang/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/barry_zyj/status/1978951690452615413"><p>Skills actually came out of a prototype I built demonstrating that Claude Code is a general-purpose agent :-) </p>
 <p>It was a natural conclusion once we realized that bash + filesystem were all we needed</p></blockquote>
 <p class="cite">&mdash; <a href="https://twitter.com/barry_zyj/status/1978951690452615413">Barry Zhang</a>, Anthropic</p>
 
@@ -800,8 +814,4 @@ steps:
 
 <p>I deeply regret this error. I've deleted various social media posts about the original entry and linked back to this retraction instead.</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a></p>]]></description><pubDate>Tue, 7 Oct 2025 22:00:28 +0000</pubDate></item><item><title>Quoting Thomas Klausner</title><link>https://simonwillison.net/2025/Oct/7/thomas-klausner/#atom-everything</link><description><![CDATA[<blockquote cite="https://domm.plix.at/perl/2025_10_braincoded_static_image_gallery.html"><p>For quite some I wanted to write a small static image gallery so I can share my pictures with friends and family. Of course there are a gazillion tools like this, but, well, sometimes I just want to roll my own. [...]</p>
-<p>I used the old, well tested technique I call <strong>brain coding</strong>, where you start with an empty vim buffer and type some code (Perl, HTML, CSS) until you're happy with the result. It helps to think a bit (aka use your brain) during this process.</p></blockquote>
-<p class="cite">&mdash; <a href="https://domm.plix.at/perl/2025_10_braincoded_static_image_gallery.html">Thomas Klausner</a>, coining "brain coding"</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/definitions">definitions</a></p>]]></description><pubDate>Tue, 7 Oct 2025 16:03:12 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a></p>]]></description><pubDate>Tue, 7 Oct 2025 22:00:28 +0000</pubDate></item></channel></rss>
