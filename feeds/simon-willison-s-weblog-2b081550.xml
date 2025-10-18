@@ -36,6 +36,7 @@ Extremely high signal 2 hour 25 minute (!) conversation between Andrej Karpathy 
 <p>[...] So the agents are pretty good, for example, if you’re doing boilerplate stuff. Boilerplate code that’s just copy-paste stuff, they’re very good at that. They’re very good at stuff that occurs very often on the Internet because there are lots of examples of it in the training sets of these models. There are features of things where the models will do very well.</p>
 <p>I would say nanochat is not an example of those because it’s a fairly unique repository. There’s not that much code in the way that I’ve structured it. It’s not boilerplate code. It’s intellectually intense code almost, and everything has to be very precisely arranged. The models have so many cognitive deficits. One example, they kept misunderstanding the code because they have too much memory from all the typical ways of doing things on the Internet that I just wasn’t adopting.</p>
 </blockquote>
+<p><strong>Update</strong>: Here's an <a href="https://twitter.com/karpathy/status/1979644538185752935">essay length tweet</a> from Andrej clarifying a whole bunch of the things he talked about on the podcast.
 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45619329">Hacker News</a></small></p>
 
