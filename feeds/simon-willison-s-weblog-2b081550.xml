@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Getting DeepSeek-OCR working on an NVIDIA Spark via brute force using Claude Code</title><link>https://simonwillison.net/2025/Oct/20/deepseek-ocr-claude-code/#atom-everything</link><description><![CDATA[<p>DeepSeek released a new model yesterday: <a href="https://github.com/deepseek-ai/DeepSeek-OCR">DeepSeek-OCR</a>, a 6.6GB model fine-tuned specifically for OCR. They released it as model weights that run using PyTorch and CUDA. I got it running on the NVIDIA Spark by having Claude Code effectively brute force the challenge of getting it working on that particular hardware.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Claude Code for web - a new asynchronous coding agent from Anthropic</title><link>https://simonwillison.net/2025/Oct/20/claude-code-for-web/#atom-everything</link><description><![CDATA[<p>Anthropic launched Claude Code for web this morning. It's an <a href="https://simonwillison.net/tags/async-coding-agents/">asynchronous coding agent</a> - their answer to OpenAI's <a href="https://simonwillison.net/2025/May/16/openai-codex/">Codex Cloud</a> and <a href="https://simonwillison.net/2025/May/19/jules/">Google's Jules</a>, and has a very similar shape. I had preview access over the weekend and I've already seen some very promising results from it.</p>
+<p>It's available online at <a href="https://claude.ai">claude.ai/code</a> and shows up as a tab in the Claude iPhone app as well:</p>
+<p><img src="https://static.simonwillison.net/static/2025/claude-code-for-web.jpg" alt="Screenshot of Claude AI interface showing a conversation about updating a README file. The left sidebar shows &quot;Claude&quot; at the top, followed by navigation items: &quot;Chats&quot;, &quot;Projects&quot;, &quot;Artifacts&quot;, and &quot;Code&quot; (highlighted). Below that is &quot;Starred&quot; section listing several items with trash icons: &quot;LLM&quot;, &quot;Python app&quot;, &quot;Check my post&quot;, &quot;Artifacts&quot;, &quot;Summarize&quot;, and &quot;Alt text writer&quot;. The center panel shows a conversation list with items like &quot;In progress&quot;, &quot;Run System C&quot;, &quot;Idle&quot;, &quot;Update Rese&quot;, &quot;Run Matplotl&quot;, &quot;Run Marketin&quot;, &quot;WebAssembl&quot;, &quot;Benchmark M&quot;, &quot;Build URL Qu&quot;, and &quot;Add Read-Or&quot;. The right panel displays the active conversation titled &quot;Update Research Project README&quot; showing a task to update a GitHub README file at https://github.com/simonw/research/blob/main/deepseek-ocr-nvidia-spark/README.md, followed by Claude's response and command outputs showing file listings with timestamps from Oct 20 17:53." style="max-width: 100%;" /></p>
+<p>As far as I can tell it's their latest <a href="https://www.claude.com/product/claude-code">Claude Code CLI</a> app wrapped in a container (Anthropic are getting <em>really</em> <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">good at containers</a> these days) and configured to <code>--dangerously-skip-permissions</code>. It appears to behave exactly the same as the CLI tool, and includes a neat "teleport" feature which can copy both the chat transcript and the edited files down to your local Claude Code CLI tool if you want to take over locally.</p>
+<p>It's very straight-forward to use. You point Claude Code for web at a GitHub repository, select an environment (fully locked down, restricted to an allow-list of domains or configured to access domains of your choosing, including "*" for everything) and kick it off with a prompt.</p>
+<p>While it's running you can send it additional prompts which are queued up and executed after it completes its current step.</p>
+<p>Once it's done it opens a branch on your repo with its work and can optionally open a pull request.</p>
+<h4 id="putting-claude-code-for-web-to-work">Putting Claude Code for web to work</h4>
+<p>Claude Code for web's PRs are indistinguishable from Claude Code CLI's, so Anthropic told me it was OK to submit those against public repos even during the private preview. Here are some examples from this weekend:</p>
+<ul>
+<li>
+<a href="https://github.com/simonw/tools/pull/73">Add query-string-stripper.html tool</a> against my simonw/tools repo - a <em>very</em> simple task that creates (and deployed via GitHub Pages) this <a href="https://tools.simonwillison.net/query-string-stripper">query-string-stripper</a> tool.</li>
+<li>
+<a href="https://github.com/simonw/research/tree/main/minijinja-vs-jinja2">minijinja vs jinja2 Performance Benchmark</a> - I ran this against a private repo and then copied the results here, so no PR. Here's <a href="https://github.com/simonw/research/blob/main/minijinja-vs-jinja2/README.md#the-prompt">the prompt</a> I used.</li>
+<li>
+<a href="https://github.com/simonw/research/pull/1">Update deepseek-ocr README to reflect successful project completion</a> - I noticed that the README produced by Claude Code CLI for <a href="https://simonwillison.net/2025/Oct/20/deepseek-ocr-claude-code/">this project</a> was misleadingly out of date, so I had Claude Code for web fix the problem.</li>
+</ul>
+<p>That second example is the most interesting. I saw <a href="https://x.com/mitsuhiko/status/1980034078297514319">a tweet from Armin</a> about his <a href="https://github.com/mitsuhiko/minijinja">MiniJinja</a> Rust template language <a href="https://github.com/mitsuhiko/minijinja/pull/841">adding support</a> for Python 3.14 free threading. I hadn't realized that project <em>had</em> Python bindings, so I decided it would be interesting to see a quick performance comparison between MiniJinja and Jinja2.</p>
+<p>I ran Claude Code for web against a private repository with a completely open environment (<code>*</code> in the allow-list) and prompted:</p>
+<blockquote>
+<p>I’m interested in benchmarking the Python bindings for <a href="https://github.com/mitsuhiko/minijinja">https://github.com/mitsuhiko/minijinja</a> against the equivalente template using Python jinja2</p>
+<p>Design and implement a benchmark for this. It should use the latest main checkout of minijinja and the latest stable release of jinja2. The benchmark should use the uv version of Python 3.14 and should test both the regular 3.14 and the 3.14t free threaded version - so four scenarios total</p>
+<p>The benchmark should run against a reasonably complicated example of a template, using template inheritance and loops and such like In the PR include a shell script to run the entire benchmark, plus benchmark implantation, plus markdown file describing the benchmark and the results in detail, plus some illustrative charts created using matplotlib</p>
+</blockquote>
+<p>I entered this into the Claude iPhone app on my mobile keyboard, hence the typos.</p>
+<p>It churned away for a few minutes and gave me exactly what I asked for. Here's one of the <a href="">four charts</a> it created:</p>
+<p><img src="https://static.simonwillison.net/static/2025/minijinja-timeline.jpg" alt="Line chart titled &quot;Rendering Time Across Iterations&quot; showing rendering time in milliseconds (y-axis, ranging from approximately 1.0 to 2.5 ms) versus iteration number (x-axis, ranging from 0 to 200+). Four different lines represent different versions: minijinja (3.14t) shown as a solid blue line, jinja2 (3.14) as a solid orange line, minijinja (3.14) as a solid green line, and jinja2 (3.14t) as a dashed red line. The green line (minijinja 3.14) shows consistently higher rendering times with several prominent spikes reaching 2.5ms around iterations 25, 75, and 150. The other three lines show more stable, lower rendering times between 1.0-1.5ms with occasional fluctuations." style="max-width: 100%;" /></p>
+<p>(I was surprised to see MiniJinja out-performed by Jinja2, but I guess Jinja2 has had a decade of clever performance optimizations and doesn't need to deal with any extra overhead of calling out to Rust.)</p>
+<p>Note that I would likely have got the <em>exact same</em> result running this prompt against Claude CLI on my laptop. The benefit of Claude Code for web is entirely in its convenience as a way of running these tasks in a hosted container managed by Anthropic, with a pleasant web and mobile UI layered over the top.</p>
+<h4 id="anthropic-are-framing-this-as-part-of-their-sandboxing-strategy">Anthropic are framing this as part of their sandboxing strategy</h4>
+<p>It's interesting how Anthropic chose to announce this new feature: the product launch is buried half way down their new engineering blog post <a href="https://www.anthropic.com/engineering/claude-code-sandboxing">Beyond permission prompts: making Claude Code more secure and autonomous</a>, which starts like this:</p>
+<blockquote>
+<p>Claude Code's new sandboxing features, a bash tool and Claude Code on the web, reduce permission prompts and increase user safety by enabling two boundaries: filesystem and network isolation.</p>
+</blockquote>
+<p>I'm <em>very</em> excited to hear that Claude Code CLI is taking sandboxing more seriously. I've not yet dug into the details of that - it looks like it's using seatbelt on macOS and <a href="https://github.com/containers/bubblewrap">Bubblewrap</a> on Linux.</p>
+
+<p>Anthropic released a new open source (Apache 2) library, <a href="https://github.com/anthropic-experimental/sandbox-runtime">anthropic-experimental/sandbox-runtime</a>, with their implementation of this so far.</p>
+
+<p>Filesystem sandboxing is relatively easy. The harder problem is network isolation, which they describe like this:</p>
+<blockquote>
+<p><strong>Network isolation</strong>, by only allowing internet access through a unix domain socket connected to a proxy server running outside the sandbox. This proxy server enforces restrictions on the domains that a process can connect to, and handles user confirmation for newly requested domains. And if you’d like further-increased security, we also support customizing this proxy to enforce arbitrary rules on outgoing traffic.</p>
+</blockquote>
+<p>This is <em>crucial</em> to protecting against both prompt injection and <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">lethal trifecta</a> attacks. The best way to prevent lethal trifecta attacks is to cut off one of the three legs, and network isolation is how you remove the data exfiltration leg that allows successful attackers to steal your data.</p>
+<p>If you run Claude Code for web in "No network access" mode you have nothing to worry about.</p>
+<p>I'm a little bit nervous about their "Trusted network access" environment. It's intended to only allow access to domains relating to dependency installation, but the <a href="https://docs.claude.com/en/docs/claude-code/claude-code-on-the-web#default-allowed-domains">default domain list</a> has dozens of entries which makes me nervous about unintended exfiltration vectors sneaking through.</p>
+<p>You can also configure a custom environment with your own allow-list. I have one called "Everything" which allow-lists "*", because for projects like my MiniJinja/Jinja2 comparison above there are no secrets or source code involved that need protecting.</p>
+<p>I see Anthropic's focus on sandboxes as an acknowledgment that coding agents run in YOLO mode (<code>--dangerously-skip-permissions</code> and the like) are <em>enormously</em> more valuable and productive than agents where you have to approve their every step.</p>
+<p>The challenge is making it convenient and easy to run them safely. This kind of sandboxing kind is the only approach to safety that feels credible to me.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/armin-ronacher">armin-ronacher</a>, <a href="https://simonwillison.net/tags/jinja">jinja</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a>, <a href="https://simonwillison.net/tags/async-coding-agents">async-coding-agents</a>, <a href="https://simonwillison.net/tags/disclosures">disclosures</a></p>]]></description><pubDate>Mon, 20 Oct 2025 19:43:15 +0000</pubDate></item><item><title>Getting DeepSeek-OCR working on an NVIDIA Spark via brute force using Claude Code</title><link>https://simonwillison.net/2025/Oct/20/deepseek-ocr-claude-code/#atom-everything</link><description><![CDATA[<p>DeepSeek released a new model yesterday: <a href="https://github.com/deepseek-ai/DeepSeek-OCR">DeepSeek-OCR</a>, a 6.6GB model fine-tuned specifically for OCR. They released it as model weights that run using PyTorch and CUDA. I got it running on the NVIDIA Spark by having Claude Code effectively brute force the challenge of getting it working on that particular hardware.</p>
 <p>This small project (40 minutes this morning, most of which was Claude Code churning away while I had breakfast and did some other things) ties together a bunch of different concepts I've been exploring recently. I <a href="https://simonwillison.net/2025/Sep/30/designing-agentic-loops/">designed an agentic loop</a> for the problem, gave Claude full permissions inside a Docker sandbox, embraced the <a href="https://simonwillison.net/2025/Oct/5/parallel-coding-agents/">parallel agents lifestyle</a> and reused my <a href="https://simonwillison.net/2025/Oct/14/nvidia-dgx-spark/">notes on the NVIDIA Spark</a> from last week.</p>
 <p>I knew getting a PyTorch CUDA model running on the Spark was going to be a little frustrating, so I decided to outsource the entire process to Claude Code to see what would happen.</p>
 <p>TLDR: It worked. It took four prompts (one long, three very short) to have Claude Code figure out everything necessary to run the new DeepSeek model on the NVIDIA Spark, OCR a document for me and produce <em>copious</em> notes about the process.</p>
@@ -879,168 +928,4 @@ While tinkering with upgrading various projects to handle Python 3.14 I finally 
 </code></pre>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/pytest">pytest</a>, <a href="https://simonwillison.net/tags/til">til</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Thu, 9 Oct 2025 03:37:06 +0000</pubDate></item><item><title>Claude can write complete Datasette plugins now</title><link>https://simonwillison.net/2025/Oct/8/claude-datasette-plugins/#atom-everything</link><description><![CDATA[<p>This isn't necessarily surprising, but it's worth noting anyway. Claude Sonnet 4.5 is capable of building a full Datasette plugin now.</p>
-<p>I've seen models complete aspects of this in the past, but today is the first time I've shipped a new plugin where every line of code and test was written by Claude, with minimal prompting from myself.</p>
-<p>The plugin is called <strong><a href="https://github.com/datasette/datasette-os-info">datasette-os-info</a></strong>. It's a simple debugging tool - all it does is add a <code>/-/os</code> JSON page which dumps out as much information as it can about the OS it's running on. Here's a <a href="https://til.simonwillison.net/-/os">live demo</a> on my TIL website.</p>
-<p>I built it to help experiment with changing the Docker base container that Datasette uses to <a href="https://docs.datasette.io/en/stable/publish.html">publish images</a> to one that uses Python 3.14.</p>
-<p>Here's the full set of commands I used to create the plugin. I started with my <a href="https://github.com/simonw/datasette-plugin">datasette-plugin</a> cookiecutter template:</p>
-<div class="highlight highlight-source-shell"><pre>uvx cookiecutter gh:simonw/datasette-plugin
-
-  [1/8] <span class="pl-en">plugin_name</span> (): os-info
-  [2/8] <span class="pl-en">description</span> (): Information about the current OS
-  [3/8] hyphenated (os-info): 
-  [4/8] underscored (os_info): 
-  [5/8] <span class="pl-en">github_username</span> (): datasette
-  [6/8] <span class="pl-en">author_name</span> (): Simon Willison
-  [7/8] <span class="pl-en">include_static_directory</span> (): 
-  [8/8] <span class="pl-en">include_templates_directory</span> (): </pre></div>
-<p>This created a <code>datasette-os-info</code> directory with the initial <code>pyproject.toml</code> and <code>tests/</code> and <code>datasette_os_info/__init__.py</code> files. Here's an example of <a href="https://github.com/simonw/datasette-plugin-template-demo">that starter template</a>.</p>
-<p>I created a <code>uv</code> virtual environment for it, installed the initial test dependencies and ran <code>pytest</code> to check that worked:</p>
-<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> datasette-os-info
-uv venv
-uv sync --extra <span class="pl-c1">test</span>
-uv run pytest</pre></div>
-<p>Then I fired up <a href="https://www.claude.com/product/claude-code">Claude Code</a> in that directory in YOLO mode:</p>
-<div class="highlight highlight-source-shell"><pre>claude --dangerously-skip-permissions</pre></div>
-<p>(I actually used my <code>claude-yolo</code> shortcut which runs the above.)</p>
-<p>Then, in Claude, I told it how to run the tests:</p>
-<blockquote>
-<p><code>Run uv run pytest</code></p>
-</blockquote>
-<p>When that worked, I told it to build the plugin:</p>
-<blockquote>
-<p><code>This is a Datasette plugin which should add a new page /-/os which returns pretty-printed JSON about the current operating system - implement it. I want to pick up as many details as possible across as many OS as possible, including if possible figuring out the base image if it is in a docker container - otherwise the Debian OS release name and suchlike would be good</code></p>
-</blockquote>
-<p>... and that was it! Claude <a href="https://github.com/datasette/datasette-os-info/blob/0.1/datasette_os_info/__init__.py">implemented the plugin</a> using Datasette's <a href="https://docs.datasette.io/en/stable/plugin_hooks.html#register-routes-datasette">register_routes() plugin hook</a> to add the <code>/-/os</code> page,and then without me prompting it to do so <a href="https://github.com/datasette/datasette-os-info/blob/0.1/tests/test_os_info.py">built this basic test as well</a>.</p>
-<p>It ran the new test, spotted a bug (it had guessed a non-existent <code>Response(..., default_repr=)</code> parameter), fixed the bug and declared itself done.</p>
-<p>I built myself a wheel:</p>
-<div class="highlight highlight-source-shell"><pre>uv pip install build
-uv run python -m build</pre></div>
-<p>Then uploaded that to an S3 bucket and deployed it to test it out using <code>datasette publish ... --install URL-to-wheel</code>.  It did exactly what I had hoped - here's what that <code>/-/os</code> page looked like:</p>
-<div class="highlight highlight-source-json"><pre>{
-  <span class="pl-ent">"platform"</span>: {
-    <span class="pl-ent">"system"</span>: <span class="pl-s"><span class="pl-pds">"</span>Linux<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"release"</span>: <span class="pl-s"><span class="pl-pds">"</span>4.4.0<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>#1 SMP Sun Jan 10 15:06:54 PST 2016<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"machine"</span>: <span class="pl-s"><span class="pl-pds">"</span>x86_64<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"processor"</span>: <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"architecture"</span>: [
-      <span class="pl-s"><span class="pl-pds">"</span>64bit<span class="pl-pds">"</span></span>,
-      <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>
-    ],
-    <span class="pl-ent">"platform"</span>: <span class="pl-s"><span class="pl-pds">"</span>Linux-4.4.0-x86_64-with-glibc2.41<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"python_version"</span>: <span class="pl-s"><span class="pl-pds">"</span>3.14.0<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"python_implementation"</span>: <span class="pl-s"><span class="pl-pds">"</span>CPython<span class="pl-pds">"</span></span>
-  },
-  <span class="pl-ent">"hostname"</span>: <span class="pl-s"><span class="pl-pds">"</span>localhost<span class="pl-pds">"</span></span>,
-  <span class="pl-ent">"cpu_count"</span>: <span class="pl-c1">2</span>,
-  <span class="pl-ent">"linux"</span>: {
-    <span class="pl-ent">"os_release"</span>: {
-      <span class="pl-ent">"PRETTY_NAME"</span>: <span class="pl-s"><span class="pl-pds">"</span>Debian GNU/Linux 13 (trixie)<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"NAME"</span>: <span class="pl-s"><span class="pl-pds">"</span>Debian GNU/Linux<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"VERSION_ID"</span>: <span class="pl-s"><span class="pl-pds">"</span>13<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"VERSION"</span>: <span class="pl-s"><span class="pl-pds">"</span>13 (trixie)<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"VERSION_CODENAME"</span>: <span class="pl-s"><span class="pl-pds">"</span>trixie<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"DEBIAN_VERSION_FULL"</span>: <span class="pl-s"><span class="pl-pds">"</span>13.1<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"ID"</span>: <span class="pl-s"><span class="pl-pds">"</span>debian<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"HOME_URL"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://www.debian.org/<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"SUPPORT_URL"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://www.debian.org/support<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"BUG_REPORT_URL"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://bugs.debian.org/<span class="pl-pds">"</span></span>
-    },
-    <span class="pl-ent">"debian_version"</span>: <span class="pl-s"><span class="pl-pds">"</span>13.1<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"kernel"</span>: {
-      <span class="pl-ent">"sysname"</span>: <span class="pl-s"><span class="pl-pds">"</span>Linux<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"nodename"</span>: <span class="pl-s"><span class="pl-pds">"</span>localhost<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"release"</span>: <span class="pl-s"><span class="pl-pds">"</span>4.4.0<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"version"</span>: <span class="pl-s"><span class="pl-pds">"</span>#1 SMP Sun Jan 10 15:06:54 PST 2016<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"machine"</span>: <span class="pl-s"><span class="pl-pds">"</span>x86_64<span class="pl-pds">"</span></span>
-    },
-    <span class="pl-ent">"cpu_model"</span>: <span class="pl-s"><span class="pl-pds">"</span>unknown<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"memory"</span>: {
-      <span class="pl-ent">"MemTotal"</span>: <span class="pl-s"><span class="pl-pds">"</span>1048576 kB<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"MemFree"</span>: <span class="pl-s"><span class="pl-pds">"</span>958244 kB<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"MemAvailable"</span>: <span class="pl-s"><span class="pl-pds">"</span>958244 kB<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"SwapTotal"</span>: <span class="pl-s"><span class="pl-pds">"</span>0 kB<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"SwapFree"</span>: <span class="pl-s"><span class="pl-pds">"</span>0 kB<span class="pl-pds">"</span></span>
-    }
-  },
-  <span class="pl-ent">"environment"</span>: {
-    <span class="pl-ent">"HOME"</span>: <span class="pl-s"><span class="pl-pds">"</span>/root<span class="pl-pds">"</span></span>,
-    <span class="pl-ent">"PATH"</span>: <span class="pl-s"><span class="pl-pds">"</span>/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin<span class="pl-pds">"</span></span>
-  },
-  <span class="pl-ent">"python_executable"</span>: <span class="pl-s"><span class="pl-pds">"</span>/usr/local/bin/python3.14<span class="pl-pds">"</span></span>
-}</pre></div>
-<p>I dread to think how long it would have taken me to figure out all of those different useful OS details!</p>
-<p>To finish up, I had Claude fill out the README via a couple of extra prompts:</p>
-<blockquote>
-<p><code>Add usage instructions to the README (about the /-/os page)</code></p>
-</blockquote>
-<p>Then had a brief conversation about how safe the output was:</p>
-<blockquote>
-<p><code>Is there anything potentially sensitive in that output?</code></p>
-</blockquote>
-<p>Claude said:</p>
-<blockquote>
-<p>Yes, there are several potentially sensitive items in the output:</p>
-<p>Most sensitive:</p>
-<ul>
-<li>hostname - Could reveal internal naming schemes or organization details</li>
-<li>Environment variables:
-<ul>
-<li>HOME - Reveals user's home directory path</li>
-<li>USER - Reveals the username</li>
-<li>PATH - Reveals filesystem structure and software installation locations</li>
-<li>VIRTUAL_ENV - Could reveal project paths and directory structure</li>
-</ul>
-</li>
-<li>python_executable - Reveals filesystem paths and user directories</li>
-</ul>
-<p>Moderately sensitive:</p>
-<ul>
-<li>CPU count and memory info - Could reveal infrastructure capacity</li>
-<li>Kernel version details - Could potentially be used to identify specific vulnerabilities</li>
-</ul>
-<p>Considerations:</p>
-<ol>
-<li>This endpoint is accessible without authentication by default (at /-/os)</li>
-<li>If you're running Datasette on a public server, this information would be visible to anyone</li>
-<li>The information could help attackers understand your infrastructure setup</li>
-</ol>
-<p>Suggestions:</p>
-<p>You might want to:</p>
-<ol>
-<li>Add authentication requirements to this endpoint</li>
-<li>Make certain fields optional/configurable</li>
-<li>Add a warning in the README that this exposes system information</li>
-<li>Consider filtering out or redacting sensitive paths (replace usernames with ***, etc.)</li>
-</ol>
-<p>Would you like me to add any of these protections to the plugin?</p>
-</blockquote>
-<p>In this case I'm fine with the current behavior provided people understand the risks, so I told it:</p>
-<blockquote>
-<p><code>Add the warning to the README</code></p>
-</blockquote>
-<p>And then (because the warning it added was quite long):</p>
-<blockquote>
-<p><code>Drop the bit about configuring the permission system, just have a short warning telling people to review what it exposes</code></p>
-</blockquote>
-<p>And requested an extra README note:</p>
-<blockquote>
-<p><code>Add a note that you can also see the output by running: datasette --get /-/os</code></p>
-</blockquote>
-<p>Three last prompts:</p>
-<ul>
-<li><code>Add uv.lock to gitignore</code></li>
-<li><code>Drop Python 3.9 and add Python 3.14 - to the GitHub workflows, also min version in pyproject.toml</code></li>
-<li><code>Bump to setup-python@v6</code></li>
-</ul>
-<p>... and that was the project finished. I pushed it <a href="https://github.com/datasette/datasette-os-info">to GitHub</a>, <a href="https://til.simonwillison.net/pypi/pypi-releases-from-github">configured Trusted Publishing</a> for it on PyPI and posted <a href="https://github.com/datasette/datasette-os-info/releases/tag/0.1">the 0.1 release</a>, which ran <a href="https://github.com/datasette/datasette-os-info/blob/0.1/.github/workflows/publish.yml">this GitHub Actions publish.yml</a> and deployed that release <a href="https://pypi.org/project/datasette-os-info/">to datasette-os-info on PyPI</a>.</p>
-<p>Now that it's live you can try it out without even installing Datasette using a <code>uv</code> one-liner like this:</p>
-<div class="highlight highlight-source-shell"><pre>uv run --isolated \
-  --with datasette-os-info \
-  datasette --get /-/os</pre></div>
-<p>That's using the <code>--get PATH</code> CLI option to show what that path in the Datasette instance would return, as <a href="https://docs.datasette.io/en/stable/cli-reference.html#datasette-get">described in the Datasette documentation</a>.</p>
-<p>I've shared <a href="https://gist.github.com/simonw/85fd7a76589dc01950e71d8e606cd5dd">my full Claude Code transcript</a> in a Gist.</p>
-<p>A year ago I'd have been <em>very</em> impressed by this. Today I wasn't even particularly surprised that this worked - the coding agent pattern implemented by Claude Code is spectacularly effective when you combine it with pre-existing templates, and Datasette has been aroung for long enough now that plenty of examples of plugins have made it into the training data for the leading models.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 8 Oct 2025 23:43:43 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/pytest">pytest</a>, <a href="https://simonwillison.net/tags/til">til</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Thu, 9 Oct 2025 03:37:06 +0000</pubDate></item></channel></rss>
