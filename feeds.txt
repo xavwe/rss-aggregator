@@ -28,3 +28,4 @@ https://www.theerlangelist.com/rss
 https://singhkays.com/index.xml
 https://notthebe.ee/rss.xml
 https://grahamc.com/feed/index.xml
+https://xeiaso.net/blog.rss
