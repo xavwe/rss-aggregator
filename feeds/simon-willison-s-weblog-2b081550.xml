@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Don&apos;t let Claude Code delete your session logs</title><link>https://simonwillison.net/2025/Oct/22/claude-code-logs/#atom-everything</link><description><![CDATA[<p>Claude Code stores full logs of your sessions as newline-delimited JSON in <code>~/.claude/projects/encoded-directory/*.jsonl</code> on your machine. I currently have 379MB of these!</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>SLOCCount in WebAssembly</title><link>https://simonwillison.net/2025/Oct/22/sloccount-in-webassembly/#atom-everything</link><description><![CDATA[<p><strong><a href="https://tools.simonwillison.net/sloccount">SLOCCount in WebAssembly</a></strong></p>
+This project/side-quest got a little bit out of hand.</p>
+<p><img alt="Screenshot of SLOCCount web application showing code analysis interface. The page header reads &quot;SLOCCount - Count Lines of Code&quot; with subtitle &quot;Analyze source code to count physical Source Lines of Code (SLOC) using Perl and C programs running via WebAssembly&quot; and &quot;Based on SLOCCount by David A. Wheeler&quot;. Three tabs are shown: &quot;Paste Code&quot;, &quot;GitHub Repository&quot; (selected), and &quot;Upload ZIP&quot;. Below is a text input field labeled &quot;GitHub Repository URL:&quot; containing &quot;simonw/llm&quot; and a blue &quot;Analyze Repository&quot; button. The Analysis Results section displays five statistics: Total Lines: 13,490, Languages: 2, Files: 40, Est. Cost (USD)*: $415,101, and Est. Person-Years*: 3.07." src="https://static.simonwillison.net/static/2025/sloccount.jpg" class="blogmark-image" style="max-width: 95%;"></p>
+<p>I remembered an old tool called SLOCCount which could count lines of code and produce an estimate for how much they would cost to develop. I thought it would be fun to play around with it again, especially given how cheap it is to generate code using LLMs these days.</p>
+<p>Here's <a href="https://dwheeler.com/sloccount/">the homepage for SLOCCount</a> by David A. Wheeler. It dates back to 2001!</p>
+<p>I figured it might be fun to try and get it running on the web. Surely someone had compiled Perl to WebAssembly...?</p>
+<p><a href="https://webperl.zero-g.net">WebPerl</a> by Hauke Dämpfling is exactly that, even adding a neat <code>&lt;script type="text/perl"&gt;</code> tag.</p>
+<p>I told Claude Code for web on my iPhone to figure it out and build something, giving it some hints from my initial research:</p>
+<blockquote>
+<p>Build sloccount.html - a mobile friendly UI for running the Perl sloccount tool against pasted code or against a GitHub repository that is provided in a form field</p>
+<p>It works using the webperl webassembly build of Perl, plus it loads Perl code from this exact commit of this GitHub repository https://github.com/licquia/sloccount/tree/7220ff627334a8f646617fe0fa542d401fb5287e - I guess via the GitHub API, maybe using the https://github.com/licquia/sloccount/archive/7220ff627334a8f646617fe0fa542d401fb5287e.zip URL if that works via CORS</p>
+<p>Test it with playwright Python - don’t edit any file other than sloccount.html and a tests/test_sloccount.py file</p>
+</blockquote>
+<p>Since I was working on my phone I didn't review the results at all. It seemed to work so I deployed it to static hosting... and then when I went to look at it properly later on found that Claude had given up, cheated and reimplemented it in JavaScript instead!</p>
+<p>So I switched to Claude Code on my laptop where I have more control and coached Claude through implementing the project for real. This took <em>way longer</em> than the project deserved - probably a solid hour of my active time, spread out across the morning.</p>
+<p>I've shared some of the transcripts - <a href="https://gistpreview.github.io/?0fc406a18e14a1f7d28bfff02a18eaaf#simonw/0fc406a18e14a1f7d28bfff02a18eaaf">one</a>, <a href="https://gistpreview.github.io/?56ecae45cf2e1baca798a83deea50939">two</a>, and <a href="https://gistpreview.github.io/?79ca231e801fe1188268a54d30aa67ed">three</a> - as terminal sessions rendered to HTML using my <a href="https://tools.simonwillison.net/rtf-to-html">rtf-to-html</a> tool.</p>
+<p>At one point I realized that the original SLOCCount project wasn't even entirely Perl as I had assumed, it included several C utilities! So I had Claude Code figure out how to compile those to WebAssembly (it used Emscripten) and incorporate those into the project (with <a href="https://github.com/simonw/tools/blob/473e89edfebc27781b434430f2e8a76adfbe3b16/lib/README.md#webassembly-compilation-of-c-programs">notes on what it did</a>.)</p>
+<p>The end result is actually pretty cool. It's a web UI with three tabs - one for pasting in code, a second for loading code from a GitHub repository and a third that lets you open a Zip file full of code that you want to analyze. Here's an animated demo:</p>
+<p><img alt="I enter simonw/llm in the GitHub repository field. It loads 41 files from GitHub and displays a report showing the number of lines and estimated cost." src="https://static.simonwillison.net/static/2025/sloccount-optimized.gif" /></p>
+<p>The cost estimates it produces are of very little value. By default it uses the original method from 2001. You can also twiddle the factors - bumping up the expected US software engineer's annual salary from its 2000 estimate of $56,286 is a good start! </p>
+<p>I had ChatGPT <a href="https://chatgpt.com/share/68f7e0ac-00c4-8006-979e-64d1f0162283">take a guess</a> at what those figures should be for today and included those in the tool, with a <strong>very</strong> prominent warning not to trust them in the slightest.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/perl">perl</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 22 Oct 2025 06:12:25 +0000</pubDate></item><item><title>Don&apos;t let Claude Code delete your session logs</title><link>https://simonwillison.net/2025/Oct/22/claude-code-logs/#atom-everything</link><description><![CDATA[<p>Claude Code stores full logs of your sessions as newline-delimited JSON in <code>~/.claude/projects/encoded-directory/*.jsonl</code> on your machine. I currently have 379MB of these!</p>
 <p>Here's <a href="https://github.com/simonw/research/blob/main/deepseek-ocr-nvidia-spark/claude-log.jsonl">an example jsonl file</a> which I extracted from my <a href="https://simonwillison.net/2025/Oct/20/deepseek-ocr-claude-code/">Deepseek-OCR on NVIDIA Spark project</a>. I have a little <a href="https://github.com/simonw/tools/blob/main/python/claude_to_markdown.py">vibe-coded tool</a> for converting those into Markdown which produces results <a href="https://github.com/simonw/research/blob/main/deepseek-ocr-nvidia-spark/claude-log.md">like this</a>.</p>
 <p>Unfortunately Claude Code has a nasty default  behavior of <a href="https://github.com/anthropics/claude-code/issues/4172">deleting these after 30 days</a>! You can't disable this entirely, but you can at least delay it for 274 years by adding this to your <code>~/.claude/settings.json</code> file:</p>
 <pre><code>{
@@ -881,41 +904,4 @@ s3's support for conditional writes (<a href="https://simonwillison.net/2024/Nov
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45493158">Hacked News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/aws">aws</a>, <a href="https://simonwillison.net/tags/databases">databases</a>, <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/parquet">parquet</a></p>]]></description><pubDate>Sat, 11 Oct 2025 03:47:16 +0000</pubDate></item><item><title>simonw/claude-skills</title><link>https://simonwillison.net/2025/Oct/10/claude-skills/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/claude-skills">simonw/claude-skills</a></strong></p>
-One of the tips I picked up from <a href="https://blog.fsck.com/2025/10/09/superpowers/">Jesse Vincent's Claude Code Superpowers post</a> (<a href="https://simonwillison.net/2025/Oct/10/superpowers/">previously</a>) was this:</p>
-<blockquote>
-<p>Skills are what give your agents Superpowers.</p>
-<p>The first time they really popped up on my radar was a few weeks ago when Anthropic rolled out improved Office document creation. When the feature rolled out, I went poking around a bit -- I asked Claude to tell me all about its new skills. And it was <a href="https://claude.ai/share/0fe5a9c0-4e5a-42a1-9df7-c5b7636dad92">only too happy to dish</a>.</p>
-</blockquote>
-<p>In that transcript Jesse asks how the skill system works and Claude replies:</p>
-<blockquote>
-<p>Looking at the skills system, here's how it works:</p>
-<p><strong>Current Skills</strong> (in <code>/mnt/skills/public/</code>):</p>
-<ul>
-<li><strong>docx</strong> - Word document handling</li>
-<li><strong>pdf</strong> - PDF processing and form filling</li>
-<li><strong>pptx</strong> - PowerPoint presentations</li>
-<li><strong>xlsx</strong> - Excel spreadsheets</li>
-</ul>
-</blockquote>
-<p>This looks like it's part of Claude's brand new Code Interpreter feature! I <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">wrote about that extensively</a> last month, but I missed that there was a <code>/mnt/skills/public/</code> folder full of fascinating implementation details.</p>
-<p>So I fired up a fresh Claude instance (fun fact: Code Interpreter also works in the Claude iOS app now, which it didn't when they first launched) and prompted:</p>
-<blockquote>
-<p><code>Create a zip file of everything in your /mnt/skills folder</code></p>
-</blockquote>
-<p>This worked, and gave me a <code>.zip</code> to download. You can <a href="https://claude.ai/new?q=Create%20a%20zip%20file%20of%20everything%20in%20your%20%2Fmnt%2Fskills%20folder">run the prompt yourself here</a>, though you'll need to <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/#switching-it-on-in-settings-features">enable the new feature first</a>.</p>
-<p>I've pushed the contents of that zip to my <a href="https://github.com/simonw/claude-skills">new simonw/claude-skills GitHub repo</a>.</p>
-<p>So now you can see the prompts Anthropic wrote to enable the creation and manipulation of the following files in their Claude consumer applications:</p>
-<ul>
-<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/pdf/SKILL.md">pdf</a> - PDF files</li>
-<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/docx/SKILL.md">docx</a> - Microsoft Word</li>
-<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/pptx/SKILL.md">pptx</a> - Microsoft PowerPoint decks</li>
-<li><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/xlsx/SKILL.md">xlsx</a> - Microsoft Excel</li>
-</ul>
-<p>In each case the prompts spell out detailed instructions for manipulating those file types using Python, using libraries that come pre-installed on Claude's containers.</p>
-<p>Skills are more than just prompts though: the repository also includes dozens of pre-written Python scripts for performing common operations.</p>
-<p><a href="https://github.com/simonw/claude-skills/blob/initial/mnt/skills/public/pdf/scripts/fill_fillable_fields.py">pdf/scripts/fill_fillable_fields.py</a> for example is a custom CLI tool that uses <a href="https://pypi.org/project/pypdf/">pypdf</a> to find and then fill in a bunch of PDF form fields, specified as JSON, then render out the resulting combined PDF.</p>
-<p>This is a really sophisticated set of tools for document manipulation, and I love that Anthropic have made those visible - presumably deliberately - to users of Claude who know how to ask for them.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/pdf">pdf</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:57:19 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/aws">aws</a>, <a href="https://simonwillison.net/tags/databases">databases</a>, <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/parquet">parquet</a></p>]]></description><pubDate>Sat, 11 Oct 2025 03:47:16 +0000</pubDate></item></channel></rss>
