@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Unseeable prompt injections in screenshots: more vulnerabilities in Comet and other AI browsers</title><link>https://simonwillison.net/2025/Oct/21/unseeable-prompt-injections/#atom-everything</link><description><![CDATA[<p><strong><a href="https://brave.com/blog/unseeable-prompt-injections/">Unseeable prompt injections in screenshots: more vulnerabilities in Comet and other AI browsers</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Don&apos;t let Claude Code delete your session logs</title><link>https://simonwillison.net/2025/Oct/22/claude-code-logs/#atom-everything</link><description><![CDATA[<p>Claude Code stores full logs of your sessions as newline-delimited JSON in <code>~/.claude/projects/encoded-directory/*.jsonl</code> on your machine. I currently have 379MB of these!</p>
+<p>Here's <a href="https://github.com/simonw/research/blob/main/deepseek-ocr-nvidia-spark/claude-log.jsonl">an example jsonl file</a> which I extracted from my <a href="https://simonwillison.net/2025/Oct/20/deepseek-ocr-claude-code/">Deepseek-OCR on NVIDIA Spark project</a>. I have a little <a href="https://github.com/simonw/tools/blob/main/python/claude_to_markdown.py">vibe-coded tool</a> for converting those into Markdown which produces results <a href="https://github.com/simonw/research/blob/main/deepseek-ocr-nvidia-spark/claude-log.md">like this</a>.</p>
+<p>Unfortunately Claude Code has a nasty default  behavior of <a href="https://github.com/anthropics/claude-code/issues/4172">deleting these after 30 days</a>! You can't disable this entirely, but you can at least delay it for 274 years by adding this to your <code>~/.claude/settings.json</code> file:</p>
+<pre><code>{
+  "cleanupPeriodDays": 99999
+}
+</code></pre>
+<p>Claude Code's settings are <a href="https://docs.claude.com/en/docs/claude-code/settings#available-settings">documented here</a>.</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 22 Oct 2025 00:45:39 +0000</pubDate></item><item><title>Unseeable prompt injections in screenshots: more vulnerabilities in Comet and other AI browsers</title><link>https://simonwillison.net/2025/Oct/21/unseeable-prompt-injections/#atom-everything</link><description><![CDATA[<p><strong><a href="https://brave.com/blog/unseeable-prompt-injections/">Unseeable prompt injections in screenshots: more vulnerabilities in Comet and other AI browsers</a></strong></p>
 The Brave security team wrote about prompt injection against browser agents <a href="https://brave.com/blog/comet-prompt-injection/">a few months ago</a> (here are <a href="https://simonwillison.net/2025/Aug/25/agentic-browser-security/">my notes on that</a>). Here's their follow-up:</p>
 <blockquote>
 <p>What we’ve found confirms our initial concerns: indirect prompt injection is not an isolated issue, but a systemic challenge facing the entire category of AI-powered browsers. [...]</p>
@@ -909,52 +918,4 @@ One of the tips I picked up from <a href="https://blog.fsck.com/2025/10/09/super
 <p>This is a really sophisticated set of tools for document manipulation, and I love that Anthropic have made those visible - presumably deliberately - to users of Claude who know how to ask for them.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/pdf">pdf</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:57:19 +0000</pubDate></item><item><title>Superpowers: How I&apos;m using coding agents in October 2025</title><link>https://simonwillison.net/2025/Oct/10/superpowers/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.fsck.com/2025/10/09/superpowers/">Superpowers: How I&#x27;m using coding agents in October 2025</a></strong></p>
-A follow-up to Jesse Vincent's post <a href="https://blog.fsck.com/2025/10/05/how-im-using-coding-agents-in-september-2025/">about September</a>, but this is a really significant piece in its own right.</p>
-<p>Jesse is one of the most creative users of coding agents (Claude Code in particular) that I know. He's put a great amount of work into evolving an effective process for working with them, encourage red/green TDD (watch the test fail first), planning steps, self-updating memory notes and even implementing a <a href="https://blog.fsck.com/2025/05/28/dear-diary-the-user-asked-me-if-im-alive/">feelings journal</a> ("I feel engaged and curious about this project" - Claude).</p>
-<p>Claude Code <a href="https://www.anthropic.com/news/claude-code-plugins">just launched plugins</a>, and Jesse is celebrating by wrapping up a whole host of his accumulated tricks as a new plugin called <a href="https://github.com/obra/superpowers">Superpowers</a>. You can add it to your Claude Code like this:</p>
-<pre><code>/plugin marketplace add obra/superpowers-marketplace
-/plugin install superpowers@superpowers-marketplace
-</code></pre>
-<p>There's a lot in here! It's worth spending some time <a href="https://github.com/obra/superpowers">browsing the repository</a> - here's just one fun example, in <a href="https://github.com/obra/superpowers/blob/main/skills/debugging/root-cause-tracing/SKILL.md">skills/debugging/root-cause-tracing/SKILL.md</a>:</p>
-<blockquote>
-<pre><code>---
-name: Root Cause Tracing
-description: Systematically trace bugs backward through call stack to find original trigger
-when_to_use: Bug appears deep in call stack but you need to find where it originates
-version: 1.0.0
-languages: all
----
-</code></pre>
-<p><strong>Overview</strong></p>
-<p>Bugs often manifest deep in the call stack (git init in wrong directory, file created in wrong location, database opened with wrong path). Your instinct is to fix where the error appears, but that's treating a symptom.</p>
-<p><strong>Core principle:</strong> Trace backward through the call chain until you find the original trigger, then fix at the source.</p>
-<p><strong>When to Use</strong></p>
-<pre><code>digraph when_to_use {
-    "Bug appears deep in stack?" [shape=diamond];
-    "Can trace backwards?" [shape=diamond];
-    "Fix at symptom point" [shape=box];
-    "Trace to original trigger" [shape=box];
-    "BETTER: Also add defense-in-depth" [shape=box];
-
-    "Bug appears deep in stack?" -&gt; "Can trace backwards?" [label="yes"];
-    "Can trace backwards?" -&gt; "Trace to original trigger" [label="yes"];
-    "Can trace backwards?" -&gt; "Fix at symptom point" [label="no - dead end"];
-    "Trace to original trigger" -&gt; "BETTER: Also add defense-in-depth";
-}
-</code></pre>
-<p>[...]</p>
-</blockquote>
-<p>This one is particularly fun because it then includes a <a href="https://en.wikipedia.org/wiki/DOT_(graph_description_language)">Graphviz DOT graph</a> illustrating the process - it turns out Claude can interpret those as workflow instructions just fine, and Jesse has been <a href="https://blog.fsck.com/2025/09/29/using-graphviz-for-claudemd/">wildly experimenting with them</a>.</p>
-<p>I <a href="https://claude.ai/share/2b78a93e-cdc3-4b1d-9b02-457eb62140a5">vibe-coded up</a> a quick URL-based DOT visualizer, <a href="https://tools.simonwillison.net/dot#digraph%20when_to_use%20%7B%0A%20%20%20%20%22Bug%20appears%20deep%20in%20stack%3F%22%20%5Bshape%3Ddiamond%5D%3B%0A%20%20%20%20%22Can%20trace%20backwards%3F%22%20%5Bshape%3Ddiamond%5D%3B%0A%20%20%20%20%22Fix%20at%20symptom%20point%22%20%5Bshape%3Dbox%5D%3B%0A%20%20%20%20%22Trace%20to%20original%20trigger%22%20%5Bshape%3Dbox%5D%3B%0A%20%20%20%20%22BETTER%3A%20Also%20add%20defense-in-depth%22%20%5Bshape%3Dbox%5D%3B%0A%0A%20%20%20%20%22Bug%20appears%20deep%20in%20stack%3F%22%20-%3E%20%22Can%20trace%20backwards%3F%22%20%5Blabel%3D%22yes%22%5D%3B%0A%20%20%20%20%22Can%20trace%20backwards%3F%22%20-%3E%20%22Trace%20to%20original%20trigger%22%20%5Blabel%3D%22yes%22%5D%3B%0A%20%20%20%20%22Can%20trace%20backwards%3F%22%20-%3E%20%22Fix%20at%20symptom%20point%22%20%5Blabel%3D%22no%20-%20dead%20end%22%5D%3B%0A%20%20%20%20%22Trace%20to%20original%20trigger%22%20-%3E%20%22BETTER%3A%20Also%20add%20defense-in-depth%22%3B%0A%7D">here's that one rendered</a>:</p>
-<p><img alt="The above DOT rendered as an image" src="https://static.simonwillison.net/static/2025/jesse-dot.jpg" /></p>
-<p>There is <em>so much</em> to learn about putting these tools to work in the most effective way possible. Jesse is way ahead of the curve, so it's absolutely worth spending some time exploring what he's shared so far.</p>
-<p>And if you're worried about filling up your context with a bunch of extra stuff, here's <a href="https://bsky.app/profile/s.ly/post/3m2srmkergc2p">a reassuring note from Jesse</a>:</p>
-<blockquote>
-<p>The core of it is VERY token light. It pulls in one doc of fewer than 2k tokens. As it needs bits of the process, it runs a shell script to search for them.  The long end to end chat for the planning and implementation process for that todo list app was 100k tokens.</p>
-<p>It uses subagents to manage token-heavy stuff, including all the actual implementation.</p>
-</blockquote>
-<p>(Jesse's post also tipped me off about Claude's <code>/mnt/skills/public</code> folder, see <a href="https://simonwillison.net/2025/Oct/10/claude-skills/">my notes here</a>.)
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/sub-agents">sub-agents</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:30:14 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/pdf">pdf</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Fri, 10 Oct 2025 23:57:19 +0000</pubDate></item></channel></rss>
