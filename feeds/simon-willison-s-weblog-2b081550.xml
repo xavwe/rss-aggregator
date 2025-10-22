@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Living dangerously with Claude</title><link>https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/#atom-everything</link><description><![CDATA[<p>I gave a talk last night at <a href="https://luma.com/i37ahi52">Claude Code Anonymous</a> in San Francisco, the unofficial meetup for coding agent enthusiasts. I decided to talk about a dichotomy I've been struggling with recently. On the one hand I'm getting <em>enormous</em> value from running coding agents with as few restrictions as possible. On the other hand I'm deeply concerned by the risks that accompany that freedom.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Dane Stuckey (OpenAI CISO) on prompt injection risks for ChatGPT Atlas</title><link>https://simonwillison.net/2025/Oct/22/openai-ciso-on-atlas/#atom-everything</link><description><![CDATA[<p>My biggest complaint about the launch of the ChatGPT Atlas browser <a href="https://simonwillison.net/2025/Oct/21/introducing-chatgpt-atlas/">the other day</a> was the lack of details on how OpenAI are addressing prompt injection attacks. The <a href="https://openai.com/index/introducing-chatgpt-atlas/">launch post</a> mostly punted that question to <a href="https://openai.com/index/chatgpt-agent-system-card/">the System Card</a> for their "ChatGPT agent" browser automation feature from July. Since this was my single biggest question about Atlas I was disappointed not to see it addressed more directly.</p>
+<p>OpenAI's Chief Information Security Officer Dane Stuckey just posted the most detail I've seen yet in <a href="https://twitter.com/cryps1s/status/1981037851279278414">a lengthy Twitter post</a>.</p>
+<p>I'll quote from his post here (with my emphasis in bold) and add my own commentary.</p>
+<p>He addresses the issue directly by name, with a good single-sentence explanation of the problem:</p>
+<blockquote>
+<p>One emerging risk we are very thoughtfully researching and mitigating is <strong>prompt injections, where attackers hide malicious instructions in websites, emails, or other sources, to try to trick the agent into behaving in unintended ways</strong>. The objective for attackers can be as simple as trying to bias the agent’s opinion while shopping, or as consequential as an attacker <strong>trying to get the agent to fetch and leak private data</strong>, such as sensitive information from your email, or credentials.</p>
+</blockquote>
+<p>We saw examples of browser agents from other vendors leaking private data in this way <a href="https://simonwillison.net/2025/Oct/21/unseeable-prompt-injections/">identified by the Brave security team just yesterday</a>.</p>
+<blockquote>
+<p>Our long-term goal is that you should be able to trust ChatGPT agent to use your browser, <strong>the same way you’d trust your most competent, trustworthy, and security-aware colleague</strong> or friend.</p>
+</blockquote>
+<p>This is an interesting way to frame the eventual goal, describing an extraordinary level of trust and competence.</p>
+<p>As always, a big difference between AI systems and a human is that an AI system <a href="https://simonwillison.net/2025/Feb/3/a-computer-can-never-be-held-accountable/">cannot be held accountable for its actions</a>. I'll let my trusted friend use my logged-in browser only because there are social consequences if they abuse that trust!</p>
+<blockquote>
+<p>We’re working hard to achieve that. For this launch, we’ve performed extensive red-teaming, implemented novel model training techniques to reward the model for ignoring malicious instructions, <strong>implemented overlapping guardrails and safety measures</strong>, and added new systems to detect and block such attacks. However, <strong>prompt injection remains a frontier, unsolved security problem, and our adversaries will spend significant time and resources to find ways to make ChatGPT agent fall for these attacks</strong>.</p>
+</blockquote>
+<p>I'm glad to see OpenAI's CISO openly acknowledging that prompt injection remains an unsolved security problem (three years after we <a href="https://simonwillison.net/2022/Sep/12/prompt-injection/">started talking about it</a>!).</p>
+<p>That "adversaries will spend significant time and resources" thing is the root of why I don't see guardrails and safety measures as providing a credible solution to this problem.</p>
+<p>As I've written before, in application security <a href="https://simonwillison.net/2023/May/2/prompt-injection-explained/#prompt-injection.015">99% is a failing grade</a>. If there's a way to get past the guardrails, no matter how obscure, a motivated adversarial attacker is going to figure that out.</p>
+<p>Dane goes on to describe some of those measures:</p>
+<blockquote>
+<p>To protect our users, and to help improve our models against these attacks:</p>
+<ol>
+<li>We’ve prioritized rapid response systems to help us quickly identify block attack campaigns as we become aware of them.</li>
+</ol>
+</blockquote>
+<p>I like this a lot. OpenAI have an advantage here of being a centralized system - they can monitor their entire user base for signs of new attack patterns.</p>
+<p>It's still bad news for users that get caught out by a zero-day prompt injection, but it does at least mean that successful new attack patterns should have a small window of opportunity.</p>
+<blockquote>
+<ol start="2">
+<li>We are also continuing to invest heavily in security, privacy, and safety - including research to improve the robustness of our models, security monitors, infrastructure security controls, and <strong>other techniques to help prevent these attacks via defense in depth</strong>.</li>
+</ol>
+</blockquote>
+<p>"Defense in depth" always sounds good, but it worries me that it's setting up a false sense of security here. If it's harder but still possible someone is going to get through.</p>
+<blockquote>
+<ol start="3">
+<li>We’ve designed Atlas to give you controls to help protect yourself. <strong>We have added a feature to allow ChatGPT agent to take action on your behalf, but without access to your credentials called “logged out mode”</strong>. We recommend this mode when you don’t need to take action within your accounts. <strong>Today, we think “logged in mode” is most appropriate for well-scoped actions on very trusted sites, where the risks of prompt injection are lower</strong>. Asking it to add ingredients to a shopping cart is generally safer than a broad or vague request like “review my emails and take whatever actions are needed.”</li>
+</ol>
+</blockquote>
+<p>Logged out mode is very smart, and is already a tried and tested pattern. I frequently have Claude Code or Codex CLI fire up Playwright to interact with websites, safe in the knowledge that they won't have access to my logged-in sessions. ChatGPT's existing [agent mode](https://chatgpt.com/features/agent/) provides a similar capability.</p>
+<p>Logged in mode is where things get scary, especially since we're delegating security decisions to end-users of the software. We've demonstrated many times over that this is an unfair burden to place on almost any user.</p>
+<blockquote>
+<ol start="4">
+<li>
+<strong>When agent is operating on sensitive sites, we have also implemented a "Watch Mode" that alerts you to the sensitive nature of the site and requires you have the tab active to watch the agent do its work</strong>. Agent will pause if you move away from the tab with sensitive information. This ensures you stay aware - and in control - of what agent actions the agent is performing. [...]</li>
+</ol>
+</blockquote>
+<p>This detail is new to me: I need to spend more time with ChatGPT Atlas to see what it looks like in practice.</p>
+<p>I tried just now using both GitHub and an online banking site and neither of them seemed to trigger "watch mode" - Atlas continued to navigate even when I had switched to another application.</p>
+<p>Watch mode sounds reasonable in theory - similar to a driver-assisted car that requires you to keep your hands on the wheel - but I'd like to see it in action before I count it as a meaningful mitigation.</p>
+<p>Dane closes with an analogy to computer viruses:</p>
+<blockquote>
+<p>New levels of intelligence and capability require the technology, society, the risk mitigation strategy to co-evolve. <strong>And as with computer viruses in the early 2000s, we think it’s important for everyone to understand responsible usage</strong>, including thinking about prompt injection attacks, so we can all learn to benefit from this technology safely.</p>
+</blockquote>
+<p>I don't think the average computer user ever really got the hang of staying clear of computer viruses... we're still fighting that battle today, albeit much more successfully on mobile platforms that implement tight restrictions on what software can do.</p>
+<p>My takeaways from all of this? It's not done much to influence my overall skepticism of the entire category of browser agents, but it does at least demonstrate that OpenAI are keenly aware of the problems and are investing serious effort in finding the right mix of protections.</p>
+<p>How well those protections work is something I expect will become clear over the next few months.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/browser-agents">browser-agents</a></p>]]></description><pubDate>Wed, 22 Oct 2025 20:43:15 +0000</pubDate></item><item><title>Living dangerously with Claude</title><link>https://simonwillison.net/2025/Oct/22/living-dangerously-with-claude/#atom-everything</link><description><![CDATA[<p>I gave a talk last night at <a href="https://luma.com/i37ahi52">Claude Code Anonymous</a> in San Francisco, the unofficial meetup for coding agent enthusiasts. I decided to talk about a dichotomy I've been struggling with recently. On the one hand I'm getting <em>enormous</em> value from running coding agents with as few restrictions as possible. On the other hand I'm deeply concerned by the risks that accompany that freedom.</p>
 
 <p>Below is a copy of my slides, plus additional notes and links as <a href="https://simonwillison.net/tags/annotated-talks/">an annotated presentation</a>.</p>
 
@@ -297,6 +355,7 @@ Last year OpenAI <a href="https://www.searchenginejournal.com/openai-hires-forme
 <p>I continue to find this entire category of <a href="https://simonwillison.net/tags/browser-agents/">browser agents</a> <em>deeply</em> confusing.</p>
 <p>The security and privacy risks involved here still feel insurmountably high to me - I certainly won't be trusting any of these products until a bunch of security researchers have given them a very thorough beating.</p>
 <p>I'd like to see a <em>deep</em> explanation of the steps Atlas takes to avoid prompt injection attacks. Right now it looks like the main defense is expecting the user to carefully watch what agent mode is doing at all times!</p>
+<p><em><strong>Update</strong>: OpenAI's CISO Dane Stuckey provided exactly that <a href="https://simonwillison.net/2025/Oct/22/openai-ciso-on-atlas/">the day after the launch</a>.</em></p></p>
 <p>I also find these products pretty unexciting to use. I tried out agent mode and it was like watching a first-time computer user painstakingly learn to use a mouse for the first time. I have yet to find my own use-cases for when this kind of interaction feels useful to me, though I'm not ruling that out.</p>
 <p>There was one other detail in the announcement post that caught my eye:</p>
 <blockquote>
@@ -1100,6 +1159,4 @@ Mitchell Hashimoto provides a comprehensive answer to the <em>frequent</em> dema
     <p><small></small>Via <a href="https://twitter.com/mitchellh/status/1977016133409820684">@mitchellh</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/mitchell-hashimoto">mitchell-hashimoto</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Sat, 11 Oct 2025 16:33:59 +0000</pubDate></item><item><title>Note on 11th October 2025</title><link>https://simonwillison.net/2025/Oct/11/uncomfortable/#atom-everything</link><description><![CDATA[<p>I'm beginning to suspect that a key skill in working effectively with coding agents is developing an intuition for when you <em>don't</em> need to closely review every line of code they produce. This feels deeply uncomfortable!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 11 Oct 2025 12:31:09 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/mitchell-hashimoto">mitchell-hashimoto</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Sat, 11 Oct 2025 16:33:59 +0000</pubDate></item></channel></rss>
