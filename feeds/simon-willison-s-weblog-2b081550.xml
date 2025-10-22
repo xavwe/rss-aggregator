@@ -37,7 +37,7 @@
 <li>We’ve designed Atlas to give you controls to help protect yourself. <strong>We have added a feature to allow ChatGPT agent to take action on your behalf, but without access to your credentials called “logged out mode”</strong>. We recommend this mode when you don’t need to take action within your accounts. <strong>Today, we think “logged in mode” is most appropriate for well-scoped actions on very trusted sites, where the risks of prompt injection are lower</strong>. Asking it to add ingredients to a shopping cart is generally safer than a broad or vague request like “review my emails and take whatever actions are needed.”</li>
 </ol>
 </blockquote>
-<p>Logged out mode is very smart, and is already a tried and tested pattern. I frequently have Claude Code or Codex CLI fire up Playwright to interact with websites, safe in the knowledge that they won't have access to my logged-in sessions. ChatGPT's existing [agent mode](https://chatgpt.com/features/agent/) provides a similar capability.</p>
+<p>Logged out mode is very smart, and is already a tried and tested pattern. I frequently have Claude Code or Codex CLI fire up Playwright to interact with websites, safe in the knowledge that they won't have access to my logged-in sessions. ChatGPT's existing <a href="https://chatgpt.com/features/agent/">agent mode</a> provides a similar capability.</p>
 <p>Logged in mode is where things get scary, especially since we're delegating security decisions to end-users of the software. We've demonstrated many times over that this is an unfair burden to place on almost any user.</p>
 <blockquote>
 <ol start="4">
