@@ -1,4 +1,175 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>Cloudflare bankrolls fascists</title><link>https://drewdevault.com/2025/09/24/2025-09-24-Cloudflare-and-fascists.html</link><description><![CDATA[<p>US politics has been pretty fascist lately. The state is filling up
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>What&apos;s up with FUTO?</title><link>https://drewdevault.com/2025/10/22/2025-10-22-Whats-up-with-FUTO.html</link><description><![CDATA[<p>Some time ago, I noticed some new organization called <a href="https://futo.org/">FUTO</a> popping up here and
+there. I&rsquo;m always interested in seeing new organizations that fund open source
+popping up, and seeing as they claim several notable projects on their roster, I
+explored their website with interest and gratitude. I was first confused, and
+then annoyed by what I found. Confused, because their website is littered with
+<a href="https://futo.org/about/what-is-futo/">bizzare manifestos</a>,<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> and ultimately annoyed because they
+were playing fast and loose with the term &ldquo;open source&rdquo;, using it to describe
+commercial source-available software.</p>
+<p>FUTO eventually clarified their stance on &ldquo;open source&rdquo;, first through
+<a href="https://futo.org/open-source-definition/">satire</a> and then <a href="https://futo.org/about/futo-statement-on-opensource/">somewhat more soberly</a>, perpetuating the <a href="https://drewdevault.com/2022/09/16/Open-source-matters.html">self-serving
+myth</a> that <a href="https://drewdevault.com/2021/01/20/FOSS-is-to-surrender-your-monopoly.html">&ldquo;open source&rdquo; software can privilege one party over anyone
+else</a> and <a href="https://drewdevault.com/2022/03/01/Open-source-is-defined-by-the-OSD.html">still be called open source</a>. I mentally categorized them as
+problematic but hoped that their donations or grants for genuinely open source
+projects would do more good than the harm done by this nonsense.</p>
+<p>By now I&rsquo;ve learned better. <strong>tl;dr</strong>: FUTO is not being honest about their
+&ldquo;grant program&rdquo;, they don&rsquo;t have permission to pass off these logos or project
+names as endorsements, and they collaborate with and promote mask-off,
+self-proclaimed fascists.</p>
+<p>An early sign that something is off with FUTO is in that &ldquo;sober&rdquo; explanation of
+their &ldquo;disdain for OSI approved licenses&rdquo;, where they make a point of
+criticizing the Open Source Initiative for banning Eric S. Raymond (aka ESR)
+from their mailing lists, citing right-wing reactionary conspiracy theorist
+Bryan Lunduke&rsquo;s blog post on the incident. Raymond is, as you may know, one of
+the founders of OSI and a bigoted asshole. He was banned from the mailing lists,
+not because he&rsquo;s a bigoted asshole, but because <a href="https://lists.opensource.org/pipermail/license-discuss_lists.opensource.org/2020-February/021328.html">he was being a toxic jerk</a>
+<em>on the mailing list in question</em>. Healthy institutions outgrow their founders.
+That said, FUTO&rsquo;s citation and perspective on the ESR incident could be
+generously explained as a simple mistake, and we should probably match
+generosity with generosity given their prolific portfolio of open source grants.</p>
+<p>I visited FUTO again quite recently as part of my research on <a href="https://drewdevault.com/2025/09/24/2025-09-24-Cloudflare-and-fascists.html">Cloudflare&rsquo;s
+donations to fascists</a>, and was pleased to discover that this
+portfolio of grants had grown immensely since my last visit, and included a
+number of respectable projects that I admire and depend on (and some projects I
+don&rsquo;t especially admire, hence arriving there during my research on FOSS
+projects run by fascists). But something felt fishy about this list &ndash; surely I
+would have heard about it if someone was going around giving big grants to
+projects like ffmpeg, VLC, musl libc, Tor, Managarm, Blender, NeoVim &ndash; these
+projects have a lot of overlap with my social group and I hadn&rsquo;t heard a peep
+about it.</p>
+<p>So I asked Rich Felker, the maintainer of <a href="https://musl.libc.org/">musl libc</a>, about the FUTO grant, and
+<strong>he didn&rsquo;t know anything about it</strong>. Rich and I spoke about this for a while
+and eventually Rich uncovered a transaction in his <a href="https://github.com/sponsors/richfelker">GitHub sponsors</a> account from FUTO: a one-time donation of $1,000. This payment
+circumvents musl&rsquo;s established process for donations from institutional
+sponsors. The donation page that FUTO used includes this explanation: &ldquo;This
+offer is for individuals, and may be available to small organizations on
+request. Commercial entities wishing to be listed as sponsors should inquire by
+email.&rdquo; It&rsquo;s pretty clear that there are special instructions for institutional
+donors who wish to receive musl&rsquo;s endorsement as thanks for their contribution.</p>
+<p>The extent of the FUTO &ldquo;grant program&rdquo;, at least in the case of musl libc,
+involved ignoring musl&rsquo;s established process for institutional sponsors, quietly
+sending a modest one-time donation to one maintainer, and then plastering the
+logo of a well-respected open source project on a list of &ldquo;grant recipients&rdquo; on
+their home page. Rich eventually <a href="https://hachyderm.io/@dalias/115259232020176340">posted on Mastodon</a> to clarify that
+the use of the musl name and logo here was unauthorized.</p>
+<p>I also asked someone I know on the ffmpeg project about the grant that they had
+received from FUTO and she didn&rsquo;t know anything about it, either. Here&rsquo;s what
+she said:</p>
+<blockquote>
+<p>I&rsquo;m sure we did not get a grant from them, since we tear each other to pieces
+over everything, and that would be enough to start a flame war. Unless some
+dev independently got money from them to do something, but I&rsquo;m sure that we as
+a project got nothing. The only grant we&rsquo;ve received is from the <a href="https://www.sovereign.tech/">STF</a> last
+year.</p></blockquote>
+<p>Neovim is another project FUTO lists as a grant recipient, and they also have a
+<a href="https://neovim.io/sponsors/">separate process for institutional sponsors</a>. I
+didn&rsquo;t reach out to anyone to confirm, but FUTO does not appear on the sponsor
+list so presumably the M.O. is the same. This is also the case for
+<a href="https://www.wireshark.org/members">Wireshark</a>,
+<a href="https://conduit.rs/#donate">Conduit</a>, and
+<a href="https://www.kicad.org/sponsors/sponsors/">KiCad</a>. GrapheneOS is listed
+prominently as well, but <a href="https://grapheneos.social/@GrapheneOS/113443396794247106">that doesn&rsquo;t seem to have worked
+out very well for them</a>.</p>
+<p>So, it seems like FUTO is doing some shady stuff and putting a bunch of notable
+FOSS projects on their home page without good reason to justify their
+endorsement. Who&rsquo;s behind all of this?</p>
+<p>As far as I can tell, the important figures are Eron Wolf<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and Louis
+Rossmann.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> Wolf is the founder of FUTO &ndash; a bunch of money fell into
+his lap from founding Yahoo Games before the bottom fell out of Yahoo, and he
+made some smart investments to grow his wealth, which he presumably used to fund
+FUTO. Rossmann is a notable figure in the right to repair movement, with a large
+following on YouTube, who joined FUTO a year later and ultimately moved to
+Austin to work more closely with them. His established audience and reputation
+provides a marketable face for FUTO. I had heard of Rossmann prior to learning
+about FUTO and held him in generally good regard, despite little specific
+knowledge of his work, simply because we have a common cause in right to repair.</p>
+<p>I hadn&rsquo;t heard of Wolf before looking into FUTO. However, in the course of my
+research, several people tipped me off to his association with Curtis Yarvin
+(aka moldbug), and in particular to the use of FUTO&rsquo;s platform and the
+credentials of Wolf and Rossman to platform and promote Yarvin. Curtis Yarvin is
+a full-blown, mask-off, self-proclaimed fascist. A negligible amount of due
+diligence is required to verify this, but here&rsquo;s one source from Politico in
+January 2025:</p>
+<blockquote>
+<p>I’ve interacted with Vance once since the election. I bumped into him at a
+party. He said, &ldquo;Yarvin, you reactionary fascist.&rdquo; I was like, &ldquo;Thank you, Mr.
+Vice President, and I’m glad I didn’t stop you from getting elected.&rdquo;</p></blockquote>
+<p>&ndash; <a href="https://www.politico.com/news/magazine/2025/01/30/curtis-yarvins-ideas-00201552">Ian Ward for Politico</a></p>
+<p>Vice President Vance and numerous other figures in the American right have cited
+Yarvin as a friend and source of inspiration in shaping policy.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>
+Among his many political positions, Yarvin has has proclaimed that black people
+are genetically predisposed to a lower IQ than white people, and moreover
+suggests that black people are inherently suitable for
+enslavement.<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<p>Yarvin has appeared on FUTO&rsquo;s social media channels, in particular in an
+interview published on
+<a href="https://peertube.futo.org/w/eSzKtjupL928QzxPXC5k2R">PeerTube</a> and
+<a href="https://odysee.com/@FUTO:e/curtisyarvin:2">Odysee</a>, the latter a platform
+controversial for its role in spreading hate speech and
+misinformation.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> Yarvin <a href="https://www.youtube.com/watch?v=iFn5t4etqNg">also appeared on stage</a> to &ldquo;debate&rdquo; Louis Rossmann in June 2022, in which Yarvin is permitted
+to speak at length with minimal interruptions or rebuttals to argue for an
+authoritarian techno-monarchy to replace democracy.</p>
+<p>Rossmann caught some flack for this &ldquo;debate&rdquo; and gave a milquetoast response in
+<a href="https://www.youtube.com/watch?v=iFn5t4etqNg&amp;lc=Ugx7ba2sI30CGEylY_R4AaABAg">a YouTube comment</a>
+on this video, explaining that he agreed to this on very short notice as a favor
+to Eron, who had donated &ldquo;a million&rdquo; to Rossmann&rsquo;s non-profit prior to bringing
+Rossmann into the fold at FUTO. Rossmann does rebuke Yarvin&rsquo;s thesis, albeit
+buried in this YouTube comment rather than when he had the opportunity to do so
+on-stage during the debate. Don&rsquo;t argue with fascists, Louis &ndash; they aren&rsquo;t
+arguing with <em>you</em>, they are pitching their ideas<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup> to <em>the
+audience</em>. Smart fascists are experts at misdirection and bad-faith debate
+tactics and as a consequence Rossmann just becomes a vehicle for fascist
+propaganda &ndash; consult the YouTube comments to see who this video resonates with
+the most.</p>
+<p>In the end, Rossmann seems to regret agreeing to this debate. I don&rsquo;t think that
+Eron Wolf regrets it, though &ndash; based on his facilitation of this debate and his
+own interview with Yarvin on the FUTO channel a month later, I can only assume
+that Wolf considers Yarvin a close associate. No surprise given that Wolf is
+precisely the kind of insecure silicon valley techbro Yarvin&rsquo;s rhetoric is
+designed to appeal to &ndash; moderately wealthy but unknown, and according to
+Yarvin, fit to be a king. Rossmann probably needs to reflect on why he
+associates with and lends his reputation to an organization that openly and
+unapologetically platforms its founder&rsquo;s fascist friends.</p>
+<p>In summary, FUTO is not just the product of some eccentric who founded a
+grant-making institution that funds open source at the cost of making us read
+his weird manifestos on free markets and oligopoly. It&rsquo;s a private, for-profit
+company that associates with and uses their brand to promote fascists. They push
+an open-washing narrative and they portray themselves as a grant-making
+institution when, in truth, they&rsquo;re passing off a handful of small donations as
+if they were endorsements from dozens of respectable, high-profile open source
+projects, in an attempt to legitimize themselves, and, indirectly, legitimize
+people they platform like Curtis Yarvin.</p>
+<p>So, if you read this and discover that <em>your</em> project&rsquo;s name and logo is being
+proudly displayed <a href="https://futo.org">on the front page</a> of a fascist-adjacent,
+washed-up millionaire&rsquo;s scummy vanity company, and you don&rsquo;t like that, maybe
+you should ask them to knock it off? Eron, Louis &ndash; you know that a lot of these
+logos are trademarked, right?</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Here&rsquo;s a quote from <a href="https://futo.org/about/what-does-futo-believe/">another one</a>: &ldquo;While the vast majority of elite coders have been neutralized by the Oligopoly, the vast majority of those remaining have become preoccupied with cryptocurrency money-making schemes.&rdquo;&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Source: <a href="https://futo.org/about/what-is-futo/">What is FUTO?</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Source: <a href="https://www.youtube.com/watch?v=tca6xsBEuGw">Announcing the Newest Member of FUTO: Louis Rossmann!</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Source: <a href="https://www.politico.com/news/magazine/2024/07/18/jd-vance-world-view-sources-00168984">Politico: The Seven Thinkers and Groups That Have Shaped JD Vance’s Unusual Worldview</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>Source: <a href="https://www.inc.com/tess-townsend/why-it-matters-that-an-obscure-programming-conference-is-hosting-mencius-moldbug.html">Inc.: Controversy Rages Over ‘Pro-Slavery’ Tech Speaker Curtis Yarvin</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p>Source: <a href="https://www.theguardian.com/world/2021/may/14/odysee-video-platform-nazi-content-not-grounds-for-removal">The Guardian: Video platform chief says Nazi posts on white superiority do not merit removal</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>You know, authoritarianism, anti-democracy, genocide, etc.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>]]></description><pubDate>Wed, 22 Oct 2025 00:00:00 +0000</pubDate></item><item><title>Cloudflare bankrolls fascists</title><link>https://drewdevault.com/2025/09/24/2025-09-24-Cloudflare-and-fascists.html</link><description><![CDATA[<p>US politics has been pretty fascist lately. The state is filling up
 concentration camps, engaging in mass state violence against people on the basis
 of racialized traits, deporting them to random countries without any respect for
 habeas corpus, exerting state pressure on the free press to censor speech
