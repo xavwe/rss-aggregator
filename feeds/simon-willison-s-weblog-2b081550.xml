@@ -63,6 +63,7 @@ This is a relief:</p>
 <p><code>If the user pastes and it's only available as plain text then generate HTML that is just an open &lt;pre&gt; tag and their text and a closing &lt;/pre&gt; tag</code></p>
 </blockquote>
 <p>It's quite a long prompt - it took me several minutes to type! But it covered the functionality I wanted in enough detail that I was pretty confident Claude would be able to build it.</p>
+<h4 id="combining">Combining previous tools</h4>
 <p>I'm using one key technique in this prompt: I'm referencing existing tools in the same repo and telling Claude to imitate their functionality.</p>
 <p>I first wrote about this trick last March in <a href="https://simonwillison.net/2024/Mar/30/ocr-pdfs-images/">Running OCR against PDFs and images directly in your browser</a>, where I described how a snippet of code that used PDF.js and another snippet that used Tesseract.js was enough for Claude 3 Opus to build me this <a href="https://tools.simonwillison.net/ocr">working PDF OCR tool</a>. That was actually the tool that kicked off my <a href="https://tools.simonwillison.net/">tools.simonwillison.net</a> collection in the first place, which has since grown to 139 and counting.</p>
 <p>Here I'm telling Claude that I want the RTF to HTML functionality of <a href="https://github.com/simonw/tools/blob/main/rtf-to-html.html">rtf-to-html.html</a> combined with the Gist saving functionality of <a href="https://github.com/simonw/tools/blob/main/openai-audio-output.html">openai-audio-output.html</a>.</p>
