@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Video: Building a tool to copy-paste share terminal sessions using Claude Code for web</title><link>https://simonwillison.net/2025/Oct/23/claude-code-for-web-video/#atom-everything</link><description><![CDATA[<p>This afternoon I was manually converting a terminal session into a shared HTML file for the umpteenth time when I decided to reduce the friction by building a custom tool for it - and on the spur of the moment I fired up <a href="https://www.descript.com/">Descript</a> to record the process. The result is this new <a href="https://www.youtube.com/watch?v=GQvMLLrFPVI">10 minute YouTube video</a> showing my workflow for vibe-coding simple tools from start to finish.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting AWS</title><link>https://simonwillison.net/2025/Oct/23/aws-postmortem/#atom-everything</link><description><![CDATA[<blockquote cite="https://aws.amazon.com/message/101925/"><p>For resiliency, the DNS Enactor operates redundantly and fully independently in three different Availability Zones (AZs). [...] When the second Enactor (applying the newest plan) completed its endpoint updates, it then invoked the plan clean-up process, which identifies plans that are significantly older than the one it just applied and deletes them. At the same time that this clean-up process was invoked, the first Enactor (which had been unusually delayed) applied its much older plan to the regional DDB endpoint, overwriting the newer plan. [...] The second Enactor's clean-up process then deleted this older plan because it was many generations older than the plan it had just applied. As this plan was deleted, all IP addresses for the regional endpoint were immediately removed.</p></blockquote>
+<p class="cite">&mdash; <a href="https://aws.amazon.com/message/101925/">AWS</a>, Amazon DynamoDB Service Disruption in Northern Virginia (US-EAST-1) Region (14.5 hours long!)</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/dns">dns</a>, <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/aws">aws</a>, <a href="https://simonwillison.net/tags/postmortem">postmortem</a></p>]]></description><pubDate>Thu, 23 Oct 2025 04:49:59 +0000</pubDate></item><item><title>Video: Building a tool to copy-paste share terminal sessions using Claude Code for web</title><link>https://simonwillison.net/2025/Oct/23/claude-code-for-web-video/#atom-everything</link><description><![CDATA[<p>This afternoon I was manually converting a terminal session into a shared HTML file for the umpteenth time when I decided to reduce the friction by building a custom tool for it - and on the spur of the moment I fired up <a href="https://www.descript.com/">Descript</a> to record the process. The result is this new <a href="https://www.youtube.com/watch?v=GQvMLLrFPVI">11 minute YouTube video</a> showing my workflow for vibe-coding simple tools from start to finish.</p>
 <p><lite-youtube videoid="GQvMLLrFPVI" js-api="js-api"
   title="Using Claude Code for web to build a tool to copy-paste share terminal sessions"
   playlabel="Play: Using Claude Code for web to build a tool to copy-paste share terminal sessions"
@@ -1162,41 +1165,4 @@ uv run https://gist.githubusercontent.com/simonw/912623bf00d6c13cc0211508969a100
 <p>[Microsoft's publicist chose not to answer this question.]</p></blockquote>
 <p class="cite">&mdash; <a href="https://hardware.slashdot.org/story/25/10/11/0238213/microsofts-onedrive-begins-testing-face-recognizing-ai-for-photos-for-some-preview-users">Slashdot</a>, asking the <em>obvious</em> question</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/slashdot">slashdot</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a></p>]]></description><pubDate>Sun, 12 Oct 2025 16:18:05 +0000</pubDate></item><item><title>Claude Code sub-agents</title><link>https://simonwillison.net/2025/Oct/11/sub-agents/#atom-everything</link><description><![CDATA[<p>Claude Code includes the ability to run sub-agents, where a separate agent loop with a fresh token context is dispatched to achieve a goal and report back when it's done. I wrote a bit about how these work <a href="https://simonwillison.net/2025/Jun/2/claude-trace/">in June</a> when I traced Claude Code's activity by intercepting its API calls.</p>
-<p>I recently learned that you can <em>deliberately</em> trigger Claude Code to use sub-agents just by telling it to do so!</p>
-<p>Here's an example. I ran this using Claude Code against a fresh checkout of <a href="https://github.com/simonw/datasette">simonw/datasette</a> (commit <code>ec38ad37689f3c14d307770977a17aed5efc5cb9</code>), with no additional custom instructions:</p>
-<blockquote>
-<p><code>Write markdown documentation for the context passed to each of the templates in this project. Use sub-agents.</code></p>
-</blockquote>
-<p>Here's a snippet of the output:</p>
-<blockquote>
-<p>⏺ I'll help you write markdown documentation for the context passed to each template in this project. Let me start by exploring the codebase to understand the template structure and then use sub-agents to document them comprehensively.</p>
-<pre><code>⏺ Search(pattern: "**/*.html")
-  ⎿  Found 47 files (ctrl+o to expand)
-
-⏺ Search(pattern: "render.*template|render_template")
-  ⎿  Found 16 files (ctrl+o to expand)
-</code></pre>
-<p>[...]</p>
-<p>⏺ Now let me launch sub-agents to analyze different template contexts in parallel:</p>
-<pre><code>⏺ Task(Document index template context)
-  ⎿  Done (12 tool uses · 86.4k tokens · 1m 13s)
-
-⏺ Task(Document database template context)
-  ⎿  Done (15 tool uses · 55.4k tokens · 1m 41s)
-
-⏺ Task(Document table template context)
-  ⎿  Done (14 tool uses · 85.2k tokens · 1m 44s)
-
-⏺ Task(Document query/row template contexts)
-  ⎿  Done (17 tool uses · 78.7k tokens · 1m 55s)
-
-⏺ Task(Document special template contexts)
-  ⎿  Done (26 tool uses · 116.1k tokens · 1m 50s)
-</code></pre>
-</blockquote>
-<p>It churned away for a couple of minutes (those sub-agents execute in parallel, another benefit of this pattern) and made me this <a href="https://gist.github.com/simonw/5b7d87fe5ffa36e7a4c104fcb18fc097">
-template_contexts.md
-</a> markdown file. It's very comprehensive.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/sub-agents">sub-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 11 Oct 2025 21:29:39 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/slashdot">slashdot</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a></p>]]></description><pubDate>Sun, 12 Oct 2025 16:18:05 +0000</pubDate></item></channel></rss>
