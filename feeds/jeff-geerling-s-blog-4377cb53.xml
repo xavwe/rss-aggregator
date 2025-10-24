@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Recovering videos from my Sony camera that I stupidly deleted</title><link>https://www.jeffgeerling.com/blog/2025/recovering-videos-my-sony-camera-i-stupidly-deleted</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Recovering videos from my Sony camera that I stupidly deleted</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Why do some radio towers blink?</title><link>https://www.jeffgeerling.com/blog/2025/why-do-some-radio-towers-blink</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Why do some radio towers blink?</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="yt-embed">
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }<div class="embed-container"></div>
+</div>
+
+<p>One day on my drive home, I saw three towers. One of them had a bunch of blinking white lights, another one had red lights that kind of faded in and out, and the third one, well, it wasn't doing anything. I'm lucky to have a radio engineer for a dad, so Dad: <em>why do some towers blink?</em></p>
+
+<p>Joe: Well, blinking I would call like the way you described it, "flashing", "white light", or "strobe". All these lights are to aid pilots and air traffic. helicopters, fighter planes, regular jets. So that's the purpose of it.</p>
+
+<p>Jeff: Well that one tower that I saw had red lights that faded in and out, but I even think there's a freestanding tower just north of here that has red and white on top.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-24T09:00:54-05:00" title="Friday, October 24, 2025 - 09:00" class="datetime">October 24, 2025</time>
+</span>]]></description><pubDate>Fri, 24 Oct 2025 14:00:54 +0000</pubDate></item><item><title>Recovering videos from my Sony camera that I stupidly deleted</title><link>https://www.jeffgeerling.com/blog/2025/recovering-videos-my-sony-camera-i-stupidly-deleted</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Recovering videos from my Sony camera that I stupidly deleted</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/sony-a6700-sd-cards-on-desk.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-4db2b381-1806-450c-8d72-e24b4e4713fa" data-insert-attach="{&quot;id&quot;:&quot;4db2b381-1806-450c-8d72-e24b4e4713fa&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Sony A6700 SD cards on desk"></p>
 
@@ -86,15 +99,4 @@
 <p>The <a href="https://www.raspberrypi.com/products/raspberry-pi-500-plus/">Raspberry Pi 500+</a> was announced today, sells for $200, and adds on the following over what was present in the regular Pi 500:</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-25T02:00:45-05:00" title="Thursday, September 25, 2025 - 02:00" class="datetime">September 25, 2025</time>
-</span>]]></description><pubDate>Thu, 25 Sep 2025 07:00:45 +0000</pubDate></item><item><title>You can finally manage Macs with FileVault remotely in Tahoe</title><link>https://www.jeffgeerling.com/blog/2025/you-can-finally-manage-macs-filevault-remotely-tahoe</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">You can finally manage Macs with FileVault remotely in Tahoe</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>For years, I've had a couple Macs running at home and at my studio, which I use to remotely manage my video projects or some coding project.</p>
-
-<p><img src="https://www.jeffgeerling.com/sites/default/files/images/mac-mini-m4-power-button-workbench.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-0697a89b-d2f6-4c1b-9d59-9ccfdf8f37b4" data-insert-attach="{&quot;id&quot;:&quot;0697a89b-d2f6-4c1b-9d59-9ccfdf8f37b4&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="M4 Mac mini workbench powering on"></p>
-
-<p>It's nice to have a workstation set up that you can access anywhere via Screen Sharing to check on progress, jot down a note, etc.—and not be tied to a web app or some cloud service.</p>
-
-<p>I run a Wireguard VPN at home and at my studio, so I can remotely log into any of my infrastructure through the VPN—Macs included.</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-19T13:44:01-05:00" title="Friday, September 19, 2025 - 13:44" class="datetime">September 19, 2025</time>
-</span>]]></description><pubDate>Fri, 19 Sep 2025 18:44:01 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Thu, 25 Sep 2025 07:00:45 +0000</pubDate></item></channel></rss>
