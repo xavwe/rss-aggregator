@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>claude_code_docs_map.md</title><link>https://simonwillison.net/2025/Oct/24/claude-code-docs-map/#atom-everything</link><description><![CDATA[<p><strong><a href="https://docs.claude.com/en/docs/claude-code/claude_code_docs_map.md">claude_code_docs_map.md</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Visual Features Across Modalities: SVG and ASCII Art Reveal Cross-Modal Understanding</title><link>https://simonwillison.net/2025/Oct/25/visual-features-across-modalities/#atom-everything</link><description><![CDATA[<p><strong><a href="https://transformer-circuits.pub/2025/october-update/index.html#svg-cross-modal">Visual Features Across Modalities: SVG and ASCII Art Reveal Cross-Modal Understanding</a></strong></p>
+New model interpretability research from Anthropic, this time focused on SVG and ASCII art generation.</p>
+<blockquote>
+<p>We found that the same feature that activates over the eyes in an ASCII face also activates for eyes across diverse text-based modalities, including SVG code and prose in various languages. This is not limited to eyes – we found a number of cross-modal features that recognize specific concepts: from small components like mouths and ears within ASCII or SVG faces, to full visual depictions like dogs and cats. [...]</p>
+<p>These features depend on the surrounding context within the visual depiction. For instance, an SVG circle element activates “eye” features only when positioned within a larger structure that activates “face” features.</p>
+</blockquote>
+<p>And really, I can't <em>not</em> link to this one given the bonus they tagged on at the end!</p>
+<blockquote>
+<p>As a bonus, we also inspected features for an SVG of a pelican riding a bicycle, <a href="https://github.com/simonw/pelican-bicycle">first popularized</a><a href="https://github.com/simonw/pelican-bicycle"> by Simon Willison</a> as a way to test a model's artistic capabilities. We find features representing concepts including "bike", "wheels", "feet", "tail", "eyes", and "mouth" activating over the corresponding parts of the SVG code.</p>
+<p><img alt="Diagram showing a pelican riding a bicycle illustration alongside its SVG source code. The left side displays two versions: a completed color illustration at top with a white pelican with yellow beak on a red bicycle with blue wheels (labeled &quot;Bike&quot; and &quot;Wheels&quot;), and a line drawing sketch below with labels &quot;Fur/Wool&quot;, &quot;Eyes&quot;, &quot;Mouth&quot;, &quot;Tail&quot;, and &quot;Bird&quot;. The right side shows the corresponding SVG XML code with viewBox, rect, ellipse, circle, and path elements defining the illustration's geometry and styling." src="https://static.simonwillison.net/static/2025/anthropic-pelican-bicycle.jpg" /></p>
+</blockquote>
+<p>Now that they can identify model features associated with visual concepts in SVG images, can they us those for steering?</p>
+<p>It turns out they can! Starting with a smiley SVG (provided as XML with no indication as to what it was drawing) and then applying a negative score to the "smile" feature produced a frown instead, and worked against ASCII art as well.</p>
+<p>They could also boost features like unicorn, cat, owl, or lion and get new SVG smileys clearly attempting to depict those creatures.</p>
+<blockquote>
+<p><img alt="Diagram showing a yellow smiley face in the center with bidirectional arrows connecting to six different circular faces arranged around it, with text above asking &quot;What can this face be steered into?&quot; The surrounding faces are labeled clockwise from top left: &quot;Unicorn&quot; (pink circle with yellow triangle horn and diamond earrings), &quot;Cat&quot; (gray circle with triangular ears and small nose), &quot;Wrinkles&quot; (beige circle with eyelashes and wrinkle lines), &quot;Owl&quot; (brown circle with large round eyes and small beak), &quot;Lion&quot; (orange circle with yellow inner face), and &quot;Eye&quot; (white circle with large black pupil and highlight" src="https://static.simonwillison.net/static/2025/anthropic-faces.jpg" /></p>
+</blockquote>
+<p>I'd love to see how this behaves if you jack up the feature for the <a href="https://simonwillison.net/2024/May/24/golden-gate-claude/">Golden Gate Bridge</a>.
+
+    <p><small></small>Via <a href="https://twitter.com/tarngerine/status/1981835235332698465">@tarngerine</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/svg">svg</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/interpretability">interpretability</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Sat, 25 Oct 2025 03:08:31 +0000</pubDate></item><item><title>claude_code_docs_map.md</title><link>https://simonwillison.net/2025/Oct/24/claude-code-docs-map/#atom-everything</link><description><![CDATA[<p><strong><a href="https://docs.claude.com/en/docs/claude-code/claude_code_docs_map.md">claude_code_docs_map.md</a></strong></p>
 Something I'm enjoying about Claude Code is that any time you ask it questions about <em>itself</em> it runs tool calls like these:</p>
 <p><img alt="I'll check the Claude Code documentation about bash hooks to see if there's something about the   configuration that might explain why it didn't trigger. Fetch(https://docs.claude.com/en/docs/claude-code/claude_code_docs_map.md)   ⎿  Received 25.9KB (200 OK) Fetch(https://docs.claude.com/en/docs/claude-code/hooks-guide.md)   ⎿  Received 9.4KB (200 OK) Fetch(https://docs.claude.com/en/docs/claude-code/hooks)   ⎿  Received 2.2MB (200 OK) Ah, I see the issue! The bashHook in your settings.json is checking the $PROMPT variable, but   according to the documentation, bash hooks should:    1. Use PreToolUse hooks (not a simple bash script)   2. Parse JSON input from stdin   3. Access the command via tool_input.command in the JSON " src="https://static.simonwillison.net/static/2025/claude-code-self-documentation.jpg" /></p>
 <p>In this case I'd asked it about its "hooks" feature.</p>
@@ -1043,119 +1065,4 @@ Alex Edwards writes about the new <code>http.CrossOriginProtection</code> middle
     <p><small></small>Via <a href="https://lobste.rs/s/fzw9g7/modern_approach_preventing_csrf_go">lobste.rs</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/csrf">csrf</a>, <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/filippo-valsorda">filippo-valsorda</a></p>]]></description><pubDate>Wed, 15 Oct 2025 05:03:46 +0000</pubDate></item><item><title>NVIDIA DGX Spark: great hardware, early days for the ecosystem</title><link>https://simonwillison.net/2025/Oct/14/nvidia-dgx-spark/#atom-everything</link><description><![CDATA[<p>NVIDIA sent me a preview unit of their new <a href="https://www.nvidia.com/en-us/products/workstations/dgx-spark/">DGX Spark</a> desktop "AI supercomputer". I've never had hardware to review before! You can consider this my first ever sponsored post if you like, but they did not pay me any cash and aside from an embargo date they did not request (nor would I grant) any editorial input into what I write about the device.</p>
-<p>The device retails for around $4,000. They officially go on sale tomorrow.</p>
-<p>First impressions are that this is a snazzy little computer. It's similar in size to a Mac mini, but with an exciting textured surface that feels refreshingly different and a little bit <a href="https://www.indiewire.com/awards/industry/devs-cinematography-rob-hardy-alex-garland-1234583396/">science fiction</a>.</p>
-<p><img src="https://static.simonwillison.net/static/2025/nvidia-spark.jpg" alt="A rectangular small computer, sitting horizontally on a box. It is about the width of a Mac Mini. It has a NVIDIA logo on  a reflective handle portion, then textured silver metal front, then another reflective handle at the other end. It's pretty and a bit weird looking. It sits on the box it came in, which has NVIDIA DGX Spark written on it in white text on green." style="max-width: 100%;" /></p>
-<p>There is a <em>very</em> powerful machine tucked into that little box. Here are the specs, which I had Claude Code figure out for me by <a href="https://gist.github.com/simonw/021651a14e6c5bf9876c9c4244ed6c2d">poking around on the device itself</a>:</p>
-<blockquote>
-<p><strong>Hardware Specifications</strong></p>
-<ul>
-<li>Architecture: aarch64 (ARM64)</li>
-<li>CPU: 20 cores
-<ul>
-<li>10x Cortex-X925 (performance cores)</li>
-<li>10x Cortex-A725 (efficiency cores)</li>
-</ul>
-</li>
-<li>RAM: 119 GB total (112 GB available) - <em>I’m not sure why Claude reported it differently here, the machine is listed as 128GB - it looks like a <a href="https://news.ycombinator.com/item?id=45586776#45588329">128GB == 119GiB thing</a> because Claude <a href="https://gist.github.com/simonw/021651a14e6c5bf9876c9c4244ed6c2d#file-nvidia-claude-code-txt-L41">used free -h</a></em></li>
-<li>Storage: 3.7 TB (6% used, 3.3 TB available)</li>
-</ul>
-<p><strong>GPU Specifications</strong></p>
-<ul>
-<li>Model: NVIDIA GB10 (Blackwell architecture)</li>
-<li>Compute Capability: sm_121 (12.1)</li>
-<li>Memory: 119.68 GB</li>
-<li>Multi-processor Count: 48 streaming multiprocessors</li>
-<li>Architecture: Blackwell</li>
-</ul>
-</blockquote>
-<p>Short version: this is an ARM64 device with 128GB of memory that's available to both the GPU and the 20 CPU cores at the same time, strapped onto a 4TB NVMe SSD.</p>
-<p>The Spark is firmly targeted at “AI researchers”. It’s designed for both training and running models.</p>
-<h4 id="the-tricky-bit-cuda-on-arm64">The tricky bit: CUDA on ARM64</h4>
-<p>Until now almost all of my own model running experiments have taken place on a Mac. This has gotten far less painful over the past year and a half thanks to the amazing work of the <a href="https://simonwillison.net/tags/mlx/">MLX</a> team and community, but it's still left me deeply frustrated at my lack of access to the NVIDIA CUDA ecosystem. I've lost count of the number of libraries and tutorials which expect you to be able to use Hugging Face Transformers or PyTorch with CUDA, and leave you high and dry if you don't have an NVIDIA GPU to run things on.</p>
-<p>Armed (ha) with my new NVIDIA GPU I was excited to dive into this world that had long eluded me... only to find that there was another assumption baked in to much of this software: x86 architecture for the rest of the machine.</p>
-<p>This resulted in all kinds of unexpected new traps for me to navigate. I eventually managed to get a PyTorch 2.7 wheel for CUDA on ARM, but failed to do so for 2.8. I'm not confident there because the wheel itself is unavailable but I'm finding navigating the PyTorch ARM ecosystem pretty confusing.</p>
-<p>NVIDIA are trying to make this easier, with mixed success. A lot of my initial challenges got easier when I found their <a href="https://docs.nvidia.com/dgx/dgx-spark/nvidia-container-runtime-for-docker.html">official Docker container</a>, so now I'm figuring out how best to use Docker with GPUs. Here's the current incantation that's been working for me:</p>
-<div class="highlight highlight-source-shell"><pre>docker run -it --gpus=all \
-  -v /usr/local/cuda:/usr/local/cuda:ro \
-  nvcr.io/nvidia/cuda:13.0.1-devel-ubuntu24.04 \
-  bash</pre></div>
-<p>I have not yet got my head around the difference between CUDA 12 and 13. 13 appears to be very new, and a lot of the existing tutorials and libraries appear to expect 12.</p>
-<h4 id="the-missing-documentation-isn-t-missing-any-more">The missing documentation isn't missing any more</h4>
-<p>When I first received this machine around a month ago there was very little in the way of documentation to help get me started. This meant climbing the steep NVIDIA+CUDA learning curve mostly on my own.</p>
-<p>This has changed <em>substantially</em> in just the last week. NVIDIA now have extensive guides for getting things working on the Spark and they are a huge breath of fresh air - exactly the information I needed when I started exploring this hardware.</p>
-<p>Here's the <a href="https://developer.nvidia.com/topics/ai/dgx-spark">getting started guide</a>, details on the <a href="https://build.nvidia.com/spark/dgx-dashboard/instructions">DGX dashboard web app</a>, and the essential collection of <a href="https://build.nvidia.com/spark">playbooks</a>. There's still a lot I haven't tried yet just in this official set of guides.</p>
-<h4 id="claude-code-for-everything">Claude Code for everything</h4>
-<p><a href="https://www.claude.com/product/claude-code">Claude Code</a> was an absolute lifesaver for me while I was trying to figure out how best to use this device. My Ubuntu skills were a little rusty, and I also needed to figure out CUDA drivers and Docker incantations and how to install the right versions of PyTorch. Claude 4.5 Sonnet is <em>much better than me</em> at all of these things.</p>
-<p>Since many of my experiments took place in disposable Docker containers I had no qualms at all about running it in YOLO mode:</p>
-<div class="highlight highlight-source-shell"><pre>IS_SANDBOX=1 claude --dangerously-skip-permissions</pre></div>
-
-<p>The <code>IS_SANDBOX=1</code> environment variable stops Claude from complaining about running as root.</p>
-
-<details><summary style="font-style: italic">Before I found out about IS_SANDBOX</summary>
-
-<p><br /><em>I was <a href="https://twitter.com/lawrencecchen/status/1978255934938886409">tipped off</a> about IS_SANDBOX after I published this article. Here's my original workaround:</em></p>
-
-<p>Claude understandably won't let you do this as root, even in a Docker container, so I found myself using the following incantation in a fresh <code>nvcr.io/nvidia/cuda:13.0.1-devel-ubuntu24.04</code> instance pretty often:</p>
-<div class="highlight highlight-source-shell"><pre>apt-get update <span class="pl-k">&amp;&amp;</span> apt-get install -y sudo
-<span class="pl-c"><span class="pl-c">#</span> pick the first free UID &gt;=1000</span>
-U=<span class="pl-s"><span class="pl-pds">$(</span>for i <span class="pl-k">in</span> <span class="pl-s"><span class="pl-pds">$(</span>seq 1000 65000<span class="pl-pds">)</span></span><span class="pl-k">;</span> <span class="pl-k">do</span> <span class="pl-k">if</span> <span class="pl-k">!</span> getent passwd <span class="pl-smi">$i</span> <span class="pl-k">&gt;</span>/dev/null<span class="pl-k">;</span> <span class="pl-k">then</span> <span class="pl-c1">echo</span> <span class="pl-smi">$i</span><span class="pl-k">;</span> <span class="pl-c1">break</span><span class="pl-k">;</span> <span class="pl-k">fi</span><span class="pl-k">;</span> done<span class="pl-pds">)</span></span>
-<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Chosen UID: <span class="pl-smi">$U</span><span class="pl-pds">"</span></span>
-<span class="pl-c"><span class="pl-c">#</span> same for a GID</span>
-G=<span class="pl-s"><span class="pl-pds">$(</span>for i <span class="pl-k">in</span> <span class="pl-s"><span class="pl-pds">$(</span>seq 1000 65000<span class="pl-pds">)</span></span><span class="pl-k">;</span> <span class="pl-k">do</span> <span class="pl-k">if</span> <span class="pl-k">!</span> getent group <span class="pl-smi">$i</span> <span class="pl-k">&gt;</span>/dev/null<span class="pl-k">;</span> <span class="pl-k">then</span> <span class="pl-c1">echo</span> <span class="pl-smi">$i</span><span class="pl-k">;</span> <span class="pl-c1">break</span><span class="pl-k">;</span> <span class="pl-k">fi</span><span class="pl-k">;</span> done<span class="pl-pds">)</span></span>
-<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Chosen GID: <span class="pl-smi">$G</span><span class="pl-pds">"</span></span>
-<span class="pl-c"><span class="pl-c">#</span> create user+group</span>
-groupadd -g <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$G</span><span class="pl-pds">"</span></span> devgrp
-useradd -m -u <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$U</span><span class="pl-pds">"</span></span> -g <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$G</span><span class="pl-pds">"</span></span> -s /bin/bash dev
-<span class="pl-c"><span class="pl-c">#</span> enable password-less sudo:</span>
-<span class="pl-c1">printf</span> <span class="pl-s"><span class="pl-pds">'</span>dev ALL=(ALL) NOPASSWD:ALL\n<span class="pl-pds">'</span></span> <span class="pl-k">&gt;</span> /etc/sudoers.d/90-dev-nopasswd
-chmod 0440 /etc/sudoers.d/90-dev-nopasswd
-<span class="pl-c"><span class="pl-c">#</span> Install npm</span>
-DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get install -y npm
-<span class="pl-c"><span class="pl-c">#</span> Install Claude</span>
-npm install -g @anthropic-ai/claude-code</pre></div>
-<p>Then switch to the <code>dev</code> user and run Claude for the first time:</p>
-<div class="highlight highlight-source-shell"><pre>su - dev
-claude --dangerously-skip-permissions</pre></div>
-
-</details><br />
-
-<p>This will provide a URL which you can visit to authenticate with your Anthropic account, confirming by copying back a token and pasting it into the terminal.</p>
-<p>Docker tip: you can create a snapshot of the current image (with Claude installed) by running <code>docker ps</code> to get the container ID and then:</p>
-<div class="highlight highlight-source-shell"><pre>docker commit --pause=false <span class="pl-k">&lt;</span>container_id<span class="pl-k">&gt;</span> cc:snapshot</pre></div>
-<p>Then later you can start a similar container using:</p>
-<div class="highlight highlight-source-shell"><pre>docker run -it \
-  --gpus=all \
-  -v /usr/local/cuda:/usr/local/cuda:ro \
-  cc:snapshot bash</pre></div>
-<p>Here's an example of the kinds of prompts I've been running in Claude Code inside the container:</p>
-<blockquote>
-<p><code>I want to run https://huggingface.co/unsloth/Qwen3-4B-GGUF using llama.cpp - figure out how to get llama cpp working on this machine  such that it runs with the GPU, then install it in this directory and get that model to work to serve a prompt. Goal is to get this  command to run: llama-cli -hf unsloth/Qwen3-4B-GGUF -p "I believe the meaning of life is" -n 128 -no-cnv</code></p>
-</blockquote>
-<p>That one worked flawlessly - Claude checked out the <code>llama.cpp</code> repo, compiled it for me and iterated on it until it could run that model on the GPU. Here's a <a href="https://gist.github.com/simonw/3e7d28d9ed222d842f729bfca46d6673">full transcript</a>, converted from Claude's <code>.jsonl</code> log format to Markdown using a script I <a href="https://github.com/simonw/tools/blob/main/python/claude_to_markdown.py">vibe coded just now</a>.</p>
-<p>I later told it:</p>
-<blockquote>
-<p><code>Write out a markdown file with detailed notes on what you did. Start with the shortest form of notes on how to get a successful build, then add a full account of everything you tried, what went wrong and how you fixed it.</code></p>
-</blockquote>
-<p>Which produced <a href="https://gist.github.com/simonw/0942d96f616b9e328568ab27d911c8ed">this handy set of notes</a>.</p>
-<h4 id="tailscale-was-made-for-this">Tailscale was made for this</h4>
-<p>Having a machine like this on my local network is neat, but what's even neater is being able to access it from anywhere else in the world, from both my phone and my laptop.</p>
-<p><a href="https://tailscale.com/">Tailscale</a> is <em>perfect</em> for this. I installed it on the Spark (using the <a href="https://tailscale.com/kb/1031/install-linux">Ubuntu instructions here</a>), signed in with my SSO account (via Google)... and the Spark showed up in the "Network Devices" panel on my laptop and phone instantly.</p>
-<p>I can SSH in from my laptop or using the <a href="https://termius.com/free-ssh-client-for-iphone">Termius iPhone app</a> on my phone. I've also been running tools like <a href="https://openwebui.com/">Open WebUI</a> which give me a mobile-friendly web interface for interacting with LLMs on the Spark.</p>
-<h4 id="here-comes-the-ecosystem">Here comes the ecosystem</h4>
-<p>The embargo on these devices dropped yesterday afternoon, and it turns out a whole bunch of relevant projects have had similar preview access to myself. This is <em>fantastic news</em> as many of the things I've been trying to figure out myself suddenly got a whole lot easier.</p>
-<p>Four particularly notable examples:</p>
-<ul>
-<li>Ollama <a href="https://ollama.com/blog/nvidia-spark">works out of the box</a>. They actually had a build that worked a few weeks ago, and were the first success I had running an LLM on the machine.</li>
-<li>
-<code>llama.cpp</code> creator Georgi Gerganov just published  <a href="https://github.com/ggml-org/llama.cpp/discussions/16578">extensive benchmark results</a> from running <code>llama.cpp</code> on a Spark. He's getting ~3,600 tokens/second to read the prompt and ~59 tokens/second to generate a response with the MXFP4 version of GPT-OSS 20B and ~817 tokens/second to read and ~18 tokens/second to generate for GLM-4.5-Air-GGUF.</li>
-<li>LM Studio now have <a href="https://lmstudio.ai/blog/dgx-spark">a build for the Spark</a>. I haven't tried this one yet as I'm currently using my machine exclusively via SSH.</li>
-<li>vLLM - one of the most popular engines for serving production LLMs - had <a href="https://x.com/eqhylxx/status/1977928690945360049">early access</a> and there's now an official <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/containers/vllm?version=25.09-py3">NVIDIA vLLM NGC Container</a> for running their stack.</li>
-</ul>
-<p>Here's <a href="https://docs.unsloth.ai/new/fine-tuning-llms-with-nvidia-dgx-spark-and-unsloth">a tutorial from Unsloth</a> on fine-tuning gpt-oss-20b on the Spark.</p>
-<h4 id="should-you-get-one-">Should you get one?</h4>
-<p>It's a bit too early for me to provide a confident recommendation concerning this machine. As indicated above, I've had a tough time figuring out how best to put it to use, largely through my own inexperience with CUDA, ARM64 and Ubuntu GPU machines in general.</p>
-<p>The ecosystem improvements in just the past 24 hours have been very reassuring though. I expect it will be clear within a few weeks how well supported this machine is going to be.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/hardware">hardware</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/tailscale">tailscale</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/nvidia">nvidia</a>, <a href="https://simonwillison.net/tags/ollama">ollama</a>, <a href="https://simonwillison.net/tags/llama-cpp">llama-cpp</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a>, <a href="https://simonwillison.net/tags/disclosures">disclosures</a></p>]]></description><pubDate>Tue, 14 Oct 2025 23:36:21 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/csrf">csrf</a>, <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/filippo-valsorda">filippo-valsorda</a></p>]]></description><pubDate>Wed, 15 Oct 2025 05:03:46 +0000</pubDate></item></channel></rss>
