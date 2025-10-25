@@ -3,7 +3,7 @@
 <li>Good automated tests which the coding agent can run. I love pytest for this - one of my projects has 1500 tests and Claude Code is really good at selectively executing just tests relevant to the change it is making, and then running the whole suite at the end.</li>
 <li>Give them the ability to interactively test the code they are writing too. Notes on how to start a development server (for web projects) are useful, then you can have them use Playwright or curl to try things out.</li>
 <li>I'm having great results from maintaining a GitHub issues collection for projects and pasting URLs to issues directly into Claude Code.</li>
-<li>I actually don't think documentation is too important: LLMs can read the code a lot faster than you to figure out how to use it. I have comprehensive documentation across all of my projects but I don't think it's the helpful for the coding agents, though they are good at helping me spot if it needs updating.</li>
+<li>I actually don't think documentation is too important: LLMs can read the code a lot faster than you to figure out how to use it. I have comprehensive documentation across all of my projects but I don't think it's that helpful for the coding agents, though they are good at helping me spot if it needs updating.</li>
 <li>Linters, type checkers, auto-formatters - give coding agents helpful tools to run and they'll use them.</li>
 </ul>
 <p>For the most part anything that makes a codebase easier for humans to maintain turns out to help agents as well.</p>
