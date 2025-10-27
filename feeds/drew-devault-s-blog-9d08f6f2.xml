@@ -60,7 +60,8 @@ she said:</p>
 over everything, and that would be enough to start a flame war. Unless some
 dev independently got money from them to do something, but I&rsquo;m sure that we as
 a project got nothing. The only grant we&rsquo;ve received is from the <a href="https://www.sovereign.tech/">STF</a> last
-year.</p></blockquote>
+year.</p>
+</blockquote>
 <p>Neovim is another project FUTO lists as a grant recipient, and they also have a
 <a href="https://neovim.io/sponsors/">separate process for institutional sponsors</a>. I
 didn&rsquo;t reach out to anyone to confirm, but FUTO does not appear on the sponsor
@@ -69,7 +70,9 @@ list so presumably the M.O. is the same. This is also the case for
 <a href="https://conduit.rs/#donate">Conduit</a>, and
 <a href="https://www.kicad.org/sponsors/sponsors/">KiCad</a>. GrapheneOS is listed
 prominently as well, but <a href="https://grapheneos.social/@GrapheneOS/113443396794247106">that doesn&rsquo;t seem to have worked
-out very well for them</a>.</p>
+out very well for them</a>.
+Presumably ffmpeg received a similar quiet donation from FUTO, rather than
+something more easily recognizable as a grant.</p>
 <p>So, it seems like FUTO is doing some shady stuff and putting a bunch of notable
 FOSS projects on their home page without good reason to justify their
 endorsement. Who&rsquo;s behind all of this?</p>
@@ -93,7 +96,8 @@ January 2025:</p>
 <blockquote>
 <p>I’ve interacted with Vance once since the election. I bumped into him at a
 party. He said, &ldquo;Yarvin, you reactionary fascist.&rdquo; I was like, &ldquo;Thank you, Mr.
-Vice President, and I’m glad I didn’t stop you from getting elected.&rdquo;</p></blockquote>
+Vice President, and I’m glad I didn’t stop you from getting elected.&rdquo;</p>
+</blockquote>
 <p>&ndash; <a href="https://www.politico.com/news/magazine/2025/01/30/curtis-yarvins-ideas-00201552">Ian Ward for Politico</a></p>
 <p>Vice President Vance and numerous other figures in the American right have cited
 Yarvin as a friend and source of inspiration in shaping policy.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>
@@ -144,6 +148,62 @@ proudly displayed <a href="https://futo.org">on the front page</a> of a fascist-
 washed-up millionaire&rsquo;s scummy vanity company, and you don&rsquo;t like that, maybe
 you should ask them to knock it off? Eron, Louis &ndash; you know that a lot of these
 logos are trademarked, right?</p>
+<hr>
+<p><em>Updated 2025-10-27</em>:</p>
+<p>The FUTO website has been updated to clarify the nature of grants versus
+donations (<a href="https://web.archive.org/web/20251022223705/https://www.futo.org/">before</a>, <a href="https://futo.org">after</a>) and to reduce the appearance of endorsements from
+the donation recipients &ndash; the site is much better after this change.</p>
+<p>I spoke to a representative who spoke for the FUTO leadership, and shared
+positive feedback regarding the changes to the website. I also asked for a
+follow-up on the matter of platforming fascist activist Curtis Yarvin on their
+social media channels, and I was provided this official response:</p>
+<blockquote>
+<p>We prefer to spend our time building great software for people to use, funding
+interesting projects, and making FUTO better every day. We have no interest in
+engaging in politics as this is a distraction from our work. We&rsquo;d like to move
+past this. We don&rsquo;t have any further comment that that.</p>
+</blockquote>
+<p>I understand the view that distancing oneself from politics can be a productive
+approach to your work, and the work FUTO does funding great software like Immich
+is indeed important work that should be conducted relatively free of
+distractions. However, FUTO is a fundamentally political organization and it
+does not distance itself from politics. Consider for example the <a href="https://futo.org/about/futo-statement-on-opensource/">FUTO
+statement on Open Source</a>, which takes several political positions:</p>
+<ul>
+<li>Disapproval of the Open Source Initiative and their legitimacy as an authority</li>
+<li>Disapproval of OSI&rsquo;s proposed AI standards</li>
+<li>Disapproval of the &ldquo;tech oligopoly&rdquo;</li>
+<li>Advocacy for an &ldquo;open source&rdquo; which is inclusive of restrictions on commercial use</li>
+<li>Support for Eric S. Raymond&rsquo;s side in his conflict with OSI</li>
+<li>Tacit support for Bryan Lunduke</li>
+</ul>
+<p>A truer &ldquo;apolitical&rdquo; approach would accept the mainstream definition of open
+source, would not take positions on conflicts with OSI or Eric Raymond, and
+would be careful not to cite (or <a href="https://www.youtube.com/watch?v=6RU7FZpd_K0">platform</a>) controversial
+figures such as Lunduke.</p>
+<p>It is difficult for FUTO&rsquo;s work to be apolitical at all. Importantly, there are
+biases in their grants and donations: their selections have a tendency
+to privilege projects focused on privacy, decentralization, multimedia,
+communication, and right to repair, all of which suggest the political
+priorities of FUTO. The choice to fund &ldquo;source first&rdquo; software in addition to
+open source, or not to fund outright closed source software, or not to vet
+projects based on their community moderation, are also political factors in
+their process of selecting funding recipients, or at least are seemingly
+apolitical decisions which ultimately have political consequences.</p>
+<p>This brings us to the political nature of the choice to platform Curtis Yarvin.
+Yarvin is a self-proclaimed fascist who argues openly for fascist politics.
+Platforming Yarvin on the FUTO channels legitimizes Yarvin&rsquo;s ideas and his work,
+and provides curious listeners a funnel that leads to Yarvin&rsquo;s more radical
+ideas and into a far-right rabbit-hole. Platforming Yarvin advances the fascist
+political program.</p>
+<p>It should go without saying that it is political to support fascism or
+fascists. There is an outrageous moral, intellectual, and political
+contradiction in claiming that it is apolitical to promote a person whose
+political program is to dismantle democracy and eject people he disagrees with
+from the political sphere entirely. FUTO should reflect on their values,
+acknowledge the political nature of their work, and consider the ways in which
+their work intersects with politics writ large, then make decisions that align
+their political actions with their political beliefs.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
@@ -228,7 +288,8 @@ project lead for Ladybird, who tweeted on the occasion of his assassination:</p>
 <blockquote>
 <p>RIP Charlie Kirk</p>
 <p>I hope many more debate nerds carry on his quest to engage young people with
-words, not fists.</p></blockquote>
+words, not fists.</p>
+</blockquote>
 <p>&ndash; <a href="https://nitter.net/awesomekling/status/1966456391146606806">@awesomekling</a></p>
 <p>Kling has had a few things to say about Kirk on Twitter lately. <a href="https://nitter.net/awesomekling/status/1967178708852097278">Here&rsquo;s another
 one</a> &ndash; give you
@@ -249,13 +310,15 @@ leading to real-world incidents of harassment and abuse.</p>
 <blockquote>
 <blockquote>
 <p>White males are actively discriminated against in tech.</p>
-<p>It’s an open secret of Silicon Valley.</p></blockquote>
+<p>It’s an open secret of Silicon Valley.</p>
+</blockquote>
 <p>One of the last meetings I attended before leaving Apple (in 2017) was
 management asking us to &ldquo;keep the corporate diversity targets in mind&rdquo; when
 interviewing potential new hires.</p>
 <p>The phrasing was careful, but the implication was pretty clear.</p>
 <p>I knew in my heart this wasn&rsquo;t wholesome, but I was too scared to rock the
-boat at the time.</p></blockquote>
+boat at the time.</p>
+</blockquote>
 <p>&ndash; <a href="https://nitter.net/awesomekling/status/1874518295350837401">@awesomekling</a> replying to @danheld<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup></p>
 <p>And in a moment of poetic irony, a few days ago Kling <a href="https://nitter.net/awesomekling/status/1969350008538370216">spoke in
 solidarity</a> with Hansson over his &ldquo;persecution&rdquo; for &ldquo;banal, mainstream
@@ -548,7 +611,8 @@ more complex stacks of software for a security team to manage already.</p>
 shape, and agree that there hasn&rsquo;t been much movement from freedesktop in
 maintaining X in the past few years. There are many desktop environments which
 will never get ported to Wayland and we do need a viable solution to keep
-those desktop environments working.</p></blockquote>
+those desktop environments working.</p>
+</blockquote>
 <style>
 .redacted {
   color: black;
@@ -1559,7 +1623,8 @@ space.</p>
 just how incorporated is FOSDEM as an organisation? How do the laws of Belgium
 affect the legalities of the organisation? How is the bank account
 administrated? How much money goes into the costs of this year, and how much
-of the budget goes into startup costs for the next year?</p></blockquote>
+of the budget goes into startup costs for the next year?</p>
+</blockquote>
 <p>Peter Zaitsev, a long-time devroom organizer and FOSDEM speaker for many years,
 <a href="https://www.percona.com/blog/in-search-of-transparency-at-fosdem/">asked similar questions last year</a>. I&rsquo;ve spoken to the volunteers who
 signed up for the protest &ndash; we&rsquo;re relieved that Dorsey&rsquo;s talk has been
@@ -1797,7 +1862,8 @@ do not have [Asperger’s] — I don’t have most of the characteristics of tha
 For instance, one of those characteristics is having trouble with rhythm. I
 love the most complicated, fascinating rhythms.” But Stallman did acknowledge
 that he has “a few of the characteristics” and that he “might have what some
-people call a ‘shadow’ version of it.”</p></blockquote>
+people call a ‘shadow’ version of it.”</p>
+</blockquote>
 <p>The theory that Stallman is neurodivergent is usually cited to explain his
 various off-putting behaviors, but there is no tangible evidence to support the
 theory. This alone raises some alarms, in that off-putting behavior is
@@ -1829,7 +1895,8 @@ to harm others. We can all learn and improve.</p>
 violations, then calling out the organization for &ldquo;not supporting true
 diversity&rdquo; when they&rsquo;re shown the door. This is manipulative and insulting to
 the other neurodivergent members of the community, and should never be
-tolerated.</p></blockquote>
+tolerated.</p>
+</blockquote>
 <p>Bram Dingelstad, a neurodivergent person who participated in the discussion, had
 this to say:</p>
 <blockquote>
@@ -1839,12 +1906,14 @@ themselves in a way that doesn&rsquo;t make anyone unsafe or harm victims of sex
 assault by dismissing or downplaying their lived experience. In my opinion,
 using neurodivergence as an excuse for this behaviour only worsens the
 perception of neurodiversity.</p>
-<p>Richard Stallman should be held accountable for his speech and his actions.</p></blockquote>
+<p>Richard Stallman should be held accountable for his speech and his actions.</p>
+</blockquote>
 <p>Another commenter put it more concisely, if not as eloquently:</p>
 <blockquote>
 <p>It&rsquo;s fucking ableist to say neurodiversity disposes you towards problematic
 behaviors. It&rsquo;s disgusting trying to hide behind it and really quite
-insulting.</p></blockquote>
+insulting.</p>
+</blockquote>
 <p>I came away from these discussions with the following understanding:
 neurodivergence, in particular autism, causes people to struggle to understand
 unstated social norms and conventions, sometimes with embarrassing or harmful
@@ -1864,7 +1933,8 @@ I&rsquo;m not a huge fan of the narrative that I have &ldquo;the neurodevelopmen
 disorder that makes you a bigot&rdquo;.</p>
 <p>I fundamentally disagree with the idea that the pervasive sexism in tech
 is because of the high incidence of neurodiversity. It&rsquo;s because tech has
-broadly operated as a boys club for decades, and those norms persist.</p></blockquote>
+broadly operated as a boys club for decades, and those norms persist.</p>
+</blockquote>
 <p>Using neurodivergence as a cover for sexism and problematic behavior in our
 communities is a toxic, ableist, and, of course, sexist attitude that serves to
 provide problematic men with space to be problematic. Note also how
@@ -1891,7 +1961,8 @@ hands were tied. I&rsquo;m not going to say it&rsquo;s something only he could c
 because maybe he truly couldn&rsquo;t change that. Maybe it was ableist to exclude
 him. But the safety of my friends comes first. The hard part is distinguishing
 between this situation and a situation where someone is excluded when they are
-perceived as a threat just because they&rsquo;re different.</p></blockquote>
+perceived as a threat just because they&rsquo;re different.</p>
+</blockquote>
 <p>Stallman&rsquo;s rhetoric and behavior are harmful, and we need to address that harm.
 The refrain of &ldquo;criticizing Stallman&rsquo;s behavior is ableist and alienates
 neurodiverse individuals in our community&rdquo; is itself ableist and isn&rsquo;t doing any
@@ -1952,7 +2023,8 @@ were murdered by Nazi Germany during World War II.&#160;<a href="#fnref:1" class
 </li>
 </ol>
 </div>]]></description><pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate></item><item><title>Rust for Linux revisited</title><link>https://drewdevault.com/2024/08/30/2024-08-30-Rust-in-Linux-revisited.html</link><description><![CDATA[<blockquote>
-<p><em>Ugh. Drew&rsquo;s blogging about Rust again.</em></p></blockquote>
+<p><em>Ugh. Drew&rsquo;s blogging about Rust again.</em></p>
+</blockquote>
 <p>&ndash; You</p>
 <p>I promise to be nice.</p>
 <p>Two years ago, seeing the Rust-for-Linux project starting to get the ball
@@ -2439,13 +2511,15 @@ license:</p>
 <p>Permission is hereby granted […] to deal in the Software without restriction
 […] subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p></blockquote>
+copies or substantial portions of the Software.</p>
+</blockquote>
 <p>This obliges the user, when distributing copies of the software, to include the
 copyright notice. However, it does not <em>restrict</em> the use of the software under
 any conditions. An example of a restriction comes from the infamous JSON
 license, which adds the following clause to a stock MIT license:</p>
 <blockquote>
-<p>The Software shall be used for Good, not Evil.</p></blockquote>
+<p>The Software shall be used for Good, not Evil.</p>
+</blockquote>
 <p>IBM famously petitioned Douglas Crockford for, and received, a license to do
 evil with JSON.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> This kind of clause is broadly referred to in the free
 software jargon as &ldquo;discrimination against field of endeavour&rdquo;, and such
@@ -2454,7 +2528,8 @@ quote the <a href="https://opensource.org/osd">Open Source Definition</a>, claus
 <blockquote>
 <p>The license must not restrict anyone from making use of the program in a
 specific field of endeavor. For example, it may not restrict the program from
-being used in a business, or from being used for genetic research.</p></blockquote>
+being used in a business, or from being used for genetic research.</p>
+</blockquote>
 <p>No such restrictions are found in free or open source software licenses, be they
 permissive or copyleft &ndash; all FOSS licenses permit the use of the software for
 any purpose without restriction. You can sell both permissive and copyleft
@@ -2604,7 +2679,8 @@ full name, employer and contact details&rdquo;:</p>
 mentioned.</p>
 <p>Recently I have received an email filled with threats to my inbox, from a
 member of the X.org board, Freedesktop.org, and a Red Hat employee. Their name
-is [redacted].</p></blockquote>
+is [redacted].</p>
+</blockquote>
 <p>Moreover, Vaxry claims to have apologised for his past conduct, which is not
 true. In lieu of an apology, Vaxry has spent the &ldquo;1.5 years&rdquo; since the last
 incident posting angry rants on his blog calling out minority representation and
@@ -2830,7 +2906,8 @@ in support of pedophilia. The following comment from Stallman in 2013 drew harsh
 criticism:</p>
 <blockquote>
 <p>There is little evidence to justify the widespread assumption that willing
-participation in pedophilia hurts children.</p></blockquote>
+participation in pedophilia hurts children.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20210325014249/https://stallman.org/archives/2012-nov-feb.html#04_January_2013_(Pedophilia)">stallman.org, 04 January 2013 &ldquo;Pedophilia&rdquo;</a></small></p>
 <p>Following much of the criticism directed at Stallman, he had a number of
 &ldquo;personal conversations&rdquo; which reframed his views. Of the many comments Stallman
@@ -2842,7 +2919,8 @@ an adult and a child, if the child accepted it.</p>
 <p>Through personal conversations in recent years, I&rsquo;ve learned to understand how
 sex with a child can harm per psychologically. This changed my mind about the
 matter: I think adults should not do that. I am grateful for the conversations
-that enabled me to understand why.</p></blockquote>
+that enabled me to understand why.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20210325015259/https://stallman.org/archives/2019-jul-oct.html#14_September_2019_(Sex_between_an_adult_and_a_child_is_wrong)">stallman.org, 14 September 2019 &ldquo;Sex between an adult and a child is wrong&rdquo;</a></small></p>
 <p>This statement from Stallman has been accepted by his defenders as evidence of
 his capitulation on pedophilia. I argue that this statement is misleading due to
@@ -2851,7 +2929,8 @@ he does so with a very specific meaning, which he explains on his website:</p>
 <blockquote>
 <p>Children: Humans up to age 12 or 13 are children. After that, they become
 adolescents or teenagers. Let&rsquo;s resist the practice of infantilizing
-teenagers, by not calling them &ldquo;children&rdquo;.</p></blockquote>
+teenagers, by not calling them &ldquo;children&rdquo;.</p>
+</blockquote>
 <p><small>— <a href="https://www.stallman.org/antiglossary.html">stallman.org, &ldquo;Anti-glossary&rdquo;</a></small></p>
 <p>It seems clear from this definition is that Stallman&rsquo;s comments are not a
 capitulation at all. His 2019 retraction, when interpreted using his definition
@@ -2862,7 +2941,8 @@ of sexual impropriety with minors.</p>
 <blockquote>
 <p>It was right for me to talk about the injustice to Minsky, but it was
 tone-deaf that I didn&rsquo;t acknowledge as context the injustice that Epstein did
-to women or the pain that caused.</p></blockquote>
+to women or the pain that caused.</p>
+</blockquote>
 <p><small>— <a href="https://www.fsf.org/news/rms-addresses-the-free-software-community">fsf.org, April 12, 2021, &ldquo;RMS addresses the free software community&rdquo;</a></small></p>
 <p>Stallman qualifies his apology by explicitly re-affirming his defense of Marvin
 Minsky, which is addressed in detail later in this piece. Stallman&rsquo;s
@@ -2876,7 +2956,8 @@ notes over the years. For example:</p>
 <blockquote>
 <p>It sounds horrible: &ldquo;UN peacekeepers accused of child rape in South Sudan.&rdquo;
 But the article makes it pretty clear that the &ldquo;children&rdquo; involved were not
-children. They were teenagers.</p></blockquote>
+children. They were teenagers.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20180509120046/https://stallman.org/archives/2018-mar-jun.html#30_April_2018_(UN_peacekeepers_in_South_Sudan)">stallman.org, 30 April 2018 &ldquo;UN peacekeepers in South Sudan&rdquo;</a></small></p>
 <p>Here Stallman again explicitly distinguishes &ldquo;teenagers&rdquo; from children, drawing
 this distinction especially in the context of sexual relationships between
@@ -2886,7 +2967,8 @@ see it again in Stallman&rsquo;s widely criticized defense of Cody Wilson:</p>
 <p>Cody Wilson has been charged with hiring a &ldquo;child&rdquo; sex worker. Her age has
 not been announced, but I think she must surely be a teenager, not a child.
 Calling teenagers &ldquo;children&rdquo; in this context is a way of smearing people with
-normal sexual proclivities as &ldquo;perverts&rdquo;.</p></blockquote>
+normal sexual proclivities as &ldquo;perverts&rdquo;.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20180924231708/https://stallman.org/archives/2018-jul-oct.html#23_September_2018_(Cody_Wilson)">stallman.org, 23 September 2018 &ldquo;Cody Wilson&rdquo;</a></small></p>
 <p>And once more when defending Roy Moore:</p>
 <blockquote>
@@ -2900,7 +2982,8 @@ one that was 18 years old. Many teenagers are minors, but none of them are
 children.</p>
 <p>The condemnation is surely sparked by the political motive of wanting to
 defeat Moore in the coming election, but it draws fuel from ageism and the
-fashion for overprotectiveness of &ldquo;children&rdquo;.</p></blockquote>
+fashion for overprotectiveness of &ldquo;children&rdquo;.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20180104112431/https://www.stallman.org/archives/2017-nov-feb.html#27_November_2017_(Roy_Moore's_relationships)">stallman.org, 27 November 2017 &ldquo;Roy Moore&rsquo;s relationships&rdquo;</a></small></p>
 <p>Ms. Corfman was 14 at the time Roy Moore is accused of initiating sexual contact
 with her; Moore was 32 at the time. Here we see an example of him re-iterating
@@ -2925,7 +3008,8 @@ sex with her.</p>
 <p>None of these acts would be wrong in any sense, provided they took precautions
 against spreading infections. The idea that adolescents (of whatever sex) need
 to be &ldquo;protected&rdquo; from sexual experience they wish to have is prudish
-ignorantism, and making that experience a crime is perverse.</p></blockquote>
+ignorantism, and making that experience a crime is perverse.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20170612074722/http://stallman.org/archives/2017-mar-jun.html#26_May_2017_(Prudish_ignorantism)">stallman.org, 26 May 2017, &ldquo;Prudish ignorantism&rdquo;</a></small></p>
 <p>The woman in question, aged 60, had sex with her husband, age 69, in a public
 space, and invited spectators as young as 11 to participate.</p>
@@ -2938,7 +3022,8 @@ harmful practice which retards their development into capable adults.</p>
 and considered perverse, for adults to be physically attracted to children.
 However, it is normal for adults to be physically attracted to adolescents.
 Since the claims about Wilson is the latter, it is wrong to present it as the
-former.</p></blockquote>
+former.</p>
+</blockquote>
 <p><small>— <a href="https://www.stallman.org/archives/2018-sep-dec.html#23_September_2018_(Cody_Wilson)">stallman.org, 23 September 2018, &ldquo;Cody Wilson&rdquo;</a></small></p>
 <p>One month prior, Stallman made a statement which similarly normalized adult
 attraction to minors, and suggests that acting on this attraction should be
@@ -2953,7 +3038,8 @@ their attraction to direct it elsewhere. Which is as absurd, and as
 potentially oppressive, as claiming that homosexuals should control their
 attraction and direct it towards to the other sex. Will men be pressured to
 undergo &ldquo;age conversion therapy&rdquo; intended to brainwash them to feel attracted
-mainly to women of their own age?</p></blockquote>
+mainly to women of their own age?</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20180911075211/https://www.stallman.org/archives/2018-jul-oct.html#21_August_2018_(Age_and_attraction)">stallman.org, 21 August 2018, &ldquo;Age and attraction&rdquo;</a></small></p>
 <p>A trend is thus clearly seen in Stallman&rsquo;s regular political notes, over several
 years, wherein Stallman re-iterates his position that &ldquo;adolescents&rdquo; or
@@ -2973,7 +3059,8 @@ this downplaying in another example from 2019:</p>
 <blockquote>
 <p>Should we accept stretching the terms &ldquo;sexual abuse&rdquo; and &ldquo;molestation&rdquo; to
 include looking without touching?</p>
-<p>I do not accept it.</p></blockquote>
+<p>I do not accept it.</p>
+</blockquote>
 <p><small>— <a href="https://www.stallman.org/archives/2019-may-aug.html#11_June_2019_(Stretching_meaning_of_terms)">stallman.org, 11 June 2019 &ldquo;Stretching meaning of terms&rdquo;</a></small></p>
 <p>Stallman is writing here in response to a news article outlining accusations of
 sexual misconduct directed at Ohio State athletics doctor Richard Strauss.
@@ -2997,7 +3084,8 @@ the sake of equal opportunity, but that is a different issue.</p>
 <p>I don&rsquo;t think that rape should be treated the same as a momentary touch.
 People we accuse have a right to those distinctions, so I am careful not to
 use the term &ldquo;sexual assault&rdquo; to categorize the actions of any person on any
-specific occasion.</p></blockquote>
+specific occasion.</p>
+</blockquote>
 <p><small>— <a href="https://www.stallman.org/antiglossary.html">stallman.org, &ldquo;Anti-glossary&rdquo;</a></small></p>
 <p>Stallman often fixates on the term &ldquo;sexual assault&rdquo; throughout his political
 notes. He feels that the term fails to distinguish between &ldquo;grave&rdquo; and &ldquo;minor&rdquo;
@@ -3006,7 +3094,8 @@ crimes, as he illustrated in 2021:</p>
 <p>&ldquo;Sexual assault&rdquo; is so vague that it makes no sense as a charge. Because of
 that term, we can&rsquo;t whether these journalists were accused of a grave crime
 or a minor one. However, the charge of espionage shows this is political
-persecution.</p></blockquote>
+persecution.</p>
+</blockquote>
 <p><small>— <a href="https://stallman.org/archives/2021-jul-oct.html#21_July_2021_(Imprisonment_of_journalists)">stallman.org, 21 July 2021, &ldquo;Imprisonment of journalists&rdquo;</a></small></p>
 <p>I would like to find out what kind of crimes Stallman feels the need to
 distinguish along this axis. His other political notes give us some hints,
@@ -3018,7 +3107,8 @@ well be sexual harassment. He should have accepted no for an answer the first
 time she said it. However, calling a kiss &ldquo;sexual assault&rdquo; is an exaggeration,
 an attempt to equate it to much graver acts, that are crimes.</p>
 <p>The term &ldquo;sexual assault&rdquo; encourages that injustice, and I believe it has been
-popularized specifically with that intention. That is why I reject that term.</p></blockquote>
+popularized specifically with that intention. That is why I reject that term.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20190801201704/https://stallman.org/archives/2019-may-aug.html#30_July_2019_(Al_Franken)">stallman.org, 30 July 2019, &ldquo;Al Franken&rdquo;</a></small></p>
 <p>Stallman also wrote in 2020 to question the use of the phrase again:</p>
 <blockquote>
@@ -3027,7 +3117,8 @@ rare to bring them to justice.</p>
 <p>I object to describing any one crime as &ldquo;sexual assault&rdquo; because that is vague
 about the severity of the crime. This article often uses that term to refer to
 many crimes that differ in severity but raise the same issue. That may be a
-valid practice.</p></blockquote>
+valid practice.</p>
+</blockquote>
 <p><small>— <a href="https://stallman.org/notes/2020-jul-oct.html#12_August_2020_(When_thugs_rape_people_they_say_are_suspects)">stallman.org, 12 August 2020, &ldquo;When thugs rape people they say are suspects&rdquo;</a></small></p>
 <p>In the article Stallman cites in this political note, various unwelcome sexual
 acts by the police are described, the least severe of which is probably
@@ -3045,7 +3136,8 @@ committed. So we can&rsquo;t begin to judge whether those acts were wrong.</p>
 <p>I see at least three possibilities. Perhaps those acts really constituted
 rape — it is a possibility. Or perhaps the two had sex willingly, but her
 parents freaked out and demanded prosecution. Or, intermediate between those
-two, perhaps he pressured her into having sex, or got her drunk.</p></blockquote>
+two, perhaps he pressured her into having sex, or got her drunk.</p>
+</blockquote>
 <p><small>— <a href="https://stallman.org/archives/2017-nov-feb.html#13_November_2017_(Jelani_Maraj)">stallman.org, 13 November 2017, &ldquo;Jelani Maraj&rdquo;</a></small></p>
 <p>Another article by Stallman does not explicitly refer to sexual assault, but
 does engage in a bizarre defense of a journalist who was fired for masturbating
@@ -3061,7 +3153,8 @@ meet its &ldquo;standards of conduct&rdquo;, but it won&rsquo;t tell us what —
 guess. What are the possibilities? Intentionally engaging in video-call sex as
 a side activity during a work meeting? If he had not made a mistake in keeping
 that out of view of the coworkers, why would it make a difference what the
-side activity was?</p></blockquote>
+side activity was?</p>
+</blockquote>
 <p><small>— <a href="https://www.stallman.org/articles/toobin.html">stallman.org, November 2020, &ldquo;On the Firing of Jeffrey Toobin&rdquo;</a></small></p>
 <p>Finally, Stallman elaborated on his thoughts on the term most recently in
 October 2023. This note gives the clearest view of Stallman&rsquo;s preferred
@@ -3073,7 +3166,8 @@ clear lower bound, could be stretched to criminalize minor things, perhaps
 even stealing a kiss. Now this has happened.</p>
 <p>What next? Will a pat on the arm or a hug be criminalized? There is no clear
 limit to how far this can go, when a group builds up enough outrage to push
-it.</p></blockquote>
+it.</p>
+</blockquote>
 <p><small>— <a href="https://www.stallman.org/archives/2023-sep-dec.html#15_October_2023_(Sexual_assault_for_stealing_a_kiss)">stallman.org, 15 October 2023, &ldquo;Sexual assault for stealing a kiss&rdquo;</a></small></p>
 <p>From Stallman&rsquo;s statements, we can refine his objection to the term &ldquo;sexual
 assault&rdquo;, and sexual behaviors generally, to further suggest that the following
@@ -3109,7 +3203,8 @@ presented herself to him as entirely willing. Assuming she was being coerced
 by Epstein, he would have had every reason to tell her to conceal that from
 most of his associates.</p>
 <p>I’ve concluded from various examples of accusation inflation that it is
-absolutely wrong to use the term “sexual assault” in an accusation.</p></blockquote>
+absolutely wrong to use the term “sexual assault” in an accusation.</p>
+</blockquote>
 <p><small>— Excerpt from <a href="https://scribe.rip/medium.com/@selamie/remove-richard-stallman-fec6ec210794">Selam G&rsquo;s recount of Stallman&rsquo;s email</a> to MIT Computer Science and Artificial Intelligence Laboratory mailing list, September 2019. Selam&rsquo;s quotation has been corroborated by other sources.
 Minsky is, in this context, accused of having had a sexual encounter with a
 minor facilitated by convicted child trafficker Ghislaine Maxwell. The original
@@ -3139,7 +3234,8 @@ to adults in the following political note from 2017:</p>
 <p>As far as I can tell from this article, he didn&rsquo;t try to force women into sex.</p>
 <p>When women persistently said no, he does not seem to have tried to punish them.</p>
 <p>The most he did was ask.</p>
-<p>He was a pest, but nothing worse than that.</p></blockquote>
+<p>He was a pest, but nothing worse than that.</p>
+</blockquote>
 <p><small>— <a href="https://web.archive.org/web/20180131020215/https://stallman.org/archives/2017-jul-oct.html#29_October_2017_(Pestering_women)">stallman.org, 29 October 2017, &ldquo;Pestering women&rdquo;</a></small></p>
 <p>In this case we have an example of &ldquo;quid pro quo&rdquo;, a kind of sexual harassment
 which weaponizes power dynamics for sexual gratification. This kind of sexual
@@ -3213,7 +3309,8 @@ might be useful for preparing an interview.</p>
 <p>Hare is a systems programming language designed to be simple, stable, and
 robust. Hare uses a static type system, manual memory management, and a
 minimal runtime. It is well-suited to writing operating systems, system tools,
-compilers, networking software, and other low-level, high performance tasks.</p></blockquote>
+compilers, networking software, and other low-level, high performance tasks.</p>
+</blockquote>
 <p>Hare has been in development since late 2019 and today has about 100
 contributors.</p>
 <ul>
@@ -3240,7 +3337,8 @@ design is inspired by the seL4 micro-kernel and Plan 9.</p>
 <blockquote>
 <p>Himitsu is a secure secret storage system for Unix-like systems. It provides
 an arbitrary key/value store (where values may be secret) and a query language
-for manipulating the key store.</p></blockquote>
+for manipulating the key store.</p>
+</blockquote>
 <p>Himitsu is written in Hare.</p>
 <ul>
 <li><a href="https://himitsustore.org/">Official website</a></li>
@@ -3262,7 +3360,8 @@ Developer Certificate of Origin (DCO), which includes clauses like the
 following:</p>
 <blockquote>
 <p>The contribution was created in whole or in part by me and I have the right to
-submit it under the open source license indicated in the file.</p></blockquote>
+submit it under the open source license indicated in the file.</p>
+</blockquote>
 <p>To some extent, the DCO serves as a legal assertion of copyright and an
 agreement to license a work under given copyright terms (GPLv2 in the case of
 Linux). This record also means that the author of the code is accountable in
@@ -3587,14 +3686,17 @@ Everything is a joke and anyone who wants to be &ldquo;serious&rdquo; about anyt
 mercilessly bullied and made fun of. Quoting this discussion:</p>
 <blockquote>
 <p>I think [a Code of Conduct] is pretty discriminatory towards people that
-prefer a close, hostile, homogeneous, exclusive, and unhealthy community.</p></blockquote>
+prefer a close, hostile, homogeneous, exclusive, and unhealthy community.</p>
+</blockquote>
 <blockquote>
 <p>First of all, why would I pledge to uphold any values? Seems like just
 inconveniencing myself. [&hellip;] If I&rsquo;d want to moderate, I&rsquo;d spend 90% of the
-time reading kids arguing about bullshit instead of coding.</p></blockquote>
+time reading kids arguing about bullshit instead of coding.</p>
+</blockquote>
 <blockquote>
 <p>If you don&rsquo;t know how to behave without a wall of text explaining how to
-behave online then you shouldn&rsquo;t be online.</p></blockquote>
+behave online then you shouldn&rsquo;t be online.</p>
+</blockquote>
 <p>I am not someone who believes all projects need a code of conduct, <em>if</em> there
 exists a reasonable standard of conduct in its absence &ndash; and that means having
 a community that does not bully and harass others for expressing differing
@@ -3617,7 +3719,8 @@ pronouns [..] because they put their pronouns in their nickname and made a big
 deal out of them because people were referring to them as &ldquo;he&rdquo; [misgendering
 them], which, on the Internet, let&rsquo;s be real, is the default. And so, one
 of the moderators changed the pronouns in their nickname to &ldquo;who/cares&rdquo;. [&hellip;]
-Let&rsquo;s be real, this isn&rsquo;t like, calling someone the N-word or something.</p></blockquote>
+Let&rsquo;s be real, this isn&rsquo;t like, calling someone the N-word or something.</p>
+</blockquote>
 <p>Later he describes a more moderated community (the /r/unixporn discord server)
 as having an environment in which everyone is going to &ldquo;lick your butthole just
 to be nice&rdquo;. He compared himself to <a href="https://en.wikipedia.org/wiki/Terry_A._Davis">Terry Davis</a>, the late operating system
@@ -4211,7 +4314,8 @@ that matter for you and the hacker community as a whole.</p>
 <p>Here&rsquo;s a quote from yesterday&rsquo;s unpublished blog post:</p>
 <blockquote>
 <p>Trigger warnings: child abuse, rape, sexual harassment, suicide, pedophilia,
-torture.</p></blockquote>
+torture.</p>
+</blockquote>
 <p>You won&rsquo;t read the full story, and trust me, you&rsquo;re better off for that. Suffice
 to say that my life has been consumed with trauma and strife all year. I have
 sought healing, and time for myself, time to process things, and each time a new
@@ -6468,7 +6572,8 @@ microkernel room tomorrow.</p>
 robust. Hare uses a static type system, manual memory management, and a minimal
 runtime. It is well-suited to writing operating systems, system tools,
 compilers, networking software, and other low-level, high performance tasks.
-Helios uses Hare to implement a microkernel, largely inspired by seL4.</p></blockquote>
+Helios uses Hare to implement a microkernel, largely inspired by seL4.</p>
+</blockquote>
 <p><a href="https://fosdem.org/2023/schedule/event/hare_meetup/"><strong>BoF: The Hare programming language</strong></a></p>
 <p>Saturday 15:00 at UB2.147</p>
 <blockquote>
@@ -6480,7 +6585,8 @@ compilers, networking software, and other low-level, high performance tasks.</p>
 future, and encourage discussions with the community. We&rsquo;ll also demonstrate a
 few interesting Hare projects, including Helios, a micro-kernel written in
 Hare, and encourage each other to work on interesting projects in the Hare
-community.</p></blockquote>
+community.</p>
+</blockquote>
 <p><a href="https://fosdem.org/2023/schedule/event/sourcehut/"><strong>BoF: SourceHut meetup</strong></a></p>
 <p>Saturday 16:00 at UB2.147</p>
 <blockquote>
@@ -6488,7 +6594,8 @@ community.</p></blockquote>
 git and mercurial hosting, continuous integration, mailing lists, and more.
 We&rsquo;ll be meeting here again in 2023 to discuss the platform and its community,
 the completion of the GraphQL rollout and the migration to the EU, and any
-other topics on the minds of the attendees.</p></blockquote>
+other topics on the minds of the attendees.</p>
+</blockquote>
 <p><a href="https://fosdem.org/2023/schedule/event/heliosuk/"><strong>Introducing Helios</strong></a></p>
 <p>Sunday 13:00 at H.1308 (Rolin)</p>
 <blockquote>
@@ -6496,12 +6603,14 @@ other topics on the minds of the attendees.</p></blockquote>
 applicability of the Hare programming language to kernels. This talk will
 introduce the design and rationale for Helios, address some details of its
 implementation, compare it with seL4, and elaborate on the broader plans for
-the system.</p></blockquote>]]></description><pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate></item><item><title>Setting a new focus for my blog</title><link>https://drewdevault.com/2023/01/22/2023-01-22-A-new-focus.html</link><description><![CDATA[<p>Just shy of two months ago, I published <a href="https://drewdevault.com/2022/12/01/I-shall-toil-quietly.html">I shall toil at a reduced volume</a>,
+the system.</p>
+</blockquote>]]></description><pubDate>Tue, 24 Jan 2023 00:00:00 +0000</pubDate></item><item><title>Setting a new focus for my blog</title><link>https://drewdevault.com/2023/01/22/2023-01-22-A-new-focus.html</link><description><![CDATA[<p>Just shy of two months ago, I published <a href="https://drewdevault.com/2022/12/01/I-shall-toil-quietly.html">I shall toil at a reduced volume</a>,
 which addressed the fact that I&rsquo;m not getting what I want from my blog anymore,
 and I would be taking an indefinite break. Well, I am ready to resume my
 writing, albeit with a different tone and focus than before.</p>
 <blockquote>
-<p>Well, that was fast.</p></blockquote>
+<p>Well, that was fast.</p>
+</blockquote>
 <p>&ndash; Everyone</p>
 <p>Since writing this, I have been considering what exactly the essential subject
 of my dissatisfaction with my writing has been. I may have found the answer: I
@@ -7885,7 +7994,8 @@ though:</p>
 <blockquote>
 <p>There are possibly some well-designed and written parts which have not
 suffered a memory safety issue in many years. It&rsquo;s insulting to present this
-as an improvement over what was achieved by those doing all this hard work.</p></blockquote>
+as an improvement over what was achieved by those doing all this hard work.</p>
+</blockquote>
 <p>Regarding &ldquo;trendiness&rdquo;, I admit that this is a somewhat unforgiving turn of
 phrase. In this respect I refer to the goal of expanding the kernel&rsquo;s developer
 base from a bunch of aging curmudgeons writing C<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> towards a more
@@ -9963,13 +10073,15 @@ re-use, such as attribution. To quote the MIT license:</p>
 <blockquote>
 <p>Permission is hereby granted [&hellip;] subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p></blockquote>
+copies or substantial portions of the Software.</p>
+</blockquote>
 <p>Or the equally &ldquo;liberal&rdquo; BSD license:</p>
 <blockquote>
 <p>Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:</p>
 <p>Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.</p></blockquote>
+list of conditions and the following disclaimer.</p>
+</blockquote>
 <p>On the other end of the spectrum, copyleft licenses such as GNU General Public
 License or Mozilla Public License go further, demanding not only attribution for
 derivative works, but that such derived works are <em>also released</em> with the same
@@ -9980,7 +10092,8 @@ from the Program, in the form of source code under the terms of section 4,
 provided that you also meet all of these conditions:</p>
 <p>[&hellip;]</p>
 <p>You must license the entire work, as a whole, under this License to anyone who
-comes into possession of a copy.</p></blockquote>
+comes into possession of a copy.</p>
+</blockquote>
 <p>And MPL:</p>
 <blockquote>
 <p>All distribution of Covered Software in Source Code Form, including any
@@ -9988,7 +10101,8 @@ Modifications that You create or to which You contribute, must be under the
 terms of this License. You must inform recipients that the Source Code Form of
 the Covered Software is governed by the terms of this License, and how they
 can obtain a copy of this License. You may not attempt to alter or restrict
-the recipients&rsquo; rights in the Source Code Form.</p></blockquote>
+the recipients&rsquo; rights in the Source Code Form.</p>
+</blockquote>
 <p>Free software licenses impose obligations on the user through terms governing
 attribution, sublicensing, distribution, patents, trademarks, and relationships
 with laws like the Digital Millennium Copyright Act. The free software community
@@ -11070,7 +11184,8 @@ applications with due care. Please carefully read all of the documentation,
 double-check your work, and seek second opinions and independent review of
 your code. Our documentation and API design aims to prevent easy mistakes from
 being made, but it is no substitute for a good background in applied
-cryptography.</p></blockquote>
+cryptography.</p>
+</blockquote>
 <p>Do your due diligence before repurposing anything you see here.</p>
 <h2 id="decoding-ssh-private-keys">Decoding SSH private keys</h2>
 <p>Technically, you do not need to deal with OpenSSH private keys when implementing
@@ -11625,7 +11740,8 @@ also includes this warning:</p>
 library makes little effort to help you deal with this. Consult your local man
 pages, particularly signal-safety(7) on Linux, and perhaps a local priest as
 well. We advise you to get out of the signal handler as soon as possible, for
-example via the &ldquo;self-pipe trick&rdquo;.</p></blockquote>
+example via the &ldquo;self-pipe trick&rdquo;.</p>
+</blockquote>
 <p>We also provide signalfds on platforms that support them (such as Linux), which
 is less fraught with issues. Good luck.</p>
 <p>Next: the main loop. This code accepts new clients, prepares an agent for them,
@@ -11912,7 +12028,8 @@ work by including a return envelope and a stamp!</p>
 <p>And for maintainers, code review has never been easier — just get out
 your red marker and write your feedback directly on the patch! When you&rsquo;re
 ready to import the patch into your repository, just place it on your scanner
-and run <code>git scan-mail</code>.</p></blockquote>
+and run <code>git scan-mail</code>.</p>
+</blockquote>
 <p><img src="https://redacted.moe/f/fa9d0b95.jpg" alt="A picture of a patch printed out on paper"></p>
 <p>At least, this is what I&rsquo;d like to say, but I ended up cancelling the project
 before it was ready for April Fool&rsquo;s. After my friend kline (a staffer at Libera
@@ -13814,7 +13931,8 @@ license.</p>
 <p>Copyright (c) &lt;year&gt; &lt;copyright holders&gt;</p>
 <p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &ldquo;Software&rdquo;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
 <p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></blockquote>
+<p>THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+</blockquote>
 <p>The first paragraph of the license enumerates the rights which you, as a
 recipient of the software, are entitled to. It&rsquo;s this section which qualifies
 the license as free and open source software (assuming the later sections don&rsquo;t
@@ -15551,7 +15669,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 </code></pre>]]></description><pubDate>Tue, 16 Nov 2021 00:00:00 +0000</pubDate></item><item><title>Python: Please stop screwing over Linux distros</title><link>https://drewdevault.com/2021/11/16/Python-stop-screwing-distros-over.html</link><description><![CDATA[<blockquote>
 <p>Linux distributions? Oh, those things we use to bootstrap our Docker
-containers? Yeah, those are annoying. What were you complaining about again?</p></blockquote>
+containers? Yeah, those are annoying. What were you complaining about again?</p>
+</blockquote>
 <p>The Python community is obsessed with reinventing the wheel, over and over and
 over and over and over and over again. distutils, setuptools, pip, pipenv, tox,
 flit, conda, poetry, virtualenv, requirements.txt, setup.py, setup.cfg,
@@ -15666,7 +15785,8 @@ stewards of our community, we have a responsibility to prevent harm from
 anyone who intends to exploit our work without contributing back. We want to
 continue serving you by funding the development of important open-source graph
 technology for years to come. To honor that commitment, we’re moving Apollo
-Federation 2 to the Elastic License v2 (ELv2).</p></blockquote>
+Federation 2 to the Elastic License v2 (ELv2).</p>
+</blockquote>
 <p>Taking them at their word, this change was motivated by their deep care for
 their developer community. They want to &ldquo;honor their commitment&rdquo;, which is to
 &ldquo;fund the development of important open-source graph technology&rdquo; and &ldquo;prevent
@@ -15690,7 +15810,8 @@ Definition</a><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-n
 <p>[The distribution terms of open-source software] shall not restrict any party
 from selling or giving away the software as a component of an aggregate
 software distribution containing programs from several different sources. The
-license shall not require a royalty or other fee for such sale.</p></blockquote>
+license shall not require a royalty or other fee for such sale.</p>
+</blockquote>
 <p>The OSD elaborates later:</p>
 <blockquote>
 <p>The license must not restrict anyone from making use of the program in a
@@ -15698,7 +15819,8 @@ specific field of endeavor. For example, it may not restrict the program from
 being used in a business, or from being used for genetic research.</p>
 <p>The rights attached to the program must apply to all to whom the program is
 redistributed without the need for execution of an additional license by those
-parties.</p></blockquote>
+parties.</p>
+</blockquote>
 <p>The Elastic license clearly does not meet this criteria.</p>
 <p>Reading the Apollo announcement further, it continues to peddle this and other
 lies. The next paragraph attempts to build legitimacy for its peers in this
@@ -15708,7 +15830,8 @@ anti-FOSS gaslighting movement:</p>
 built on open-source technology (such as Elastic, MongoDB, and Confluent)
 have followed the path we’re taking to protect their communities and combine
 open, collaborative development with the benefits of cloud services that are
-easy to adopt and manage.</p></blockquote>
+easy to adopt and manage.</p>
+</blockquote>
 <p>They continue to use &ldquo;open-source&rdquo; language throughout, and misleads us into
 believing that they&rsquo;ve made this change to protect the community and empower
 developers.</p>
@@ -15718,7 +15841,8 @@ open-source companies facing a similar decision to “coalesce around a smaller
 number of licenses.” We’re excited to be part of this coalition of modern
 infrastructure companies building businesses that empower developers. [&hellip;]
 Moving the Apollo Federation libraries and gateway to ELv2 helps us focus on
-our mission: empowering all of you.</p></blockquote>
+our mission: empowering all of you.</p>
+</blockquote>
 <p>It should be evident by now that this is complete horseshit. Let me peel away
 the bullshit and explain what is actually going on here in plain English.</p>
 <p>Free and open source software can be commercialized — this is an essential
@@ -16717,7 +16841,8 @@ yourself in this situation, here are my recommendations.</p>
 <p>First, I&rsquo;ll echo the timeless words of Brian Kernighan:</p>
 <blockquote>
 <p>The most effective debugging tool is still careful thought, coupled with
-judiciously placed print statements.</p></blockquote>
+judiciously placed print statements.</p>
+</blockquote>
 <p>— Unix for Beginners (1979)</p>
 <p>Classic debugging techniques are of heightened importance in this environment:
 first seek to isolate the problem code, then to understand the problem code,
@@ -16801,7 +16926,8 @@ partnership with industry leaders in home security, we will make the process
 as safe and convenient as possible, so that authorized officers may enter your
 home at any time and quietly conduct their business without disturbing your
 day. We are excited about this unprecedented opportunity to curb the
-distribution of child abuse material in this country.</p></blockquote>
+distribution of child abuse material in this country.</p>
+</blockquote>
 <p>In short, government officials are confident that the possibility of having your
 home searched at any time will ultimately pose little to no inconvenience to
 Americans, particularly with respect to the things they choose to do, people
@@ -17140,7 +17266,8 @@ work of copyleft software. Consider this statement from GitHub&rsquo;s blog post
 the subject:</p>
 <blockquote>
 <p>During GitHub Copilot’s early development, nearly 300 employees used it in
-their daily work as part of an internal trial.</p></blockquote>
+their daily work as part of an internal trial.</p>
+</blockquote>
 <p>— <a href="https://docs.github.com/en/github/copilot/research-recitation">Albert Ziegler: A first look at rote learning in GitHub Copilot suggestions</a></p>
 <p>If 300 GitHub employees used Copilot as part of their daily workflow, they are
 likely to have incorporated the output of Copilot into nearly every software
@@ -17458,7 +17585,8 @@ it&rsquo;s ready. Until next time!</p>]]></description><pubDate>Tue, 15 Jun 2021
 <blockquote>
 <p>THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p></blockquote>
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</p>
+</blockquote>
 <p>The BSD licenses, GPL family of licenses, Apache 2.0, Mozilla Public License,
 and likely any other license you&rsquo;d care to name, have similar clauses of their
 own. It&rsquo;s worth taking a moment to consider the implications of this statement
@@ -17591,7 +17719,8 @@ would be quite welcome.</p>
 <p>XXXX is a systems programming language designed to be simple and robust. XXXX
 uses a static type system, manual memory management, and a minimal runtime.
 It is well-suited to writing operating systems, system tools, compilers,
-networking software, and other low-level, high performance tasks.</p></blockquote>
+networking software, and other low-level, high performance tasks.</p>
+</blockquote>
 <p>You can get a peek at how it feels by <a href="https://drewdevault.com/2021/05/24/io_uring-finger-server.html">reading about the finger server I wrote
 with it</a>.</p>
 <p>Sounds interesting? <a href="mailto:sir@cmpwn.com">Please tell me about your project idea</a>!</p>]]></description><pubDate>Sun, 30 May 2021 00:00:00 +0000</pubDate></item><item><title>Using io_uring to make a high-performance... finger server</title><link>https://drewdevault.com/2021/05/24/io_uring-finger-server.html</link><description><![CDATA[<p>I&rsquo;m working on adding a wrapper for the <a href="https://unixism.net/loti/what_is_io_uring.html">Linux io_uring interface</a> to my
@@ -19025,7 +19154,8 @@ the string-literal token and any whitespace therein is not discarded.</em></p>
 input until it is exhausted, performing the following steps in order: it shall
 consume and discard white-space characters until a non-white-space character
 is found, then consume the longest sequence of characters which could
-constitute a token, and emit it to the token stream.</p></blockquote>
+constitute a token, and emit it to the token stream.</p>
+</blockquote>
 <p>There are a few different kinds of tokens our lexer is going to need to handle:
 operators, like &ldquo;+&rdquo; and &ldquo;-&rdquo;; keywords, like &ldquo;struct&rdquo; and &ldquo;return&rdquo;; user-defined
 identifiers, like variable names; and constants, like string and numeric
@@ -19563,7 +19693,8 @@ and that a record of the contribution (including all personal information I
 submit with it, including my sign-off) is maintained indefinitely and may
 be redistributed consistent with this project or the open source license(s)
 involved.</li>
-</ol></blockquote>
+</ol>
+</blockquote>
 <p>This neatly answers all concerns of copyright. You license your contribution
 under the original license (Apache 2.0 in the case of OpenSearch), and attest
 that you have sufficient ownership over your changes to do so. You retain your
@@ -20135,7 +20266,8 @@ most help, and I&rsquo;m seeking volunteers to get involved.</p>
 <li>Correctly and completely implement the useful subset of the required behavior</li>
 <li>Provide complete documentation for each exported symbol</li>
 <li>Be sufficiently tested to provide confidence in the implementation</li>
-</ol></blockquote>
+</ol>
+</blockquote>
 <p>We have a number of focus areas for standard library development. I expect most
 contributors, at least at first, to stick to one or two of these areas. The
 focus areas we&rsquo;re looking into now are:</p>
@@ -20573,19 +20705,22 @@ Definition</a>, and its very first requirement is the following:</p>
 <p>[The distribution terms of open-source software] shall not restrict any party
 from selling or giving away the software as a component of an aggregate
 software distribution containing programs from several different sources. The
-license shall not require a royalty or other fee for such sale.</p></blockquote>
+license shall not require a royalty or other fee for such sale.</p>
+</blockquote>
 <p>That covers the &ldquo;OSS&rdquo; in &ldquo;FOSS&rdquo;. The &ldquo;F&rdquo; refers to &ldquo;free software&rdquo;, and is
 covered by <a href="https://www.gnu.org/philosophy/free-sw.html">this Free Software Foundation resource</a>:</p>
 <blockquote>
 <p>[A program is free software if the program&rsquo;s users have] the freedom to run
 the program as they wish, for any purpose, [&hellip; and to &hellip;] redistribute
-copies.</p></blockquote>
+copies.</p>
+</blockquote>
 <p>It further clarifies the commercial aspect of this freedom explicitly:</p>
 <blockquote>
 <p>“Free software” does not mean “noncommercial”. A free program must be
 available for commercial use, commercial development, and commercial
 distribution. [&hellip;] Regardless of how you got your copies, you always have the
-freedom to copy and change the software, [and] to sell copies.</p></blockquote>
+freedom to copy and change the software, [and] to sell copies.</p>
+</blockquote>
 <p>This is an essential, non-negotiable requirement of free and open-source
 software, and a reality you must face if you want to reap the benefits of the
 FOSS ecosystem. <em>Anyone</em> can monetize your code. That includes you, and me, all
@@ -21862,14 +21997,16 @@ dealing with it entirely on the maintainers:</p>
 occurs during Hacktoberfest, and we dislike spam just as much as you. If
 you&rsquo;re a maintainer, please label any spammy pull requests submitted to the
 repositories you maintain as &ldquo;invalid&rdquo; or &ldquo;spam&rdquo;, and close them. Pull
-requests with this label won&rsquo;t count toward Hacktoberfest.</p></blockquote>
+requests with this label won&rsquo;t count toward Hacktoberfest.</p>
+</blockquote>
 <p>via <a href="https://hacktoberfest.digitalocean.com/details">Hacktoberfest FAQ</a></p>
 <p>Here&rsquo;s GitHub&rsquo;s response:</p>
 <blockquote>
 <p>The content and activity you are reporting appears to be related to
 Hacktoberfest. Please keep in mind that GitHub Staff is not enforcing
 Hacktoberfest rules; we will, however, enforce our own Acceptable Use
-Policies. According to the Hacktoberfest FAQ&hellip; [same quote as given above]</p></blockquote>
+Policies. According to the Hacktoberfest FAQ&hellip; [same quote as given above]</p>
+</blockquote>
 <p>via <a href="https://twitter.com/kyleknighted/status/1311685461828612097">@kyleknighted@twitter.com</a></p>
 <p>So, according to these two companies, whose responsibility is it to deal with
 the spam that <em>they&rsquo;ve</em> created? The maintainers, of course! All for a T-Shirt.</p>
@@ -22047,7 +22184,8 @@ cross-reference that with the specification:</p>
 <blockquote>
 <p>In all cases [of functions defined by ctype.h,] the argument is an int, the
 value of which shall be representable as an unsigned char or shall equal the
-value of the macro EOF.</p></blockquote>
+value of the macro EOF.</p>
+</blockquote>
 <p>So the fix is obvious at this point. Okay, fine, my bad. My code is wrong. I
 apparently cannot just hand a UCS-32 codepoint to isalnum and expect it to tell
 me if it&rsquo;s between 0x30-0x39, 0x41-0x5A, or 0x61-0x7A.</p>
@@ -26399,13 +26537,15 @@ which would have significantly reduced your wait time, and are taking measures
 to ensure that tickets are no longer able to be ignored by front line support
 staff. We believe we have addressed the known failure modes at this time, and
 management will be keeping a close eye on the operation of the support system
-to ensure that new failure modes are handled rapidly.</p></blockquote>
+to ensure that new failure modes are handled rapidly.</p>
+</blockquote>
 <p>They&rsquo;ve tweeted this about their new self-service RMA system as well:</p>
 <blockquote>
 <p>We&rsquo;ve made it easy to submit RMA requests for defective products on our Web
 site. Simply go to your account, select the &ldquo;Submit RMA Request&rdquo; link, and
 fill out the form.  Your product will be warranty checked and, if valid, you
-will receive an RMA number and shipping address!</p></blockquote>
+will receive an RMA number and shipping address!</p>
+</blockquote>
 <p>— @RaptorCompSys via <a href="https://twitter.com/RaptorCompSys/status/1176432946670186498">Twitter</a></p>
 <p>They&rsquo;re also working on other improvements to make the end-user experience
 better, including <a href="https://wiki.raptorcs.com/wiki/Main_Page">more content on the
@@ -26601,7 +26741,8 @@ fault, or if the PSU is underpowered enough that bringing the CPUs online at
 full power causes a power fault and immediate safety power off.</p>
 <p>Can you watch the internal lights while the system is booting, and see if the
 power LED cluster immediately changes from green to orange as the system stops
-responding over SSH?</p></blockquote>
+responding over SSH?</p>
+</blockquote>
 <p>The IRC channel suspects this is not related to the problem. Regardless, I reply
 a few hours later with two videos showing the boot up process from power-out to
 display death, with the internal LEDs and the display output clearly visible.</p>
@@ -26614,12 +26755,14 @@ would like to send the board back to you for diagnosis or a refund.&rdquo;</p>
 <blockquote>
 <p>Sorry for the delay. Having senior support check out the videos.</p>
 <p>Thanks for writing back. We should have something for you by tomorrow during
-the day.</p></blockquote>
+the day.</p>
+</blockquote>
 <p><strong>July 31st</strong></p>
 <blockquote>
 <p>Hi Drew.</p>
 <p>The videos are being reviewed this week. Thank you for sending them.</p>
-<p>Please stay tuned.</p></blockquote>
+<p>Please stay tuned.</p>
+</blockquote>
 <p><strong>September 15th</strong></p>
 <p>No reply from support. I have since bought a little more hardware for
 self-diagnosis, namely the necessary pieces to connect to the two (or is it 3?)
@@ -26642,19 +26785,23 @@ from others while trying to troubleshoot this on IRC.</p>
 <p>On support:</p>
 <blockquote>
 <p>ugh, ddevault, yeah. [Blackbird ownership] has not been a smooth experience
-for me, either.</p></blockquote>
+for me, either.</p>
+</blockquote>
 <blockquote>
 <p>my personal theory is that they have really bad ticket software that &rsquo;loses'
-tickets somehow</p></blockquote>
+tickets somehow</p>
+</blockquote>
 <p>On reliability:</p>
 <blockquote>
 <p>I&rsquo;ve found openbmc&rsquo;s networking to be&hellip; a bit unreliable&hellip; maybe 20% of the
 time it does not responed[sic]/does not respond fast enough to networking
-requests.</p></blockquote>
+requests.</p>
+</blockquote>
 <blockquote>
 <p>yeah the vga handoff failing doesn&rsquo;t surprise me (other people here have
 reported it). but the BMC not getting a DHCP lease is odd. (well maybe not
-that odd if you look at the crumminess of the OpenBMC software stack&hellip;)</p></blockquote>
+that odd if you look at the crumminess of the OpenBMC software stack&hellip;)</p>
+</blockquote>
 <p>So, yeah, don&rsquo;t buy from Raptor Computer Systems. It&rsquo;s too large and unwieldly
 to be an effective paper weight, either!</p>
 <hr>
@@ -26674,13 +26821,15 @@ system which would have significantly reduced your wait time, and are taking
 measures to ensure that tickets are no longer able to be ignored by front line
 support staff. We believe we have addressed the known failure modes at this
 time, and management will be keeping a close eye on the operation of the
-support system to ensure that new failure modes are handled rapidly.</p></blockquote>
+support system to ensure that new failure modes are handled rapidly.</p>
+</blockquote>
 <p>They&rsquo;ve tweeted this about their new self-service RMA system as well:</p>
 <blockquote>
 <p>We&rsquo;ve made it easy to submit RMA requests for defective products on our Web
 site. Simply go to your account, select the &ldquo;Submit RMA Request&rdquo; link, and
 fill out the form.  Your product will be warranty checked and, if valid, you
-will receive an RMA number and shipping address!</p></blockquote>
+will receive an RMA number and shipping address!</p>
+</blockquote>
 <p>— @RaptorCompSys via <a href="https://twitter.com/RaptorCompSys/status/1176432946670186498">Twitter</a></p>
 <p>I agree that this shows positive improvements and a willingness to continue
 making improvements in their support experience. Thanks to Raptor for taking
@@ -26699,13 +26848,16 @@ rings familiar:</p>
 <blockquote>
 <p>It&rsquo;s not actually open source, but free software. You see, &ldquo;open source&rdquo; is a
 plot by the commercial software industry to subvert the &ldquo;free software&rdquo;
-movement&hellip;</p></blockquote>
+movement&hellip;</p>
+</blockquote>
 <blockquote>
 <p>No, it&rsquo;s free-as-in-freedom, not free-as-in-beer. Sometimes we call it &ldquo;libre&rdquo;
-software, borrowing the French or Spanish word, because in English&hellip;</p></blockquote>
+software, borrowing the French or Spanish word, because in English&hellip;</p>
+</blockquote>
 <blockquote>
 <p>What you&rsquo;re referring to as Linux, is in fact, GNU/Linux, or as I&rsquo;ve recently
-taken to calling it, GNU plus Linux. Linux is not an operating system&hellip;</p></blockquote>
+taken to calling it, GNU plus Linux. Linux is not an operating system&hellip;</p>
+</blockquote>
 <p>What do all of these have in common? The audience already agrees with the
 speaker on the ideas, but this becomes less so with every word. This kind of
 pedantry lacks tact and pushes people away from the movement. No one wants to
@@ -29092,7 +29244,8 @@ src=&ldquo;<a href="https://sr.ht/9bV-.webm%22">https://sr.ht/9bV-.webm&quot;</a
 autoplay muted loop controls
 style=&ldquo;max-width: 100%;&rdquo;</p>
 <blockquote>
-</video></blockquote>
+</video>
+</blockquote>
 <p>I&rsquo;ve also made some significant progress on
 <a href="https://git.sr.ht/~sircmpwn/aerc2">aerc2</a>. I have fleshed out the command
 subsystem, rigged up keybindings, and implemented the message list, and along
@@ -30319,7 +30472,8 @@ GitHub UI and workflow, sr.ht is fundamentally different in its approach.</p>
 fresh concept, not a Github wannabe like Gitlab. I always thought that if
 something is going to replace Github it would have to be a paradigm change, and
 I think that’s what we’re seeing here. Drew’s project blends the wisdom of the
-kernel hackers with a tasteful web interface.</p></blockquote>
+kernel hackers with a tasteful web interface.</p>
+</blockquote>
 <div style="margin-top: -1rem; margin-bottom: 1rem"><small>&mdash;<a href="https://lobste.rs/s/h1udkf/git_is_already_federated_decentralized#c_smnkic">begriffs on lobste.rs</a></small></div>
 <p>The 500 foot view is that sr.ht is a <a href="https://git.sr.ht/~sircmpwn/?search=sr.ht">100% free and open
 source</a> software forge, with a hosted
@@ -31327,7 +31481,8 @@ me quote some of his positions and my rebuttals:</p>
 <blockquote>
 <p>No upgrade channel. Timely and automatic updates are perhaps the most
 effective security feature we could ask for, and not having them would be a
-real blow for the project.</p></blockquote>
+real blow for the project.</p>
+</blockquote>
 <p>F-Droid supports updates. If you&rsquo;re concerned about moving your updates quickly
 through the (minimal) bureaucracy of F-Droid, you can always run your own
 repository. Maybe this is a lot of work?<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> I wonder how the workload compares
@@ -31338,7 +31493,8 @@ given how many people operate F-Droid repositories on a budget of $0.</p>
 <p>No app scanning. The nice thing about market is the server-side APK scanning
 and signature validation they do. If you start distributing APKs around the
 internet, it&rsquo;s a reversion back to the PC security model and all of the
-malware problems that came with it.</p></blockquote>
+malware problems that came with it.</p>
+</blockquote>
 <p>Try searching the Google Play Store for &ldquo;flashlight&rdquo; and look at the permissions
 of the top 5 apps that come up. All of them are harvesting and selling the
 personal information of their users to advertisers. Is this some kind of joke?
@@ -34783,7 +34939,8 @@ posts in response to things that go against the site guidelines, such as when a
 submission is unsubstantive, baity or sensational. Typically such posts remain
 on the front page, just at a lower rank. We bury posts when they&rsquo;re dupes,
 but rarely otherwise. We kill posts when they&rsquo;re spam, but rarely
-otherwise. [&hellip;] We never delete a post unless the author asks us to.</p></blockquote>
+otherwise. [&hellip;] We never delete a post unless the author asks us to.</p>
+</blockquote>
 <p>Dan also further clarified the difference between dead and deleted for me:</p>
 <blockquote>
 <p>The distinction between &lsquo;dead&rsquo; and &lsquo;deleted&rsquo; is important. Dead posts
@@ -34794,7 +34951,8 @@ killed by moderators or software or user flags. Deleted posts, on the
 other hand, are erased from the record and never seen again. On HN,
 authors can delete their own posts for a couple hours (unless they are
 comments that have replies). After that, if they want a post deleted
-they can ask us and we usually are happy to oblige.</p></blockquote>
+they can ask us and we usually are happy to oblige.</p>
+</blockquote>
 <p>Moderators can also artificially influence rank upwards - one way is by inviting
 the user to re-submit a post that they want to give another shot at the front
 page. This gives the post a healthy upvote to begin with and prevents it from
@@ -34818,7 +34976,8 @@ before, I don&rsquo;t feel obliged to tell them we&rsquo;re banning them again.
 [&hellip;] When we&rsquo;re banning an established account, though, we post a comment
 saying so, and nearly always only after warning that user beforehand. Many such
 users had no idea they were breaking the site guidelines and are
-quite happy to improve their posts, which is a win for everyone.</p></blockquote>
+quite happy to improve their posts, which is a win for everyone.</p>
+</blockquote>
 <p>Dan also shared a link to search for comments where moderators have explained
 to users why they&rsquo;ve been banned. Of course, this doesn&rsquo;t include users who were
 banned without explanation, or that use slightly different language:</p>
@@ -34923,7 +35082,8 @@ HN itself, odds are we won&rsquo;t see it (also, the site guidelines ask
 users not to do this, per (<a href="https://news.ycombinator.com/newsguidelines.html">our
 guidelines</a>). If they
 <a href="mailto:hn@ycombinator.com">email us</a>, the probability of a
-response approaches 1.</p></blockquote>
+response approaches 1.</p>
+</blockquote>
 <p>I can attest personally to success reaching out to <a href="mailto:hn@ycombinator.com">hn@ycombinator.com</a> for
 clarification and even reversal of some moderator decisions, though at a
 response ratio further from 1 than this implies. That being said, I don&rsquo;t think
@@ -35127,7 +35287,8 @@ steady rate” of 5% link rot per year&hellip; approximately 50% of the URLs in
 U.S. Supreme Court opinions no longer link to the original information&hellip;
 (analysis of) more than 180,000 links from references in&hellip; three major open
 access publishers&hellip; found that overall 24.5% of links cited were no longer
-available.</p></blockquote>
+available.</p>
+</blockquote>
 <p>I hate link rot. It&rsquo;s been common when servers disappeared or domains expired,
 in the past and still today. Today, link rot is on the rise under the influence
 of more sinister factors. Abuse of DMCA. Region locking. Paywalls.  Maybe it
@@ -37839,7 +38000,8 @@ goes:</p>
 <p>A: Because it messes up the order in which people normally read text.</p>
 <p>Q: Why is top-posting such a bad thing?</p>
 <p>A: Top-posting.</p>
-<p>Q: What is the most annoying thing in e-mail?</p></blockquote>
+<p>Q: What is the most annoying thing in e-mail?</p>
+</blockquote>
 <p>A better way to write emails is the same way you write a letter to send via
 snail mail. Would you photocopy the entire history of your correspondence and
 staple it to your response? After a while you would start paying more for the
@@ -39014,7 +39176,8 @@ It works, too! Here&rsquo;s what was involved.</p>
 <blockquote>
 <p><strong>Note</strong>: Click the screen on the emulator to the left to give it your
 keyboard. Click away to take it back. You can use your arrow keys, F1-F5,
-enter, and escape (as MODE).</p></blockquote>
+enter, and escape (as MODE).</p>
+</blockquote>
 <h2 id="the-final-product">The final product</h2>
 <p>Let&rsquo;s start by showing you what we&rsquo;ve accomplished. It&rsquo;s now possible for
 curious developers to try out KnightOS programming in their web browser. Of
