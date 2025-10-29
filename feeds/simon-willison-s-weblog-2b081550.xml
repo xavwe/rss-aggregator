@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Composer: Building a fast frontier model with RL</title><link>https://simonwillison.net/2025/Oct/29/cursor-composer/#atom-everything</link><description><![CDATA[<p><strong><a href="https://cursor.com/blog/composer">Composer: Building a fast frontier model with RL</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>MiniMax M2 &amp; Agent: Ingenious in Simplicity</title><link>https://simonwillison.net/2025/Oct/29/minimax-m2/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.minimax.io/news/minimax-m2">MiniMax M2 &amp; Agent: Ingenious in Simplicity</a></strong></p>
+MiniMax M2 was released on Monday 27th October by MiniMax, a Chinese AI lab founded in December 2021.</p>
+<p>It's a very promising model. Their self-reported benchmark scores show it as comparable to Claude Sonnet 4, and Artificial Analysis <a href="https://x.com/ArtificialAnlys/status/1982714153375854998">are ranking it</a> as the best currently available open weight model according to their intelligence score:</p>
+<blockquote>
+<p>MiniMax’s M2 achieves a new all-time-high Intelligence Index score for an open weights model and offers impressive efficiency with only 10B active parameters (200B total). [...]</p>
+<p>The model’s strengths include tool use and instruction following (as shown by Tau2 Bench and IFBench). As such, while M2 likely excels at agentic use cases it may underperform other open weights leaders such as DeepSeek V3.2 and Qwen3 235B at some generalist tasks. This is in line with a number of recent open weights model releases from Chinese AI labs which focus on agentic capabilities, likely pointing to a heavy post-training emphasis on RL.</p>
+</blockquote>
+<p>The size is particularly significant: the model weights are 230GB <a href="https://huggingface.co/MiniMaxAI/MiniMax-M2">on Hugging Face</a>, significantly smaller than other high performing open weight models. That's small enough to run on a 256GB Mac Studio, and the MLX community <a href="https://huggingface.co/mlx-community/MiniMax-M2-8bit">have that working already</a>.</p>
+<p>MiniMax offer their own API, and recommend using their Anthropic-compatible endpoint and the official Anthropic SDKs to access it. MiniMax Head of Engineering Skyler Miao
+ <a href="https://x.com/SkylerMiao7/status/1982989507252367687">provided some background on that</a>:</p>
+<blockquote>
+<p>M2 is a agentic thinking model, it do interleaved thinking like sonnet 4.5, which means every response will contain its thought content.
+Its very important for M2 to keep the chain of thought. So we must make sure the history thought passed back to the model.
+Anthropic API support it for sure, as sonnet needs it as well. OpenAI only support it in their new Response API, no support for in ChatCompletion.</p>
+</blockquote>
+<p>MiniMax are offering the new model via their API for free until November 7th, after which the cost will be $0.30/million input tokens and $1.20/million output tokens - similar in price to Gemini 2.5 Flash and GPT-5 Mini, see <a href="https://www.llm-prices.com/#it=51&amp;ot=4017&amp;sel=minimax-m2%2Cgpt-5-mini%2Cclaude-3-haiku%2Cgemini-2.5-flash-lite%2Cgemini-2.5-flash">price comparison here</a> on my <a href="https://www.llm-prices.com/">llm-prices.com</a> site.</p>
+<p>I released a new plugin for <a href="https://llm.datasette.io/">LLM</a> called <a href="https://github.com/simonw/llm-minimax">llm-minimax</a> providing support for M2 via the MiniMax API:</p>
+<pre><code>llm install llm-minimax
+llm keys set minimax
+# Paste key here
+llm -m m2 -o max_tokens 10000 "Generate an SVG of a pelican riding a bicycle"
+</code></pre>
+<p>Here's <a href="https://gist.github.com/simonw/da79447830dc431c067a93648b338be6">the result</a>:</p>
+<p><img alt="Biycle is good though obscured by the pelican. Pelican has an impressive triple beak and is stretched along the bicycle frame. Not clear if it can pedal or what it is sitting on." src="https://static.simonwillison.net/static/2025/m2-pelican.png" /></p>
+<p>51 input, 4,017 output. At $0.30/m input and $1.20/m output that pelican would cost 0.4836 cents - less than half a cent.</p>
+<p>This is the first plugin I've written for an Anthropic-API-compatible model. I released <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.21">llm-anthropic 0.21</a> first adding the abilito to customize the <code>base_url</code> parameter when using that model class. This meant the new plugin was less than <a href="https://github.com/simonw/llm-minimax/blob/0.1/llm_minimax.py">30 lines of Python</a>.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Wed, 29 Oct 2025 22:49:47 +0000</pubDate></item><item><title>Composer: Building a fast frontier model with RL</title><link>https://simonwillison.net/2025/Oct/29/cursor-composer/#atom-everything</link><description><![CDATA[<p><strong><a href="https://cursor.com/blog/composer">Composer: Building a fast frontier model with RL</a></strong></p>
 Cursor released <a href="https://cursor.com/blog/2-0">Cursor 2.0 today</a>, with a refreshed UI focused on agentic coding (and running agents in parallel) and a new model that's unique to Cursor called <strong>Composer&nbsp;1</strong>.</p>
 <p>As far as I can tell there's no way to call the model directly via an API, so I fired up "Ask" mode in Cursor's chat side panel and asked it to "Generate an SVG of a pelican riding a bicycle":</p>
 <p><img alt="Screenshot of Cursor 2 - In the chat panel I have asked the question and it spat out a bunch of SVG." src="https://static.simonwillison.net/static/2025/cursor-2.jpg" /></p>
@@ -1026,8 +1054,4 @@ James Edwards notes that wrapping a form input in a label event like this has a 
     <p><small></small>Via <a href="https://gomakethings.com/implicit-labels-arent/">Chris Ferdinandi</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/accessibility">accessibility</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/screen-readers">screen-readers</a></p>]]></description><pubDate>Fri, 17 Oct 2025 18:25:45 +0000</pubDate></item><item><title>Quoting Barry Zhang</title><link>https://simonwillison.net/2025/Oct/16/barry-zhang/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/barry_zyj/status/1978951690452615413"><p>Skills actually came out of a prototype I built demonstrating that Claude Code is a general-purpose agent :-) </p>
-<p>It was a natural conclusion once we realized that bash + filesystem were all we needed</p></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/barry_zyj/status/1978951690452615413">Barry Zhang</a>, Anthropic</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/skills">skills</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 16 Oct 2025 22:38:12 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/accessibility">accessibility</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/screen-readers">screen-readers</a></p>]]></description><pubDate>Fri, 17 Oct 2025 18:25:45 +0000</pubDate></item></channel></rss>
