@@ -56,6 +56,14 @@
 <p>If you're a GitHub Universe attendee I hope this is useful. The official <a href="https://badger.github.io/">badger.github.io</a> site has plenty more details to help you get started.</p>
 <p>There isn't yet a way to get hold of this hardware outside of GitHub Universe - I know they had some supply chain challenges just getting enough badges for the conference attendees!</p>
 <p>It's a very neat device, built for GitHub by <a href="https://www.pimoroni.com/">Pimoroni</a> in Sheffield, UK. A version of this should become generally available in the future under the name "Pimoroni Tufty 2350".</p>
+
+<h4 id="iphone-only">Update: Setup with iPhone only</h4>
+
+<p>If you don't have a laptop with you it's still possible to start hacking on the device using just a USB-C cable.</p>
+
+<p>Plug the badge into the phone, hit the reset button on the back twice to switch it into disk mode and open the iPhone Files app - the badge should appear as a mounted disk called BADGER.</p>
+
+<p>I used <a href="https://apps.apple.com/us/app/textastic-code-editor/id1049254261">Textastic</a> to edit that <code>secrets.py</code> and configure a new badge, then hit reset again to restart it.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/hardware-hacking">hardware-hacking</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/raspberry-pi">raspberry-pi</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/disclosures">disclosures</a></p>]]></description><pubDate>Tue, 28 Oct 2025 17:17:44 +0000</pubDate></item><item><title>Quoting Aaron Boodman</title><link>https://simonwillison.net/2025/Oct/28/aaron-boodman/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/aboodman/status/1982898753607741502"><p>Claude doesn't make me <em>much</em> faster on the work that I am an expert on. Maybe 15-20% depending on the day.</p>
 <p>It's the work that I don't know how to do and would have to research. Or the grunge work I don't even want to do. On this it is hard to even put a number on. Many of the projects I do with Claude day to day I just wouldn't have done at all pre-Claude.</p>
