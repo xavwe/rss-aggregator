@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>MiniMax M2 &amp; Agent: Ingenious in Simplicity</title><link>https://simonwillison.net/2025/Oct/29/minimax-m2/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.minimax.io/news/minimax-m2">MiniMax M2 &amp; Agent: Ingenious in Simplicity</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing SWE-1.5: Our Fast Agent Model</title><link>https://simonwillison.net/2025/Oct/29/swe-15/#atom-everything</link><description><![CDATA[<p><strong><a href="https://cognition.ai/blog/swe-1-5">Introducing SWE-1.5: Our Fast Agent Model</a></strong></p>
+Here's the second fast coding model released by a coding agent IDE in the same day - the first was <a href="https://simonwillison.net/2025/Oct/29/cursor-composer/">Composer-1 by Cursor</a>. This time it's Windsurf releasing SWE-1.5:</p>
+<blockquote>
+<p>Today we’re releasing SWE-1.5, the latest in our family of models optimized for software engineering. It is a frontier-size model with hundreds of billions of parameters that achieves near-SOTA coding performance. It also sets a new standard for speed: we partnered with Cerebras to serve it at up to 950 tok/s – 6x faster than Haiku 4.5 and 13x faster than Sonnet 4.5.</p>
+</blockquote>
+<p>Like Composer-1 it's only available via their editor, no separate API yet. Also like Composer-1 they don't appear willing to share details of the "leading open-source base model" they based their new model on.</p>
+<p>I asked it to generate an SVG of a pelican riding a bicycle and got this:</p>
+<p><img alt="Bicycle has a red upside down Y shaped frame, pelican is a bit dumpy, it does at least have a long sharp beak." src="https://static.simonwillison.net/static/2025/swe-pelican.png" /></p>
+<p>This one felt <em>really fast</em>. Partnering with Cerebras for inference is a very smart move.</p>
+<p>They share a lot of details about their training process in the post:</p>
+<blockquote>
+<p>SWE-1.5 is trained on our state-of-the-art cluster of thousands of GB200 NVL72 chips. We believe SWE-1.5 may be the first public production model trained on the new GB200 generation. [...]</p>
+<p>Our RL rollouts require high-fidelity environments with code execution and even web browsing. To achieve this, we leveraged our VM hypervisor <code>otterlink</code> that  allows us to scale <strong>Devin</strong> to tens of thousands of concurrent machines (learn more about <a href="https://cognition.ai/blog/blockdiff#why-incremental-vm-snapshots">blockdiff</a>). This enabled us to smoothly support very high concurrency and ensure the training environment is aligned with our Devin production environments.</p>
+</blockquote>
+<p>That's <em>another</em> similarity to Cursor's Composer-1! Cursor talked about how they ran "hundreds of thousands of concurrent sandboxed coding environments in the cloud" in <a href="https://cursor.com/blog/composer">their description of their RL training</a> as well.</p>
+<p>This is a notable trend: if you want to build a really great agentic coding tool there's clearly a lot to be said for using reinforcement learning to fine-tune a model against your own custom set of tools using large numbers of sandboxed simulated coding environments as part of that process.
+
+    <p><small></small>Via <a href="https://x.com/cognition/status/1983662838955831372">@cognition</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Wed, 29 Oct 2025 23:59:20 +0000</pubDate></item><item><title>MiniMax M2 &amp; Agent: Ingenious in Simplicity</title><link>https://simonwillison.net/2025/Oct/29/minimax-m2/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.minimax.io/news/minimax-m2">MiniMax M2 &amp; Agent: Ingenious in Simplicity</a></strong></p>
 MiniMax M2 was released on Monday 27th October by MiniMax, a Chinese AI lab founded in December 2021.</p>
 <p>It's a very promising model. Their self-reported benchmark scores show it as comparable to Claude Sonnet 4, and Artificial Analysis <a href="https://x.com/ArtificialAnlys/status/1982714153375854998">are ranking it</a> as the best currently available open weight model according to their intelligence score:</p>
 <blockquote>
@@ -23,7 +43,7 @@ llm -m m2 -o max_tokens 10000 "Generate an SVG of a pelican riding a bicycle"
 <p>Here's <a href="https://gist.github.com/simonw/da79447830dc431c067a93648b338be6">the result</a>:</p>
 <p><img alt="Biycle is good though obscured by the pelican. Pelican has an impressive triple beak and is stretched along the bicycle frame. Not clear if it can pedal or what it is sitting on." src="https://static.simonwillison.net/static/2025/m2-pelican.png" /></p>
 <p>51 input, 4,017 output. At $0.30/m input and $1.20/m output that pelican would cost 0.4836 cents - less than half a cent.</p>
-<p>This is the first plugin I've written for an Anthropic-API-compatible model. I released <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.21">llm-anthropic 0.21</a> first adding the abilito to customize the <code>base_url</code> parameter when using that model class. This meant the new plugin was less than <a href="https://github.com/simonw/llm-minimax/blob/0.1/llm_minimax.py">30 lines of Python</a>.
+<p>This is the first plugin I've written for an Anthropic-API-compatible model. I released <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.21">llm-anthropic 0.21</a> first adding the ability to customize the <code>base_url</code> parameter when using that model class. This meant the new plugin was less than <a href="https://github.com/simonw/llm-minimax/blob/0.1/llm_minimax.py">30 lines of Python</a>.
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Wed, 29 Oct 2025 22:49:47 +0000</pubDate></item><item><title>Composer: Building a fast frontier model with RL</title><link>https://simonwillison.net/2025/Oct/29/cursor-composer/#atom-everything</link><description><![CDATA[<p><strong><a href="https://cursor.com/blog/composer">Composer: Building a fast frontier model with RL</a></strong></p>
@@ -1040,18 +1060,4 @@ Extremely high signal 2 hour 25 minute (!) conversation between Andrej Karpathy 
 <p>This leakage is primarily a privacy concern. Attackers can use the timing data as metadata for de-anonymization or account correlation, potentially revealing activity patterns or growth rates within an organization.</p></blockquote>
 <p class="cite">&mdash; <a href="https://aiven.io/blog/exploring-postgresql-18-new-uuidv7-support">Alexander Fridriksson and Jay Miller</a>, Exploring PostgreSQL 18's new UUIDv7 support</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/uuid">uuid</a>, <a href="https://simonwillison.net/tags/postgresql">postgresql</a>, <a href="https://simonwillison.net/tags/privacy">privacy</a>, <a href="https://simonwillison.net/tags/security">security</a></p>]]></description><pubDate>Fri, 17 Oct 2025 20:59:08 +0000</pubDate></item><item><title>Should form labels be wrapped or separate?</title><link>https://simonwillison.net/2025/Oct/17/form-labels/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.tpgi.com/should-form-labels-be-wrapped-or-separate/">Should form labels be wrapped or separate?</a></strong></p>
-James Edwards notes that wrapping a form input in a label event like this has a significant downside:</p>
-<pre><code>&lt;label&gt;Name &lt;input type="text"&gt;&lt;/label&gt;
-</code></pre>
-<p>It turns out both Dragon Naturally Speaking for Windows and Voice Control for macOS and iOS fail to understand this relationship!</p>
-<p>You need to use the explicit <code>&lt;label for="element_id"&gt;</code> syntax to ensure those screen readers correctly understand the relationship between label and form field. You can still nest the input inside the label if you like:</p>
-<pre><code>&lt;label for="idField"&gt;Name
-  &lt;input id="idField" type="text"&gt;
-&lt;/label&gt;
-</code></pre>
-
-    <p><small></small>Via <a href="https://gomakethings.com/implicit-labels-arent/">Chris Ferdinandi</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/accessibility">accessibility</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/screen-readers">screen-readers</a></p>]]></description><pubDate>Fri, 17 Oct 2025 18:25:45 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/uuid">uuid</a>, <a href="https://simonwillison.net/tags/postgresql">postgresql</a>, <a href="https://simonwillison.net/tags/privacy">privacy</a>, <a href="https://simonwillison.net/tags/security">security</a></p>]]></description><pubDate>Fri, 17 Oct 2025 20:59:08 +0000</pubDate></item></channel></rss>
