@@ -16,7 +16,8 @@ Here's the second fast coding model released by a coding agent IDE in the same d
 <p>Our RL rollouts require high-fidelity environments with code execution and even web browsing. To achieve this, we leveraged our VM hypervisor <code>otterlink</code> that  allows us to scale <strong>Devin</strong> to tens of thousands of concurrent machines (learn more about <a href="https://cognition.ai/blog/blockdiff#why-incremental-vm-snapshots">blockdiff</a>). This enabled us to smoothly support very high concurrency and ensure the training environment is aligned with our Devin production environments.</p>
 </blockquote>
 <p>That's <em>another</em> similarity to Cursor's Composer-1! Cursor talked about how they ran "hundreds of thousands of concurrent sandboxed coding environments in the cloud" in <a href="https://cursor.com/blog/composer">their description of their RL training</a> as well.</p>
-<p>This is a notable trend: if you want to build a really great agentic coding tool there's clearly a lot to be said for using reinforcement learning to fine-tune a model against your own custom set of tools using large numbers of sandboxed simulated coding environments as part of that process.
+<p>This is a notable trend: if you want to build a really great agentic coding tool there's clearly a lot to be said for using reinforcement learning to fine-tune a model against your own custom set of tools using large numbers of sandboxed simulated coding environments as part of that process.</p>
+<p><strong>Update</strong>: <a href="https://x.com/zai_org/status/1984076614951420273">I think it's built on GLM</a>.
 
     <p><small></small>Via <a href="https://x.com/cognition/status/1983662838955831372">@cognition</a></small></p>
 
