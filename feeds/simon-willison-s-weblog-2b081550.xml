@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting MiniMax</title><link>https://simonwillison.net/2025/Nov/3/minimax/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/minimax__ai/status/1985375617622454566"><p><strong>Interleaved thinking</strong> is essential for LLM agents: it means alternating between explicit reasoning and tool use, while carrying that reasoning forward between steps.This process significantly enhances <strong>planning, self‑correction, and reliability</strong> in long workflows. [...]</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The case against pgvector</title><link>https://simonwillison.net/2025/Nov/3/the-case-against-pgvector/#atom-everything</link><description><![CDATA[<p><strong><a href="https://alex-jacobs.com/posts/the-case-against-pgvector/">The case against pgvector</a></strong></p>
+I wasn't keen on the title of this piece but the content is great: Alex Jacobs talks through lessons learned trying to run the popular pgvector PostgreSQL vector indexing extension at scale, in particular the challenges involved in maintaining a large index with close-to-realtime updates using the IVFFlat or HNSW index types.</p>
+<p>The section on pre-v.s.-post filtering is particularly useful:</p>
+<blockquote>
+<p>Okay but let's say you solve your index and insert problems. Now you have a document search system with millions of vectors. Documents have metadata---maybe they're marked as <code>draft</code>, <code>published</code>, or <code>archived</code>. A user searches for something, and you only want to return published documents.</p>
+<p>[...] should Postgres filter on status first (pre-filter) or do the vector search first and then filter (post-filter)?</p>
+<p>This seems like an implementation detail. It’s not. It’s the difference between queries that take 50ms and queries that take 5 seconds. It’s also the difference between returning the most relevant results and… not.</p>
+</blockquote>
+<p>The <a href="https://news.ycombinator.com/item?id=45798479">Hacker News thread</a> for this article attracted a robust discussion, including some fascinating comments by Discourse developer Rafael dos Santos Silva (xfalcox) about how they are using pgvector at scale:</p>
+<blockquote>
+<p>We [run pgvector in production] at Discourse, in thousands of databases, and it's leveraged in most of the billions of page views we serve. [...]</p>
+<p>Also worth mentioning that we use quantization extensively:</p>
+<ul>
+<li>halfvec (16bit float) for storage - bit (binary vectors) for indexes</li>
+</ul>
+<p>Which makes the storage cost and on-going performance good enough that we could enable this in all our hosting. [...]</p>
+<p>In Discourse embeddings power:</p>
+<ul>
+<li>Related Topics, a list of topics to read next, which uses embeddings of the current topic as the key to search for similar ones</li>
+<li>Suggesting tags and categories when composing a new topic</li>
+<li>Augmented search</li>
+<li>RAG for uploaded files</li>
+</ul>
+</blockquote>
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45798479">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/postgresql">postgresql</a>, <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/vector-search">vector-search</a>, <a href="https://simonwillison.net/tags/embeddings">embeddings</a></p>]]></description><pubDate>Mon, 3 Nov 2025 20:26:10 +0000</pubDate></item><item><title>Quoting MiniMax</title><link>https://simonwillison.net/2025/Nov/3/minimax/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/minimax__ai/status/1985375617622454566"><p><strong>Interleaved thinking</strong> is essential for LLM agents: it means alternating between explicit reasoning and tool use, while carrying that reasoning forward between steps.This process significantly enhances <strong>planning, self‑correction, and reliability</strong> in long workflows. [...]</p>
 <p>From community feedback, we've often observed failures to preserve prior-round thinking state across multi-turn interactions with M2. The root cause is that the widely-used <strong>OpenAI Chat Completion API does not support passing reasoning content back in subsequent requests</strong>. Although the Anthropic API natively supports this capability, the community has provided less support for models beyond Claude, and many applications still omit passing back the previous turns' thinking in their Anthropic API implementations. This situation has resulted in poor support for Interleaved Thinking for new models. <strong>To fully unlock M2's capabilities, preserving the reasoning process across multi-turn interactions is essential</strong>.</p></blockquote>
 <p class="cite">&mdash; <a href="https://x.com/minimax__ai/status/1985375617622454566">MiniMax</a>, Interleaved Thinking Unlocks Reliable MiniMax-M2 Agentic Capability</p>
 
@@ -791,13 +819,4 @@ This project/side-quest got a little bit out of hand.</p>
 <p>I had ChatGPT <a href="https://chatgpt.com/share/68f7e0ac-00c4-8006-979e-64d1f0162283">take a guess</a> at what those figures should be for today and included those in the tool, with a <strong>very</strong> prominent warning not to trust them in the slightest.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/perl">perl</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 22 Oct 2025 06:12:25 +0000</pubDate></item><item><title>Don&apos;t let Claude Code delete your session logs</title><link>https://simonwillison.net/2025/Oct/22/claude-code-logs/#atom-everything</link><description><![CDATA[<p>Claude Code stores full logs of your sessions as newline-delimited JSON in <code>~/.claude/projects/encoded-directory/*.jsonl</code> on your machine. I currently have 379MB of these!</p>
-<p>Here's <a href="https://github.com/simonw/research/blob/main/deepseek-ocr-nvidia-spark/claude-log.jsonl">an example jsonl file</a> which I extracted from my <a href="https://simonwillison.net/2025/Oct/20/deepseek-ocr-claude-code/">Deepseek-OCR on NVIDIA Spark project</a>. I have a little <a href="https://github.com/simonw/tools/blob/main/python/claude_to_markdown.py">vibe-coded tool</a> for converting those into Markdown which produces results <a href="https://github.com/simonw/research/blob/main/deepseek-ocr-nvidia-spark/claude-log.md">like this</a>.</p>
-<p>Unfortunately Claude Code has a nasty default  behavior of <a href="https://github.com/anthropics/claude-code/issues/4172">deleting these after 30 days</a>! You can't disable this entirely, but you can at least delay it for 274 years by adding this to your <code>~/.claude/settings.json</code> file:</p>
-<pre><code>{
-  "cleanupPeriodDays": 99999
-}
-</code></pre>
-<p>Claude Code's settings are <a href="https://docs.claude.com/en/docs/claude-code/settings#available-settings">documented here</a>.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 22 Oct 2025 00:45:39 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/perl">perl</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 22 Oct 2025 06:12:25 +0000</pubDate></item></channel></rss>
