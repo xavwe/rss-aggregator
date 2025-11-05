@@ -11,7 +11,7 @@
 When I <a href="https://simonwillison.net/2025/Oct/16/claude-skills/">wrote about Claude Skills</a> I mentioned that I don't use MCP at all any more when working with coding agents - I find CLI utilities and libraries like Playwright Python to be a more effective way of achieving the same goals.</p>
 <p>This new piece from Anthropic proposes a way to bring the two worlds more closely together.</p>
 <p>It identifies two challenges with MCP as it exists today. The first has been widely discussed before: all of those tool descriptions take up a lot of valuable real estate in the agent context even before you start using them.</p>
-<p>The second is more subtle but equally interesting: chaining multiple MCP tools together involves passing their responses through the context, absorbing more valuable tokens and introducing changes for the LLM to make additional mistakes.</p>
+<p>The second is more subtle but equally interesting: chaining multiple MCP tools together involves passing their responses through the context, absorbing more valuable tokens and introducing chances for the LLM to make additional mistakes.</p>
 <p>What if you could turn MCP tools into code functions instead, and then let the LLM wire them together with executable code?</p>
 <p>Anthropic's example here imagines a system that turns MCP tools into TypeScript files on disk, looking something like this:</p>
 <div class="highlight highlight-source-ts"><pre><span class="pl-c">// ./servers/google-drive/getDocument.ts</span>
