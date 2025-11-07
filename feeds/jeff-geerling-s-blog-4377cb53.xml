@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>It&apos;s not that hard to stop a Trane</title><link>https://www.jeffgeerling.com/blog/2025/its-not-hard-stop-trane</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">It's not that hard to stop a Trane</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Converting hot dog plasma video to sound with OpenCV</title><link>https://www.jeffgeerling.com/blog/2025/converting-hot-dog-plasma-video-sound-opencv</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Converting hot dog plasma video to sound with OpenCV</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>When you ground a hot dog to an AM radio tower, it generates plasma.</p>
+
+<div>
+
+  
+  Your browser does not support the video tag.
+
+</div>
+
+<p>While the hot dog's flesh is getting vaporized, a tiny plasma arc moves the air around it back and forth. And because this tower is an AM tower, it uses <a href="https://en.wikipedia.org/wiki/Amplitude_modulation"><em>Amplitude</em> Modulation</a>, where a transmitter changes the amplitude of a carrier wave up and down. Just like a speaker cone moving up and down, the plasma arc from the hot dog turns that modulation into audible sound.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-07T10:15:39-06:00" title="Friday, November 7, 2025 - 10:15" class="datetime">November 7, 2025</time>
+</span>]]></description><pubDate>Fri, 7 Nov 2025 16:15:39 +0000</pubDate></item><item><title>It&apos;s not that hard to stop a Trane</title><link>https://www.jeffgeerling.com/blog/2025/its-not-hard-stop-trane</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">It's not that hard to stop a Trane</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Six years ago, I replaced the old HVAC system that came with our house, a central forced air system installed in 1995<sup id="oldinstall"><a href="#fn:oldinstall" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 
@@ -94,13 +108,4 @@
 <p>There is no way the trillions of dollars of valuation placed on AI companies can be backed by any amount of future profit.</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-29T23:13:29-05:00" title="Monday, September 29, 2025 - 23:13" class="datetime">September 29, 2025</time>
-</span>]]></description><pubDate>Tue, 30 Sep 2025 04:13:29 +0000</pubDate></item><item><title>Not all OCuLink eGPU docks are created equal</title><link>https://www.jeffgeerling.com/blog/2025/not-all-oculink-egpu-docks-are-created-equal</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Not all OCuLink eGPU docks are created equal</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>I recently tried using the <a href="https://amzn.to/46Y65Wo">Minisforum DEG1 GPU Dock</a> with a Raspberry Pi 500+, using an M.2 to OCuLink adapter, and <a href="https://amzn.to/48CZlyl">this chenyang SFF-8611 Cable</a>.</p>
-
-<p>After figuring out there's a power button on the DEG1 (which needs to be turned on), and after fiddling around with the switches on the PCB (hidden under the large metal plate on the bottom; TGX to OFF was the most important setting), I was able to get the Raspberry Pi's PCIe bus to at least tell the graphics card installed in the eGPU dock to spin up its fans and initialize.</p>
-
-<p>But I wasn't able to get any output from the card (using <a href="https://github.com/geerlingguy/raspberry-pi-pcie-devices/discussions/756">this Linux kernel patch</a>), and <code>lspci</code> did not show it. (Nor were there any logs showing errors in <code>dmesg</code>).</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-29T09:39:02-05:00" title="Monday, September 29, 2025 - 09:39" class="datetime">September 29, 2025</time>
-</span>]]></description><pubDate>Mon, 29 Sep 2025 14:39:02 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Tue, 30 Sep 2025 04:13:29 +0000</pubDate></item></channel></rss>
