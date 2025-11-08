@@ -84,7 +84,7 @@ llm -m openrouter/moonshotai/kimi-k2-thinking \
 <blockquote>
 <p>The Kimi K2 Thinking model cost $4.6 million to train, according to a source familiar with the matter. [...] CNBC was unable to independently verify the DeepSeek or Kimi figures.</p>
 </blockquote>
-<p>MLX developer Awni Hannun <a href="https://x.com/awnihannun/status/1986601104130646266">got it working</a> on two M3 Ultra Mac Studios:</p>
+<p>MLX developer Awni Hannun <a href="https://x.com/awnihannun/status/1986601104130646266">got it working</a> on two 512GB M3 Ultra Mac Studios:</p>
 <blockquote>
 <p>The new 1 Trillion parameter Kimi K2 Thinking model runs well on 2 M3 Ultras in its native format - no loss in quality!</p>
 <p>The model was quantization aware trained (qat) at int4.</p>
