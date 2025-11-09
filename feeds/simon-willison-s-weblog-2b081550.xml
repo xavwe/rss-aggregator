@@ -44,7 +44,7 @@
   ✔ Implement new `codex prompt` subcommand (CLI plumbing + command handler)
   ✔ Format, lint, and test (`just fmt`, `just fix -p codex-cli`, `cargo test -p codex-cli`)
 </code></pre>
-<p>I like that it figured out <a href="https://github.com/openai/codex/blob/a47181e471b6efe55e95f9858c913fc89a3a44fa/codex-rs/justfile">the justfile</a> in the repo and decided to use it to run formatting and linting commands without me needing to tell it to.</p>
+<p>I like that it figured out <a href="https://github.com/openai/codex/blob/a47181e471b6efe55e95f9858c913fc89a3a44fa/codex-rs/justfile">the justfile</a> in the repo and decided to use it to run formatting and linting commands without me needing to tell it to. (Update: it turns out that was dictated by the <a href="https://github.com/openai/codex/blob/f8b30af6dc275b3e64de5f1987e6cafe604cb72a/AGENTS.md">AGENTS.md</a> file.)</p>
 <p>I tried running the first version of the code it wrote like this:</p>
 <div class="highlight highlight-source-shell"><pre>./target/debug/codex prompt <span class="pl-s"><span class="pl-pds">'</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">'</span></span> -m gpt-5-codex-mini</pre></div>
 <p>... and it didn't quite work. I got this:</p>
