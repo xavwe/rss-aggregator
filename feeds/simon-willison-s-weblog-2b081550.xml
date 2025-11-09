@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Reverse engineering Codex CLI to get GPT-5-Codex-Mini to draw me a pelican</title><link>https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#atom-everything</link><description><![CDATA[<p>OpenAI partially released a new model yesterday called GPT-5-Codex-Mini, which they <a href="https://x.com/OpenAIDevs/status/1986861734619947305">describe</a> as "a more compact and cost-efficient version of GPT-5-Codex". It's currently only available via their Codex CLI tool and VS Code extension, with proper API access "<a href="https://x.com/OpenAIDevs/status/1986861736041853368">coming soon</a>". I decided to use Codex to reverse engineer the Codex CLI tool and give me the ability to prompt the new model directly.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Pelican on a Bike - Raytracer Edition</title><link>https://simonwillison.net/2025/Nov/9/pelican-on-a-bike-raytracer-edition/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/">Pelican on a Bike - Raytracer Edition</a></strong></p>
+beetle_b ran this prompt against a bunch of recent LLMs:</p>
+<blockquote>
+<p><code>Write a POV-Ray file that shows a pelican riding on a bicycle.</code></p>
+</blockquote>
+<p>This turns out to be a harder challenge than SVG, presumably because there are less examples of POV-Ray in the training data:</p>
+<blockquote>
+<p>Most produced a script that failed to parse. I would paste the error back into the chat and let it attempt a fix.</p>
+</blockquote>
+<p>The results are really fun though! A lot of them end up accompanied by a weird floating egg for some reason - <a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/#claude-opus-4">here's Claude Opus 4</a>:</p>
+<p><img alt="3D scene. The bicycle has a sort of square frame in the wrong place, but good wheels. The pelican is stood on top - a large white blob, a smaller white blob head, a cylinder neck and a conical beak in the right place, plus legs that reach out-of-place pedals. A egg floats mysteriously in front of the bird." src="https://static.simonwillison.net/static/2025/pov-pelican-opus.png" /></p>
+<p>I think the best result came <a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/#gpt-5">from GPT-5</a> - again with the floating egg though!</p>
+<p><img alt="The bike is a bit mis-shapen but has most of the right pieces. The pelican has legs that reach the pedals and is bending forward with a two-segmented neck and a good beak. A weird egg floats in the front wheel." src="https://static.simonwillison.net/static/2025/pov-pelican-gpt-5.png" /></p>
+<p>I decided to try this on the new <code>gpt-5-codex-mini</code>, using the <a href="https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/">trick I described yesterday</a>. Here's <a href="https://gist.github.com/simonw/059e0c5aee54258cdc62ed511ae26b4b">the code it wrote</a>.</p>
+<pre><code>./target/debug/codex prompt -m gpt-5-codex-mini \
+  "Write a POV-Ray file that shows a pelican riding on a bicycle."
+</code></pre>
+<p>It turns out you can render POV files on macOS like this:</p>
+<pre><code>brew install povray
+povray demo.pov # produces demo.png
+</code></pre>
+<p>The code GPT-5 Codex Mini created didn't quite work, so I round-tripped it through Sonnet 4.5 via Claude Code a couple of times - <a href="http://gistpreview.github.io/?71c4f0966d5d99003ace12197b9d07fe">transcript here</a>. Once it had fixed the errors I got this:</p>
+<p><img alt="Two wheels (tire only) sit overlapping half embedded in the ground. The frame is a half-buried red triangle and some other lines. There is a white pall with a tiny yellow beak and two detached cylindrical arms. It's rubbish." src="https://static.simonwillison.net/static/2025/povray-pelican-gpt-5-codex-mini.png" /></p>
+<p>That's significantly worse than the one beetle_b got <a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/#gpt-5-mini">from GPT-5 Mini</a>!
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45862802#45866639">BeetleB on Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/3d">3d</a>, <a href="https://simonwillison.net/tags/ray-tracing">ray-tracing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Sun, 9 Nov 2025 16:51:42 +0000</pubDate></item><item><title>Reverse engineering Codex CLI to get GPT-5-Codex-Mini to draw me a pelican</title><link>https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#atom-everything</link><description><![CDATA[<p>OpenAI partially released a new model yesterday called GPT-5-Codex-Mini, which they <a href="https://x.com/OpenAIDevs/status/1986861734619947305">describe</a> as "a more compact and cost-efficient version of GPT-5-Codex". It's currently only available via their Codex CLI tool and VS Code extension, with proper API access "<a href="https://x.com/OpenAIDevs/status/1986861736041853368">coming soon</a>". I decided to use Codex to reverse engineer the Codex CLI tool and give me the ability to prompt the new model directly.</p>
 <p>I made <a href="https://www.youtube.com/watch?v=9o1_DL9uNlM">a video</a> talking through my progress and demonstrating the final results.</p>
 
 <p><lite-youtube videoid="9o1_DL9uNlM" js-api="js-api" title="Reverse engineering Codex CLI to get GPT-5-Codex-Mini to draw me a pelican" playlabel="Play: Reverse engineering Codex CLI to get GPT-5-Codex-Mini to draw me a pelican"> </lite-youtube></p>
@@ -799,16 +827,4 @@ Go cryptography author Filippo Valsorda reports on some very positive results ap
 </ul>
 <p>Here's <a href="https://gist.github.com/simonw/d6d4d86afc0d76767c63f23fc5137030">a copy of the September newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Sat, 1 Nov 2025 22:11:58 +0000</pubDate></item><item><title>Quoting Julian Andres Klode</title><link>https://simonwillison.net/2025/Nov/1/debian/#atom-everything</link><description><![CDATA[<blockquote cite="https://lists.debian.org/debian-devel/2025/10/msg00285.html"><p>I plan to introduce hard Rust dependencies and Rust code into
-APT, no earlier than May 2026. This extends at first to the
-Rust compiler and standard library, and the Sequoia ecosystem.</p>
-<p>In particular, our code to parse .deb, .ar, .tar, and the
-HTTP signature verification code would strongly benefit
-from memory safe languages and a stronger approach to
-unit testing.</p>
-<p>If you maintain a port without a working Rust toolchain,
-please ensure it has one within the next 6 months, or
-sunset the port.</p></blockquote>
-<p class="cite">&mdash; <a href="https://lists.debian.org/debian-devel/2025/10/msg00285.html">Julian Andres Klode</a>, debian-devel mailing list</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/debian">debian</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/linux">linux</a></p>]]></description><pubDate>Sat, 1 Nov 2025 17:34:34 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Sat, 1 Nov 2025 22:11:58 +0000</pubDate></item></channel></rss>
