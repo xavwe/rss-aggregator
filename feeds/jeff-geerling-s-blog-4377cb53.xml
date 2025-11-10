@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Converting hot dog plasma video to sound with OpenCV</title><link>https://www.jeffgeerling.com/blog/2025/converting-hot-dog-plasma-video-sound-opencv</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Converting hot dog plasma video to sound with OpenCV</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Minisforum stuffs an entire Arm Homelab in the MS-R1</title><link>https://www.jeffgeerling.com/blog/2025/minisforum-stuffs-entire-arm-homelab-ms-r1</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Minisforum stuffs an entire Arm Homelab in the MS-R1</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/minisforum-ms-r1-front.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-b2821174-503d-4a7d-b3e8-5cd9b17c53e6" data-insert-attach="{&quot;id&quot;:&quot;b2821174-503d-4a7d-b3e8-5cd9b17c53e6&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Minisforum MS-R1 front"></p>
+
+<p>The <a href="https://s.minisforum.com/4hRFZbj">Minisforum MS-R1</a> uses the same Cix CD8180 Arm SoC as the <a href="https://www.jeffgeerling.com/blog/2025/radxa-orion-o6-brings-arm-midrange-pc">Orion O6 I reviewed earlier this year</a>. But everything else about this thing is different.</p>
+
+<p>What this thing <em>should</em> be, is a box that runs Linux and can compete with at least an Apple M1 Mac mini, or a mid-range Mini PC. But what we <em>got</em>... is something different.</p>
+
+<h2>Video</h2>
+
+<p>Hate reading? I also published a video on the MS-R1 on my YouTube channel. Watch it here, or scroll on past.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-10T10:01:10-06:00" title="Monday, November 10, 2025 - 10:01" class="datetime">November 10, 2025</time>
+</span>]]></description><pubDate>Mon, 10 Nov 2025 16:01:10 +0000</pubDate></item><item><title>Converting hot dog plasma video to sound with OpenCV</title><link>https://www.jeffgeerling.com/blog/2025/converting-hot-dog-plasma-video-sound-opencv</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Converting hot dog plasma video to sound with OpenCV</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>When you ground a hot dog to an AM radio tower, it generates plasma.</p>
 
@@ -90,22 +103,4 @@
 <p>The <a href="https://amzn.to/46FlNpp">Uno R3</a> was the first microcontroller board I owned. Over a decade ago, I blinked my first LED with an Uno; the <a href="https://github.com/geerlingguy/blinky">code for that is actually still up on my GitHub</a>.</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-07T08:01:08-05:00" title="Tuesday, October 7, 2025 - 08:01" class="datetime">October 7, 2025</time>
-</span>]]></description><pubDate>Tue, 7 Oct 2025 13:01:08 +0000</pubDate></item><item><title>The AI Emperor Has No Clothes</title><link>https://www.jeffgeerling.com/blog/2025/ai-emperor-has-no-clothes</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">The AI Emperor Has No Clothes</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/ai-influencer-deal-offer.png" width="400" height="auto" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-7bac7114-4965-4f33-8f5e-bcc8d3b6d165" data-insert-attach="{&quot;id&quot;:&quot;7bac7114-4965-4f33-8f5e-bcc8d3b6d165&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="AI influencer deal offer"></p>
-
-<p>If the size of the current AI bubble can be estimated by how many</p>
-
-<ul>
-<li>AI job offers</li>
-<li>AI product review offers</li>
-<li>AI service paid sponsorship offers</li>
-<li>AI creator representation offers</li>
-</ul>
-
-<p>I receive per day... then I'd say we're nearing the pop.</p>
-
-<p>There is no way the trillions of dollars of valuation placed on AI companies can be backed by any amount of future profit.</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-09-29T23:13:29-05:00" title="Monday, September 29, 2025 - 23:13" class="datetime">September 29, 2025</time>
-</span>]]></description><pubDate>Tue, 30 Sep 2025 04:13:29 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Tue, 7 Oct 2025 13:01:08 +0000</pubDate></item></channel></rss>
