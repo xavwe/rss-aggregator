@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Pelican on a Bike - Raytracer Edition</title><link>https://simonwillison.net/2025/Nov/9/pelican-on-a-bike-raytracer-edition/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/">Pelican on a Bike - Raytracer Edition</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Netflix</title><link>https://simonwillison.net/2025/Nov/10/netflix/#atom-everything</link><description><![CDATA[<blockquote cite="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production"><p>Netflix asks partners to consider the following guiding principles before leveraging GenAI in any creative workflow: </p>
+<ol>
+<li>The outputs do not replicate or substantially recreate identifiable characteristics of unowned or copyrighted material, or infringe any copyright-protected works</li>
+<li>The generative tools used do not store, reuse, or train on production data inputs or outputs.</li>
+<li>Where possible, generative tools are used in an <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production#h_01K1BTNMBS130Y200ZWV3H6ZAT">enterprise-secured environment</a> to safeguard inputs.</li>
+<li>Generated material is temporary and not part of the <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production#h_01K1BTNMBVFQYQNJCCMKR254VK">final deliverables</a>.</li>
+<li>GenAI is not used to replace or generate new <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production#h_01K1BTNMBWWPTJJA79EFPY8NRJ">talent performances  </a>or union-covered work without consent.</li>
+</ol>
+<p>[...] If you answer "no" or "unsure" to any of these principles, escalate to your Netflix contact for more guidance before proceeding, as written approval may be required.</p></blockquote>
+<p class="cite">&mdash; <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production">Netflix</a>, Using Generative AI in Content Production</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/netflix">netflix</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Mon, 10 Nov 2025 22:08:27 +0000</pubDate></item><item><title>Pelican on a Bike - Raytracer Edition</title><link>https://simonwillison.net/2025/Nov/9/pelican-on-a-bike-raytracer-edition/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/">Pelican on a Bike - Raytracer Edition</a></strong></p>
 beetle_b ran this prompt against a bunch of recent LLMs:</p>
 <blockquote>
 <p><code>Write a POV-Ray file that shows a pelican riding on a bicycle.</code></p>
@@ -813,18 +824,4 @@ Go cryptography author Filippo Valsorda reports on some very positive results ap
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45784179">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/cryptography">cryptography</a>, <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/filippo-valsorda">filippo-valsorda</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sat, 1 Nov 2025 22:26:43 +0000</pubDate></item><item><title>October 2025 sponsors-only newsletter</title><link>https://simonwillison.net/2025/Nov/1/sponsors-only-newsletter/#atom-everything</link><description><![CDATA[<p>I just hit send on the October edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a>. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2025-10-october.md">access a copy here</a>. In the newsletter this month:</p>
-<ul>
-<li>Coding agents and "vibe engineering"</li>
-<li>Claude Code for web</li>
-<li>NVIDIA DGX Spark</li>
-<li>Claude Skills</li>
-<li>OpenAI DevDay and GitHub Universe</li>
-<li>Python 3.14</li>
-<li>October in Chinese Al model releases</li>
-<li>Miscellaneous extras</li>
-<li>Tools I'm using at the moment</li>
-</ul>
-<p>Here's <a href="https://gist.github.com/simonw/d6d4d86afc0d76767c63f23fc5137030">a copy of the September newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Sat, 1 Nov 2025 22:11:58 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/cryptography">cryptography</a>, <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/filippo-valsorda">filippo-valsorda</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sat, 1 Nov 2025 22:26:43 +0000</pubDate></item></channel></rss>
