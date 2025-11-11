@@ -1,4 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Netflix</title><link>https://simonwillison.net/2025/Nov/10/netflix/#atom-everything</link><description><![CDATA[<blockquote cite="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production"><p>Netflix asks partners to consider the following guiding principles before leveraging GenAI in any creative workflow: </p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Six coding agents at once</title><link>https://simonwillison.net/2025/Nov/11/six-coding-agents-at-once/#atom-everything</link><description><![CDATA[<p>I've been upgrading a <em>ton</em> of Datasette plugins recently for compatibility with the <a href="https://simonwillison.net/2025/Nov/4/datasette-10a20/">Datasette 1.0a20 release</a> from last week - <a href="https://github.com/simonw/datasette/issues/2577#issuecomment-3483537877">35 so far</a>.</p>
+<p>A lot of the work is very repetitive so I've been outsourcing it to <a href="https://github.com/openai/codex">Codex CLI</a>. Here's the recipe I've landed on:</p>
+<div class="highlight highlight-source-shell"><pre>codex <span class="pl-c1">exec</span> --dangerously-bypass-approvals-and-sandbox \
+<span class="pl-s"><span class="pl-pds">'</span>Run the command tadd and look at the errors and then</span>
+<span class="pl-s">read ~/dev/datasette/docs/upgrade-1.0a20.md and apply</span>
+<span class="pl-s">fixes and run the tests again and get them to pass.</span>
+<span class="pl-s"></span>
+<span class="pl-s">Also delete the .github directory entirely and replace</span>
+<span class="pl-s">it by running this:</span>
+<span class="pl-s"></span>
+<span class="pl-s">cp -r ~/dev/ecosystem/datasette-os-info/.github .</span>
+<span class="pl-s"></span>
+<span class="pl-s">Run a git diff against that to make sure it looks OK</span>
+<span class="pl-s">- if there are any notable differences e.g. switching</span>
+<span class="pl-s">from Twine to the PyPI uploader or deleting code that</span>
+<span class="pl-s">does a special deploy or configures something like </span>
+<span class="pl-s">playwright include that in your final report.</span>
+<span class="pl-s"></span>
+<span class="pl-s">If the project still uses setup.py then edit that new</span>
+<span class="pl-s">test.yml and publish.yaml to mention setup.py not pyproject.toml</span>
+<span class="pl-s"></span>
+<span class="pl-s">If this project has pyproject.toml make sure the license</span>
+<span class="pl-s">line in that looks like this:</span>
+<span class="pl-s"></span>
+<span class="pl-s">license = "Apache-2.0"</span>
+<span class="pl-s"></span>
+<span class="pl-s">And remove any license thing from the classifiers= array</span>
+<span class="pl-s"></span>
+<span class="pl-s">Update the Datasette dependency in pyproject.toml or</span>
+<span class="pl-s">setup.py to "datasette&gt;=1.0a21"</span>
+<span class="pl-s"></span>
+<span class="pl-s">And make sure requires-python is &gt;=3.10<span class="pl-pds">'</span></span></pre></div>
+
+<p>I featured a simpler version of this prompt in my <a href="https://simonwillison.net/2025/Nov/6/upgrading-datasette-plugins/">Datasette plugin upgrade video</a>, but I've expanded it quite a bit since then.</p>
+<p>At one point I had six terminal windows open running this same prompt against six different repos - probably my most extreme case of <a href="https://simonwillison.net/2025/Oct/5/parallel-coding-agents/">parallel agents</a> yet.</p>
+<p><img alt="Animated GIF demo. Six terminal windows are arranged in a 3x2 grid, each one of them is running the above prompt and working its way through making modifications to one of six different projects: datasette-extract, datasette-create-view, datasette-write, datasette-secrets, datasette-public, and datasette-write-ui." src="https://static.simonwillison.net/static/2025/multiple-codexes.gif" /></p>
+<p>Here are the six resulting commits from those six coding agent sessions:</p>
+<ul>
+<li><a href="https://github.com/datasette/datasette-extract/commit/deb6ae3f3069d45c5227a57067c6621cd3b8d6ea">datasette-extract deb6ae</a></li>
+<li><a href="https://github.com/datasette/datasette-create-view/commit/d940f42fdab205c645fe4a2f1d7a4e44d41104d8">datasette-create-view d940f4</a></li>
+<li><a href="https://github.com/simonw/datasette-write/commit/e0af01f931498a3dfbf5f2597534df109559fe71">datasette-write e0af01</a></li>
+<li><a href="https://github.com/datasette/datasette-secrets/commit/e93d1410bcd9a4af87a046b584e9e3f9cae503c4">datasette-secrets e93d14</a></li>
+<li><a href="https://github.com/datasette/datasette-write-ui/commit/1d2459fbc35ad02633bb7441c92bc5f8a5d919d5">datasette-write-ui 1d2459</a></li>
+<li><a href="https://github.com/datasette/datasette-public/commit/5213c41521821c03688c6099581e198a831f85d5">datasette-public 5213c4</a></li>
+</ul>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a></p>]]></description><pubDate>Tue, 11 Nov 2025 22:52:45 +0000</pubDate></item><item><title>Quoting Netflix</title><link>https://simonwillison.net/2025/Nov/10/netflix/#atom-everything</link><description><![CDATA[<blockquote cite="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production"><p>Netflix asks partners to consider the following guiding principles before leveraging GenAI in any creative workflow: </p>
 <ol>
 <li>The outputs do not replicate or substantially recreate identifiable characteristics of unowned or copyrighted material, or infringe any copyright-protected works</li>
 <li>The generative tools used do not store, reuse, or train on production data inputs or outputs.</li>
@@ -813,15 +859,4 @@ Useful, detailed guide from Shrivu Shankar, a Claude Code power user. Lots of ti
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45786738">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sun, 2 Nov 2025 02:46:17 +0000</pubDate></item><item><title>Claude Code Can Debug Low-level Cryptography</title><link>https://simonwillison.net/2025/Nov/1/claude-code-cryptography/#atom-everything</link><description><![CDATA[<p><strong><a href="https://words.filippo.io/claude-debugging/">Claude Code Can Debug Low-level Cryptography</a></strong></p>
-Go cryptography author Filippo Valsorda reports on some very positive results applying Claude Code to the challenge of implementing novel cryptography algorithms. After Claude was able to resolve a "fairly complex low-level bug" in fresh code he tried it against two other examples and got positive results both time.</p>
-<p>Filippo isn't directly using Claude's solutions to the bugs, but is finding it useful for tracking down the cause and saving him a solid amount of debugging work:</p>
-<blockquote>
-<p>Three out of three one-shot debugging hits with no help is <em>extremely impressive</em>. Importantly, there is no need to trust the LLM or review its output when its job is just saving me an hour or two by telling me where the bug is, for me to reason about it and fix it.</p>
-</blockquote>
-<p>Using coding agents in this way may represent a useful entrypoint for LLM-skeptics who wouldn't <em>dream</em> of letting an autocomplete-machine writing code on their behalf.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45784179">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/cryptography">cryptography</a>, <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/filippo-valsorda">filippo-valsorda</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sat, 1 Nov 2025 22:26:43 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sun, 2 Nov 2025 02:46:17 +0000</pubDate></item></channel></rss>
