@@ -11,7 +11,7 @@ docker run --rm -it -v "$PWD:/src" \
   -o h4x0rchat h4x0rchat.c &amp;&amp; ./h4x0rchat'
 </code></pre>
 <p>Run that <code>docker run</code> line in two separate terminal windows and you can chat between the two of them like this:</p>
-<p><img alt="Animated demo. Two terminal windows. Both run that command, then start a l33t speak chat interface. Each interface asks the user for a name, then messages that are typed in one are instantly displayed in the other and vice-versa." src="https://static.simonwillison.net/static/2025/h4x0rchat.gif" />
+<p><a style="text-decoration: none; border-bottom: none" href="https://static.simonwillison.net/static/2025/h4x0rchat.gif"><img style="max-width: 100%" alt="Animated demo. Two terminal windows. Both run that command, then start a l33t speak chat interface. Each interface asks the user for a name, then messages that are typed in one are instantly displayed in the other and vice-versa." src="https://static.simonwillison.net/static/2025/h4x0rchat.gif"></a>
 
     <p><small></small>Via <a href="https://lobste.rs/s/3z4pro/fun_reliable_side_channels_for_cross">lobste.rs</a></small></p>
 
