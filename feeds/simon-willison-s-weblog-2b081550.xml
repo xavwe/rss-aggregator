@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Steve Krouse</title><link>https://simonwillison.net/2025/Nov/12/steve-krouse/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/stevekrouse/status/1988641250329989533"><p>The fact that MCP is a difference surface from your normal API allows you to ship MUCH faster to MCP. This has been unlocked by inference at runtime</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>What happens if AI labs train for pelicans riding bicycles?</title><link>https://simonwillison.net/2025/Nov/13/training-for-pelicans-riding-bicycles/#atom-everything</link><description><![CDATA[<p>Almost every time I share a new example of <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">an SVG of a pelican riding a bicycle</a> a variant of this question pops up: how do you know the labs aren't training for your benchmark?</p>
+<p>The strongest argument is that <strong>they would get caught</strong>. If a model finally comes out that produces an excellent SVG of a pelican riding a bicycle you can bet I'm going to test it on all manner of creatures riding all sorts of transportation devices. If those are notably worse it's going to be pretty obvious what happened.</p>
+<p>A related note here is that, if they <em>are</em> training for my benchmark, that training clearly is not going well! The very best models still produce pelicans on bicycles that look laughably awful. It's one of the reasons I've continued to find the test useful: drawing pelicans is hard! Even getting a bicycle the right shape is a challenge that few models have achieved yet.</p>
+<p>My current favorite is still <a href="https://simonwillison.net/2025/Aug/7/gpt-5/#and-some-svgs-of-pelicans">this one from GPT-5</a>. The bicycle has all of the right pieces and the pelican is clearly pedaling it!</p>
+<p><img src="https://static.simonwillison.net/static/2025/gpt-5-pelican.png" alt="The bicycle is really good, spokes on wheels, correct shape frame, nice pedals. The pelican has a pelican beak and long legs stretching to the pedals." style="max-width: 100%;" /></p>
+<p>I should note that OpenAI's Aidan McLaughlin has <a href="https://x.com/aidan_mclau/status/1986255202132042164">specifically denied</a> training for this particular benchmark:</p>
+
+<blockquote><p>we do not hill climb on svg art</p></blockquote>
+
+<p>People also ask if they're training on my published collection. If they are that would be a big mistake, because a model trained on <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">these examples</a> will produce some <em>very</em> weird looking pelicans.</p>
+<p>Truth be told, I'm <strong>playing the long game</strong> here. All I've ever wanted from life is a genuinely great SVG vector illustration of a pelican riding a bicycle. My dastardly multi-year plan is to trick multiple AI labs into investing vast resources to cheat at my benchmark until I get one.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Thu, 13 Nov 2025 16:03:38 +0000</pubDate></item><item><title>Quoting Steve Krouse</title><link>https://simonwillison.net/2025/Nov/12/steve-krouse/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/stevekrouse/status/1988641250329989533"><p>The fact that MCP is a difference surface from your normal API allows you to ship MUCH faster to MCP. This has been unlocked by inference at runtime</p>
 <p>Normal APIs are promises to developers, because developer commit code that relies on those APIs, and then walk away. If you break the API, you break the promise, and you break that code. This means a developer gets woken up at 2am to fix the code</p>
 <p>But MCP servers are called by LLMs which dynamically read the spec every time, which allow us to constantly change the MCP server. It doesn't matter! We haven't made any promises. The LLM can figure it out afresh every time</p></blockquote>
 <p class="cite">&mdash; <a href="https://x.com/stevekrouse/status/1988641250329989533">Steve Krouse</a></p>
@@ -793,32 +805,4 @@ After several years of stable htmx 2.0 and a promise to never release a backward
     <p>Tags: <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/htmx">htmx</a>, <a href="https://simonwillison.net/tags/carson-gross">carson-gross</a></p>]]></description><pubDate>Mon, 3 Nov 2025 21:39:54 +0000</pubDate></item><item><title>Quoting Barry Warsaw</title><link>https://simonwillison.net/2025/Nov/3/barry-warsaw/#atom-everything</link><description><![CDATA[<blockquote cite="https://discuss.python.org/t/pep-810-explicit-lazy-imports/104131/465"><p>Dear PEP 810 authors. The Steering Council is happy to unanimously accept "<a href="https://peps.python.org/pep-0810/">PEP 810, Explicit lazy imports</a>". Congratulations! We appreciate the way you were able to build on and improve the previously discussed (and rejected) attempt at lazy imports as proposed in <a href="https://peps.python.org/pep-0690/">PEP 690</a>.</p></blockquote>
 <p class="cite">&mdash; <a href="https://discuss.python.org/t/pep-810-explicit-lazy-imports/104131/465">Barry Warsaw</a>, on behalf of the Python Steering Council</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/barry-warsaw">barry-warsaw</a></p>]]></description><pubDate>Mon, 3 Nov 2025 21:27:08 +0000</pubDate></item><item><title>The case against pgvector</title><link>https://simonwillison.net/2025/Nov/3/the-case-against-pgvector/#atom-everything</link><description><![CDATA[<p><strong><a href="https://alex-jacobs.com/posts/the-case-against-pgvector/">The case against pgvector</a></strong></p>
-I wasn't keen on the title of this piece but the content is great: Alex Jacobs talks through lessons learned trying to run the popular pgvector PostgreSQL vector indexing extension at scale, in particular the challenges involved in maintaining a large index with close-to-realtime updates using the IVFFlat or HNSW index types.</p>
-<p>The section on pre-v.s.-post filtering is particularly useful:</p>
-<blockquote>
-<p>Okay but let's say you solve your index and insert problems. Now you have a document search system with millions of vectors. Documents have metadata---maybe they're marked as <code>draft</code>, <code>published</code>, or <code>archived</code>. A user searches for something, and you only want to return published documents.</p>
-<p>[...] should Postgres filter on status first (pre-filter) or do the vector search first and then filter (post-filter)?</p>
-<p>This seems like an implementation detail. It’s not. It’s the difference between queries that take 50ms and queries that take 5 seconds. It’s also the difference between returning the most relevant results and… not.</p>
-</blockquote>
-<p>The <a href="https://news.ycombinator.com/item?id=45798479">Hacker News thread</a> for this article attracted a robust discussion, including some fascinating comments by Discourse developer Rafael dos Santos Silva (xfalcox) about how they are using pgvector at scale:</p>
-<blockquote>
-<p>We [run pgvector in production] at Discourse, in thousands of databases, and it's leveraged in most of the billions of page views we serve. [...]</p>
-<p>Also worth mentioning that we use quantization extensively:</p>
-<ul>
-<li>halfvec (16bit float) for storage - bit (binary vectors) for indexes</li>
-</ul>
-<p>Which makes the storage cost and on-going performance good enough that we could enable this in all our hosting. [...]</p>
-<p>In Discourse embeddings power:</p>
-<ul>
-<li>Related Topics, a list of topics to read next, which uses embeddings of the current topic as the key to search for similar ones</li>
-<li>Suggesting tags and categories when composing a new topic</li>
-<li>Augmented search</li>
-<li>RAG for uploaded files</li>
-</ul>
-</blockquote>
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45798479">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/postgresql">postgresql</a>, <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/vector-search">vector-search</a>, <a href="https://simonwillison.net/tags/embeddings">embeddings</a></p>]]></description><pubDate>Mon, 3 Nov 2025 20:26:10 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/barry-warsaw">barry-warsaw</a></p>]]></description><pubDate>Mon, 3 Nov 2025 21:27:08 +0000</pubDate></item></channel></rss>
