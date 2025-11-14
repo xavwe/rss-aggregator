@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Datasette 1.0a22</title><link>https://simonwillison.net/2025/Nov/13/datasette-10a22/#atom-everything</link><description><![CDATA[<p><strong><a href="https://docs.datasette.io/en/latest/changelog.html#a22-2025-11-13">Datasette 1.0a22</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing GPT-5.1 for developers</title><link>https://simonwillison.net/2025/Nov/13/gpt-51/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/gpt-5-1-for-developers/">Introducing GPT-5.1 for developers</a></strong></p>
+OpenAI announced GPT-5.1 yesterday, calling it <a href="https://openai.com/index/gpt-5-1/">a smarter, more conversational ChatGPT</a>. Today they've added it to their API.</p>
+<p>We actually got four new models today:</p>
+<ul>
+<li><a href="https://platform.openai.com/docs/models/gpt-5.1">gpt-5.1</a></li>
+<li><a href="https://platform.openai.com/docs/models/gpt-5.1-chat-latest">gpt-5.1-chat-latest</a></li>
+<li><a href="https://platform.openai.com/docs/models/gpt-5.1-codex">gpt-5.1-codex</a></li>
+<li><a href="https://platform.openai.com/docs/models/gpt-5.1-codex-mini">gpt-5.1-codex-mini</a></li>
+</ul>
+<p>There are a lot of details to absorb here.</p>
+<p>GPT-5.1 introduces a new reasoning effort called "none" (previous were minimal, low, medium, and high) - and none is the new default.</p>
+<blockquote>
+<p>This makes the model behave like a non-reasoning model for latency-sensitive use cases, with the high intelligence of GPT‑5.1 and added bonus of performant tool-calling. Relative to GPT‑5 with 'minimal' reasoning, GPT‑5.1 with no reasoning is better at parallel tool calling (which itself increases end-to-end task completion speed), coding tasks, following instructions, and using search tools---and supports <a href="https://platform.openai.com/docs/guides/tools-web-search?api-mode=responses">web search⁠</a> in our API platform.</p>
+</blockquote>
+<p>When you DO enable thinking you get to benefit from a new feature called "adaptive reasoning":</p>
+<blockquote>
+<p>On straightforward tasks, GPT‑5.1 spends fewer tokens thinking, enabling snappier product experiences and lower token bills. On difficult tasks that require extra thinking, GPT‑5.1 remains persistent, exploring options and checking its work in order to maximize reliability.</p>
+</blockquote>
+<p>Another notable new feature for 5.1 is <a href="https://platform.openai.com/docs/guides/prompt-caching#extended-prompt-cache-retention">extended prompt cache retention</a>:</p>
+<blockquote>
+<p>Extended prompt cache retention keeps cached prefixes active for longer, up to a maximum of 24 hours. Extended Prompt Caching works by offloading the key/value tensors to GPU-local storage when memory is full, significantly increasing the storage capacity available for caching.</p>
+</blockquote>
+<p>To enable this set <code>"prompt_cache_retention": "24h"</code> in the API call. Weirdly there's no price increase involved with this at all. I <a href="https://x.com/simonw/status/1989104422832738305">asked about that</a> and OpenAI's Steven Heidel <a href="https://x.com/stevenheidel/status/1989113407149314199">replied</a>:</p>
+<blockquote>
+<p>with 24h prompt caching we move the caches from gpu memory to gpu-local storage. that storage is not free, but we made it free since it moves capacity from a limited resource (GPUs) to a more abundant resource (storage). then we can serve more traffic overall!</p>
+</blockquote>
+<p>The most interesting documentation I've seen so far is in the new <a href="https://cookbook.openai.com/examples/gpt-5/gpt-5-1_prompting_guide">5.1 cookbook</a>, which also includes details of the new <code>shell</code> and <code>apply_patch</code> built-in tools. The <a href="https://github.com/openai/openai-cookbook/blob/main/examples/gpt-5/apply_patch.py">apply_patch.py implementation</a> is worth a look, especially if you're interested in the advancing state-of-the-art of file editing tools for LLMs.</p>
+<p>I'm still working on <a href="https://github.com/simonw/llm/issues/1300">integrating the new models into LLM</a>. The Codex models are Responses-API-only.</p>
+<p>I got this pelican for GPT-5.1 default (no thinking):</p>
+<p><img alt="The bicycle wheels have no spokes at all, the pelican is laying quite flat on it" src="https://static.simonwillison.net/static/2025/gpt-5.1-pelican.png" /></p>
+<p>And this one with reasoning effort set to high:</p>
+<p><img alt="This bicycle has four spokes per wheel, and the pelican is sitting more upright" src="https://static.simonwillison.net/static/2025/gpt-5.1-high-pelican.png" /></p>
+<p>These actually feel like a <a href="https://simonwillison.net/2025/Aug/7/gpt-5/#and-some-svgs-of-pelicans">regression from GPT-5</a> to me. The bicycles have less spokes!
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Thu, 13 Nov 2025 23:59:35 +0000</pubDate></item><item><title>Datasette 1.0a22</title><link>https://simonwillison.net/2025/Nov/13/datasette-10a22/#atom-everything</link><description><![CDATA[<p><strong><a href="https://docs.datasette.io/en/latest/changelog.html#a22-2025-11-13">Datasette 1.0a22</a></strong></p>
 New Datasette 1.0 alpha, adding some small features we needed to properly integrate the new permissions system with Datasette Cloud:</p>
 <blockquote>
 <ul>
@@ -826,16 +861,4 @@ When I <a href="https://simonwillison.net/2025/Oct/16/claude-skills/">wrote abou
 <p>The new permissions system unlocks some key improvements to Datasette Cloud concerning finely-grained permissions for larger teams, so I'll be integrating the new alpha there this week.</p>
 <p>This is the single biggest backwards-incompatible change required before Datasette 1.0. I plan to apply the lessons I learned from this project to the other, less intimidating changes. I'm hoping this can result in a final 1.0 release before the end of the year!</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Tue, 4 Nov 2025 21:34:42 +0000</pubDate></item><item><title>MCP Colors: Systematically deal with prompt injection risk</title><link>https://simonwillison.net/2025/Nov/4/mcp-colors/#atom-everything</link><description><![CDATA[<p><strong><a href="https://timkellogg.me/blog/2025/11/03/colors">MCP Colors: Systematically deal with prompt injection risk</a></strong></p>
-Tim Kellogg proposes a neat way to think about prompt injection, especially with respect to MCP tools.</p>
-<p>Classify every tool with a color: red if it exposes the agent to untrusted (potentially malicious) instructions, blue if it involves a "critical action" - something you would not want an attacker to be able to trigger.</p>
-<p>This means you can configure your agent to actively avoid mixing the two colors at once:</p>
-<blockquote>
-<p>The Chore: Go label every data input, and <strong>every tool</strong> (especially MCP tools). For MCP tools &amp; resources, you can use the _meta object to keep track of the color. The agent can decide at runtime (or earlier) if it’s gotten into an unsafe state.</p>
-<p>Personally, I like to automate. I needed to label ~200 tools, so I put them in a spreadsheet and used an LLM to label them. That way, I could focus on being <strong>precise and clear</strong> about my criteria for what constitutes “red”, “blue” or “neither”. That way I ended up with an artifact that scales beyond my initial set of tools.</p>
-</blockquote>
-
-    <p><small></small>Via <a href="https://bsky.app/profile/timkellogg.me/post/3m4ridhi3ps25">@timkellogg.me</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a></p>]]></description><pubDate>Tue, 4 Nov 2025 16:52:21 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/plugins">plugins</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Tue, 4 Nov 2025 21:34:42 +0000</pubDate></item></channel></rss>
