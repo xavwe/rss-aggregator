@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Andrej Karpathy</title><link>https://simonwillison.net/2025/Nov/16/andrej-karpathy/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/karpathy/status/1990116666194456651"><p>With AI now, we are able to write new programs that we could never hope to write by hand before. We do it by specifying objectives (e.g. classification accuracy, reward functions), and we search the program space via gradient descent to find neural networks that work well against that objective.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The fate of “small” open source</title><link>https://simonwillison.net/2025/Nov/17/the-fate-of-small-open-source/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nolanlawson.com/2025/11/16/the-fate-of-small-open-source/">The fate of “small” open source</a></strong></p>
+Nolan Lawson asks if LLM assistance means that the category of tiny open source libraries like his own <a href="https://github.com/nolanlawson/blob-util">blob-util</a> is destined to fade away.</p>
+<p>Why take on additional supply chain risks adding another dependency when an LLM can likely kick out the subset of functionality needed by your own code to-order?</p>
+<blockquote>
+<p>I still believe in open source, and I’m still doing it (in fits and starts). But one thing has become clear to me: the era of small, low-value libraries like <code>blob-util</code> is over. They were already on their way out thanks to Node.js and the browser taking on more and more of their functionality (see <code>node:glob</code>, <code>structuredClone</code>, etc.), but LLMs are the final nail in the coffin.</p>
+</blockquote>
+<p>I've been thinking about a similar issue myself recently as well.</p>
+<p>Quite a few of my own open source projects exist to solve problems that are frustratingly hard to figure out. <a href="https://github.com/simonw/s3-credentials">s3-credentials</a> is a great example of this: it solves the problem of creating read-only or read-write credentials for an S3 bucket - something that I've always found infuriatingly difficult since you need to know to craft an IAM policy that looks something <a href="https://s3-credentials.readthedocs.io/en/stable/policy-documents.html#read-only">like this</a>:</p>
+<pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": [
+        "arn:aws:s3:::my-s3-bucket"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:GetObjectLegalHold",
+        "s3:GetObjectRetention",
+        "s3:GetObjectTagging"
+      ],
+      "Resource": [
+        "arn:aws:s3:::my-s3-bucket/*"
+      ]
+    }
+  ]
+}
+</code></pre>
+<p>Modern LLMs are very good at S3 IAM polices, to the point that if I needed to solve this problem today I doubt I would find it frustrating enough to justify finding or creating a reusable library to help.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/nolan-lawson">nolan-lawson</a></p>]]></description><pubDate>Mon, 17 Nov 2025 23:24:44 +0000</pubDate></item><item><title>Quoting Andrej Karpathy</title><link>https://simonwillison.net/2025/Nov/16/andrej-karpathy/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/karpathy/status/1990116666194456651"><p>With AI now, we are able to write new programs that we could never hope to write by hand before. We do it by specifying objectives (e.g. classification accuracy, reward functions), and we search the program space via gradient descent to find neural networks that work well against that objective.</p>
 <p>This is my <a href="https://karpathy.medium.com/software-2-0-a64152b37c35">Software 2.0 blog post</a> from a while ago. In this new programming paradigm then, the new most predictive feature to look at is <strong>verifiability</strong>. If a task/job is verifiable, then it is optimizable directly or via reinforcement learning, and a neural net can be trained to work extremely well. It's about to what extent an AI can "practice" something. </p>
 <p>The environment has to be resettable (you can start a new attempt), efficient (a lot attempts can be made), and rewardable (there is some automated process to reward any specific attempt that was made).</p></blockquote>
 <p class="cite">&mdash; <a href="https://x.com/karpathy/status/1990116666194456651">Andrej Karpathy</a></p>
@@ -704,17 +744,4 @@ Finally, I demonstrated that the shipped plugin worked in a fresh environment us
 <p>Claude Code for web offers <a href="https://support.claude.com/en/articles/12690958-claude-code-promotion">a free $250 of credits</a> for their $20/month users for a limited time (until November 18, 2025). Gemini Jules has <a href="https://jules.google/docs/usage-limits/">a free tier</a>. There are plenty of other coding agents you can try out as well.</p>
 <p>Let me know if your research agents come back with anything interesting!</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/jules">jules</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Thu, 6 Nov 2025 15:53:23 +0000</pubDate></item><item><title>Open redirect endpoint in Datasette prior to 0.65.2 and 1.0a21</title><link>https://simonwillison.net/2025/Nov/5/open-redirect-datasette/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/datasette/security/advisories/GHSA-w832-gg5g-x44m">Open redirect endpoint in Datasette prior to 0.65.2 and 1.0a21</a></strong></p>
-This GitHub security advisory covers two new releases of Datasette that I shipped today, both addressing <a href="https://github.com/simonw/datasette/issues/2429">the same open redirect issue</a> with a fix by <a href="https://github.com/jamesjefferies">James Jefferies</a>.</p>
-<p><strong><a href="https://docs.datasette.io/en/stable/changelog.html#v0-65-2">Datasette 0.65.2</a></strong> fixes the bug and also adds Python 3.14 support and a <code>datasette publish cloudrun</code> fix.</p>
-<p><strong><a href="https://docs.datasette.io/en/latest/changelog.html#a21-2025-11-05">Datasette 1.0a21</a></strong> also has that Cloud Run fix and two other small new features:</p>
-<blockquote>
-<ul>
-<li>New <code>datasette --get /path --headers</code> option for inspecting the headers returned by a path. (<a href="https://github.com/simonw/datasette/issues/2578">#2578</a>)</li>
-<li>New <code>datasette.client.get(..., skip_permission_checks=True)</code> parameter to bypass permission checks when making requests using the internal client. (<a href="https://github.com/simonw/datasette/issues/2583">#2583</a>)</li>
-</ul>
-</blockquote>
-<p>I decided to include the Cloud Run deployment fix so anyone with Datasette instances deployed to Cloud Run can update them with the new patched versions.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/cloudrun">cloudrun</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a></p>]]></description><pubDate>Wed, 5 Nov 2025 23:11:17 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/jules">jules</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Thu, 6 Nov 2025 15:53:23 +0000</pubDate></item></channel></rss>
