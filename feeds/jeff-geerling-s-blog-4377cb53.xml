@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Using AMD GPUs on Raspberry Pi without recompiling Linux</title><link>https://www.jeffgeerling.com/blog/2025/using-amd-gpus-on-raspberry-pi-without-recompiling-linux</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Using AMD GPUs on Raspberry Pi without recompiling Linux</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>I'm working on a more in-depth test of some newer AMD GPUs on the Raspberry Pi, now that the <a href="https://www.jeffgeerling.com/blog/2025/full-egpu-acceleration-on-pi-500-15-line-patch">15 line kernel patch</a> is (IMO) nearly ready for upstreaming.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/raspberry-pi-cm5-amd-radeon-ai-pro-9700.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-5cc07605-8527-42a6-a8d3-cb958a2ac7f3" data-insert-attach="{&quot;id&quot;:&quot;5cc07605-8527-42a6-a8d3-cb958a2ac7f3&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi CM5 with AMD Radeon AI Pro 9700 GPU"></p>
+
+<p>But this blog post shows how to quickly get almost <em>any</em> modern AMD GPU running on a Raspberry Pi 5, CM5, or Pi 500+, thanks to <a href="https://github.com/raspberrypi/linux/pull/7072">this patch on the Pi Linux fork</a>.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-14T08:58:14-06:00" title="Friday, November 14, 2025 - 08:58" class="datetime">November 14, 2025</time>
+</span>]]></description><pubDate>Fri, 14 Nov 2025 14:58:14 +0000</pubDate></item><item><title>All Intel GPUs run on Raspberry Pi and RISC-V</title><link>https://www.jeffgeerling.com/blog/2025/all-intel-gpus-run-on-raspberry-pi-and-risc-v</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">All Intel GPUs run on Raspberry Pi and RISC-V</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/intel-arc-pi-gpu-b580-ai-llama-cpp-llm.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-61e0159d-f6ab-417d-8e45-2682a0bbe287" data-insert-attach="{&quot;id&quot;:&quot;61e0159d-f6ab-417d-8e45-2682a0bbe287&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Intel Arc Pi GPU B580 AI Llama.cpp LLM"></p>
+
+<p>We finally have Intel Arc GPUs working on the Pi <em>somewhat</em> stably—it required overcoming many small hurdles, but it looks like support could land in Raspberry Pi OS if we can get <a href="https://lore.kernel.org/lkml/20250715061837.2144388-1-zhangzhijie@bosc.ac.cn/">a simple patch upstreamed</a><sup id="patchnote"><a href="#fn:patchnote" class="footnote-ref" role="doc-noteref">1</a></sup>. If that happens, all you'd need to do to use an Intel card on a Pi is install a firmware package.</p>
+
+<p>The cards I've spent the most time with so far are:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-13T09:06:28-06:00" title="Thursday, November 13, 2025 - 09:06" class="datetime">November 13, 2025</time>
+</span>]]></description><pubDate>Thu, 13 Nov 2025 15:06:28 +0000</pubDate></item><item><title>Minisforum stuffs an entire Arm Homelab in the MS-R1</title><link>https://www.jeffgeerling.com/blog/2025/minisforum-stuffs-entire-arm-homelab-ms-r1</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Minisforum stuffs an entire Arm Homelab in the MS-R1</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/minisforum-ms-r1-front.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-b2821174-503d-4a7d-b3e8-5cd9b17c53e6" data-insert-attach="{&quot;id&quot;:&quot;b2821174-503d-4a7d-b3e8-5cd9b17c53e6&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Minisforum MS-R1 front"></p>
+
+<p>The <a href="https://s.minisforum.com/4hRFZbj">Minisforum MS-R1</a> uses the same Cix CD8180 Arm SoC as the <a href="https://www.jeffgeerling.com/blog/2025/radxa-orion-o6-brings-arm-midrange-pc">Orion O6 I reviewed earlier this year</a>. But everything else about this thing is different.</p>
+
+<p>What this thing <em>should</em> be, is a box that runs Linux and can compete with at least an Apple M1 Mac mini, or a mid-range Mini PC. But what we <em>got</em>... is something different.</p>
+
+<h2>Video</h2>
+
+<p>Hate reading? I also published a video on the MS-R1 on my YouTube channel. Watch it here, or scroll on past.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-10T10:01:10-06:00" title="Monday, November 10, 2025 - 10:01" class="datetime">November 10, 2025</time>
+</span>]]></description><pubDate>Mon, 10 Nov 2025 16:01:10 +0000</pubDate></item><item><title>Converting hot dog plasma video to sound with OpenCV</title><link>https://www.jeffgeerling.com/blog/2025/converting-hot-dog-plasma-video-sound-opencv</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Converting hot dog plasma video to sound with OpenCV</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>When you ground a hot dog to an AM radio tower, it generates plasma.</p>
+
+<div>
+
+  
+  Your browser does not support the video tag.
+
+</div>
+
+<p>While the hot dog's flesh is getting vaporized, a tiny plasma arc moves the air around it back and forth. And because this tower is an AM tower, it uses <a href="https://en.wikipedia.org/wiki/Amplitude_modulation"><em>Amplitude</em> Modulation</a>, where a transmitter changes the amplitude of a carrier wave up and down. Just like a speaker cone moving up and down, the plasma arc from the hot dog turns that modulation into audible sound.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-07T10:15:39-06:00" title="Friday, November 7, 2025 - 10:15" class="datetime">November 7, 2025</time>
+</span>]]></description><pubDate>Fri, 7 Nov 2025 16:15:39 +0000</pubDate></item><item><title>It&apos;s not that hard to stop a Trane</title><link>https://www.jeffgeerling.com/blog/2025/its-not-hard-stop-trane</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">It's not that hard to stop a Trane</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>Six years ago, I replaced the old HVAC system that came with our house, a central forced air system installed in 1995<sup id="oldinstall"><a href="#fn:oldinstall" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
+
+<p>The new system is a Trane XR AC paired with an <a href="https://www.trane.com/residential/en/products/furnaces/premier-96/">S9V2 96% efficiency forced-air gas furnace</a>. And it ran great! Better efficiency, quieter, multiple fan speeds so I can circulate air and prevent stale air in some parts of the house... what's not to love?</p>
+
+<p>Well, apparently the engineering:</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/trane-s9v2-furnace-inside.jpg" width="700" height="525" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-cb776ef8-c2df-4787-878e-7139617083e4" data-insert-attach="{&quot;id&quot;:&quot;cb776ef8-c2df-4787-878e-7139617083e4&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Trane S9V2 Forced-air variable speed gas furnace"></p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-04T16:55:37-06:00" title="Tuesday, November 4, 2025 - 16:55" class="datetime">November 4, 2025</time>
+</span>]]></description><pubDate>Tue, 4 Nov 2025 22:55:37 +0000</pubDate></item><item><title>The Arduino Uno Q is a weird hybrid SBC</title><link>https://www.jeffgeerling.com/blog/2025/arduino-uno-q-weird-hybrid-sbc</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">The Arduino Uno Q is a weird hybrid SBC</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/arduino-uno-1-in-hand.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-974ca867-c50a-4b8a-9a00-95654f6b6072" data-insert-attach="{&quot;id&quot;:&quot;974ca867-c50a-4b8a-9a00-95654f6b6072&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Arduino Uno Q"></p>
+
+<p>The <a href="https://www.arduino.cc/product-uno-q">Arduino Uno Q</a> is... a weird board. It's the first product born out of <a href="https://www.jeffgeerling.com/blog/2025/qualcomms-buying-arduino-–-what-it-means-makers">Qualcomm's buyout of Arduino</a>.</p>
+
+<p>It's like if you married an Intel CPU, and a Raspberry Pi RP2040 microcontroller—oh wait, <a href="https://www.jeffgeerling.com/blog/2024/radxa-x4-sbc-unites-intel-n100-and-raspberry-pi-rp2040">Radxa's X4 did that</a>.</p>
+
+<p>Arduino even tried it before with their old <a href="https://docs.arduino.cc/retired/boards/arduino-yun/">Yún</a> board, which had Linux running on a MIPS CPU, married to an ATmega microcontroller.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-31T09:01:28-05:00" title="Friday, October 31, 2025 - 09:01" class="datetime">October 31, 2025</time>
+</span>]]></description><pubDate>Fri, 31 Oct 2025 14:01:28 +0000</pubDate></item><item><title>Why do some radio towers blink?</title><link>https://www.jeffgeerling.com/blog/2025/why-do-some-radio-towers-blink</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Why do some radio towers blink?</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="yt-embed">
+.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }<div class="embed-container"></div>
+</div>
+
+<p>One day on my drive home, I saw three towers. One of them had a bunch of blinking white lights, another one had red lights that kind of faded in and out, and the third one, well, it wasn't doing anything. I'm lucky to have a radio engineer for a dad, so Dad: <em>why do some towers blink?</em></p>
+
+<p>Joe: Well, blinking I would call like the way you described it, "flashing", "white light", or "strobe". All these lights are to aid pilots and air traffic. helicopters, fighter planes, regular jets. So that's the purpose of it.</p>
+
+<p>Jeff: Well that one tower that I saw had red lights that faded in and out, but I even think there's a freestanding tower just north of here that has red and white on top.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-24T09:00:54-05:00" title="Friday, October 24, 2025 - 09:00" class="datetime">October 24, 2025</time>
+</span>]]></description><pubDate>Fri, 24 Oct 2025 14:00:54 +0000</pubDate></item><item><title>Recovering videos from my Sony camera that I stupidly deleted</title><link>https://www.jeffgeerling.com/blog/2025/recovering-videos-my-sony-camera-i-stupidly-deleted</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Recovering videos from my Sony camera that I stupidly deleted</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/sony-a6700-sd-cards-on-desk.jpeg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-4db2b381-1806-450c-8d72-e24b4e4713fa" data-insert-attach="{&quot;id&quot;:&quot;4db2b381-1806-450c-8d72-e24b4e4713fa&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Sony A6700 SD cards on desk"></p>
+
+<p>My normal process for transferring video footage from my Sony cameras to my computer is as follows:</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-23T12:30:41-05:00" title="Thursday, October 23, 2025 - 12:30" class="datetime">October 23, 2025</time>
+</span>]]></description><pubDate>Thu, 23 Oct 2025 17:30:41 +0000</pubDate></item><item><title>VCF Midwest was even better than I expected</title><link>https://www.jeffgeerling.com/blog/2025/vcf-midwest-was-even-better-i-expected</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">VCF Midwest was even better than I expected</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p><img src="https://www.jeffgeerling.com/sites/default/files/images/macintosh-powerbook-520.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-09536783-4164-4391-b60a-6bf8163f3f6d" data-insert-attach="{&quot;id&quot;:&quot;09536783-4164-4391-b60a-6bf8163f3f6d&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Macintosh PowerBook 520"></p>
+
+<p>Earlier this year, I inherited a bunch of old Macs and computer parts, including the PowerBook 520 pictured above. And, for the past three years I've been trying to visit VCF Midwest up in Chicago, where there's this odd blend of old computers, radio, broadcast gear... Honestly, it's hard to pin down exactly <em>what</em> it is.</p>
+
+<p>And I also had no idea how overwhelming the two-day event would be. Overwhelmingly <em>awesome</em>, that is.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-16T09:03:39-05:00" title="Thursday, October 16, 2025 - 09:03" class="datetime">October 16, 2025</time>
+</span>]]></description><pubDate>Thu, 16 Oct 2025 14:03:39 +0000</pubDate></item><item><title>Resizeable BAR support on the Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2025/resizeable-bar-support-on-raspberry-pi</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Resizeable BAR support on the Raspberry Pi</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>While not an <em>absolute</em> requirement for modern graphics card support on Linux, <a href="https://www.intel.com/content/www/us/en/support/articles/000090831/graphics.html">Resizeable BAR</a> support makes GPUs go faster, by allowing GPUs to throw data back and forth on the PCIe bus in chunks larger than 256 MB.</p>
+
+<p>In January, I opened an issue in the Raspberry Pi Linux repo, <a href="https://github.com/raspberrypi/linux/issues/6621">Resizable BAR support on Pi 5</a>.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/sparkle-intel-arc-b580-on-raspberry-pi-500-plus.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-f4dc2a6a-8fd9-44f5-8ac8-c557dc843deb" data-insert-attach="{&quot;id&quot;:&quot;f4dc2a6a-8fd9-44f5-8ac8-c557dc843deb&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Intel Arc B580 on Raspberry Pi 500+"></p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-09T09:12:44-05:00" title="Thursday, October 9, 2025 - 09:12" class="datetime">October 9, 2025</time>
+</span>]]></description><pubDate>Thu, 9 Oct 2025 14:12:44 +0000</pubDate></item></channel></rss>
