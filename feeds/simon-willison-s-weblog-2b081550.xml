@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>llm-gemini 0.27</title><link>https://simonwillison.net/2025/Nov/18/llm-gemini/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/llm-gemini/releases/tag/0.27">llm-gemini 0.27</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Matthew Prince</title><link>https://simonwillison.net/2025/Nov/19/matthew-prince/#atom-everything</link><description><![CDATA[<blockquote cite="https://blog.cloudflare.com/18-november-2025-outage/"><p>Cloudflare's network began experiencing significant failures to deliver core network traffic [...] triggered by a change to one of our database systems' permissions which caused the database to output multiple entries into a “feature file” used by our Bot Management system. That feature file, in turn, doubled in size. The larger-than-expected feature file was then propagated to all the machines that make up our network. [...] The software had a limit on the size of the feature file that was below its doubled size. That caused the software to fail.</p></blockquote>
+<p class="cite">&mdash; <a href="https://blog.cloudflare.com/18-november-2025-outage/">Matthew Prince</a>, Cloudflare outage on November 18, 2025</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/postmortem">postmortem</a>, <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a></p>]]></description><pubDate>Wed, 19 Nov 2025 08:02:36 +0000</pubDate></item><item><title>llm-gemini 0.27</title><link>https://simonwillison.net/2025/Nov/18/llm-gemini/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/llm-gemini/releases/tag/0.27">llm-gemini 0.27</a></strong></p>
 New release of my LLM plugin for Google's Gemini models:</p>
 <blockquote>
 <ul>
@@ -872,14 +875,4 @@ Game design legend Raph Koster (Ultima Online, Star Wars Galaxies and many more)
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45841262">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/game-design">game-design</a></p>]]></description><pubDate>Fri, 7 Nov 2025 05:47:03 +0000</pubDate></item><item><title>You should write an agent</title><link>https://simonwillison.net/2025/Nov/7/you-should-write-an-agent/#atom-everything</link><description><![CDATA[<p><strong><a href="https://fly.io/blog/everyone-write-an-agent/">You should write an agent</a></strong></p>
-Thomas Ptacek on the Fly blog:</p>
-<blockquote>
-<p>Agents are the most surprising programming experience I’ve had in my career. Not because I’m awed by the magnitude of their powers — I like them, but I don’t like-like them. It’s because of how easy it was to get one up on its legs, and how much I learned doing that.</p>
-</blockquote>
-<p>I think he's right: hooking up a simple agentic loop that prompts an LLM and runs a tool for it any time it request one really is the new "hello world" of AI engineering.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45840088">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/thomas-ptacek">thomas-ptacek</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/fly">fly</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Fri, 7 Nov 2025 04:40:12 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/game-design">game-design</a></p>]]></description><pubDate>Fri, 7 Nov 2025 05:47:03 +0000</pubDate></item></channel></rss>
