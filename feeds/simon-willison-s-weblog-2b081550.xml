@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Nicholas Carlini</title><link>https://simonwillison.net/2025/Nov/20/nicholas-carlini/#atom-everything</link><description><![CDATA[<blockquote cite="https://nicholas.carlini.com/writing/2025/are-llms-worth-it.html"><p>Previously, when malware developers wanted to go and monetize their exploits, they would do exactly one thing: encrypt every file on a person's computer and request a ransome to decrypt the files. In the future I think this will change.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Nano Banana Pro aka gemini-3-pro-image-preview is the best available image generation model</title><link>https://simonwillison.net/2025/Nov/20/nano-banana-pro/#atom-everything</link><description><![CDATA[<p>Hot on the heels of Tuesday's <a href="https://simonwillison.net/2025/Nov/18/gemini-3/">Gemini 3 Pro</a> release, today it's <a href="https://blog.google/technology/ai/nano-banana-pro/">Nano Banana Pro</a>, also known as <a href="https://deepmind.google/models/gemini-image/pro/">Gemini 3 Pro Image</a>. I've had a few days of preview access and this is an <em>astonishingly</em> capable image generation model.</p>
+<p>As is often the case, the most useful low-level details can be found in <a href="https://ai.google.dev/gemini-api/docs/image-generation#gemini-3-capabilities">the API documentation</a>:</p>
+<blockquote>
+<p>Designed to tackle the most challenging workflows through advanced reasoning, it excels at complex, multi-turn creation and modification tasks.</p>
+<ul>
+<li>
+<strong>High-resolution output</strong>: Built-in generation capabilities for 1K, 2K, and 4K visuals.</li>
+<li>
+<strong>Advanced text rendering</strong>: Capable of generating legible, stylized text for infographics, menus, diagrams, and marketing assets.</li>
+<li>
+<strong>Grounding with Google Search</strong>: The model can use Google Search as a tool to verify facts and generate imagery based on real-time data (e.g., current weather maps, stock charts, recent events).</li>
+<li>
+<strong>Thinking mode</strong>: The model utilizes a "thinking" process to reason through complex prompts. It generates interim "thought images" (visible in the backend but not charged) to refine the composition before producing the final high-quality output.</li>
+<li>
+<strong>Up to 14 reference images</strong>: You can now mix up to 14 reference images to produce the final image.</li>
+</ul>
+<p>[...] These 14 images can include the following:</p>
+<ul>
+<li>Up to 6 images of objects with high-fidelity to include in the final image</li>
+<li>Up to 5 images of humans to maintain character consistency</li>
+</ul>
+</blockquote>
+<h4 id="trying-out-some-detailed-instruction-image-prompts">Trying out some detailed instruction image prompts</h4>
+<p>Max Woolf published <a href="https://minimaxir.com/2025/11/nano-banana-prompts/#hello-nano-banana">the definitive guide to prompting Nano Banana</a> just a few days ago. I decided to try his example prompts against the new model, requesting results in 4K.</p>
+<p>Here's what I got for his first test prompt, using Google's <a href="https://aistudio.google.com/">AI Studio</a>:</p>
+<blockquote>
+<p><code>Create an image of a three-dimensional pancake in the shape of a skull, garnished on top with blueberries and maple syrup.</code></p>
+</blockquote>
+<p>Here's what I got:</p>
+<p><img src="https://static.simonwillison.net/static/2025/pancake-skull-1.jpg" alt="A very detailed quality photo of a skull made of pancake batter, blueberries on top, maple syrup dripping down, maple syrup bottle in the background." style="max-width: 100%;" /></p>
+<p>The result came out as a 24.1MB, 5632 × 3072 pixel PNG file. I don't want to serve that on my own blog so here's <a href="https://drive.google.com/file/d/1QV3pcW1KfbTRQscavNh6ld9PyqG4BRes/view?usp=drive_link">a Google Drive link for the original</a>.</p>
+<p>Then I ran his follow-up prompt:</p>
+<pre><code>Make ALL of the following edits to the image:
+- Put a strawberry in the left eye socket.
+- Put a blackberry in the right eye socket.
+- Put a mint garnish on top of the pancake.
+- Change the plate to a plate-shaped chocolate-chip cookie.
+- Add happy people to the background.
+</code></pre>
+<p><img src="https://static.simonwillison.net/static/2025/pancake-skull-2.jpg" alt="It's the exact same skull with the requested edits made - mint garnish on the blueberries, a strawberry in the left hand eye socket (from our perspective, technically the skull's right hand socket), a blackberry in the other, the plate is now a plate-sized chocolate chip cookie (admittedly on a regular plate) and there are four happy peo ple in the background." style="max-width: 100%;" /></p>
+<p>I'll note that it did put the cookie-shaped plate on a regular plate. Here's <a href="https://drive.google.com/file/d/18AzhM-BUZAfLGoHWl6MQW_UW9ju4km-i/view?usp=drive_link">the 24.9MB PNG</a>.</p>
+<p>The new model isn't cheap. Here's <a href="https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image-preview">the API pricing</a>: it's 24 cents for a 4K image and 13.4 cents for a 1K or 2K image. Image inputs are 6.7 cents each.</p>
+<p>If you use all 14 reference images to create a 4K output that's $1.18 for a single API call (plus a few more cents to cover your text prompt, charged at $2.00 per million tokens.)</p> 
+<p>Unlike most of Google's other models it also isn't available for free via AI Studio: you have to configure an API key with billing in order to use the model there.</p>
+<h4 id="creating-an-infographic">Creating an infographic</h4>
+<p>So this thing is great at following instructions. How about rendering text?</p>
+<p>I tried this prompt, this time using the Gemini consumer app in "thinking" mode (which now uses Nano Banana Pro for image generation). <a href="https://gemini.google.com/share/d40fe391f309">Here's a share link</a> - my prompt was:</p>
+<blockquote>
+<p>Infographic explaining how the Datasette open source project works</p>
+</blockquote>
+<p>This is a great opportunity to test its ability to run searches (aka "Grounding with Google Search"). Here's what it created based on that 9 word prompt:</p>
+<p><img src="https://static.simonwillison.net/static/2025/nano-banana-datasette.jpg" alt="Described by Gemini 3 Pro: A technical architecture diagram titled &quot;How Datasette Works: From Raw Data to Explorable API,&quot; illustrating a workflow from left to right. 1. &quot;RAW DATA SOURCES&quot; include &quot;CSV&quot;, &quot;JSON&quot;, &quot;Excel (XLSX)&quot;, and &quot;Log Files&quot;. 2. These flow into &quot;DATA PREPARATION &amp; CONVERSION&quot; using tools &quot;csvs-to-sqlite&quot; and &quot;sqlite-utils&quot; to create a &quot;SQLite DATABASE&quot;. 3. This feeds into the central &quot;DATASETTE APPLICATION CORE,&quot; a stack comprising &quot;Data Ingestion (Read-Only)&quot;, &quot;Query Engine (SQL)&quot;, &quot;API Layer (JSON)&quot;, and &quot;Web UI Rendering&quot;. 4. A &quot;PLUGIN ECOSYSTEM&quot; connects below the core, listing &quot;Vega Charts&quot;, &quot;Cluster Maps&quot;, &quot;Full-Text Search&quot;, and &quot;Custom Renderers&quot;. 5. To the right, the core branches into &quot;OUTPUT &amp; INTERFACES&quot;: an &quot;Interactive Web Interface (Explore, Filter, Facet)&quot;, a &quot;JSON API (Programmatic Access)&quot; showing a snippet {&quot;data&quot;: [...]}, and a &quot;SQL EDITOR Custom SQL Queries&quot; showing SELECT * FROM.... 6. The API output connects to &quot;PUBLISHING &amp; DEPLOYMENT&quot; via a terminal command datasette publish cloudrun my.db leading to deployment targets &quot;Heroku&quot;, &quot;Google Cloud Run&quot;, &quot;Fly.io&quot;, and &quot;Vercel&quot;." style="max-width: 100%;" /></p>
+<p>That's a pretty extraordinary result for such a simple prompt. The text is all spelled correctly and rendered without glitches. The content is solid too - it even included logos for the most popular publish platforms, and a tiny thumbnail of the Datasette UI which is close-enough for an infographic.</p>
+<p>"Data Ingestion (Read-Only)" is a bit off. Everything else looks great to me.</p>
+<p>Here's the thinking trace for that image generation process:</p>
+<blockquote>
+<p><strong>Initiating Datasette Infographic</strong></p>
+<p>I'm starting a detailed infographic about the Datasette project. I plan to use Google Search to gather specific information about its core processes, which I will then visualize in a multi-panel diagram.</p>
+<p><strong>Developing the Datasette workflow</strong></p>
+<p>I am visualizing the Datasette workflow as described in the search results. I'm focusing on the conversion of data from different formats into a SQLite database, which is then presented as a web application complete with a user interface and JSON output.</p>
+<p><strong>Visualizing Datasette Workflow</strong></p>
+<p>I've sketched out the initial structure for the infographic, focusing on a flowchart style. The key components include data input from diverse sources, conversion to SQLite, the Datasette core application, its main features (web UI, JSON API, SQL querying), ecosystem plugins, and finally, deployment options. I aim for clear icons and labels to represent each step. Now I will focus on refining the flow and clarifying the relationships between the parts.</p>
+<p><strong>Defining Core Datasette Stages</strong></p>
+<p>I've sketched out the initial infographic structure. I have identified the key components, focusing on visual representation of the data flow and the key benefits and features of the system. I have made updates to the flowchart with clear icons and labels. Now I'm working to expand the data input section and refine the visual representation of each step.</p>
+<p><strong>Constructing Datasette Infographic</strong></p>
+<p>I am translating the current Datasette workflow outline into visual elements. The input section will show icons for different data formats. I've sketched the data conversion stage with clear illustrations of the necessary tools. I will add a depiction of the Datasette core application, showcasing its interfaces and functions. The plugin ecosystem and deployment options will follow. Now, I am refining the visual representation.</p>
+<p><strong>Analyzing Datasette's Architecture</strong></p>
+<p>I'm currently working on representing the Datasette open-source project's architecture visually. I've broken it down into key components: raw data processing, SQLite conversion, core application functionalities, plugin integration, and deployment methods. I'm focusing on creating a clear, linear representation to show the workflow.</p>
+<p><strong>Mapping the Datasette Flow</strong></p>
+<p>I've crafted a comprehensive graphic to illustrate Datasette's operation. It spans the data ingestion, SQLite conversion, main application features, plugin interactions, and deployment stages, aiming for clarity and a logical flow.</p>
+</blockquote>
+<h4 id="detecting-generated-images-with-synthid">Detecting generated images with SynthID</h4>
+<p>This note from the <a href="https://blog.google/technology/ai/nano-banana-pro/">announcement post</a> caught my eye:</p>
+<blockquote>
+<p>We believe it's critical to know when an image is AI-generated. This is why all media generated by Google's tools are embedded with our imperceptible <a href="https://deepmind.google/models/synthid/">SynthID</a> digital watermark.</p>
+<p>Today, we are putting a powerful verification tool directly in consumers' hands: you can now upload an image into the Gemini app and simply ask if it was generated by Google AI, thanks to SynthID technology. We are starting with images, but will expand to audio and video soon.</p>
+</blockquote>
+<p>Last night I used Nano Banana Pro to generate a fake photograph of raccoons stealing our food delivery, then scrubbed out the little diamond icon using the Apple Photos "cleanup" tool. I uploaded that Gemini app and asked "Was this image created with AI?":</p>
+<p><img src="https://static.simonwillison.net/static/2025/nano-banana-detected.jpg" alt="Screenshot of a mobile chat interface displaying a conversation about AI image detection. The user has uploaded a photo showing two raccoons on a porch; one raccoon reaches inside a paper bag a bench while the other stands on the ground looking up at it. The conversation title reads &quot;AI Image Creation Confirmed&quot;. The user asks, &quot;Was this image created with ai?&quot; The AI response, labeled &quot;Analysis &amp; 1 more&quot;, states: &quot;Yes, it appears that all or part of this image was created with Google AI. SynthID detected a watermark in 25-50% of the image.&quot;" style="max-width: 100%;" /></p>
+<p>It replied:</p>
+<blockquote>
+<p>Yes, it appears that all or part of this image was created with Google Al. SynthID detected a watermark in 25-50% of the image.</p>
+</blockquote>
+<p>Presumably that 25-50% figure is because the rest of the photo was taken by me - it was just the raccoons that were added by Nano Banana Pro.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/nano-banana">nano-banana</a></p>]]></description><pubDate>Thu, 20 Nov 2025 16:32:25 +0000</pubDate></item><item><title>Quoting Nicholas Carlini</title><link>https://simonwillison.net/2025/Nov/20/nicholas-carlini/#atom-everything</link><description><![CDATA[<blockquote cite="https://nicholas.carlini.com/writing/2025/are-llms-worth-it.html"><p>Previously, when malware developers wanted to go and monetize their exploits, they would do exactly one thing: encrypt every file on a person's computer and request a ransome to decrypt the files. In the future I think this will change.</p>
 <p>LLMs allow attackers to instead process every file on the victim's computer, and tailor a blackmail letter specifically towards that person. One person may be having an affair on their spouse. Another may have lied on their resume. A third may have cheated on an exam at school. It is unlikely that any one person has done any of these specific things, but it is very likely that there exists something that is blackmailable for every person. Malware + LLMs, given access to a person's computer, can find that and monetize it.</p></blockquote>
 <p class="cite">&mdash; <a href="https://nicholas.carlini.com/writing/2025/are-llms-worth-it.html">Nicholas Carlini</a>, Are large language models worth it? Misuse: malware at scale</p>
 
@@ -1000,10 +1085,4 @@ This new release of Mastodon adds two of my most desired features!</p>
     <p><small></small>Via <a href="https://lobste.rs/s/zvyspo/mastodon_4_5">lobste.rs</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/mastodon">mastodon</a></p>]]></description><pubDate>Sat, 8 Nov 2025 01:52:14 +0000</pubDate></item><item><title>Quoting Josh Cohenzadeh</title><link>https://simonwillison.net/2025/Nov/7/josh-cohenzadeh/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.josh.ing/blog/aidhd"><p><strong>I have AiDHD</strong></p>
-<p>It has never been easier to build an MVP and in turn, it has never been harder to keep focus. When new features always feel like they're just a prompt away, feature creep feels like a never ending battle. Being disciplined is more important than ever.</p>
-<p>AI still doesn't change one very important thing: you still need to make something people want. I think that getting users (even free ones) will become significantly harder as the bar for user's time will only get higher as their options increase.</p>
-<p>Being quicker to get to the point of failure is actually incredibly valuable. Even just over a year ago, many of these projects would have taken months to build.</p></blockquote>
-<p class="cite">&mdash; <a href="https://www.josh.ing/blog/aidhd">Josh Cohenzadeh</a>, AiDHD</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 7 Nov 2025 16:38:03 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/mastodon">mastodon</a></p>]]></description><pubDate>Sat, 8 Nov 2025 01:52:14 +0000</pubDate></item></channel></rss>
