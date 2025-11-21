@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Nano Banana Pro aka gemini-3-pro-image-preview is the best available image generation model</title><link>https://simonwillison.net/2025/Nov/20/nano-banana-pro/#atom-everything</link><description><![CDATA[<p>Hot on the heels of Tuesday's <a href="https://simonwillison.net/2025/Nov/18/gemini-3/">Gemini 3 Pro</a> release, today it's <a href="https://blog.google/technology/ai/nano-banana-pro/">Nano Banana Pro</a>, also known as <a href="https://deepmind.google/models/gemini-image/pro/">Gemini 3 Pro Image</a>. I've had a few days of preview access and this is an <em>astonishingly</em> capable image generation model.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>We should all be using dependency cooldowns</title><link>https://simonwillison.net/2025/Nov/21/dependency-cooldowns/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns">We should all be using dependency cooldowns</a></strong></p>
+William Woodruff gives a name to a sensible strategy for managing dependencies while reducing the chances of a surprise supply chain attack: <strong>dependency cooldowns</strong>.</p>
+<p>Supply chain attacks happen when an attacker compromises a widely used open source package and publishes a new version with an exploit. These are usually spotted <em>very</em> quickly, so an attack often only has a few hours of effective window before the problem is identified and the compromised package is pulled.</p>
+<p>You are most at risk if you're automatically applying upgrades the same day they are released.</p>
+<p>William says:</p>
+<blockquote>
+<p>I <strong>love</strong> cooldowns for several reasons:</p>
+<ul>
+<li>They're empirically effective, per above. They won't stop <em>all</em> attackers, but they <em>do</em> stymie the majority of high-visibiity, mass-impact supply chain attacks that have become more common.</li>
+<li>They're <em>incredibly</em> easy to implement. Moreover, they're <strong>literally free</strong> to implement in most cases: most people can use <a href="https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#cooldown-">Dependabot's functionality</a>, <a href="https://docs.renovatebot.com/key-concepts/minimum-release-age/">Renovate's functionality</a>, or the functionality build directly into their package manager</li>
+</ul>
+</blockquote>
+<p>The one counter-argument to this is that sometimes an upgrade fixes a security vulnerability, and in those cases every hour of delay in upgrading as an hour when an attacker could exploit the new issue against your software.</p>
+<p>I see that as an argument for carefully monitoring the release notes of your dependencies, and paying special attention to security advisories. I'm a big fan of the <a href="https://github.com/advisories">GitHub Advisory Database</a> for that kind of information.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46005111">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/supply-chain">supply-chain</a></p>]]></description><pubDate>Fri, 21 Nov 2025 17:27:33 +0000</pubDate></item><item><title>Nano Banana Pro aka gemini-3-pro-image-preview is the best available image generation model</title><link>https://simonwillison.net/2025/Nov/20/nano-banana-pro/#atom-everything</link><description><![CDATA[<p>Hot on the heels of Tuesday's <a href="https://simonwillison.net/2025/Nov/18/gemini-3/">Gemini 3 Pro</a> release, today it's <a href="https://blog.google/technology/ai/nano-banana-pro/">Nano Banana Pro</a>, also known as <a href="https://deepmind.google/models/gemini-image/pro/">Gemini 3 Pro Image</a>. I've had a few days of preview access and this is an <em>astonishingly</em> capable image generation model.</p>
 <p>As is often the case, the most useful low-level details can be found in <a href="https://ai.google.dev/gemini-api/docs/image-generation#gemini-3-capabilities">the API documentation</a>:</p>
 <blockquote>
 <p>Designed to tackle the most challenging workflows through advanced reasoning, it excels at complex, multi-turn creation and modification tasks.</p>
@@ -1067,21 +1085,4 @@ Token usage: total=2459 input=2374 cached_input=0 output=85 reasoning_output=64
 <p>So MCP <a href="https://modelcontextprotocol.io/specification/draft/basic/authorization#dynamic-client-registration">requires OAuth dynamic client registration</a> (<a href="https://datatracker.ietf.org/doc/html/rfc7591">RFC 7591</a>), which practically nobody actually implemented prior to MCP. DCR might as well have been introduced by MCP, and may actually be the most important unlock in the whole spec.</p></blockquote>
 <p class="cite">&mdash; <a href="https://x.com/kentonvarda/status/1987208904724652273">Kenton Varda</a></p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/kenton-varda">kenton-varda</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/oauth">oauth</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 8 Nov 2025 22:04:45 +0000</pubDate></item><item><title>Mastodon 4.5</title><link>https://simonwillison.net/2025/Nov/8/mastodon-45/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.joinmastodon.org/2025/11/mastodon-4.5/">Mastodon 4.5</a></strong></p>
-This new release of Mastodon adds two of my most desired features!</p>
-<p>The first is support for quote posts. This had already become an unofficial feature in the client apps I was using (<a href="https://phanpy.social/">phanpy.social</a> on the web and <a href="https://apps.apple.com/us/app/ivory-for-mastodon-by-tapbots/id6444602274">Ivory</a> on iOS) but now it's officially part of Mastodon's core platform.</p>
-<p>Much more notably though:</p>
-<blockquote>
-<p><strong>Fetch All Replies: Completing the Conversation Flow</strong></p>
-<p>Users on servers running 4.4 and earlier versions have likely experienced the confusion of seeing replies appearing on other servers but not their own. Mastodon 4.5 automatically checks for missing replies upon page load and again every 15 minutes, enhancing continuity of conversations across the Fediverse.</p>
-</blockquote>
-<p>The absolute worst thing about Mastodon - especially if you run on your own independent server - is that the nature of the platform means you can't be guaranteed to see every reply to a post your are viewing that originated on another instance (<a href="https://simonwillison.net/2023/Sep/16/notes-on-using-a-single-person-mastodon-server/">previously</a>).</p>
-<p>This leads to an unpleasant reply-guy effect where you find yourself replying to a post saying the exact same thing that everyone else said... because you didn't see any of the other replies before you posted!</p>
-<p>Mastodon 4.5 finally solves this problem!</p>
-<p>I went looking for the GitHub issue about this and found <a href="https://github.com/mastodon/mastodon/issues/22674">this one that quoted my complaint about this</a> from December 2022, which is marked as a duplicate of this <a href="https://github.com/mastodon/mastodon/issues/9409">Fetch whole conversation threads issue</a> from 2018.</p>
-<p>So happy to see this finally resolved.
-
-    <p><small></small>Via <a href="https://lobste.rs/s/zvyspo/mastodon_4_5">lobste.rs</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/mastodon">mastodon</a></p>]]></description><pubDate>Sat, 8 Nov 2025 01:52:14 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/kenton-varda">kenton-varda</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/oauth">oauth</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 8 Nov 2025 22:04:45 +0000</pubDate></item></channel></rss>
