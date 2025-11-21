@@ -39,8 +39,7 @@
 </code></pre>
 <p><img src="https://static.simonwillison.net/static/2025/pancake-skull-2.jpg" alt="It's the exact same skull with the requested edits made - mint garnish on the blueberries, a strawberry in the left hand eye socket (from our perspective, technically the skull's right hand socket), a blackberry in the other, the plate is now a plate-sized chocolate chip cookie (admittedly on a regular plate) and there are four happy peo ple in the background." style="max-width: 100%;" /></p>
 <p>I'll note that it did put the plate-sized cookie on a regular plate. Here's <a href="https://drive.google.com/file/d/18AzhM-BUZAfLGoHWl6MQW_UW9ju4km-i/view?usp=drive_link">the 24.9MB PNG</a>.</p>
-<p>The new model isn't cheap. Here's <a href="https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image-preview">the API pricing</a>: it's 24 cents for a 4K image and 13.4 cents for a 1K or 2K image. Image inputs are 6.7 cents each.</p>
-<p>If you use all 14 reference images to create a 4K output that's $1.18 for a single API call (plus a few more cents to cover your text prompt, charged at $2.00 per million tokens.)</p> 
+<p>The new model isn't cheap. Here's <a href="https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image-preview">the API pricing</a>: it's 24 cents for a 4K image and 13.4 cents for a 1K or 2K image. Image inputs are 0.11 cents (just over 1/10th of a cent) each - an earlier version of their pricing page incorrectly said 6.7 cents each but that's now been fixed.</p>
 <p>Unlike most of Google's other models it also isn't available for free via AI Studio: you have to configure an API key with billing in order to use the model there.</p>
 <h4 id="creating-an-infographic">Creating an infographic</h4>
 <p>So this thing is great at following instructions. How about rendering text?</p>
