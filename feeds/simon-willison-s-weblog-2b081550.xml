@@ -20,13 +20,13 @@
 <li>Up to 5 images of humans to maintain character consistency</li>
 </ul>
 </blockquote>
+<p>There is also a short (6 page) <a href="https://storage.googleapis.com/deepmind-media/Model-Cards/Gemini-3-Pro-Image-Model-Card.pdf">model card PDF</a> which lists the following as "new capabilities" compared to the previous Nano Banana: Multi character editing, Chart editing, Text editing, Factuality - Edu, Multi-input 1-3, Infographics, Doodle editing, Visual design.</p>
 <h4 id="trying-out-some-detailed-instruction-image-prompts">Trying out some detailed instruction image prompts</h4>
 <p>Max Woolf published <a href="https://minimaxir.com/2025/11/nano-banana-prompts/#hello-nano-banana">the definitive guide to prompting Nano Banana</a> just a few days ago. I decided to try his example prompts against the new model, requesting results in 4K.</p>
 <p>Here's what I got for his first test prompt, using Google's <a href="https://aistudio.google.com/">AI Studio</a>:</p>
 <blockquote>
 <p><code>Create an image of a three-dimensional pancake in the shape of a skull, garnished on top with blueberries and maple syrup.</code></p>
 </blockquote>
-<p>Here's what I got:</p>
 <p><img src="https://static.simonwillison.net/static/2025/pancake-skull-1.jpg" alt="A very detailed quality photo of a skull made of pancake batter, blueberries on top, maple syrup dripping down, maple syrup bottle in the background." style="max-width: 100%;" /></p>
 <p>The result came out as a 24.1MB, 5632 × 3072 pixel PNG file. I don't want to serve that on my own blog so here's <a href="https://drive.google.com/file/d/1QV3pcW1KfbTRQscavNh6ld9PyqG4BRes/view?usp=drive_link">a Google Drive link for the original</a>.</p>
 <p>Then I ran his follow-up prompt:</p>
