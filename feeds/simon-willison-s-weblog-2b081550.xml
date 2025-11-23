@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Agent design is still hard</title><link>https://simonwillison.net/2025/Nov/23/agent-design-is-still-hard/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lucumr.pocoo.org/2025/11/21/agents-are-hard/">Agent design is still hard</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>&quot;Good engineering management&quot; is a fad</title><link>https://simonwillison.net/2025/Nov/23/good-engineering-management-is-a-fad/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lethain.com/good-eng-mgmt-is-a-fad/">&quot;Good engineering management&quot; is a fad</a></strong></p>
+Will Larson argues that the technology industry's idea of what makes a good engineering manager changes over time based on industry realities. ZIRP hypergrowth has been exchanged for a more cautious approach today, and expectations of managers has changed to match:</p>
+<blockquote>
+<p>Where things get weird is that in each case a morality tale was subsequently superimposed on top of the transition [...] the industry will want different things from you as it evolves, and it will tell you that each of those shifts is because of some complex moral change, but it’s pretty much always about business realities changing.</p>
+</blockquote>
+<p>I particularly appreciated the section on core engineering management skills that stay constant no matter what:</p>
+<blockquote>
+<ol>
+<li><strong>Execution</strong>: lead team to deliver expected tangible and intangible work. Fundamentally, management is about getting things done, and you’ll neither get an opportunity to begin managing, nor stay long as a manager, if your teams don’t execute. [...]</li>
+<li><strong>Team</strong>: shape the team and the environment such that they succeed. This is <em>not</em> working for the team, nor is it working for your leadership, it is finding the balance between the two that works for both. [...]</li>
+<li><strong>Ownership</strong>: navigate reality to make consistent progress, even when reality is difficult Finding a way to get things done, rather than finding a way that it not getting done is someone else’s fault. [...]</li>
+<li><strong>Alignment</strong>: build shared understanding across leadership, stakeholders, your team, and the problem space. Finding a realistic plan that meets the moment, without surprising or being surprised by those around you. [...]</li>
+</ol>
+</blockquote>
+<p>Will goes on to list four additional growth skill "whose presence–or absence–determines how far you can go in your career".
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46026939">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/software-engineering">software-engineering</a>, <a href="https://simonwillison.net/tags/will-larson">will-larson</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/management">management</a>, <a href="https://simonwillison.net/tags/leadership">leadership</a></p>]]></description><pubDate>Sun, 23 Nov 2025 21:29:09 +0000</pubDate></item><item><title>Agent design is still hard</title><link>https://simonwillison.net/2025/Nov/23/agent-design-is-still-hard/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lucumr.pocoo.org/2025/11/21/agents-are-hard/">Agent design is still hard</a></strong></p>
 Armin Ronacher presents a cornucopia of lessons learned from building agents over the past few months.</p>
 <p>There are several agent abstraction libraries available now (my own <a href="https://llm.datasette.io/">LLM library</a> is edging into that territory with its <a href="https://simonwillison.net/2025/May/27/llm-tools/">tools feature</a>) but Armin has found that the abstractions are not worth adopting yet:</p>
 <blockquote>
@@ -978,32 +997,4 @@ Robert Glaser took my <a href="https://simonwillison.net/tags/pelican-riding-a-b
 <p>[...] If you answer "no" or "unsure" to any of these principles, escalate to your Netflix contact for more guidance before proceeding, as written approval may be required.</p></blockquote>
 <p class="cite">&mdash; <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production">Netflix</a>, Using Generative AI in Content Production</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/netflix">netflix</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Mon, 10 Nov 2025 22:08:27 +0000</pubDate></item><item><title>Pelican on a Bike - Raytracer Edition</title><link>https://simonwillison.net/2025/Nov/9/pelican-on-a-bike-raytracer-edition/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/">Pelican on a Bike - Raytracer Edition</a></strong></p>
-beetle_b ran this prompt against a bunch of recent LLMs:</p>
-<blockquote>
-<p><code>Write a POV-Ray file that shows a pelican riding on a bicycle.</code></p>
-</blockquote>
-<p>This turns out to be a harder challenge than SVG, presumably because there are less examples of POV-Ray in the training data:</p>
-<blockquote>
-<p>Most produced a script that failed to parse. I would paste the error back into the chat and let it attempt a fix.</p>
-</blockquote>
-<p>The results are really fun though! A lot of them end up accompanied by a weird floating egg for some reason - <a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/#claude-opus-4">here's Claude Opus 4</a>:</p>
-<p><img alt="3D scene. The bicycle has a sort of square frame in the wrong place, but good wheels. The pelican is stood on top - a large white blob, a smaller white blob head, a cylinder neck and a conical beak in the right place, plus legs that reach out-of-place pedals. A egg floats mysteriously in front of the bird." src="https://static.simonwillison.net/static/2025/pov-pelican-opus.png" /></p>
-<p>I think the best result came <a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/#gpt-5">from GPT-5</a> - again with the floating egg though!</p>
-<p><img alt="The bike is a bit mis-shapen but has most of the right pieces. The pelican has legs that reach the pedals and is bending forward with a two-segmented neck and a good beak. A weird egg floats in the front wheel." src="https://static.simonwillison.net/static/2025/pov-pelican-gpt-5.png" /></p>
-<p>I decided to try this on the new <code>gpt-5-codex-mini</code>, using the <a href="https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/">trick I described yesterday</a>. Here's <a href="https://gist.github.com/simonw/059e0c5aee54258cdc62ed511ae26b4b">the code it wrote</a>.</p>
-<pre><code>./target/debug/codex prompt -m gpt-5-codex-mini \
-  "Write a POV-Ray file that shows a pelican riding on a bicycle."
-</code></pre>
-<p>It turns out you can render POV files on macOS like this:</p>
-<pre><code>brew install povray
-povray demo.pov # produces demo.png
-</code></pre>
-<p>The code GPT-5 Codex Mini created didn't quite work, so I round-tripped it through Sonnet 4.5 via Claude Code a couple of times - <a href="http://gistpreview.github.io/?71c4f0966d5d99003ace12197b9d07fe">transcript here</a>. Once it had fixed the errors I got this:</p>
-<p><img alt="Two wheels (tire only) sit overlapping half embedded in the ground. The frame is a half-buried red triangle and some other lines. There is a white pall with a tiny yellow beak and two detached cylindrical arms. It's rubbish." src="https://static.simonwillison.net/static/2025/povray-pelican-gpt-5-codex-mini.png" /></p>
-<p>That's significantly worse than the one beetle_b got <a href="https://blog.nawaz.org/posts/2025/Oct/pelican-on-a-bike-raytracer-edition/#gpt-5-mini">from GPT-5 Mini</a>!
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45862802#45866639">BeetleB on Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/3d">3d</a>, <a href="https://simonwillison.net/tags/ray-tracing">ray-tracing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Sun, 9 Nov 2025 16:51:42 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/netflix">netflix</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Mon, 10 Nov 2025 22:08:27 +0000</pubDate></item></channel></rss>
