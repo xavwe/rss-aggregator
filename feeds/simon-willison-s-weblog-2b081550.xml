@@ -1,4 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>We should all be using dependency cooldowns</title><link>https://simonwillison.net/2025/Nov/21/dependency-cooldowns/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns">We should all be using dependency cooldowns</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Agent design is still hard</title><link>https://simonwillison.net/2025/Nov/23/agent-design-is-still-hard/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lucumr.pocoo.org/2025/11/21/agents-are-hard/">Agent design is still hard</a></strong></p>
+Armin Ronacher presents a cornucopia of lessons learned from building agents over the past few months.</p>
+<p>There are several agent abstraction libraries available now (my own <a href="https://llm.datasette.io/">LLM library</a> is edging into that territory with its <a href="https://simonwillison.net/2025/May/27/llm-tools/">tools feature</a>) but Armin has found that the abstractions are not worth adopting yet:</p>
+<blockquote>
+<p>[…] the differences between models are significant enough that you will need to build your own agent abstraction. We have not found any of the solutions from these SDKs that build the right abstraction for an agent. I think this is partly because, despite the basic agent design being just a loop, there are subtle differences based on the tools you provide. These differences affect how easy or hard it is to find the right abstraction (cache control, different requirements for reinforcement, tool prompts, provider-side tools, etc.). Because the right abstraction is not yet clear, using the original SDKs from the dedicated platforms keeps you fully in control. […]</p>
+<p>This might change, but right now we would probably not use an abstraction when building an agent, at least until things have settled down a bit. The benefits do not yet outweigh the costs for us.</p>
+</blockquote>
+<p>Armin introduces the new-to-me term <strong>reinforcement</strong>, where you remind the agent of things as it goes along:</p>
+<blockquote>
+<p>Every time the agent runs a tool you have the opportunity to not just return data that the tool produces, but also to feed more information back into the loop. For instance, you can remind the agent about the overall objective and the status of individual tasks. […] Another use of reinforcement is to inform the system about state changes that happened in the background.</p>
+</blockquote>
+<p>Claude Code’s TODO list is another example of this pattern in action.</p>
+<p>Testing and evals remains the single hardest problem in AI engineering:</p>
+<blockquote>
+<p>We find testing and evals to be the hardest problem here. This is not entirely surprising, but the agentic nature makes it even harder. Unlike prompts, you cannot just do the evals in some external system because there’s too much you need to feed into it. This means you want to do evals based on observability data or instrumenting your actual test runs. So far none of the solutions we have tried have convinced us that they found the right approach here.</p>
+</blockquote>
+<p>Armin also has a follow-up post, <a href="https://lucumr.pocoo.org/2025/11/22/llm-apis/">LLM APIs are a Synchronization Problem</a>, which argues that the shape of current APIs hides too many details from us as developers, and the core challenge here is in synchronizing state between the tokens fed through the GPUs and our client applications - something that may benefit from alternative approaches developed by the local-first movement.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46013935">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/armin-ronacher">armin-ronacher</a>, <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a></p>]]></description><pubDate>Sun, 23 Nov 2025 00:49:39 +0000</pubDate></item><item><title>Olmo 3 is a fully open LLM</title><link>https://simonwillison.net/2025/Nov/22/olmo-3/#atom-everything</link><description><![CDATA[<p>Olmo is the LLM series from Ai2 - the <a href="https://allenai.org/">Allen institute for AI</a>. Unlike most open weight models these are notable for including the full training data, training process and checkpoints along with those releases.</p>
+<p>The <a href="https://allenai.org/blog/olmo3">new Olmo 3</a> claims to be "the best fully open 32B-scale thinking model" and has a strong focus on interpretability:</p>
+<blockquote>
+<p>At its center is <strong>Olmo 3-Think (32B)</strong>, the best fully open 32B-scale thinking model that for the first time lets you inspect intermediate reasoning traces and trace those behaviors back to the data and training decisions that produced them.</p>
+</blockquote>
+<p>They've released four 7B models - Olmo 3-Base, Olmo 3-Instruct, Olmo 3-Think and Olmo 3-RL Zero, plus 32B variants of the 3-Think and 3-Base models.</p>
+<p>Having full access to the training data is really useful. Here's how they describe that:</p>
+<blockquote>
+<p>Olmo 3 is pretrained on <strong>Dolma 3</strong>, a new ~9.3-trillion-token corpus drawn from web pages, science PDFs processed with <a href="https://olmocr.allenai.org/">olmOCR</a>, codebases, math problems and solutions, and encyclopedic text. From this pool, we construct <strong>Dolma 3 Mix</strong>, a 5.9-trillion-token (~6T) pretraining mix with a higher proportion of coding and mathematical data than earlier Dolma releases, plus much stronger decontamination via extensive deduplication, quality filtering, and careful control over data mixing. We follow established web standards in collecting training data and don't collect from sites that explicitly disallow it, including paywalled content.</p>
+</blockquote>
+<p>They also highlight that they are training on fewer tokens than their competition:</p>
+<blockquote>
+<p>[...] it's the strongest fully open thinking model we're aware of, narrowing the gap to the best open-weight models of similar scale – such as Qwen 3 32B – while training on roughly 6x fewer tokens.</p>
+</blockquote>
+<p>If you're continuing to hold out hope for a model trained entirely on licensed data this one sadly won't fit the bill - a lot of that data still comes from a crawl of the web.</p>
+<p>I tried out the 32B Think model and the 7B Instruct model <a href="https://lmstudio.ai/models/olmo3">using LM Studio</a>. The 7B model is a 4.16GB download, the 32B one is 18.14GB.</p>
+<p>The 32B model is absolutely an over-thinker! I asked it to "Generate an SVG of a pelican riding a bicycle" and it thought for <em>14 minutes 43 seconds</em>, outputting 8,437 tokens total most of which was <a href="https://gist.github.com/simonw/2ae9d5ed71de9608b7955eea9671306f">this epic thinking trace</a>.</p>
+<p>I don't usually quote the full SVG in these write-ups, but in this case it's short enough that I think it's worth sharing. The SVG comments give a great impression of what it was trying to do - it has a Bicycle, Bike frame, Pelican, Left and Right wings and even "Feet on pedals".</p>
+<div class="highlight highlight-text-xml-svg"><pre>&lt;<span class="pl-ent">svg</span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>200<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>200<span class="pl-pds">"</span></span> <span class="pl-e">viewBox</span>=<span class="pl-s"><span class="pl-pds">"</span>0 0 100 100<span class="pl-pds">"</span></span>&gt;
+  <span class="pl-c"><span class="pl-c">&lt;!--</span> Bicycle <span class="pl-c">--&gt;</span></span>
+  &lt;<span class="pl-ent">circle</span> <span class="pl-e">cx</span>=<span class="pl-s"><span class="pl-pds">"</span>30<span class="pl-pds">"</span></span> <span class="pl-e">cy</span>=<span class="pl-s"><span class="pl-pds">"</span>60<span class="pl-pds">"</span></span> <span class="pl-e">r</span>=<span class="pl-s"><span class="pl-pds">"</span>15<span class="pl-pds">"</span></span> <span class="pl-e">stroke</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>none<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">circle</span> <span class="pl-e">cx</span>=<span class="pl-s"><span class="pl-pds">"</span>70<span class="pl-pds">"</span></span> <span class="pl-e">cy</span>=<span class="pl-s"><span class="pl-pds">"</span>60<span class="pl-pds">"</span></span> <span class="pl-e">r</span>=<span class="pl-s"><span class="pl-pds">"</span>15<span class="pl-pds">"</span></span> <span class="pl-e">stroke</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>none<span class="pl-pds">"</span></span>/&gt;
+  
+  <span class="pl-c"><span class="pl-c">&lt;!--</span> Bike frame <span class="pl-c">--&gt;</span></span>
+  &lt;<span class="pl-ent">rect</span> <span class="pl-e">x</span>=<span class="pl-s"><span class="pl-pds">"</span>35<span class="pl-pds">"</span></span> <span class="pl-e">y</span>=<span class="pl-s"><span class="pl-pds">"</span>25<span class="pl-pds">"</span></span> <span class="pl-e">width</span>=<span class="pl-s"><span class="pl-pds">"</span>30<span class="pl-pds">"</span></span> <span class="pl-e">height</span>=<span class="pl-s"><span class="pl-pds">"</span>10<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>saddlebrown<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">line</span> <span class="pl-e">x1</span>=<span class="pl-s"><span class="pl-pds">"</span>35<span class="pl-pds">"</span></span> <span class="pl-e">y1</span>=<span class="pl-s"><span class="pl-pds">"</span>40<span class="pl-pds">"</span></span> <span class="pl-e">x2</span>=<span class="pl-s"><span class="pl-pds">"</span>30<span class="pl-pds">"</span></span> <span class="pl-e">y2</span>=<span class="pl-s"><span class="pl-pds">"</span>60<span class="pl-pds">"</span></span> <span class="pl-e">stroke</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span> <span class="pl-e">stroke-width</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">line</span> <span class="pl-e">x1</span>=<span class="pl-s"><span class="pl-pds">"</span>65<span class="pl-pds">"</span></span> <span class="pl-e">y1</span>=<span class="pl-s"><span class="pl-pds">"</span>40<span class="pl-pds">"</span></span> <span class="pl-e">x2</span>=<span class="pl-s"><span class="pl-pds">"</span>70<span class="pl-pds">"</span></span> <span class="pl-e">y2</span>=<span class="pl-s"><span class="pl-pds">"</span>60<span class="pl-pds">"</span></span> <span class="pl-e">stroke</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span> <span class="pl-e">stroke-width</span>=<span class="pl-s"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>/&gt;
+  
+  <span class="pl-c"><span class="pl-c">&lt;!--</span> Pelican <span class="pl-c">--&gt;</span></span>
+  &lt;<span class="pl-ent">ellipse</span> <span class="pl-e">cx</span>=<span class="pl-s"><span class="pl-pds">"</span>55<span class="pl-pds">"</span></span> <span class="pl-e">cy</span>=<span class="pl-s"><span class="pl-pds">"</span>65<span class="pl-pds">"</span></span> <span class="pl-e">rx</span>=<span class="pl-s"><span class="pl-pds">"</span>20<span class="pl-pds">"</span></span> <span class="pl-e">ry</span>=<span class="pl-s"><span class="pl-pds">"</span>15<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>white<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">polygon</span> <span class="pl-e">points</span>=<span class="pl-s"><span class="pl-pds">"</span>52 50,57 35,62 50<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span>/&gt; <span class="pl-c"><span class="pl-c">&lt;!--</span> Head/beak <span class="pl-c">--&gt;</span></span>
+  &lt;<span class="pl-ent">circle</span> <span class="pl-e">cx</span>=<span class="pl-s"><span class="pl-pds">"</span>55<span class="pl-pds">"</span></span> <span class="pl-e">cy</span>=<span class="pl-s"><span class="pl-pds">"</span>45<span class="pl-pds">"</span></span> <span class="pl-e">r</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>white<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">circle</span> <span class="pl-e">cx</span>=<span class="pl-s"><span class="pl-pds">"</span>60<span class="pl-pds">"</span></span> <span class="pl-e">cy</span>=<span class="pl-s"><span class="pl-pds">"</span>45<span class="pl-pds">"</span></span> <span class="pl-e">r</span>=<span class="pl-s"><span class="pl-pds">"</span>2<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>white<span class="pl-pds">"</span></span>/&gt;
+  
+  &lt;<span class="pl-ent">polygon</span> <span class="pl-e">points</span>=<span class="pl-s"><span class="pl-pds">"</span>45 60,50 70,55 60<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>lightgrey<span class="pl-pds">"</span></span>/&gt; <span class="pl-c"><span class="pl-c">&lt;!--</span> Left wing <span class="pl-c">--&gt;</span></span>
+  &lt;<span class="pl-ent">polygon</span> <span class="pl-e">points</span>=<span class="pl-s"><span class="pl-pds">"</span>65 60,70 70,55 60<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>lightgrey<span class="pl-pds">"</span></span>/&gt; <span class="pl-c"><span class="pl-c">&lt;!--</span> Right wing <span class="pl-c">--&gt;</span></span>
+  
+  <span class="pl-c"><span class="pl-c">&lt;!--</span> Feet on pedals <span class="pl-c">--&gt;</span></span>
+  &lt;<span class="pl-ent">polygon</span> <span class="pl-e">points</span>=<span class="pl-s"><span class="pl-pds">"</span>25 75,30 85,35 75<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span>/&gt;
+  &lt;<span class="pl-ent">polygon</span> <span class="pl-e">points</span>=<span class="pl-s"><span class="pl-pds">"</span>75 75,70 85,65 75<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>black<span class="pl-pds">"</span></span>/&gt;
+&lt;/<span class="pl-ent">svg</span>&gt;</pre></div>
+<p>Rendered it looks like this:</p>
+<p><img src="https://static.simonwillison.net/static/2025/olmo3-32b-pelican.jpg" alt="Two circles, each with a triangle sticking out from the bottom. They have bars leading up to a brown box. Overlapping them is a black triangle with white circles for eyes and two grey triangles that are probably meant to be wings. It is not recognizable as a pelican or a bicycle." style="max-width: 100%;" /></p>
+<p>I tested OLMo 2 32B 4bit <a href="https://simonwillison.net/2025/Mar/16/olmo2/">back in March</a> and got something that, while pleasingly abstract, didn't come close to resembling a pelican or a bicycle:</p>
+<p><img src="https://static.simonwillison.net/static/2025/olmo2-pelican.jpg" alt="Blue and black wiggly lines looking more like a circuit diagram than a pelican riding a bicycle" style="max-width: 100%;" /></p>
+<p>To be fair 32B models generally don't do great with this. Here's Qwen 3 32B's attempt (I ran that just now <a href="https://openrouter.ai/chat?models=qwen/qwen3-32b">using OpenRouter</a>):</p>
+<p><img src="https://static.simonwillison.net/static/2025/qwen3-32b-pelican.png" alt="The bicycle is two black circles joined by two lines, with a weird rectangular saddle perched on top The pelican is a blue oval, a white circles with a yellow triangle in it and a weird eye shaped oval overlapping the blue one." style="max-width: 100%;" /></p>
+<h4 id="olmotrace">OlmoTrace</h4>
+<p>I was particularly keen on trying out the ability to "inspect intermediate reasoning traces". Here's how that's described later in the announcement:</p>
+<blockquote>
+<p>A core goal of Olmo 3 is not just to <em>open</em> the model flow, but to make it <em>actionable</em> for people who want to understand and improve model behavior. Olmo 3 integrates with <a href="https://allenai.org/blog/olmotrace"><strong>OlmoTrace</strong></a>, our tool for tracing model outputs back to training data in real time.</p>
+<p>For example, in the Ai2 Playground, you can ask Olmo 3-Think (32B) to answer a general-knowledge question, then use OlmoTrace to inspect where and how the model may have learned to generate parts of its response. This closes the gap between training data and model behavior: you can see not only what the model is doing, but why---and adjust data or training decisions accordingly.</p>
+</blockquote>
+<p>You can access OlmoTrace via <a href="https://playground.allenai.org/">playground.allenai.org</a>, by first running a prompt and then clicking the "Show OlmoTrace" button below the output.</p>
+<p>I tried that on "Generate a conference bio for Simon Willison" (an ego-prompt I use to see how much the models have picked up about me from their training data) and got back a result that looked like this:</p>
+<p><img src="https://static.simonwillison.net/static/2025/olmotrace.jpg" alt="Screenshot of AI2 Playground interface with Olmo 3 32B Think model selected. User prompt reads &quot;Generate a conference bio for Simon Willison&quot;. AI response shows expanded &quot;Thoughts&quot; section: &quot;Okay, the user wants me to generate a conference bio for Simon Willison. Let me start by recalling who Simon is. He's a well-known developer, entrepreneur, and author in the tech community. I remember he's the co-founder of co:here and now works at Anthropic. He's famous for his work with SQLite, especially the datasette project. Also, he writes a blog called SimonWillison.net which is quite popular. First, I need to structure a typical conference bio. These usually include his current role, past positions, notable projects, and maybe some achievements or recognitions. I should highlight his key contributions like datasette, which allows easy exploration of SQLite databases via a web interface. That's a big deal in data journalism and open data circles.&quot; Right panel shows &quot;OlmoTrace&quot; feature described as &quot;Documents from the training data that have exact text matches with the model response. Powered by infini-gram&quot;. First document excerpt discusses technology and innovation, with highlighted match text &quot;societal implications of technology, emphasizing the&quot; shown in bold, surrounded by text about responsibility and merging innovation with intellect. Second document excerpt about Matt Hall has highlighted match &quot;is a software engineer and entrepreneur based in&quot; shown in bold, describing someone in New York City who co-founded a PFP collection and works at Google Creative Lab. Note indicates &quot;Document repeated 2 times in result&quot; with &quot;View all repeated documents&quot; link." style="max-width: 100%;" /></p>
+<p>It thinks I co-founded co:here and work at Anthropic, both of which are incorrect - but that's not uncommon with LLMs, I frequently see them suggest that I'm the CTO of GitHub and other such inaccuracies.</p>
+<p>I found the OlmoTrace panel on the right disappointing. None of the training documents it highlighted looked relevant - it appears to be looking for phrase matches (powered by <a href="https://infini-gram.io/">Ai2's infini-gram</a>) but the documents it found had nothing to do with me at all.</p>
+<h4 id="can-open-training-data-address-concerns-of-backdoors-">Can open training data address concerns of backdoors?</h4>
+<p>Ai2 claim that Olmo 3 is "the best fully open 32B-scale thinking model", which I think holds up provided you define "fully open" as including open training data. There's not a great deal of competition in that space though - Ai2 compare themselves to <a href="https://marin.community/">Stanford's Marin</a> and <a href="https://www.swiss-ai.org/apertus">Swiss AI's Apertus</a>, neither of which I'd heard about before.</p>
+<p>A big disadvantage of other open weight models is that it's impossible to audit their training data. Anthropic published a paper last month showing that <a href="https://www.anthropic.com/research/small-samples-poison">a small number of samples can poison LLMs of any size</a> - it can take just "250 poisoned documents" to add a backdoor to a large model that triggers undesired behavior based on a short carefully crafted prompt.</p>
+
+<p>This makes fully open training data an even bigger deal.</p>
+
+<p>Ai2 researcher Nathan Lambert included this note about the importance of transparent training data in <a href="https://www.interconnects.ai/p/olmo-3-americas-truly-open-reasoning">his detailed post about the release</a>:</p>
+
+<blockquote><p>In particular, we're excited about the future of RL Zero research on Olmo 3 precisely because everything is open. Researchers can study the interaction between the reasoning traces we include at midtraining and the downstream model behavior (qualitative and quantitative).</p>
+
+<p>This helps answer questions that have plagued RLVR results on Qwen models, hinting at forms of data contamination particularly on math and reasoning benchmarks (see Shao, Rulin, et al. "Spurious rewards: Rethinking training signals in rlvr." <a href="https://arxiv.org/abs/2506.10947">arXiv preprint arXiv:2506.10947</a> (2025). or Wu, Mingqi, et al. "Reasoning or memorization? unreliable results of reinforcement learning due to data contamination." <a href="https://arxiv.org/abs/2507.10532">arXiv preprint arXiv:2507.10532</a> (2025).)</p>
+</blockquote>
+
+<p>I hope we see more competition in this space, including further models in the Olmo series. The improvements from Olmo 1 (in <a href="https://simonwillison.net/2024/Feb/2/olmos/">February 2024</a>) and Olmo 2 (in <a href="https://simonwillison.net/2025/Mar/16/olmo2/">March 2025</a>) have been significant. I'm hoping that trend continues!</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/interpretability">interpretability</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/ai2">ai2</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/nathan-lambert">nathan-lambert</a>, <a href="https://simonwillison.net/tags/olmo">olmo</a></p>]]></description><pubDate>Sat, 22 Nov 2025 23:59:46 +0000</pubDate></item><item><title>We should all be using dependency cooldowns</title><link>https://simonwillison.net/2025/Nov/21/dependency-cooldowns/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.yossarian.net/2025/11/21/We-should-all-be-using-dependency-cooldowns">We should all be using dependency cooldowns</a></strong></p>
 William Woodruff gives a name to a sensible strategy for managing dependencies while reducing the chances of a surprise supply chain attack: <strong>dependency cooldowns</strong>.</p>
 <p>Supply chain attacks happen when an attacker compromises a widely used open source package and publishes a new version with an exploit. These are usually spotted <em>very</em> quickly, so an attack often only has a few hours of effective window before the problem is identified and the compromised package is pulled.</p>
 <p>You are most at risk if you're automatically applying upgrades the same day they are released.</p>
@@ -912,177 +1006,4 @@ povray demo.pov # produces demo.png
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45862802#45866639">BeetleB on Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/3d">3d</a>, <a href="https://simonwillison.net/tags/ray-tracing">ray-tracing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Sun, 9 Nov 2025 16:51:42 +0000</pubDate></item><item><title>Reverse engineering Codex CLI to get GPT-5-Codex-Mini to draw me a pelican</title><link>https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#atom-everything</link><description><![CDATA[<p>OpenAI partially released a new model yesterday called GPT-5-Codex-Mini, which they <a href="https://x.com/OpenAIDevs/status/1986861734619947305">describe</a> as "a more compact and cost-efficient version of GPT-5-Codex". It's currently only available via their Codex CLI tool and VS Code extension, with proper API access "<a href="https://x.com/OpenAIDevs/status/1986861736041853368">coming soon</a>". I decided to use Codex to reverse engineer the Codex CLI tool and give me the ability to prompt the new model directly.</p>
-<p>I made <a href="https://www.youtube.com/watch?v=9o1_DL9uNlM">a video</a> talking through my progress and demonstrating the final results.</p>
-
-<p><lite-youtube videoid="9o1_DL9uNlM" js-api="js-api" title="Reverse engineering Codex CLI to get GPT-5-Codex-Mini to draw me a pelican" playlabel="Play: Reverse engineering Codex CLI to get GPT-5-Codex-Mini to draw me a pelican"> </lite-youtube></p>
-
-<ul>
-  <li><a href="https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#this-is-a-little-bit-cheeky">This is a little bit cheeky</a></li>
-  <li><a href="https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#codex-cli-is-written-in-rust">Codex CLI is written in Rust</a></li>
-  <li><a href="https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#iterating-on-the-code">Iterating on the code</a></li>
-  <li><a href="https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#let-s-draw-some-pelicans">Let's draw some pelicans</a></li>
-  <li><a href="https://simonwillison.net/2025/Nov/9/gpt-5-codex-mini/#bonus-the-debug-option">Bonus: the --debug option</a></li>
-</ul>
-
-<h4 id="this-is-a-little-bit-cheeky">This is a little bit cheeky</h4>
-<p>OpenAI clearly don't intend for people to access this model directly just yet. It's available exclusively through Codex CLI which is a privileged application - it gets to access a special backend API endpoint that's not publicly documented, and it uses a special authentication mechanism that bills usage directly to the user's existing ChatGPT account.</p>
-<p>I figured reverse-engineering that API directly would be somewhat impolite. But... Codex CLI is an open source project released under an Apache 2.0 license. How about upgrading that to let me run my own prompts through its existing API mechanisms instead?</p>
-<p>This felt like a somewhat absurd loophole, and I couldn't resist trying it out and seeing what happened.</p>
-<h4 id="codex-cli-is-written-in-rust">Codex CLI is written in Rust</h4>
-<p>The <a href="https://github.com/openai/codex">openai/codex</a> repository contains the source code for the Codex CLI tool, which OpenAI rewrote in Rust just a few months ago.</p>
-<p>I don't know much Rust at all.</p>
-<p>I made my own clone on GitHub and checked it out locally:</p>
-<div class="highlight highlight-source-shell"><pre>git clone git@github.com:simonw/codex
-<span class="pl-c1">cd</span> codex</pre></div>
-<p>Then I fired up Codex itself (in dangerous mode, because I like living dangerously):</p>
-<div class="highlight highlight-source-shell"><pre>codex --dangerously-bypass-approvals-and-sandbox</pre></div>
-<p>And ran this prompt:</p>
-<blockquote>
-<p>Figure out how to build the rust version of this tool and then build it</p>
-</blockquote>
-<p>This worked. It churned away for a bit and figured out how to build itself. This is a useful starting point for a project like this - in figuring out the compile step the coding agent gets seeded with a little bit of relevant information about the project, and if it can compile that means it can later partially test the code it is writing while it works.</p>
-<p>Once the compile had succeeded I fed it the design for the new feature I wanted:</p>
-<blockquote>
-<p>Add a new sub-command to the Rust tool called "codex prompt"</p>
-<p>codex prompt "prompt goes here" - this runs the given prompt directly against the OpenAI API that Codex uses, with the same code path and authentication credentials as the rest of Codex.</p>
-<p>codex prompt -m &lt;model_name&gt; "prompt goes here" - same again but lets you set the model</p>
-<p>codex prompt "prompt goes here" -s/--system "system prompt goes here" - runs with a custom system/developer message</p>
-<p>codex prompt --models - this lists all available models that can be used with the "codex prompt" command</p>
-</blockquote>
-<p>My design for this new sub-command is lifted directly from my own <a href="https://llm.datasette.io/en/stable/help.html#llm-prompt-help">llm command</a>.</p>
-<h4 id="iterating-on-the-code">Iterating on the code</h4>
-<p>Codex got to work. I've <a href="https://gistpreview.github.io/?ddabbff092bdd658e06d8a2e8f142098">shared the full transcript here</a> (using the tool <a href="https://simonwillison.net/2025/Oct/23/claude-code-for-web-video/">I described here</a>), but this TODO list it made itself is a useful summary of what it decided to do:</p>
-<pre><code>Updated Plan
-└ ✔ Inspect CLI structure and relevant core utilities for sending prompts and listing models
-  ✔ Implement new `codex prompt` subcommand (CLI plumbing + command handler)
-  ✔ Format, lint, and test (`just fmt`, `just fix -p codex-cli`, `cargo test -p codex-cli`)
-</code></pre>
-<p>I like that it figured out <a href="https://github.com/openai/codex/blob/a47181e471b6efe55e95f9858c913fc89a3a44fa/codex-rs/justfile">the justfile</a> in the repo and decided to use it to run formatting and linting commands without me needing to tell it to. (Update: it turns out that was dictated by the <a href="https://github.com/openai/codex/blob/f8b30af6dc275b3e64de5f1987e6cafe604cb72a/AGENTS.md">AGENTS.md</a> file.)</p>
-<p>I tried running the first version of the code it wrote like this:</p>
-<div class="highlight highlight-source-shell"><pre>./target/debug/codex prompt <span class="pl-s"><span class="pl-pds">'</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">'</span></span> -m gpt-5-codex-mini</pre></div>
-<p>... and it didn't quite work. I got this:</p>
-<pre><code>(reasoning summary) **Seeking
-(reasoning summary)  instructions
-(reasoning summary)  and
-(reasoning summary)  sandbox
-(reasoning summary)  info
-(reasoning summary) **
-(reasoning summary) **Dec
-(reasoning summary) iding
-(reasoning summary)  on
-(reasoning summary)  SVG
-(reasoning summary)  creation
-(reasoning summary)  approach
-(reasoning summary) **
-(reasoning summary) **Checking
-(reasoning summary)  current
-(reasoning summary)  directory
-(reasoning summary) **
-(reasoning summary) **Preparing
-(reasoning summary)  to
-(reasoning summary)  check
-(reasoning summary)  current
-(reasoning summary)  directory
-(reasoning summary) **
-I�m ready to help�what would you like me to do next?I�m ready to help�what would you like me to do next?
-Token usage: total=2459 input=2374 cached_input=0 output=85 reasoning_output=64
-</code></pre>
-<p>Note that it DID think about SVG creation, but then decided it should look at the current directory. This isn't what I want - it appeared to be running in Codex's normal mode with a system prompt telling it to edit files on disk. I wanted it to respond to the prompt without acting as if it had a full workspace available to it.</p>
-<p>I prompted it again, pasting in the broken output:</p>
-<blockquote>
-<p>this did not seem to work - here is what happened - note that the reasoning summary comes out on a lot of lines when I would rather it streams out to stderr on the same line (flushing constantly) - and then despite the reasoning summary thinking about pelican on SVG it did not actually act on that and display the result, which is very surprising. [pasted content]</p>
-</blockquote>
-<p>It churned for a bit more, but from the output it looked like it was still trying to include Codex-specific tools and workspace information. So I said:</p>
-<blockquote>
-<p>Note that this new 'codex prompt' command should NOT be able to execute any tools at all, and should not have to think about the workspace or sandbox - it should send a single prompt with no tools and then stream and display a response and then stop.</p>
-</blockquote>
-<p>This got me a new build, but when I ran it:</p>
-<pre><code>Error: unexpected status 400 Bad Request: {"detail":"Instructions are not valid"}
-</code></pre>
-<p>My guess is that OpenAI's custom backend API for Codex doesn't like it if you attempt to call it <em>without</em> passing in the expected instructions. Fair enough!</p>
-<p>Rather than paste that error in I got Codex to try the command itself, so it could see the error:</p>
-<blockquote>
-<p>You try running this and see what happens: ./target/debug/codex prompt 'Generate an SVG of a pelican riding a bicycle'</p>
-</blockquote>
-<p>Codex switched back to the default instructions. From its reply:</p>
-<blockquote>
-<p><code>cli/src/prompt_cmd.rs#L1-L320</code> now forces a tool-free request: we keep the workspace defaults, inject a lightweight system/developer message (“don’t run tools”), disable apply_patch/web search via config overrides, and build the outbound prompt as just that system span plus the user text.</p>
-</blockquote>
-<p>I guess that will have to do. I asked for one more feature:</p>
-<blockquote>
-<p>Add a --debug option to the codex prompt command which causes the full JSON request and response to be printed to stderr, plus the URL that is being accessed and the HTTP verb</p>
-</blockquote>
-<p>... and we're ready to try this thing out!</p>
-<p>Notably I haven't written a single line of Rust myself here and paid almost no attention to what it was actually doing. My main contribution was to run the binary every now and then to see if it was doing what I needed yet.</p>
-<p>I've pushed the working code to <a href="https://github.com/simonw/codex/compare/a47181e471b6efe55e95f9858c913fc89a3a44fa...ae5f98a9248a8edb5d3c53261273a482fc0b5306">a prompt-subcommand branch in my repo</a> if you want to take a look and see how it all works.</p>
-
-<h4 id="let-s-draw-some-pelicans">Let's draw some pelicans</h4>
-<p>With the final version of the code built, I drew some pelicans. Here's the <a href="https://gistpreview.github.io/?a11f9ac456d2b2bc3715ba900ef1203d">full terminal transcript</a>, but here are some highlights.</p>
-<p>This is with the default GPT-5-Codex model:</p>
-<div class="highlight highlight-source-shell"><pre>./target/debug/codex prompt <span class="pl-s"><span class="pl-pds">"</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">"</span></span></pre></div>
-<p>I pasted it into my <a href="https://tools.simonwillison.net/svg-render">tools.simonwillison.net/svg-render</a> tool and got the following:</p>
-<p><img src="https://static.simonwillison.net/static/2025/codex-hacking-default.png" alt="It's a dumpy little pelican with a weird face, not particularly great" style="max-width: 100%;" /></p>
-<p>I ran it again for GPT-5:</p>
-<div class="highlight highlight-source-shell"><pre>./target/debug/codex prompt <span class="pl-s"><span class="pl-pds">"</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">"</span></span> -m gpt-5</pre></div>
-<p><img src="https://static.simonwillison.net/static/2025/codex-hacking-gpt-5.png" alt="Much better bicycle, pelican is a bit line-drawing-ish but does have the necessary parts in the right places" style="max-width: 100%;" /></p>
-<p>And now the moment of truth... GPT-5 Codex Mini!</p>
-<div class="highlight highlight-source-shell"><pre>./target/debug/codex prompt <span class="pl-s"><span class="pl-pds">"</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">"</span></span> -m gpt-5-codex-mini</pre></div>
-<p><img src="https://static.simonwillison.net/static/2025/codex-hacking-mini.png" alt="This is terrible. The pelican is an abstract collection of shapes, the bicycle is likewise very messed up" style="max-width: 100%;" /></p>
-<p>I don't think I'll be adding that one to my SVG drawing toolkit any time soon.</p>
-
-<h4 id="bonus-the-debug-option">Bonus: the --debug option</h4>
-<p>I had Codex add a <code>--debug</code> option to help me see exactly what was going on.</p>
-<div class="highlight highlight-source-shell"><pre>./target/debug/codex prompt -m gpt-5-codex-mini <span class="pl-s"><span class="pl-pds">"</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">"</span></span> --debug</pre></div>
-<p>The output starts like this:</p>
-<pre><code>[codex prompt debug] POST https://chatgpt.com/backend-api/codex/responses
-[codex prompt debug] Request JSON:
-</code></pre>
-<div class="highlight highlight-source-json"><pre>{
-  <span class="pl-ent">"model"</span>: <span class="pl-s"><span class="pl-pds">"</span>gpt-5-codex-mini<span class="pl-pds">"</span></span>,
-  <span class="pl-ent">"instructions"</span>: <span class="pl-s"><span class="pl-pds">"</span>You are Codex, based on GPT-5. You are running as a coding agent ...<span class="pl-pds">"</span></span>,
-  <span class="pl-ent">"input"</span>: [
-    {
-      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"role"</span>: <span class="pl-s"><span class="pl-pds">"</span>developer<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"content"</span>: [
-        {
-          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>input_text<span class="pl-pds">"</span></span>,
-          <span class="pl-ent">"text"</span>: <span class="pl-s"><span class="pl-pds">"</span>You are a helpful assistant. Respond directly to the user request without running tools or shell commands.<span class="pl-pds">"</span></span>
-        }
-      ]
-    },
-    {
-      <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>message<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"role"</span>: <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>,
-      <span class="pl-ent">"content"</span>: [
-        {
-          <span class="pl-ent">"type"</span>: <span class="pl-s"><span class="pl-pds">"</span>input_text<span class="pl-pds">"</span></span>,
-          <span class="pl-ent">"text"</span>: <span class="pl-s"><span class="pl-pds">"</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">"</span></span>
-        }
-      ]
-    }
-  ],
-  <span class="pl-ent">"tools"</span>: [],
-  <span class="pl-ent">"tool_choice"</span>: <span class="pl-s"><span class="pl-pds">"</span>auto<span class="pl-pds">"</span></span>,
-  <span class="pl-ent">"parallel_tool_calls"</span>: <span class="pl-c1">false</span>,
-  <span class="pl-ent">"reasoning"</span>: {
-    <span class="pl-ent">"summary"</span>: <span class="pl-s"><span class="pl-pds">"</span>auto<span class="pl-pds">"</span></span>
-  },
-  <span class="pl-ent">"store"</span>: <span class="pl-c1">false</span>,
-  <span class="pl-ent">"stream"</span>: <span class="pl-c1">true</span>,
-  <span class="pl-ent">"include"</span>: [
-    <span class="pl-s"><span class="pl-pds">"</span>reasoning.encrypted_content<span class="pl-pds">"</span></span>
-  ],
-  <span class="pl-ent">"prompt_cache_key"</span>: <span class="pl-s"><span class="pl-pds">"</span>019a66bf-3e2c-7412-b05e-db9b90bbad6e<span class="pl-pds">"</span></span>
-}</pre></div>
-<p>This reveals that OpenAI's private API endpoint for Codex CLI is <code>https://chatgpt.com/backend-api/codex/responses</code>.</p>
-<p>Also interesting is how the <code>"instructions"</code> key (truncated above, <a href="https://gist.github.com/simonw/996388ecf785ad54de479315bd4d33b7">full copy here</a>) contains the default instructions, without which the API appears not to work - but it also shows that you can send a message with <code>role="developer"</code> in advance of your user prompt.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Sun, 9 Nov 2025 03:31:34 +0000</pubDate></item><item><title>Quoting Kenton Varda</title><link>https://simonwillison.net/2025/Nov/8/kenton-varda/#atom-everything</link><description><![CDATA[<blockquote cite="https://x.com/kentonvarda/status/1987208904724652273"><p>The big advantage of MCP over OpenAPI is that it is very clear about auth. [...]</p>
-<p>Maybe an agent could read the docs and write code to auth. But we don't actually want that, because it implies the agent gets access to the API token! We want the agent's harness to handle that and never reveal the key to the agent. [...]</p>
-<p>OAuth has always assumed that the client knows what API it's talking to, and so the client's developer can register the client with that API in advance to get a client_id/client_secret pair. Agents, though, don't know what MCPs they'll talk to in advance.</p>
-<p>So MCP <a href="https://modelcontextprotocol.io/specification/draft/basic/authorization#dynamic-client-registration">requires OAuth dynamic client registration</a> (<a href="https://datatracker.ietf.org/doc/html/rfc7591">RFC 7591</a>), which practically nobody actually implemented prior to MCP. DCR might as well have been introduced by MCP, and may actually be the most important unlock in the whole spec.</p></blockquote>
-<p class="cite">&mdash; <a href="https://x.com/kentonvarda/status/1987208904724652273">Kenton Varda</a></p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/kenton-varda">kenton-varda</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/oauth">oauth</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 8 Nov 2025 22:04:45 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/3d">3d</a>, <a href="https://simonwillison.net/tags/ray-tracing">ray-tracing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/gpt-5">gpt-5</a></p>]]></description><pubDate>Sun, 9 Nov 2025 16:51:42 +0000</pubDate></item></channel></rss>
