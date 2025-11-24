@@ -4,7 +4,7 @@
 <p>The <a href="https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-5#key-improvements-in-opus-4-5-over-opus-4-1">Key improvements in Opus 4.5 over Opus 4.1</a> document has a few more interesting details:</p>
 <ul>
 <li>Opus 4.5 has a new <a href="https://platform.claude.com/docs/en/build-with-claude/effort">effort parameter</a> defaults to high but can be set to medium or low for faster responses.</li>
-<li>There model supports <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool">enhanced computer use</a>, specifically a <code>zoom</code> tool which you can provide to Opus 4.5 to allow it to request a zoomed in region of the screen to inspect.</li>
+<li>The model supports <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/computer-use-tool">enhanced computer use</a>, specifically a <code>zoom</code> tool which you can provide to Opus 4.5 to allow it to request a zoomed in region of the screen to inspect.</li>
 <li>"<a href="https://platform.claude.com/docs/en/build-with-claude/extended-thinking#thinking-block-preservation-in-claude-opus-4-5">Thinking blocks from previous assistant turns are preserved in model context by default</a>" - apparently previous Anthropic models discarded those.</li>
 </ul>
 
@@ -23,6 +23,7 @@
 <p><img src="https://static.simonwillison.net/static/2025/claude-opus-4.5-pelican.jpg" alt="The pelican is cute and looks pretty good. The bicycle is not great - the frame is wrong and the pelican is facing backwards when the handlebars appear to be forwards.There is also something that looks a bit like an egg on the handlebars." style="max-width: 100%;" /></p>
 <p>It did significantly better on the <a href="https://simonwillison.net/2025/Nov/18/gemini-3/#and-a-new-pelican-benchmark">new more detailed prompt</a>:</p>
 <p><img src="https://static.simonwillison.net/static/2025/claude-opus-4.5-pelican-advanced.jpg" alt="The pelican has feathers and a red pouch - a close enough version of breeding plumage. The bicycle is a much better shape." style="max-width: 100%;" /></p>
+<p>Here's that same complex prompt <a href="https://simonwillison.net/2025/Nov/18/gemini-3/#advanced-pelican">against Gemini 3 Pro</a> and <a href="https://simonwillison.net/2025/Nov/19/gpt-51-codex-max/#advanced-pelican-codex-max">against GPT-5.1-Codex-Max-xhigh</a>.</p>
 <h4 id="still-susceptible-to-prompt-injection">Still susceptible to prompt injection</h4>
 <p>From <a href="https://www.anthropic.com/news/claude-opus-4-5#a-step-forward-on-safety">the safety section</a> of Anthropic's announcement post:</p>
 <blockquote>
@@ -383,7 +384,8 @@ Hot on the heels of yesterday's <a href="https://simonwillison.net/2025/Nov/18/g
 <p>And here's thinking level "xhigh":</p>
 <p><img alt="A plump white bird with an orange beak and small black eyes crouches low on a blue bicycle with oversized dark wheels, shown racing forward with motion lines against a soft gradient blue sky." src="https://static.simonwillison.net/static/2025/codex-max-xhigh.jpg" /></p>
 <p>I also tried xhigh on the my <a href="https://simonwillison.net/2025/Nov/18/gemini-3/#and-a-new-pelican-benchmark">longer pelican test prompt</a>, which came out like this:</p>
-<p><img alt="A stylized dark gray bird with layered wings, a yellow head crest, and a long brown beak leans forward in a racing pose on a black-framed bicycle, riding across a glossy blue surface under a pale sky." src="https://static.simonwillison.net/static/2025/codex-breeding-max-xhigh.jpg" /></p>
+<p id="advanced-pelican-codex-max"><img alt="A stylized dark gray bird with layered wings, a yellow head crest, and a long brown beak leans forward in a racing pose on a black-framed bicycle, riding across a glossy blue surface under a pale sky." src="https://static.simonwillison.net/static/2025/codex-breeding-max-xhigh.jpg"></p>
+
 <p>Also today: <a href="https://x.com/openai/status/1991266192905179613">GPT-5.1 Pro is rolling out today to all Pro users</a>. According to the <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">ChatGPT release notes</a>:</p>
 <blockquote>
 <p>GPT-5.1 Pro is rolling out today for all ChatGPT Pro users and is available in the model picker. GPT-5 Pro will remain available as a legacy model for 90 days before being retired.</p>
@@ -837,7 +839,7 @@ Meeting adjourned. Have a good evening.</p>
 <p>For reference, here's a photo I took of a California brown pelican recently (sadly without a bicycle):</p>
 <p><img src="https://static.simonwillison.net/static/2025/breeding-plumage.jpg" alt="A glorious California brown pelican perched on a rock by the water. It has a yellow tint to its head and a red spot near its throat." style="max-width: 100%;" /></p>
 <p>Here's Gemini 3 Pro's <a href="https://gist.github.com/simonw/2b9930ae1ce6f3f5e9cfe3cb31ec0c0a">attempt</a> at high thinking level for that new prompt:</p>
-<p><img src="https://static.simonwillison.net/static/2025/gemini-3-breeding-pelican-high.png" alt="It's clearly a pelican. It has all of the requested features. It looks a bit abstract though." style="max-width: 100%;" /></p>
+<p id="advanced-pelican"><img src="https://static.simonwillison.net/static/2025/gemini-3-breeding-pelican-high.png" alt="It's clearly a pelican. It has all of the requested features. It looks a bit abstract though." style="max-width: 100%;" /></p>
 <p>And for good measure, here's that same prompt <a href="https://gist.github.com/simonw/7a655ebe42f3d428d2ea5363dad8067c">against GPT-5.1</a> - which produced this dumpy little fellow:</p>
 <p><img src="https://static.simonwillison.net/static/2025/gpt-5-1-breeding-pelican.png" alt="The pelican is very round. Its body overlaps much of the bicycle. It has a lot of dorky charisma." style="max-width: 100%;" /></p>
 <p>And Claude Sonnet 4.5, which <a href="https://gist.github.com/simonw/3296af92e4328dd4740385e6a4a2ac35">didn't do quite as well</a>:</p>
