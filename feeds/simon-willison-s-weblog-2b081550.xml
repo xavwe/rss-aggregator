@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>&quot;Good engineering management&quot; is a fad</title><link>https://simonwillison.net/2025/Nov/23/good-engineering-management-is-a-fad/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lethain.com/good-eng-mgmt-is-a-fad/">&quot;Good engineering management&quot; is a fad</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>sqlite-utils 4.0a1 has several (minor) backwards incompatible changes</title><link>https://simonwillison.net/2025/Nov/24/sqlite-utils-40a1/#atom-everything</link><description><![CDATA[<p>I released a <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a1-2025-11-23">new alpha version</a> of <a href="https://sqlite-utils.datasette.io/">sqlite-utils</a> last night - the 128th release of that package since I started building it back in 2018.</p>
+<p><code>sqlite-utils</code> is two things in one package: a Python library for conveniently creating and manipulating SQLite databases and a CLI tool for working with them in the terminal. Almost every feature provided by the package is available via both of those surfaces.</p>
+<p>This is hopefully the last alpha before a 4.0 stable release. I use semantic versioning for this library, so the 4.0 version number indicates that there are backward incompatible changes that may affect code written against the 3.x line.</p>
+<p>These changes are mostly very minor: I don't want to break any existing code if I can avoid it. I made it all the way to version 3.38 before I had to ship a major release and I'm sad I couldn't push that even further!</p>
+<p>Here are the <a href="https://simonwillison.net/tags/annotated-release-notes/">annotated release notes</a> for 4.0a1.</p>
+<blockquote>
+<ul>
+<li>
+<strong>Breaking change</strong>: The <code>db.table(table_name)</code> method now only works with tables. To access a SQL view use <code>db.view(view_name)</code> instead. (<a href="https://github.com/simonw/sqlite-utils/issues/657">#657</a>)</li>
+</ul>
+</blockquote>
+<p>This change is for type hint enthusiasts. The Python library used to encourage accessing both SQL tables and SQL views through the <code>db["name_of_table_or_view"]</code> syntactic sugar - but tables and view have different interfaces since there's no way to handle a <code>.insert(row)</code> on a SQLite view. If you want clean type hints for your code you can now use the <code>db.table(table_name)</code> and <code>db.view(view_name)</code> methods instead.</p>
+<blockquote>
+<ul>
+<li>The <code>table.insert_all()</code> and <code>table.upsert_all()</code> methods can now accept an iterator of lists or tuples as an alternative to dictionaries. The first item should be a list/tuple of column names. See <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#python-api-insert-lists">Inserting data from a list or tuple iterator</a> for details. (<a href="https://github.com/simonw/sqlite-utils/issues/672">#672</a>)</li>
+</ul>
+</blockquote>
+<p>A new feature, not a breaking change. I realized that supporting a stream of lists or tuples as an option for populating large tables would be a neat optimization over always dealing with dictionaries each of which duplicated the column names.</p>
+<p>I had the idea for this one while walking the dog and built the first prototype by prompting Claude Code for web on my phone. Here's <a href="https://github.com/simonw/research/pull/31">the prompt I used</a> and the <a href="https://github.com/simonw/research/blob/main/sqlite-utils-iterator-support/README.md">prototype report it created</a>, which included a benchmark estimating how much of a performance boost could be had for different sizes of tables.</p>
+<blockquote>
+<ul>
+<li>
+<strong>Breaking change</strong>: The default floating point column type has been changed from <code>FLOAT</code> to <code>REAL</code>, which is the correct SQLite type for floating point values. This affects auto-detected columns when inserting data. (<a href="https://github.com/simonw/sqlite-utils/issues/645">#645</a>)</li>
+</ul>
+</blockquote>
+<p>I was horrified to discover a while ago that I'd been creating SQLite columns called FLOAT but the correct type to use was REAL! This change fixes that. Previously the fix was to ask for tables to be created in strict mode.</p>
+<blockquote>
+<ul>
+<li>Now uses <code>pyproject.toml</code> in place of <code>setup.py</code> for packaging. (<a href="https://github.com/simonw/sqlite-utils/issues/675">#675</a>)</li>
+</ul>
+</blockquote>
+<p>As part of this I also figured out recipes for using <code>uv</code> as a development environment for the package, which are now baked into the <a href="https://github.com/simonw/sqlite-utils/blob/4.0a1/Justfile">Justfile</a>.</p>
+<blockquote>
+<ul>
+<li>Tables in the Python API now do a much better job of remembering the primary key and other schema details from when they were first created. (<a href="https://github.com/simonw/sqlite-utils/issues/655">#655</a>)</li>
+</ul>
+</blockquote>
+<p>This one is best explained <a href="https://github.com/simonw/sqlite-utils/issues/655">in the issue</a>.</p>
+<blockquote>
+<ul>
+<li>
+<strong>Breaking change</strong>: The <code>table.convert()</code> and <code>sqlite-utils convert</code> mechanisms no longer skip values that evaluate to <code>False</code>. Previously the <code>--skip-false</code> option was needed, this has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/542">#542</a>)</li>
+</ul>
+</blockquote>
+<p>Another change which I would have made earlier but, since it introduces a minor behavior change to an existing feature, I reserved it for the 4.0 release.</p>
+<blockquote>
+<ul>
+<li>
+<strong>Breaking change</strong>: Tables created by this library now wrap table and column names in <code>"double-quotes"</code> in the schema. Previously they would use <code>[square-braces]</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/677">#677</a>)</li>
+</ul>
+</blockquote>
+<p>Back in 2018 when I started this project I was new to working in-depth with SQLite and incorrectly concluded that the correct way to create tables and columns named after reserved words was like this:</p>
+<pre><code>create table [my table] (
+  [id] integer primary key,
+  [key] text
+)
+</code></pre>
+<p>That turned out to be a non-standard SQL syntax which the SQLite documentation <a href="https://sqlite.org/lang_keywords.html">describes like this</a>:</p>
+<blockquote>
+<p>A keyword enclosed in square brackets is an identifier. This is not standard SQL. This quoting mechanism is used by MS Access and SQL Server and is included in SQLite for compatibility.</p>
+</blockquote>
+<p>Unfortunately I baked it into the library early on and it's been polluting the world with weirdly escaped table and column names ever since!</p>
+<p>I've finally fixed that, with the help of Claude Code which took on the mind-numbing task of <a href="https://github.com/simonw/sqlite-utils/pull/678/files">updating hundreds of existing tests</a> that asserted against the generated schemas.</p>
+<p>The above example table schema now looks like this:</p>
+<pre><code>create table "my table" (
+  "id" integer primary key,
+  "key" text
+)
+</code></pre>
+<p>This may seem like a pretty small change but I expect it to cause a fair amount of downstream pain purely in terms of updating tests that work against tables created by <code>sqlite-utils</code>!</p>
+<blockquote>
+<ul>
+<li>The <code>--functions</code> CLI argument now accepts a path to a Python file in addition to accepting a string full of Python code. It can also now be specified multiple times. (<a href="https://github.com/simonw/sqlite-utils/issues/659">#659</a>)</li>
+</ul>
+</blockquote>
+<p>I made this change first <a href="https://github.com/simonw/llm/issues/1016#issuecomment-2877305544">in LLM</a> and decided to bring it to <code>sqlite-utils</code> for consistency between the two tools.</p>
+<blockquote>
+<ul>
+<li>
+<strong>Breaking change:</strong> Type detection is now the default behavior for the <code>insert</code> and <code>upsert</code> CLI commands when importing CSV or TSV data. Previously all columns were treated as <code>TEXT</code> unless the <code>--detect-types</code> flag was passed. Use the new <code>--no-detect-types</code> flag to restore the old behavior. The <code>SQLITE_UTILS_DETECT_TYPES</code> environment variable has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/679">#679</a>)</li>
+</ul>
+</blockquote>
+<p>One last minor ugliness that I waited for a major version bump to fix.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 24 Nov 2025 14:52:34 +0000</pubDate></item><item><title>&quot;Good engineering management&quot; is a fad</title><link>https://simonwillison.net/2025/Nov/23/good-engineering-management-is-a-fad/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lethain.com/good-eng-mgmt-is-a-fad/">&quot;Good engineering management&quot; is a fad</a></strong></p>
 Will Larson argues that the technology industry's idea of what makes a good engineering manager changes over time based on industry realities. ZIRP hypergrowth has been exchanged for a more cautious approach today, and expectations of managers has changed to match:</p>
 <blockquote>
 <p>Where things get weird is that in each case a morality tale was subsequently superimposed on top of the transition [...] the industry will want different things from you as it evolves, and it will tell you that each of those shifts is because of some complex moral change, but it’s pretty much always about business realities changing.</p>
@@ -986,15 +1070,4 @@ Robert Glaser took my <a href="https://simonwillison.net/tags/pelican-riding-a-b
 <li><a href="https://github.com/datasette/datasette-public/commit/5213c41521821c03688c6099581e198a831f85d5">datasette-public 5213c4</a></li>
 </ul>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a></p>]]></description><pubDate>Tue, 11 Nov 2025 22:52:45 +0000</pubDate></item><item><title>Quoting Netflix</title><link>https://simonwillison.net/2025/Nov/10/netflix/#atom-everything</link><description><![CDATA[<blockquote cite="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production"><p>Netflix asks partners to consider the following guiding principles before leveraging GenAI in any creative workflow: </p>
-<ol>
-<li>The outputs do not replicate or substantially recreate identifiable characteristics of unowned or copyrighted material, or infringe any copyright-protected works</li>
-<li>The generative tools used do not store, reuse, or train on production data inputs or outputs.</li>
-<li>Where possible, generative tools are used in an <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production#h_01K1BTNMBS130Y200ZWV3H6ZAT">enterprise-secured environment</a> to safeguard inputs.</li>
-<li>Generated material is temporary and not part of the <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production#h_01K1BTNMBVFQYQNJCCMKR254VK">final deliverables</a>.</li>
-<li>GenAI is not used to replace or generate new <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production#h_01K1BTNMBWWPTJJA79EFPY8NRJ">talent performances</a> or union-covered work without consent.</li>
-</ol>
-<p>[...] If you answer "no" or "unsure" to any of these principles, escalate to your Netflix contact for more guidance before proceeding, as written approval may be required.</p></blockquote>
-<p class="cite">&mdash; <a href="https://partnerhelp.netflixstudios.com/hc/en-us/articles/43393929218323-Using-Generative-AI-in-Content-Production">Netflix</a>, Using Generative AI in Content Production</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/netflix">netflix</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Mon, 10 Nov 2025 22:08:27 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a></p>]]></description><pubDate>Tue, 11 Nov 2025 22:52:45 +0000</pubDate></item></channel></rss>
