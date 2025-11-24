@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>sqlite-utils 4.0a1 has several (minor) backwards incompatible changes</title><link>https://simonwillison.net/2025/Nov/24/sqlite-utils-40a1/#atom-everything</link><description><![CDATA[<p>I released a <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a1-2025-11-23">new alpha version</a> of <a href="https://sqlite-utils.datasette.io/">sqlite-utils</a> last night - the 128th release of that package since I started building it back in 2018.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>sqlite-utils 3.39</title><link>https://simonwillison.net/2025/Nov/24/sqlite-utils-339/#atom-everything</link><description><![CDATA[<p><strong><a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v3-39">sqlite-utils 3.39</a></strong></p>
+I got a report of <a href="https://github.com/simonw/sqlite-utils/issues/687">a bug</a> in <code>sqlite-utils</code> concerning plugin installation - if you installed the package using <code>uv tool install</code> further attempts to install plugins with <code>sqlite-utils install X</code> would fail, because <code>uv</code> doesn't bundle <code>pip</code> by default. I had the same bug with Datasette <a href="https://github.com/simonw/sqlite-utils/issues/687">a while ago</a>, turns out I forgot to apply the fix to <code>sqlite-utils</code>.</p>
+<p>Since I was pushing a new dot-release I decided to integrate some of the non-breaking changes from the 4.0 alpha <a href="https://simonwillison.net/2025/Nov/24/sqlite-utils-40a1/">I released last night</a>.</p>
+<p>I tried to have Claude Code do the backporting for me:</p>
+<blockquote>
+<p>create a new branch called 3.x starting with the 3.38 tag, then consult 
+<a href="https://github.com/simonw/sqlite-utils/issues/688">https://github.com/simonw/sqlite-utils/issues/688</a> and cherry-pick the commits it lists in the second comment, then review each of the links in the first comment and cherry-pick those as well. After each cherry-pick run the command "just test" to confirm the tests pass and fix them if they don't. Look through the commit history on main since the 3.38 tag to help you with this task.</p>
+</blockquote>
+<p>This worked reasonably well - <a href="https://gistpreview.github.io/?83c7a7ea96d6b7763ad5d72d251ce1a6">here's the terminal transcript</a>. It successfully argued me out of two of the larger changes which would have added more complexity than I want in a small dot-release like this.</p>
+<p>I still had to do a bunch of manual work to get everything up to scratch, which I carried out in <a href="https://github.com/simonw/sqlite-utils/pull/689">this PR</a> - including adding comments there and then telling Claude Code:</p>
+<blockquote>
+<p>Apply changes from the review on this PR <a href="https://github.com/simonw/sqlite-utils/pull/689">https://github.com/simonw/sqlite-utils/pull/689</a></p>
+</blockquote>
+<p>Here's <a href="https://gistpreview.github.io/?f4c89636cc58fc7bf9820c06f2488b91">the transcript from that</a>.</p>
+<p>The release is now out with the following release notes:</p>
+<blockquote>
+<ul>
+<li>Fixed a bug with <code>sqlite-utils install</code> when the tool had been installed using <code>uv</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/687">#687</a>)</li>
+<li>The <code>--functions</code> argument now optionally accepts a path to a Python file as an alternative to a string full of code, and can be specified multiple times - see <a href="https://sqlite-utils.datasette.io/en/stable/cli.html#cli-query-functions">Defining custom SQL functions</a>. (<a href="https://github.com/simonw/sqlite-utils/issues/659">#659</a>)</li>
+<li><code>sqlite-utils</code> now requires on Python 3.10 or higher.</li>
+</ul>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 24 Nov 2025 18:59:14 +0000</pubDate></item><item><title>sqlite-utils 4.0a1 has several (minor) backwards incompatible changes</title><link>https://simonwillison.net/2025/Nov/24/sqlite-utils-40a1/#atom-everything</link><description><![CDATA[<p>I released a <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a1-2025-11-23">new alpha version</a> of <a href="https://sqlite-utils.datasette.io/">sqlite-utils</a> last night - the 128th release of that package since I started building it back in 2018.</p>
 <p><code>sqlite-utils</code> is two things in one package: a Python library for conveniently creating and manipulating SQLite databases and a CLI tool for working with them in the terminal. Almost every feature provided by the package is available via both of those surfaces.</p>
 <p>This is hopefully the last alpha before a 4.0 stable release. I use semantic versioning for this library, so the 4.0 version number indicates that there are backward incompatible changes that may affect code written against the 3.x line.</p>
 <p>These changes are mostly very minor: I don't want to break any existing code if I can avoid it. I made it all the way to version 3.38 before I had to ship a major release and I'm sad I couldn't push that even further!</p>
@@ -1024,50 +1048,4 @@ Robert Glaser took my <a href="https://simonwillison.net/tags/pelican-riding-a-b
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=45891817">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/svg">svg</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Tue, 11 Nov 2025 23:23:18 +0000</pubDate></item><item><title>Six coding agents at once</title><link>https://simonwillison.net/2025/Nov/11/six-coding-agents-at-once/#atom-everything</link><description><![CDATA[<p>I've been upgrading a <em>ton</em> of Datasette plugins recently for compatibility with the <a href="https://simonwillison.net/2025/Nov/4/datasette-10a20/">Datasette 1.0a20 release</a> from last week - <a href="https://github.com/simonw/datasette/issues/2577#issuecomment-3483537877">35 so far</a>.</p>
-<p>A lot of the work is very repetitive so I've been outsourcing it to <a href="https://github.com/openai/codex">Codex CLI</a>. Here's the recipe I've landed on:</p>
-<div class="highlight highlight-source-shell"><pre style="font-size: 0.9em">codex <span class="pl-c1">exec</span> --dangerously-bypass-approvals-and-sandbox \
-<span class="pl-s"><span class="pl-pds">'</span>Run the command tadd and look at the errors and then</span>
-<span class="pl-s">read ~/dev/datasette/docs/upgrade-1.0a20.md and apply</span>
-<span class="pl-s">fixes and run the tests again and get them to pass.</span>
-<span class="pl-s"></span>
-<span class="pl-s">Also delete the .github directory entirely and replace</span>
-<span class="pl-s">it by running this:</span>
-<span class="pl-s"></span>
-<span class="pl-s">cp -r ~/dev/ecosystem/datasette-os-info/.github .</span>
-<span class="pl-s"></span>
-<span class="pl-s">Run a git diff against that to make sure it looks OK</span>
-<span class="pl-s">- if there are any notable differences e.g. switching</span>
-<span class="pl-s">from Twine to the PyPI uploader or deleting code that</span>
-<span class="pl-s">does a special deploy or configures something like </span>
-<span class="pl-s">playwright include that in your final report.</span>
-<span class="pl-s"></span>
-<span class="pl-s">If the project still uses setup.py then edit that new</span>
-<span class="pl-s">test.yml and publish.yaml to mention setup.py not pyproject.toml</span>
-<span class="pl-s"></span>
-<span class="pl-s">If this project has pyproject.toml make sure the license</span>
-<span class="pl-s">line in that looks like this:</span>
-<span class="pl-s"></span>
-<span class="pl-s">license = "Apache-2.0"</span>
-<span class="pl-s"></span>
-<span class="pl-s">And remove any license thing from the classifiers= array</span>
-<span class="pl-s"></span>
-<span class="pl-s">Update the Datasette dependency in pyproject.toml or</span>
-<span class="pl-s">setup.py to "datasette&gt;=1.0a21"</span>
-<span class="pl-s"></span>
-<span class="pl-s">And make sure requires-python is &gt;=3.10<span class="pl-pds">'</span></span></pre></div>
-
-<p>I featured a simpler version of this prompt in my <a href="https://simonwillison.net/2025/Nov/6/upgrading-datasette-plugins/">Datasette plugin upgrade video</a>, but I've expanded it quite a bit since then.</p>
-<p>At one point I had six terminal windows open running this same prompt against six different repos - probably my most extreme case of <a href="https://simonwillison.net/2025/Oct/5/parallel-coding-agents/">parallel agents</a> yet.</p>
-<p><img alt="Animated GIF demo. Six terminal windows are arranged in a 3x2 grid, each one of them is running the above prompt and working its way through making modifications to one of six different projects: datasette-extract, datasette-create-view, datasette-write, datasette-secrets, datasette-public, and datasette-write-ui." src="https://static.simonwillison.net/static/2025/multiple-codexes.gif" /></p>
-<p>Here are the six resulting commits from those six coding agent sessions:</p>
-<ul>
-<li><a href="https://github.com/datasette/datasette-extract/commit/deb6ae3f3069d45c5227a57067c6621cd3b8d6ea">datasette-extract deb6ae</a></li>
-<li><a href="https://github.com/datasette/datasette-create-view/commit/d940f42fdab205c645fe4a2f1d7a4e44d41104d8">datasette-create-view d940f4</a></li>
-<li><a href="https://github.com/simonw/datasette-write/commit/e0af01f931498a3dfbf5f2597534df109559fe71">datasette-write e0af01</a></li>
-<li><a href="https://github.com/datasette/datasette-secrets/commit/e93d1410bcd9a4af87a046b584e9e3f9cae503c4">datasette-secrets e93d14</a></li>
-<li><a href="https://github.com/datasette/datasette-write-ui/commit/1d2459fbc35ad02633bb7441c92bc5f8a5d919d5">datasette-write-ui 1d2459</a></li>
-<li><a href="https://github.com/datasette/datasette-public/commit/5213c41521821c03688c6099581e198a831f85d5">datasette-public 5213c4</a></li>
-</ul>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a></p>]]></description><pubDate>Tue, 11 Nov 2025 22:52:45 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/svg">svg</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Tue, 11 Nov 2025 23:23:18 +0000</pubDate></item></channel></rss>
