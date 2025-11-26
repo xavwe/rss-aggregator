@@ -275,6 +275,8 @@
 <p>Now construct a bullet point list of key topics where each item includes the mm:ss in square braces at the end</p>
 <p>Then suggest a very comprehensive list of supporting links I could find</p>
 </blockquote>
+<p>Then one more follow-up:</p>
+<blockquote><p>Add an illustrative quote to every one of those key topics you identified</p></blockquote>
 <p>Here's <a href="https://claude.ai/share/b2b83b99-c506-4865-8d40-dee290723ac9">the full Claude transcript</a> of the analysis.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/data">data</a>, <a href="https://simonwillison.net/tags/data-journalism">data-journalism</a>, <a href="https://simonwillison.net/tags/django">django</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/podcast-appearances">podcast-appearances</a></p>]]></description><pubDate>Wed, 26 Nov 2025 00:29:11 +0000</pubDate></item><item><title>Google Antigravity Exfiltrates Data</title><link>https://simonwillison.net/2025/Nov/25/google-antigravity-exfiltrates-data/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.promptarmor.com/resources/google-antigravity-exfiltrates-data">Google Antigravity Exfiltrates Data</a></strong></p>
@@ -300,7 +302,7 @@ PromptArmor demonstrate a concerning prompt injection chain in Google's new <a h
 </blockquote>
 <p>Coding agent tools like Antigravity are in incredibly high value target for attacks like this, especially now that their usage is becoming much more mainstream.</p>
 <p>The best approach I know of for reducing the risk here is to make sure that any credentials that are visible to coding agents - like AWS keys - are tied to non-production accounts with strict spending limits. That way if the credentials are stolen the blast radius is limited.</p>
-<p><strong>Update</strong>: Johann Rehberger has a post today <a href="https://embracethered.com/blog/posts/2025/security-keeps-google-antigravity-grounded/">Antigravity Grounded! Security Vulnerabilities in Google's Latest IDE</a> which reports several other related vulnerabilities. He also points to Google's <a href="https://bughunters.google.com/learn/invalid-reports/google-products/4655949258227712/antigravity-known-issues">Bug Hunters page for Antigravity</a> which lists both data exfiltration and code execution via prompt injections through the browser agent as known issues that they are working to fix.
+<p><strong>Update</strong>: Johann Rehberger has a post today <a href="https://embracethered.com/blog/posts/2025/security-keeps-google-antigravity-grounded/">Antigravity Grounded! Security Vulnerabilities in Google's Latest IDE</a> which reports several other related vulnerabilities. He also points to Google's <a href="https://bughunters.google.com/learn/invalid-reports/google-products/4655949258227712/antigravity-known-issues">Bug Hunters page for Antigravity</a> which lists both data exfiltration and code execution via prompt injections through the browser agent as "known issues" (hence inadmissible for bug bounty rewards) that they are working to fix.
 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46048996">Hacker News</a></small></p>
 
