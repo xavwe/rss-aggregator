@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Context plumbing</title><link>https://simonwillison.net/2025/Nov/29/context-plumbing/#atom-everything</link><description><![CDATA[<p><strong><a href="https://interconnected.org/home/2025/11/28/plumbing">Context plumbing</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Rodrigo Arias Mallo</title><link>https://simonwillison.net/2025/Nov/30/rodrigo-arias-mallo/#atom-everything</link><description><![CDATA[<blockquote cite="https://dillo-browser.org/news/migration-from-github/"><p>The most annoying problem is that the [GitHub] frontend barely works without JavaScript, so we cannot open issues, pull requests, source code or CI logs in Dillo itself, despite them being mostly plain HTML, which I don't think is acceptable. In the past, it used to gracefully degrade without enforcing JavaScript, but now it doesn't.</p></blockquote>
+<p class="cite">&mdash; <a href="https://dillo-browser.org/news/migration-from-github/">Rodrigo Arias Mallo</a>, Migrating Dillo from GitHub</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/progressive-enhancement">progressive-enhancement</a>, <a href="https://simonwillison.net/tags/github">github</a></p>]]></description><pubDate>Sun, 30 Nov 2025 14:32:11 +0000</pubDate></item><item><title>Context plumbing</title><link>https://simonwillison.net/2025/Nov/29/context-plumbing/#atom-everything</link><description><![CDATA[<p><strong><a href="https://interconnected.org/home/2025/11/28/plumbing">Context plumbing</a></strong></p>
 Matt Webb coins the term <strong>context plumbing</strong> to describe the kind of engineering needed to feed agents the right context at the right time:</p>
 <blockquote>
 <p>Context appears at disparate sources, by user activity or changes in the user’s environment: what they’re working on changes, emails appear, documents are edited, it’s no longer sunny outside, the available tools have been updated.</p>
@@ -1235,44 +1238,4 @@ Meeting adjourned. Have a good evening.</p>
 <p><img src="https://static.simonwillison.net/static/2025/claude-sonnet-4-5-breeding-pelican.png" alt="Oh dear. It has all of the requested components, but the bicycle is a bit wrong and the pelican is arranged in a very awkward shape." style="max-width: 100%;" /></p>
 <p>None of the models seem to have caught on to the crucial detail that the California brown pelican is not, in fact, brown.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 18 Nov 2025 19:00:48 +0000</pubDate></item><item><title>The fate of “small” open source</title><link>https://simonwillison.net/2025/Nov/17/the-fate-of-small-open-source/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nolanlawson.com/2025/11/16/the-fate-of-small-open-source/">The fate of “small” open source</a></strong></p>
-Nolan Lawson asks if LLM assistance means that the category of tiny open source libraries like his own <a href="https://github.com/nolanlawson/blob-util">blob-util</a> is destined to fade away.</p>
-<p>Why take on additional supply chain risks adding another dependency when an LLM can likely kick out the subset of functionality needed by your own code to-order?</p>
-<blockquote>
-<p>I still believe in open source, and I’m still doing it (in fits and starts). But one thing has become clear to me: the era of small, low-value libraries like <code>blob-util</code> is over. They were already on their way out thanks to Node.js and the browser taking on more and more of their functionality (see <code>node:glob</code>, <code>structuredClone</code>, etc.), but LLMs are the final nail in the coffin.</p>
-</blockquote>
-<p>I've been thinking about a similar issue myself recently as well.</p>
-<p>Quite a few of my own open source projects exist to solve problems that are frustratingly hard to figure out. <a href="https://github.com/simonw/s3-credentials">s3-credentials</a> is a great example of this: it solves the problem of creating read-only or read-write credentials for an S3 bucket - something that I've always found infuriatingly difficult since you need to know to craft an IAM policy that looks something <a href="https://s3-credentials.readthedocs.io/en/stable/policy-documents.html#read-only">like this</a>:</p>
-<pre><code>{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:ListBucket",
-        "s3:GetBucketLocation"
-      ],
-      "Resource": [
-        "arn:aws:s3:::my-s3-bucket"
-      ]
-    },
-    {
-      "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:GetObjectAcl",
-        "s3:GetObjectLegalHold",
-        "s3:GetObjectRetention",
-        "s3:GetObjectTagging"
-      ],
-      "Resource": [
-        "arn:aws:s3:::my-s3-bucket/*"
-      ]
-    }
-  ]
-}
-</code></pre>
-<p>Modern LLMs are very good at S3 IAM polices, to the point that if I needed to solve this problem today I doubt I would find it frustrating enough to justify finding or creating a reusable library to help.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/nolan-lawson">nolan-lawson</a></p>]]></description><pubDate>Mon, 17 Nov 2025 23:24:44 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 18 Nov 2025 19:00:48 +0000</pubDate></item></channel></rss>
