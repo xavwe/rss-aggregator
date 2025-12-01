@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting David Bauder, AP News</title><link>https://simonwillison.net/2025/Dec/1/journalism/#atom-everything</link><description><![CDATA[<blockquote cite="https://apnews.com/article/news-media-journalism-young-people-attitudes-f94bec50fc266d42d6ae369e7b9fb10e"><p>More than half of the teens surveyed believe journalists regularly engage in unethical behaviors like making up details or quotes in stories, paying sources, taking visual images out of context or doing favors for advertisers. Less than a third believe reporters correct their errors, confirm facts before reporting them, gather information from multiple sources or cover stories in the public interest — practices ingrained in the DNA of reputable journalists.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>I sent out my November sponsor newsletter</title><link>https://simonwillison.net/2025/Dec/1/november/#atom-everything</link><description><![CDATA[<p>I just send out the November edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a>. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2025-11-november.md">access a copy here</a>. In the newsletter this month:</p>
+<ul>
+<li>The best model for code changed hands four times</li>
+<li>Significant open weight model releases</li>
+<li>Nano Banana Pro</li>
+<li>My major coding projects with LLMs this month</li>
+<li>Prompt injection news for November</li>
+<li>Pelican on a bicycle variants</li>
+<li>Two YouTube videos and a podcast</li>
+<li>Miscellaneous extras</li>
+<li>Tools I'm using at the moment</li>
+</ul>
+<p>Here's <a href="https://gist.github.com/simonw/3385bc8c83a8157557f06865a0302753">a copy of the October newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Mon, 1 Dec 2025 20:53:18 +0000</pubDate></item><item><title>Quoting David Bauder, AP News</title><link>https://simonwillison.net/2025/Dec/1/journalism/#atom-everything</link><description><![CDATA[<blockquote cite="https://apnews.com/article/news-media-journalism-young-people-attitudes-f94bec50fc266d42d6ae369e7b9fb10e"><p>More than half of the teens surveyed believe journalists regularly engage in unethical behaviors like making up details or quotes in stories, paying sources, taking visual images out of context or doing favors for advertisers. Less than a third believe reporters correct their errors, confirm facts before reporting them, gather information from multiple sources or cover stories in the public interest — practices ingrained in the DNA of reputable journalists.</p></blockquote>
 <p class="cite">&mdash; <a href="https://apnews.com/article/news-media-journalism-young-people-attitudes-f94bec50fc266d42d6ae369e7b9fb10e">David Bauder, AP News</a>, A lost generation of news consumers? Survey shows how teenagers dislike the news media</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/journalism">journalism</a></p>]]></description><pubDate>Mon, 1 Dec 2025 17:22:24 +0000</pubDate></item><item><title>YouTube embeds fail with a 153 error</title><link>https://simonwillison.net/2025/Dec/1/youtube-embed-153-error/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/simonwillisonblog/issues/561">YouTube embeds fail with a 153 error</a></strong></p>
@@ -959,22 +973,4 @@ Hot on the heels of yesterday's <a href="https://simonwillison.net/2025/Nov/18/g
 <p><code>thread fl2_worker_thread panicked: called Result::unwrap() on an Err value</code></p></blockquote>
 <p class="cite">&mdash; <a href="https://blog.cloudflare.com/18-november-2025-outage/">Matthew Prince</a>, Cloudflare outage on November 18, 2025, <a href="https://news.ycombinator.com/item?id=45973709#45974320">see also this comment</a></p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/postmortem">postmortem</a>, <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a>, <a href="https://simonwillison.net/tags/rust">rust</a></p>]]></description><pubDate>Wed, 19 Nov 2025 08:02:36 +0000</pubDate></item><item><title>llm-gemini 0.27</title><link>https://simonwillison.net/2025/Nov/18/llm-gemini/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/llm-gemini/releases/tag/0.27">llm-gemini 0.27</a></strong></p>
-New release of my LLM plugin for Google's Gemini models:</p>
-<blockquote>
-<ul>
-<li>Support for nested schemas in Pydantic, thanks <a href="https://github.com/billpugh">Bill Pugh</a>. <a href="https://github.com/simonw/llm-gemini/pull/107">#107</a></li>
-<li>Now tests against Python 3.14.</li>
-<li>Support for YouTube URLs as attachments and the <code>media_resolution</code> option. Thanks, <a href="https://github.com/shuane">Duane Milne</a>. <a href="https://github.com/simonw/llm-gemini/pull/112">#112</a></li>
-<li>New model: <code>gemini-3-pro-preview</code>. <a href="https://github.com/simonw/llm-gemini/issues/113">#113</a></li>
-</ul>
-</blockquote>
-<p>The YouTube URL feature is particularly neat, taking advantage of <a href="https://ai.google.dev/gemini-api/docs/video-understanding#youtube">this API feature</a>. I used it against the <a href="https://simonwillison.net/2025/Nov/18/google-antigravity/">Google Antigravity launch video</a>:</p>
-<pre><code>llm -m gemini-3-pro-preview \
- -a 'https://www.youtube.com/watch?v=nTOVIGsqCuY' \
- 'Summary, with detailed notes about what this thing is and how it differs from regular VS Code, then a complete detailed transcript with timestamps'
-</code></pre>
-<p>Here's <a href="https://gist.github.com/simonw/9f30318ab47e0d177b4b523bb71d9540">the result</a>. A spot-check of the timestamps against points in the video shows them to be exactly right.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/youtube">youtube</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a></p>]]></description><pubDate>Tue, 18 Nov 2025 23:00:40 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/postmortem">postmortem</a>, <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a>, <a href="https://simonwillison.net/tags/rust">rust</a></p>]]></description><pubDate>Wed, 19 Nov 2025 08:02:36 +0000</pubDate></item></channel></rss>
