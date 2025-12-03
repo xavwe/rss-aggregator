@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Nvidia Graphics Cards work on Pi 5 and Rockchip</title><link>https://www.jeffgeerling.com/blog/2025/nvidia-graphics-cards-work-on-pi-5-and-rockchip</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Nvidia Graphics Cards work on Pi 5 and Rockchip</span>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling&apos;s Blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-s-blog-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Why doesn&apos;t Apple make a standalone Touch ID?</title><link>https://www.jeffgeerling.com/blog/2025/why-doesnt-apple-make-standalone-touch-id</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Why doesn't Apple make a standalone Touch ID?</span>
+
+            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>I finally upgraded to a mechanical keyboard. But because Apple's so protective of their Touch ID hardware, there aren't any mechanical keyboards with that feature built in.</p>
+
+<p><img src="https://www.jeffgeerling.com/sites/default/files/images/apple-touch-id-external-3d-printed-sensor.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-f139de05-6241-4fb1-8ecd-f94128431e6d" data-insert-attach="{&quot;id&quot;:&quot;f139de05-6241-4fb1-8ecd-f94128431e6d&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Apple Touch ID - external 3D printed sensor"></p>
+
+<p>But there <em>is</em> a way to hack it. It's incredibly wasteful, and takes a bit more patience than I think <em>most</em> people have, but you basically take an Apple Magic Keyboard with Touch ID, rip out the Touch ID, and install it in a 3D printed box, along with the keyboard's logic board.</p></div>
+      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
+<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-12-03T16:38:04-06:00" title="Wednesday, December 3, 2025 - 16:38" class="datetime">December 3, 2025</time>
+</span>]]></description><pubDate>Wed, 3 Dec 2025 22:38:04 +0000</pubDate></item><item><title>Nvidia Graphics Cards work on Pi 5 and Rockchip</title><link>https://www.jeffgeerling.com/blog/2025/nvidia-graphics-cards-work-on-pi-5-and-rockchip</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Nvidia Graphics Cards work on Pi 5 and Rockchip</span>
 
             <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><p>A few months ago, GitHub user <a href="https://www.jeffgeerling.com/blog/2025/full-egpu-acceleration-on-pi-500-15-line-patch">@yanghaku dropped a 15 line patch to fix GPU support for practically all AMD GPUs</a> on the Raspberry Pi (and demoed a 3080 running on the Pi with a separate, unreleased patch). This week, GitHub user <a href="https://github.com/NVIDIA/open-gpu-kernel-modules/pull/972">@mariobalanica dropped this (larger) patch which does the same for Nvidia GPUs</a>!</p>
 
@@ -92,17 +101,4 @@
 <p>Arduino even tried it before with their old <a href="https://docs.arduino.cc/retired/boards/arduino-yun/">Yún</a> board, which had Linux running on a MIPS CPU, married to an ATmega microcontroller.</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-31T09:01:28-05:00" title="Friday, October 31, 2025 - 09:01" class="datetime">October 31, 2025</time>
-</span>]]></description><pubDate>Fri, 31 Oct 2025 14:01:28 +0000</pubDate></item><item><title>Why do some radio towers blink?</title><link>https://www.jeffgeerling.com/blog/2025/why-do-some-radio-towers-blink</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">Why do some radio towers blink?</span>
-
-            <div class="clearfix text-formatted field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="yt-embed">
-.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }<div class="embed-container"></div>
-</div>
-
-<p>One day on my drive home, I saw three towers. One of them had a bunch of blinking white lights, another one had red lights that kind of faded in and out, and the third one, well, it wasn't doing anything. I'm lucky to have a radio engineer for a dad, so Dad: <em>why do some towers blink?</em></p>
-
-<p>Joe: Well, blinking I would call like the way you described it, "flashing", "white light", or "strobe". All these lights are to aid pilots and air traffic. helicopters, fighter planes, regular jets. So that's the purpose of it.</p>
-
-<p>Jeff: Well that one tower that I saw had red lights that faded in and out, but I even think there's a freestanding tower just north of here that has red and white on top.</p></div>
-      <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
-<span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-10-24T09:00:54-05:00" title="Friday, October 24, 2025 - 09:00" class="datetime">October 24, 2025</time>
-</span>]]></description><pubDate>Fri, 24 Oct 2025 14:00:54 +0000</pubDate></item></channel></rss>
+</span>]]></description><pubDate>Fri, 31 Oct 2025 14:01:28 +0000</pubDate></item></channel></rss>
