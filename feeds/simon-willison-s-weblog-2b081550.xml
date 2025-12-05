@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Thoughts on Go vs. Rust vs. Zig</title><link>https://simonwillison.net/2025/Dec/5/go-vs-rust-vs-zig/#atom-everything</link><description><![CDATA[<p><strong><a href="https://sinclairtarget.com/blog/2025/08/thoughts-on-go-vs.-rust-vs.-zig/">Thoughts on Go vs. Rust vs. Zig</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>TIL: Subtests in pytest 9.0.0+</title><link>https://simonwillison.net/2025/Dec/5/til-pytest-subtests/#atom-everything</link><description><![CDATA[<p><strong><a href="https://til.simonwillison.net/pytest/subtests">TIL: Subtests in pytest 9.0.0+</a></strong></p>
+I spotted an interesting new feature <a href="https://docs.pytest.org/en/stable/changelog.html#pytest-9-0-0-2025-11-05">in the release notes for pytest 9.0.0</a>: <a href="https://docs.pytest.org/en/stable/how-to/subtests.html#subtests">subtests</a>.</p>
+<p>I'm a <em>big</em> user of the <a href="https://docs.pytest.org/en/stable/example/parametrize.html">pytest.mark.parametrize</a> decorator - see <a href="https://simonwillison.net/2018/Jul/28/documentation-unit-tests/">Documentation unit tests</a> from 2018 - so I thought it would be interesting to try out subtests and see if they're a useful alternative.</p>
+<p>Short version: this parameterized test:</p>
+<pre><span class="pl-en">@<span class="pl-s1">pytest</span>.<span class="pl-c1">mark</span>.<span class="pl-c1">parametrize</span>(<span class="pl-s">"setting"</span>, <span class="pl-s1">app</span>.<span class="pl-c1">SETTINGS</span>)</span>
+<span class="pl-k">def</span> <span class="pl-en">test_settings_are_documented</span>(<span class="pl-s1">settings_headings</span>, <span class="pl-s1">setting</span>):
+    <span class="pl-k">assert</span> <span class="pl-s1">setting</span>.<span class="pl-c1">name</span> <span class="pl-c1">in</span> <span class="pl-s1">settings_headings</span></pre>
+<p>Becomes this using subtests instead:</p>
+<pre><span class="pl-k">def</span> <span class="pl-en">test_settings_are_documented</span>(<span class="pl-s1">settings_headings</span>, <span class="pl-s1">subtests</span>):
+    <span class="pl-k">for</span> <span class="pl-s1">setting</span> <span class="pl-c1">in</span> <span class="pl-s1">app</span>.<span class="pl-c1">SETTINGS</span>:
+        <span class="pl-k">with</span> <span class="pl-s1">subtests</span>.<span class="pl-c1">test</span>(<span class="pl-s1">setting</span><span class="pl-c1">=</span><span class="pl-s1">setting</span>.<span class="pl-c1">name</span>):
+            <span class="pl-k">assert</span> <span class="pl-s1">setting</span>.<span class="pl-c1">name</span> <span class="pl-c1">in</span> <span class="pl-s1">settings_headings</span></pre>
+<p>Why is this better? Two reasons:</p>
+<ol>
+<li>It appears to run a bit faster</li>
+<li>Subtests can be created programatically after running some setup code first</li>
+</ol>
+<p>I <a href="https://gistpreview.github.io/?0487e5bb12bcbed850790a6324788e1b">had Claude Code</a> port <a href="https://github.com/simonw/datasette/pull/2609/files">several tests</a> to the new pattern. I like it.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/pytest">pytest</a>, <a href="https://simonwillison.net/tags/til">til</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Fri, 5 Dec 2025 06:03:29 +0000</pubDate></item><item><title>Thoughts on Go vs. Rust vs. Zig</title><link>https://simonwillison.net/2025/Dec/5/go-vs-rust-vs-zig/#atom-everything</link><description><![CDATA[<p><strong><a href="https://sinclairtarget.com/blog/2025/08/thoughts-on-go-vs.-rust-vs.-zig/">Thoughts on Go vs. Rust vs. Zig</a></strong></p>
 Thoughtful commentary on Go, Rust, and Zig by Sinclair Target. I haven't seen a single comparison that covers all three before and I learned a lot from reading this.</p>
 <p>One thing that I hadn't noticed before is that none of these three languages implement class-based OOP.
 
@@ -664,28 +684,4 @@ Here's a delightful project by Tom Gally, inspired by my <a href="https://simonw
 <p>What does the chart actually tell us though? It tells us that single attempts at prompt injection still work 1/20 times, and if an attacker can try ten different attacks that success rate goes up to 1/3!</p>
 <p>I still don't think training models not to fall for prompt injection is the way forward here. We continue to need to design our applications under the assumption that a suitably motivated attacker will be able to find a way to trick the models.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 24 Nov 2025 19:37:07 +0000</pubDate></item><item><title>sqlite-utils 3.39</title><link>https://simonwillison.net/2025/Nov/24/sqlite-utils-339/#atom-everything</link><description><![CDATA[<p><strong><a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v3-39">sqlite-utils 3.39</a></strong></p>
-I got a report of <a href="https://github.com/simonw/sqlite-utils/issues/687">a bug</a> in <code>sqlite-utils</code> concerning plugin installation - if you installed the package using <code>uv tool install</code> further attempts to install plugins with <code>sqlite-utils install X</code> would fail, because <code>uv</code> doesn't bundle <code>pip</code> by default. I had the same bug with Datasette <a href="https://github.com/simonw/sqlite-utils/issues/687">a while ago</a>, turns out I forgot to apply the fix to <code>sqlite-utils</code>.</p>
-<p>Since I was pushing a new dot-release I decided to integrate some of the non-breaking changes from the 4.0 alpha <a href="https://simonwillison.net/2025/Nov/24/sqlite-utils-40a1/">I released last night</a>.</p>
-<p>I tried to have Claude Code do the backporting for me:</p>
-<blockquote>
-<p>create a new branch called 3.x starting with the 3.38 tag, then consult 
-<a href="https://github.com/simonw/sqlite-utils/issues/688">https://github.com/simonw/sqlite-utils/issues/688</a> and cherry-pick the commits it lists in the second comment, then review each of the links in the first comment and cherry-pick those as well. After each cherry-pick run the command "just test" to confirm the tests pass and fix them if they don't. Look through the commit history on main since the 3.38 tag to help you with this task.</p>
-</blockquote>
-<p>This worked reasonably well - <a href="https://gistpreview.github.io/?83c7a7ea96d6b7763ad5d72d251ce1a6">here's the terminal transcript</a>. It successfully argued me out of two of the larger changes which would have added more complexity than I want in a small dot-release like this.</p>
-<p>I still had to do a bunch of manual work to get everything up to scratch, which I carried out in <a href="https://github.com/simonw/sqlite-utils/pull/689">this PR</a> - including adding comments there and then telling Claude Code:</p>
-<blockquote>
-<p>Apply changes from the review on this PR <a href="https://github.com/simonw/sqlite-utils/pull/689">https://github.com/simonw/sqlite-utils/pull/689</a></p>
-</blockquote>
-<p>Here's <a href="https://gistpreview.github.io/?f4c89636cc58fc7bf9820c06f2488b91">the transcript from that</a>.</p>
-<p>The release is now out with the following release notes:</p>
-<blockquote>
-<ul>
-<li>Fixed a bug with <code>sqlite-utils install</code> when the tool had been installed using <code>uv</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/687">#687</a>)</li>
-<li>The <code>--functions</code> argument now optionally accepts a path to a Python file as an alternative to a string full of code, and can be specified multiple times - see <a href="https://sqlite-utils.datasette.io/en/stable/cli.html#cli-query-functions">Defining custom SQL functions</a>. (<a href="https://github.com/simonw/sqlite-utils/issues/659">#659</a>)</li>
-<li><code>sqlite-utils</code> now requires on Python 3.10 or higher.</li>
-</ul>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 24 Nov 2025 18:59:14 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 24 Nov 2025 19:37:07 +0000</pubDate></item></channel></rss>
