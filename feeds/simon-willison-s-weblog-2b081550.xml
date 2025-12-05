@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The Resonant Computing Manifesto</title><link>https://simonwillison.net/2025/Dec/5/resonant-computing/#atom-everything</link><description><![CDATA[<p><strong><a href="https://resonantcomputing.org/">The Resonant Computing Manifesto</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Thoughts on Go vs. Rust vs. Zig</title><link>https://simonwillison.net/2025/Dec/5/go-vs-rust-vs-zig/#atom-everything</link><description><![CDATA[<p><strong><a href="https://sinclairtarget.com/blog/2025/08/thoughts-on-go-vs.-rust-vs.-zig/">Thoughts on Go vs. Rust vs. Zig</a></strong></p>
+Thoughtful commentary on Go, Rust, and Zig by Sinclair Target. I haven't seen a single comparison that covers all three before and I learned a lot from reading this.</p>
+<p>One thing that I hadn't noticed before is that none of these three languages implement class-based OOP.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46153466">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/object-oriented-programming">object-oriented-programming</a>, <a href="https://simonwillison.net/tags/programming-languages">programming-languages</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/zig">zig</a></p>]]></description><pubDate>Fri, 5 Dec 2025 04:28:05 +0000</pubDate></item><item><title>The Resonant Computing Manifesto</title><link>https://simonwillison.net/2025/Dec/5/resonant-computing/#atom-everything</link><description><![CDATA[<p><strong><a href="https://resonantcomputing.org/">The Resonant Computing Manifesto</a></strong></p>
 Launched today at WIRED’s <a href="https://events.wired.com/big-interview-2025">The Big Interview</a> event, this manifesto (of which I'm a founding signatory) pushes for a positive framework for thinking about building hyper-personalized AI-powered software.</p>
 <p>This part in particular resonates with me:</p>
 <blockquote>
@@ -681,89 +688,4 @@ I got a report of <a href="https://github.com/simonw/sqlite-utils/issues/687">a 
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 24 Nov 2025 18:59:14 +0000</pubDate></item><item><title>sqlite-utils 4.0a1 has several (minor) backwards incompatible changes</title><link>https://simonwillison.net/2025/Nov/24/sqlite-utils-40a1/#atom-everything</link><description><![CDATA[<p>I released a <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a1-2025-11-23">new alpha version</a> of <a href="https://sqlite-utils.datasette.io/">sqlite-utils</a> last night - the 128th release of that package since I started building it back in 2018.</p>
-<p><code>sqlite-utils</code> is two things in one package: a Python library for conveniently creating and manipulating SQLite databases and a CLI tool for working with them in the terminal. Almost every feature provided by the package is available via both of those surfaces.</p>
-<p>This is hopefully the last alpha before a 4.0 stable release. I use semantic versioning for this library, so the 4.0 version number indicates that there are backward incompatible changes that may affect code written against the 3.x line.</p>
-<p>These changes are mostly very minor: I don't want to break any existing code if I can avoid it. I made it all the way to version 3.38 before I had to ship a major release and I'm sad I couldn't push that even further!</p>
-<p>Here are the <a href="https://simonwillison.net/tags/annotated-release-notes/">annotated release notes</a> for 4.0a1.</p>
-<blockquote>
-<ul>
-<li>
-<strong>Breaking change</strong>: The <code>db.table(table_name)</code> method now only works with tables. To access a SQL view use <code>db.view(view_name)</code> instead. (<a href="https://github.com/simonw/sqlite-utils/issues/657">#657</a>)</li>
-</ul>
-</blockquote>
-<p>This change is for type hint enthusiasts. The Python library used to encourage accessing both SQL tables and SQL views through the <code>db["name_of_table_or_view"]</code> syntactic sugar - but tables and view have different interfaces since there's no way to handle a <code>.insert(row)</code> on a SQLite view. If you want clean type hints for your code you can now use the <code>db.table(table_name)</code> and <code>db.view(view_name)</code> methods instead.</p>
-<blockquote>
-<ul>
-<li>The <code>table.insert_all()</code> and <code>table.upsert_all()</code> methods can now accept an iterator of lists or tuples as an alternative to dictionaries. The first item should be a list/tuple of column names. See <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#python-api-insert-lists">Inserting data from a list or tuple iterator</a> for details. (<a href="https://github.com/simonw/sqlite-utils/issues/672">#672</a>)</li>
-</ul>
-</blockquote>
-<p>A new feature, not a breaking change. I realized that supporting a stream of lists or tuples as an option for populating large tables would be a neat optimization over always dealing with dictionaries each of which duplicated the column names.</p>
-<p>I had the idea for this one while walking the dog and built the first prototype by prompting Claude Code for web on my phone. Here's <a href="https://github.com/simonw/research/pull/31">the prompt I used</a> and the <a href="https://github.com/simonw/research/blob/main/sqlite-utils-iterator-support/README.md">prototype report it created</a>, which included a benchmark estimating how much of a performance boost could be had for different sizes of tables.</p>
-<blockquote>
-<ul>
-<li>
-<strong>Breaking change</strong>: The default floating point column type has been changed from <code>FLOAT</code> to <code>REAL</code>, which is the correct SQLite type for floating point values. This affects auto-detected columns when inserting data. (<a href="https://github.com/simonw/sqlite-utils/issues/645">#645</a>)</li>
-</ul>
-</blockquote>
-<p>I was horrified to discover a while ago that I'd been creating SQLite columns called FLOAT but the correct type to use was REAL! This change fixes that. Previously the fix was to ask for tables to be created in strict mode.</p>
-<blockquote>
-<ul>
-<li>Now uses <code>pyproject.toml</code> in place of <code>setup.py</code> for packaging. (<a href="https://github.com/simonw/sqlite-utils/issues/675">#675</a>)</li>
-</ul>
-</blockquote>
-<p>As part of this I also figured out recipes for using <code>uv</code> as a development environment for the package, which are now baked into the <a href="https://github.com/simonw/sqlite-utils/blob/4.0a1/Justfile">Justfile</a>.</p>
-<blockquote>
-<ul>
-<li>Tables in the Python API now do a much better job of remembering the primary key and other schema details from when they were first created. (<a href="https://github.com/simonw/sqlite-utils/issues/655">#655</a>)</li>
-</ul>
-</blockquote>
-<p>This one is best explained <a href="https://github.com/simonw/sqlite-utils/issues/655">in the issue</a>.</p>
-<blockquote>
-<ul>
-<li>
-<strong>Breaking change</strong>: The <code>table.convert()</code> and <code>sqlite-utils convert</code> mechanisms no longer skip values that evaluate to <code>False</code>. Previously the <code>--skip-false</code> option was needed, this has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/542">#542</a>)</li>
-</ul>
-</blockquote>
-<p>Another change which I would have made earlier but, since it introduces a minor behavior change to an existing feature, I reserved it for the 4.0 release.</p>
-<blockquote>
-<ul>
-<li>
-<strong>Breaking change</strong>: Tables created by this library now wrap table and column names in <code>"double-quotes"</code> in the schema. Previously they would use <code>[square-braces]</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/677">#677</a>)</li>
-</ul>
-</blockquote>
-<p>Back in 2018 when I started this project I was new to working in-depth with SQLite and incorrectly concluded that the correct way to create tables and columns named after reserved words was like this:</p>
-<pre><code>create table [my table] (
-  [id] integer primary key,
-  [key] text
-)
-</code></pre>
-<p>That turned out to be a non-standard SQL syntax which the SQLite documentation <a href="https://sqlite.org/lang_keywords.html">describes like this</a>:</p>
-<blockquote>
-<p>A keyword enclosed in square brackets is an identifier. This is not standard SQL. This quoting mechanism is used by MS Access and SQL Server and is included in SQLite for compatibility.</p>
-</blockquote>
-<p>Unfortunately I baked it into the library early on and it's been polluting the world with weirdly escaped table and column names ever since!</p>
-<p>I've finally fixed that, with the help of Claude Code which took on the mind-numbing task of <a href="https://github.com/simonw/sqlite-utils/pull/678/files">updating hundreds of existing tests</a> that asserted against the generated schemas.</p>
-<p>The above example table schema now looks like this:</p>
-<pre><code>create table "my table" (
-  "id" integer primary key,
-  "key" text
-)
-</code></pre>
-<p>This may seem like a pretty small change but I expect it to cause a fair amount of downstream pain purely in terms of updating tests that work against tables created by <code>sqlite-utils</code>!</p>
-<blockquote>
-<ul>
-<li>The <code>--functions</code> CLI argument now accepts a path to a Python file in addition to accepting a string full of Python code. It can also now be specified multiple times. (<a href="https://github.com/simonw/sqlite-utils/issues/659">#659</a>)</li>
-</ul>
-</blockquote>
-<p>I made this change first <a href="https://github.com/simonw/llm/issues/1016#issuecomment-2877305544">in LLM</a> and decided to bring it to <code>sqlite-utils</code> for consistency between the two tools.</p>
-<blockquote>
-<ul>
-<li>
-<strong>Breaking change:</strong> Type detection is now the default behavior for the <code>insert</code> and <code>upsert</code> CLI commands when importing CSV or TSV data. Previously all columns were treated as <code>TEXT</code> unless the <code>--detect-types</code> flag was passed. Use the new <code>--no-detect-types</code> flag to restore the old behavior. The <code>SQLITE_UTILS_DETECT_TYPES</code> environment variable has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/679">#679</a>)</li>
-</ul>
-</blockquote>
-<p>One last minor ugliness that I waited for a major version bump to fix.</p>
-<p><strong>Update</strong>: Now that the embargo has lifted I can reveal that a substantial amount of the work on this release was performed using a preview version of Anthropic's <a href="https://simonwillison.net/2025/Nov/24/claude-opus/">new Claude Opus 4.5 model</a>. Here's the <a href="https://gistpreview.github.io/?f40971b693024fbe984a68b73cc283d2">Claude Code transcript</a> for the work to implement the ability to use an iterator over lists instead of dictionaries for bulk insert and upsert operations.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 24 Nov 2025 14:52:34 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 24 Nov 2025 18:59:14 +0000</pubDate></item></channel></rss>
