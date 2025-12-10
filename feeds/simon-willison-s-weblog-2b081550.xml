@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Agentic AI Foundation</title><link>https://simonwillison.net/2025/Dec/9/agentic-ai-foundation/#atom-everything</link><description><![CDATA[<p><strong><a href="https://aaif.io/">Agentic AI Foundation</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>10 Years of Let&apos;s Encrypt</title><link>https://simonwillison.net/2025/Dec/10/lets-encrypt/#atom-everything</link><description><![CDATA[<p><strong><a href="https://letsencrypt.org/2025/12/09/10-years">10 Years of Let&#x27;s Encrypt</a></strong></p>
+Internet Security Research Group co-founder and Executive Director Josh Aas:</p>
+<blockquote>
+<p>On September 14, 2015, <a href="https://crt.sh/?id=9314793">our first publicly-trusted certificate went live</a>. [...] Today, Let’s Encrypt is the largest certificate authority in the world in terms of certificates issued, the ACME protocol we helped create and standardize is integrated throughout the server ecosystem, and we’ve become a household name among system administrators. We’re closing in on protecting one billion web sites.</p>
+</blockquote>
+<p>Their growth rate and numbers are wild:</p>
+<blockquote>
+<p>In March 2016, we issued our one millionth certificate. Just two years later, in September 2018, we were issuing a million certificates every day. In 2020 we reached a billion total certificates issued and as of late 2025 we’re frequently issuing ten million certificates per day.</p>
+</blockquote>
+<p>According to <a href="https://letsencrypt.org/stats/">their stats</a> the amount of Firefox traffic protected by HTTPS doubled from 39% at the start of 2016 to ~80% today. I think it's difficult to over-estimate the impact Let's Encrypt has had on the security of the web.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46208962">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/https">https</a>, <a href="https://simonwillison.net/tags/security">security</a></p>]]></description><pubDate>Wed, 10 Dec 2025 00:34:15 +0000</pubDate></item><item><title>Devstral 2</title><link>https://simonwillison.net/2025/Dec/9/devstral-2/#atom-everything</link><description><![CDATA[<p><strong><a href="https://mistral.ai/news/devstral-2-vibe-cli">Devstral 2</a></strong></p>
+Two new models from Mistral today: Devstral 2 and Devstral Small 2 - both focused on powering coding agents such as Mistral's newly released Mistral Vibe which <a href="https://simonwillison.net/2025/Dec/9/mistral-vibe/">I wrote about earlier today</a>.</p>
+<blockquote>
+<ul>
+<li>Devstral 2: SOTA open model for code agents with a fraction of the parameters of its competitors and achieving 72.2% on SWE-bench Verified.</li>
+<li>Up to 7x more cost-efficient than Claude Sonnet at real-world tasks.</li>
+</ul>
+</blockquote>
+<p>Devstral 2 is a 123B model released under a janky license - it's "modified MIT" where <a href="https://huggingface.co/mistralai/Devstral-2-123B-Instruct-2512/blob/main/LICENSE">the modification</a> is:</p>
+<blockquote>
+<p>You are not authorized to exercise any rights under this license if the global consolidated monthly revenue of your company (or that of your employer) exceeds $20 million (or its equivalent in another currency) for the preceding month. This restriction in (b) applies to the Model and any derivatives, modifications, or combined works based on it, whether provided by Mistral AI or by a third party. [...]</p>
+</blockquote>
+<p>Mistral Small 2 is under a proper Apache 2 license with no weird strings attached. It's a 24B model which is <a href="https://huggingface.co/mistralai/Devstral-Small-2-24B-Instruct-2512">51.6GB on Hugging Face</a> and should quantize to significantly less.</p>
+<p>I tried out the larger model via <a href="https://github.com/simonw/llm-mistral">my llm-mistral plugin</a> like this:</p>
+<pre><code>llm install llm-mistral
+llm mistral refresh
+llm -m mistral/devstral-2512 "Generate an SVG of a pelican riding a bicycle"
+</code></pre>
+<p><img alt="Bicycle looks a bit like a cybertruck" src="https://static.simonwillison.net/static/2025/devstral-2.jpg" /></p>
+<p>For a ~120B model that one is pretty good!</p>
+<p>Here's the same prompt with <code>-m mistral/labs-devstral-small-2512</code> for the API hosted version of Devstral Small 2:</p>
+<p><img alt="A small white pelican on what looks more like a child's cart." src="https://static.simonwillison.net/static/2025/devstral-small-2.jpg" /></p>
+<p>Again, a decent result given the small parameter size. For comparison, <a href="https://simonwillison.net/2025/Jun/20/mistral-small-32/">here's what I got</a> for the 24B Mistral Small 3.2 earlier this year.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/mistral">mistral</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/janky-licenses">janky-licenses</a></p>]]></description><pubDate>Tue, 9 Dec 2025 23:58:27 +0000</pubDate></item><item><title>Under the hood of Canada Spends with Brendan Samek</title><link>https://simonwillison.net/2025/Dec/9/canada-spends/#atom-everything</link><description><![CDATA[<p>I talked to Brendan Samek about <a href="https://canadaspends.com/">Canada Spends</a>, a project from <a href="https://www.buildcanada.com/">Build Canada</a> that makes Canadian government financial data accessible and explorable using a combination of Datasette, a neat custom frontend, Ruby ingestion scripts, <a href="https://sqlite-utils.datasette.io/">sqlite-utils</a> and pieces of LLM-powered PDF extraction.</p>
+<p>Here's <a href="https://www.youtube.com/watch?v=T8xiMgmb8po">the video on YouTube</a>.</p>
+<iframe style="margin-bottom: 1.5em;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/T8xiMgmb8po" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen"> </iframe>
+
+<p>Sections within that video:</p>
+<ul>
+<li>
+<a href="https://www.youtube.com/watch?v=T8xiMgmb8po&amp;t=177s">02:57</a> Data sources and the PDF problem</li>
+<li>
+<a href="https://www.youtube.com/watch?v=T8xiMgmb8po&amp;t=351s">05:51</a> Crowdsourcing financial data across Canada</li>
+<li>
+<a href="https://www.youtube.com/watch?v=T8xiMgmb8po&amp;t=447s">07:27</a> Datasette demo: Search and facets</li>
+<li>
+<a href="https://www.youtube.com/watch?v=T8xiMgmb8po&amp;t=753s">12:33</a> Behind the scenes: Ingestion code</li>
+<li>
+<a href="https://www.youtube.com/watch?v=T8xiMgmb8po&amp;t=1044s">17:24</a> Data quality horror stories</li>
+<li>
+<a href="https://www.youtube.com/watch?v=T8xiMgmb8po&amp;t=1246s">20:46</a> Using Gemini to extract PDF data</li>
+<li>
+<a href="https://www.youtube.com/watch?v=T8xiMgmb8po&amp;t=1524s">25:24</a> Why SQLite is perfect for data distribution</li>
+</ul>
+<h4 id="build-canada-and-canada-spends">Build Canada and Canada Spends</h4>
+<p><a href="https://www.buildcanada.com/">Build Canada</a> is a volunteer-driven non-profit that launched in February 2025 - here's <a href="https://www.canadianaffairs.news/2025/09/26/builders-at-the-gate-inside-the-civic-movement-to-jolt-canada-out-of-stagnation/">some background information</a> on the organization, which has a strong pro-entrepreneurship and pro-technology angle.</p>
+<p><a href="https://canadaspends.com/">Canada Spends</a> is their project to make Canadian government financial data more accessible and explorable. It includes a tax sources and sinks visualizer and a searchable database of government contracts, plus a collection of tools covering financial data from different levels of government.</p>
+<h4 id="datasette-for-data-exploration">Datasette for data exploration</h4>
+<p>The project maintains a Datasette instance at <a href="https://api.canadasbuilding.com/">api.canadasbilding.com</a> containing the data they have gathered and processed from multiple data sources - currently more than 2 million rows plus a combined search index across a denormalized copy of that data.</p>
+<p><img src="https://static.simonwillison.net/static/2025/api-canadasbuilding-com-canada-spends.jpg" alt="  Datasette UI for a canada-spends database.  aggregated-contracts-under-10k:  year, contract_goods_number_of, contracts_goods_original_value, contracts_goods_amendment_value, contract_service_number_of, contracts_service_original_value, contracts_service_amendment_value, contract_construction_number_of, contracts_construction_original_value, contracts_construction_amendment_value, acquisition_card_transactions_number_of, acquisition_card_transactions_total_value, owner_org, owner_org_title  487 rows cihr_grants  external_id, title, project_lead_name, co_researchers, institution, province, country, competition_year, award_amount, program, program_type, theme, research_subject, keywords, abstract, duration, source_url  53,420 rows contracts-over-10k:   reference_number, procurement_id, vendor_name, vendor_postal_code, buyer_name, contract_date, economic_object_code, description_en, description_fr, contract_period_start, delivery_date, contract_value, original_value, amendment_value, comments_en, comments_fr, additional_comments_en, additional_comments_fr, agreement_type_code, trade_agreement, land_claims, commodity_type, commodity_code, country_of_vendor, solicitation_procedure, limited_tendering_reason, trade_agreement_exceptions, indigenous_business, indigenous_business_excluding_psib, intellectual_property, potential_commercial_exploitation, former_public_servant, contracting_entity, standing_offer_number, instrument_type, ministers_office, number_of_bids, article_6_exceptions, award_criteria, socioeconomic_indicator, reporting_period, owner_org, owner_org_title  1,172,575 rows global_affairs_grants:   id, projectNumber, dateModified, title, description, status, start, end, countries, executingAgencyPartner, DACSectors, maximumContribution, ContributingOrganization, expectedResults, resultsAchieved, aidType, collaborationType, financeType, flowType, reportingOrganisation, programName, selectionMechanism, policyMarkers, regions, alternameImPositions, budgets, Locations, otherIdentifiers, participatingOrgs, programDataStructure, relatedActivities, transactions  2,378 rows nserc_grants:   title, award_summary, application_id, competition_year, fiscal_year, project_lead_name, institution, department, province, award_amount, installment, program, selection_committee, research_subject, area_of_application, co-researchers, partners, external_id, source_url  701,310 rows sshrc_grants:   id, title, program, fiscal_year, competition_year, applicant, organization, amount, discipline, area_of_research, co_applicant, keywords, source_url  213,085 rows transfers:   FSCL_YR, MINC, MINE, MINF, DepartmentNumber-Numéro-de-Ministère, DEPT_EN_DESC, DEPT_FR_DESC, RCPNT_CLS_EN_DESC, RCPNT_CLS_FR_DESC, RCPNT_NML_EN_DESC, RCPNT_NML_FR_DESC, CTY_EN_NM, CTY_FR_NM, PROVTER_EN, PROVTER_FR, CNTRY_EN_NM, CNTRY_FR_NM, TOT_CY_XPND_AMT, AGRG_PYMT_AMT  357,797 rows  Download SQLite DB: canada-spends.db 2.4 GB Powered by Datasette · Queries took 24.733ms " style="max-width: 100%;" /></p>
+<h4 id="processing-pdfs">Processing PDFs</h4>
+<p>The highest quality government financial data comes from the audited financial statements that every Canadian government department is required to publish. As is so often the case with government data, these are usually published as PDFs.</p>
+<p>Brendan has been using Gemini to help extract data from those PDFs. Since this is accounting data the numbers can be summed and cross-checked to help validate the LLM didn't make any obvious mistakes.</p>
+<h4 id="further-reading">Further reading</h4>
+<ul>
+<li><a href="https://datasette.io/">datasette.io</a>, the official website for Datasette</li>
+<li><a href="https://sqlite-utils.datasette.io/">sqlite-utils.datasette.io</a> for more on <code>sqlite-utils</code></li>
+<li><a href="https://canadaspends.com/">Canada Spends</a></li>
+<li><a href="https://github.com/BuildCanada/CanadaSpends">BuildCanada/CanadaSpends</a> on GitHub</li>
+</ul>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/data-journalism">data-journalism</a>, <a href="https://simonwillison.net/tags/politics">politics</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/youtube">youtube</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>]]></description><pubDate>Tue, 9 Dec 2025 23:52:05 +0000</pubDate></item><item><title>Agentic AI Foundation</title><link>https://simonwillison.net/2025/Dec/9/agentic-ai-foundation/#atom-everything</link><description><![CDATA[<p><strong><a href="https://aaif.io/">Agentic AI Foundation</a></strong></p>
 Announced today as a new foundation under the parent umbrella of the Linux Foundation (see also the OpenJS Foundation, Cloud Native Computing Foundation, OpenSSF and <a href="https://www.linuxfoundation.org/projects">many more</a>).</p>
 <p>The AAIF was started by a heavyweight group of "founding platinum members" (<a href="https://aaif.io/members/#join">$350,000</a>): AWS, Anthropic, Block, Bloomberg, Cloudflare, Google, Microsoft, and OpenAI. The <a href="https://aaif.io/press/linux-foundation-announces-the-formation-of-the-agentic-ai-foundation-aaif-anchored-by-new-project-contributions-including-model-context-protocol-mcp-goose-and-agents-md/">stated goal</a> is to provide "a neutral, open foundation to ensure agentic AI evolves transparently and collaboratively".</p>
 <p>Anthropic have <a href="https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation">donated Model Context Protocol</a> to the new foundation, OpenAI <a href="https://openai.com/index/agentic-ai-foundation/">donated AGENTS.md</a>, Block <a href="https://block.xyz/inside/block-anthropic-and-openai-launch-the-agentic-ai-foundation">donated goose</a> (their <a href="https://github.com/block/goose">open source, extensible AI agent</a>).</p>
@@ -362,20 +439,4 @@ I just fixed this bug on my blog. I was getting an annoying "Error 153: Video pl
 </blockquote>
 <p>It's since <a href="https://www.wbur.org/onpoint/2025/06/25/sam-altman-openai-keach-hagey">been described</a> as one of the most successful consumer software launches of all time, signing up a million users in the first five days and <a href="https://techcrunch.com/2025/10/06/sam-altman-says-chatgpt-has-hit-800m-weekly-active-users/">reaching 800 million monthly users</a> by November 2025, three years after that initial low-key launch.</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/sam-altman">sam-altman</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 30 Nov 2025 22:17:53 +0000</pubDate></item><item><title>Quoting Rodrigo Arias Mallo</title><link>https://simonwillison.net/2025/Nov/30/rodrigo-arias-mallo/#atom-everything</link><description><![CDATA[<blockquote cite="https://dillo-browser.org/news/migration-from-github/"><p>The most annoying problem is that the [GitHub] frontend barely works without JavaScript, so we cannot open issues, pull requests, source code or CI logs in Dillo itself, despite them being mostly plain HTML, which I don't think is acceptable. In the past, it used to gracefully degrade without enforcing JavaScript, but now it doesn't.</p></blockquote>
-<p class="cite">&mdash; <a href="https://dillo-browser.org/news/migration-from-github/">Rodrigo Arias Mallo</a>, Migrating Dillo from GitHub</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/progressive-enhancement">progressive-enhancement</a>, <a href="https://simonwillison.net/tags/github">github</a></p>]]></description><pubDate>Sun, 30 Nov 2025 14:32:11 +0000</pubDate></item><item><title>Context plumbing</title><link>https://simonwillison.net/2025/Nov/29/context-plumbing/#atom-everything</link><description><![CDATA[<p><strong><a href="https://interconnected.org/home/2025/11/28/plumbing">Context plumbing</a></strong></p>
-Matt Webb coins the term <strong>context plumbing</strong> to describe the kind of engineering needed to feed agents the right context at the right time:</p>
-<blockquote>
-<p>Context appears at disparate sources, by user activity or changes in the user’s environment: what they’re working on changes, emails appear, documents are edited, it’s no longer sunny outside, the available tools have been updated.</p>
-<p>This context is not always where the AI runs (and the AI runs as closer as possible to the point of user intent).</p>
-<p>So the job of making an agent run really well is to move the context to where it needs to be. [...]</p>
-<p>So I’ve been thinking of AI system technical architecture as plumbing the sources and sinks of context.</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/matt-webb">matt-webb</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/context-engineering">context-engineering</a></p>]]></description><pubDate>Sat, 29 Nov 2025 11:26:24 +0000</pubDate></item><item><title>Quoting Wikipedia content guideline</title><link>https://simonwillison.net/2025/Nov/29/wikipedia-content-guideline/#atom-everything</link><description><![CDATA[<blockquote cite="https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models"><p>Large language models (LLMs) can be useful tools, but they are not good at creating entirely new Wikipedia articles. <strong>Large language models should not be used to generate new Wikipedia articles from scratch</strong>.</p></blockquote>
-<p class="cite">&mdash; <a href="https://en.wikipedia.org/wiki/Wikipedia:Writing_articles_with_large_language_models">Wikipedia content guideline</a>, promoted to a guideline <a href="https://en.wikipedia.org/wiki/Wikipedia_talk:Writing_articles_with_large_language_models/Archive_1#RfC">on 24th November 2025</a></p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/wikipedia">wikipedia</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 29 Nov 2025 10:55:30 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/sam-altman">sam-altman</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 30 Nov 2025 22:17:53 +0000</pubDate></item></channel></rss>
