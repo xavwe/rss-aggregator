@@ -157,7 +157,7 @@
 <li>PyPI for fetching details of Python packages</li>
 <li>GitHub because anything in a public repository in GitHub has a CORS-enabled anonymous API for fetching that content from the raw.githubusercontent.com domain, which is behind a caching CDN so you don't need to worry too much about rate limits or feel guilty about adding load to their infrastructure.</li>
 <li>Bluesky for all sorts of operations</li>
-<li>Mastodon has generous CORS policies too, as used by applications like phanpy.social</li>
+<li>Mastodon has generous CORS policies too, as used by applications like <a href="https://phanpy.social/">phanpy.social</a></li>
 </ul>
 <p>GitHub Gists are a personal favorite here, because they let you build apps that can persist state to a permanent Gist through making a cross-origin API call.</p>
 <ul>
@@ -276,7 +276,7 @@
 <p><code>Build a new tool pypi-changelog.html which uses the PyPI API to get the wheel URLs of all available versions of a package, then it displays them in a list where each pair has a "Show changes" clickable in between them - clicking on that fetches the full contents of the wheels and displays a nicely rendered diff representing the difference between the two, as close to a standard diff format as you can get with JS libraries from CDNs, and when that is displayed there is a "Copy" button which copies that diff to the clipboard</code></p>
 </blockquote>
 <p>Here's <a href="https://gistpreview.github.io/?9b48fd3f8b99a204ba2180af785c89d2">the full transcript</a>.</p>
-<p>See also <a href="https://simonwillison.net/2024/Mar/30/ocr-pdfs-images/">Running OCR against PDFs and images directly in your browser</a></p>
+<p>See <a href="https://simonwillison.net/2024/Mar/30/ocr-pdfs-images/">Running OCR against PDFs and images directly in your browser</a> for another detailed example of remixing tools to create something new.</p>
 <h4 id="record-the-prompt-and-transcript">Record the prompt and transcript</h4>
 <p>I like keeping (and publishing) records of everything I do with LLMs, to help me grow my skills at using them over time.</p>
 <p>For HTML tools I built by chatting with an LLM platform directly I use the "share" feature for those platforms.</p>
