@@ -56,7 +56,7 @@
 
 <p><img src="https://www.jeffgeerling.com/sites/default/files/images/raspberry-pi-cm5-amd-radeon-ai-pro-9700.jpg" width="700" height="394" class="insert-image" data-insert-type="image" data-entity-type="file" data-entity-uuid="insert-image-5cc07605-8527-42a6-a8d3-cb958a2ac7f3" data-insert-attach="{&quot;id&quot;:&quot;5cc07605-8527-42a6-a8d3-cb958a2ac7f3&quot;,&quot;attributes&quot;:{&quot;alt&quot;:[&quot;alt&quot;,&quot;description&quot;],&quot;title&quot;:[&quot;title&quot;]}}" alt="Raspberry Pi CM5 with AMD Radeon AI Pro 9700 GPU"></p>
 
-<p>But this blog post shows how to quickly get almost <em>any</em> modern AMD GPU running on a Raspberry Pi 5, CM5, or Pi 500+, thanks to <a href="https://github.com/raspberrypi/linux/pull/7072">this patch on the Pi Linux fork</a>.</p></div>
+<p>But this blog post shows how to quickly get almost <em>any</em> modern AMD GPU running on a Raspberry Pi 5, CM5, or Pi 500+, thanks to <a href="https://github.com/raspberrypi/linux/pull/7113">this patch on the Pi Linux fork</a>.</p></div>
       <span class="field field--name-uid field--type-entity-reference field--label-hidden"><span>Jeff Geerling</span></span>
 <span class="field field--name-created field--type-created field--label-hidden"><time datetime="2025-11-14T08:58:14-06:00" title="Friday, November 14, 2025 - 08:58" class="datetime">November 14, 2025</time>
 </span>]]></description><pubDate>Fri, 14 Nov 2025 14:58:14 +0000</pubDate></item><item><title>All Intel GPUs run on Raspberry Pi and RISC-V</title><link>https://www.jeffgeerling.com/blog/2025/all-intel-gpus-run-on-raspberry-pi-and-risc-v</link><description><![CDATA[<span class="field field--name-title field--type-string field--label-hidden">All Intel GPUs run on Raspberry Pi and RISC-V</span>
