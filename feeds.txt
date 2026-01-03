@@ -29,3 +29,7 @@ https://singhkays.com/index.xml
 https://notthebe.ee/rss.xml
 https://grahamc.com/feed/index.xml
 https://xeiaso.net/blog.rss
+https://tailscale.com/blog/index.xml
+https://neovim.io/news.xml
+https://spf13.com/index.xml
+https://go.dev/blog/feed.atom
