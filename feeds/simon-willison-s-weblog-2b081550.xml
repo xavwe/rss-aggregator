@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Helping people write code again</title><link>https://simonwillison.net/2026/Jan/4/coding-again/#atom-everything</link><description><![CDATA[<p>Something I like about our weird new LLM-assisted world is the number of people I know who are coding again, having mostly stopped as they moved into management roles or lost their personal side project time to becoming parents.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Addy Osmani</title><link>https://simonwillison.net/2026/Jan/4/addy-osmani/#atom-everything</link><description><![CDATA[<blockquote cite="https://addyosmani.com/blog/21-lessons/"><p>With enough users, every observable behavior becomes a dependency - regardless of what you promised. Someone is scraping your API, automating your quirks, caching your bugs.</p>
+<p>This creates a career-level insight: you can’t treat compatibility work as “maintenance” and new features as “real work.” Compatibility is product.</p>
+<p>Design your deprecations as migrations with time, tooling, and empathy. Most “API design” is actually “API retirement.”</p></blockquote>
+<p class="cite">&mdash; <a href="https://addyosmani.com/blog/21-lessons/">Addy Osmani</a>, 21 lessons from 14 years at Google</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/api-design">api-design</a>, <a href="https://simonwillison.net/tags/addy-osmani">addy-osmani</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/google">google</a></p>]]></description><pubDate>Sun, 4 Jan 2026 16:40:39 +0000</pubDate></item><item><title>Helping people write code again</title><link>https://simonwillison.net/2026/Jan/4/coding-again/#atom-everything</link><description><![CDATA[<p>Something I like about our weird new LLM-assisted world is the number of people I know who are coding again, having mostly stopped as they moved into management roles or lost their personal side project time to becoming parents.</p>
 <p>AI assistance means you can get something useful done in half an hour, or even while you are doing other stuff. You don't need to carve out 2-4 hours to ramp up anymore.</p>
 <p>If you have significant previous coding experience - even if it's a few years stale - you can drive these things really effectively. Especially if you have management experience, quite a lot of which transfers to "managing" coding agents - communicate clearly, set achievable goals, provide all relevant context. Here's a relevant <a href="https://twitter.com/emollick/status/2007249835465072857">recent tweet</a> from Ethan Mollick:</p>
 <blockquote>
@@ -933,64 +938,4 @@ New project from programming legend Fabrice Bellard, of ffmpeg and QEMU and Quic
 <p>Here are <a href="https://github.com/simonw/tools/pull/180#issue-3758595291">the prompts I used</a> for that.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/c">c</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/nodejs">nodejs</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/deno">deno</a>, <a href="https://simonwillison.net/tags/pyodide">pyodide</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/fabrice-bellard">fabrice-bellard</a></p>]]></description><pubDate>Tue, 23 Dec 2025 20:53:40 +0000</pubDate></item><item><title>Cooking with Claude</title><link>https://simonwillison.net/2025/Dec/23/cooking-with-claude/#atom-everything</link><description><![CDATA[<p>I've been having an absurd amount of fun recently using LLMs for cooking. I started out using them for basic recipes, but as I've grown more confident in their culinary abilities I've leaned into them for more advanced tasks. Today I tried something new: having Claude vibe-code up a custom application to help with the timing for a complicated meal preparation. It worked really well!</p>
-<h4 id="a-custom-timing-app-for-two-recipes-at-once">A custom timing app for two recipes at once</h4>
-<p>We have family staying at the moment, which means cooking for four. We subscribe to a meal delivery service called <a href="https://www.greenchef.com/">Green Chef</a>, mainly because it takes the thinking out of cooking three times a week: grab a bag from the fridge, follow the instructions, eat.</p>
-<p>Each bag serves two portions, so cooking for four means preparing two bags at once.</p>
-<p>I have done this a few times now and it is always a mad flurry of pans and ingredients and timers and desperately trying to figure out what should happen when and how to get both recipes finished at the same time. It's fun but it's also chaotic and error-prone.</p>
-<p>This time I decided to try something different, and potentially even more chaotic and error-prone: I outsourced the planning entirely to Claude.</p>
-<p>I took this single photo of the two recipe cards side-by-side and fed it to Claude Opus 4.5 (in the Claude iPhone app) with this prompt:</p>
-<blockquote>
-<p>Extract both of these recipes in as much detail as possible</p>
-<p><img src="https://static.simonwillison.net/static/2025/recipe-cards.jpg" alt="Two recipe cards placed next to each other on a kitchen counter. Each card has detailed instructions plus photographs of steps." style="max-width: 100%;" /></p>
-</blockquote>
-<p>This is a moderately challenging vision task in that there quite a lot of small text in the photo. I wasn't confident Opus could handle it.</p>
-<p>I hadn't read the recipe cards myself. The responsible thing to do here would be a thorough review or at least a spot-check - I chose to keep things chaotic and didn't do any more than quickly eyeball the result.</p>
-<p>I asked what pots I'd need:</p>
-<blockquote>
-<p>Give me a full list of pots I would need if I was cooking both of them at once</p>
-</blockquote>
-<p>Then I prompted it to build a custom application to help me with the cooking process itself:</p>
-<blockquote>
-<p>I am going to cook them both at the same time. Build me a no react, mobile, friendly, interactive, artifact that spells out the process with exact timing on when everything needs to happen have a start setting at the top, which starts a timer and persists when I hit start in localStorage in case the page reloads. The next steps should show prominently with countdowns to when they open. The full combined timeline should be shown slow with calculated times tor when each thing should happen</p>
-</blockquote>
-<p>I copied the result out onto my own hosting (<a href="https://tools.simonwillison.net/blackened-cauliflower-and-turkish-style-stew">you can try it here</a>) because I wasn't sure if localStorage would work inside the Claude app and I <em>really</em> didn't want it to forget my times!</p>
-<p>Then I clicked "start cooking"!</p>
-<p><img src="https://static.simonwillison.net/static/2025/recipe-timer.gif" alt="The recipe app shows a full timeline with 00:00 Preheat Oven and onwards, plus a big Start Cooking button. In the animation clicking the button starts a timer clicking up, adds a Do this now panel showing the Start all prep work step, shows Coming Up Next with timers counting down to the next steps and updates the full timeline to show local clock times where it previously showed durations from 00:00 upwards." style="max-width: 100%;" /></p>
-<p>Here's the <a href="https://claude.ai/share/4acab994-c22b-4ddf-81bd-2f22d947c521">full Claude transcript</a>.</p>
-<p>There was just one notable catch: our dog, Cleo, knows <em>exactly</em> when her dinner time is, at 6pm sharp. I forgot to mention this to Claude, which had scheduled several key steps colliding with Cleo's meal. I got woofed at. I deserved it.</p>
-<p>To my great surprise, <em>it worked</em>. I followed the recipe guide to the minute and served up both meals exactly 44 minutes after I started cooking.</p>
-<p><img src="https://static.simonwillison.net/static/2025/recipe-finished.jpg" alt="A small bowl (a beautiful blue sea textured bowl, made by Natalie Downe) contains a chickpea stew. A larger black bowl has couscous, green beans and blackened cauliflower." style="max-width: 100%;" /></p>
-<p>The best way to learn the capabilities of LLMs is to throw tasks at them that may be beyond their abilities and see what happens. In this case I fully expected that something would get forgotten or a detail would be hallucinated and I'd end up scrambling to fix things half way through the process. I was surprised and impressed that it worked so well.</p>
-<p>Some credit for the app idea should go to my fellow hackers at <a href="https://devfort.com/fort/2/">/dev/fort 2 in 2009</a>, when we rented Knockbrex Castle in Dumfries, Scotland for a week and attempted to build a cooking timer application for complex meals.</p>
-<h4 id="generating-recipes-from-scratch">Generating recipes from scratch</h4>
-<p>Most of my other cooking experiments with LLMs have been a whole lot simpler than this: I ask for a recipe, ask for some variations and then cook one of them and see what happens.</p>
-<p>This works remarkably well considering LLMs have no taste buds.</p>
-<p>I've started to think of this as asking LLMs for the <em>average</em> recipe for a dish, based on all of the recipes they have hoovered up during their training. It turns out the mean version of every guacamole recipe on the internet is a decent guacamole!</p>
-<p>Here's an example of a recipe I tried recently that worked out really well. I was helping Natalie run her ceramic stall at the farmers market and the stall next to us sold excellent dried beans. I've never used dried beans before, so I took a photo of their selection and asked Claude what I could do with them:</p>
-<blockquote>
-<p><img src="https://static.simonwillison.net/static/2025/beans-1.jpg" alt="Several bags of tasty looking beans of different varieties and colors" style="width: 48%;" /> <img src="https://static.simonwillison.net/static/2025/beans-2.jpg" alt="More bags of beans." style="width: 48%;" /></p>
-<p>Identify these beans</p>
-</blockquote>
-<p>It took a guess at the beans, then I said:</p>
-<blockquote>
-<p>Get me excited about cooking with these! If I bought two varietiew what could I make</p>
-</blockquote>
-<p>"Get me excited" switches Claude into a sort of hype-man mode, which is kind of entertaining:</p>
-<blockquote>
-<p>Oh, you're about to enter the <em>wonderful</em> world of bean cooking! Let me get you pumped about some killer two-bean combos: [...]</p>
-<p><strong>Mixed bean salad</strong> with lemon, olive oil, fresh herbs, cherry tomatoes - light but satisfying [...]</p>
-</blockquote>
-<p>I replied:</p>
-<blockquote>
-<p>OK Bean salad has me interested - these are dried beans. Give me some salad options I can make that would last a long time in the fridge</p>
-</blockquote>
-<p>... and after some back and forth we arrived on the <a href="https://claude.ai/share/c7534766-22d8-481b-bd80-a21abc53f5b2">recipe in this transcript</a>, which I cooked the following day (asking plenty of follow-up questions) and thoroughly enjoyed.</p>
-<p>I've done this a bunch of times with a bunch of different recipes across both Claude and ChatGPT and honestly I've not had a notable miss yet. Being able to say "make it vegan" or "I don't have coriander, what can I use instead?" or just "make it tastier" is a really fun way to explore cooking.</p>
-<p>It's also fun to repeat "make it tastier" multiple times to see how absurd you can get.</p>
-<h4 id="i-really-want-someone-to-turn-this-into-a-benchmark-">I really want someone to turn this into a benchmark!</h4>
-<p>Cooking with LLMs is a lot of fun. There's an opportunity here for a <em>really</em> neat benchmark: take a bunch of leading models, prompt them for recipes, follow those recipes and taste-test the results!</p>
-<p>The logistics of running this are definitely too much for me to handle myself. I have enough trouble cooking two meals at once, for a solid benchmark you'd ideally have several models serving meals up at the same time to a panel of tasters.</p>
-<p>If someone else wants to try this please let me know how it goes!</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/cooking">cooking</a>, <a href="https://simonwillison.net/tags/devfort">devfort</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Tue, 23 Dec 2025 05:01:34 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/c">c</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/nodejs">nodejs</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/deno">deno</a>, <a href="https://simonwillison.net/tags/pyodide">pyodide</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/fabrice-bellard">fabrice-bellard</a></p>]]></description><pubDate>Tue, 23 Dec 2025 20:53:40 +0000</pubDate></item></channel></rss>
