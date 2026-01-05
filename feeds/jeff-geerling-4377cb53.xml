@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>JeffGeerling.com has been Migrated to Hugo</title><link>https://www.jeffgeerling.com/blog/2026/migrated-to-hugo/</link><description><![CDATA[<p>Since 2009, this website has <a href="https://www.jeffgeerling.com/blog/2009/moved-drupal-hello-drupal">run on Drupal</a>. Starting with Drupal 6, and progressing through major site upgrades and migrations to 7, 8, 9, and 10, I used the site as a way to dogfood the same CMS (Content Management System) I used in my day job for <em>over a decade</em>.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Raspberry Pi is cheaper than a Mini PC again (that&apos;s not good)</title><link>https://www.jeffgeerling.com/blog/2026/raspberry-pi-cheaper-than-mini-pc/</link><description><![CDATA[<p>Almost a year ago, I found that <a href="https://www.jeffgeerling.com/blog/2025/intel-n100-better-value-raspberry-pi/">N100 Mini PCs were cheaper than a decked-out Raspberry Pi 5</a>. So comparing systems with:</p>
+<ul>
+<li>16GB of RAM</li>
+<li>512GB NVMe SSD</li>
+<li>Including case, cooler, and power adapter</li>
+</ul>
+<p>Back in March last year, a GMKtec Mini PC was $159, and a similar-spec Pi 5 was $208.</p>
+<p>Today? The <a href="https://amzn.to/4srcKB3">same GMKtec Mini PC</a> is $246.99, and the same Pi 5 is $246.95:</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/raspberry-pi-cheaper-than-mini-pc/costs-gmktec-vs-pi-5.jpg"
+ alt="GMKtec N100 Mini PC vs Pi 5 16GB pricing 2025" width="700" height="auto">
+</figure>
+
+<p>Today, because of the wonderful RAM shortages<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, the Mini PC is the same price as a fully kitted-out Raspberry Pi 5.</p>]]></description><pubDate>Mon, 5 Jan 2026 22:00:00 +0000</pubDate></item><item><title>JeffGeerling.com has been Migrated to Hugo</title><link>https://www.jeffgeerling.com/blog/2026/migrated-to-hugo/</link><description><![CDATA[<p>Since 2009, this website has <a href="https://www.jeffgeerling.com/blog/2009/moved-drupal-hello-drupal">run on Drupal</a>. Starting with Drupal 6, and progressing through major site upgrades and migrations to 7, 8, 9, and 10, I used the site as a way to dogfood the same CMS (Content Management System) I used in my day job for <em>over a decade</em>.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/migrated-to-hugo/jeffgeerling-old-drupal.png"
  alt="JeffGeerling.com - Old Drupal site" width="700" height="auto">
 </figure>
@@ -101,11 +113,4 @@
 </div>
 <p>While the hot dog's flesh is getting vaporized, a tiny plasma arc moves the air around it back and forth. And because this tower is an AM tower, it uses <a href="https://en.wikipedia.org/wiki/Amplitude_modulation"><em>Amplitude</em> Modulation</a>, where a transmitter changes the amplitude of a carrier wave up and down. Just like a speaker cone moving up and down, the plasma arc from the hot dog turns that modulation into audible sound.</p>]]></description><pubDate>Fri, 7 Nov 2025 16:15:39 +0000</pubDate></item><item><title>It&apos;s not that hard to stop a Trane</title><link>https://www.jeffgeerling.com/blog/2025/its-not-hard-stop-trane/</link><description><![CDATA[<p>Six years ago, I replaced the old HVAC system that came with our house, a central forced air system installed in 1995<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <p>The new system is a Trane XR AC paired with an <a href="https://www.trane.com/residential/en/products/furnaces/premier-96/">S9V2 96% efficiency forced-air gas furnace</a>. And it ran great! Better efficiency, quieter, multiple fan speeds so I can circulate air and prevent stale air in some parts of the house... what's not to love?</p>
-<p>Well, apparently the engineering:</p>]]></description><pubDate>Tue, 4 Nov 2025 22:55:37 +0000</pubDate></item><item><title>The Arduino Uno Q is a weird hybrid SBC</title><link>https://www.jeffgeerling.com/blog/2025/arduino-uno-q-weird-hybrid-sbc/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2025/arduino-uno-q-weird-hybrid-sbc/arduino-uno-1-in-hand.jpg"
- alt="Arduino Uno Q" width="700" height="394">
-</figure>
-
-<p>The <a href="https://www.arduino.cc/product-uno-q">Arduino Uno Q</a> is... a weird board. It's the first product born out of <a href="https://www.jeffgeerling.com/blog/2025/qualcomms-buying-arduino-%E2%80%93-what-it-means-makers">Qualcomm's buyout of Arduino</a>.</p>
-<p>It's like if you married an Intel CPU, and a Raspberry Pi RP2040 microcontroller—oh wait, <a href="https://www.jeffgeerling.com/blog/2024/radxa-x4-sbc-unites-intel-n100-and-raspberry-pi-rp2040">Radxa's X4 did that</a>.</p>
-<p>Arduino even tried it before with their old <a href="https://docs.arduino.cc/retired/boards/arduino-yun/">Yún</a> board, which had Linux running on a MIPS CPU, married to an ATmega microcontroller.</p>
-<p>The Uno Q isn't quite a Raspberry Pi, but it looks like one when you squint at it. And it's not quite an Uno, but it does a pretty good job masquerading as that, too.</p>]]></description><pubDate>Fri, 31 Oct 2025 14:01:28 +0000</pubDate></item></channel></rss>
+<p>Well, apparently the engineering:</p>]]></description><pubDate>Tue, 4 Nov 2025 22:55:37 +0000</pubDate></item></channel></rss>
