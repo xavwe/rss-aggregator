@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>It’s hard to justify Tahoe icons</title><link>https://simonwillison.net/2026/Jan/5/its-hard-to-justify-tahoe-icons/#atom-everything</link><description><![CDATA[<p><strong><a href="https://tonsky.me/blog/tahoe-icons/">It’s hard to justify Tahoe icons</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>A field guide to sandboxes for AI</title><link>https://simonwillison.net/2026/Jan/6/a-field-guide-to-sandboxes-for-ai/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.luiscardoso.dev/blog/sandboxes-for-ai">A field guide to sandboxes for AI</a></strong></p>
+This guide to the current sandboxing landscape by Luis Cardoso is comprehensive, dense and absolutely fantastic.</p>
+<p>He starts by differentiating between containers (which share the host kernel), microVMs (their own guest kernel behind hardwae virtualization), gVisor userspace kernels and WebAssembly/isolates that constrain everything within a runtime.</p>
+<p>The piece then dives deep into terminology, approaches and the landscape of existing tools.</p>
+<p>I think using the right sandboxes to safely run untrusted code  is one of the most important problems to solve in 2026. This guide is an invaluable starting point.
+
+    <p><small></small>Via <a href="https://lobste.rs/s/l9gkjo/field_guide_sandboxes_for_ai">lobste.rs</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 6 Jan 2026 22:38:00 +0000</pubDate></item><item><title>It’s hard to justify Tahoe icons</title><link>https://simonwillison.net/2026/Jan/5/its-hard-to-justify-tahoe-icons/#atom-everything</link><description><![CDATA[<p><strong><a href="https://tonsky.me/blog/tahoe-icons/">It’s hard to justify Tahoe icons</a></strong></p>
 Devastating critique of the new menu icons in macOS Tahoe by Nikita Prokopov, who starts by quoting the 1992 Apple HIG rule to not "overload the user with complex icons" and then provides comprehensive evidence of Tahoe doing exactly that.</p>
 <blockquote>
 <p>In my opinion, Apple took on an impossible task: to add an icon to every menu item. There are just not enough good metaphors to do something like that.</p>
@@ -841,81 +850,4 @@ Total bytes fetched: 18,760 / 40,775,575 (100.0% savings)
 </blockquote>
 <p>At first I thought that prompting them not to send emails was a poor solution when you could disable their ability to use their Workspace accounts entirely, but then I realized that you have to include some level of prompting here because they have unfettered access to a computer environment, so if you didn't tell them NOT to email people there's nothing to stop them firing up a browser and registering for a free webmail account elsewhere.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/rob-pike">rob-pike</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/shot-scraper">shot-scraper</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a></p>]]></description><pubDate>Fri, 26 Dec 2025 18:16:28 +0000</pubDate></item><item><title>A new way to extract detailed transcripts from Claude Code</title><link>https://simonwillison.net/2025/Dec/25/claude-code-transcripts/#atom-everything</link><description><![CDATA[<p>I've released <a href="https://github.com/simonw/claude-code-transcripts">claude-code-transcripts</a>, a new Python CLI tool for converting <a href="https://claude.ai/code">Claude Code</a> transcripts to detailed HTML pages that provide a better interface for understanding what Claude Code has done than even Claude Code itself. The resulting transcripts are also designed to be shared, using any static HTML hosting or even via GitHub Gists.</p>
-<p>Here's the quick start, with no installation required if you already have <a href="https://docs.astral.sh/uv/">uv</a>:</p>
-<pre><code>uvx claude-code-transcripts
-</code></pre>
-<p>(Or you could <code>uv tool install claude-code-transcripts</code> or <code>pip install claude-code-transcripts</code> first, if you like.)</p>
-<p>This will bring up a list of your local Claude Code sessions. Hit up and down to select one, then hit <code>&lt;enter&gt;</code>. The tool will create a new folder with an <code>index.html</code> file showing a summary of the transcript and one or more <code>page_x.html</code> files with the full details of everything that happened.</p>
-<p>Visit <a href="https://static.simonwillison.net/static/2025/claude-code-microjs/index.html">this example page</a> to see a lengthy (12 page) transcript produced using this tool.</p>
-<p><img src="https://static.simonwillison.net/static/2025/claude-code-transcripts-example.jpg" alt="Screenshot of a claude code transcript spanning 12 pages - the first page shows a summary starting with the first user prompt to clone bellard/quickjs to /tmp" style="max-width: 100%;" /></p>
-<p>If you have the <a href="https://cli.github.com/">gh CLI tool</a> installed and authenticated you can add the <code>--gist</code> option - the transcript you select will then be automatically shared to a new Gist and a link provided to <code>gistpreview.github.io</code> to view it.</p>
-<p><code>claude-code-transcripts</code> can also fetch sessions from Claude Code for web. I reverse-engineered the private API for this (so I hope it continues to work), but right now you can run:</p>
-<pre><code>uvx claude-code-transcripts web --gist
-</code></pre>
-<p>Then select a Claude Code for web session and have that converted to HTML and published as a Gist as well.</p>
-<p>The <a href="https://github.com/simonw/claude-code-transcripts/blob/main/README.md">claude-code-transcripts README</a> has full details of the other options provided by the tool.</p>
-<h4 id="why-i-built-this">Why I built this</h4>
-<p>These days I'm writing significantly more code via Claude Code than by typing text into a text editor myself. I'm actually getting more coding work done <em>on my phone</em> than on my laptop, thanks to the Claude Code interface in Anthropic's Claude iPhone app.</p>
-<p>Being able to have an idea on a walk and turn that into working, tested and documented code from a couple of prompts on my phone is a truly science fiction way of working. I'm enjoying it a lot.</p>
-<p>There's one problem: the actual <em>work</em> that I do is now increasingly represented by these Claude conversations. Those transcripts capture extremely important context about my projects: what I asked for, what Claude suggested, decisions I made, and Claude's own justification for the decisions it made while implementing a feature.</p>
-<p>I value these transcripts a lot! They help me figure out which prompting strategies work, and they provide an invaluable record of the decisions that went into building features.</p>
-<p>In the pre-LLM era I relied on issues and issue comments to record all of this extra project context, but now those conversations are happening in the Claude Code interface instead.</p>
-<p>I've made several past attempts at solving this problem. The first was pasting Claude Code terminal sessions into a shareable format - I <a href="https://simonwillison.net/2025/Oct/23/claude-code-for-web-video/">built a custom tool for that</a> (called <a href="https://tools.simonwillison.net/terminal-to-html/">terminal-to-html</a> and I've used it a lot, but it misses a bunch of detail - including the default-invisible thinking traces that Claude Code generates while working on a task.</p>
-<p>I've also built <a href="https://tools.simonwillison.net/colophon#claude-code-timeline.html">claude-code-timeline</a> and <a href="https://tools.simonwillison.net/colophon#codex-timeline.html">codex-timeline</a> as HTML tool viewers for JSON transcripts from both Claude Code and Codex. Those work pretty well, but still are not quite as human-friendly as I'd like.</p>
-<p>An even bigger problem is Claude Code for web - Anthropic's asynchronous coding agent, which is the thing I've been using from my phone. Getting transcripts out of that is even harder! I've been synchronizing them down to my laptop just so I can copy and paste from the terminal but that's a pretty inelegant solution.</p>
-<h4 id="how-i-built-claude-code-transcripts">How I built claude-code-transcripts</h4>
-<p>You won't be surprised to hear that every inch of this new tool was built using Claude.</p>
-<p>You can browse <a href="https://github.com/simonw/claude-code-transcripts/commits/main/">the commit log</a> to find links to the transcripts for each commit, many of them published using the tool itself.</p>
-<p>Here are some recent examples:</p>
-<ul>
-<li>
-<a href="https://github.com/simonw/claude-code-transcripts/commit/c80b1dee9429637318f4fae3e5d733ae5c05ab2c">c80b1dee</a> Rename tool from claude-code-publish to claude-code-transcripts - <a href="https://gistpreview.github.io/?814530b3a70af8408f3bb8ca10f70d57/index.html">transcript</a>
-</li>
-<li>
-<a href="https://github.com/simonw/claude-code-transcripts/commit/ad3e9a05058c583bf7327421f727ba08c15aa8a0">ad3e9a05</a> Update README for latest changes - <a href="https://gistpreview.github.io/?9b3fe747343d32c95a8565ef1f8b6e11/index.html">transcript</a>
-</li>
-<li>
-<a href="https://github.com/simonw/claude-code-transcripts/commit/e1013c54a601e79e62a9bf204c5a94acc8845c5f">e1013c54</a> Add autouse fixture to mock webbrowser.open in tests - <a href="https://gistpreview.github.io/?1671b49de273d80280ab2ceab690db8c/index.html">transcript</a>
-</li>
-<li>
-<a href="https://github.com/simonw/claude-code-transcripts/commit/77512e5d6905ee8ba678af0e30bcee2dccb549f3">77512e5d</a> Add Jinja2 templates for HTML generation (#2) - <a href="https://gistpreview.github.io/?ffc01d1c04e47ed7934a58ae04a066d1/index.html">transcript</a>
-</li>
-<li>
-<a href="https://github.com/simonw/claude-code-transcripts/commit/b3e038adeac56e81d7c7558f0a7d39a8d44d9534">b3e038ad</a> Add version flag to CLI (#1) - <a href="https://gistpreview.github.io/?7bdf1535f7bf897fb475be6ff5da2e1c/index.html">transcript</a>
-</li>
-</ul>
-<p>I had Claude use the following dependencies:</p>
-<ul>
-<li>
-<a href="https://pypi.org/project/click/">click</a> and <a href="https://pypi.org/project/click-default-group/">click-default-group</a> for building the CLI</li>
-<li>
-<a href="https://pypi.org/project/Jinja2/">Jinja2</a> for HTML templating - a late refactoring, the initial system used Python string concatenation</li>
-<li>
-<a href="https://pypi.org/project/httpx/">httpx</a> for making HTTP requests</li>
-<li>
-<a href="https://pypi.org/project/Markdown/">markdown</a> for converting Markdown to HTML</li>
-<li>
-<a href="https://pypi.org/project/questionary/">questionary</a> - new to me, suggested by Claude - to implement the interactive list selection UI</li>
-</ul>
-<p>And for development dependencies:</p>
-<ul>
-<li>
-<a href="https://pypi.org/project/pytest/">pytest</a> - always</li>
-<li>
-<a href="https://pypi.org/project/pytest-httpx/">pytest-httpx</a> to mock HTTP requests in tests</li>
-<li>
-<a href="https://pypi.org/project/syrupy/">syrupy</a> for snapshot testing - with a tool like this that generates complex HTML snapshot testing is a great way to keep the tests robust and simple. Here's <a href="https://github.com/simonw/claude-code-transcripts/tree/main/tests/__snapshots__/test_generate_html">that collection of snapshots</a>.</li>
-</ul>
-<p>The one bit that wasn't done with Claude Code was reverse engineering Claude Code itself to figure out how to retrieve session JSON from Claude Code for web.</p>
-<p>I know Claude Code can reverse engineer itself, but it felt a bit more subversive to have OpenAI Codex CLI do it instead. <a href="https://gistpreview.github.io/?e4159193cd2468060d91289b5ccdece3">Here's that transcript</a> - I had Codex use <code>npx prettier</code> to pretty-print the obfuscated Claude Code JavaScript, then asked it to dig out the API and authentication details.</p>
-<p>Codex came up with this <em>beautiful</em> <code>curl</code> command:</p>
-<div class="highlight highlight-source-shell"><pre>curl -sS -f \
-    -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-s"><span class="pl-pds">$(</span>security find-generic-password -a <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$USER</span><span class="pl-pds">"</span></span> -w -s <span class="pl-s"><span class="pl-pds">"</span>Claude Code-credentials<span class="pl-pds">"</span></span> <span class="pl-k">|</span> jq-r .claudeAiOauth.accessToken<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span>  \
-    -H <span class="pl-s"><span class="pl-pds">"</span>anthropic-version: 2023-06-01<span class="pl-pds">"</span></span> \
-    -H <span class="pl-s"><span class="pl-pds">"</span>Content-Type: application/json<span class="pl-pds">"</span></span> \
-    -H <span class="pl-s"><span class="pl-pds">"</span>x-organization-uuid: <span class="pl-s"><span class="pl-pds">$(</span>jq -r <span class="pl-s"><span class="pl-pds">'</span>.oauthAccount.organizationUuid<span class="pl-pds">'</span></span> <span class="pl-k">~</span>/.claude.json<span class="pl-pds">)</span></span><span class="pl-pds">"</span></span> \
-    <span class="pl-s"><span class="pl-pds">"</span>https://api.anthropic.com/v1/sessions<span class="pl-pds">"</span></span></pre></div>
-<p>The really neat trick there is the way it extracts Claude Code's OAuth token from the macOS Keychain using the <code>security find-generic-password</code> command. I ended up using that trick in <code>claude-code-transcripts</code> itself!</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Thu, 25 Dec 2025 23:52:17 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/rob-pike">rob-pike</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/shot-scraper">shot-scraper</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a></p>]]></description><pubDate>Fri, 26 Dec 2025 18:16:28 +0000</pubDate></item></channel></rss>
