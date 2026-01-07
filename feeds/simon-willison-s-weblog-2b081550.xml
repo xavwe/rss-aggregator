@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Robin Sloan</title><link>https://simonwillison.net/2026/Jan/7/robin-sloan/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.robinsloan.com/winter-garden/agi-is-here/"><p><strong>AGI is here</strong>! When exactly it arrived, we’ll never know; whether it was one company’s Pro or another company’s Pro Max (Eddie Bauer Edition) that tip-toed first across the line … you may debate. But generality has been achieved, &amp; now we can proceed to new questions. [...]</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Adam Wathan</title><link>https://simonwillison.net/2026/Jan/7/adam-wathan/#atom-everything</link><description><![CDATA[<blockquote cite="https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957"><p>[...] the reality is that 75% of the people on our engineering team lost their jobs here yesterday because of the brutal impact AI has had on our business. And every second I spend trying to do fun free things for the community like this is a second I'm not spending trying to turn the business around and make sure the people who are still here are getting their paychecks every month. [...]</p>
+<p>Traffic to our docs is down about 40% from early 2023 despite Tailwind being more popular than ever. The docs are the only way people find out about our commercial products, and without customers we can't afford to maintain the framework. [...]</p>
+<p>Tailwind is growing faster than it ever has and is bigger than it ever has been, and our revenue is down close to 80%. Right now there's just no correlation between making Tailwind easier to use and making development of the framework more sustainable.</p></blockquote>
+<p class="cite">&mdash; <a href="https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957">Adam Wathan</a>, CEO, Tailwind Labs</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/css">css</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a></p>]]></description><pubDate>Wed, 7 Jan 2026 17:29:29 +0000</pubDate></item><item><title>Quoting Robin Sloan</title><link>https://simonwillison.net/2026/Jan/7/robin-sloan/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.robinsloan.com/winter-garden/agi-is-here/"><p><strong>AGI is here</strong>! When exactly it arrived, we’ll never know; whether it was one company’s Pro or another company’s Pro Max (Eddie Bauer Edition) that tip-toed first across the line … you may debate. But generality has been achieved, &amp; now we can proceed to new questions. [...]</p>
 <p>The key word in Artificial General Intelligence is General. That’s the word that makes this AI unlike every other AI: because every other AI was trained for a particular purpose. Consider landmark models across the decades: the Mark I Perceptron, LeNet, AlexNet, AlphaGo, AlphaFold … these systems were all different, but all alike in this way.</p>
 <p>Language models were trained for a purpose, too … but, surprise: the mechanism &amp; scale of that training did something new: opened a wormhole, through which a vast field of action &amp; response could be reached. Towering libraries of human writing, drawn together across time &amp; space, all the dumb reasons for it … that’s rich fuel, if you can hold it all in your head.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.robinsloan.com/winter-garden/agi-is-here/">Robin Sloan</a>, AGI is here (and I feel fine)</p>
@@ -675,50 +680,4 @@ Anton Medvedev built <a href="https://textarea.my/">textarea.my</a>, which he de
     <p><small></small>Via <a href="https://lobste.rs/s/st1mpl/lightest_notes_app_implementation_111">lobste.rs</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a></p>]]></description><pubDate>Sat, 27 Dec 2025 03:23:34 +0000</pubDate></item><item><title>How uv got so fast</title><link>https://simonwillison.net/2025/Dec/26/how-uv-got-so-fast/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nesbitt.io/2025/12/26/how-uv-got-so-fast.html">How uv got so fast</a></strong></p>
-Andrew Nesbitt provides an insightful teardown of why <a href="https://github.com/astral-sh/uv">uv</a> is so much faster than <code>pip</code>. It's not nearly as simple as just "they rewrote it in Rust" - <code>uv</code> gets to skip a huge amount of Python packaging history (which <code>pip</code> needs to implement for backwards compatibility) and benefits enormously from work over recent years that makes it possible to resolve dependencies across most packages without having to execute the code in <code>setup.py</code> using a Python interpreter.</p>
-<p>Two notes that caught my eye that I hadn't understood before:</p>
-<blockquote>
-<p><strong>HTTP range requests for metadata.</strong> <a href="https://packaging.python.org/en/latest/specifications/binary-distribution-format/">Wheel files</a> are zip archives, and zip archives put their file listing at the end. uv tries PEP 658 metadata first, falls back to HTTP range requests for the zip central directory, then full wheel download, then building from source. Each step is slower and riskier. The design makes the fast path cover 99% of cases. None of this requires Rust.</p>
-<p>[...]</p>
-<p><strong>Compact version representation</strong>. uv packs versions into u64 integers where possible, making comparison and hashing fast. Over 90% of versions fit in one u64. This is micro-optimization that compounds across millions of comparisons.</p>
-</blockquote>
-<p>I wanted to learn more about these tricks, so I fired up <a href="https://simonwillison.net/2025/Nov/6/async-code-research/">an asynchronous research task</a> and told it to checkout the <code>astral-sh/uv</code> repo, find the Rust code for both of those features and try porting it to Python to help me understand how it works.</p>
-<p>Here's <a href="https://github.com/simonw/research/tree/main/http-range-wheel-metadata">the report that it wrote for me</a>, the <a href="https://github.com/simonw/research/pull/57">prompts I used</a> and the <a href="https://gistpreview.github.io/?0f04e4d1a240bfc3065df5082b629884/index.html">Claude Code transcript</a>.</p>
-<p>You can try <a href="https://github.com/simonw/research/blob/main/http-range-wheel-metadata/wheel_metadata.py">the script</a> it wrote for extracting metadata from a wheel using HTTP range requests like this:</p>
-<p><code>uv run --with httpx https://raw.githubusercontent.com/simonw/research/refs/heads/main/http-range-wheel-metadata/wheel_metadata.py https://files.pythonhosted.org/packages/8b/04/ef95b67e1ff59c080b2effd1a9a96984d6953f667c91dfe9d77c838fc956/playwright-1.57.0-py3-none-macosx_11_0_arm64.whl -v</code></p>
-<p>The Playwright wheel there is ~40MB. Adding <code>-v</code> at the end causes the script to spit out verbose details of how it fetched the data - <a href="https://gist.github.com/simonw/a5ef83b6e4605d2577febb43fa9ad018">which looks like this</a>.</p>
-<p>Key extract from that output:</p>
-<pre><code>[1] HEAD request to get file size...
-    File size: 40,775,575 bytes
-[2] Fetching last 16,384 bytes (EOCD + central directory)...
-    Received 16,384 bytes
-[3] Parsed EOCD:
-    Central directory offset: 40,731,572
-    Central directory size: 43,981
-    Total entries: 453
-[4] Fetching complete central directory...
-    ...
-[6] Found METADATA: playwright-1.57.0.dist-info/METADATA
-    Offset: 40,706,744
-    Compressed size: 1,286
-    Compression method: 8
-[7] Fetching METADATA content (2,376 bytes)...
-[8] Decompressed METADATA: 3,453 bytes
-
-Total bytes fetched: 18,760 / 40,775,575 (100.0% savings)
-</code></pre>
-<p>The section of the report <a href="https://github.com/simonw/research/tree/main/http-range-wheel-metadata#bonus-compact-version-representation">on compact version representation</a> is interesting too. Here's how it illustrates sorting version numbers correctly based on their custom u64 representation:</p>
-<pre><code>Sorted order (by integer comparison of packed u64):
-  1.0.0a1 (repr=0x0001000000200001)
-  1.0.0b1 (repr=0x0001000000300001)
-  1.0.0rc1 (repr=0x0001000000400001)
-  1.0.0 (repr=0x0001000000500000)
-  1.0.0.post1 (repr=0x0001000000700001)
-  1.0.1 (repr=0x0001000100500000)
-  2.0.0.dev1 (repr=0x0002000000100001)
-  2.0.0 (repr=0x0002000000500000)
-</code></pre>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/performance">performance</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Fri, 26 Dec 2025 23:43:15 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a></p>]]></description><pubDate>Sat, 27 Dec 2025 03:23:34 +0000</pubDate></item></channel></rss>
