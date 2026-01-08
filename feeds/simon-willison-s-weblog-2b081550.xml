@@ -1,4 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>How Google Got Its Groove Back and Edged Ahead of OpenAI</title><link>https://simonwillison.net/2026/Jan/8/how-google-got-its-groove-back/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.wsj.com/tech/ai/google-ai-openai-gemini-chatgpt-b766e160">How Google Got Its Groove Back and Edged Ahead of OpenAI</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>LLM predictions for 2026, shared with Oxide and Friends</title><link>https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#atom-everything</link><description><![CDATA[<p>I joined a recording of the Oxide and Friends podcast on Tuesday to talk about 1, 3 and 6 year predictions for the tech industry. This is my second appearance on their annual predictions episode, you can see <a href="https://simonwillison.net/2025/Jan/10/ai-predictions/">my predictions from January 2025 here</a>. Here's <a href="https://oxide-and-friends.transistor.fm/episodes/predictions-2026">the page for this year's episode</a>, with options to listen in all of your favorite podcast apps or <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8">directly on YouTube</a>.</p>
+<p>Bryan Cantrill started the episode by declaring that he's never been so unsure about what's coming in the next year. I share that uncertainty - the significant advances in coding agents just in the last two months have left me certain that things will change significantly, but unclear as to what those changes will be.</p>
+<p>Here are the predictions I shared in the episode.</p>
+<ul>
+  <li><a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#1-year-it-will-become-undeniable-that-llms-write-good-code">1 year: It will become undeniable that LLMs write good code</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#1-year-we-re-finally-going-to-solve-sandboxing">1 year: We're finally going to solve sandboxing</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#1-year-a-challenger-disaster-for-coding-agent-security">1 year: A "Challenger disaster" for coding agent security</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#1-year-k-k-p-parrots-will-have-an-outstanding-breeding-season">1 year: Kākāpō parrots will have an outstanding breeding season</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#3-years-the-coding-agents-jevons-paradox-for-software-engineering-will-resolve-one-way-or-the-other">3 years: the coding agents Jevons paradox for software engineering will resolve, one way or the other</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#3-years-someone-will-build-a-new-browser-using-mainly-ai-assisted-coding-and-it-won-t-even-be-a-surprise">3 years: Someone will build a new browser using mainly AI-assisted coding and it won't even be a surprise</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#6-years-typing-code-by-hand-will-go-the-way-of-punch-cards">6 years: Typing code by hand will go the way of punch cards</a></li>
+</ul>
+<h4 id="1-year-it-will-become-undeniable-that-llms-write-good-code">1 year: It will become undeniable that LLMs write good code <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8&amp;t=1167s" class="predictions-video-link">▶ 19:27</a></h4>
+<blockquote>
+<p>I think that there are still people out there who are convinced that LLMs cannot write good code. Those people are in for a very nasty shock in 2026. I do not think it will be possible to get to the end of even the next three months while still holding on to that idea that the code they write is all junk and it's it's likely any decent human programmer will write better code than they will.</p>
+</blockquote>
+<p>In 2023, saying that LLMs write garbage code was entirely correct. For most of 2024 that stayed true. In 2025 that changed, but you could be forgiven for continuing to hold out. In 2026 the quality of LLM-generated code will become impossible to deny.</p>
+<p>I base this on my own experience - I've spent more time exploring <a href="https://simonwillison.net/tags/ai-assisted-programming/">AI-assisted programming</a> than most.</p>
+<p>The key change in 2025 (see <a href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/#the-year-of-reasoning-">my overview for the year</a>) was the introduction of "reasoning models" trained specifically against code using Reinforcement Learning. The major labs spent a full year competing with each other on who could get the best code capabilities from their models, and that problem turns out to be perfectly attuned to RL since code challenges come with built-in verifiable success conditions.</p>
+<p>Since Claude Opus 4.5 and GPT-5.2 came out in November and December respectively the amount of code I've written by hand has dropped to a single digit percentage of my overall output. The same is true for many other expert programmers I know.</p>
+<p>At this point if you continue to argue that LLMs write useless code you're damaging your own credibility.</p>
+<h4 id="1-year-we-re-finally-going-to-solve-sandboxing">1 year: We're finally going to solve sandboxing <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8&amp;t=1205s" class="predictions-video-link">▶ 20:05</a></h4>
+<blockquote>
+<p>I think this year is the year we're going to solve sandboxing. I want to run code other people have written on my computing devices without it destroying my computing devices if it's malicious or has bugs. [...] It's crazy that it's 2026 and I still <code>pip install</code> random code and then execute it in a way that it can steal all of my data and delete all my files. [...] I don't want to run a piece of code on any of my devices that somebody else wrote outside of sandbox ever again.</p>
+</blockquote>
+<p>This isn't just about LLMs, but it becomes even more important now there are so many more people writing code often without knowing what they're doing. Sandboxing is also a key part of the battle against prompt injection.</p>
+<p>We have a <em>lot</em> of promising technologies in play already for this - containers and WebAssembly being the two I'm most optimistic about. There's real commercial value involved in solving this problem. The pieces are there, what's needed is UX work to reduce the friction in using them productively and securely.</p>
+<h4 id="1-year-a-challenger-disaster-for-coding-agent-security">1 year: A "Challenger disaster" for coding agent security <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8&amp;t=1281s" class="predictions-video-link">▶ 21:21</a></h4>
+<blockquote>
+<p>I think we're due a Challenger disaster with respect to coding agent security[...] I think so many people, myself included, are running these coding agents practically as root, right? We're letting them do all of this stuff. And every time I do it, my computer doesn't get wiped. I'm like, "oh, it's fine".</p>
+</blockquote>
+<p>I used this as an opportunity to promote my favourite recent essay about AI security, <a href="https://embracethered.com/blog/posts/2025/the-normalization-of-deviance-in-ai/">the Normalization of Deviance in AI</a> by Johann Rehberger.</p>
+<p>The Normalization of Deviance describes the phenomenon where people and organizations get used to operating in an unsafe manner because nothing bad has happened to them yet, which can result in enormous problems (like the 1986 Challenger disaster) when their luck runs out.</p>
+<p>Every six months I predict that a headline-grabbing prompt injection attack is coming soon, and every six months it doesn't happen. This is my most recent version of that prediction!</p>
+<h4 id="1-year-k-k-p-parrots-will-have-an-outstanding-breeding-season">1 year: Kākāpō parrots will have an outstanding breeding season <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8&amp;t=3006s" class="predictions-video-link">▶ 50:06</a></h4>
+
+<p>(I dropped this one to lighten the mood after a discussion of the deep sense of existential dread that many programmers are feeling right now!)</p>
+<blockquote>
+<p>I think that Kākāpō parrots in New Zealand are going to have an outstanding breeding season. The reason I think this is that the Rimu trees are in fruit right now. There's only 250 of them,  and they only breed if the Rimu trees have a good fruiting. The Rimu trees have been terrible since 2019, but this year the Rimu trees were all blooming. There are researchers saying that all 87 females of breeding age might lay an egg. And for a species with only 250 remaining parrots that's great news.</p>
+</blockquote>
+<p>(I just <a href="https://en.wikipedia.org/wiki/K%C4%81k%C4%81p%C5%8D#Population_timeline">checked Wikipedia</a> and I was right with the parrot numbers but wrong about the last good breeding season, apparently 2022 was a good year too.)</p>
+<p>In a year with precious little in the form of good news I am utterly delighted to share this story. Here's more:</p>
+<ul>
+<li>
+<a href="https://blog.doc.govt.nz/2025/06/27/kakapo-breeding-season-2026/">Kākāpō breeding season 2026</a> introduction from the Department of Conservation from June 2025 .</li>
+<li>
+<a href="https://www.auckland.ac.nz/en/news/2025/12/03/bumper-breeding-season-for-kakapo-on-the-cards.html">Bumper breeding season for kākāpō on the cards</a> - 3rd December 2025, University of Auckland.</li>
+</ul>
+<p>I don't often use AI-generated images on this blog, but the Kākāpō image the Oxide team created for this episode is just <em>perfect</em>:</p>
+<p><img src="https://static.simonwillison.net/static/2026/oxide-kakapo.jpg" alt="A beautiful green Kākāpō surrounded by candles gazes into a crystal ball" style="max-width: 100%;" /></p>
+
+<h4 id="3-years-the-coding-agents-jevons-paradox-for-software-engineering-will-resolve-one-way-or-the-other">3 years: the coding agents Jevons paradox for software engineering will resolve, one way or the other <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8&amp;t=3277s" class="predictions-video-link">▶ 54:37</a></h4>
+
+<blockquote>
+<p>We will find out if the <a href="https://en.wikipedia.org/wiki/Jevons_paradox">Jevons paradox</a> saves our careers or not. This is a big question that anyone who's a software engineer has right now: we are driving the cost of actually producing working code down to a fraction of what it used to cost. Does that mean that our careers are completely devalued and we all have to learn to live on a tenth of our incomes, or does it mean that the demand for software, for custom software goes up by a factor of 10 and now our skills are even <em>more</em> valuable because you can hire me and I can build you 10 times the software I used to be able to? I think by three years we will know for sure which way that one went.</p>
+</blockquote>
+<p>The quote says it all. There are two ways this coding agents thing could go: it could turn out software engineering skills are devalued, or it could turn out we're more valuable and effective than ever before.</p>
+<p>I'm crossing my fingers for the latter! So far it feels to me like it's working out that way.</p>
+
+<h4 id="3-years-someone-will-build-a-new-browser-using-mainly-ai-assisted-coding-and-it-won-t-even-be-a-surprise">3 years: Someone will build a new browser using mainly AI-assisted coding and it won't even be a surprise <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8&amp;t=3913s" class="predictions-video-link">▶ 65:13</a></h4>
+
+<blockquote>
+<p>I think somebody will have built a full web browser mostly using AI assistance, and it won't even be surprising. Rolling a new web browser is one of the most complicated software projects I can imagine[...] the cheat code is the conformance suites. If there are existing tests that it'll get so much easier.</p>
+</blockquote>
+<p>A common complaint today from AI coding skeptics is that LLMs are fine for toy projects but can't be used for anything large and serious.</p>
+<p>I think within 3 years that will be comprehensively proven incorrect, to the point that it won't even be controversial anymore.</p>
+<p>I picked a web browser here because so much of the work building a browser involves writing code that has to conform to an enormous and daunting selection of both formal tests and informal websites-in-the-wild.</p>
+<p>Coding agents are <em>really good</em> at tasks where you can define a concrete goal and then set them to work iterating in that direction.</p>
+<p>A web browser is the most ambitious project I can think of that leans into those capabilities.</p>
+
+<h4 id="6-years-typing-code-by-hand-will-go-the-way-of-punch-cards">6 years: Typing code by hand will go the way of punch cards <a href="https://www.youtube.com/watch?v=lVDhQMiAbR8&amp;t=4839s" class="predictions-video-link">▶ 80:39</a></h4>
+
+<blockquote>
+<p>I think the job of being paid money to type code into a computer will go the same way as punching punch cards [...] in six years time, I do not think anyone will be paid to just to do the thing where you type the code. I think software engineering will still be an enormous career. I just think the software engineers won't be spending multiple hours of their day in a text editor typing out syntax.</p>
+</blockquote>
+<p>The more time I spend on AI-assisted programming the less afraid I am for my job, because it turns out building software - especially at the rate it's now possible to build - still requires enormous skill, experience and depth of understanding.</p>
+<p>The skills are changing though! Being able to read a detailed specification and transform it into lines of code is the thing that's being automated away. What's left is everything else, and the more time I spend working with coding agents the larger that "everything else" becomes.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/predictions">predictions</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/kakapo">kakapo</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/oxide">oxide</a>, <a href="https://simonwillison.net/tags/bryan-cantrill">bryan-cantrill</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Thu, 8 Jan 2026 19:42:13 +0000</pubDate></item><item><title>How Google Got Its Groove Back and Edged Ahead of OpenAI</title><link>https://simonwillison.net/2026/Jan/8/how-google-got-its-groove-back/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.wsj.com/tech/ai/google-ai-openai-gemini-chatgpt-b766e160">How Google Got Its Groove Back and Edged Ahead of OpenAI</a></strong></p>
 I picked up a few interesting tidbits from this Wall Street Journal piece on Google's recent hard won success with Gemini.</p>
 <p>Here's the origin of the name "Nano Banana":</p>
 <blockquote>
@@ -671,8 +749,4 @@ Today in extremely niche projects, I got fed up of Claude Code creating GitHub A
 
 </details>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/tv">tv</a>, <a href="https://simonwillison.net/tags/training-data">training-data</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 27 Dec 2025 15:43:34 +0000</pubDate></item><item><title>Quoting Boris Cherny</title><link>https://simonwillison.net/2025/Dec/27/boris-cherny/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/bcherny/status/2004887829252317325"><p>A year ago, Claude struggled to generate bash commands without escaping issues. It worked for seconds or minutes at a time. We saw early signs that it may become broadly useful for coding one day.</p>
-<p>Fast forward to today. In the last thirty days, I landed 259 PRs -- 497 commits, 40k lines added, 38k lines removed. Every single line was written by Claude Code + Opus 4.5.</p></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/bcherny/status/2004887829252317325">Boris Cherny</a>, creator of Claude Code</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Sat, 27 Dec 2025 14:13:43 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/tv">tv</a>, <a href="https://simonwillison.net/tags/training-data">training-data</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 27 Dec 2025 15:43:34 +0000</pubDate></item></channel></rss>
