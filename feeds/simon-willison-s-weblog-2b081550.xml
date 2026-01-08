@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Adam Wathan</title><link>https://simonwillison.net/2026/Jan/7/adam-wathan/#atom-everything</link><description><![CDATA[<blockquote cite="https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957"><p>[...] the reality is that 75% of the people on our engineering team lost their jobs here yesterday because of the brutal impact AI has had on our business. And every second I spend trying to do fun free things for the community like this is a second I'm not spending trying to turn the business around and make sure the people who are still here are getting their paychecks every month. [...]</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>How Google Got Its Groove Back and Edged Ahead of OpenAI</title><link>https://simonwillison.net/2026/Jan/8/how-google-got-its-groove-back/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.wsj.com/tech/ai/google-ai-openai-gemini-chatgpt-b766e160">How Google Got Its Groove Back and Edged Ahead of OpenAI</a></strong></p>
+I picked up a few interesting tidbits from this Wall Street Journal piece on Google's recent hard won success with Gemini.</p>
+<p>Here's the origin of the name "Nano Banana":</p>
+<blockquote>
+<p>Naina Raisinghani, known inside Google for working late into the night, needed a name for the new tool to complete the upload. It was 2:30 a.m., though, and nobody was around. So she just made one up, a mashup of two nicknames friends had given her: Nano Banana.</p>
+</blockquote>
+<p>The WSJ credit OpenAI's Daniel Selsam with un-retiring Sergei Brin:</p>
+<blockquote>
+<p>Around that time, Google co-founder Sergey Brin, who had recently retired, was at a party chatting with a researcher from OpenAI named Daniel Selsam, according to people familiar with the conversation. Why, Selsam asked him, wasn’t he working full time on AI. Hadn’t the launch of ChatGPT captured his imagination as a computer scientist?</p>
+<p>ChatGPT was on its way to becoming a household name in AI chatbots, while Google was still fumbling to get its product off the ground. Brin decided Selsam had a point and returned to work.</p>
+</blockquote>
+<p>And we get some rare concrete user numbers:</p>
+<blockquote>
+<p>By October, Gemini had more than 650 million monthly users, up from 450 million in July.</p>
+</blockquote>
+<p>The LLM usage number I see cited most often is OpenAI's 800 million weekly active users for ChatGPT. That's from October 6th at OpenAI DevDay so it's comparable to these Gemini numbers, albeit not directly since it's weekly rather than monthly actives.</p>
+<p>I'm also never sure what counts as a "Gemini user" - does interacting via Google Docs or Gmail count or do you need to be using a Gemini chat interface directly?
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46528389">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/nano-banana">nano-banana</a></p>]]></description><pubDate>Thu, 8 Jan 2026 15:32:08 +0000</pubDate></item><item><title>Quoting Adam Wathan</title><link>https://simonwillison.net/2026/Jan/7/adam-wathan/#atom-everything</link><description><![CDATA[<blockquote cite="https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957"><p>[...] the reality is that 75% of the people on our engineering team lost their jobs here yesterday because of the brutal impact AI has had on our business. And every second I spend trying to do fun free things for the community like this is a second I'm not spending trying to turn the business around and make sure the people who are still here are getting their paychecks every month. [...]</p>
 <p>Traffic to our docs is down about 40% from early 2023 despite Tailwind being more popular than ever. The docs are the only way people find out about our commercial products, and without customers we can't afford to maintain the framework. [...]</p>
 <p>Tailwind is growing faster than it ever has and is bigger than it ever has been, and our revenue is down close to 80%. Right now there's just no correlation between making Tailwind easier to use and making development of the framework more sustainable.</p></blockquote>
 <p class="cite">&mdash; <a href="https://github.com/tailwindlabs/tailwindcss.com/pull/2388#issuecomment-3717222957">Adam Wathan</a>, CEO, Tailwind Labs</p>
@@ -654,30 +675,4 @@ Today in extremely niche projects, I got fed up of Claude Code creating GitHub A
 <p>Fast forward to today. In the last thirty days, I landed 259 PRs -- 497 commits, 40k lines added, 38k lines removed. Every single line was written by Claude Code + Opus 4.5.</p></blockquote>
 <p class="cite">&mdash; <a href="https://twitter.com/bcherny/status/2004887829252317325">Boris Cherny</a>, creator of Claude Code</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Sat, 27 Dec 2025 14:13:43 +0000</pubDate></item><item><title>textarea.my on GitHub</title><link>https://simonwillison.net/2025/Dec/27/textarea-my/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/antonmedv/textarea">textarea.my on GitHub</a></strong></p>
-Anton Medvedev built <a href="https://textarea.my/">textarea.my</a>, which he describes as:</p>
-<blockquote>
-<p>A <em>minimalist</em> text editor that lives entirely in your browser and stores everything in the URL hash.</p>
-</blockquote>
-<p>It's ~160 lines of HTML, CSS and JavaScript and it's worth reading the whole thing. I picked up a bunch of neat tricks from this!</p>
-<ul>
-<li><code>&lt;article contenteditable="plaintext-only"&gt;</code> - I did not know about the <code>plaintext-only</code> value, supported across <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/contentEditable">all the modern browsers</a>.</li>
-<li>It uses <code>new CompressionStream('deflate-raw')</code> to compress the editor state so it can fit in a shorter fragment URL.</li>
-<li>It has a neat custom save option which triggers if you hit <code>((e.metaKey || e.ctrlKey) &amp;&amp; e.key === 's')</code> - on <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/showSaveFilePicker">browsers that support it</a> (mainly Chrome variants) this uses <code>window.showSaveFilePicker()</code>, other browsers get a straight download - in both cases generated using <code>URL.createObjectURL(new Blob([html], {type: 'text/html'}))</code></li>
-</ul>
-<p>The <code>debounce()</code> function it uses deserves a special note:</p>
-<pre><span class="pl-k">function</span> <span class="pl-en">debounce</span><span class="pl-kos">(</span><span class="pl-s1">ms</span><span class="pl-kos">,</span> <span class="pl-s1">fn</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-  <span class="pl-k">let</span> <span class="pl-s1">timer</span>
-  <span class="pl-k">return</span> <span class="pl-kos">(</span>...<span class="pl-s1">args</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-    <span class="pl-en">clearTimeout</span><span class="pl-kos">(</span><span class="pl-s1">timer</span><span class="pl-kos">)</span>
-    <span class="pl-s1">timer</span> <span class="pl-c1">=</span> <span class="pl-en">setTimeout</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">fn</span><span class="pl-kos">(</span>...<span class="pl-s1">args</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s1">ms</span><span class="pl-kos">)</span>
-  <span class="pl-kos">}</span>
-<span class="pl-kos">}</span></pre>
-
-<p>That's really elegant. The goal of <code>debounce(ms, fn)</code> is to take a function and a timeout (e.g. 100ms) and ensure that the function runs at most once every 100ms.</p>
-<p>This one works using a closure variable <code>timer</code> to capture the <code>setTimeout</code> time ID. On subsequent calls that timer is cancelled and a new one is created - so if you call the function five times in quick succession it will execute just once, 100ms after the last of that sequence of calls.
-
-    <p><small></small>Via <a href="https://lobste.rs/s/st1mpl/lightest_notes_app_implementation_111">lobste.rs</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a></p>]]></description><pubDate>Sat, 27 Dec 2025 03:23:34 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Sat, 27 Dec 2025 14:13:43 +0000</pubDate></item></channel></rss>
