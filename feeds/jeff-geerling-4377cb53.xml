@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Local Email Debugging with Mailpit</title><link>https://www.jeffgeerling.com/blog/2026/mailpit-local-email-debugging/</link><description><![CDATA[<p>For the past decade, I've used <a href="https://github.com/mailhog/MailHog">Mailhog</a> for local email debugging. Besides working on web applications that deal with email, I've long used email as the primary notification system for comments on the blog.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Raspberry Pi Pico Mini Rack GPS Clock</title><link>https://www.jeffgeerling.com/blog/2026/pico-gps-clock-mini-rack/</link><description><![CDATA[<p>I wanted to have the most accurate timepiece possible mounted in my mini rack. Therefore I built this:</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/pico-gps-clock-mini-rack/pico-gps-clock-mini-rack.jpg"
+ alt="Raspberry Pi Pico GPS Clock for Mini Rack" width="700" height="auto">
+</figure>
+
+<p>This is a GPS-based clock running on a Raspberry Pi Pico in a custom 1U 10&quot; rack faceplate. The clock displays time based on a GPS input, and will not display time until a GPS timing lock has been acquired.</p>
+<ul>
+<li>When you turn on the Pico, the display reads <code>----</code></li>
+<li>Upon 3D fix, you get a time on the clock, and the colon starts blinking</li>
+<li>If the 3D fix is lost, the colon goes solid</li>
+<li>When the 3D fix is regained, the colon starts blinking again</li>
+</ul>
+<p>For full details on designing and building this clock, see:</p>]]></description><pubDate>Mon, 12 Jan 2026 15:00:00 +0000</pubDate></item><item><title>Local Email Debugging with Mailpit</title><link>https://www.jeffgeerling.com/blog/2026/mailpit-local-email-debugging/</link><description><![CDATA[<p>For the past decade, I've used <a href="https://github.com/mailhog/MailHog">Mailhog</a> for local email debugging. Besides working on web applications that deal with email, I've long used email as the primary notification system for comments on the blog.</p>
 <p>I built an <a href="https://github.com/geerlingguy/ansible-role-mailhog">Ansible role for Mailhog</a>, and it was one of the main features of <a href="https://www.jeffgeerling.com/blog/2015/major-improvements-drupal-vm/">Drupal VM</a>, a popular local development environment for Drupal I sunset 3 years ago.</p>
 <p>Unfortunately, barring any future updates from the maintainers, it seems like <a href="https://github.com/mailhog/MailHog/issues/466">Mailhog has not been maintained</a> for four years now. It still <em>works</em>, but something as complex as an email debugging environment needs ongoing maintenance to stay relevant.</p>]]></description><pubDate>Fri, 9 Jan 2026 03:30:00 +0000</pubDate></item><item><title>Raspberry Pi is cheaper than a Mini PC again (that&apos;s not good)</title><link>https://www.jeffgeerling.com/blog/2026/raspberry-pi-cheaper-than-mini-pc/</link><description><![CDATA[<p>Almost a year ago, I found that <a href="https://www.jeffgeerling.com/blog/2025/intel-n100-better-value-raspberry-pi/">N100 Mini PCs were cheaper than a decked-out Raspberry Pi 5</a>. So comparing systems with:</p>
 <ul>
@@ -106,11 +118,4 @@
 <p>The <a href="https://s.minisforum.com/4hRFZbj">Minisforum MS-R1</a> uses the same Cix CD8180 Arm SoC as the <a href="https://www.jeffgeerling.com/blog/2025/radxa-orion-o6-brings-arm-midrange-pc">Orion O6 I reviewed earlier this year</a>. But everything else about this thing is different.</p>
 <p>What this thing <em>should</em> be, is a box that runs Linux and can compete with at least an Apple M1 Mac mini, or a mid-range Mini PC. But what we <em>got</em>... is something different.</p>
 <h2 id="video">Video</h2>
-<p>Hate reading? I also published a video on the MS-R1 on my YouTube channel. Watch it here, or scroll on past.</p>]]></description><pubDate>Mon, 10 Nov 2025 16:01:10 +0000</pubDate></item><item><title>Converting hot dog plasma video to sound with OpenCV</title><link>https://www.jeffgeerling.com/blog/2025/converting-hot-dog-plasma-video-sound-opencv/</link><description><![CDATA[<p>When you ground a hot dog to an AM radio tower, it generates plasma.</p>
-<div style="text-align: center;">
-<video style="max-width: 95%; width: 640px; height: auto;" autoplay loop muted>
- <source src="./hotdog-am-tower-plasma-compressed.mp4" type="video/mp4" />
- Your browser does not support the video tag.
-</video>
-</div>
-<p>While the hot dog's flesh is getting vaporized, a tiny plasma arc moves the air around it back and forth. And because this tower is an AM tower, it uses <a href="https://en.wikipedia.org/wiki/Amplitude_modulation"><em>Amplitude</em> Modulation</a>, where a transmitter changes the amplitude of a carrier wave up and down. Just like a speaker cone moving up and down, the plasma arc from the hot dog turns that modulation into audible sound.</p>]]></description><pubDate>Fri, 7 Nov 2025 16:15:39 +0000</pubDate></item></channel></rss>
+<p>Hate reading? I also published a video on the MS-R1 on my YouTube channel. Watch it here, or scroll on past.</p>]]></description><pubDate>Mon, 10 Nov 2025 16:01:10 +0000</pubDate></item></channel></rss>

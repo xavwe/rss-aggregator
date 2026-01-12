@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>OpenAI employees… are you okay?</title><link>https://drewdevault.com/2025/11/08/2025-11-08-OpenAI-employees-are-you-okay.html</link><description><![CDATA[<p>You might have seen <a href="https://edition.cnn.com/2025/11/06/us/openai-chatgpt-suicide-lawsuit-invs-vis">an article</a> making the rounds this week, about a young
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>Redesigning my microkernel from the ground up</title><link>https://drewdevault.com/2026/01/12/2026-01-12-Hermes-from-the-ground-up.html</link><description><![CDATA[<p><a href="https://drewdevault.com/2022/06/13/helios.html">As you may recall</a>, circa 2022-2023 I was working on a
+microkernel written in Hare named Helios. Helios was largely inspired by and
+modelled after the design of <a href="https://sel4.systems/">seL4</a> and was my first
+major foray into modern OS development that was serious enough to get to a
+somewhat useful state of functionality, with drives for some real hardware,
+filesystems, and an environment for running user programs of a reasonable level
+of sophistication.</p>
+<p>Helios development went strong for a while but eventually it slowed and
+eventually halted in a state of design hell. Since Helios was my first major OS
+project at this scale and with this much ambition, the design and implementation
+ended up with a lot of poor assumptions that made it a pretty weak foundation
+for building a complete OS upon. In late 2023 I more or less gave up on it and
+moved my OS development work out of the realm of writing code and back into the
+realm of thinking really hard about how to design operating systems.</p>
+<p>What followed was a couple of years of design thinking, developing small scale
+design experiments, and doing deeper research into prior art &ndash; reading papers
+and studying existing kernels. It was also during this period that I wrote
+<a href="https://drewdevault.com/2024/05/24/2024-05-24-Bunnix.html">Bunnix</a>, a working Unix clone, motivated in part by a desire to gain some
+first-hand experience working in the design and implementation of Unix-style
+operating systems &ndash; a fertile environment for learning a lot of the nuts and
+bolts of OS implementations by working against a complete and proven design.</p>
+<p>In August I was finally prepared to have another go. I decided to start over
+from scratch, importing and adapting and rewriting code from Helios and Bunnix
+on an as-needed basis to speed things up, and writing from scratch anything
+where the lessons learned in hindsight outweighed the benefits of adapting
+existing code.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>The result is <a href="https://git.sr.ht/~sircmpwn/hermes">Hermes</a>.</p>
+<p>Hermes has not yet reached feature parity with Helios, lacking some IPC features
+and an aarch64 port, but already it&rsquo;s significantly more robust and thoughtfully
+designed than Helios.</p>
+<p>The big glitzy feature that most obviously distinguishes Hermes from Helios is
+that Hermes supports symmetric multiprocessing (SMP), which is to say, running
+on multiple CPU cores. This time around, I finally listened to the advice I&rsquo;d
+been hearing in osdev circles for years and implemented SMP as early as possible
+to avoid dealing with tons of problems adding multiprocessing to an otherwise
+mature kernel.</p>
+<p>The multicore scheduler at the heart of Hermes is surprisingly simple, actually.
+It uses relatively ordinary per-CPU run queues. Each new task, once scheduleable,
+is scheduled, in order of preference, on (1) the CPU matching its affinity, (2)
+any currently idle CPU, or (3) a random CPU. If a CPU would idle, it first tries
+to <a href="https://en.wikipedia.org/wiki/Work_stealing">steal</a> a pending task from another CPU. The most important
+parts of the scheduler are less than 200 lines of code (<a href="https://git.sr.ht/~sircmpwn/hermes/tree/main/item/sched/sched.ha">[1]</a>, <a href="https://git.sr.ht/~sircmpwn/hermes/tree/main/item/sched/runq.ha">[2]</a>).</p>
+<p>The less obviously impressive improvements from Helios to Hermes are numerous.
+The syscall and IPC ABIs were rethought from the ground up &ndash; one of the major
+goals of the redesign. I also moved from an seL4-style capability derivation
+graph &ndash; which is quite complex to implement and reason about &ndash; to reference
+counting to manage the lifetimes of kernel resources. Resource management in
+general is much simpler and should improve the performance of the kernel
+substantially.</p>
+<p>I&rsquo;ve also taken a much different approach to organizing the code, to allow the
+kernel and many of the things around it &ndash; its bootloaders and the userspace
+that runs the kernel test suite &ndash; share a lot more code than was possible in
+Helios, making a lot of the non-kernel code a lot easier to write and maintain.</p>
+<p>The userspace is also a substantial upgrade in design from Helios, or at least I
+hope it will be when more of it takes shape. Rather than developing a
+specialized Hare standard library, independent of the upstream Hare standard
+library, for writing drivers and low-level services, I have started with a port
+of the upstream Hare standard library and built low-level driver and service
+support libraries around it. The userspace is streamlined considerably by doing
+so, giving these low-level components access to a more comfortable and
+featureful programming environment and reducing the complexity of the system by
+making various components more uniform in their design.</p>
+<p>Finally, I&rsquo;ve taken a much more serious approach to testing Hermes and making
+it as robust and complete as possible in real-world use-cases. I borrowed the
+EFI bootloader from Bunnix and repurposed it for Hermes, opening up a lot of
+newer hardware, and I have written a more comprehensive test suite and run and
+verified it on much more real-world hardware. I have about ten devices which all
+(consistently!) pass the Hermes test suite. Feel free to <a href="https://redacted.moe/dl/69a8581c.iso">try it out on
+yours</a> as well and let me know how it goes!</p>
+<p>That&rsquo;s all there is to say for now, but I hope to keep you in the loop as I
+continue working on this for a while. The userspace is starting to take shape
+and soon(™) I hope to start building out block device drivers, some filesystems,
+and enough support code to run a shell and a handful of useful programs. In the
+meantime, feel free to poke around the code and play around with it. There is
+also some <a href="https://hermes.ares-os.org/">early documentation</a> available for you
+to read if you wish. I&rsquo;m hanging out in #ares on Libera Chat if you have any
+questions.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>I also took the opportunity to acknowledge critics of my internally inconsistent naming scheme, and started choosing codenames within a single pantheon.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>]]></description><pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate></item><item><title>OpenAI employees… are you okay?</title><link>https://drewdevault.com/2025/11/08/2025-11-08-OpenAI-employees-are-you-okay.html</link><description><![CDATA[<p>You might have seen <a href="https://edition.cnn.com/2025/11/06/us/openai-chatgpt-suicide-lawsuit-invs-vis">an article</a> making the rounds this week, about a young
 man who ended his life after ChatGPT encouraged him to do so. The chat logs are
 really upsetting.</p>
 <p>Someone two degrees removed from me took their life a few weeks ago. A close
