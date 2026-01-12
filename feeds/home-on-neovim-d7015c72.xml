@@ -408,7 +408,7 @@ makes the next one scheduled for July 4th.</p>]]></description><pubDate>Fri, 6 J
 </ul>
 <h2 id="next">Next</h2>
 <p>Concrete high-level feature areas and changes.</p>
-<h3 id="future-unknown-release"><a href="https://github.com/neovim/neovim/milestone/43">Future (unknown release)</a></h3>
+<h3 id="future-unknown-release">Future (unknown release)</h3>
 <ul>
 <li><a href="https://github.com/neovim/neovim/issues/20451">Prepare for 1.0</a></li>
 <li>Multicursor, super-macros</li>
