@@ -257,7 +257,7 @@ infrastructure!</p>]]></description><pubDate>Tue, 14 Apr 2020 00:00:00 +0000</pu
 View <a href="https://summerofcode.withgoogle.com/organizations/6095582066638848/">our page on the GSoC website</a>
 for details. Our <a href="https://github.com/neovim/neovim/wiki/GSoC-2019-Ideas">ideas list</a>
 runneth over! You&rsquo;re also welcome to propose other ideas in
-<a href="https://gitter.im/neovim/neovim">chat</a> or on the
+<a href="https://neovim.io/#chat">chat</a> or on the
 <a href="https://github.com/neovim/neovim/issues">ticket tracker</a>.</p>
 <h2 id="results-from-last-year">Results from last year</h2>
 <p>In our first GSoC ever, we mentored two students who both completed their
@@ -306,9 +306,12 @@ project in my experience so far.
 <h2 id="general-news">General News</h2>
 <h3 id="gitterim-for-neovim">Gitter.im for Neovim</h3>
 <p>Now in addition to the <a href="https://groups.google.com/forum/#!forum/neovim">mailing list</a> and IRC channel, you can hop
-into the <a href="https://gitter.im/neovim/neovim">Neovim chat room</a> provided through
-<a href="https://gitter.im/">Gitter.im</a>. It has a convenient web interface but also allows you
-to connect using your <a href="https://irc.gitter.im/">favorite IRC client</a>.</p>]]></description><pubDate>Fri, 3 Apr 2015 00:00:00 +0000</pubDate></item><item><title>Newsletter #4 - Thanksvimming Day</title><link>/news/2014/11/</link><description><![CDATA[<blockquote>
+into the <a href="https://neovim.io/#chat">Neovim chat room</a>.</p>
+<h3 id="black-duck-2014-open-source-rookie">Black Duck 2014 Open Source Rookie</h3>
+<p><a href="https://www.blackducksoftware.com/">Black Duck</a>, a company that helps other corporations in the
+adoption of open source software, chose Neovim as one of the projects to feature
+this past year. The company annually recognizes some of the top new open source
+projects that started during the year.</p>]]></description><pubDate>Fri, 3 Apr 2015 00:00:00 +0000</pubDate></item><item><title>Newsletter #4 - Thanksvimming Day</title><link>/news/2014/11/</link><description><![CDATA[<blockquote>
 <p>The way to &ldquo;win&rdquo; at open source is to be consistent and steady.</p>
 </blockquote>
 <p>Welcome to the fourth newsletter for Neovim, the project that aims to overhaul
