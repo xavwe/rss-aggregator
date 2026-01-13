@@ -70,6 +70,7 @@ Classic prompt injection attack:</p>
 <p>I couldn't figure out how to close the right sidebar so the artifact ended up cramped into a thin column but it did work. I expect Anthropic will fix that display bug pretty quickly.</p>
 <h4 id="isn-t-this-just-claude-code-">Isn't this just Claude Code?</h4>
 <p>I've seen a few people ask what the difference between this and regular Claude Code is. The answer is <em>not a lot</em>. As far as I can tell Claude Cowork is regular Claude Code wrapped in a less intimidating default interface and with a filesystem sandbox configured for you without you needing to know what a "filesystem sandbox" is.</p>
+<p><strong>Update</strong>: It's more than just a filesystem sandbox - I had Claude Code reverse engineer the Claude app and <a href="https://gist.github.com/simonw/35732f187edbe4fbd0bf976d013f22c8">it found out</a> that Claude uses VZVirtualMachine - the Apple Virtualization Framework - and downloads and boots a custom Linux root filesystem.</p>
 <p>I think that's a really smart product. Claude Code has an enormous amount of value that hasn't yet been unlocked for a general audience, and this seems like a pragmatic approach.</p>
 
 <h4 id="the-ever-present-threat-of-prompt-injection">The ever-present threat of prompt injection</h4>
