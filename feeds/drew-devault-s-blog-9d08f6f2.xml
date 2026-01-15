@@ -17679,7 +17679,7 @@ server, write the username to it, and splice the connection into stdout. Much
 simpler than the server. Future improvements might rewrite the CRLF to LF, but
 that&rsquo;s not particularly important.</p>]]></description><pubDate>Thu, 24 Jun 2021 00:00:00 +0000</pubDate></item><item><title>Status update, June 2021</title><link>https://drewdevault.com/2021/06/15/Status-update-June-2021.html</link><description><![CDATA[<p>Hiya! Got another status update for you. First, let me share this picture that
 my dad and I took on our recent astronomy trip (click for full res):</p>
-<p><a href="https://redacted.moe/f/a3b37775.jpg"><img src="https://l.sr.ht/o750.jpg" alt="A long-exposure picture of the night sky. Thousands of stars are visible, as well as the band of the milky way."></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/o750.jpg"><img src="https://drewdevault.com/l.sr.ht/o750.jpg" alt="A long-exposure picture of the night sky. Thousands of stars are visible, as well as the band of the milky way."></a></p>
 <p>Bonus Venus:</p>
 <p><img src="https://redacted.moe/f/6574aa37.png" alt="A bright white circle against a dark background"></p>
 <p>So, what&rsquo;s new? With SourceHut, there are a few neat goings-on. For one, thanks
@@ -24349,7 +24349,7 @@ here are interesting, but aren&rsquo;t important to the metaphor. At the
 termination shock begins the <em>heliosheath</em>. This is a turbulent place where
 particles from the sun and from the interstellar medium mix. The interactions in
 this area are complicated and interesting, you should read up about it later.</p>
-<p><img src="https://legacy.sr.ht/_FIT.svg" alt="Picture of a faucet pouring into a sink"></p>
+<p><img src="https://drewdevault.com/l.sr.ht/_FIT.svg" alt="Picture of a faucet pouring into a sink"></p>
 <div class="text-center">
   <small>Yanpas via Wikimedia Commons, CC-BY-SA</small>
 </div>
@@ -25779,7 +25779,7 @@ fixed alongside these changes, and I&rsquo;ve implemented a lot of improvements 
 the billing system as well. All of these should address some inconveniences
 which have been frustrating users for a while now. As for names.sr.ht, let&rsquo;s
 just share another teaser screenshot:</p>
-<p><a href="https://sr.ht/LLkW.png"><img src="https://sr.ht/LLkW.png" alt="Screenshot of domain contact management on names.sr.ht"></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/LLkW.png"><img src="https://drewdevault.com/l.sr.ht/LLkW.png" alt="Screenshot of domain contact management on names.sr.ht"></a></p>
 <p>I also received my <a href="https://www.pine64.org/pinephone/">PinePhone</a> this week, and
 I&rsquo;ve been terribly excited to work on it. I&rsquo;ve already sent a few patches to
 postmarketOS upstream, and intend to write more, to get sway working well as a
@@ -26340,7 +26340,7 @@ directly to <code>/dev/lp</code> (or <code>/dev/usb/lp9</code> in my case) and i
 Slightly more sophisticated instructions can be written to them with ANSI escape
 sequences, just like a terminal. They can also be rigged up to CUPS, then you
 can use something like <code>man -t 5 scdoc</code> to produce printouts like this:</p>
-<p><a href="https://sr.ht/gHCA.jpg"><img src="https://sr.ht/gHCA.jpg" alt=""></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/gHCA.jpg"><img src="https://drewdevault.com/l.sr.ht/gHCA.jpg" alt=""></a></p>
 <p>Plugging the printer into Linux and writing out pages isn&rsquo;t much for hack value,
 however. What I really wanted to make was something resembling an old-school
 TTY - teletypewriter. So I wrote some <a href="https://git.sr.ht/~sircmpwn/lpsh">glue code in
@@ -26496,7 +26496,7 @@ worth the trip - but I truly am sick of travelling. Now, I can enjoy some time
 at home, working on free and open source software.</p>
 <p>I have a video to share today, of a workflow on git.sr.ht that I&rsquo;m very excited
 about: sending patchsets as emails from the web.</p>
-<video src="https://sr.ht/_fUk.webm" controls muted>
+<video src="https://drewdevault.com/l.sr.ht/_fUk.webm" controls muted>
   Your web browser does not support the webm video codec. Please consider using
   web browsers that support free and open standards.
 </video>
@@ -26523,7 +26523,7 @@ blog</a> and I&rsquo;ll
 be writing more on <a href="https://sourcehut.org">sourcehut.org</a> later.</p>
 <p>Wrapping up Sourcehut news, I&rsquo;ll leave you with an out-of-context screenshot of
 a mockup I made this month:</p>
-<p><a href="https://sr.ht/_yhw.png"><img src="https://sr.ht/_yhw.png" alt="Screenshot of a Sourcehut DNS service showing DNS records managed by zone
+<p><a href="https://drewdevault.com/l.sr.ht/_yhw.png"><img src="https://drewdevault.com/l.sr.ht/_yhw.png" alt="Screenshot of a Sourcehut DNS service showing DNS records managed by zone
 files in a git repository"></a></p>
 <p>Let&rsquo;s move on to Wayland news. We&rsquo;ve started the planning for the next sway
 release, and it&rsquo;s shaping up to be really cool. We expect to ship patches which
@@ -27046,7 +27046,7 @@ home here in Philadelphia. At least until I leave for
 <a href="https://xdc2019.x.org/">XDC</a> in Montreal 2 weeks from now. Someday I&rsquo;ll have
 some rest&hellip; throughout all of these wild travels, I&rsquo;ve been hard at work on my
 free software projects. Let&rsquo;s get started with this month&rsquo;s status update!</p>
-<p><img src="https://sr.ht/iuDE.jpg" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/iuDE.jpg" alt=""></p>
 <p style="text-align: center">
   <small>Great view from a hike on O'ahu</small>
 </p>
@@ -27061,7 +27061,7 @@ and reliable Wayland desktop. The features which were added are subtle and serve
 to improve sway&rsquo;s status as a member of the broader ecosystem - sway 1.2
 supports the new <a href="https://github.com/mate-desktop/mate-panel/pull/991">layer shell support in the MATE panel</a>, and the
 same improvements are already helping with the development of other software.</p>
-<p><a href="https://sr.ht/9Oro.png"><img src="https://sr.ht/9Oro.png" alt="Screenshot of MATE panel running on sway"></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/9Oro.png"><img src="https://drewdevault.com/l.sr.ht/9Oro.png" alt="Screenshot of MATE panel running on sway"></a></p>
 <p style="text-align: center">
   <small>Rest assured, the weird alignment issues were fixed</small>
 </p>
@@ -27084,7 +27084,7 @@ page, in one C source file and no dependencies. If you&rsquo;re looking for a go
 afternoon project (or weekend, for some utilities), how about picking up your
 favorite <a href="https://pubs.opengroup.org/onlinepubs/9699919799/">POSIX</a> tool and
 sending along an implementation?</p>
-<p><a href="https://builds.sr.ht/~sircmpwn/job/88955"><img src="https://sr.ht/DSxS.png" alt="Screenshot of ctools test suite"></a></p>
+<p><a href="https://builds.sr.ht/~sircmpwn/job/88955"><img src="https://drewdevault.com/l.sr.ht/DSxS.png" alt="Screenshot of ctools test suite"></a></p>
 <p>With these projects, along with ~mcf&rsquo;s <a href="https://git.sr.ht/~mcf/cproc">cproc</a>,
 we&rsquo;re starting to see a simple and elegant operating system come together -
 exactly the kind I wish we already had. To track our progress towards this goal,
@@ -27104,7 +27104,7 @@ list.</p>
 from work&hellip; though for me a &ldquo;day off&rdquo; is a day where I write less than 1,000
 lines of code. Thank you again for your support - it means the world to me. I&rsquo;ll
 see you next month!</p>
-<p><img src="https://sr.ht/1cuE.jpg" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/1cuE.jpg" alt=""></p>
 <p style="text-align: center">
   <small>Had the best seats at a concert in Tokyo!</small>
 </p>]]></description><pubDate>Sun, 15 Sep 2019 00:00:00 +0000</pubDate></item><item><title>How I decide between many programming languages</title><link>https://drewdevault.com/2019/09/08/Enough-to-decide.html</link><description><![CDATA[<p>I have a few old standards in my toolbelt that I find myself calling upon most
@@ -27412,7 +27412,7 @@ you can now SSH into the build environment.</p>
 </small>
 <p>The next time your build fails on builds.sr.ht, you&rsquo;ll probably notice the
 following message:</p>
-<p><img src="https://sr.ht/thL-.png" alt="Screenshot of builds.sr.ht showing a prompt to SSH into the failed build
+<p><img src="https://drewdevault.com/l.sr.ht/thL-.png" alt="Screenshot of builds.sr.ht showing a prompt to SSH into the failed build
 VM and examine it"></p>
 <p>After the build fails, we process everything normally - sending emails,
 webhooks, and so on - but keep the VM booted for an additional 10 minutes. If
@@ -27478,7 +27478,7 @@ overhaul which moved wikis out of man.sr.ht&rsquo;s dedicated git subsystem and 
 git.sr.ht repositories, allowing you to make your wiki out of a branch of your
 main project repo or browse the git data on the web. I&rsquo;ll be posting more sr.ht
 news to sr.ht-announce later today if you want to hear more!</p>
-<p><img src="https://sr.ht/thL-.png" alt="Screenshot of a failed build on builds.sr.ht offering SSH access to the build
+<p><img src="https://drewdevault.com/l.sr.ht/thL-.png" alt="Screenshot of a failed build on builds.sr.ht offering SSH access to the build
 environment"></p>
 <p><a href="https://git.sr.ht/~sircmpwn/aerc/refs/0.2.0">aerc 0.2.0</a> has been released,
 which included nearly 200 changes from 34 contributors. I&rsquo;m grateful to the
@@ -27501,7 +27501,7 @@ well to a cool project from the Sway community: Jason Francis&rsquo;s
 <a href="https://github.com/cyclopsian/wdisplays">wdisplays</a>, a GUI for arranging and
 configuring displays on wlroots-based desktops. The changes necessary for it to
 work will land in sway 1.2, and users building from git can try it out today.</p>
-<p><img src="https://sr.ht/iyU4.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/iyU4.png" alt=""></p>
 <p>On the DRM leasing and VR for Wayland work I was discussing in the last update,
 I&rsquo;m happy to share that I&rsquo;ve got it working with SteamVR! I&rsquo;ve written a
 <a href="https://drewdevault.com/2019/08/09/DRM-leasing-and-VR-for-Wayland.html">detailed blog post</a> which
@@ -28075,7 +28075,7 @@ href="https://sourcehut.org">buying a sourcehut.org subscription</a>. Thank you!
 src="https://drewdevault.com/img/party.png" /> These allow you to decorate your code with arbitrary
 links and markdown. The end result looks something like this:</p>
 <p><strong>NOTICE</strong>: Annotations were ultimately removed from sourcehut.</p>
-<p><img src="https://sr.ht/w767.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/w767.png" alt=""></p>
 <small class="text-muted">
   <a href="https://sourcehut.org">SourceHut</a> is the "hacker's forge", a
   100% open-source platform for hosting Git &amp; Mercurial repos, bug trackers,
@@ -28311,14 +28311,14 @@ which is already highly scorned behavior on most IRC channels. Only the GUI
 users come away from this happy, and on IRC they&rsquo;re in the minority.</p>
 <p>Some IRC clients (Matrix) have this feature today, but most Matrix users don&rsquo;t
 realize what a nuisance they&rsquo;re being on the chat. Here&rsquo;s what they see:</p>
-<p><img src="https://sr.ht/VOeY.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/VOeY.png" alt=""></p>
 <p>And here&rsquo;s what I see:</p>
-<p><img src="https://sr.ht/HZ7Z.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/HZ7Z.png" alt=""></p>
 <p>Conservative improvements built on top of existing IRC norms, such as <a href="https://thelounge.chat/">The
 Lounge</a>, are much better. Most people post images on
 IRC as URLs, which clients can do a quick HEAD request against and embed if the
 mimetype is appropriate:</p>
-<p><img src="https://sr.ht/9RsR.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/9RsR.png" alt=""></p>
 <p>For most of these features, I think that people who have and think they need
 them are in fact unhappier for having them. What are some of the most common
 complaints from Slack users et al? &ldquo;It&rsquo;s distracting.&rdquo; &ldquo;It&rsquo;s hard to keep up
@@ -28545,7 +28545,7 @@ networking, a keybinding system closer to vims, and embedded terminal emulator
 allowing you to compose emails and read new ones at the same time. It builds on
 this foundation with a lot of new and exciting features. For example, its
 &ldquo;filter&rdquo; feature allows us to review patches with syntax highlighting:</p>
-<p><img src="https://sr.ht/JoqH.png" alt="Screenshot of aerc displaying a patch"></p>
+<p><img src="https://drewdevault.com/l.sr.ht/JoqH.png" alt="Screenshot of aerc displaying a patch"></p>
 <p>The embedded terminal emulator also allows us convenient access to nearby git
 repositories for running tests against incoming patches, pushing the changes
 once accepted, or anything else you might want to do. Want to run
@@ -28683,7 +28683,7 @@ which arrive on the mailing list. Thanks to <a href="https://git.sr.ht/~emersion
 library</a> Simon Ser wrote for
 me&hellip; almost a year ago&hellip; I&rsquo;m able to take a thread of emails discussing a
 patch and organically convert them into inline feedback on the web.</p>
-<p><a href="https://lists.sr.ht/~philmd/qemu/patches/5556"><img src="https://sr.ht/sjtE.png" alt=""></a></p>
+<p><a href="https://lists.sr.ht/~philmd/qemu/patches/5556"><img src="https://drewdevault.com/l.sr.ht/sjtE.png" alt=""></a></p>
 <small style="display: block; text-align: center;">
   Click the screenshot to visit this page on the web
 </small>
@@ -29345,7 +29345,7 @@ I do have some additional progress to share outside of the big sway 1.0 news.
 In the last update, I mentioned that I got a Librem 5 devkit from Guido
 Günther<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> at FOSDEM. My plans were to get this up and running with sway and
 start improving touch support, and I&rsquo;ve accomplished both:</p>
-<p><img src="https://sr.ht/fGxf.jpg" alt="A picture of a Librem5 devkit running pmOS and sway"></p>
+<p><img src="https://drewdevault.com/l.sr.ht/fGxf.jpg" alt="A picture of a Librem5 devkit running pmOS and sway"></p>
 <p>As you can see, I also got <a href="https://postmarketos.org/">postmarketOS</a> running,
 and I love it - I hope to work with them a lot in the future. The <a href="https://github.com/swaywm/sway/pull/3711">first
 patch</a> for improving touch support in
@@ -29366,7 +29366,7 @@ Next week I&rsquo;ll be starting work on adding a Wayland backend to Godot so th
 Godot-based games can run on Wayland compositors directly. Here&rsquo;s an example
 compositor running on Godot:</p>
 <p>&lt;video
-src=&ldquo;<a href="https://sr.ht/9bV-.webm%22">https://sr.ht/9bV-.webm&quot;</a>
+src=&quot;/l.sr.ht/9bV-.webm&quot;
 autoplay muted loop controls
 style=&ldquo;max-width: 100%;&rdquo;</p>
 <blockquote>
@@ -29400,7 +29400,7 @@ a more permanent RISC-V setup. Some of this is working towards getting RISC-V
 ready for builds.sr.ht users to take advantage of - that relay is for cutting
 power to the board to force a reboot when it misbehaves - but a lot of this is
 also useful for my own purposes in porting musl &amp; Alpine Linux.</p>
-<p><img src="https://sr.ht/M7me.jpg" alt="Picture of a 1U chassis with a bunch of custom components within"></p>
+<p><img src="https://drewdevault.com/l.sr.ht/M7me.jpg" alt="Picture of a 1U chassis with a bunch of custom components within"></p>
 <p>One problem I&rsquo;m still trying to solve is the microSD card. I don&rsquo;t want to run
 untrusted builds.sr.ht code when that microSD card is plugged in. I&rsquo;ve been
 working on some prototyping (breaking out the old soldering iron) to make a
@@ -29538,7 +29538,7 @@ thing on any page to grab your attention should be the thing that brought you
 there. Consider <a href="https://git.sr.ht/~sircmpwn/git.sr.ht/tree/master/gitsrht/service.py">the source file view on git.sr.ht</a>. For
 reference, here are similar pages on <a href="https://github.com/torvalds/linux/blob/master/init/main.c">GitHub</a> and
 <a href="https://gitlab.freedesktop.org/libinput/libinput/blob/master/src/evdev.c">Gitlab</a>.</p>
-<p><a href="https://git.sr.ht/~sircmpwn/git.sr.ht/tree/master/gitsrht/service.py"><img src="https://sr.ht/kkJm.png" alt="Screenshot of git.sr.ht"></a></p>
+<p><a href="https://git.sr.ht/~sircmpwn/git.sr.ht/tree/master/gitsrht/service.py"><img src="https://drewdevault.com/l.sr.ht/kkJm.png" alt="Screenshot of git.sr.ht"></a></p>
 <style>
 img {
   box-shadow: 0 0 2px 2px #888;
@@ -29570,7 +29570,7 @@ towards the tutorials. Red is also used throughout for dangerous actions, like
 deleting things.  Each button also is unambiguous and relies on the text within
 itself rather than the text nearby: the git.sr.ht repository deletion page uses
 &ldquo;Delete $reponame&rdquo;, rather than &ldquo;Continue&rdquo;.</p>
-<p><img src="https://sr.ht/d6Vx.png" alt="Screenshot of repo deletion UI"></p>
+<p><img src="https://drewdevault.com/l.sr.ht/d6Vx.png" alt="Screenshot of repo deletion UI"></p>
 <p>The last important point in sourcehut&rsquo;s design is the use of icons, or rather
 the lack thereof. Icons are used extremely conservatively on sr.ht. Interactive
 icons (things you are expected to click) are never shown without text that
@@ -29738,7 +29738,7 @@ programming languages should compete with each other in an attempt to become the
 perfect solution to every problem.  This is impossible, and attempts will just
 create a messy kitchen sink that solves every problem poorly.</p>
 <p><img
-src="https://sr.ht/TxC_.jpg"
+src="https://drewdevault.com/l.sr.ht/TxC_.jpg"
 alt="Nina Tucker from Fullmetal Alchemist"
 width="320" /></p>
 <p class="text-center">
@@ -30175,7 +30175,7 @@ to work on these projects full-time. Hitting this critical threshold of funding
 allows me to tremendously accelerate the progress of these projects. If you were
 impressed by what I built in my spare time, just wait until you see what we can
 accomplish now!</p>
-<p><img src="https://sr.ht/YsHI.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/YsHI.png" alt=""></p>
 <p>From the bottom of my heart, thank you for your support!</p>
 <p>P.S: I&rsquo;ll see you at <a href="https://fosdem.org/2019/">FOSDEM</a>! Ask me for a sticker.</p>]]></description><pubDate>Tue, 15 Jan 2019 00:00:00 +0000</pubDate></item><item><title>Backups &amp; redundancy at sr.ht</title><link>https://drewdevault.com/2019/01/13/Backups-and-redundancy-at-sr.ht.html</link><description><![CDATA[<p><a href="https://sr.ht">sr.ht</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> is <a href="https://git.sr.ht/~sircmpwn?search=sr.ht">100% open source</a> and I encourage
 people to install it on their own infrastructure, especially if they&rsquo;ll be
@@ -30441,7 +30441,7 @@ royalty-free <a href="https://en.wikipedia.org/wiki/Instruction_set_architecture
 architecture</a>, and
 the HiFive is an <a href="https://github.com/sifive">open</a> CPU implementing it. And here
 it is on my dining room table:</p>
-<p><img src="https://sr.ht/JMao.jpg" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/JMao.jpg" alt=""></p>
 <p>This board is <em>cool</em>. I&rsquo;m working on making this hardware available to
 <a href="https://meta.sr.ht">builds.sr.ht</a> users in the next few months, where I intend to use it to
 automate the remainder of the Alpine Linux port and make it available to any
@@ -32214,7 +32214,7 @@ cursor.</p>
 a &ldquo;pointer&rdquo; device, like a mouse. However, because batteries are not included,
 you will find that we only tell you what the pointer device is doing - we don&rsquo;t
 act on it. If you want to, for example, display a cursor image <img
-src="https://sr.ht/hf39.png" style="display: inline; margin: 0; padding: 0;" />
+src="https://drewdevault.com/l.sr.ht/hf39.png" style="display: inline; margin: 0; padding: 0;" />
 on screen which moves around when the mouse does, you need to wire this up
 yourself. We have tools which can help.</p>
 <p>First, let&rsquo;s talk about getting the cursor image to show. You can source the
@@ -32446,7 +32446,7 @@ you, after running git format-patch for you and giving you an opportunity to
 make any edits you like. Given that most popular email clients these days are
 awful and can&rsquo;t handle basic tasks like &ldquo;sending email&rdquo; properly, I strongly
 recommend this tool over attempting to send format-patch&rsquo;s output yourself.</p>
-<img style="max-width: 75%" src="https://sr.ht/wmKv.jpg" />
+<img style="max-width: 75%" src="https://drewdevault.com/l.sr.ht/wmKv.jpg" />
 <p style="text-align: center; max-width: 80%; margin: 1rem auto">
     <em>
         I put a notch in my keyboard for each person who ignores my advice,
@@ -32986,7 +32986,7 @@ roff), and to a lesser extent also fails criteria #2<sup id="fnref:1"><a href="#
 <a href="https://github.com/rtomayko/ronn">ronn</a> meets criteria #1 and #3, but it&rsquo;s
 written in Ruby and fails #2. All of these are fine for the niches they fill,
 but not what I&rsquo;m looking for. And as for GNU info&hellip; ugh.</p>
-<p><a href="https://xkcd.com/912/"><img src="https://sr.ht/nemf.png" alt=""></a></p>
+<p><a href="https://xkcd.com/912/"><img src="https://drewdevault.com/l.sr.ht/nemf.png" alt=""></a></p>
 <p>So, after tolerating less-than-optimal tools for too long, I eventually wrote
 the man page generator I&rsquo;d been promising for years:
 <a href="https://git.sr.ht/~sircmpwn/scdoc">scdoc</a>. In a nutshell, scdoc is a man page
@@ -33583,7 +33583,7 @@ done! Run mcwayface now, then the following commands:</p>
 <pre tabindex="0"><code>$ WAYLAND_DISPLAY=wayland-1 weston-simple-shm &amp;
 $ WAYLAND_DISPLAY=wayland-1 gnome-terminal -- htop
 </code></pre><p>To see the following beautiful image:</p>
-<p><img src="https://sr.ht/y_qN.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/y_qN.png" alt=""></p>
 <p>Run any other clients you like - many of them will work!</p>
 <p>We used a bit of a hack today by simply rendering all of the surfaces the
 <code>wl_compositor</code> knew of. In practice, we&rsquo;re going to need to extend our
@@ -35020,7 +35020,7 @@ number). During each sample, I record the ID, author, title, URL, status
 (dead/flagged/dupe/alive), score, number of comments, rank, and compute the rank
 based on <a href="https://news.ycombinator.com/item?id=231209">HN&rsquo;s published algorithm</a>.
 A note is made when the title, URL, or status changes.</p>
-<p><a href="https://hn.0x2237.club/post/15217697"><img src="https://sr.ht/IFCA.png" alt=""></a></p>
+<p><a href="https://hn.0x2237.club/post/15217697"><img src="https://drewdevault.com/l.sr.ht/IFCA.png" alt=""></a></p>
 <p>The information gathered is publicly available at
 <a href="https://hn.0x2237.club">hn.0x2237.club</a> (sorry about the stupid domain, I just
 picked one at random). You can search for most posts here going back to
@@ -35111,18 +35111,18 @@ banned without explanation, or that use slightly different language:</p>
 <p><a href="https://hn.algolia.com/?query=by:sctb%20we%20banned&amp;sort=byDate&amp;dateRange=all&amp;type=comment&amp;storyText=false&amp;prefix=false&amp;page=0">sctb&rsquo;s bans</a></p>
 <h2 id="data-based-insights">Data-based insights</h2>
 <p>Here&rsquo;s an example of a fairly common moderator action:</p>
-<p><img src="https://sr.ht/PhJM.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/PhJM.png" alt=""></p>
 <p><a href="https://hn.0x2237.club/post/15217697">This post</a> had its title changed at
 around 09-11-17 12:10 UTC, and had the rank artificially adjusted to push it
 further down the front page. We can tell that the drop was artificial just by
 correlating it with the known moderator action, but we can also compare it
 against the computed base rank:</p>
-<p><img src="https://sr.ht/IJQI.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/IJQI.png" alt=""></p>
 <p>Note however that the base rank is often wildly different from the rank observed
 in practice; the factors that go into adjusting it are rather complex. We can
 also see that despite the action, the post&rsquo;s score continued to increase, even
 at an accelerated pace:</p>
-<p><img src="https://sr.ht/FmNU.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/FmNU.png" alt=""></p>
 <p>This &ldquo;title change and derank&rdquo; is a fairly common action - here are some more
 examples from the past few days:</p>
 <p><a href="https://hn.0x2237.club/post/15219154">Betting on the Web - Why I Build PWAs</a></p>
@@ -35366,7 +35366,7 @@ to clipboard support. Look forward to it!</p>
 authors across 2,345 commits. These were written through 689 pull requests and
 624 issues. Sway packages are available today in the repos of almost every Linux
 distribution.</p>
-<p><a href="https://sr.ht/ICd5.png"><img src="https://sr.ht/ICd5.png" alt=""></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/ICd5.png"><img src="https://drewdevault.com/l.sr.ht/ICd5.png" alt=""></a></p>
 <p>For those who are new to the project, <a href="http://swaywm.org">Sway</a> is an
 i3-compatible Wayland compositor. That is, your existing <a href="http://i3wm.org/">i3</a>
 configuration file will work as-is on Sway, and your keybindings and colors and
@@ -35853,7 +35853,7 @@ various other packages that are useful on a proper install. I also compiled a
 kernel without support for loadable modules (on par with the static linking theme
 of agunix). If you make your own Linux distribution you will probably have to
 figure out modules yourself, likely implicating something like eudev.
-Eventually, I was able to get agunix <a href="https://sr.ht/OzCq.jpg">running on my
+Eventually, I was able to get agunix <a href="https://drewdevault.com/l.sr.ht/OzCq.jpg">running on my
 laptop</a>, which has now become my primary agunix dev
 machine (often via SSH from my dev desktop).</p>
 <p>The next stage for me was getting agunix.org up and running on agunix. I
@@ -35882,7 +35882,7 @@ authors across 2,263 commits. These were written through 653 pull requests and
 529 issues. Sway packages are available today in the official repos of pretty
 much every distribution except for Debian derivatives, and a PPA is available
 for those guys.</p>
-<p><a href="https://sr.ht/ICd5.png"><img src="https://sr.ht/ICd5.png" alt=""></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/ICd5.png"><img src="https://drewdevault.com/l.sr.ht/ICd5.png" alt=""></a></p>
 <p>For those who are new to the project, <a href="http://swaywm.org">Sway</a> is an
 i3-compatible Wayland compositor. That is, your existing <a href="http://i3wm.org/">i3</a>
 configuration file will work as-is on Sway, and your keybindings and colors and
@@ -36521,7 +36521,7 @@ rewards contributors for working on them.</p>
 authors across 2,067 commits. These were written through 589 pull requests and
 425 issues. Sway packages are available today in the official repos of Arch,
 Gentoo, Fedora, NixOS, openSUSE, Void Linux, and more. Sway looks like this:</p>
-<p><a href="https://sr.ht/ICd5.png"><img src="https://sr.ht/ICd5.png" alt=""></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/ICd5.png"><img src="https://drewdevault.com/l.sr.ht/ICd5.png" alt=""></a></p>
 <p>Side note: please add pretty screenshots of sway to <a href="https://github.com/SirCmpwn/sway/wiki/Screenshots-of-Sway">this wiki
 page</a>. Thanks!</p>
 <p>For those who are new to the project, <a href="http://swaywm.org">Sway</a> is an
@@ -36877,7 +36877,7 @@ bloated.</li>
 <li><a href="http://www.soundnodeapp.com/">Soundnode</a>, because it&rsquo;s not like any other
 music service&rsquo;s app obeys your OS&rsquo;s UI conventions</li>
 </ul>
-<p>Uh, that&rsquo;s it. That&rsquo;s the entire list.</p>]]></description><pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate></item><item><title>Getting on without Google</title><link>https://drewdevault.com/2016/11/16/Getting-on-without-Google.html</link><description><![CDATA[<p><img src="https://sr.ht/d718.png" alt=""></p>
+<p>Uh, that&rsquo;s it. That&rsquo;s the entire list.</p>]]></description><pubDate>Thu, 24 Nov 2016 00:00:00 +0000</pubDate></item><item><title>Getting on without Google</title><link>https://drewdevault.com/2016/11/16/Getting-on-without-Google.html</link><description><![CDATA[<p><img src="https://drewdevault.com/l.sr.ht/d718.png" alt=""></p>
 <p>I used Google for a long time, but have waned myself off of it over the past
 few years, and I finally deleted my account a little over a month ago. I feel so
 much better about my privacy now that I&rsquo;ve removed Google from the equation, and
@@ -36934,7 +36934,7 @@ this type of self-hosted music service.</p>
 aren&rsquo;t up to snuff (you get used to just being a bit more specific anyway), the
 bangs feature is absolutely indispensable. I recently patched Chromium for
 Android to support DuckDuckGo as a search engine as well:
-<a href="https://sr.ht/h4bZ.patch">here&rsquo;s the patch</a>.</p>
+<a href="https://drewdevault.com/l.sr.ht/h4bZ.patch">here&rsquo;s the patch</a>.</p>
 <h2 id="file-hosting">File hosting</h2>
 <p>Instead of using Google Drive, I&rsquo;m using a number of different solutions
 depending on what&rsquo;s most convenient at the time. I operate
@@ -37183,7 +37183,7 @@ over the course of 515 pull requests and 300 issues. Today, most i3 features are
 supported. In fact, as of last week, all of the features from the i3
 configuration I used before I started working on Sway are now supported by Sway.
 Today, Sway looks like this (click to expand):</p>
-<p><a href="https://sr.ht/ICd5.png"><img src="https://sr.ht/ICd5.png" alt=""></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/ICd5.png"><img src="https://drewdevault.com/l.sr.ht/ICd5.png" alt=""></a></p>
 <p>For those who are new to the project, <a href="http://swaywm.org">Sway</a> is an
 i3-compatible Wayland compositor. That is, your existing <a href="http://i3wm.org/">i3</a>
 configuration file will work as-is on Sway, and your keybindings and colors and
@@ -37425,7 +37425,7 @@ your calendar. Google can be subpoenaed or subverted<sup id="fnref:8"><a href="#
 companies won&rsquo;t even try<sup id="fnref:9"><a href="#fn:9" class="footnote-ref" role="doc-noteref">9</a></sup> to keep your data secret even when they aren&rsquo;t
 legally compelled to. I like this image from Maciej Cegłowski&rsquo;s excellent
 talk<sup id="fnref:10"><a href="#fn:10" class="footnote-ref" role="doc-noteref">10</a></sup> on website obesity about the state of most websites:</p>
-<p><img src="https://sr.ht/ks75.jpg" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/ks75.jpg" alt=""></p>
 <p>When you give all of this information to Google, Facebook, and others, you&rsquo;re
 basically waiving your fifth amendment<sup id="fnref:11"><a href="#fn:11" class="footnote-ref" role="doc-noteref">11</a></sup> rights.</p>
 <p>Once you do have control of your information, there are steps you should take to
@@ -37846,14 +37846,14 @@ and several other details, but I can include them all under
 <a href="https://gogs.sr.ht/SirCmpwn/dotfiles">version control</a> to keep my dotfiles
 synced between computers.</p>
 <p>Today, sway looks like this:</p>
-<p><a href="https://sr.ht/me1j.png"><img src="https://sr.ht/me1j.png" alt=""></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/me1j.png"><img src="https://drewdevault.com/l.sr.ht/me1j.png" alt=""></a></p>
 <p>We&rsquo;re now making our way towards Sway 1.0. I have put together a roadmap of the
 things we have done and the things that remain to do for Sway 1.0, which is
 available on the improved website <a href="http://swaywm.org/roadmap">here</a>. We are
 still now moving forward on many of these features, including the most asked for
 feature: the stacked &amp; tabbed window layouts, which is under development from
 Mikkel Oscar Lyderik. He&rsquo;s given me this screenshot to tease you with:</p>
-<p><img src="https://sr.ht/0CkR.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/0CkR.png" alt=""></p>
 <p>All of this is only possible thanks to the hard work of dozens of contributors.
 Here&rsquo;s the breakdown of <strong>lines of code per author</strong> for the top ten authors
 (with the difference from the previous State of Sway in parenthesis):</p>
@@ -38190,9 +38190,9 @@ through your settings for it and it&rsquo;ll change the default. Then you&rsquo;
 Tell your friends to do the same, and your email life will be happier.</p>]]></description><pubDate>Mon, 11 Apr 2016 00:00:00 +0000</pubDate></item><item><title>Integrating a VT220 into my life</title><link>https://drewdevault.com/2016/03/22/Integrating-a-VT220-into-my-life.html</link><description><![CDATA[<p>I bought a DEC VT220 terminal a while ago, and put it next to my desk at work. I
 use it to read emails on mutt now, and it&rsquo;s actually quite pleasant. There was
 some setup involved in making it as comfortable as possible, though.</p>
-<p><a href="https://sr.ht/BnAH.jpg"><img src="https://sr.ht/BnAH.jpg" alt="My desk at work"></a></p>
+<p><a href="https://drewdevault.com/vt220-long-shot.jpg"><img src="https://drewdevault.com/vt220-long-shot.jpg" alt="My desk at work"></a></p>
 <p>Here&rsquo;s the terminal up close:</p>
-<p><a href="https://sr.ht/TnC6.jpg"><img src="https://sr.ht/TnC6.jpg" alt="The terminal itself"></a></p>
+<p><a href="https://drewdevault.com/vt220-closeup.jpg"><img src="https://drewdevault.com/vt220-closeup.jpg" alt="The terminal itself"></a></p>
 <h2 id="hardware">Hardware</h2>
 <p>First, I have several pieces of hardware involved in this:</p>
 <ul>
@@ -38356,7 +38356,7 @@ issues. Of the 73 <a href="https://github.com/SirCmpwn/sway/issues/2">i3 feature
 tracking</a>, 51 are now supported, and
 I&rsquo;ve been using sway as my daily driver for a while now. Today, sway looks like
 this:</p>
-<p><a href="https://sr.ht/NCx_.png"><img src="https://sr.ht/NCx_.png" alt=""></a></p>
+<p><a href="https://drewdevault.com/l.sr.ht/NCx_.png"><img src="https://drewdevault.com/l.sr.ht/NCx_.png" alt=""></a></p>
 <p>For those who are new to the project, <a href="https://github.com/SirCmpwn/sway">sway</a>
 is an i3-compatible Wayland compositor. That is, your existing
 <a href="http://i3wm.org/">i3</a> configuration file will work as-is on sway, and your
@@ -38829,9 +38829,7 @@ This is a Javascript project that can:</p>
 <li>Decode the osu! beatmap format</li>
 <li>Play the map!</li>
 </ul>
-<p>In case you don&rsquo;t have any osz files hanging around, try out <a href="https://sr.ht/f30.osz">this
-one</a>, which is the one from the video above.</p>
-<p><img src="https://sr.ht/044.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/044.png" alt=""></p>
 <h2 id="osuweb-and-the-future">osu!web and the future</h2>
 <p>This part of the blog post is for non-technical readers, mostly osu players.
 osu!web is pretty cool, and I want to make it even better. My current plans are
@@ -38860,7 +38858,7 @@ difficulties</li>
 <li>Assets - a background image and optionally a skin (like a Minecraft texture
 pack)</li>
 </ul>
-<p><img src="https://sr.ht/ce6.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/ce6.png" alt=""></p>
 <p>We then load the *.osu files and decode them. They look similar to ini files or
 Unix config files. Here&rsquo;s a snippet:</p>
 <pre><code>[General]
@@ -38898,7 +38896,7 @@ which of these lines is a slider versus a hit circle versus a spinner and so on.
 <p>I sneakily loaded a beatmap in the background in your browser as you were
 reading. If you want to check it out, open up your console and play with the
 <code>track</code> object. Ignore all the disqus errors, they&rsquo;re irrelevant.</p>
-<p><img src="https://sr.ht/a81.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/a81.png" alt=""></p>
 <h2 id="enter-stage-web-audio">Enter stage: Web Audio</h2>
 <p>Web Audio had a bit of a rocky development cycle, what with Chrome thinking it&rsquo;s
 special and implementing a completely different standard from everyone else.
@@ -39034,7 +39032,7 @@ note):</p>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>I&rsquo;ve left out sliders, which again are pretty complicated. We&rsquo;ll get to them
 after you look at this screenshot again:</p>
-<p><img src="https://sr.ht/044.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/044.png" alt=""></p>
 <p>All of these hit objects are having their alpha and approach circle scale
 adjusted each frame by the above method. Since we&rsquo;re basing this on the
 timestamp of the map, a convenient side effect is that we can pass in any time
@@ -39043,7 +39041,7 @@ to see what the map should look like at that time.</p>
 <p>The hardest thing so far has been rendering sliders, which are hit objects that
 you&rsquo;re meant to click and hold as you move across the &ldquo;slider&rdquo;. They look like
 this:</p>
-<p><img src="https://sr.ht/c97.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/c97.png" alt=""></p>
 <p>The golden circle is the area you need to keep your mouse in if you want to pass
 this slider. Sliders are defined as a series of curves. There are a few kinds:</p>
 <ul>
@@ -39057,7 +39055,7 @@ stuff about sliders from. Each slider is currently generated using the
 now-deprecated &ldquo;peppysliders&rdquo; method, where the sprite is repeated along the
 curve several times. If you look carefully as a slider fades out, you can notice
 that this is the case.</p>
-<p><img src="https://sr.ht/787.png" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/787.png" alt=""></p>
 <p>The newer style of sliders involves rendering them with a custom shader. This
 should be possible with PIXI, but I haven&rsquo;t done any research on them yet.
 Again, I expect to be able to draw a lot of knowledge from reading the opsu
@@ -39570,7 +39568,7 @@ improve it. Whatever the case may be, if you have interest in this stuff, come
 hang out with us on IRC: <a href="http://webchat.freenode.net/?channels=knightos&amp;uio=d4">#knightos on
 irc.freenode.net</a>.</p>
 <hr>
-<p><img src="https://sr.ht/zhRB.jpg" alt=""></p>
+<p><img src="https://drewdevault.com/l.sr.ht/zhRB.jpg" alt=""></p>
 <p><strong>2018-08-31</strong>: This article was updated to fix some long-broken scripts and
 adjust everything to fit into the since-updated blog theme. The title was also
 changed from &ldquo;Porting an entire desktop toolchain to the browser with
