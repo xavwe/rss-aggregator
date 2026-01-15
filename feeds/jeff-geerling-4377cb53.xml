@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Raspberry Pi Pico Mini Rack GPS Clock</title><link>https://www.jeffgeerling.com/blog/2026/pico-gps-clock-mini-rack/</link><description><![CDATA[<p>I wanted to have the most accurate timepiece possible mounted in my mini rack. Therefore I built this:</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Raspberry Pi&apos;s new AI HAT adds 8GB of RAM for local LLMs</title><link>https://www.jeffgeerling.com/blog/2026/raspberry-pi-ai-hat-2/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/raspberry-pi-ai-hat-2/raspberry-pi-ai-hat-2.jpg"
+ alt="Raspberry Pi AI HAT&#43; 2" width="700" height="auto">
+</figure>
+
+<p>Today Raspberry Pi launched their new <a href="https://www.raspberrypi.com/products/ai-hat-plus-2/">$130 AI HAT+ 2</a> which includes a Hailo 10H and 8 GB of <a href="https://www.micron.com/products/memory/dram-components/lpddr4/part-catalog/part-detail/mt53e2g32d4de-046-wt-c">LPDDR4X RAM</a>.</p>
+<p>With that, the Hailo 10H is capable of running LLMs entirely standalone, freeing the Pi's CPU and system RAM for other tasks. The chip runs at a maximum of 3W, with 40 TOPS of INT8 NPU inference performance in addition to the equivalent 26 TOPS INT4 machine vision performance on the earlier AI HAT with Hailo 8.</p>]]></description><pubDate>Thu, 15 Jan 2026 08:00:00 +0000</pubDate></item><item><title>Raspberry Pi Pico Mini Rack GPS Clock</title><link>https://www.jeffgeerling.com/blog/2026/pico-gps-clock-mini-rack/</link><description><![CDATA[<p>I wanted to have the most accurate timepiece possible mounted in my mini rack. Therefore I built this:</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/pico-gps-clock-mini-rack/pico-gps-clock-mini-rack.jpg"
  alt="Raspberry Pi Pico GPS Clock for Mini Rack" width="700" height="auto">
 </figure>
@@ -111,11 +116,4 @@
 </figure>
 
 <p>We finally have Intel Arc GPUs working on the Pi <em>somewhat</em> stably—it required overcoming many small hurdles, but it looks like support could land in Raspberry Pi OS if we can get <a href="https://lore.kernel.org/lkml/20250715061837.2144388-1-zhangzhijie@bosc.ac.cn/">a simple patch upstreamed</a><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. If that happens, all you'd need to do to use an Intel card on a Pi is install a firmware package.</p>
-<p>The cards I've spent the most time with so far are:</p>]]></description><pubDate>Thu, 13 Nov 2025 15:06:28 +0000</pubDate></item><item><title>Minisforum stuffs an entire Arm Homelab in the MS-R1</title><link>https://www.jeffgeerling.com/blog/2025/minisforum-stuffs-entire-arm-homelab-ms-r1/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2025/minisforum-stuffs-entire-arm-homelab-ms-r1/minisforum-ms-r1-front.jpg"
- alt="Minisforum MS-R1 front" width="700" height="394">
-</figure>
-
-<p>The <a href="https://s.minisforum.com/4hRFZbj">Minisforum MS-R1</a> uses the same Cix CD8180 Arm SoC as the <a href="https://www.jeffgeerling.com/blog/2025/radxa-orion-o6-brings-arm-midrange-pc">Orion O6 I reviewed earlier this year</a>. But everything else about this thing is different.</p>
-<p>What this thing <em>should</em> be, is a box that runs Linux and can compete with at least an Apple M1 Mac mini, or a mid-range Mini PC. But what we <em>got</em>... is something different.</p>
-<h2 id="video">Video</h2>
-<p>Hate reading? I also published a video on the MS-R1 on my YouTube channel. Watch it here, or scroll on past.</p>]]></description><pubDate>Mon, 10 Nov 2025 16:01:10 +0000</pubDate></item></channel></rss>
+<p>The cards I've spent the most time with so far are:</p>]]></description><pubDate>Thu, 13 Nov 2025 15:06:28 +0000</pubDate></item></channel></rss>
