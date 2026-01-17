@@ -457,7 +457,13 @@ I picked up a few interesting tidbits from this Wall Street Journal piece on Goo
 <p>By October, Gemini had more than 650 million monthly users, up from 450 million in July.</p>
 </blockquote>
 <p>The LLM usage number I see cited most often is OpenAI's 800 million weekly active users for ChatGPT. That's from October 6th at OpenAI DevDay so it's comparable to these Gemini numbers, albeit not directly since it's weekly rather than monthly actives.</p>
-<p>I'm also never sure what counts as a "Gemini user" - does interacting via Google Docs or Gmail count or do you need to be using a Gemini chat interface directly?
+<p>I'm also never sure what counts as a "Gemini user" - does interacting via Google Docs or Gmail count or do you need to be using a Gemini chat interface directly?</p>
+<p><strong>Update 17th January 2025</strong>: <a href="https://twitter.com/lunixa380/status/2012610344741412909">@LunixA380 pointed out</a> that this 650m user figure comes from the <a href="https://abc.xyz/investor/news/news-details/2025/Alphabet-Announces-Third-Quarter-2025-Results-2025-mIRgD3AI4A/default.aspx">Alphabet 2025 Q3 earnings report</a> which says this (emphasis mine):</p>
+<blockquote>
+<p>"Alphabet had a terrific quarter, with double-digit growth across every major part of our business. We delivered our first-ever $100 billion quarter," said Sundar Pichai, CEO of Alphabet and Google.</p>
+<p>"[...] In addition to topping leaderboards, our first party models, like Gemini, now process 7 billion tokens per minute, via direct API use by our customers. <strong>The Gemini App now has over 650 million monthly active users</strong>.</p>
+</blockquote>
+<p>Presumably the "Gemini App" encompasses the Android and iPhone apps as well as direct visits to <a href="https://gemini.google.com/">gemini.google.com</a> - that seems to be the indication from Google's <a href="https://blog.google/products-and-platforms/products/gemini/gemini-3/">November 18th blog post</a> that also mentioned the 650m number.
 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46528389">Hacker News</a></small></p>
 
