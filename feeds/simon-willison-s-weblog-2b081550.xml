@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>FLUX.2-klein-4B Pure C Implementation</title><link>https://simonwillison.net/2026/Jan/18/flux2-klein-4b/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/antirez/flux2.c">FLUX.2-klein-4B Pure C Implementation</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Scaling long-running autonomous coding</title><link>https://simonwillison.net/2026/Jan/19/scaling-long-running-autonomous-coding/#atom-everything</link><description><![CDATA[<p><strong><a href="https://cursor.com/blog/scaling-agents">Scaling long-running autonomous coding</a></strong></p>
+Wilson Lin at Cursor has been doing some experiments to see how far you can push a large fleet of "autonomous" coding agents:</p>
+<blockquote>
+<p>This post describes what we've learned from running hundreds of concurrent agents on a single project, coordinating their work, and watching them write over a million lines of code and trillions of tokens.</p>
+</blockquote>
+<p>They ended up running planners and sub-planners to create tasks, then having workers execute on those tasks - similar to how Claude Code uses sub-agents. Each cycle ended with a judge agent deciding if the project was completed or not.</p>
+<p>In my predictions for 2026 <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#3-years-someone-will-build-a-new-browser-using-mainly-ai-assisted-coding-and-it-won-t-even-be-a-surprise">the other day</a> I said that by 2029:</p>
+<blockquote>
+<p>I think somebody will have built a full web browser mostly using AI assistance, and it won’t even be surprising. Rolling a new web browser is one of the most complicated software projects I can imagine[...] the cheat code is the conformance suites. If there are existing tests that it’ll get so much easier.</p>
+</blockquote>
+<p>I may have been off by three years, because Cursor chose "building a web browser from scratch" as their test case for their agent swarm approach:</p>
+<blockquote>
+<p>To test this system, we pointed it at an ambitious goal: building a web browser from scratch. The agents ran for close to a week, writing over 1 million lines of code across 1,000 files. You can explore <a href="https://github.com/wilsonzlin/fastrender">the source code on GitHub</a>.</p>
+</blockquote>
+<p>But how well did they do? Their initial announcement a couple of days ago was met with <a href="https://embedding-shapes.github.io/cursor-implied-success-without-evidence/">unsurprising skepticism</a>, especially when it became apparent that their GitHub Actions CI was failing and there were no build instructions in the repo.</p>
+<p>It looks like they addressed that within the past 24 hours. The <a href="https://github.com/wilsonzlin/fastrender/blob/main/README.md#build-requirements">latest README</a> includes build instructions which I followed on macOS like this:</p>
+<pre><code>cd /tmp
+git clone https://github.com/wilsonzlin/fastrender
+cd fastrender
+git submodule update --init vendor/ecma-rs
+cargo run --release --features browser_ui --bin browser
+</code></pre>
+<p>This got me a working browser window! Here are screenshots I took of google.com and my own website:</p>
+<p><img alt="The browser chrome is neat but has a garbled tab name at the top. The Google homepage looks mostly correct but the buttons are not styled correctly and the Google Search one has a huge plus icon floating near it." src="https://static.simonwillison.net/static/2026/cursor-google.png" /></p>
+<p><img alt="My blog looks mostly correct, but the right closing quotation mark on a quotation (which is implemented as a background image on the final paragraph) is displayed incorrectly multiple times." src="https://static.simonwillison.net/static/2026/cursor-simonwillison.jpg" /></p>
+<p>Honestly those are very impressive! You can tell they're not just wrapping an existing rendering engine because of those very obvious rendering glitches, but the pages are legible and look mostly correct.</p>
+<p>The FastRender repo even uses Git submodules <a href="https://github.com/wilsonzlin/fastrender/tree/main/specs">to include various WhatWG and CSS-WG specifications</a> in the repo, which is a smart way to make sure the agents have access to the reference materials that they might need.</p>
+<p>This is the second attempt I've seen at building a full web browser using AI-assisted coding in the past two weeks - the first was <a href="https://github.com/hiwavebrowser/hiwave">HiWave browser</a>, a new browser engine in Rust first announced <a href="https://www.reddit.com/r/Anthropic/comments/1q4xfm0/over_christmas_break_i_wrote_a_fully_functional/">in this Reddit thread</a>.</p>
+<p>When I made my 2029 prediction this is more-or-less the quality of result I had in mind. I don't think we'll see projects of this nature compete with Chrome or Firefox or WebKit any time soon but I have to admit I'm very surprised to see something this capable emerge so quickly.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/cursor">cursor</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a></p>]]></description><pubDate>Mon, 19 Jan 2026 05:12:51 +0000</pubDate></item><item><title>FLUX.2-klein-4B Pure C Implementation</title><link>https://simonwillison.net/2026/Jan/18/flux2-klein-4b/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/antirez/flux2.c">FLUX.2-klein-4B Pure C Implementation</a></strong></p>
 On 15th January Black Forest Labs, a lab formed by the creators of the original Stable Diffusion, released <a href="https://huggingface.co/black-forest-labs/FLUX.2-klein-4B">black-forest-labs/FLUX.2-klein-4B</a> - an Apache 2.0 licensed 4 billion parameter version of their FLUX.2 family.</p>
 <p>Salvatore Sanfilippo (antirez) decided to build a pure C and dependency-free implementation to run the model, with assistance from Claude Code and Claude Opus 4.5.</p>
 <p>Salvatore shared <a href="https://news.ycombinator.com/item?id=46670279#46671233">this note</a> on Hacker News:</p>
@@ -551,49 +582,4 @@ Depending on how you measure it, the tempo of Harder, Better, Faster, Stronger a
     <p>Tags: <a href="https://simonwillison.net/tags/music">music</a></p>]]></description><pubDate>Sat, 3 Jan 2026 05:57:07 +0000</pubDate></item><item><title>Quoting Will Larson</title><link>https://simonwillison.net/2026/Jan/2/will-larson/#atom-everything</link><description><![CDATA[<blockquote cite="https://lethain.com/company-ai-adoption/"><p>My experience is that <em>real</em> AI adoption on <em>real</em> problems is a complex blend of: domain context on the problem, domain experience with AI tooling, and old-fashioned IT issues. I’m deeply skeptical of any initiative for internal AI adoption that doesn’t anchor on all three of those. This is an advantage of earlier stage companies, because you can often find aspects of all three of those in a single person, or at least across two people. In larger companies, you need three different <em>organizations</em> doing this work together, this is just objectively hard</p></blockquote>
 <p class="cite">&mdash; <a href="https://lethain.com/company-ai-adoption/">Will Larson</a>, Facilitating AI adoption at Imprint</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/leadership">leadership</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/will-larson">will-larson</a></p>]]></description><pubDate>Fri, 2 Jan 2026 19:57:37 +0000</pubDate></item><item><title>The most popular blogs of Hacker News in 2025</title><link>https://simonwillison.net/2026/Jan/2/most-popular-blogs-of-hacker-news/#atom-everything</link><description><![CDATA[<p><strong><a href="https://refactoringenglish.com/blog/2025-hn-top-5/">The most popular blogs of Hacker News in 2025</a></strong></p>
-Michael Lynch maintains <a href="https://refactoringenglish.com/tools/hn-popularity/">HN Popularity Contest</a>, a site that tracks personal blogs on Hacker News and scores them based on how well they perform on that platform.</p>
-<p>The engine behind the project is the <a href="https://github.com/mtlynch/hn-popularity-contest-data/blob/master/data/domains-meta.csv">domain-meta.csv</a> CSV on GiHub, a hand-curated list of known personal blogs with author and bio and tag metadata, which Michael uses to separate out personal blog posts from other types of content.</p>
-<p>I came top of the rankings in 2023, 2024 and 2025 but I'm listed <a href="https://refactoringenglish.com/tools/hn-popularity/">in third place</a> for all time behind Paul Graham and Brian Krebs.</p>
-<p>I dug around in the browser inspector and was delighted to find that the data powering the site is served with open CORS headers, which means you can easily explore it with external services like Datasette Lite.</p>
-<p>Here's a convoluted window function query Claude Opus 4.5 <a href="https://claude.ai/share/8e1cb294-0ff0-4d5b-b83f-58e4c7fdb0d2">wrote for me</a> which, for a given domain, shows where that domain ranked for each year since it first appeared in the dataset:</p>
-<pre><span class="pl-s">with yearly_scores as (</span>
-<span class="pl-s">  select </span>
-<span class="pl-s">    domain,</span>
-<span class="pl-s">    strftime('%Y', date) as year,</span>
-<span class="pl-s">    sum(score) as total_score,</span>
-<span class="pl-s">    count(distinct date) as days_mentioned</span>
-<span class="pl-s">  from "hn-data"</span>
-<span class="pl-s">  group by domain, strftime('%Y', date)</span>
-<span class="pl-s">),</span>
-<span class="pl-s">ranked as (</span>
-<span class="pl-s">  select </span>
-<span class="pl-s">    domain,</span>
-<span class="pl-s">    year,</span>
-<span class="pl-s">    total_score,</span>
-<span class="pl-s">    days_mentioned,</span>
-<span class="pl-s">    rank() over (partition by year order by total_score desc) as rank</span>
-<span class="pl-s">  from yearly_scores</span>
-<span class="pl-s">)</span>
-<span class="pl-s">select </span>
-<span class="pl-s">  r.year,</span>
-<span class="pl-s">  r.total_score,</span>
-<span class="pl-s">  r.rank,</span>
-<span class="pl-s">  r.days_mentioned</span>
-<span class="pl-s">from ranked r</span>
-<span class="pl-s">where r.domain = :domain</span>
-<span class="pl-s">  and r.year &gt;= (</span>
-<span class="pl-s">    select min(strftime('%Y', date)) </span>
-<span class="pl-s">    from "hn-data"</span>
-<span class="pl-s">    where domain = :domain</span>
-<span class="pl-s">  )</span>
-<span class="pl-s">order by r.year desc</span></pre>
-
-<p>(I just noticed that the last <code>and r.year &gt;= (</code> clause isn't actually needed here.)</p>
-<p>My <a href="https://lite.datasette.io/?csv=https://hn-popularity.cdn.refactoringenglish.com/hn-data.csv#/data?sql=with+yearly_scores+as+%28%0A++select+%0A++++domain%2C%0A++++strftime%28%27%25Y%27%2C+date%29+as+year%2C%0A++++sum%28score%29+as+total_score%2C%0A++++count%28distinct+date%29+as+days_mentioned%0A++from+%22hn-data%22%0A++group+by+domain%2C+strftime%28%27%25Y%27%2C+date%29%0A%29%2C%0Aranked+as+%28%0A++select+%0A++++domain%2C%0A++++year%2C%0A++++total_score%2C%0A++++days_mentioned%2C%0A++++rank%28%29+over+%28partition+by+year+order+by+total_score+desc%29+as+rank%0A++from+yearly_scores%0A%29%0Aselect+%0A++r.year%2C%0A++r.total_score%2C%0A++r.rank%2C%0A++r.days_mentioned%0Afrom+ranked+r%0Awhere+r.domain+%3D+%3Adomain%0A++and+r.year+%3E%3D+%28%0A++++select+min%28strftime%28%27%25Y%27%2C+date%29%29+%0A++++from+%22hn-data%22%0A++++where+domain+%3D+%3Adomain%0A++%29%0Aorder+by+r.year+desc&amp;domain=simonwillison.net">simonwillison.net results</a> show me ranked 3rd in 2022, 30th in 2021 and 85th back in 2007 - though I expect there are many personal blogs from that year which haven't yet been manually added to Michael's list.</p>
-<p>Also useful is that every domain gets its own CORS-enabled CSV file with details of the actual Hacker News submitted from that domain, e.g. <code>https://hn-popularity.cdn.refactoringenglish.com/domains/simonwillison.net.csv</code>. Here's <a href="https://lite.datasette.io/?csv=https://hn-popularity.cdn.refactoringenglish.com/domains/simonwillison.net.csv#/data/simonwillison">that one in Datasette Lite</a>.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46465819">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/hacker-news">hacker-news</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-lite">datasette-lite</a>, <a href="https://simonwillison.net/tags/cors">cors</a></p>]]></description><pubDate>Fri, 2 Jan 2026 19:10:43 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/leadership">leadership</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/will-larson">will-larson</a></p>]]></description><pubDate>Fri, 2 Jan 2026 19:57:37 +0000</pubDate></item></channel></rss>
