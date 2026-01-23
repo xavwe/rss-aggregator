@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Qwen3-TTS Family is Now Open Sourced: Voice Design, Clone, and Generation</title><link>https://simonwillison.net/2026/Jan/22/qwen3-tts/#atom-everything</link><description><![CDATA[<p><strong><a href="https://qwen.ai/blog?id=qwen3tts-0115">Qwen3-TTS Family is Now Open Sourced: Voice Design, Clone, and Generation</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>SSH has no Host header</title><link>https://simonwillison.net/2026/Jan/22/ssh-has-no-host-header/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.exe.dev/ssh-host-header">SSH has no Host header</a></strong></p>
+<a href="https://exe.dev/">exe.dev</a> is a new hosting service that, for $20/month, gives you up to 25 VMs "that share 2 CPUs and 8GB RAM". Everything happens over SSH, including creating new VMs. Once configured you can sign into your exe.dev VMs like this:</p>
+<pre><code>ssh simon.exe.dev
+</code></pre>
+<p>Here's the clever bit: when you run the above command <code>exe.dev</code> signs you into your VM of that name... but they don't assign every VM its own IP address and SSH has no equivalent of the Host header, so how does their load balancer know <em>which</em> of your VMs to forward you on to?</p>
+<p>The answer is that while they don't assign a unique IP to every VM they <em>do</em> have enough IPs that they can ensure each of your VMs has an IP that is unique to your account.</p>
+<p>If I create two VMs they will each resolve to a separate IP address, each of which is shared with many other users. The underlying infrastructure then identifies my user account from my SSH public key and can determine which underlying VM to forward my SSH traffic to.
+
+    <p><small></small>Via <a href="https://lobste.rs/s/7oqiqi/ssh_has_no_host_header">lobste.rs</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/dns">dns</a>, <a href="https://simonwillison.net/tags/hosting">hosting</a>, <a href="https://simonwillison.net/tags/ssh">ssh</a></p>]]></description><pubDate>Thu, 22 Jan 2026 23:57:50 +0000</pubDate></item><item><title>Qwen3-TTS Family is Now Open Sourced: Voice Design, Clone, and Generation</title><link>https://simonwillison.net/2026/Jan/22/qwen3-tts/#atom-everything</link><description><![CDATA[<p><strong><a href="https://qwen.ai/blog?id=qwen3tts-0115">Qwen3-TTS Family is Now Open Sourced: Voice Design, Clone, and Generation</a></strong></p>
 I haven't been paying much attention to the state-of-the-art in speech generation models other than noting that they've got <em>really good</em>, so I can't speak for how notable this new release from Qwen is.</p>
 <p>From <a href="https://github.com/QwenLM/Qwen3-TTS/blob/main/assets/Qwen3_TTS.pdf">the accompanying paper</a>:</p>
 <blockquote>
@@ -12,19 +23,25 @@ I haven't been paying much attention to the state-of-the-art in speech generatio
   <source src="https://static.simonwillison.net/static/2026/qwen-tts-clone.wav" type="audio/wav">
   Your browser does not support the audio element.
 </audio></p>
-<p>It's important that everyone understands that voice cloning is now something that's available to anyone with a GPU and a few GBs of VRAM... or in this case a web browser that can access Hugging Face.
+<p>It's important that everyone understands that voice cloning is now something that's available to anyone with a GPU and a few GBs of VRAM... or in this case a web browser that can access Hugging Face.</p>
+<p><strong>Update</strong>: Prince Canuma <a href="https://x.com/Prince_Canuma/status/2014453857019904423">got this working</a> with his <a href="https://pypi.org/project/mlx-audio/">mlx-audio</a> library. I <a href="https://claude.ai/share/2e01ad60-ca38-4e14-ab60-74eaa45b2fbd">had Claude</a> turn that into <a href="https://github.com/simonw/tools/blob/main/python/q3_tts.py">a CLI tool</a> which you can run with <code>uv</code> ike this:</p>
+<pre><code>uv run https://tools.simonwillison.net/python/q3_tts.py \
+  'I am a pirate, give me your gold!' \
+  -i 'gruff voice' -o pirate.wav
+</code></pre>
+<p>The <code>-i</code> option lets you use a prompt to describe the voice it should use. On first run this downloads a 4.5GB model file from Hugging Face.
 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46719229">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/text-to-speech">text-to-speech</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/hugging-face">hugging-face</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Thu, 22 Jan 2026 17:42:34 +0000</pubDate></item><item><title>Quoting Thariq Shihipar</title><link>https://simonwillison.net/2026/Jan/22/thariq-shihipar/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/trq212/status/2014051501786931427"><p>Most people's mental model of Claude Code is that "it's just a TUI" but it should really be closer to "a small game engine".</p>
-<p>For each frame our pipeline constructs a scene graph with React then</p>
-<p>-&gt; layouts elements<br>
--&gt; rasterizes them to a 2d screen<br>
--&gt; diffs that against the previous screen<br>
--&gt; finally uses the diff to generate ANSI sequences to draw</p>
+    <p>Tags: <a href="https://simonwillison.net/tags/text-to-speech">text-to-speech</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/hugging-face">hugging-face</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/mlx">mlx</a>, <a href="https://simonwillison.net/tags/prince-canuma">prince-canuma</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Thu, 22 Jan 2026 17:42:34 +0000</pubDate></item><item><title>Quoting Chris Lloyd</title><link>https://simonwillison.net/2026/Jan/22/chris-lloyd/#atom-everything</link><description><![CDATA[<blockquote cite="https://news.ycombinator.com/item?id=46699072#46706040"><p>Most people's mental model of Claude Code is that "it's just a TUI" but it should really be closer to "a small game engine".</p>
+<p>For each frame our pipeline constructs a scene graph with React then:</p>
+<p>-&gt; layout elements<br>
+-&gt; rasterize them to a 2d screen<br>
+-&gt; diff that against the previous screen<br>
+-&gt; <em>finally</em> use the diff to generate ANSI sequences to draw</p>
 <p>We have a ~16ms frame budget so we have roughly ~5ms to go from the React scene graph to ANSI written.</p></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/trq212/status/2014051501786931427">Thariq Shihipar</a></p>
+<p class="cite">&mdash; <a href="https://news.ycombinator.com/item?id=46699072#46706040">Chris Lloyd</a>, Claude Code team at Anthropic</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/react">react</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Thu, 22 Jan 2026 15:34:22 +0000</pubDate></item><item><title>Claude&apos;s new constitution</title><link>https://simonwillison.net/2026/Jan/21/claudes-new-constitution/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/news/claude-new-constitution">Claude&#x27;s new constitution</a></strong></p>
 Late last year Richard Weiss <a href="https://www.lesswrong.com/posts/vpNG99GhbBoLov9og/claude-4-5-opus-soul-document">found something interesting</a> while poking around with the just-released Claude Opus 4.5: he was able to talk the model into regurgitating a document which was <em>not</em> part of the system prompt but appeared instead to be baked in during training, and which described Claude's core values at great length.</p>
@@ -618,12 +635,4 @@ Devastating critique of the new menu icons in macOS Tahoe by Nikita Prokopov, wh
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46497712">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/design">design</a>, <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/usability">usability</a></p>]]></description><pubDate>Mon, 5 Jan 2026 19:30:24 +0000</pubDate></item><item><title>Oxide and Friends Predictions 2026, today at 4pm PT</title><link>https://simonwillison.net/2026/Jan/5/oxide-and-friends-predictions-2026/#atom-everything</link><description><![CDATA[<p><strong><a href="https://discord.com/invite/QrcKGTTPrF">Oxide and Friends Predictions 2026, today at 4pm PT</a></strong></p>
-I joined the Oxide and Friends podcast <a href="https://simonwillison.net/2025/Jan/10/ai-predictions/">last year</a> to predict the next 1, 3 and 6 years(!) of AI developments. With hindsight I did very badly, but they're inviting me back again anyway to have another go.</p>
-<p>We will be recording live today at 4pm Pacific on their Discord - <a href="https://discord.com/invite/QrcKGTTPrF">you can join that here</a>, and the podcast version will go out shortly afterwards.</p>
-<p>I'll be recording at their office in Emeryville and then heading to <a href="https://www.thecrucible.org/">the Crucible</a> to learn how to make neon signs.
-
-    <p><small></small>Via <a href="https://bsky.app/profile/bcantrill.bsky.social/post/3mbovdf3h3s24">Bryan Cantrill</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/podcasts">podcasts</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/oxide">oxide</a></p>]]></description><pubDate>Mon, 5 Jan 2026 16:53:05 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/design">design</a>, <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/usability">usability</a></p>]]></description><pubDate>Mon, 5 Jan 2026 19:30:24 +0000</pubDate></item></channel></rss>
