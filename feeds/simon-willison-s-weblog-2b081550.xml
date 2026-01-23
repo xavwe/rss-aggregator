@@ -174,7 +174,7 @@ This is the standardization effort I've most wanted in the world of LLMs: a vend
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/json">json</a>, <a href="https://simonwillison.net/tags/standards">standards</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a></p>]]></description><pubDate>Thu, 15 Jan 2026 23:56:56 +0000</pubDate></item><item><title>The Design &amp; Implementation of Sprites</title><link>https://simonwillison.net/2026/Jan/15/the-design-implementation-of-sprites/#atom-everything</link><description><![CDATA[<p><strong><a href="https://fly.io/blog/design-and-implementation/">The Design &amp; Implementation of Sprites</a></strong></p>
-I <a href="https://simonwillison.net/2026/Jan/9/sprites-dev/">wrote about Sprites last week</a> Here's Thomas Ptacek from Fly with the insider details on how they work under the hood.</p>
+I <a href="https://simonwillison.net/2026/Jan/9/sprites-dev/">wrote about Sprites last week</a>. Here's Thomas Ptacek from Fly with the insider details on how they work under the hood.</p>
 <p>I like this framing of them as "disposable computers":</p>
 <blockquote>
 <p>Sprites are ball-point disposable computers. Whatever mark you mean to make, we’ve rigged it so you’re never more than a second or two away from having a Sprite to do it with.</p>
