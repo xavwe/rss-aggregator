@@ -2,6 +2,9 @@
 
 <iframe style="margin-top: 1.5em; margin-bottom: 1.5em;" width="560" height="315" src="https://www.youtube-nocookie.com/embed/bKrAcTf2pL4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen"> </iframe>
 
+<p>See my <a href="https://simonwillison.net/2026/Jan/19/scaling-long-running-autonomous-coding/">previous post</a> for my notes and screenshots from trying out FastRender myself.</p>
+
+
 <h4 id="what-fastrender-can-do-right-now">What FastRender can do right now</h4>
 <p>We started the conversation with a demo of FastRender loading different pages (<a href="https://www.youtube.com/watch?v=bKrAcTf2pL4&amp;t=195s">03:15</a>). The JavaScript engine isn't working yet so we instead loaded <a href="https://github.com/wilsonzlin/fastrender">github.com/wilsonzlin/fastrender</a>, <a href="https://en.wikipedia.org/">Wikipedia</a> and <a href="https://cnn.com">CNN</a> - all of which were usable, if a little slow to display.</p>
 <p>JavaScript had been disabled by one of the agents, which decided to add a feature flag! <a href="https://www.youtube.com/watch?v=bKrAcTf2pL4&amp;t=242s">04:02</a></p>
