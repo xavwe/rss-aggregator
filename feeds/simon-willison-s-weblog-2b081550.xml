@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Don&apos;t &quot;Trust the Process&quot;</title><link>https://simonwillison.net/2026/Jan/24/dont-trust-the-process/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.youtube.com/watch?v=4u94juYwLLM">Don&#x27;t &quot;Trust the Process&quot;</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Kākāpō Cam: Rakiura live stream</title><link>https://simonwillison.net/2026/Jan/25/kakapo-cam/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.doc.govt.nz/our-work/kakapo-recovery/what-we-do/kakapo-cam-rakiura-live-stream/">Kākāpō Cam: Rakiura live stream</a></strong></p>
+Critical update for this year's <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#1-year-k-k-p-parrots-will-have-an-outstanding-breeding-season">Kākāpō breeding season</a>: the New Zealand Department of Conservation have a livestream running of Rakiura's nest!</p>
+<blockquote>
+<p>You’re looking at the underground nest of 23-year-old Rakiura. She has chosen this same site to nest for all seven breeding seasons since 2008, a large cavity under a rātā tree. Because she returns to the site so reliably, we’ve been able to make modifications over the years to keep it safe and dry, including adding a well-placed hatch for monitoring eggs and chicks.</p>
+</blockquote>
+<p>Rakiura is a legendary Kākāpō:</p>
+<blockquote>
+<p>Rakiura hatched on 19 February 2002 on Whenua Hou/Codfish Island. She is the offspring of Flossie and Bill. Her name comes from the te reo Māori name for Stewart Island, the place where most of the founding kākāpō population originated.</p>
+<p>Rakiura has nine living descendants, three females and six males, across six breeding seasons. In 2008 came Tōitiiti, in 2009 Tamahou and Te Atapō, in 2011 Tia and Tūtoko, in 2014 Taeatanga and Te Awa, in 2019 Mati-mā and Tautahi. She also has many grandchicks.</p>
+</blockquote>
+<p>She laid her first egg of the season at 4:30pm NZ time on 22nd January. The livestream went live shortly afterwards, once she committed to this nest.</p>
+<p>The stream is <a href="https://www.youtube.com/watch?v=BfGL7A2YgUY">on YouTube</a>. I <a href="https://gisthost.github.io/?dc78322de89a2191c593215f109c65d7/index.html">used Claude Code</a> to write <a href="https://tools.simonwillison.net/python/#livestream-gifpy">a livestream-gif.py script</a> and used that to capture this sped-up video of the last few hours of footage, within which you can catch a glimpse of the egg!</p>
+<video autoplay muted loop controls playsinline style="width: 100%;">
+  <source src="https://static.simonwillison.net/static/2026/kakapo-timelapse.mp4" type="video/mp4">
+</video>
+
+    <p><small></small>Via <a href="https://www.metafilter.com/211927/The-only-parrot-to-have-a-polygynous-lek-breeding-system-sits-on-an-egg">MetaFilter</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/youtube">youtube</a>, <a href="https://simonwillison.net/tags/kakapo">kakapo</a>, <a href="https://simonwillison.net/tags/conservation">conservation</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sun, 25 Jan 2026 04:53:01 +0000</pubDate></item><item><title>Don&apos;t &quot;Trust the Process&quot;</title><link>https://simonwillison.net/2026/Jan/24/dont-trust-the-process/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.youtube.com/watch?v=4u94juYwLLM">Don&#x27;t &quot;Trust the Process&quot;</a></strong></p>
 Jenny Wen, Design Lead at Anthropic (and previously Director of Design at Figma) gave a provocative keynote at Hatch Conference in Berlin last September.</p>
 <p><img alt="Don't &quot;Trust the process&quot; slide, speaker shown on the left" src="https://static.simonwillison.net/static/2026/dont-trust-process.jpg" /></p>
 <p>Jenny argues that the Design Process - user research leading to personas leading to user journeys leading to wireframes... all before anything gets built - may be outdated for today's world.</p>
@@ -708,31 +727,4 @@ curl -X POST https://api.sprites.dev/v1/sprites/my-sprite/exec \
 <p>The more time I spend on AI-assisted programming the less afraid I am for my job, because it turns out building software - especially at the rate it's now possible to build - still requires enormous skill, experience and depth of understanding.</p>
 <p>The skills are changing though! Being able to read a detailed specification and transform it into lines of code is the thing that's being automated away. What's left is everything else, and the more time I spend working with coding agents the larger that "everything else" becomes.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/predictions">predictions</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/kakapo">kakapo</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/oxide">oxide</a>, <a href="https://simonwillison.net/tags/bryan-cantrill">bryan-cantrill</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a></p>]]></description><pubDate>Thu, 8 Jan 2026 19:42:13 +0000</pubDate></item><item><title>How Google Got Its Groove Back and Edged Ahead of OpenAI</title><link>https://simonwillison.net/2026/Jan/8/how-google-got-its-groove-back/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.wsj.com/tech/ai/google-ai-openai-gemini-chatgpt-b766e160">How Google Got Its Groove Back and Edged Ahead of OpenAI</a></strong></p>
-I picked up a few interesting tidbits from this Wall Street Journal piece on Google's recent hard won success with Gemini.</p>
-<p>Here's the origin of the name "Nano Banana":</p>
-<blockquote>
-<p>Naina Raisinghani, known inside Google for working late into the night, needed a name for the new tool to complete the upload. It was 2:30 a.m., though, and nobody was around. So she just made one up, a mashup of two nicknames friends had given her: Nano Banana.</p>
-</blockquote>
-<p>The WSJ credit OpenAI's Daniel Selsam with un-retiring Sergei Brin:</p>
-<blockquote>
-<p>Around that time, Google co-founder Sergey Brin, who had recently retired, was at a party chatting with a researcher from OpenAI named Daniel Selsam, according to people familiar with the conversation. Why, Selsam asked him, wasn’t he working full time on AI. Hadn’t the launch of ChatGPT captured his imagination as a computer scientist?</p>
-<p>ChatGPT was on its way to becoming a household name in AI chatbots, while Google was still fumbling to get its product off the ground. Brin decided Selsam had a point and returned to work.</p>
-</blockquote>
-<p>And we get some rare concrete user numbers:</p>
-<blockquote>
-<p>By October, Gemini had more than 650 million monthly users, up from 450 million in July.</p>
-</blockquote>
-<p>The LLM usage number I see cited most often is OpenAI's 800 million weekly active users for ChatGPT. That's from October 6th at OpenAI DevDay so it's comparable to these Gemini numbers, albeit not directly since it's weekly rather than monthly actives.</p>
-<p>I'm also never sure what counts as a "Gemini user" - does interacting via Google Docs or Gmail count or do you need to be using a Gemini chat interface directly?</p>
-<p><strong>Update 17th January 2025</strong>: <a href="https://twitter.com/lunixa380/status/2012610344741412909">@LunixA380 pointed out</a> that this 650m user figure comes from the <a href="https://abc.xyz/investor/news/news-details/2025/Alphabet-Announces-Third-Quarter-2025-Results-2025-mIRgD3AI4A/default.aspx">Alphabet 2025 Q3 earnings report</a> which says this (emphasis mine):</p>
-<blockquote>
-<p>"Alphabet had a terrific quarter, with double-digit growth across every major part of our business. We delivered our first-ever $100 billion quarter," said Sundar Pichai, CEO of Alphabet and Google.</p>
-<p>"[...] In addition to topping leaderboards, our first party models, like Gemini, now process 7 billion tokens per minute, via direct API use by our customers. <strong>The Gemini App now has over 650 million monthly active users</strong>.</p>
-</blockquote>
-<p>Presumably the "Gemini App" encompasses the Android and iPhone apps as well as direct visits to <a href="https://gemini.google.com/">gemini.google.com</a> - that seems to be the indication from Google's <a href="https://blog.google/products-and-platforms/products/gemini/gemini-3/">November 18th blog post</a> that also mentioned the 650m number.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46528389">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/nano-banana">nano-banana</a></p>]]></description><pubDate>Thu, 8 Jan 2026 15:32:08 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/predictions">predictions</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/kakapo">kakapo</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/oxide">oxide</a>, <a href="https://simonwillison.net/tags/bryan-cantrill">bryan-cantrill</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a></p>]]></description><pubDate>Thu, 8 Jan 2026 19:42:13 +0000</pubDate></item></channel></rss>
