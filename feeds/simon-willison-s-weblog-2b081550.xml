@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>the browser is the sandbox</title><link>https://simonwillison.net/2026/Jan/25/the-browser-is-the-sandbox/#atom-everything</link><description><![CDATA[<p><strong><a href="https://aifoc.us/the-browser-is-the-sandbox/">the browser is the sandbox</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>ChatGPT Containers can now run bash, pip/npm install packages, and download files</title><link>https://simonwillison.net/2026/Jan/26/chatgpt-containers/#atom-everything</link><description><![CDATA[<p>One of my favourite features of ChatGPT is its ability to write and execute code in a container. This feature launched as ChatGPT Code Interpreter <a href="https://simonwillison.net/2023/Apr/12/code-interpreter/">nearly three years ago</a>, was half-heartedly rebranded to "Advanced Data Analysis" at some point and is generally really difficult to find detailed documentation about. Case in point: it appears to have had a <em>massive</em> upgrade at some point in the past few months, and I can't find documentation about the new capabilities anywhere!</p>
+<p>Here are the most notable new features:</p>
+<ol>
+<li>ChatGPT can <strong>directly run Bash commands</strong> now. Previously it was limited to Python code only, although it could run shell commands via the Python <code>subprocess</code> module.</li>
+<li>
+<strong>It has Node.js</strong> and can run JavaScript directly in addition to Python. I also got it to run "hello world" in <strong>Ruby, Perl, PHP, Go, Java, Swift, Kotlin, C and C++</strong>. No Rust yet though!</li>
+<li>While the container still can't make outbound network requests, <strong><code>pip install package</code> and <code>npm install package</code> both work</strong> now via a custom proxy mechanism.</li>
+<li>ChatGPT can locate the URL for a file on the web and use a <code>container.download</code> tool to <strong>download that file and save it to a path</strong> within the sandboxed container.</li>
+</ol>
+<p>This is a substantial upgrade! ChatGPT can now write and then test code in 10 new languages (11 if you count Bash), can find files online and download them into the container, and can install additional packages via <code>pip</code> and <code>npm</code> to help it solve problems.</p>
+<p>(OpenAI <em>really</em> need to develop better habits at <a href="https://help.openai.com/en/articles/6825453-chatgpt-release-notes">keeping their release notes up-to-date</a>!)</p>
+<p>I was initially suspicious that maybe I'd stumbled into a new preview feature that wasn't available to everyone, but I <a href="https://chatgpt.com/share/6977aa7c-7bd8-8006-8129-8c9e25126fed">tried some experiments</a> in a free ChatGPT account and confirmed that the new features are available there as well.</p>
+
+<ul>
+  <li><a href="https://simonwillison.net/2026/Jan/26/chatgpt-containers/#container-download">container.download</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/26/chatgpt-containers/#is-container-download-a-data-exfiltration-vulnerability-">Is container.download a data exfiltration vulnerability?</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/26/chatgpt-containers/#bash-and-other-languages">Bash and other languages</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/26/chatgpt-containers/#installing-packages-from-pip-and-npm">Installing packages from pip and npm</a></li>
+  <li><a href="https://simonwillison.net/2026/Jan/26/chatgpt-containers/#adding-it-all-together">Adding it all together</a></li>
+</ul>
+
+<h4 id="container-download">container.download</h4>
+<p>My first clue to the new features came the other day when I got curious about Los Angeles air quality, in particular has the growing number of electric vehicles there hade a measurable impact?</p>
+<p>I prompted a fresh GPT-5.2 Thinking session with:</p>
+<blockquote>
+<p>Show me Los Angeles air quality over time for last 20 years</p>
+</blockquote>
+<p>Here's the <a href="https://chatgpt.com/share/6977a80d-e6e4-8006-b4fe-ed8478fe99d8">shared transcript</a>. Annoyingly that doesn't make the thinking trace available, so here's a screenshot:</p>
+<p><img src="https://static.simonwillison.net/static/2026/container-download.jpg" alt="Exploring methods to fetch AQI data and reports Downloading AQI data for Los Angeles  I found an xlsx file titled &quot;Air Quality Statistics by City, 2000-2023&quot;, which should include data for Los Angeles. While user requested data for Using provided URL to download file  The URL from the error message leads to an Excel file containing air quality trends. I can use the container.download tool to fetch it. Let’s proceed with this approach and see if it works out for downloading the file directly! Analyzed Parsing and analyzing the data for Los Angeles  Now that we've downloaded the data, I'll parse it using Python. First, I'll focus on identifying the row(s) corresponding to Los Angeles, which may be labeled under &quot;Los Angeles-Long Beach-Anaheim, CA.&quot; Afterward, I'll plot metrics like &quot;Median AQI&quot; and &quot;Days Good&quot; over time to visualize trends. Let’s begin!" style="max-width: 100%;" /></p>
+<p>This bit instantly caught my eye:</p>
+<blockquote>
+<p>[...] The URL from the error message leads to an Excel file containing air quality trends. I can use the container.download tool to fetch it. [...]</p>
+</blockquote>
+<p>What's <code>container.download</code>? I <a href="https://chatgpt.com/share/6977aab0-b874-8006-9b54-d3d216ed884b">asked ChatGPT</a>:</p>
+<blockquote>
+<p>Without running any searches tell me about your container.download tool</p>
+</blockquote>
+<p>And got back:</p>
+<blockquote>
+<p>Sure. <code>container.download</code> is a built-in tool I can call that <strong>fetches a file from a URL and saves it into the sandboxed container filesystem</strong> for this chat session.</p>
+<h4 id="what-it-does">What it does</h4>
+<ul>
+<li>Takes a <strong>publicly reachable URL</strong> and a <strong>destination filepath</strong> in the container.</li>
+<li>Downloads the bytes from that URL and writes them to the given path.</li>
+<li>After that, I can read/process the file locally in the container (e.g., unzip it, parse it with Python, open it as an image, convert it, etc.).</li>
+</ul>
+<h4 id="signature-inputs-">Signature (inputs)</h4>
+<p>It’s called like this (conceptually):</p>
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-ent">"url"</span>: <span class="pl-s"><span class="pl-pds">"</span>https://example.com/somefile.zip<span class="pl-pds">"</span></span>,
+  <span class="pl-ent">"filepath"</span>: <span class="pl-s"><span class="pl-pds">"</span>/mnt/data/somefile.zip<span class="pl-pds">"</span></span>
+}</pre></div>
+</blockquote>
+<p>Further experimentation confirmed that <code>container.download</code> behaves as described.</p>
+<p>I had it download one file from a server with logs enabled and captured the IP address and user-agent. Here are the most interesting headers:</p>
+<pre><code>User-Agent: Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot
+Accept: text/html, application/xhtml+xml, application/xml;q=0.9, image/avif, image/webp, image/apng, */*;q=0.8, application/signed-exchange;v=b3;q=0.9
+Cf-Connecting-Ip: 52.230.164.178
+</code></pre>
+<p>That <code>52.230.164.178</code> IP address <a href="http://ip-api.com/json/52.230.164.178">resolves to</a> Microsoft Azure Cloud (centralus) in Des Moines, Iowa.</p>
+<h4 id="is-container-download-a-data-exfiltration-vulnerability-">Is container.download a data exfiltration vulnerability?</h4>
+<p>On the one hand, this is really useful! ChatGPT can navigate around websites looking for useful files, download those files to a container and then process them using Python or other languages.</p>
+<p>Is this a data exfiltration vulnerability though? Could a prompt injection attack trick ChatGPT into leaking private data out to a <code>container.download</code> call to a URL with a query string that includes sensitive information?</p>
+<p>I don't think it can. I tried getting it to assemble a URL with a query string and access it using <code>container.download</code> and it couldn't do it. It told me that it got back this error:</p>
+<blockquote>
+<p>ERROR: download failed because url not viewed in conversation before. open the file or url using web.run first.</p>
+</blockquote>
+<p>This looks to me like the same safety trick <a href="https://simonwillison.net/2025/Sep/10/claude-web-fetch-tool/">used by Claude's Web Fetch tool</a>: only allow URL access if that URL was either directly entered by the user or if it came from search results that could not have been influenced by a prompt injection.</p>
+<p>(I poked at this a bit more and managed to get a simple constructed query string to pass through <code>web.run</code> - a different tool entirely - but when I tried to compose a longer query string containing the previous prompt history a <code>web.run</code> filter blocked it.)</p>
+<p>So I <em>think</em> this is all safe, though I'm curious if it could hold firm against a more aggressive round of attacks from a seasoned security researcher.</p>
+<h4 id="bash-and-other-languages">Bash and other languages</h4>
+<p>The key lesson from coding agents like Claude Code and Codex CLI is that Bash rules everything: if an agent can run Bash commands in an environment it can do almost anything that can be achieved by typing commands into a computer.</p>
+<p>When Anthropic added their own code interpreter feature to Claude <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">last September</a> they built that around Bash rather than just Python. It looks to me like OpenAI have now done the same thing for ChatGPT.</p>
+<p>Here's what ChatGPT looks like when it runs a Bash command - here my prompt was:</p>
+<blockquote>
+<p>npm install a fun package and demonstrate using it</p>
+</blockquote>
+<p><img src="https://static.simonwillison.net/static/2026/chatgpt-bash.jpg" alt="Screenshot of ChatGPT 5.2 Thinking interface with Activity panel. Main chat shows user prompt &quot;npm install a fun package and demonstrate using it&quot; and response &quot;Thought for 32s &gt; Yep — here's a fun one: cowsay 🐄 I installed it with npm and ran a tiny Node script:&quot; followed by bash code block containing &quot;mkdir -p /mnt/data/npmfun cd /mnt/data/npmfun npm init -y npm install cowsay --no-fund --no-audit node -e &quot;const cowsay=require('cowsay'); console.log(cowsay.say({text:'Hel&quot; and Output: section showing ASCII cow art saying &quot;&lt; Hello from npm inside the container! &gt;&quot; with cow drawing made of characters. Activity panel on right (32s) shows: &quot;Running npm install in container&quot; with bash command and output &quot;v22.16.0 10.9.2&quot;, &quot;Inspecting npm command output and container status&quot; with directory listing showing &quot;drwxr-xr-x 2 root oai_shared 80 Jan 26 17:32 . drwxrwxr-x 2 oai oai_shared 60 Jan 26 17:32 .. -rw-r--r-- 1 root root&quot;, &quot;Re-running npm install&quot; note about node_modules missing, and &quot;Rerunning npm install with output&quot; showing &quot;added 41 packages in 2s&quot;." style="max-width: 100%;" /></p>
+<p>It's useful to click on the "Thinking" or "Thought for 32s" links as that opens the Activity sidebar with a detailed trace of what ChatGPT did to arrive at its answer. This helps guard against cheating - ChatGPT might claim to have run Bash in the main window but it can't fake those black and white logs in the Activity panel.</p>
+<p>I had it run <a href="https://chatgpt.com/share/6977b890-f1c0-8006-b39a-9a02c7ca1993">Hello World in various languages</a> later in that same session.</p>
+<p><img src="https://static.simonwillison.net/static/2026/chatgpt-hello-worlds.jpg" alt="Terminal screenshot showing &quot;Hello, world&quot; programs in multiple languages. Top section shows code: swift -e 'print(&quot;Hello, world from Swift!&quot;)' followed by cat &gt; hello.kts &lt;&lt;'KTS' / println(&quot;Hello, world from Kotlin!&quot;) / KTS / kotlinc -script hello.kts, then cat &gt; hello.c &lt;&lt;'C' / #include &lt;stdio.h&gt; / int main(){ puts(&quot;Hello, world from C!&quot;); return 0; } / C / gcc hello.c -o hello_c / ./hello_c, then cat &gt; hello.cpp &lt;&lt;'CPP' / #include &lt;iostream&gt; / int main(){ std::cout &lt;&lt; &quot;Hello, world from C++!&quot; &lt;&lt; std::endl; } / CPP / g++ hello.cpp -o hello_cpp / ./hello_cpp. Bottom section shows output: Hello, world from Ruby! / Hello, world from Perl! / Hello, world from PHP! / Hello, world from Go! / Hello, world from Java! / Hello, world from Swift! / Hello, world from Kotlin! / Hello, world from C! / Hello, world from C++!. UI shows &quot;Thought for 2m 29s&quot; and &quot;Done&quot; at bottom." style="max-width: 100%;" /></p>
+<h4 id="installing-packages-from-pip-and-npm">Installing packages from pip and npm</h4>
+<p>In the previous example ChatGPT installed the <code>cowsay</code> package from npm and used it to draw an ASCII-art cow. But how could it do that if the container can't make outbound network requests?</p>
+<p>In <a href="https://chatgpt.com/share/69773501-b6d8-8006-bbf2-fa644561aa26">another session</a> I challenged it to explore its environment. and figure out how that worked.</p>
+<p>Here's <a href="https://github.com/simonw/research/blob/main/chatgpt-container-environment/README.md">the resulting Markdown report</a> it created.</p>
+<p>The key magic appears to be a <code>applied-caas-gateway1.internal.api.openai.org</code> proxy, available within the container and with various packaging tools configured to use it.</p>
+<p>The following environment variables cause <code>pip</code> and <code>uv</code> to install packages from that proxy instead of directly from PyPI:</p>
+<pre><code>PIP_INDEX_URL=https://reader:****@packages.applied-caas-gateway1.internal.api.openai.org/.../pypi-public/simple
+PIP_TRUSTED_HOST=packages.applied-caas-gateway1.internal.api.openai.org
+UV_INDEX_URL=https://reader:****@packages.applied-caas-gateway1.internal.api.openai.org/.../pypi-public/simple
+UV_INSECURE_HOST=https://packages.applied-caas-gateway1.internal.api.openai.org
+</code></pre>
+<p>This one appears to get <code>npm</code> to work:</p>
+<pre><code>NPM_CONFIG_REGISTRY=https://reader:****@packages.applied-caas-gateway1.internal.api.openai.org/.../npm-public
+</code></pre>
+<p>And it reported these suspicious looking variables as well:</p>
+<pre><code>CAAS_ARTIFACTORY_BASE_URL=packages.applied-caas-gateway1.internal.api.openai.org
+CAAS_ARTIFACTORY_PYPI_REGISTRY=.../artifactory/api/pypi/pypi-public
+CAAS_ARTIFACTORY_NPM_REGISTRY=.../artifactory/api/npm/npm-public
+CAAS_ARTIFACTORY_GO_REGISTRY=.../artifactory/api/go/golang-main
+CAAS_ARTIFACTORY_MAVEN_REGISTRY=.../artifactory/maven-public
+CAAS_ARTIFACTORY_GRADLE_REGISTRY=.../artifactory/gradle-public
+CAAS_ARTIFACTORY_CARGO_REGISTRY=.../artifactory/api/cargo/cargo-public/index
+CAAS_ARTIFACTORY_DOCKER_REGISTRY=.../dockerhub-public
+CAAS_ARTIFACTORY_READER_USERNAME=reader
+CAAS_ARTIFACTORY_READER_PASSWORD=****
+NETWORK=caas_packages_only
+</code></pre>
+<p>Neither Rust nor Docker are installed in the container environment, but maybe those registry references are a clue of features still to come.</p>
+<h4 id="adding-it-all-together">Adding it all together</h4>
+<p>The result of all of this? You can tell ChatGPT to use Python or Node.js packages as part of a conversation and it will be able to install them and apply them against files you upload or that it downloads from the public web. That's <em>really</em> cool.</p>
+<p>The big missing feature here should be the easiest to provide: we need <strong>official documentation</strong>! A release notes entry would be a good start, but there are a lot of subtle details to how this new stuff works, its limitations and what it can be used for.</p>
+<p>As always, I'd also encourage them to come up with a name for this set of features that properly represents how it works and what it can do.</p>
+<p>In the meantime, I'm going to call this <strong>ChatGPT Containers</strong>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/npm">npm</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a></p>]]></description><pubDate>Mon, 26 Jan 2026 19:19:31 +0000</pubDate></item><item><title>the browser is the sandbox</title><link>https://simonwillison.net/2026/Jan/25/the-browser-is-the-sandbox/#atom-everything</link><description><![CDATA[<p><strong><a href="https://aifoc.us/the-browser-is-the-sandbox/">the browser is the sandbox</a></strong></p>
 Paul Kinlan is a web platform developer advocate at Google and recently turned his attention to coding agents. He quickly identified the importance of a robust sandbox for agents to operate in and put together these detailed notes on how the web browser can help:</p>
 <blockquote>
 <p>This got me thinking about the browser. Over the last 30 years, we have built a sandbox specifically designed to run incredibly hostile, untrusted code from anywhere on the web, the instant a user taps a URL. [...]</p>
@@ -536,132 +651,4 @@ Provocative experiment from Drew Breunig, who designed a new library for time fo
 <p>This meshes nearly with my recent <a href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/#the-year-of-conformance-suites">interest in conformance suites</a>. If you publish good enough language-independent tests it's pretty astonishing how far today's coding agents can take you!
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/drew-breunig">drew-breunig</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a></p>]]></description><pubDate>Sat, 10 Jan 2026 23:41:58 +0000</pubDate></item><item><title>Fly&apos;s new Sprites.dev addresses both developer sandboxes and API sandboxes at the same time</title><link>https://simonwillison.net/2026/Jan/9/sprites-dev/#atom-everything</link><description><![CDATA[<p>New from Fly.io today: <a href="https://sprites.dev">Sprites.dev</a>. Here's their <a href="https://fly.io/blog/code-and-let-live/">blog post</a> and <a href="https://www.youtube.com/watch?v=7BfTLlwO4hw">YouTube demo</a>. It's an interesting new product that's quite difficult to explain - Fly call it "Stateful sandbox environments with checkpoint &amp; restore" but I see it as hitting two of my current favorite problems: a safe development environment for running coding agents <em>and</em> an API for running untrusted code in a secure sandbox.</p>
-<p><em>Disclosure: Fly sponsor some of my work. They did not ask me to write about Sprites and I didn't get preview access prior to the launch. My enthusiasm here is genuine.</em></p>
-
-<ul>
-  <li><a href="https://simonwillison.net/2026/Jan/9/sprites-dev/#developer-sandboxes">Developer sandboxes</a></li>
-  <li><a href="https://simonwillison.net/2026/Jan/9/sprites-dev/#storage-and-checkpoints">Storage and checkpoints</a></li>
-  <li><a href="https://simonwillison.net/2026/Jan/9/sprites-dev/#really-clever-use-of-claude-skills">Really clever use of Claude Skills</a></li>
-  <li><a href="https://simonwillison.net/2026/Jan/9/sprites-dev/#a-sandbox-api">A sandbox API</a></li>
-  <li><a href="https://simonwillison.net/2026/Jan/9/sprites-dev/#scale-to-zero-billing">Scale-to-zero billing</a></li>
-  <li><a href="https://simonwillison.net/2026/Jan/9/sprites-dev/#two-of-my-favorite-problems-at-once">Two of my favorite problems at once</a></li>
-</ul>
-
-<h4 id="developer-sandboxes">Developer sandboxes</h4>
-<p>I predicted earlier this week that <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#1-year-a-challenger-disaster-for-coding-agent-security">"we’re due a Challenger disaster with respect to coding agent security"</a> due to the terrifying way most of us are using coding agents like Claude Code and Codex CLI. Running them in <code>--dangerously-skip-permissions</code> mode (aka YOLO mode, where the agent acts without constantly seeking approval first) unlocks so much more power, but also means that a mistake or a malicious prompt injection can cause all sorts of damage to your system and data.</p>
-<p>The safe way to run YOLO mode is in a robust sandbox, where the worst thing that can happen is the sandbox gets messed up and you have to throw it away and get another one.</p>
-<p>That's the first problem Sprites solves:</p>
-<div class="highlight highlight-source-shell"><pre>curl https://sprites.dev/install.sh <span class="pl-k">|</span> bash
-
-sprite login
-sprite create my-dev-environment
-sprite console -s my-dev-environment</pre></div>
-<p>That's all it takes to get SSH connected to a fresh environment, running in an ~8GB RAM, 8 CPU server. And... Claude Code and Codex and Gemini CLI and Python 3.13 and Node.js 22.20 and a bunch of other tools are already installed.</p>
-<p>The first time you run <code>claude</code> it neatly signs you in to your existing account with Anthropic. The Sprites VM is persistent so future runs of <code>sprite console -s</code> will get you back to where you were before.</p>
-<p>... and it automatically sets up port forwarding, so you can run a localhost server on your Sprite and access it from <code>localhost:8080</code> on your machine.</p>
-<p>There's also a command you can run to assign a public URL to your Sprite, so anyone else can access it if they know the secret URL.</p>
-<h4 id="storage-and-checkpoints">Storage and checkpoints</h4>
-<p>In <a href="https://fly.io/blog/code-and-let-live/">the blog post</a> Kurt Mackey argues that ephemeral, disposable sandboxes are not the best fit for coding agents:</p>
-<blockquote>
-<p>The state of the art in agent isolation is a read-only sandbox. At Fly.io, we’ve been selling that story for years, and we’re calling it: ephemeral sandboxes are obsolete. Stop killing your sandboxes every time you use them. [...]</p>
-<p>If you force an agent to, it’ll work around containerization and do work . But you’re not helping the agent in any way by doing that. They don’t want containers. They don’t want “sandboxes”. They want computers.</p>
-<p>[...] with an actual computer, Claude doesn’t have to rebuild my entire development environment every time I pick up a PR.</p>
-</blockquote>
-<p>Each Sprite gets a proper filesystem which persists in between sessions, even while the Sprite itself shuts down after inactivity. It sounds like they're doing some clever filesystem tricks here, I'm looking forward to learning more about those in the future.</p>
-<p>There are some clues on <a href="https://sprites.dev/">the homepage</a>:</p>
-<blockquote>
-<p>You read and write to fast, directly attached NVMe storage. Your data then gets written to durable, external object storage. [...]</p>
-<p>You don't pay for allocated filesystem space, just the blocks you write. And it's all TRIM friendly, so your bill goes down when you delete things.</p>
-</blockquote>
-<p>The really clever feature is checkpoints. You (or your coding agent) can trigger a checkpoint which takes around 300ms. This captures the entire disk state and can then be rolled back to later.</p>
-<p>For more on how that works, run this in a Sprite:</p>
-<pre><code>cat /.sprite/docs/agent-context.md
-</code></pre>
-<p>Here's the relevant section:</p>
-<pre><code>## Checkpoints
-- Point-in-time checkpoints and restores available
-- Copy-on-write implementation for storage efficiency
-- Last 5 checkpoints mounted at `/.sprite/checkpoints`
-- Checkpoints capture only the writable overlay, not the base image
-</code></pre>
-<p>Or run this to see the <code>--help</code> for the command used to manage them:</p>
-<div class="highlight highlight-source-shell"><pre>sprite-env checkpoints --help</pre></div>
-<p>Which looks like this:</p>
-<pre><code>sprite-env checkpoints - Manage environment checkpoints
-
-USAGE:
-    sprite-env checkpoints &lt;subcommand&gt; [options]
-
-SUBCOMMANDS:
-    list [--history &lt;ver&gt;]  List all checkpoints (optionally filter by history version)
-    get &lt;id&gt;                Get checkpoint details (e.g., v0, v1, v2)
-    create                  Create a new checkpoint (auto-versioned)
-    restore &lt;id&gt;            Restore from a checkpoint (e.g., v1)
-
-NOTE:
-    Checkpoints are versioned as v0, v1, v2, etc.
-    Restore returns immediately and triggers an async restore that restarts the environment.
-    The last 5 checkpoints are mounted at /.sprite/checkpoints for direct file access.
-
-EXAMPLES:
-    sprite-env checkpoints list
-    sprite-env checkpoints list --history v1.2.3
-    sprite-env checkpoints get v2
-    sprite-env checkpoints create
-    sprite-env checkpoints restore v1
-</code></pre>
-<h4 id="really-clever-use-of-claude-skills">Really clever use of Claude Skills</h4>
-<p>I'm <a href="https://simonwillison.net/2025/Oct/16/claude-skills/">a big fan of Skills</a>, the mechanism whereby Claude Code (and increasingly other agents too) can be given additional capabilities by describing them in Markdown files in a specific directory structure.</p>
-<p>In a smart piece of design, Sprites uses pre-installed skills to teach Claude how Sprites itself works. This means you can ask Claude on the machine how to do things like open up ports and it will talk you through the process.</p>
-<p>There's all sorts of interesting stuff in the <code>/.sprite</code> folder on that machine - digging in there is a great way to learn more about how Sprites works.</p>
-<h4 id="a-sandbox-api">A sandbox API</h4>
-<p>Also from my predictions post earlier this week: <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#1-year-we-re-finally-going-to-solve-sandboxing">"We’re finally going to solve sandboxing"</a>. I am obsessed with this problem: I want to be able to run untrusted code safely, both on my personal devices and in the context of web services I'm building for other people to use.</p>
-<p>I have <em>so many things</em> I want to build that depend on being able to take untrusted code - from users or from LLMs or from LLMs-driven-by-users - and run that code in a sandbox where I can be confident that the blast radius if something goes wrong is tightly contained.</p>
-<p>Sprites offers a clean <a href="https://sprites.dev/api">JSON API</a> for doing exactly that, plus client libraries in <a href="https://github.com/superfly/sprites-go">Go</a> and <a href="https://github.com/superfly/sprites-js">TypeScript</a> and coming-soon <a href="https://github.com/superfly/sprites-py">Python</a> and <a href="https://github.com/superfly/sprites-ex">Elixir</a>.</p>
-<p>From their quick start:</p>
-<pre><code># Create a new sprite
-curl -X PUT https://api.sprites.dev/v1/sprites/my-sprite \
--H "Authorization: Bearer $SPRITES_TOKEN"
-
-# Execute a command
-curl -X POST https://api.sprites.dev/v1/sprites/my-sprite/exec \
--H "Authorization: Bearer $SPRITES_TOKEN" \
--d '{"command": "echo hello"}'
-</code></pre>
-<p>You can also checkpoint and rollback via the API, so you can get your environment exactly how you like it, checkpoint it, run a bunch of untrusted code, then roll back to the clean checkpoint when you're done.</p>
-<p>Managing network access is an important part of maintaining a good sandbox. The Sprites API lets you <a href="https://sprites.dev/api/sprites/policies">configure network access policies</a> using a DNS-based allow/deny list like this:</p>
-<div class="highlight highlight-source-shell"><pre>curl -X POST \
-  <span class="pl-s"><span class="pl-pds">"</span>https://api.sprites.dev/v1/sprites/{name}/policy/network<span class="pl-pds">"</span></span> \
-  -H <span class="pl-s"><span class="pl-pds">"</span>Authorization: Bearer <span class="pl-smi">$SPRITES_TOKEN</span><span class="pl-pds">"</span></span> \
-  -H <span class="pl-s"><span class="pl-pds">"</span>Content-Type: application/json<span class="pl-pds">"</span></span> \
-  -d <span class="pl-s"><span class="pl-pds">'</span>{</span>
-<span class="pl-s">    "rules": [</span>
-<span class="pl-s">      {</span>
-<span class="pl-s">        "action": "allow",</span>
-<span class="pl-s">        "domain": "github.com"</span>
-<span class="pl-s">      },</span>
-<span class="pl-s">      {</span>
-<span class="pl-s">        "action": "allow",</span>
-<span class="pl-s">        "domain": "*.npmjs.org"</span>
-<span class="pl-s">      }</span>
-<span class="pl-s">    ]</span>
-<span class="pl-s">  }<span class="pl-pds">'</span></span></pre></div>
-
-<h4 id="scale-to-zero-billing">Scale-to-zero billing</h4>
-<p>Sprites have scale-to-zero baked into the architecture. They go to sleep after 30 seconds of inactivity, wake up quickly when needed and bill you for just the CPU hours, RAM hours and GB-hours of storage you use while the Sprite is awake.</p>
-<p>Fly <a href="https://sprites.dev/#billing">estimate</a> a 4 hour intensive coding session as costing around 46 cents, and a low traffic web app with 30 hours of wake time per month at ~$4.</p>
-<p>(I calculate that a web app that consumes all 8 CPUs and all 8GBs of RAM 24/7 for a month would cost ((7 cents * 8 * 24 * 30) + (4.375 cents * 8 * 24 * 30)) / 100  = $655.2 per month, so don't necessarily use these as your primary web hosting solution for an app that soaks up all available CPU and RAM!)</p>
-<h4 id="two-of-my-favorite-problems-at-once">Two of my favorite problems at once</h4>
-<p>I was hopeful that Fly would enter the developer-friendly sandbox API market, especially given other entrants from companies like <a href="https://sandbox.cloudflare.com/">Cloudflare</a> and <a href="https://modal.com/docs/guide/sandboxes">Modal</a> and <a href="https://e2b.dev/">E2B</a>.</p>
-<p>I did not expect that they'd tackle the developer sandbox problem at the same time, and with the same product!</p>
-<p>My one concern here is that it makes the product itself a little harder to explain.</p>
-<p>I'm already spinning up some prototypes of sandbox-adjacent things I've always wanted to build, and early signs are very promising. I'll write more about these as they turn into useful projects.</p>
-
-
-<p><strong>Update</strong>: Here's some <a href="https://news.ycombinator.com/item?id=46557825#46560748">additional colour</a> from Thomas Ptacek on Hacker News:</p>
-<blockquote>
-<p>This has been in the works for quite awhile here. We put a long bet on "slow create fast start/stop" --- which is a really interesting and useful shape for execution environments --- but it didn't make sense to sandboxers, so "fast create" has been the White Whale at Fly.io for over a year.</p>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/thomas-ptacek">thomas-ptacek</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/fly">fly</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Fri, 9 Jan 2026 23:57:12 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/drew-breunig">drew-breunig</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a></p>]]></description><pubDate>Sat, 10 Jan 2026 23:41:58 +0000</pubDate></item></channel></rss>
