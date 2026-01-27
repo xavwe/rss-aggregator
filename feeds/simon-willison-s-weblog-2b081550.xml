@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>ChatGPT Containers can now run bash, pip/npm install packages, and download files</title><link>https://simonwillison.net/2026/Jan/26/chatgpt-containers/#atom-everything</link><description><![CDATA[<p>One of my favourite features of ChatGPT is its ability to write and execute code in a container. This feature launched as ChatGPT Code Interpreter <a href="https://simonwillison.net/2023/Apr/12/code-interpreter/">nearly three years ago</a>, was half-heartedly rebranded to "Advanced Data Analysis" at some point and is generally really difficult to find detailed documentation about. Case in point: it appears to have had a <em>massive</em> upgrade at some point in the past few months, and I can't find documentation about the new capabilities anywhere!</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Tips for getting coding agents to write good Python tests</title><link>https://simonwillison.net/2026/Jan/26/tests/#atom-everything</link><description><![CDATA[<p>Someone <a href="https://news.ycombinator.com/item?id=46765460#46765823">asked</a> on Hacker News if I had any tips for getting coding agents to write decent quality tests. Here's what I said:</p>
+<hr />
+<p>I work in Python which helps a lot because there are a TON of good examples of pytest tests floating around in the training data, including things like usage of fixture libraries for mocking external HTTP APIs and snapshot testing and other neat patterns.</p>
+<p>Or I can say "use pytest-httpx to mock the endpoints" and Claude knows what I mean.</p>
+<p>Keeping an eye on the tests is important. The most common anti-pattern I see is large amounts of duplicated test setup code - which isn't a huge deal, I'm much more more tolerant of duplicated logic in tests than I am in implementation, but it's still worth pushing back on.</p>
+<p>"Refactor those tests to use pytest.mark.parametrize" and "extract the common setup into a pytest fixture" work really well there.</p>
+<p>Generally though the best way to get good tests out of a coding agent is to make sure it's working in a project with an existing test suite that uses good patterns. Coding agents pick the existing patterns up without needing any extra prompting at all.</p>
+<p>I find that once a project has clean basic tests the new tests added by the agents tend to match them in quality. It's similar to how working on large projects with a team of other developers work - keeping the code clean means when people look for examples of how to write a test they'll be pointed in the right direction.</p>
+<p>One last tip I use a lot is this:</p>
+<pre><code>Clone datasette/datasette-enrichments
+from GitHub to /tmp and imitate the
+testing patterns it uses
+</code></pre>
+<p>I do this all the time with different existing projects I've written - the quickest way to show an agent how you like something to be done is to have it look at an example.</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/hacker-news">hacker-news</a></p>]]></description><pubDate>Mon, 26 Jan 2026 23:55:29 +0000</pubDate></item><item><title>ChatGPT Containers can now run bash, pip/npm install packages, and download files</title><link>https://simonwillison.net/2026/Jan/26/chatgpt-containers/#atom-everything</link><description><![CDATA[<p>One of my favourite features of ChatGPT is its ability to write and execute code in a container. This feature launched as ChatGPT Code Interpreter <a href="https://simonwillison.net/2023/Apr/12/code-interpreter/">nearly three years ago</a>, was half-heartedly rebranded to "Advanced Data Analysis" at some point and is generally really difficult to find detailed documentation about. Case in point: it appears to have had a <em>massive</em> upgrade at some point in the past few months, and I can't find documentation about the new capabilities anywhere!</p>
 <p>Here are the most notable new features:</p>
 <ol>
 <li>ChatGPT can <strong>directly run Bash commands</strong> now. Previously it was limited to Python code only, although it could run shell commands via the Python <code>subprocess</code> module.</li>
@@ -20,7 +35,7 @@
 </ul>
 
 <h4 id="container-download">container.download</h4>
-<p>My first clue to the new features came the other day when I got curious about Los Angeles air quality, in particular has the growing number of electric vehicles there hade a measurable impact?</p>
+<p>My first clue to the new features came the other day when I got curious about Los Angeles air quality, in particular has the growing number of electric vehicles there had a measurable impact?</p>
 <p>I prompted a fresh GPT-5.2 Thinking session with:</p>
 <blockquote>
 <p>Show me Los Angeles air quality over time for last 20 years</p>
@@ -112,6 +127,198 @@ NETWORK=caas_packages_only
 <p>The big missing feature here should be the easiest to provide: we need <strong>official documentation</strong>! A release notes entry would be a good start, but there are a lot of subtle details to how this new stuff works, its limitations and what it can be used for.</p>
 <p>As always, I'd also encourage OpenAI to come up with a name for this set of features that properly represents how it works and what it can do.</p>
 <p>In the meantime, I'm going to call this <strong>ChatGPT Containers</strong>.</p>
+<h4 id="list-of-tools">Update: a full list of tools</h4>
+<p>I decided to ask ChatGPT about other tools that were available to it in case there was anything interesting in there:</p>
+<blockquote><p>List all tools that are available to you, with their exact names and descriptions and signatures</p></blockquote>
+<p>Here's <a href="https://chatgpt.com/share/6977ffa0-df14-8006-9647-2b8c90ccbb81">what I got back</a>.</p>
+
+<details><summary>List of ChatGPT tools according to GPT-5.2 Thinking on 26th January 2026</summary>
+<p style="margin-top: 1em">Below are <strong>all tools available to me in this chat</strong>, with their <strong>exact names</strong>, <strong>descriptions</strong>, and <strong>signatures</strong> (as defined in my tool interface).</p>
+<hr />
+<h4 id="python">python</h4>
+<h5 id="python-exec-freeform-any">
+<code>python.exec</code> (FREEFORM) → any</h5>
+<p><strong>Description:</strong> Execute Python code in a Jupyter environment for <em>private/internal reasoning</em> (not shown to you). Internet access is disabled.<br />
+<strong>Signature:</strong> <code>python.exec(FREEFORM) -&gt; any</code></p>
+<hr />
+<h4 id="web">web</h4>
+<h5 id="web-run-toolcallv5-json-any">
+<code>web.run</code> (ToolCallV5 JSON) → any</h5>
+<p><strong>Description:</strong> Access the internet and specialized lookups (search, open/click/find pages, screenshot PDFs, image search, product search, finance, weather, sports, calculator, time). Supports citations via returned <code>turn...</code> reference IDs.<br />
+<strong>Signature:</strong><br />
+<code>web.run({ open?, click?, find?, screenshot?, image_query?, product_query?, sports?, finance?, weather?, calculator?, time?, search_query?, response_length? }) -&gt; any</code></p>
+<hr />
+<h4 id="automations">automations</h4>
+<h5 id="automations-create-any">
+<code>automations.create</code> → any</h5>
+<p><strong>Description:</strong> Schedule a future/recurring task/reminder/search via iCal VEVENT.<br />
+<strong>Signature:</strong><br />
+<code>automations.create({ prompt: string, title: string, schedule?: string, dtstart_offset_json?: string }) -&gt; any</code></p>
+<h5 id="automations-update-any">
+<code>automations.update</code> → any</h5>
+<p><strong>Description:</strong> Modify an existing scheduled task.<br />
+<strong>Signature:</strong><br />
+<code>automations.update({ jawbone_id: string, schedule?: string, dtstart_offset_json?: string, prompt?: string, title?: string, is_enabled?: boolean }) -&gt; any</code></p>
+<h5 id="automations-list-any">
+<code>automations.list</code> → any</h5>
+<p><strong>Description:</strong> List existing automations.<br />
+<strong>Signature:</strong> <code>automations.list() -&gt; any</code></p>
+<hr />
+<h4 id="guardian-tool">guardian_tool</h4>
+<h5 id="guardian-tool-get-policy-str">
+<code>guardian_tool.get_policy</code> → str</h5>
+<p><strong>Description:</strong> Retrieve policy guidance for specific categories (currently: <code>election_voting</code>).<br />
+<strong>Signature:</strong> <code>guardian_tool.get_policy({ category: string }) -&gt; str</code></p>
+<hr />
+<h4 id="file-search">file_search</h4>
+<h5 id="file-search-msearch-any">
+<code>file_search.msearch</code> → any</h5>
+<p><strong>Description:</strong> Search across available internal/connected sources (in this environment: primarily “recording_knowledge” transcripts when relevant).<br />
+<strong>Signature:</strong><br />
+<code>file_search.msearch({ queries?: string[], source_filter?: string[], file_type_filter?: string[], intent?: string, time_frame_filter?: { start_date?: string, end_date?: string } }) -&gt; any</code></p>
+<h5 id="file-search-mclick-any">
+<code>file_search.mclick</code> → any</h5>
+<p><strong>Description:</strong> Expand/open previously returned search results (or connector URLs) for more context.<br />
+<strong>Signature:</strong><br />
+<code>file_search.mclick({ pointers?: string[], start_date?: string, end_date?: string }) -&gt; any</code></p>
+<hr />
+<h4 id="gmail-read-only-">gmail (read-only)</h4>
+<h5 id="gmail-search-email-ids-any">
+<code>gmail.search_email_ids</code> → any</h5>
+<p><strong>Description:</strong> Search Gmail message IDs by query/tags (read-only).<br />
+<strong>Signature:</strong><br />
+<code>gmail.search_email_ids({ query?: string, tags?: string[], max_results?: integer, next_page_token?: string }) -&gt; any</code></p>
+<h5 id="gmail-batch-read-email-any">
+<code>gmail.batch_read_email</code> → any</h5>
+<p><strong>Description:</strong> Read a batch of Gmail messages by message IDs (read-only).<br />
+<strong>Signature:</strong><br />
+<code>gmail.batch_read_email({ message_ids: string[] }) -&gt; any</code></p>
+<hr />
+<h4 id="gcal-read-only-">gcal (read-only)</h4>
+<h5 id="gcal-search-events-any">
+<code>gcal.search_events</code> → any</h5>
+<p><strong>Description:</strong> Search Google Calendar events in a time range and/or by keyword (read-only).<br />
+<strong>Signature:</strong><br />
+<code>gcal.search_events({ time_min?: string, time_max?: string, timezone_str?: string, max_results?: integer, query?: string, calendar_id?: string, next_page_token?: string }) -&gt; any</code></p>
+<h5 id="gcal-read-event-any">
+<code>gcal.read_event</code> → any</h5>
+<p><strong>Description:</strong> Read a specific calendar event by ID (read-only).<br />
+<strong>Signature:</strong><br />
+<code>gcal.read_event({ event_id: string, calendar_id?: string }) -&gt; any</code></p>
+<hr />
+<h4 id="gcontacts-read-only-">gcontacts (read-only)</h4>
+<h5 id="gcontacts-search-contacts-any">
+<code>gcontacts.search_contacts</code> → any</h5>
+<p><strong>Description:</strong> Search Google Contacts by keyword (read-only).<br />
+<strong>Signature:</strong><br />
+<code>gcontacts.search_contacts({ query: string, max_results?: integer }) -&gt; any</code></p>
+<hr />
+<h4 id="canmore-canvas-">canmore (canvas)</h4>
+<h5 id="canmore-create-textdoc-any">
+<code>canmore.create_textdoc</code> → any</h5>
+<p><strong>Description:</strong> Create a new canvas text document (markdown or code).<br />
+<strong>Signature:</strong><br />
+<code>canmore.create_textdoc({ name: string, type: "document" | "code/bash" | "code/zsh" | "code/javascript" | "code/typescript" | "code/html" | "code/css" | "code/python" | "code/json" | "code/sql" | "code/go" | "code/yaml" | "code/java" | "code/rust" | "code/cpp" | "code/swift" | "code/php" | "code/xml" | "code/ruby" | "code/haskell" | "code/kotlin" | "code/csharp" | "code/c" | "code/objectivec" | "code/r" | "code/lua" | "code/dart" | "code/scala" | "code/perl" | "code/commonlisp" | "code/clojure" | "code/ocaml" | "code/powershell" | "code/verilog" | "code/dockerfile" | "code/vue" | "code/react" | "code/other", content: string }) -&gt; any</code></p>
+<h5 id="canmore-update-textdoc-any">
+<code>canmore.update_textdoc</code> → any</h5>
+<p><strong>Description:</strong> Apply regex-based edits to the current canvas textdoc.<br />
+<strong>Signature:</strong><br />
+<code>canmore.update_textdoc({ updates: { pattern: string, multiple?: boolean, replacement: string }[] }) -&gt; any</code></p>
+<h5 id="canmore-comment-textdoc-any">
+<code>canmore.comment_textdoc</code> → any</h5>
+<p><strong>Description:</strong> Add actionable comments on matched regions of the current canvas textdoc.<br />
+<strong>Signature:</strong><br />
+<code>canmore.comment_textdoc({ comments: { pattern: string, comment: string }[] }) -&gt; any</code></p>
+<hr />
+<h4 id="python-user-visible">python_user_visible</h4>
+<h5 id="python-user-visible-exec-freeform-any">
+<code>python_user_visible.exec</code> (FREEFORM) → any</h5>
+<p><strong>Description:</strong> Execute Python code <em>that you will see</em> (tables, plots, generated files). Internet disabled.<br />
+<strong>Signature:</strong> <code>python_user_visible.exec(FREEFORM) -&gt; any</code></p>
+<hr />
+<h4 id="user-info">user_info</h4>
+<h5 id="user-info-get-user-info-any">
+<code>user_info.get_user_info</code> → any</h5>
+<p><strong>Description:</strong> Get your current location and local time (or UTC if unknown).<br />
+<strong>Signature:</strong> <code>user_info.get_user_info({}) -&gt; any</code></p>
+<hr />
+<h4 id="summary-reader">summary_reader</h4>
+<h5 id="summary-reader-read-any">
+<code>summary_reader.read</code> → any</h5>
+<p><strong>Description:</strong> Read safe-to-share internal reasoning summaries from earlier turns (used when asked how I arrived at something).<br />
+<strong>Signature:</strong> <code>summary_reader.read({ limit?: integer, offset?: integer }) -&gt; any</code></p>
+<hr />
+<h4 id="container">container</h4>
+<h5 id="container-exec-any">
+<code>container.exec</code> → any</h5>
+<p><strong>Description:</strong> Run a command inside the container and return stdout/stderr.<br />
+<strong>Signature:</strong><br />
+<code>container.exec({ cmd: string[], session_name?: string | null, workdir?: string | null, timeout?: integer | null, env?: object | null, user?: string | null }) -&gt; any</code></p>
+<h5 id="container-feed-chars-any">
+<code>container.feed_chars</code> → any</h5>
+<p><strong>Description:</strong> Send input to a running interactive exec session and flush output.<br />
+<strong>Signature:</strong><br />
+<code>container.feed_chars({ session_name: string, chars: string, yield_time_ms?: integer }) -&gt; any</code></p>
+<h5 id="container-open-image-any">
+<code>container.open_image</code> → any</h5>
+<p><strong>Description:</strong> Display an image from an absolute path in the container (jpg/jpeg/png/webp).<br />
+<strong>Signature:</strong><br />
+<code>container.open_image({ path: string, user?: string | null }) -&gt; any</code></p>
+<h5 id="container-download-any">
+<code>container.download</code> → any</h5>
+<p><strong>Description:</strong> Download a file from a URL into the container filesystem.<br />
+<strong>Signature:</strong><br />
+<code>container.download({ url: string, filepath: string }) -&gt; any</code></p>
+<hr />
+<h4 id="bio-memory-">bio (memory)</h4>
+<h5 id="bio-update-freeform-any">
+<code>bio.update</code> (FREEFORM) → any</h5>
+<p><strong>Description:</strong> Persist (or forget) user-specific info across conversations (“memory”).<br />
+<strong>Signature:</strong> <code>bio.update(FREEFORM) -&gt; any</code></p>
+<hr />
+<h4 id="api-tool">api_tool</h4>
+<h5 id="api-tool-list-resources-any">
+<code>api_tool.list_resources</code> → any</h5>
+<p><strong>Description:</strong> List available “resources” (including invokable tools) in an OP-style file tree.<br />
+<strong>Signature:</strong><br />
+<code>api_tool.list_resources({ path?: string, cursor?: string | null, only_tools?: boolean, refetch_tools?: boolean }) -&gt; any</code></p>
+<h5 id="api-tool-call-tool-any">
+<code>api_tool.call_tool</code> → any</h5>
+<p><strong>Description:</strong> Invoke a resource as a tool (must know its full path/URI from <code>list_resources</code>).<br />
+<strong>Signature:</strong><br />
+<code>api_tool.call_tool({ path: string, args: object }) -&gt; any</code></p>
+<hr />
+<h4 id="personal-context">personal_context</h4>
+<h5 id="personal-context-search-any">
+<code>personal_context.search</code> → any</h5>
+<p><strong>Description:</strong> Retrieve user-specific context from prior interactions/linked sources to maintain continuity.<br />
+<strong>Signature:</strong><br />
+<code>personal_context.search({ query: string }) -&gt; any</code></p>
+<hr />
+<h4 id="image-gen">image_gen</h4>
+<h5 id="image-gen-text2im-any">
+<code>image_gen.text2im</code> → any</h5>
+<p><strong>Description:</strong> Generate or edit images from text instructions (and optionally referenced image IDs).<br />
+<strong>Signature:</strong><br />
+<code>image_gen.text2im({ prompt?: string | null, size?: string | null, n?: integer | null, transparent_background?: boolean | null, is_style_transfer?: boolean | null, referenced_image_ids?: string[] | null }) -&gt; any</code></p>
+<hr />
+<h4 id="user-settings">user_settings</h4>
+<h5 id="user-settings-get-user-settings-any">
+<code>user_settings.get_user_settings</code> → any</h5>
+<p><strong>Description:</strong> Read current settings and allowed values (personality, accent color, appearance).<br />
+<strong>Signature:</strong> <code>user_settings.get_user_settings() -&gt; any</code></p>
+<h5 id="user-settings-set-setting-any">
+<code>user_settings.set_setting</code> → any</h5>
+<p><strong>Description:</strong> Change one setting (accent color, appearance, or personality) to an allowed value.<br />
+<strong>Signature:</strong><br />
+<code>user_settings.set_setting({ setting_name: "accent_color" | "appearance" | "personality", setting_value: string }) -&gt; any</code></p>
+<hr />
+<h4 id="artifact-handoff">artifact_handoff</h4>
+<h5 id="artifact-handoff-prepare-artifact-generation-any">
+<code>artifact_handoff.prepare_artifact_generation</code> → any</h5>
+<p><strong>Description:</strong> Must be called immediately when the user asks for a spreadsheet or slide deck artifact.<br />
+<strong>Signature:</strong> <code>artifact_handoff.prepare_artifact_generation() -&gt; any</code></p>
+</details>
     
         <p>Tags: <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/npm">npm</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a></p>]]></description><pubDate>Mon, 26 Jan 2026 19:19:31 +0000</pubDate></item><item><title>the browser is the sandbox</title><link>https://simonwillison.net/2026/Jan/25/the-browser-is-the-sandbox/#atom-everything</link><description><![CDATA[<p><strong><a href="https://aifoc.us/the-browser-is-the-sandbox/">the browser is the sandbox</a></strong></p>
 Paul Kinlan is a web platform developer advocate at Google and recently turned his attention to coding agents. He quickly identified the importance of a robust sandbox for agents to operate in and put together these detailed notes on how the web browser can help:</p>
@@ -645,10 +852,4 @@ Things I learned about making neon signs after a week long intensive evening cla
     <p>Tags: <a href="https://simonwillison.net/tags/art">art</a>, <a href="https://simonwillison.net/tags/til">til</a></p>]]></description><pubDate>Sun, 11 Jan 2026 17:35:57 +0000</pubDate></item><item><title>Quoting Linus Torvalds</title><link>https://simonwillison.net/2026/Jan/11/linus-torvalds/#atom-everything</link><description><![CDATA[<blockquote cite="https://github.com/torvalds/AudioNoise/blob/71b256a7fcb0aa1250625f79838ab71b2b77b9ff/README.md"><p>Also note that the python visualizer tool has been basically written by vibe-coding. I know more about analog filters -- and that's not saying much -- than I do about python. It started out as my typical "google and do the monkey-see-monkey-do" kind of programming, but then I cut out the middle-man -- me -- and just used Google Antigravity to do the audio sample visualizer.</p></blockquote>
 <p class="cite">&mdash; <a href="https://github.com/torvalds/AudioNoise/blob/71b256a7fcb0aa1250625f79838ab71b2b77b9ff/README.md">Linus Torvalds</a>, Another silly guitar-pedal-related repo</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/linus-torvalds">linus-torvalds</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Sun, 11 Jan 2026 02:29:58 +0000</pubDate></item><item><title>A Software Library with No Code</title><link>https://simonwillison.net/2026/Jan/10/a-software-library-with-no-code/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.dbreunig.com/2026/01/08/a-software-library-with-no-code.html">A Software Library with No Code</a></strong></p>
-Provocative experiment from Drew Breunig, who designed a new library for time formatting ("3 hours ago" kind of thing) called "whenwords" that has no code at all, just a carefully written specification, an AGENTS.md and a collection of conformance tests in a YAML file.</p>
-<p>Pass that to your coding agent of choice, tell it what language you need and it will write it for you on demand!</p>
-<p>This meshes nearly with my recent <a href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/#the-year-of-conformance-suites">interest in conformance suites</a>. If you publish good enough language-independent tests it's pretty astonishing how far today's coding agents can take you!
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/drew-breunig">drew-breunig</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a></p>]]></description><pubDate>Sat, 10 Jan 2026 23:41:58 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/linus-torvalds">linus-torvalds</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Sun, 11 Jan 2026 02:29:58 +0000</pubDate></item></channel></rss>
