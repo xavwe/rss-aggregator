@@ -11,7 +11,7 @@ embedding-shapes was <a href="https://emsh.cat/cursor-implied-success-without-ev
 <p>The code is pretty readable too - here's <a href="https://github.com/embedding-shapes/one-agent-one-browser/blob/0.1.0/src/layout/flex.rs">the flexbox implementation</a>.</p>
 <p>I had thought that "build a web browser" was the ideal prompt to really stretch the capabilities of coding agents - and that it would take sophisticated multi-agent harnesses (as seen in the Cursor project) and millions of lines of code to achieve.</p>
 <p>Turns out one agent driven by a talented engineer, three days and 20,000 lines of Rust is enough to get a very solid basic renderer working!</p>
-<p>I'm going to upgrade my <a href="I thought &quot;build a browser that renders HTML+CSS&quot; was the perfect task for demonstrating a massively parallel agent setup because it couldn't be productively achieved in a few thousand lines of code by a single coding agent. Turns out I was wrong!">prediction for 2029</a>: I think we're going to get a <em>production-grade</em> web browser built by a small team using AI assistance by then.
+<p>I'm going to upgrade my <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/#3-years-someone-will-build-a-new-browser-using-mainly-ai-assisted-coding-and-it-won-t-even-be-a-surprise">prediction for 2029</a>: I think we're going to get a <em>production-grade</em> web browser built by a small team using AI assistance by then.
 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46779522">Show Hacker News</a></small></p>
 
