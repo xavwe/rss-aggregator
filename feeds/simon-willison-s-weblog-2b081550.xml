@@ -18,6 +18,7 @@ Kimi K2 landed <a href="https://simonwillison.net/2025/Jul/11/kimi-k2/">in July<
 <blockquote>
 <p>Our only modification part is that, if the Software (or any derivative works thereof) is used for any of your commercial products or services that have more than 100 million monthly active users, or more than 20 million US dollars (or equivalent in other currencies) in monthly revenue, you shall prominently display "Kimi K2.5" on the user interface of such product or service.</p>
 </blockquote>
+<p>Given the model's size, I expect one way to run it locally would be with MLX and a pair of $10,000 512GB RAM M3 Ultra Mac Studios. That setup has <a href="https://twitter.com/awnihannun/status/1943723599971443134">been demonstrated to work</a> with previous trillion parameter K2 models.
 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46775961">Hacker News</a></small></p>
 
