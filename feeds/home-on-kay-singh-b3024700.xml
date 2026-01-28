@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Home on KAY SINGH</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/home-on-kay-singh-b3024700.xml</link><description>Archived feed from https://singhkays.com/index.xml</description><item><title>Lord of War, meet Lord of Tokens: Torture-testing image models on design-agency grade work</title><link>https://singhkays.com/blog/lord-war-test-image-models/</link><description><![CDATA[Can AI compress decades of design expertise into a prompt? I gave seven models the hardest test I could think of.]]></description><pubDate>Thu, 8 Jan 2026 00:00:00 +0000</pubDate></item><item><title>Decoding Netflix&apos;s AV1 Streams: Here are 10 things I found</title><link>https://singhkays.com/blog/netflix-av1-decode/</link><description><![CDATA[A weekend project that turned into discovering how Netflix is quietly revolutionizing streaming efficiency with AV1.]]></description><pubDate>Wed, 1 Oct 2025 00:00:00 +0000</pubDate></item><item><title>Taking Microsoft&apos;s Calibri replacements for a spin</title><link>https://singhkays.com/blog/microsoft-calibri-replacements/</link><description><![CDATA[How do Calibri&rsquo;s replacements compare? See some real world examples.]]></description><pubDate>Wed, 19 May 2021 00:00:00 +0000</pubDate></item><item><title>Apple Silicon M1 Power Consumption Deep Dive Part 2: Local Playback</title><link>https://singhkays.com/blog/apple-silicon-m1-video-power-consumption-pt-2/</link><description><![CDATA[Apple M1 is an amazingly efficient piece of silicon. How much power do you think it consumes while playing 4K and 1080p videos in VLC player? Read on to find out.]]></description><pubDate>Sat, 8 May 2021 00:00:00 +0000</pubDate></item><item><title>Apple Silicon M1 Power Consumption Deep Dive Part 1: Safari vs Chrome</title><link>https://singhkays.com/blog/apple-silicon-m1-video-power-consumption-pt-1/</link><description><![CDATA[Apple M1 is an amazingly efficient piece of silicon. How much power do you think it consumes while streaming from YouTube or Netflix? Read on to find out.]]></description><pubDate>Fri, 2 Apr 2021 00:00:00 +0000</pubDate></item><item><title>Philips Brilliance 4K UHD 27&quot; Monitor Review</title><link>https://singhkays.com/blog/philips-brilliance-27-4k-uhd-p272p7vu/</link><description><![CDATA[Hello internet friend! If you&rsquo;ve landed here from an internet search hoping to find more info on this Philips monitor, then let me keep it short and save you some time.]]></description><pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate></item><item><title>Netflix&apos;s Annual Reports (10-Ks) used to be a work of art. What happened?</title><link>https://singhkays.com/blog/netflix-annual-reports-work-of-art/</link><description><![CDATA[Netflix put some serious design resources into its Annual Reports pre-2010. What changed?]]></description><pubDate>Wed, 3 Feb 2021 00:00:00 +0000</pubDate></item><item><title>Apple Silicon M1 supports &quot;billion of colors&quot; aka HDR 10-bit output</title><link>https://singhkays.com/blog/apple-silicon-m1-hdr-10bit-billion-colors/</link><description><![CDATA[When most people hear Apple in a sentence, their next thought is likely the color. Does Apple Silicon M1 output &ldquo;billion colors&rdquo;?]]></description><pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate></item><item><title>How to get 4K 60 FPS working on an external monitor with Macbooks</title><link>https://singhkays.com/blog/4k-60fps-external-monitor-macbook/</link><description><![CDATA[Getting 4K 60 Hz output on a Macbook is more challenging than it needs to be. Here&rsquo;s what to watch out for.]]></description><pubDate>Tue, 15 Dec 2020 00:00:00 +0000</pubDate></item><item><title>Fixing &quot;sed: command i expects \ followed by text&quot; error</title><link>https://singhkays.com/blog/sed-error-i-expects-followed-by-text/</link><description><![CDATA[<p>I ran into a very weird error today. While trying to automate the deployment for this blog, I needed to replace a string in a file. The internet tutorials [<a href="https://linuxhint.com/replace_string_in_file_bash/">1</a>, <a href="https://clubmate.fi/replace-strings-in-files-with-the-sed-bash-command/">2</a>, <a href="https://linuxize.com/post/how-to-use-sed-to-find-and-replace-string-in-files/">3</a>, <a href="https://www.diskinternals.com/linux-reader/shell-script-replace-string-in-file/">4</a>] told me that <code>sed</code> would be perfect for this job and the following command should work:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed -i <span style="color:#e6db74">&#39;s/search_string/replace_string/&#39;</span> filename
+</span></span></code></pre></div><h1 id="the-error">The Error</h1>
+<p>However, I kept getting tripped up by the following error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sed: 1: <span style="color:#e6db74">&#34;i2.html&#34;</span>: command i expects <span style="color:#ae81ff">\ </span>followed by text
+</span></span></code></pre></div><p>I spent a bunch of time trying to make sure I escaped the right characters in my strings but the error was persistent! What a nuisance! 😭</p>]]></description><pubDate>Thu, 10 Dec 2020 00:00:00 +0000</pubDate></item><item><title>Upcoming ARM Chip That&apos;s Faster Than Apple Silicon M1</title><link>https://singhkays.com/blog/arm-cpu-faster-than-apple-m1/</link><description><![CDATA[The release of Apple M1 Silicon has laid to rest many questions about whether ARM CPUs can go toe-to-toe with the best of the bunch from Intel and AMD. Can others replicate this?]]></description><pubDate>Wed, 9 Dec 2020 00:00:00 +0000</pubDate></item><item><title>Apple Silicon M1: Black. Magic. Fuckery.</title><link>https://singhkays.com/blog/apple-silicon-m1-black-magic/</link><description><![CDATA[These are the words used by the user <a href="https://www.reddit.com/r/apple/comments/jx360c/for_context_m1_macbook_air/gcvn0oy/">holdagold on reddit</a> to describe their experience with the new Apple Silicon M1 Macbook Air. Rarely does a product leave people effusing to the extent Apple Silicon M1 has done this week.]]></description><pubDate>Tue, 24 Nov 2020 00:00:00 +0000</pubDate></item><item><title>How Spotify is Killing the Open Podcast Ecosystem</title><link>https://singhkays.com/blog/how-spotify-is-killing-the-open-podcast-ecosystem/</link><description><![CDATA[<p>Earlier this year, when Spotify announced that &ldquo;The Joe Rogan Experience&rdquo; would stream exclusively on Spotify, it sent shockwaves throughout the podcast ecosystem. This deal &ndash; reportedly worth over $100 million &ndash; is one of the most lucrative podcast deals. The presence of this deal, let alone the magnitude, is rare for the podcast ecosystem, which is built on open principles <em>i.e. all podcasts are available everywhere</em>. Therefore, the concept of exclusivity does not exist in the vocabulary of podcast listeners nor podcast creators. For Spotify to spend a considerable sum of money on a medium that is not its core business <em>(i.e. music)</em> represents a significant shift in strategy. In this blog, I explore why Spotify is embarking on this journey, and the value Spotify can deliver in this space.</p>]]></description><pubDate>Sat, 3 Oct 2020 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: January 2020</title><link>https://singhkays.com/blog/av1-ecosystem-update-january-2020/</link><description><![CDATA[<p>January is usually a big month for tech because the Consumer Electronics Shows kicks off every year in Las Vegas. This year was no different as various manufacturers brought their latest products to showcase.</p>
+<h1 id="samsung-and-lg-2020-tvs-to-support-av1-decoding">Samsung and LG 2020 TVs to support AV1 decoding</h1>
+<p>We have been waiting all of 2019 to see consumer devices that can decode AV1 and CES did not disappoint! Both Samsung and LG announced their upcoming 2020 TVs will be capable of full hardware decode of 8K AV1 videos from sources such as YouTube. Read more about the announcements below.</p>]]></description><pubDate>Thu, 20 Feb 2020 00:00:00 +0000</pubDate></item><item><title>AV1 2019: A Year In Review</title><link>https://singhkays.com/blog/av1-2019-year-in-review/</link><description><![CDATA[<h1 id="introduction">Introduction</h1>
+<p>It&rsquo;s not often you see so many logos of tech giants <a href="http://aomedia.org/membership/members/">on one page backing the same technology</a>. In my experience, every enterprise has developed a case of <a href="https://en.wikipedia.org/wiki/Not_invented_here">NIH</a> and come up with their standards. No surprise then that there&rsquo;s an XKCD describing this phenomenon!</p>
+<p><img alt="XKCD on Standards" loading="lazy" src="https://imgs.xkcd.com/comics/standards.png"></p>
+<p>But when the AV1 1.0.0 spec was finalized in 2018, with the backing of so many giants, the world knew AV1 would be a serious piece of tech. With the spec finalized, the race was on to get AV1 integrated into your favorite software &amp; hardware for encoding, decoding, and viewing media. By the end of 2018, AV1 adoption was moving at a healthy pace and completed significant milestones necessary to mainstream adoption. Some of these were:</p>]]></description><pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: December 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-december-2019/</link><description><![CDATA[<h1 id="dav1d-052-asiatic-cheetah-released">dav1d 0.5.2 &lsquo;Asiatic Cheetah&rsquo; released</h1>
+<p>dav1d ended the year with another performance improvement release. Dubbed the &ldquo;Asiatic Cheetah&rdquo; this release brings the following improvements:</p>
+<ul>
+<li>ARM32 optimizations for loopfilter, ipred_dc|h|v</li>
+<li>Add section-5 raw OBU demuxer</li>
+<li>Improve the speed by reducing the L2 cache collisions</li>
+<li>Fix minor issues, including compilation on some OSes</li>
+</ul>
+<p><a href="https://code.videolan.org/videolan/dav1d/-/tags/0.5.2">Release notes for dav1d 0.5.2 &lsquo;Asiatic Cheetah&rsquo;</a></p>
+<h1 id="rav1e-v020-winter-solstice-released">rav1e v0.2.0: Winter Solstice released</h1>
+<p>Building on the official 0.1.0 release in November, rav1e had a busy December with 3 releases. Overall, rav1e got a lot faster which is only good news for AV1 encoding! Here are the improvements included in the 0.2.0 release.</p>]]></description><pubDate>Sun, 5 Jan 2020 00:00:00 +0000</pubDate></item><item><title>How to Customize LinkedIn Android App Notifications</title><link>https://singhkays.com/blog/customize-linkedin-android-app-notifications/</link><description><![CDATA[<p>I recently discovered the importance of being in control of the notifications on your smartphone. When my <a href="https://www.singhkays.com/blog/what-happens-when-your-linkedin-post-goes-viral/">recent LinkedIn post went viral</a>, I received many comments and connection requests, which led to a constant buzzing of notifications from the LinkedIn app on my phone. This is never fun when you’re trying to concentrate 😊</p>
+<h2 id="pre-requisites">Pre-Requisites</h2>
+<ol>
+<li>Install the LinkedIn Android app .</li>
+<li>A fairly recent version of Android. This guide is based on Android 9 behavior.</li>
+</ol>
+<h2 id="steps-to-customize-the-app-notifications">Steps to customize the app notifications</h2>
+<ol>
+<li>
+<p>To get started, locate the LinkedIn app in your app drawer or on the home screen.</p>]]></description><pubDate>Thu, 2 Jan 2020 00:00:00 +0000</pubDate></item><item><title>What Happens When Your LinkedIn post goes viral!</title><link>https://singhkays.com/blog/what-happens-when-your-linkedin-post-goes-viral/</link><description><![CDATA[<h1 id="what-is-linkedin">What is LinkedIn?</h1>
+<p>I have never really discovered the value of LinkedIn until about a year ago when I started using it seriously to search for a new job opportunity. I have always viewed it as a Facebook clone with a horrible and inconsistent UI. But I was surprised to discover that LinkedIn had updated their UI with a copy-paste job from Facebook. Using LinkedIn is now a much more pleasant experience!</p>]]></description><pubDate>Thu, 2 Jan 2020 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: November 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-november-2019/</link><description><![CDATA[<h1 id="the-tale-of-two-next-gen-socs---snapdragon-865-and-mediatek-dimensity-1000">The Tale of Two next-gen SOCs - Snapdragon 865 and MediaTek Dimensity 1000</h1>
+<p>Last month, we saw the release of SOCs expected to power next-gen flagship smartphones. Since the AV1 standard as formalized, the community has been waiting to see when SOC manufacturers add hardware support for AV1 decoding. It looks like we'll be waiting a lot longer for such a chip from Qualcomm. In what might come as a shock, MediaTek announced the first SOC to feature such support with their new Dimensity 1000 chip. Qualcomm meanwhile announced the Snapdragon 865 SOC which focused on 5G support and camera improvements this year.</p>]]></description><pubDate>Tue, 17 Dec 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: October 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-october-2019/</link><description><![CDATA[<p>Let&rsquo;s start this month&rsquo;s roundup with a faster decoder!</p>
+<h1 id="dav1d-050--051-release">dav1d 0.5.0 &amp; 0.5.1 release</h1>
+<p>In October, dav1d saw two new releases with some fantastic speed improvements. Here is a summary:</p>
+<ul>
+<li>Large improvements in speed on SSSE3 CPU (up to 40% speedup)</li>
+<li>Speed improvements on AVX-2 (for 4-7%)</li>
+<li>Speed improvements on ARM64 (up to 10%) and ARM32.</li>
+<li>0.5.1 is a minor release which brings improvements in speed for SSE2 CPUs (up to 50% speedup), and ARMv7 CPUs (up to 41% speedup).</li>
+</ul>
+<p><strong>Detailed release notes can be found at:</strong></p>]]></description><pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: September 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-september-2019/</link><description><![CDATA[<p>Let&rsquo;s start this month&rsquo;s roundup with the release of two of our favorite encoders - rav1e and SVT-AV1! </p>
+<h1 id="rav1e">rav1e</h1>
+<p>rav1e finally has a <a href="https://github.com/xiph/rav1e/releases/tag/20190926">new weekly pre-release</a> with the following updates:</p>
+<p><strong>Improvements</strong></p>
+<ul>
+<li>More API documentation</li>
+<li>Better error reporting</li>
+<li>Nicer error messages in the cli application</li>
+<li>Explicit validation of the encoder configuration</li>
+<li>The input Frame type can be expressed</li>
+<li>Added cargo-fuzz support and documented its usage</li>
+<li>Better rate-control support</li>
+<li>Two-pass rate-control support</li>
+<li>Additional speedups over all the speed levels on x86_64</li>
+</ul>
+<p><strong>Changes</strong></p>]]></description><pubDate>Fri, 4 Oct 2019 00:00:00 +0000</pubDate></item><item><title>Part 3: Building a scalable &apos;shot-based&apos; serverless AV1 video encoder in Azure</title><link>https://singhkays.com/blog/azure-serverless-distributed-video-encoder-av1-part-3/</link><description><![CDATA[<p>This is a 3-part blog covering how to build a scalable shot-based serverless video encoder in Azure. In Part 1, I explain what AV1 is and where we are in the video encoding space. In part 2, we create a logic app to upload and index the video. In part 3, we&rsquo;ll need to split the video into its scenes and encode individual scenes. For reference, here are the links to all the parts:</p>]]></description><pubDate>Thu, 26 Sep 2019 00:00:00 +0000</pubDate></item><item><title>Now Available: Weekly build of libaom AV1 + FFmpeg docker image</title><link>https://singhkays.com/blog/docker-image-av1-ffmpeg-libaom/</link><description><![CDATA[<p><img alt="Docker image with libaom AV1 ffmpeg" loading="lazy" src="https://singhkays.com/blog/docker-image-av1-ffmpeg-libaom/media/docker-ffmpeg-av1-libaom.png">
+ </p>
+<h2 id="motivation">Motivation</h2>
+<p>While trying to try out the latest features for the libaom AV1 encoder, I&rsquo;ve been trying to figure out how to get a hold of the latest binary. As of writing of this blog, I haven&rsquo;t come across any source on the web that publishes a binary of libaom AV1 encoder. Often while trying to get a hold of the latest changes in libaom, you have to build the source yourself which takes time. Therefore, I took it upon myself to publish a weekly build of FFmpeg with the latest available libaom source @ <a href="https://aomedia.googlesource.com/aom">https://aomedia.googlesource.com/aom</a>.</p>]]></description><pubDate>Sat, 21 Sep 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: August 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-august-2019/</link><description><![CDATA[<p><img alt="dav1d logo" loading="lazy" src="https://singhkays.com/blog/av1-ecosystem-update-august-2019/media/dav1d-logo-0.4.0-release-cheetah.png">
+ </p>
+<h2 id="avif-in-spectrum-lib">AVIF in Spectrum lib</h2>
+<p>While browsing for AV1/AVIF updates, I noticed this commit to Facebook&rsquo;s open source Spectrum library that adds support for AVIF format.</p>
+<ul>
+<li><a href="https://github.com/facebookincubator/spectrum/commit/89b87bee831d3c7aabd0ad327fb118ce699df55d">https://github.com/facebookincubator/spectrum/commit/89b87bee831d3c7aabd0ad327fb118ce699df55d</a></li>
+</ul>
+<p><a href="https://libspectrum.io/">Spectrum is an image transcoding library for iOS and Android</a> that is meant to be integrated into apps for image operations. Hopefully this means that we&rsquo;ll see apps supporting AVIF format soon!</p>
+<h2 id="ffmpeg-42-release">FFmpeg 4.2 release</h2>
+<p>FFmpeg 4.2 codenamed &ldquo;Ada&rdquo; was released on August 5th, 2019. It brought with it support for AV1 decoding through libdav1d decoder. This should make it possible for applications which integrate FFmpeg to build in support for decoding AV1 files. For the full release notes visit the below link.</p>]]></description><pubDate>Tue, 3 Sep 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: July 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-july-2019/</link><description><![CDATA[<p>If May and June were F1 race cars in terms of speed of AV1 development, then July would probably be a Honda Civic. After numerous exciting announcements in the previous month, July felt like everyone&rsquo;s on vacation, which is probably true because summer months tend to be slow as the school&rsquo;s out. So, this update will be a short one as I&rsquo;m out on vacation as well :)</p>
+<h1 id="mile-high-video-2019">Mile High Video 2019</h1>
+<p>Nathan Egge of Mozilla and Brion Vibber of Wikimedia presented a session recapping AV1&rsquo;s progress in the last year. Here&rsquo;s a recap of the most important parts of the presentation</p>]]></description><pubDate>Tue, 13 Aug 2019 00:00:00 +0000</pubDate></item><item><title>Part 2: Building a scalable &apos;shot-based&apos; serverless AV1 video encoder in Azure</title><link>https://singhkays.com/blog/azure-serverless-distributed-video-encoder-av1-part-2/</link><description><![CDATA[<p>This is a 3-part blog covering how to build a scalable shot-based serverless video encoder in Azure. In Part 1, I explain what AV1 is and where we are in the video encoding space. In part 2, we create a logic app to upload and index the video. In part 3, we&rsquo;ll need to split the video into its scenes and encode individual scenes. For reference, here are the links to all the parts:</p>]]></description><pubDate>Thu, 1 Aug 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: June 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-june-2019/</link><description><![CDATA[<p>It&rsquo;s been a pretty busy for me professionally which is why this month&rsquo;s AV1 ecosystem update is coming in pretty late. It&rsquo;s been one of the most exciting months for AV1 development and a lot to catch up on! With so much news this month, it is starting to feel like we&rsquo;re at the cusp of something big! (<em>which we hope AV1 will be</em> )</p>
+<h2 id="youtube-pauses-av1-rollout">Youtube pauses AV1 rollout</h2>
+<p>Currently, YouTube is the biggest streaming platform delivering AV1 video and is responsible for the majority of AV1 video consumption on the internet. But a recent message posted to AV1 subreddit announced that YouTube was pausing the rollout of AV1. The reason was not shared but AV1 seems to be performing well at YouTube with the intent to expand its use soon. Here&rsquo;s the full message:</p>]]></description><pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate></item><item><title>Part 1: Building a scalable &apos;shot-based&apos; serverless AV1 video encoder in Azure</title><link>https://singhkays.com/blog/azure-serverless-distributed-video-encoder-av1-part-1/</link><description><![CDATA[<p>This is a 3-part blog covering how to build a scalable shot-based serverless video encoder in Azure. In Part 1, I explain what AV1 is and where we are in the video encoding space. In part 2, we create a logic app to upload and index the video. In part 3, we&rsquo;ll need to split the video into its scenes and encode individual scenes. For reference, here are the links to all the parts:</p>]]></description><pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: May 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-may-2019/</link><description><![CDATA[<p>May was another amazing month for the AV1 codec! We saw great progress in the SVT-AV1 encoder, Android update news and some  surprising news out of China!</p>
+<h2 id="svt-av1-is-making-strides">SVT-AV1 is making strides!</h2>
+<p>Let&rsquo;s start with SVT-AV1 encoder, <a href="https://www.singhkays.com/blog/av1-ecosystem-update-april-2019/#intel-and-netflix-are-joining-forces">the current encoder of choice for Netflix</a>, being developed by the folks at Intel. In May, <a href="https://github.com/OpenVisualCloud/SVT-AV1/releases/tag/v0.5.0">version 0.5.0 was released</a> with the following features:</p>
+<ul>
+<li>8 bit / 10 bit 4:2:0 up to 4K60p resolutions</li>
+<li>Presets 0-8</li>
+<li>New API, FFmpeg, GStreamer plugins</li>
+<li>Rate control support (VBR, CVBR)</li>
+<li>Block sizes from 4x4 to 128x128</li>
+<li>Non-square blocks</li>
+<li>Tiles</li>
+<li>Deblocking / CDEF / Restoration filters</li>
+<li>Film Grain</li>
+<li>Warped motion estimation</li>
+<li>Intra block copy</li>
+<li>Trellis quantized coefficient optimization</li>
+<li>Support for 4 and 5 layers prediction structures</li>
+<li>Chroma search in MD</li>
+<li>Multi-reference picture support</li>
+</ul>
+<h4 id="other-notable-updates">Other notable updates</h4>
+<ul>
+<li>
+<p>May also saw the most number of commits to the SVT-AV1 Github repo as shown by the graph below. <a href="https://github.com/OpenVisualCloud/SVT-AV1/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+is%3Amerged+merged%3A2019-05-01..2019-06-01">There were also 40 PRs merged in the month of May</a>.
+<img alt="SVT-AV1 github repo number of commit graph in May 2019" loading="lazy" src="https://singhkays.com/blog/av1-ecosystem-update-may-2019/media/svt-av1-commits-may-2019.png"></p>]]></description><pubDate>Mon, 10 Jun 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Resource Central: Videos, Tools, Presentations, Comparisons, Research Papers, Encoders, Decoders</title><link>https://singhkays.com/blog/av1-wiki-resources-tools/</link><description><![CDATA[<h1 id="bitstream-spec">Bitstream spec</h1>
+<ul>
+<li><a href="https://aomediacodec.github.io/av1-spec/">https://aomediacodec.github.io/av1-spec/</a></li>
+</ul>
+<hr> 
+<h1 id="encoder-implementations">Encoder Implementations</h1>
+<h3 id="svt-av1">SVT-AV1</h3>
+<h5 id="homepage">Homepage</h5>
+<ul>
+<li><a href="https://01.org/svt">https://01.org/svt</a></li>
+</ul>
+<h5 id="source-repo">Source repo</h5>
+<ul>
+<li><a href="https://github.com/OpenVisualCloud/SVT-AV1">https://github.com/OpenVisualCloud/SVT-AV1</a></li>
+</ul>
+<h5 id="user-guide">User-Guide</h5>
+<ul>
+<li><a href="https://github.com/OpenVisualCloud/SVT-AV1/blob/master/Docs/svt-av1_encoder_user_guide.md">https://github.com/OpenVisualCloud/SVT-AV1/blob/master/Docs/svt-av1_encoder_user_guide.md</a></li>
+</ul>
+<h5 id="roadmap">Roadmap</h5>
+<p><a href="https://trello.com/b/g0lD2blK/svt-av1">Trello page</a></p>
+<h5 id="microsoft-azure-whitepaper">Microsoft Azure whitepaper</h5>
+<ul>
+<li><a href="https://01.org/sites/default/files/documentation/svt_azure_wp.pdf">https://01.org/sites/default/files/documentation/svt_azure_wp.pdf</a></li>
+</ul>
+<h5 id="amazon-web-services-aws-whitepaper">Amazon Web Services (AWS) Whitepaper</h5>
+<ul>
+<li><a href="http://01.org/sites/default/files/documentation/svt_aws_wp.pdf">http://01.org/sites/default/files/documentation/svt_aws_wp.pdf</a></li>
+</ul>
+<h5 id="mailing-list">Mailing List</h5>
+<ul>
+<li><a href="http://lists.01.org/mailman/listinfo/svt-av1">http://lists.01.org/mailman/listinfo/svt-av1</a></li>
+</ul>
+<hr > 
+<h3 id="aomenc">aomenc</h3>
+<h5 id="homepage-and-source-repo">Homepage and Source repo</h5>
+<ul>
+<li><a href="https://aomedia.googlesource.com/aom/">https://aomedia.googlesource.com/aom/</a></li>
+</ul>
+<hr> 
+<h3 id="rav1e">rav1e</h3>
+<h5 id="homepage-source-repo">Homepage, Source repo</h5>
+<ul>
+<li><a href="https://github.com/xiph/rav1e">https://github.com/xiph/rav1e</a></li>
+</ul>
+<hr> 
+<h1 id="decoder-implementations">Decoder Implementations</h1>
+<h3 id="dav1d">dav1d</h3>
+<h5 id="homepage-source-repo-1">Homepage, Source repo</h5>
+<ul>
+<li><a href="https://code.videolan.org/videolan/dav1d">https://code.videolan.org/videolan/dav1d</a></li>
+</ul>
+<hr> 
+<h1 id="presentations">Presentations</h1>
+<ul>
+<li>
+<p><a href="https://www.slideshare.net/KaranKaySingh/nab-2019-latest-technical-and-business-progress-with-av1">Mozilla @ NAB 2019</a> [April 2019 by Nathan Egge]</p>
+</li>
+<li>
+<p><a href="https://www.slideshare.net/secret/3aEhhmE38djgoo">AOM - AV1How does it work?</a> [July 2017 by Pascal Massimino]</p>
+</li>
+</ul>
+<hr> 
+<h1 id="videos">Videos</h1>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/watch?v=04lXWMcwdXA">Video @Scale 2018 - Yue Chen, Google Yue Chen, Senior AV1 Engineer at Google, gives a technical overview of the AV1 video codec.</a></p>]]></description><pubDate>Tue, 14 May 2019 00:00:00 +0000</pubDate></item><item><title>AV1 Ecosystem Update: April 2019</title><link>https://singhkays.com/blog/av1-ecosystem-update-april-2019/</link><description><![CDATA[<p>It&rsquo;s been an exciting time following the progress of the royalty free video codec AV1 over the past year and April might just be the most exciting active month in the amount of news we got about AV1! It&rsquo;s not every day that media industry giants such as Netflix, Google, Mozilla, Microsoft, Apple, Amazon, ARM, Facebook, Nvidia, Intel, Cisco and many others agree on the same technology stack!</p>
+<h2 id="samsung-joins-the-party">Samsung joins the party</h2>
+<p>The month started with Samsung announcing they were joining the Alliance of Open Media Board at the highest level.</p>]]></description><pubDate>Mon, 6 May 2019 00:00:00 +0000</pubDate></item><item><title>How to identify boot, temp and data disks in Azure Linux VMs</title><link>https://singhkays.com/blog/how-to-identify-azure-linux-vm-disks/</link><description><![CDATA[<p>In Azure, every VM has a persistent OS Disk that is used for booting the VM and contains the operating system. In addition to an OS disk, each VM also has a temporary disk that is present on the compute cluster hosting your VM.</p>
+<h2 id="why-is-my-os-disk-not--devsda">Why is my OS disk not @ /dev/sda?</h2>
+<p>In most cases the OS disk is <code>/dev/sda</code> but in some odd cases it is not. This is not an Azure specific issue but a default Linux behavior. The ordering in which Linux enumerates SCSI devices is nondeterministic. It scans SCSI devices in the order they appear on the PCI Bus. Therefore, whichever disk is enumerated first is <code>/dev/sda</code>.</p>]]></description><pubDate>Tue, 30 Apr 2019 00:00:00 +0000</pubDate></item><item><title>It&apos;s time to replace GIFs with AV1 video!</title><link>https://singhkays.com/blog/its-time-replace-gifs-with-av1-video/</link><description><![CDATA[<p>It is 2019 and we need to make a decision about GIFs (<a href="https://bits.blogs.nytimes.com/2013/05/23/battle-over-gif-pronunciation-erupts/">no, not that
+one! We’re never going to be able to decide that
+one!</a>).
+GIFs take up a massive amount of space <em>(often multiple megabytes!)</em> and
+if you’re a web developer, then that’s completely against your ethos! As a
+web developer, you want to minimize the bits your users need to download
+so that your website loads fast. That’s why you minify javascript,
+optimize PNGs, JPEGs and sometimes turn <a href="https://developers.google.com/speed/webp/">JPEGs to WebPs as
+well</a>. But then what about
+the venerable GIF?</p>]]></description><pubDate>Sun, 28 Apr 2019 00:00:00 +0000</pubDate></item><item><title>Detect Rolling Credits with Azure Video Indexer</title><link>https://singhkays.com/blog/detect-rolling-credits-video-indexer/</link><description><![CDATA[<p>Azure Video Indexer is one of my favorite services! It provides
+some amazing features such as:</p>
+<ul>
+<li>Identify faces and celebrities</li>
+<li>Extract text and objects (e.g. cat, table, car etc.)</li>
+<li>Detect scenes and shots</li>
+<li>Emotion and sentiment detection</li>
+<li>Audio effects such as clapping, silence &amp; speech</li>
+</ul>
+<p>The full list of features can be viewed at <a href="https://vi.microsoft.com/en-us/">https://vi.microsoft.com/en-us/</a></p>
+<h2 id="get-the-credits-rolling">Get the credits rolling!</h2>
+<p>Recently, <a href="https://azure.microsoft.com/en-us/blog/azure-media-services-the-latest-video-indexer-updates-from-nab-show-2019/">Video Indexer announced they’ve added the capability to
+detect rolling credits in the
+videos</a>.
+One of the key scenarios enabled by this feature is the ability for
+video owners to identify a natural point in the video where they can
+recommend the next episode or show aka Netflix autoplay experience as
+shown below:</p>]]></description><pubDate>Thu, 11 Apr 2019 00:00:00 +0000</pubDate></item><item><title>The &quot;Other Chromes&quot;: A Chromium-based browser market analysis</title><link>https://singhkays.com/blog/the-other-chromes/</link><description><![CDATA[<p>We’re living in a golden age of web browser choice. But before I begin
+this story, I need to take you back to 2006. You see back in 2006 as a
+young technologist, my choices of a web browser were limited. It was
+either Internet Explorer or Mozilla Firefox. But then one day while
+browsing through PC World magazine, I discovered an alternate option –
+Opera.</p>
+<p>Opera had <a href="https://googlesystem.blogspot.com/2006/05/10-features-youll-find-only-in-opera.html">many differentiated
+features</a>
+such as a customizable streamlined user interface as well as being <a href="https://www.garyshood.com/browser/">more
+memory efficient</a> and <a href="http://lowendmac.com/2005/whats-the-fastest-mac-browser-across-platforms/">faster than
+Firefox</a>.
+There were many other features that made Opera my go-to browser but the
+most important for my browsing on a 256 Kbps turned out to be the
+“Instant-back”. Normally, when you press the back button in a browser,
+it will try to reload the page but in Opera the page loaded from cache,
+so the back action was instant!</p>]]></description><pubDate>Sat, 9 Mar 2019 19:03:17 +0000</pubDate></item><item><title>Microsoft Ignite 2018: VM Scale Sets + Shared Image Gallery = Infrastructure at scale - BRK3339</title><link>https://singhkays.com/blog/ignite2018-vm-scale-sets-shared-image-gallery-infrastructure/</link><description><![CDATA[<p>When you need to create a lot of instances from a custom VM image, VM Scale Sets and Shared Image Gallery are the services you need to use. In this session we walk through how to combine the power of VM Scale Sets &amp; Shared Image Gallery to build infrastructure at scale.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/9_AFLKg0EIw?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<script id="mNCC" language="javascript">
+    medianet_width = "600";
+    medianet_height = "250";
+    medianet_crid = "228792741";
+    medianet_versionId = "3111299"; 
+  </script>
+<script src="//contextual.media.net/nmedianet.js?cid=8CUX6J71X"></script>]]></description><pubDate>Thu, 27 Sep 2018 00:00:00 +0000</pubDate></item><item><title>Microsoft Ignite 2018: What&apos;s new in Managed Disks - THR2263</title><link>https://singhkays.com/blog/ignite2018-whats-new-managed-disks/</link><description><![CDATA[<p>Managed Disks make the managedment of disks a breeze in Azure. In this session I talk about the updates we&rsquo;ve introduced to Managed Disks since Ignite 2017.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/IUgiPrN7P3A?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<script id="mNCC" language="javascript">
+    medianet_width = "600";
+    medianet_height = "250";
+    medianet_crid = "228792741";
+    medianet_versionId = "3111299"; 
+  </script>
+<script src="//contextual.media.net/nmedianet.js?cid=8CUX6J71X"></script>]]></description><pubDate>Wed, 26 Sep 2018 00:00:00 +0000</pubDate></item><item><title>Microsoft Ignite 2018: Migrating your IaaS infrastructure from ASM to ARM without downtime - THR2265</title><link>https://singhkays.com/blog/ignite2018-migrate-asm-arm-iaas/</link><description><![CDATA[<p>Azure Resource Manager stack has been released for almost three years now. In those three years many features have been added that are exclusive to Azure Resource Manager. In this session, I demonstrate the process of migrating your existing infrastructure to Azure Resource Manager without downtime. See a list of all the benefits here: <a href="https://azure.microsoft.com/en-us/blog/migrate-iaas-to-azure-resource-manager">https://azure.microsoft.com/en-us/blog/migrate-iaas-to-azure-resource-manager</a>.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/RkTVPOxpwyw?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<script id="mNCC" language="javascript">
+    medianet_width = "600";
+    medianet_height = "250";
+    medianet_crid = "228792741";
+    medianet_versionId = "3111299"; 
+  </script>
+<script src="//contextual.media.net/nmedianet.js?cid=8CUX6J71X"></script>]]></description><pubDate>Tue, 25 Sep 2018 00:00:00 +0000</pubDate></item><item><title>Microsoft Ignite 2018: Share custom VM images with Shared Image Gallery - THR2264</title><link>https://singhkays.com/blog/ignite2018-share-vm-images-shared-image-gallery/</link><description><![CDATA[<p>Sharing custom images within an organization to different subscriptions globally has been a long standing ask from Azure customers. With Shared Image Gallery we&rsquo;re making this dream a reality! Read more about Shared Image Gallery <a href="https://azure.microsoft.com/en-us/blog/shared-image-gallery-now-in-limited-public-preview/">https://azure.microsoft.com/en-us/blog/shared-image-gallery-now-in-limited-public-preview/</a></p>
+<p>In this session, I present how customers can get started with Shared Image Gallery.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/xonDAxEUBJM?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<script id="mNCC" language="javascript">
+    medianet_width = "600";
+    medianet_height = "250";
+    medianet_crid = "228792741";
+    medianet_versionId = "3111299"; 
+  </script>
+<script src="//contextual.media.net/nmedianet.js?cid=8CUX6J71X"></script>]]></description><pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate></item><item><title>Testing x265 encoder scaling on a 128 core Azure VM for 4K HDR</title><link>https://singhkays.com/blog/x265-128-core-scaling-4k-hevc-hdr-azure-vm/</link><description><![CDATA[<p>Video encoding has always been a fairly compute intensive task. With every new generation of video encoders, more computational power has been required to achieve the compression benefits. <a href="https://en.wikipedia.org/wiki/High_Efficiency_Video_Coding">HEVC/H.265</a> is the latest state of the art video compression standard with <a href="https://en.wikipedia.org/wiki/X265">x265</a> being the most popular open-source encoder used for encoding into the HEVC/H.265 format. In comparison to AVC/H.264 <em>(the previous state of the art encoding format),</em> HEVC offers about double the data compression ratio at the same level of video quality, or substantially improved video quality at the same bit rate.</p>]]></description><pubDate>Sun, 19 Aug 2018 20:52:28 +0000</pubDate></item><item><title>How do I discard unstaged changes in Git?</title><link>https://singhkays.com/blog/git-discard-changes-terminal/</link><description><![CDATA[<p>Often when I’m working on this blog, I work over multiple days and end up working on multiple devices. The blog is written in markdown and tracked in a Git repo on <a href="https://azure.microsoft.com/en-us/services/devops/">Azure Devops</a>. The other day a scenario arose where I was customizing the theme of the blog but not getting anywhere. I decided to have another go at the customization few days later but this time on another device. Luckily, I was able to make progress and achieve the style I was looking for.</p>]]></description><pubDate>Sat, 21 Apr 2018 00:00:00 +0000</pubDate></item><item><title>Vertical Scale Runbooks Updated with the latest Azure VM Sizes</title><link>https://singhkays.com/blog/vertical-scale-runbooks-update/</link><description><![CDATA[<p>In the world of cloud, horizontal scaling is well understood these days. It is easy to use applications like Kubernetes to automate the scale out your containerized applications based on workload demand. For applications running on VMs, we have cloud native services like <a href="https://azure.microsoft.com/en-us/services/virtual-machine-scale-sets/">VM Scale Sets</a> that make scaling in and out a breeze. However, for an on-prem application going through a lift &amp; shift to the cloud, vertical scaling of the VM is still the king.</p>]]></description><pubDate>Sun, 10 Dec 2017 22:43:18 +0000</pubDate></item><item><title>Understanding the Azure B Series and CPU credits</title><link>https://singhkays.com/blog/understanding-azure-b-series/</link><description><![CDATA[<p>Azure <a href="https://azure.microsoft.com/en-us/blog/introducing-b-series-our-new-burstable-vm-size/">recently introduced</a> its first burstable VM size - the B-series. This VM type is meant to compete directly with AWS&rsquo; T2 instances. In the below few words (or more :smile: ) I try to explain what this means and why you should care. If you still have questions after reading, hit me up on Twitter or leave a comment below.</p>
+<h1 id="so-why-do-i-need-a-burstable-size-anyway">So why do I need a burstable size anyway?</h1>
+<p>If you have applications that remain idle for a long time and burst occasionally, then the B-series might be the perfect fit for you. To understand why, we first need to understand how the pricing for a VM works in the cloud. When you deploy a VM in the cloud, you&rsquo;re paying the same regardless of the % of CPU used. Therefore, anytime your VM is not using 100% CPU, you are leaving computing cycles on the table that you are paying for. Typically, users will solve this problem by deploying a VM size with smaller number of cores and lesser RAM. However, sometimes the application demands more computing power. This is a classic <a href="https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling">vertical scalability problem</a>. As the <a href="https://electronics.stackexchange.com/questions/122050/what-limits-cpu-speed">physics of semiconductors</a> limits the number of cores, CPU clock speeds and RAM you can add to a single node, users have solved this problem by developing applications that can scale horizontally to more nodes.</p>]]></description><pubDate>Tue, 14 Nov 2017 00:59:56 +0000</pubDate></item><item><title>Integrating Azure Automation Runbook Output with Logic Apps</title><link>https://singhkays.com/blog/azure-automation-runbook-output-logic-apps/</link><description><![CDATA[<h2 id="problem">Problem</h2>
+<p>One of the challenges I have come across the last few days while working with Azure Automation &amp; Logic Apps is how to integrate the output of the Automation Runbook in the Logic Apps workflow. Here&rsquo;s the scenario, I have been trying to solve - <em><strong>Given an AzureRM resource Id, I want to parse out the name of the subscription, resource group &amp; name of the resource.</strong></em></p>
+<p>Here&rsquo;s an example AzureRM resource Id for reference</p>]]></description><pubDate>Sun, 29 Oct 2017 17:28:40 +0000</pubDate></item><item><title>Azure Cloud Shell + Solarized Dark = ❤️</title><link>https://singhkays.com/blog/azure-cloud-shell-solarized-dark/</link><description><![CDATA[<p>I&rsquo;m a big fan of typography! Clean and beautiful typography can make the experience of coding or reading an article so much better. It&rsquo;s no wonder if you search for &ldquo;best programming font&rdquo;, there&rsquo;s no shortage of font comparison articles. However, one of the things that is universally agreed upon is how terrible <em>Courier/Courier New</em> is.</p>
+<p><a href="https://docs.microsoft.com/en-us/azure/cloud-shell/overview">Azure Cloud Shell</a> is a great product that takes away the complexity of figuring out the installation methods and authentication <em>(esp. in organizations with 2FA enabled)</em> and gets you a CLI prompt ready to roll! However, Azure Cloud Shell forces you to use Courier New and a default white on black color scheme.</p>]]></description><pubDate>Tue, 24 Oct 2017 06:22:52 +0000</pubDate></item><item><title>About Me</title><link>https://singhkays.com/about/</link><description><![CDATA[<p>Hi! My name is Kay Singh and I am a Product Manager at Oracle Cloud Infrastructure. Previously I worked at Azure on the Compute team. In my free time I&rsquo;m either experimenting with various ideas and side projects which will end up on this blog or travelling and putting my camera to good use.</p>
+<h2 id="some-things-ive-worked-on">Some things I&rsquo;ve worked on</h2>
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/blog/announcing-ultra-ssd-the-next-generation-of-azure-disks-technology-preview/">Azure Ultra SSD Disks</a></li>
+<li><a href="https://azure.microsoft.com/en-us/blog/announcing-the-public-preview-of-shared-image-gallery/">Launched Shared Image Gallery service for easier VM Image management</a></li>
+<li>Various features for Managed Disks
+<ul>
+<li><a href="https://azure.microsoft.com/en-us/blog/move-managed-disks-and-vms-now-available/">Move Managed Disks and Managed VMs across Resource Groups &amp; Subscriptions</a></li>
+<li><a href="https://azure.microsoft.com/en-us/blog/managed-disks-migration-portal/">Managed Disks migration capability in Azure Portal</a></li>
+<li><a href="https://azure.microsoft.com/en-us/blog/os-disk-swap-managed-disks/">OS Disk Swap for Managed VMs</a></li>
+<li><a href="https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/">Per Disk performance metrics for Managed &amp; Unmanaged Disks</a></li>
+</ul>
+</li>
+<li><a href="https://github.com/Azure/azure-quickstart-templates">Founded the open-source Azure Quickstart Templates Github community and grew it to be the most popular/contributed/starred repo under the Azure Github orgranization</a>.</li>
+<li><a href="https://azure.microsoft.com/en-us/blog/migrate-iaas-to-azure-resource-manager/">Designed the analytics, BI and helped many customers migrate from Classic to Resource Manager stack in Azure</a></li>
+<li><a href="https://github.com/Azure/azure-powershell/releases/tag/0.9.0-April2015">Designed the PowerShell user-experience for Virtual Machine cmdlets</a></li>
+</ul>
+<h2 id="public-speaking">Public Speaking</h2>
+<p>I love public speaking and have been known to spend too much time on perfecting my powerpoint presentation including animations, color palettes and making sure the presentation is aligned down to individual pixels :) I&rsquo;ve delivered presentations at many external and internal conferences including bootcamps for Cloud Solution Architects at Microsoft. I also had some fun on &ldquo;Tuesdays With Corey&rdquo; :)</p>]]></description><pubDate>Sun, 22 Oct 2017 06:26:30 +0000</pubDate></item><item><title>Contact Me</title><link>https://singhkays.com/contact/</link><description><![CDATA[<p>If you&rsquo;d like to reach out, I can be found at the below links. DMs are open on Twitter.</p>
+<ul>
+<li><a href="http://twitter.com/singhkays">Twitter - @singhkays</a></li>
+<li><a href="http://linkedin.com/in/karan-kay-singh-2a897919">LinkedIn</a></li>
+</ul>]]></description><pubDate>Sun, 22 Oct 2017 06:26:30 +0000</pubDate></item></channel></rss>
