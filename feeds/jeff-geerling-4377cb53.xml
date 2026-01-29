@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Recapping My 5 Year Old Studio Monitors</title><link>https://www.jeffgeerling.com/blog/2026/recapping-my-5-year-old-studio-monitors/</link><description><![CDATA[<p>A few weeks ago, I started hearing a slight crackle at the loudest parts of whenever sound was playing through my <a href="https://amzn.to/3LVd3DY">PreSonus Eris E3.5 speakers</a>. It was <em>very</em> faint, but quite annoying, especially when editing my YouTube videos.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Ode to the AA Battery</title><link>https://www.jeffgeerling.com/blog/2026/ode-to-the-aa-battery/</link><description><![CDATA[<p>Recently <a href="https://x.com/Merocle/status/2015496917472489751">this post from @Merocle</a> caught my eye:</p>
+<blockquote>
+<p>I'm fixing my iFixit soldering station. I haven't used it for a long time and the battery has gone overdischarge. I hope it will come back to life. Unfortunately, there are no replacements available for sale at the moment.</p>
+</blockquote>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/ode-to-the-aa-battery/ifixit-soldering-usb-battery-merocle-torn-down.jpg"
+ alt="iFixit soldering hub torn down - used with permission" width="500" height="auto">
+</figure>
+
+<p>Devices with built-in rechargeable batteries have been bugging me a lot lately. It's convenient to have a device you can take with you and use anywhere. And with modern Li-ion cells, battery life is remarkable.</p>]]></description><pubDate>Thu, 29 Jan 2026 17:00:00 +0000</pubDate></item><item><title>Recapping My 5 Year Old Studio Monitors</title><link>https://www.jeffgeerling.com/blog/2026/recapping-my-5-year-old-studio-monitors/</link><description><![CDATA[<p>A few weeks ago, I started hearing a slight crackle at the loudest parts of whenever sound was playing through my <a href="https://amzn.to/3LVd3DY">PreSonus Eris E3.5 speakers</a>. It was <em>very</em> faint, but quite annoying, especially when editing my YouTube videos.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/recapping-my-5-year-old-studio-monitors/presonus-eris-e35-speakers.jpeg"
  alt="PreSonus Eris E3.5 speakers on workbench" width="700" height="auto">
 </figure>
@@ -106,9 +114,4 @@
 </figure>
 
 <p>This air quality monitor costs $250. It's called the <a href="https://networkedartifacts.com/airlab">Air Lab</a>, and I've been using it to measure the air in my car, home, studio, and a few events over the past few months. And in using it over the course of a road trip I learned to not run recirculate in my car quite as often—more on that later.</p>
-<p><a href="https://networkedartifacts.com">Networked Artifacts</a> built in some personality:</p>]]></description><pubDate>Fri, 21 Nov 2025 15:02:27 +0000</pubDate></item><item><title>How to silence the fan on a CM5 after shutdown</title><link>https://www.jeffgeerling.com/blog/2025/how-silence-fan-on-cm5-after-shutdown/</link><description><![CDATA[<p>Out of the box, if you buy a Raspberry Pi Compute Module 5, install it on the official CM5 IO Board, and install a fan on it (e.g. my current favorite, the <a href="https://www.digikey.com/en/products/detail/edatec/ED-CM5ACOOLER/25696857">EDAtec CM5 Active Cooler</a>), you'll notice the fan ramps up to 100% speed after you shut down the Pi.</p>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2025/how-silence-fan-on-cm5-after-shutdown/cm5-io-board-fan-running.jpeg"
- alt="CM5 IO Board - Fan spinning" width="700" height="467">
-</figure>
-
-<p>That's not fun, since at least for a couple of my CM5s, they are more often powered down than running, creating a slight cacophany!</p>]]></description><pubDate>Thu, 20 Nov 2025 15:27:40 +0000</pubDate></item></channel></rss>
+<p><a href="https://networkedartifacts.com">Networked Artifacts</a> built in some personality:</p>]]></description><pubDate>Fri, 21 Nov 2025 15:02:27 +0000</pubDate></item></channel></rss>
