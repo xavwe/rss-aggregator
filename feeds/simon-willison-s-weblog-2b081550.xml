@@ -4,7 +4,7 @@ I've been running <a href="https://openclaw.ai/">OpenClaw</a> using Docker on my
 <li><a href="https://til.simonwillison.net/llms/openclaw-docker#use-their-docker-compose-configuration">Use their Docker Compose configuration</a></li>
 <li><a href="https://til.simonwillison.net/llms/openclaw-docker#answering-all-of-those-questions">Answering all of those questions</a></li>
 <li><a href="https://til.simonwillison.net/llms/openclaw-docker#running-administrative-commands">Running administrative commands</a></li>
-<li><a href="https://til.simonwillison.net/llms/openclaw-docker#setting-up-a-telegraph-bot">Setting up a Telegraph bot</a></li>
+<li><a href="https://til.simonwillison.net/llms/openclaw-docker#setting-up-a-telegram-bot">Setting up a Telegram bot</a></li>
 <li><a href="https://til.simonwillison.net/llms/openclaw-docker#accessing-the-web-ui">Accessing the web UI</a></li>
 <li><a href="https://til.simonwillison.net/llms/openclaw-docker#running-commands-as-root">Running commands as root</a></li>
 </ul>
