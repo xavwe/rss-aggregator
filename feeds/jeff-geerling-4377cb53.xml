@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Ode to the AA Battery</title><link>https://www.jeffgeerling.com/blog/2026/ode-to-the-aa-battery/</link><description><![CDATA[<p>Recently <a href="https://x.com/Merocle/status/2015496917472489751">this post from @Merocle</a> caught my eye:</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Exploring a Modern SMTPE 2110 Broadcast Truck With My Dad</title><link>https://www.jeffgeerling.com/blog/2026/exploring-a-modern-smpte-2110-broadcast-truck-with-my-dad/</link><description><![CDATA[<p>In October, my Dad and I got to go behind the scenes at two St. Louis Blues (NHL hockey) games, and observe the massive team effort involved in putting together a modern digital sports broadcast.</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/exploring-a-modern-smpte-2110-broadcast-truck-with-my-dad/blues-game-production-truck-prod-room.jpg"
+ alt="Broadcast production room in 45 Flex truck at a Blues game" width="700" height="auto">
+</figure>
+
+<p>I wanted to explore the timing and digital side of a modern <a href="https://www.smpte.org/standards/st2110">SMPTE 2110</a> mobile unit, and my Dad has been involved in studio and live broadcast for decades, so he enjoyed the experience as the engineer <em>not</em> on duty!</p>]]></description><pubDate>Sat, 7 Feb 2026 15:00:00 +0000</pubDate></item><item><title>The first good Raspberry Pi Laptop</title><link>https://www.jeffgeerling.com/blog/2026/the-first-good-raspberry-pi-laptop/</link><description><![CDATA[<p>Ever since the <a href="https://www.raspberrypi.com/products/compute-module-5/">Raspberry Pi Compute Module 5</a> was introduced, I wondered why nobody built a decent laptop chassis around it.</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/the-first-good-raspberry-pi-laptop/argon-one-up-laptop-hero-raspberry-pi-mug.jpg"
+ alt="Argon ONE UP laptop with Raspberry Pi mug on desk" width="700" height="auto">
+</figure>
+
+<p>You could swap out a low spec CM5 for a higher spec, and get an instant computer upgrade. Or, assuming a CM6 comes out someday in the same form factor, the laptop chassis could get an entirely new life with that upgrade.</p>]]></description><pubDate>Fri, 6 Feb 2026 15:00:00 +0000</pubDate></item><item><title>Ode to the AA Battery</title><link>https://www.jeffgeerling.com/blog/2026/ode-to-the-aa-battery/</link><description><![CDATA[<p>Recently <a href="https://x.com/Merocle/status/2015496917472489751">this post from @Merocle</a> caught my eye:</p>
 <blockquote>
 <p>I'm fixing my iFixit soldering station. I haven't used it for a long time and the battery has gone overdischarge. I hope it will come back to life. Unfortunately, there are no replacements available for sale at the moment.</p>
 </blockquote>
@@ -104,14 +114,4 @@
  alt="Apple Touch ID - external 3D printed sensor" width="700" height="394">
 </figure>
 
-<p>But there <em>is</em> a way to hack it. It's incredibly wasteful, and takes a bit more patience than I think <em>most</em> people have, but you basically take an Apple Magic Keyboard with Touch ID, rip out the Touch ID, and install it in a 3D printed box, along with the keyboard's logic board.</p>]]></description><pubDate>Wed, 3 Dec 2025 22:38:04 +0000</pubDate></item><item><title>Nvidia Graphics Cards work on Pi 5 and Rockchip</title><link>https://www.jeffgeerling.com/blog/2025/nvidia-graphics-cards-work-on-pi-5-and-rockchip/</link><description><![CDATA[<p>A few months ago, GitHub user <a href="https://www.jeffgeerling.com/blog/2025/full-egpu-acceleration-on-pi-500-15-line-patch">@yanghaku dropped a 15 line patch to fix GPU support for practically all AMD GPUs</a> on the Raspberry Pi (and demoed a 3080 running on the Pi with a separate, unreleased patch). This week, GitHub user <a href="https://github.com/NVIDIA/open-gpu-kernel-modules/pull/972">@mariobalanica dropped this (larger) patch which does the same for Nvidia GPUs</a>!</p>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2025/nvidia-graphics-cards-work-on-pi-5-and-rockchip/raspberry-pi-5-in-mug-with-nvidia-a4000.jpeg"
- alt="Raspberry Pi 5 in mug with Nvidia A4000 GPU" width="700" height="394">
-</figure>
-
-<p>I have a Raspberry Pi and an Nvidia graphics card—and I'm easily distracted. So I put down my testing of a GB10 system for a bit, and compiled mariobalanica's branch.</p>]]></description><pubDate>Wed, 26 Nov 2025 23:45:45 +0000</pubDate></item><item><title>Air Lab is the Flipper Zero of air quality monitors</title><link>https://www.jeffgeerling.com/blog/2025/air-lab-flipper-zero-air-quality-monitors/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2025/air-lab-flipper-zero-air-quality-monitors/air-lab-aqi-monitor-hero.jpeg"
- alt="Air Lab AQI Monitor Professor Robin" width="700" height="394">
-</figure>
-
-<p>This air quality monitor costs $250. It's called the <a href="https://networkedartifacts.com/airlab">Air Lab</a>, and I've been using it to measure the air in my car, home, studio, and a few events over the past few months. And in using it over the course of a road trip I learned to not run recirculate in my car quite as often—more on that later.</p>
-<p><a href="https://networkedartifacts.com">Networked Artifacts</a> built in some personality:</p>]]></description><pubDate>Fri, 21 Nov 2025 15:02:27 +0000</pubDate></item></channel></rss>
+<p>But there <em>is</em> a way to hack it. It's incredibly wasteful, and takes a bit more patience than I think <em>most</em> people have, but you basically take an Apple Magic Keyboard with Touch ID, rip out the Touch ID, and install it in a 3D printed box, along with the keyboard's logic board.</p>]]></description><pubDate>Wed, 3 Dec 2025 22:38:04 +0000</pubDate></item></channel></rss>

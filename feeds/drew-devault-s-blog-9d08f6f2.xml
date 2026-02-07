@@ -3,7 +3,7 @@ test-driven development (TDD). I have met a lot of people who swear by it! And,
 I have also met a lot of people who insisted that I adopt it, too, often with
 the implied threat of appealing to my boss if appealing to me didn&rsquo;t work.</p>
 <p>The basic premise of TDD, for those unaware, is that one <em>first</em> writes a unit
-test that verifies the expected behavior for some function they want to write,
+test that verifies the expected behavior for some code they want to write,
 observes the new test fail, and <em>then</em> one writes the implementation, iterating
 on it until the test passes. The advantage of this approach is, first, to ensure
 that your codebase is adequately covered by testing, and, second, to provide you
