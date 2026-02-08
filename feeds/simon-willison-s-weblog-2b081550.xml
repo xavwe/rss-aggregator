@@ -69,6 +69,13 @@ New "research preview" from Anthropic today: you can now access a faster version
 </blockquote>
 <p>How do you clone the important parts of Okta, Jira, Slack and more? With coding agents!</p>
 <p>As I understood it the trick was effectively to dump the full public API documentation of one of those services into their agent harness and have it build an imitation of that API, as a self-contained Go binary. They could then have it build a simplified UI over the top to help complete the simulation.</p>
+
+<p><strong>Update</strong>: DTU creator Jay Taylor posted some extra context about this <a href="https://news.ycombinator.com/item?id=46924426#46931812">on Hacker News</a> sharing a key prompting strategy:</p>
+<blockquote>
+<p>I did have an initial key insight which led to a repeatable strategy to ensure a high level of fidelity between DTU vs. the official canonical SaaS services:</p>
+<p><code>Use the top popular publicly available reference SDK client libraries as compatibility targets, with the goal always being 100% compatibility.</code></p>
+</blockquote>
+
 <p>With their own, independent clones of those services - free from rate-limits or usage quotas - their army of simulated testers could go <em>wild</em>. Their scenario tests became scripts for agents to constantly execute against the new systems as they were being built.</p>
 <p>This screenshot of their Slack twin also helps illustrate how the testing process works, showing a stream of simulated Okta users who are about to need access to different simulated systems.</p>
 <p><img src="https://static.simonwillison.net/static/2026/strong-dm-slack.jpg" alt="Screenshot of a Slack-like interface titled &quot;DTU Slack&quot; showing a thread view (Thread — C4B9FBB97) with &quot;Focus first&quot; and &quot;Leave&quot; buttons. The left sidebar lists channels including # org-general (182), # general (0) (shared×2), # it-support (0), # channel-0002 (0) (shared×2), # channel-0003 (0) through # channel-0020 (0), # org-finance (1), and a DMs section with a &quot;Start&quot; button. A &quot;Create&quot; button appears at the top of the sidebar. The main thread shows approximately 9 automated introduction messages from users with Okta IDs (e.g. @okta-u-423438-00001, @okta-u-423438-00002, etc.), all timestamped 2025-11-12Z between 18:50:31 and 18:51:51. Each message follows the format &quot;Hi team! I'm [Name], joining as Employee in general. Key skills: [fictional skill phrases]. Excited to contribute!&quot; All users have red/orange &quot;O&quot; avatar icons." style="max-width: 100%;" /></p>
