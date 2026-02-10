@@ -351,7 +351,7 @@ Mistral just released Voxtral Transcribe 2 - a family of two new models, one ope
   sqlite-scanner --version</pre></div>
 <p>When that spat out the correct version number I was confident everything had worked as planned, so I pushed the whole set of wheels to PyPI using <code>twine upload</code> like this:</p>
 <div class="highlight highlight-source-shell"><pre>uvx twine upload dist/<span class="pl-k">*</span></pre></div>
-<p>I had to paste in a PyPI API token I had saved previously and that was all it took.</p>
+<p>I had to paste in a PyPI API token I had saved previously.</p>
 <h4 id="i-expect-to-use-this-pattern-a-lot">I expect to use this pattern a lot</h4>
 <p><code>sqlite-scanner</code> is very clearly meant as a proof-of-concept for this wider pattern - Python is very much capable of recursively crawling a directory structure looking for files that start with a specific byte prefix on its own!</p>
 <p>That said, I think there's a <em>lot</em> to be said for this pattern. Go is a great complement to Python - it's fast, compiles to small self-contained binaries, has excellent concurrency support and a rich ecosystem of libraries.</p>
