@@ -1,4 +1,139 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Structured Context Engineering for File-Native Agentic Systems</title><link>https://simonwillison.net/2026/Feb/9/structured-context-engineering-for-file-native-agentic-systems/#atom-everything</link><description><![CDATA[<p><strong><a href="https://arxiv.org/abs/2602.05447">Structured Context Engineering for File-Native Agentic Systems</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing Showboat and Rodney, so agents can demo what they’ve built</title><link>https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#atom-everything</link><description><![CDATA[<p>A key challenge working with coding agents is having them both test what they’ve built and demonstrate that software to you, their overseer. This goes beyond automated tests - we need artifacts that show their progress and help us see exactly what the agent-produced software is able to do. I’ve just released two new tools aimed at this problem: <a href="https://github.com/simonw/showboat">Showboat</a> and <a href="https://github.com/simonw/rodney">Rodney</a>.</p>
+
+<ul>
+  <li><a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#proving-code-actually-works">Proving code actually works</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#showboat-agents-build-documents-to-demo-their-work">Showboat: Agents build documents to demo their work</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#rodney-cli-browser-automation-designed-to-work-with-showboat">Rodney: CLI browser automation designed to work with Showboat</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#test-driven-development-helps-but-we-still-need-manual-testing">Test-driven development helps, but we still need manual testing</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#i-built-both-of-these-tools-on-my-phone">I built both of these tools on my phone</a></li>
+</ul>
+
+<h4 id="proving-code-actually-works">Proving code actually works</h4>
+<p>I recently wrote about how the job of a software engineer isn't to write code, it's to <em><a href="https://simonwillison.net/2025/Dec/18/code-proven-to-work/">deliver code that works</a></em>. A big part of that is proving to ourselves and to other people that the code we are responsible for behaves as expected.</p>
+<p>This becomes even more important - and challenging - as we embrace coding agents as a core part of our software development process.</p>
+<p>The more code we churn out with agents, the more valuable tools are that reduce the amount of manual QA time we need to spend.</p>
+<p>One of the most interesting things about <a href="https://simonwillison.net/2026/Feb/7/software-factory/">the StrongDM software factory model</a> is how they ensure that their software is well tested and delivers value despite their policy that "code must not be reviewed by humans". Part of their solution involves expensive swarms of QA agents running through "scenarios" to exercise their software. It's fascinating, but I don't want to spend thousands of dollars on QA robots if I can avoid it!</p>
+<p>I need tools that allow agents to clearly demonstrate their work to me, while minimizing the opportunities for them to cheat about what they've done.</p>
+
+<h4 id="showboat-agents-build-documents-to-demo-their-work">Showboat: Agents build documents to demo their work</h4>
+<p><strong><a href="https://github.com/simonw/showboat">Showboat</a></strong> is the tool I built to help agents demonstrate their work to me.</p>
+<p>It's a CLI tool (a Go binary, optionally <a href="https://simonwillison.net/2026/Feb/4/distributing-go-binaries/">wrapped in Python</a> to make it easier to install) that helps an agent construct a Markdown document demonstrating exactly what their newly developed code can do.</p>
+<p>It's not designed for humans to run, but here's how you would run it anyway:</p>
+<div class="highlight highlight-source-shell"><pre>showboat init demo.md <span class="pl-s"><span class="pl-pds">'</span>How to use curl and jq<span class="pl-pds">'</span></span>
+showboat note demo.md <span class="pl-s"><span class="pl-pds">"</span>Here's how to use curl and jq together.<span class="pl-pds">"</span></span>
+showboat <span class="pl-c1">exec</span> demo.md bash <span class="pl-s"><span class="pl-pds">'</span>curl -s https://api.github.com/repos/simonw/rodney | jq .description<span class="pl-pds">'</span></span>
+showboat note demo.md <span class="pl-s"><span class="pl-pds">'</span>And the curl logo, to demonstrate the image command:<span class="pl-pds">'</span></span>
+showboat image demo.md <span class="pl-s"><span class="pl-pds">'</span>curl -o curl-logo.png https://curl.se/logo/curl-logo.png &amp;&amp; echo curl-logo.png<span class="pl-pds">'</span></span></pre></div>
+<p>Here's what the result looks like if you open it up in VS Code and preview the Markdown:</p>
+<p><img src="https://static.simonwillison.net/static/2026/curl-demo.jpg" alt="Screenshot showing a Markdown file &quot;demo.md&quot; side-by-side with its rendered preview. The Markdown source (left) shows: &quot;# How to use curl and jq&quot;, italic timestamp &quot;2026-02-10T01:12:30Z&quot;, prose &quot;Here's how to use curl and jq together.&quot;, a bash code block with &quot;curl -s https://api.github.com/repos/simonw/rodney | jq .description&quot;, output block showing '&quot;CLI tool for interacting with the web&quot;', text &quot;And the curl logo, to demonstrate the image command:&quot;, a bash {image} code block with &quot;curl -o curl-logo.png https://curl.se/logo/curl-logo.png &amp;&amp; echo curl-logo.png&quot;, and a Markdown image reference &quot;2056e48f-2026-02-10&quot;. The rendered preview (right) displays the formatted heading, timestamp, prose, styled code blocks, and the curl logo image in dark teal showing &quot;curl://&quot; with circuit-style design elements." style="max-width: 100%;" /></p>
+<p>Here's that <a href="https://gist.github.com/simonw/fb0b24696ed8dd91314fe41f4c453563#file-demo-md">demo.md file in a Gist</a>.</p>
+<p>So a sequence of <code>showboat init</code>, <code>showboat note</code>, <code>showboat exec</code> and <code>showboat image</code> commands constructs a Markdown document one section at a time, with the output of those <code>exec</code> commands automatically added to the document directly following the commands that were run.</p>
+<p>The <code>image</code> command is a little special - it looks for a file path to an image in the output of the command and copies that image to the current folder and references it in the file.</p>
+<p>That's basically the whole thing! There's a <code>pop</code> command to remove the most recently added section if something goes wrong, a <code>verify</code> command to re-run the document and check nothing has changed (I'm not entirely convinced by the design of that one) and a <code>extract</code> command that reverse-engineers the CLI commands that were used to create the document.</p>
+<p>It's pretty simple - just 172 lines of Go.</p>
+<p>I packaged it up with my <a href="https://github.com/simonw/go-to-wheel">go-to-wheel</a> tool which means you can run it without even installing it first like this:</p>
+<div class="highlight highlight-source-shell"><pre>uvx showboat --help</pre></div>
+<p>That <code>--help</code> command is really important: it's designed to provide a coding agent with <em>everything it needs to know</em> in order to use the tool. Here's <a href="https://github.com/simonw/showboat/blob/main/help.txt">that help text in full</a>.</p>
+<p>This means you can pop open Claude Code and tell it:</p>
+<blockquote>
+<p><code>Run "uvx showboat --help" and then use showboat to create a demo.md document describing the feature you just built</code></p>
+</blockquote>
+<p>And that's it! The <code>--help</code> text acts <a href="https://simonwillison.net/2025/Oct/16/claude-skills/">a bit like a Skill</a>. Your agent can read the help text and use every feature of Showboat to create a document that demonstrates whatever it is you need demonstrated.</p>
+<p>Here's a fun trick: if you set Claude off to build a Showboat document you can pop that open in VS Code and watch the preview pane update in real time as the agent runs through the demo. It's a bit like having your coworker talk you through their latest work in a screensharing session.</p>
+<p>And finally, some examples. Here are documents I had Claude create using Showboat to help demonstrate features I was working on in other projects:</p>
+<ul>
+<li>
+<a href="https://github.com/simonw/showboat-demos/blob/main/shot-scraper/README.md">shot-scraper: A Comprehensive Demo</a> runs through the full suite of features of my <a href="https://shot-scraper.datasette.io/">shot-scraper</a> browser automation tool, mainly to exercise the <code>showboat image</code> command.</li>
+<li>
+<a href="https://github.com/simonw/sqlite-history-json/blob/main/demos/cli.md">sqlite-history-json CLI demo</a> demonstrates the CLI feature I added to my new <a href="https://github.com/simonw/sqlite-history-json">sqlite-history-json</a> Python library.
+<ul>
+<li>
+<p><a href="https://github.com/simonw/sqlite-history-json/blob/main/demos/row-state-sql.md">row-state-sql CLI Demo</a> shows a new <code>row-state-sql</code> command I added to that same project.</p>
+</li>
+<li>
+<p><a href="https://github.com/simonw/sqlite-history-json/blob/main/demos/change-grouping.md">Change grouping with Notes</a> demonstrates another feature where groups of changes within the same transaction can have a note attached to them.</p>
+</li>
+</ul>
+</li>
+<li>
+<a href="https://github.com/simonw/research/blob/main/libkrun-go-cli-tool/demo.md">krunsh: Pipe Shell Commands to an Ephemeral libkrun MicroVM</a> is a particularly convoluted example where I managed to get Claude Code for web to run a libkrun microVM inside a QEMU emulated Linux environment inside the Claude gVisor sandbox.</li>
+</ul>
+<p>I've now used Showboat often enough that I've convinced myself of its utility.</p>
+<p>(I've also seen agents cheat! Since the demo file is Markdown the agent will sometimes edit that file directly rather than using Showboat, which could result in command outputs that don't reflect what actually happened. Here's <a href="https://github.com/simonw/showboat/issues/12">an issue about that</a>.)</p>
+<h4 id="rodney-cli-browser-automation-designed-to-work-with-showboat">Rodney: CLI browser automation designed to work with Showboat</h4>
+<p>Many of the projects I work on involve web interfaces. Agents often build entirely new pages for these, and I want to see those represented in the demos.</p>
+<p>Showboat's image feature was designed to allow agents to capture screenshots as part of their demos, originally using my <a href="https://shot-scraper.datasette.io/">shot-scraper tool</a> or <a href="https://www.playwright.dev">Playwright</a>.</p>
+<p>The Showboat format benefits from CLI utilities. I went looking for good options for managing a multi-turn browser session from a CLI and came up short, so I decided to try building something new.</p>
+<p>Claude Opus 4.6 pointed me to the <a href="https://github.com/go-rod/rod">Rod</a> Go library for interacting with the Chrome DevTools protocol. It's fantastic - it provides a comprehensive wrapper across basically everything you can do with automated Chrome, all in a self-contained library that compiles to a few MBs.</p>
+<p>All Rod was missing was a CLI.</p>
+<p>I built the first version <a href="https://github.com/simonw/research/blob/main/go-rod-cli/README.md">as an asynchronous report prototype</a>, which convinced me it was worth spinning out into its own project.</p>
+<p>I called it Rodney as a nod to the Rod library it builds on and a reference to <a href="https://en.wikipedia.org/wiki/Only_Fools_and_Horses">Only Fools and Horses</a> - and because the package name was available on PyPI.</p>
+<p>You can run Rodney using <code>uvx rodney</code> or install it like this:</p>
+<div class="highlight highlight-source-shell"><pre>uv tool install rodney</pre></div>
+<p>(Or grab a Go binary <a href="https://github.com/simonw/rodney/releases/">from the releases page</a>.)</p>
+<p>Here's a simple example session:</p>
+<div class="highlight highlight-source-shell"><pre>rodney start <span class="pl-c"><span class="pl-c">#</span> starts Chrome in the background</span>
+rodney open https://datasette.io/
+rodney js <span class="pl-s"><span class="pl-pds">'</span>Array.from(document.links).map(el =&gt; el.href).slice(0, 5)<span class="pl-pds">'</span></span>
+rodney click <span class="pl-s"><span class="pl-pds">'</span>a[href="/for"]<span class="pl-pds">'</span></span>
+rodney js location.href
+rodney js document.title
+rodney screenshot datasette-for-page.png
+rodney stop</pre></div>
+<p>Here's what that looks like in the terminal:</p>
+<p><img alt=";~ % rodney start
+Chrome started (PID 91462)
+Debug URL: ws://127.0.0.1:64623/devtools/browser/cac6988e-8153-483b-80b9-1b75c611868d
+~ % rodney open https://datasette.io/
+Datasette: An open source multi-tool for exploring and publishing data
+~ % rodney js 'Array.from(document.links).map(el =&gt; el.href).slice(0, 5)'
+[
+&quot;https://datasette.io/for&quot;,
+&quot;https://docs.datasette.io/en/stable/&quot;,
+&quot;https://datasette.io/tutorials&quot;,
+&quot;https://datasette.io/examples&quot;,
+&quot;https://datasette.io/plugins&quot;
+]
+~ % rodney click 'a[href=&quot;/for&quot;]'
+Clicked
+~ % rodney js location.href
+https://datasette.io/for
+~ % rodney js document.title
+Use cases for Datasette
+~ % rodney screenshot datasette-for-page.png
+datasette-for-page.png
+~ % rodney stop
+Chrome stopped" src="https://static.simonwillison.net/static/2026/rodney-demo.jpg" style="max-width: 100%;" /></p>
+<p>As with Showboat, this tool is not designed to be used by humans! The goal is for coding agents to be able to run <code>rodney --help</code> and see everything they need to know to start using the tool. You can see <a href="https://github.com/simonw/rodney/blob/main/help.txt">that help output</a> in the GitHub repo.</p>
+<p>Here are three demonstrations of Rodney that I created using Showboat:</p>
+<ul>
+<li>
+<a href="https://github.com/simonw/showboat-demos/blob/main/rodney/README.md">Rodney's original feature set</a>, including screenshots of pages and executing JavaScript.</li>
+<li>
+<a href="https://github.com/simonw/rodney/blob/main/notes/accessibility-features/README.md">Rodney's new accessibility testing features</a>, built during development of those features to show what they could do.</li>
+<li>
+<a href="https://github.com/simonw/showboat-demos/blob/main/datasette-database-page-accessibility-audit/README.md">Using those features to run a basic accessibility audit of a page</a>. I was impressed at how well Claude Opus 4.6 responded to the prompt "Use showboat and rodney to perform an accessibility audit of <a href="https://latest.datasette.io/fixtures">https://latest.datasette.io/fixtures</a>" - <a href="https://gisthost.github.io/?dce6b2680db4b05c04469ed8f251eb34/index.html">transcript here</a>.</li>
+</ul>
+<h4 id="test-driven-development-helps-but-we-still-need-manual-testing">Test-driven development helps, but we still need manual testing</h4>
+<p>After being a career-long skeptic of the test-first, maximum test coverage school of software development (I like <a href="https://simonwillison.net/2022/Oct/29/the-perfect-commit/#tests">tests included</a> development instead) I've recently come around to test-first processes as a way to force agents to write only the code that's necessary to solve the problem at hand.</p>
+<p>Many of my Python coding agent sessions start the same way:</p>
+<blockquote>
+<p><code>Run the existing tests with "uv run pytest". Build using red/green TDD.</code></p>
+</blockquote>
+<p>Telling the agents how to run the tests doubles as an indicator that tests on this project exist and matter. Agents will read existing tests before writing their own so having a clean test suite with good patterns makes it more likely they'll write good tests of their own.</p>
+<p>The frontier models all understand that "red/green TDD" means they should write the test first, run it and watch it fail and then write the code to make it pass - it's a convenient shortcut.</p>
+<p>I find this greatly increases the quality of the code and the likelihood that the agent will produce the right thing with the smallest amount of prompts to guide it.</p>
+<p>But anyone who's worked with tests will know that just because the automated tests pass doesn't mean the software actually works! That’s the motivation behind Showboat and Rodney - I never trust any feature until I’ve seen it running with my own eye.</p>
+<p>Before building Showboat I'd often add a “manual” testing step to my agent sessions, something like:</p>
+<blockquote>
+<p><code>Once the tests pass, start a development server and exercise the new feature using curl</code></p>
+</blockquote>
+<h4 id="i-built-both-of-these-tools-on-my-phone">I built both of these tools on my phone</h4>
+<p>Both Showboat and Rodney started life as Claude Code for web projects created via the Claude iPhone app. Most of the ongoing feature work for them happened in the same way.</p>
+<p>I'm still a little startled at how much of my coding work I get done on my phone now, but I'd estimate that the majority of code I ship to GitHub these days was written for me by coding agents driven via that iPhone app.</p>
+<p>I initially designed these two tools for use in asynchronous coding agent environments like Claude Code for the web. So far that's working out really well.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/markdown">markdown</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/async-coding-agents">async-coding-agents</a></p>]]></description><pubDate>Tue, 10 Feb 2026 17:45:29 +0000</pubDate></item><item><title>Structured Context Engineering for File-Native Agentic Systems</title><link>https://simonwillison.net/2026/Feb/9/structured-context-engineering-for-file-native-agentic-systems/#atom-everything</link><description><![CDATA[<p><strong><a href="https://arxiv.org/abs/2602.05447">Structured Context Engineering for File-Native Agentic Systems</a></strong></p>
 New paper by Damon McMillan exploring challenging LLM context tasks involving large SQL schemas (up to 10,000 tables) across different models and file formats:</p>
 <blockquote>
 <p>Using SQL generation as a proxy for programmatic agent operations, we present a systematic study of context engineering for structured data, comprising 9,649 experiments across 11 models, 4 formats (YAML, Markdown, JSON, Token-Oriented Object Notation [TOON]), and schemas ranging from 10 to 10,000 tables.</p>
@@ -583,68 +718,4 @@ New Datasette alpha this morning. Key new features:</p>
 <p>More details <a href="https://docs.datasette.io/en/latest/changelog.html#a24-2026-01-29">in the release notes</a>. I also invested a bunch of work in eliminating flaky tests that were intermittently failing in CI - I <em>think</em> those are all handled now.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Thu, 29 Jan 2026 17:21:51 +0000</pubDate></item><item><title>Adding dynamic features to an aggressively cached website</title><link>https://simonwillison.net/2026/Jan/28/dynamic-features-static-site/#atom-everything</link><description><![CDATA[<p>My blog uses aggressive caching: it sits behind Cloudflare with a 15 minute cache header, which guarantees it can survive even the largest traffic spike to any given page. I've recently added a couple of dynamic features that work in spite of that full-page caching. Here's how those work.</p>
-<h4 id="edit-links-that-are-visible-only-to-me">Edit links that are visible only to me</h4>
-<p>This is a Django site and I manage it through the Django admin.</p>
-<p>I have <a href="https://github.com/simonw/simonwillisonblog/blob/b8066f870a94d149f5e8cee6e787d3377c0b9507/blog/models.py#L254-L449">four types of content</a> - entries, link posts (aka blogmarks), quotations and notes. Each of those has a different model and hence a different Django admin area.</p>
-<p>I wanted an "edit" link on the public pages that was only visible to me.</p>
-<p>The button looks like this:</p>
-<p><img src="https://static.simonwillison.net/static/2026/edit-link.jpg" alt="Entry footer - it says Posted 27th January 2026 at 9:44 p.m. followed by a square Edit button with an icon." style="max-width: 100%;" /></p>
-<p>I solved conditional display of this button with <code>localStorage</code>. I have a <a href="https://github.com/simonw/simonwillisonblog/blob/b8066f870a94d149f5e8cee6e787d3377c0b9507/templates/base.html#L89-L105">tiny bit of JavaScript</a> which checks to see if the <code>localStorage</code> key <code>ADMIN</code> is set and, if it is, displays an edit link based on a data attribute:</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">addEventListener</span><span class="pl-kos">(</span><span class="pl-s">'DOMContentLoaded'</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-  <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-smi">window</span><span class="pl-kos">.</span><span class="pl-c1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">getItem</span><span class="pl-kos">(</span><span class="pl-s">'ADMIN'</span><span class="pl-kos">)</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-    <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelectorAll</span><span class="pl-kos">(</span><span class="pl-s">'.edit-page-link'</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">forEach</span><span class="pl-kos">(</span><span class="pl-s1">el</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
-      <span class="pl-k">const</span> <span class="pl-s1">url</span> <span class="pl-c1">=</span> <span class="pl-s1">el</span><span class="pl-kos">.</span><span class="pl-en">getAttribute</span><span class="pl-kos">(</span><span class="pl-s">'data-admin-url'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-      <span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">url</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
-        <span class="pl-k">const</span> <span class="pl-s1">a</span> <span class="pl-c1">=</span> <span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">createElement</span><span class="pl-kos">(</span><span class="pl-s">'a'</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-        <span class="pl-s1">a</span><span class="pl-kos">.</span><span class="pl-c1">href</span> <span class="pl-c1">=</span> <span class="pl-s1">url</span><span class="pl-kos">;</span>
-        <span class="pl-s1">a</span><span class="pl-kos">.</span><span class="pl-c1">className</span> <span class="pl-c1">=</span> <span class="pl-s">'edit-link'</span><span class="pl-kos">;</span>
-        <span class="pl-s1">a</span><span class="pl-kos">.</span><span class="pl-c1">innerHTML</span> <span class="pl-c1">=</span> <span class="pl-s">'&lt;svg&gt;...&lt;/svg&gt; Edit'</span><span class="pl-kos">;</span>
-        <span class="pl-s1">el</span><span class="pl-kos">.</span><span class="pl-en">appendChild</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-        <span class="pl-s1">el</span><span class="pl-kos">.</span><span class="pl-c1">style</span><span class="pl-kos">.</span><span class="pl-c1">display</span> <span class="pl-c1">=</span> <span class="pl-s">'block'</span><span class="pl-kos">;</span>
-      <span class="pl-kos">}</span>
-    <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-  <span class="pl-kos">}</span>
-<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
-<p>If you want to see my edit links you can run this snippet of JavaScript:</p>
-<div class="highlight highlight-source-js"><pre><span class="pl-s1">localStorage</span><span class="pl-kos">.</span><span class="pl-en">setItem</span><span class="pl-kos">(</span><span class="pl-s">'ADMIN'</span><span class="pl-kos">,</span> <span class="pl-s">'1'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
-<p>My Django admin dashboard has <a href="https://github.com/simonw/simonwillisonblog/blob/b8066f870a94d149f5e8cee6e787d3377c0b9507/templates/admin/index.html#L18-L39">a custom checkbox</a> I can click to turn this option on and off in my own browser:</p>
-<p><img src="https://static.simonwillison.net/static/2026/edit-toggle.jpg" alt="Screenshot of a Tools settings panel with a teal header reading &quot;Tools&quot; followed by three linked options: &quot;Bulk Tag Tool - Add tags to multiple items at once&quot;, &quot;Merge Tags - Merge multiple tags into one&quot;, &quot;SQL Dashboard - Run SQL queries against the database&quot;, and a checked checkbox labeled &quot;Show &quot;Edit&quot; links on public pages&quot;" style="max-width: 100%;" /></p>
-<h4 id="random-navigation-within-a-tag">Random navigation within a tag</h4>
-<p>Those admin edit links are a very simple pattern. A more interesting one is a feature I added recently for navigating randomly within a tag.</p>
-<p>Here's an animated GIF showing those random tag navigations in action (<a href="https://simonwillison.net/tag/ai-ethics/">try it here</a>):</p>
-<p><img src="https://static.simonwillison.net/static/2026/random-by-tag.gif" alt="Animated demo. Starts on the ai-ethics tag page where a new Random button sits next to the feed icon. Clicking that button jumps to a post with that tag and moves the button into the site header - clicking it multiple times jumps to more random items." style="max-width: 100%;" /></p>
-<p>On any of my blog's tag pages you can click the "Random" button to bounce to a random post with that tag. That random button then persists in the header of the page and you can click it to continue bouncing to random items in that same tag.</p>
-<p>A post can have multiple tags, so there needs to be a little bit of persistent magic to remember which tag you are navigating and display the relevant button in the header.</p>
-<p>Once again, this uses <code>localStorage</code>. Any click to a random button records both the tag and the current timestamp to the <code>random_tag</code> key in <code>localStorage</code> before redirecting the user to the <code>/random/name-of-tag/</code> page, which selects a random post and redirects them there.</p>
-<p>Any time a new page loads, JavaScript checks if that <code>random_tag</code> key has a value that was recorded within the past 5 seconds. If so, that random button is appended to the header.</p>
-<p>This means that, provided the page loads within 5 seconds of the user clicking the button, the random tag navigation will persist on the page.</p>
-<p>You can <a href="https://github.com/simonw/simonwillisonblog/blob/b8066f870a94d149f5e8cee6e787d3377c0b9507/templates/base.html#L106-L147">see the code for that here</a>.</p>
-<h4 id="and-the-prompts">And the prompts</h4>
-<p>I built the random tag feature entirely using Claude Code for web, prompted from my iPhone. I started with the <code>/random/TAG/</code> endpoint (<a href="https://gistpreview.github.io/?2e7de58a779271aa5eb6f4abcd412d72/index.html">full transcript</a>):</p>
-<blockquote>
-<p>Build /random/TAG/ - a page which picks a random post (could be an entry or blogmark or note or quote) that has that tag and sends a 302 redirect to it, marked as no-cache so Cloudflare does not cache it</p>
-<p>Use a union to build a list of every content type (a string representing the table out of the four types) and primary key for every item tagged with that tag, then order by random and return the first one</p>
-<p>Then inflate the type and ID into an object and load it and redirect to the URL</p>
-<p>Include tests - it should work by setting up a tag with one of each of the content types and then running in a loop calling that endpoint until it has either returned one of each of the four types or it hits 1000 loops at which point fail with an error</p>
-</blockquote>
-<p>Then:</p>
-<blockquote>
-<p>I do not like that solution, some of my tags have thousands of items</p>
-<p>Can we do something clever with a CTE?</p>
-</blockquote>
-<p>Here's the <a href="https://github.com/simonw/simonwillisonblog/blob/b8066f870a94d149f5e8cee6e787d3377c0b9507/blog/views.py#L737-L762">something clever with a CTE</a> solution we ended up with.</p>
-<p>For the "Random post" button (<a href="https://gistpreview.github.io/?d2d3abe380080ceb9e7fb854fa197bff/index.html">transcript</a>):</p>
-<blockquote>
-<p>Look at most recent commit, then modify the /tags/xxx/ page to have a "Random post" button which looks good and links to the /random/xxx/ page</p>
-</blockquote>
-<p>Then:</p>
-<blockquote>
-<p>Put it before not after the feed icon. It should only display if a tag has more than 5 posts</p>
-</blockquote>
-<p>And finally, the <code>localStorage</code> implementation that persists a random tag button in the header (<a href="https://gistpreview.github.io/?8405b84f8e53738c8d4377b2e41dcdef/page-001.html">transcript</a>):</p>
-<blockquote>
-<p>Review the last two commits. Make it so clicking the Random button on a tag page sets a localStorage value for random_tag with that tag and a timestamp. On any other page view that uses the base item template add JS that checks for that localStorage value and makes sure the timestamp is within 5 seconds. If it is within 5 seconds it adds a "Random name-of-tag" button to the little top navigation bar, styled like the original Random button, which bumps the localStorage timestamp and then sends the user to /random/name-of-tag/ when they click it. In this way clicking "Random" on a tag page will send the user into an experience where they can keep clicking to keep surfing randomly in that topic.</p>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/caching">caching</a>, <a href="https://simonwillison.net/tags/django">django</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/localstorage">localstorage</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Wed, 28 Jan 2026 22:10:08 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Thu, 29 Jan 2026 17:21:51 +0000</pubDate></item></channel></rss>
