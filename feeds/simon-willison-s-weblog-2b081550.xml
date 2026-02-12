@@ -1,4 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Anthropic</title><link>https://simonwillison.net/2026/Feb/12/anthropic/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation"><p>Claude Code was made available to the general public in May 2025. Today, Claude Code’s run-rate revenue has grown to over $2.5 billion; this figure has more than doubled since the beginning of 2026. The number of weekly active Claude Code users has also doubled since January 1.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing GPT‑5.3‑Codex‑Spark</title><link>https://simonwillison.net/2026/Feb/12/codex-spark/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">Introducing GPT‑5.3‑Codex‑Spark</a></strong></p>
+OpenAI announced a partnership with Cerebras <a href="https://openai.com/index/cerebras-partnership/">on January 14th</a>. Four weeks later they're already launching the first integration, "an ultra-fast model for real-time coding in Codex".</p>
+<p>Despite being named GPT-5.3-Codex-Spark it's not purely an accelerated alternative to GPT-5.3-Codex - the blog post calls it "a smaller version of GPT‑5.3-Codex" and clarifies that "at launch, Codex-Spark has a 128k context window and is text-only."</p>
+<p>I had some preview access to this model and I can confirm that it's significantly faster than their other models.</p>
+<p>Here's what that speed looks like running in Codex CLI:</p>
+<div style="max-width: 100%;">
+    <video 
+        controls 
+        preload="none"
+        poster="https://static.simonwillison.net/static/2026/gpt-5.3-codex-spark-medium-last.jpg"
+        style="width: 100%; height: auto;">
+        <source src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-spark-medium.mp4" type="video/mp4">
+    </video>
+</div>
+
+<p>That was the "Generate an SVG of a pelican riding a bicycle" prompt - here's the rendered result:</p>
+<p><img alt="Whimsical flat illustration of an orange duck merged with a bicycle, where the duck's body forms the seat and frame area while its head extends forward over the handlebars, set against a simple light blue sky and green grass background." src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-spark-pelican.png" /></p>
+<p>Compare that to the speed of regular GPT-5.3 Codex medium:</p>
+<div style="max-width: 100%;">
+    <video 
+        controls 
+        preload="none"
+        poster="https://static.simonwillison.net/static/2026/gpt-5.3-codex-medium-last.jpg"
+        style="width: 100%; height: auto;">
+        <source src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-medium.mp4" type="video/mp4">
+    </video>
+</div>
+
+<p>Significantly slower, but the pelican is a lot better:</p>
+<p><img alt="Whimsical flat illustration of a white pelican riding a dark blue bicycle at speed, with motion lines behind it, its long orange beak streaming back in the wind, set against a light blue sky and green grass background." src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-pelican.png" /></p>
+<p>What's interesting about this model isn't the quality though, it's the <em>speed</em>. When a model responds this fast you can stay in flow state and iterate with the model much more productively.</p>
+<p>I showed a demo of Cerebras running Llama 3.1 70 B at 2,000 tokens/second against Val Town <a href="https://simonwillison.net/2024/Oct/31/cerebras-coder/">back in October 2024</a>. OpenAI claim 1,000 tokens/second for their new model, and I expect it will prove to be a ferociously useful partner for hand-on iterative coding sessions.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/cerebras">cerebras</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Thu, 12 Feb 2026 21:16:07 +0000</pubDate></item><item><title>Quoting Anthropic</title><link>https://simonwillison.net/2026/Feb/12/anthropic/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation"><p>Claude Code was made available to the general public in May 2025. Today, Claude Code’s run-rate revenue has grown to over $2.5 billion; this figure has more than doubled since the beginning of 2026. The number of weekly active Claude Code users has also doubled since January 1 [<em>six weeks ago</em>].</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation">Anthropic</a>, announcing their $30 billion series G</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 12 Feb 2026 20:22:14 +0000</pubDate></item><item><title>Covering electricity price increases from our data centers</title><link>https://simonwillison.net/2026/Feb/12/covering-electricity-price-increases/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/news/covering-electricity-price-increases">Covering electricity price increases from our data centers</a></strong></p>
@@ -681,8 +715,4 @@ uv run --with deno-sandbox python</pre></div>
 </ul>
 <p>Here's <a href="https://gist.github.com/simonw/13e595a236218afce002e9aeafd75cd0">a copy of the December newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Tue, 3 Feb 2026 06:36:10 +0000</pubDate></item><item><title>Quoting Brandon Sanderson</title><link>https://simonwillison.net/2026/Feb/3/brandon-sanderson/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.youtube.com/watch?v=mb3uK-_QkOo&amp;t=832s"><p>This is the difference between Data and a large language model, at least the ones operating right now. Data created art because he wanted to grow. He wanted to become something. He wanted to understand. Art is the means by which we become what we want to be. [...]</p>
-<p>The book, the painting, the film script is not the only art. It's important, but in a way it's a receipt. It's a diploma. The book you write, the painting you create, the music you compose is important and artistic, but it's also a mark of proof that you have done the work to learn, because in the end of it all, you are the art. The most important change made by an artistic endeavor is the change it makes in you. The most important emotions are the ones you feel when writing that story and holding the completed work. I don't care if the AI can create something that is better than what we can create, because it cannot be changed by that creation.</p></blockquote>
-<p class="cite">&mdash; <a href="https://www.youtube.com/watch?v=mb3uK-_QkOo&amp;t=832s">Brandon Sanderson</a>, via <a href="https://x.com/gvanrossum/status/2018491452771418402">Guido van Rossum</a></p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/art">art</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/guido-van-rossum">guido-van-rossum</a></p>]]></description><pubDate>Tue, 3 Feb 2026 02:31:10 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Tue, 3 Feb 2026 06:36:10 +0000</pubDate></item></channel></rss>
