@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing GPT‑5.3‑Codex‑Spark</title><link>https://simonwillison.net/2026/Feb/12/codex-spark/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">Introducing GPT‑5.3‑Codex‑Spark</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Anthropic&apos;s public benefit mission</title><link>https://simonwillison.net/2026/Feb/13/anthropic-public-benefit-mission/#atom-everything</link><description><![CDATA[<p>Someone <a href="https://news.ycombinator.com/item?id=47008560#47008978">asked</a> if there was an Anthropic equivalent to <a href="https://simonwillison.net/2026/Feb/13/openai-mission-statement/">OpenAI's IRS mission statements over time</a>.</p>
+<p>Anthropic are a "public benefit corporation" but not a non-profit, so they don't have the same requirements to file public documents with the IRS every year.</p>
+<p>But when I asked Claude it ran a search and dug up this <a href="https://drive.google.com/drive/folders/1ImqXYv9_H2FTNAujZfu3EPtYFD4xIlHJ">Google Drive folder</a> where Zach Stein-Perlman shared Certificate of Incorporation documents he <a href="https://ailabwatch.substack.com/p/anthropics-certificate-of-incorporation">obtained from the State of Delaware</a>!</p>
+<p>Anthropic's are much less interesting that OpenAI's. The earliest document from 2021 states:</p>
+<blockquote>
+<p>The specific public benefit that the Corporation will promote is to responsibly develop and maintain advanced Al for the cultural, social and technological improvement of humanity.</p>
+</blockquote>
+<p>Every subsequent document up to 2024 uses an updated version which says:</p>
+<blockquote>
+<p>The specific public benefit that the Corporation will promote is to responsibly develop and maintain advanced AI for the long term benefit of humanity.</p>
+</blockquote>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Fri, 13 Feb 2026 23:59:51 +0000</pubDate></item><item><title>The evolution of OpenAI&apos;s mission statement</title><link>https://simonwillison.net/2026/Feb/13/openai-mission-statement/#atom-everything</link><description><![CDATA[<p>As a USA <a href="https://en.wikipedia.org/wiki/501(c)(3)_organization">501(c)(3)</a> the OpenAI non-profit has to file a tax return each year with the IRS. One of the required fields on that tax return is to "Briefly describe the organization’s mission or most significant activities" - this has actual legal weight to it as the IRS can use it to evaluate if the organization is sticking to its mission and deserves to maintain its non-profit tax-exempt status.</p>
+<p>You can browse OpenAI's <a href="https://projects.propublica.org/nonprofits/organizations/810861541">tax filings by year</a> on ProPublica's excellent <a href="https://projects.propublica.org/nonprofits/">Nonprofit Explorer</a>.</p>
+<p>I went through and extracted that mission statement for 2016 through 2024, then had Claude Code <a href="https://gisthost.github.io/?7a569df89f43f390bccc2c5517718b49/index.html">help me</a> fake the commit dates to turn it into a git repository and share that as a Gist - which means that Gist's <a href="https://gist.github.com/simonw/e36f0e5ef4a86881d145083f759bcf25/revisions">revisions page</a> shows every edit they've made since they started filing their taxes!</p>
+<p>It's really interesting seeing what they've changed over time.</p>
+<p>The original 2016 mission reads as follows (and yes, the apostrophe in "OpenAIs" is missing <a href="https://projects.propublica.org/nonprofits/organizations/810861541/201703459349300445/full">in the original</a>):</p>
+<blockquote>
+<p>OpenAIs goal is to advance digital intelligence in the way that is most likely to benefit humanity as a whole, unconstrained by a need to generate financial return. We think that artificial intelligence technology will help shape the 21st century, and we want to help the world build safe AI technology and ensure that AI's benefits are as widely and evenly distributed as possible. Were trying to build AI as part of a larger community, and we want to openly share our plans and capabilities along the way.</p>
+</blockquote>
+<p>In 2018 they dropped the part about "trying to build AI as part of a larger community, and we want to openly share our plans and capabilities along the way."</p>
+<p><img src="https://static.simonwillison.net/static/2026/mission-3.jpg" alt="Git diff showing the 2018 revision deleting the final two sentences: &quot;Were trying to build AI as part of a larger community, and we want to openly share our plans and capabilities along the way.&quot;" style="max-width: 100%;" /></p>
+<p>In 2020 they dropped the words "as a whole" from "benefit humanity as a whole". They're still "unconstrained by a need to generate financial return" though.</p>
+<p><img src="https://static.simonwillison.net/static/2026/mission-5.jpg" alt="Git diff showing the 2020 revision dropping &quot;as a whole&quot; from &quot;benefit humanity as a whole&quot; and changing &quot;We think&quot; to &quot;OpenAI believes&quot;" style="max-width: 100%;" /></p>
+<p>Some interesting changes in 2021. They're still unconstrained by a need to generate financial return, but here we have the first reference to "general-purpose artificial intelligence" (replacing "digital intelligence"). They're more confident too: it's not "most likely to benefit humanity", it's just "benefits humanity".</p>
+<p>They previously wanted to "help the world build safe AI technology", but now they're going to do that themselves: "the companys goal is to develop and responsibly deploy safe AI technology".</p>
+<p><img src="https://static.simonwillison.net/static/2026/mission-6.jpg" alt="Git diff showing the 2021 revision replacing &quot;goal is to advance digital intelligence&quot; with &quot;mission is to build general-purpose artificial intelligence&quot;, changing &quot;most likely to benefit&quot; to just &quot;benefits&quot;, and replacing &quot;help the world build safe AI technology&quot; with &quot;the companys goal is to develop and responsibly deploy safe AI technology&quot;" style="max-width: 100%;" /></p>
+<p>2022 only changed one significant word: they added "safely" to "build ... (AI) that safely benefits humanity". They're still unconstrained by those financial returns!</p>
+<p><img src="https://static.simonwillison.net/static/2026/mission-7.jpg" alt="Git diff showing the 2022 revision adding &quot;(AI)&quot; and the word &quot;safely&quot; so it now reads &quot;that safely benefits humanity&quot;, and changing &quot;the companys&quot; to &quot;our&quot;" style="max-width: 100%;" /></p>
+<p>No changes in 2023... but then in 2024 they deleted almost the entire thing, reducing it to simply:</p>
+<blockquote>
+<p>OpenAIs mission is to ensure that artificial general intelligence benefits all of humanity.</p>
+</blockquote>
+<p>They've expanded "humanity" to "all of humanity", but there's no mention of safety any more and I guess they can finally start focusing on that need to generate financial returns!</p>
+<p><img src="https://static.simonwillison.net/static/2026/mission-9.jpg" alt="Git diff showing the 2024 revision deleting the entire multi-sentence mission statement and replacing it with just &quot;OpenAIs mission is to ensure that artificial general intelligence benefits all of humanity.&quot;" style="max-width: 100%;" /></p>
+
+<p><strong>Update</strong>: I found loosely equivalent but much less interesting documents <a href="https://simonwillison.net/2026/Feb/13/anthropic-public-benefit-mission/">from Anthropic</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/propublica">propublica</a></p>]]></description><pubDate>Fri, 13 Feb 2026 23:38:29 +0000</pubDate></item><item><title>Introducing GPT‑5.3‑Codex‑Spark</title><link>https://simonwillison.net/2026/Feb/12/codex-spark/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">Introducing GPT‑5.3‑Codex‑Spark</a></strong></p>
 OpenAI announced a partnership with Cerebras <a href="https://openai.com/index/cerebras-partnership/">on January 14th</a>. Four weeks later they're already launching the first integration, "an ultra-fast model for real-time coding in Codex".</p>
 <p>Despite being named GPT-5.3-Codex-Spark it's not purely an accelerated alternative to GPT-5.3-Codex - the blog post calls it "a smaller version of GPT‑5.3-Codex" and clarifies that "at launch, Codex-Spark has a 128k context window and is text-only."</p>
 <p>I had some preview access to this model and I can confirm that it's significantly faster than their other models.</p>
@@ -657,63 +695,4 @@ Mistral just released Voxtral Transcribe 2 - a family of two new models, one ope
 <p>I've also been experimenting with <a href="https://github.com/wazero/wazero">wazero</a>, Go's robust and mature zero dependency WebAssembly runtime as part of my ongoing quest for the ideal sandbox for running untrusted code. <a href="https://github.com/simonw/research/tree/main/wasm-repl-cli">Here's my latest experiment</a> with that library.</p>
 <p>Being able to seamlessly integrate Go binaries into Python projects without the end user having to think about Go at all - they <code>pip install</code> and everything Just Works - feels like a valuable addition to my toolbox.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Wed, 4 Feb 2026 14:59:47 +0000</pubDate></item><item><title>Introducing Deno Sandbox</title><link>https://simonwillison.net/2026/Feb/3/introducing-deno-sandbox/#atom-everything</link><description><![CDATA[<p><strong><a href="https://deno.com/blog/introducing-deno-sandbox">Introducing Deno Sandbox</a></strong></p>
-Here's a new hosted sandbox product from the Deno team. It's actually unrelated to Deno itself - this is part of their Deno Deploy SaaS platform. As such, you don't even need to use JavaScript to access it - you can create and execute code in a hosted sandbox using their <a href="https://pypi.org/project/deno-sandbox/">deno-sandbox</a> Python library like this:</p>
-<div class="highlight highlight-source-shell"><pre><span class="pl-k">export</span> DENO_DEPLOY_TOKEN=<span class="pl-s"><span class="pl-pds">"</span>... API token ...<span class="pl-pds">"</span></span>
-uv run --with deno-sandbox python</pre></div>
-<p>Then:</p>
-<pre><span class="pl-k">from</span> <span class="pl-s1">deno_sandbox</span> <span class="pl-k">import</span> <span class="pl-v">DenoDeploy</span>
-
-<span class="pl-s1">sdk</span> <span class="pl-c1">=</span> <span class="pl-en">DenoDeploy</span>()
-
-<span class="pl-k">with</span> <span class="pl-s1">sdk</span>.<span class="pl-c1">sandbox</span>.<span class="pl-c1">create</span>() <span class="pl-k">as</span> <span class="pl-s1">sb</span>:
-    <span class="pl-c"># Run a shell command</span>
-    <span class="pl-s1">process</span> <span class="pl-c1">=</span> <span class="pl-s1">sb</span>.<span class="pl-c1">spawn</span>(
-        <span class="pl-s">"echo"</span>, <span class="pl-s1">args</span><span class="pl-c1">=</span>[<span class="pl-s">"Hello from the sandbox!"</span>]
-    )
-    <span class="pl-s1">process</span>.<span class="pl-c1">wait</span>()
-    <span class="pl-c"># Write and read files</span>
-    <span class="pl-s1">sb</span>.<span class="pl-c1">fs</span>.<span class="pl-c1">write_text_file</span>(
-        <span class="pl-s">"/tmp/example.txt"</span>, <span class="pl-s">"Hello, World!"</span>
-    )
-    <span class="pl-en">print</span>(<span class="pl-s1">sb</span>.<span class="pl-c1">fs</span>.<span class="pl-c1">read_text_file</span>(
-        <span class="pl-s">"/tmp/example.txt"</span>
-    ))</pre>
-<p>There’s a JavaScript client library as well. The underlying API isn’t documented yet but appears <a href="https://tools.simonwillison.net/zip-wheel-explorer?package=deno-sandbox#deno_sandbox/sandbox.py--L187">to use WebSockets</a>.</p>
-<p>There’s a lot to like about this system. Sandboxe instances can have up to 4GB of RAM, get 2 vCPUs, 10GB of ephemeral storage, can mount persistent volumes and can use snapshots to boot pre-configured custom images quickly. Sessions can last up to 30 minutes and are billed by CPU time, GB-h of memory and volume storage usage.</p>
-<p>When you create a sandbox you can configure network domains it’s allowed to access.</p>
-<p>My favorite feature is the way it handles API secrets.</p>
-<pre><span class="pl-k">with</span> <span class="pl-s1">sdk</span>.<span class="pl-c1">sandboxes</span>.<span class="pl-c1">create</span>(
-    <span class="pl-s1">allowNet</span><span class="pl-c1">=</span>[<span class="pl-s">"api.openai.com"</span>],
-    <span class="pl-s1">secrets</span><span class="pl-c1">=</span>{
-        <span class="pl-s">"OPENAI_API_KEY"</span>: {
-            <span class="pl-s">"hosts"</span>: [<span class="pl-s">"api.openai.com"</span>],
-            <span class="pl-s">"value"</span>: <span class="pl-s1">os</span>.<span class="pl-c1">environ</span>.<span class="pl-c1">get</span>(<span class="pl-s">"OPENAI_API_KEY"</span>),
-        }
-    },
-) <span class="pl-k">as</span> <span class="pl-s1">sandbox</span>:
-    <span class="pl-c"># ... $OPENAI_API_KEY is available</span></pre>
-<p>Within the container that <code>$OPENAI_API_KEY</code> value is set to something like this:</p>
-<pre><code>DENO_SECRET_PLACEHOLDER_b14043a2f578cba...
-</code></pre>
-<p>Outbound API calls to <code>api.openai.com</code> run through a proxy which is aware of those placeholders and replaces them with the original secret.</p>
-<p>In this way the secret itself is not available to code within the sandbox, which limits the ability for malicious code (e.g. from a prompt injection) to exfiltrate those secrets.</p>
-<p>From <a href="https://news.ycombinator.com/item?id=46874097#46874959">a comment on Hacker News</a> I learned that Fly have a project called <a href="https://github.com/superfly/tokenizer">tokenizer</a> that implements the same pattern. Adding this to my list of tricks to use with sandoxed environments!
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=46874097">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/deno">deno</a>, <a href="https://simonwillison.net/tags/fly">fly</a></p>]]></description><pubDate>Tue, 3 Feb 2026 22:44:50 +0000</pubDate></item><item><title>January sponsors-only newsletter is out</title><link>https://simonwillison.net/2026/Feb/3/january/#atom-everything</link><description><![CDATA[<p>I just sent the January edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a>. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2026-01-january.md">access it here</a>. In the newsletter for January:</p>
-<ul>
-<li>LLM predictions for 2026</li>
-<li>Coding agents get even more attention</li>
-<li>Clawdbot/Moltbot/OpenClaw went very viral</li>
-<li>Kakapo breeding season is off to a really strong start</li>
-<li>New options for sandboxes</li>
-<li>Web browsers are the "hello world" of coding agent swarms</li>
-<li>Sam Altman addressed the Jevons paradox for software engineering</li>
-<li>Model releases and miscellaneous extras</li>
-</ul>
-<p>Here's <a href="https://gist.github.com/simonw/13e595a236218afce002e9aeafd75cd0">a copy of the December newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Tue, 3 Feb 2026 06:36:10 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Wed, 4 Feb 2026 14:59:47 +0000</pubDate></item></channel></rss>
