@@ -1,4 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Rodney and Claude Code for Desktop</title><link>https://simonwillison.net/2026/Feb/16/rodney-claude-code/#atom-everything</link><description><![CDATA[<p>I'm a very heavy user of <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code on the web</a>, Anthropic's excellent but poorly named cloud version of Claude Code where everything runs in a container environment managed by them, greatly reducing the risk of anything bad happening to a computer I care about.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Two new Showboat tools: Chartroom and datasette-showboat</title><link>https://simonwillison.net/2026/Feb/17/chartroom-and-datasette-showboat/#atom-everything</link><description><![CDATA[<p>I <a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/">introduced Showboat</a> a week ago - my CLI tool that helps coding agents create Markdown documents that demonstrate the code that they have created. I've been finding new ways to use it on a daily basis, and I've just released two new tools to help get the best out of the Showboat pattern. <a href="https://github.com/simonw/chartroom">Chartroom</a> is a CLI charting tool that works well with Showboat, and <a href="https://github.com/simonw/datasette-showboat">datasette-showboat</a> lets Showboat's new remote publishing feature incrementally push documents to a Datasette instance.</p>
+
+<ul>
+  <li><a href="https://simonwillison.net/2026/Feb/17/chartroom-and-datasette-showboat/#showboat-remote-publishing">Showboat remote publishing</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/17/chartroom-and-datasette-showboat/#datasette-showboat">datasette-showboat</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/17/chartroom-and-datasette-showboat/#chartroom">Chartroom</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/17/chartroom-and-datasette-showboat/#how-i-built-chartroom">How I built Chartroom</a></li>
+  <li><a href="https://simonwillison.net/2026/Feb/17/chartroom-and-datasette-showboat/#the-burgeoning-showboat-ecosystem">The burgeoning Showboat ecosystem</a></li>
+</ul>
+
+<h4 id="showboat-remote-publishing">Showboat remote publishing</h4>
+<p>I normally use Showboat in Claude Code for web (see <a href="https://simonwillison.net/2026/Feb/16/rodney-claude-code/">note from this morning</a>). I've used it in several different projects in the past few days, each of them with a prompt that looks something like this:</p>
+<blockquote>
+<p><code>Use "uvx showboat --help" to perform a very thorough investigation of what happens if you use the Python sqlite-chronicle and sqlite-history-json libraries against the same SQLite database table</code></p>
+</blockquote>
+<p>Here's <a href="https://github.com/simonw/research/blob/main/sqlite-chronicle-vs-history-json/demo.md">the resulting document</a>.</p>
+<p>Just telling Claude Code to run <code>uvx showboat --help</code> is enough for it to learn how to use the tool - the <a href="https://github.com/simonw/showboat/blob/main/help.txt">help text</a> is designed to work as a sort of ad-hoc Skill document.</p>
+<p>The one catch with this approach is that I can't <em>see</em> the new Showboat document until it's finished. I have to wait for Claude to commit the document plus embedded screenshots and push that to a branch in my GitHub repo - then I can view it through the GitHub interface.</p>
+<p>For a while I've been thinking it would be neat to have a remote web server of my own which Claude instances can submit updates to while they are working. Then this morning I realized Showboat might be the ideal mechanism to set that up...</p>
+<p>Showboat <a href="https://github.com/simonw/showboat/releases/tag/v0.6.0">v0.6.0</a> adds a new "remote" feature. It's almost invisible to users of the tool itself, instead being configured by an environment variable.</p>
+<p>Set a variable like this:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">export</span> SHOWBOAT_REMOTE_URL=https://www.example.com/submit<span class="pl-k">?</span>token=xyz</pre></div>
+<p>And every time you run a <code>showboat init</code> or <code>showboat note</code> or <code>showboat exec</code> or <code>showboat image</code> command the resulting document fragments will be POSTed to that API endpoint, in addition to the Showboat Markdown file itself being updated.</p>
+<p>There are <a href="https://github.com/simonw/showboat/blob/v0.6.0/README.md#remote-document-streaming">full details in the Showboat README</a> - it's a very simple API format, using regular POST form variables or a multipart form upload for the image attached to <code>showboat image</code>.</p>
+<h4 id="datasette-showboat">datasette-showboat</h4>
+<p>It's simple enough to build a webapp to receive these updates from Showboat, but I needed one that I could easily deploy and would work well with the rest of my personal ecosystem.</p>
+<p>So I had Claude Code write me a Datasette plugin that could act as a Showboat remote endpoint. I actually had this building at the same time as the Showboat remote feature, a neat example of running <a href="https://simonwillison.net/2025/Oct/5/parallel-coding-agents/">parallel agents</a>.</p>
+<p><strong><a href="https://github.com/simonw/datasette-showboat">datasette-showboat</a></strong> is a Datasette plugin that adds a <code>/-/showboat</code> endpoint to Datasette for viewing documents and a <code>/-/showboat/receive</code> endpoint for receiving updates from Showboat.</p>
+<p>Here's a very quick way to try it out:</p>
+<div class="highlight highlight-source-shell"><pre>uvx --with datasette-showboat --prerelease=allow \
+  datasette showboat.db --create \
+  -s plugins.datasette-showboat.database showboat \
+  -s plugins.datasette-showboat.token secret123 \
+  --root --secret cookie-secret-123</pre></div>
+<p>Click on the sign in as root link that shows up in the console, then navigate to <a href="http://127.0.0.1:8001/-/showboat">http://127.0.0.1:8001/-/showboat</a> to see the interface.</p>
+<p>Now set your environment variable to point to this instance:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-k">export</span> SHOWBOAT_REMOTE_URL=<span class="pl-s"><span class="pl-pds">"</span>http://127.0.0.1:8001/-/showboat/receive?token=secret123<span class="pl-pds">"</span></span></pre></div>
+<p>And run Showboat like this:</p>
+<div class="highlight highlight-source-shell"><pre>uvx showboat init demo.md <span class="pl-s"><span class="pl-pds">"</span>Showboat Feature Demo<span class="pl-pds">"</span></span></pre></div>
+<p>Refresh that page and you should see this:</p>
+<p><img src="https://static.simonwillison.net/static/2026/datasette-showboat-documents.jpg" alt="Title: Showboat. Remote viewer for Showboat documents. Showboat Feature Demo 2026-02-17 00:06 · 6 chunks, UUID. To send showboat output to this server, set the SHOWBOAT_REMOTE_URL environment variable: export SHOWBOAT_REMOTE_URL=&quot;http://127.0.0.1:8001/-/showboat/receive?token=your-token&quot;" style="max-width: 100%;" /></p>
+<p>Click through to the document, then start Claude Code or Codex or your agent of choice and prompt:</p>
+<blockquote>
+<p><code>Run 'uvx showboat --help' and then use showboat to add to the existing demo.md document with notes and exec and image to demonstrate the tool - fetch a placekitten for the image demo.</code></p>
+</blockquote>
+<p>The <code>init</code> command assigns a UUID and title and sends those up to Datasette.</p>
+<p><img src="https://static.simonwillison.net/static/2026/datasette-showboat.gif" alt="Animated demo - in the foreground a terminal window runs Claude Code, which executes various Showboat commands. In the background a Firefox window where the Showboat Feature Demo adds notes then some bash commands, then a placekitten image." style="max-width: 100%;" /></p>
+<p>The best part of this is that it works in Claude Code for web. Run the plugin on a server somewhere (an exercise left up to the reader - I use <a href="https://fly.io/">Fly.io</a> to host mine) and set that <code>SHOWBOAT_REMOTE_URL</code> environment variable in your Claude environment, then any time you tell it to use Showboat the document it creates will be transmitted to your server and viewable in real time.</p>
+<p>I built <a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#rodney-cli-browser-automation-designed-to-work-with-showboat">Rodney</a>, a CLI browser automation tool, specifically to work with Showboat. It makes it easy to have a Showboat document load up web pages, interact with them via clicks or injected JavaScript and captures screenshots to embed in the Showboat document and show the effects.</p>
+<p>This is wildly useful for hacking on web interfaces using Claude Code for web, especially when coupled with the new remote publishing feature. I only got this stuff working this morning and I've already had several sessions where Claude Code has published screenshots of its work in progress, which I've then been able to provide feedback on directly in the Claude session while it's still working.</p>
+<h3 id="chartroom">Chartroom</h3>
+<p>A few days ago I had another idea for a way to extend the Showboat ecosystem: what if Showboat documents could easily include charts?</p>
+<p>I sometimes fire up Claude Code for data analysis tasks, often telling it to download a SQLite database and then run queries against it to figure out interesting things from the data.</p>
+<p>With a simple CLI tool that produced PNG images I could have Claude use Showboat to build a document with embedded charts to help illustrate its findings.</p>
+<p><strong><a href="https://github.com/simonw/chartroom">Chartroom</a></strong> is exactly that. It's effectively a thin wrapper around the excellent <a href="https://matplotlib.org/">matplotlib</a> Python library, designed to be used by coding agents to create charts that can be embedded in Showboat documents.</p>
+<p>Here's how to render a simple bar chart:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>name,value</span>
+<span class="pl-s">Alice,42</span>
+<span class="pl-s">Bob,28</span>
+<span class="pl-s">Charlie,35</span>
+<span class="pl-s">Diana,51</span>
+<span class="pl-s">Eve,19<span class="pl-pds">'</span></span> <span class="pl-k">|</span> uvx chartroom bar --csv \
+  --title <span class="pl-s"><span class="pl-pds">'</span>Sales by Person<span class="pl-pds">'</span></span> --ylabel <span class="pl-s"><span class="pl-pds">'</span>Sales<span class="pl-pds">'</span></span></pre></div>
+<p><a target="_blank" rel="noopener noreferrer nofollow" href="https://raw.githubusercontent.com/simonw/chartroom/8812afc02e1310e9eddbb56508b06005ff2c0ed5/demo/1f6851ec-2026-02-14.png"><img src="https://raw.githubusercontent.com/simonw/chartroom/8812afc02e1310e9eddbb56508b06005ff2c0ed5/demo/1f6851ec-2026-02-14.png" alt="A chart of those numbers, with a title and y-axis label" style="max-width: 100%;" /></a></p>
+<p>It can also do line charts, bar charts, scatter charts, and histograms - as seen in <a href="https://github.com/simonw/chartroom/blob/0.2.1/demo/README.md">this demo document</a> that was built using Showboat.</p>
+<p>Chartroom can also generate alt text. If you add <code>-f alt</code> to the above it will output the alt text for the chart instead of the image:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>name,value</span>
+<span class="pl-s">Alice,42</span>
+<span class="pl-s">Bob,28</span>
+<span class="pl-s">Charlie,35</span>
+<span class="pl-s">Diana,51</span>
+<span class="pl-s">Eve,19<span class="pl-pds">'</span></span> <span class="pl-k">|</span> uvx chartroom bar --csv \
+  --title <span class="pl-s"><span class="pl-pds">'</span>Sales by Person<span class="pl-pds">'</span></span> --ylabel <span class="pl-s"><span class="pl-pds">'</span>Sales<span class="pl-pds">'</span></span> -f alt</pre></div>
+<p>Outputs:</p>
+<pre><code>Sales by Person. Bar chart of value by name — Alice: 42, Bob: 28, Charlie: 35, Diana: 51, Eve: 19
+</code></pre>
+<p>Or you can use <code>-f html</code> or <code>-f markdown</code> to get the image tag with alt text directly:</p>
+<div class="highlight highlight-text-md"><pre><span class="pl-s">![</span>Sales by Person. Bar chart of value by name — Alice: 42, Bob: 28, Charlie: 35, Diana: 51, Eve: 19<span class="pl-s">]</span><span class="pl-s">(</span><span class="pl-corl">/Users/simon/chart-7.png</span><span class="pl-s">)</span></pre></div>
+<p>I added support for Markdown images with alt text to Showboat in <a href="https://github.com/simonw/showboat/releases/tag/v0.5.0">v0.5.0</a>, to complement this feature of Chartroom.</p>
+<p>Finally, Chartroom has support for different <a href="https://matplotlib.org/stable/gallery/style_sheets/style_sheets_reference.html">matplotlib styles</a>. I had Claude build a Showboat document to demonstrate these all in one place - you can see that at <a href="https://github.com/simonw/chartroom/blob/main/demo/styles.md">demo/styles.md</a>.</p>
+<h4 id="how-i-built-chartroom">How I built Chartroom</h4>
+<p>I started the Chartroom repository with my <a href="https://github.com/simonw/click-app">click-app</a> cookiecutter template, then told a fresh Claude Code for web session:</p>
+<blockquote>
+<p>We are building a Python CLI tool which uses matplotlib to generate a PNG image containing a chart. It will have multiple sub commands for different chart types, controlled by command line options. Everything you need to know to use it will be available in the single "chartroom --help" output.</p>
+<p>It will accept data from files or standard input as CSV or TSV or JSON, similar to how sqlite-utils accepts data - clone simonw/sqlite-utils to /tmp for reference there. Clone matplotlib/matplotlib for reference as well</p>
+<p>It will also accept data from --sql path/to/sqlite.db "select ..." which runs in read-only mode</p>
+<p>Start by asking clarifying questions - do not use the ask user tool though it is broken - and generate a spec for me to approve</p>
+<p>Once approved proceed using red/green TDD running tests with "uv run pytest"</p>
+<p>Also while building maintain a demo/README.md document using the "uvx showboat --help" tool - each time you get a new chart type working commit the tests, implementation, root level
+README update and a new version of that demo/README.md document with an inline image demo of the new chart type (which should be a UUID image filename managed by the showboat image command and should be stored in the demo/ folder</p>
+<p>Make sure "uv build" runs cleanly without complaining about extra directories but also ensure dist/ and uv.lock are in gitignore</p>
+</blockquote>
+<p>This got most of the work done. You can see the rest <a href="https://github.com/simonw/chartroom/pulls?q=is%3Apr+is%3Aclosed">in the PRs</a> that followed.</p>
+<h4 id="the-burgeoning-showboat-ecosystem">The burgeoning Showboat ecosystem</h4>
+<p>The Showboat family of tools now consists of <a href="https://github.com/simonw/showboat">Showboat</a> itself, <a href="https://github.com/simonw/rodney">Rodney</a> for browser automation, <a href="https://github.com/simonw/chartroom">Chartroom</a> for charting and <a href="https://github.com/simonw/datasette-showboat">datasette-showboat</a> for streaming remote Showboat documents to Datasette.</p>
+<p>I'm enjoying how these tools can operate together based on a very loose set of conventions. If a tool can output a path to an image Showboat can include that image in a document. Any tool that can output text can be used with Showboat.</p>
+<p>I'll almost certainly be building more tools that fit this pattern. They're very quick to knock out!</p>
+<p>The environment variable mechanism for Showboat's remote streaming is a fun hack too - so far I'm just using it to stream documents somewhere else, but it's effectively a webhook extension mechanism that could likely be used for all sorts of things I haven't thought of yet.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/showboat">showboat</a></p>]]></description><pubDate>Tue, 17 Feb 2026 00:43:45 +0000</pubDate></item><item><title>Rodney and Claude Code for Desktop</title><link>https://simonwillison.net/2026/Feb/16/rodney-claude-code/#atom-everything</link><description><![CDATA[<p>I'm a very heavy user of <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code on the web</a>, Anthropic's excellent but poorly named cloud version of Claude Code where everything runs in a container environment managed by them, greatly reducing the risk of anything bad happening to a computer I care about.</p>
 <p>I don't use the web interface at all (hence my dislike of the name) - I access it exclusively through their native iPhone and Mac desktop apps.</p>
 <p>Something I particularly appreciate about the desktop app is that it lets you see images that Claude is "viewing" via its <code>Read /path/to/image</code> tool. Here's what that looks like:</p>
 <p><img alt="Screenshot of a Claude Code session in Claude Desktop. Claude says: The debug page looks good - all items listed with titles and descriptions. Now let me check the nav
@@ -524,16 +623,4 @@ Mitchell Hashimoto's new system to help address the deluge of worthless AI-gener
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/github-actions">github-actions</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/mitchell-hashimoto">mitchell-hashimoto</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a></p>]]></description><pubDate>Sat, 7 Feb 2026 23:57:57 +0000</pubDate></item><item><title>Claude: Speed up responses with fast mode</title><link>https://simonwillison.net/2026/Feb/7/claude-fast-mode/#atom-everything</link><description><![CDATA[<p><strong><a href="https://code.claude.com/docs/en/fast-mode">Claude: Speed up responses with fast mode</a></strong></p>
-New "research preview" from Anthropic today: you can now access a faster version of their frontier model Claude Opus 4.6 by typing <code>/fast</code> in Claude Code... but at a cost that's 6x the normal price.</p>
-<p>Opus is usually $5/million input and $25/million output. The new fast mode is $30/million input and $150/million output!</p>
-<p>There's a 50% discount until the end of February 16th, so only a 3x multiple (!) before then.</p>
-<p>How much faster is it? The linked documentation doesn't say, but <a href="https://x.com/claudeai/status/2020207322124132504">on Twitter</a> Claude say:</p>
-<blockquote>
-<p>Our teams have been building with a 2.5x-faster version of Claude Opus 4.6.</p>
-<p>We’re now making it available as an early experiment via Claude Code and our API.</p>
-</blockquote>
-<p>Claude Opus 4.5 had a context limit of 200,000 tokens. 4.6 has an option to increase that to 1,000,000 at 2x the input price ($10/m) and 1.5x the output price ($37.50/m) once your input exceeds 200,000 tokens. These multiples hold for fast mode too, so after Feb 16th you'll be able to pay a hefty $60/m input and $225/m output for Anthropic's fastest best model.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sat, 7 Feb 2026 23:10:33 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/github-actions">github-actions</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/mitchell-hashimoto">mitchell-hashimoto</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a></p>]]></description><pubDate>Sat, 7 Feb 2026 23:57:57 +0000</pubDate></item></channel></rss>
