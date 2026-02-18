@@ -1,4 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Martin Fowler</title><link>https://simonwillison.net/2026/Feb/18/martin-fowler/#atom-everything</link><description><![CDATA[<blockquote cite="https://martinfowler.com/fragments/2026-02-18.html"><p>LLMs are eating specialty skills. There will be less use of specialist front-end and back-end developers as the LLM-driving skills become more important than the details of platform usage. Will this lead to a greater recognition of the role of <a href="https://martinfowler.com/articles/expert-generalist.html">Expert Generalists</a>? Or will the ability of LLMs to write lots of code mean they code around the silos rather than eliminating them?</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The A.I. Disruption We’ve Been Waiting for Has Arrived</title><link>https://simonwillison.net/2026/Feb/18/the-ai-disruption/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.nytimes.com/2026/02/18/opinion/ai-software.html?unlocked_article_code=1.NFA.UkLv.r-XczfzYRdXJ&amp;smid=url-share">The A.I. Disruption We’ve Been Waiting for Has Arrived</a></strong></p>
+New opinion piece from Paul Ford in the New York Times. Unsurprisingly for a piece by Paul it's packed with quoteworthy snippets, but a few stood out for me in particular.</p>
+<p>Paul describes the <a href="https://simonwillison.net/2026/Jan/4/inflection/">November moment</a> that so many other programmers have observed, and highlights Claude Code's ability to revive old side projects:</p>
+<blockquote>
+<p>[Claude Code] was always a helpful coding assistant, but in November it suddenly got much better, and ever since I’ve been knocking off side projects that had sat in folders for a decade or longer. It’s fun to see old ideas come to life, so I keep a steady flow. Maybe it adds up to a half-hour a day of my time, and an hour of Claude’s.</p>
+<p>November was, for me and many others in tech, a great surprise. Before, A.I. coding tools were often useful, but halting and clumsy. Now, the bot can run for a full hour and make whole, designed websites and apps that may be flawed, but credible. I spent an entire session of therapy talking about it.</p>
+</blockquote>
+<p>And as the former CEO of a respected consultancy firm (Postlight) he's well positioned to evaluate the potential impact:</p>
+<blockquote>
+<p>When you watch a large language model slice through some horrible, expensive problem — like migrating data from an old platform to a modern one — you feel the earth shifting. I was the chief executive of a software services firm, which made me a professional software cost estimator. When I rebooted my messy personal website a few weeks ago, I realized: I would have paid $25,000 for someone else to do this. When a friend asked me to convert a large, thorny data set, I downloaded it, cleaned it up and made it pretty and easy to explore. In the past I would have charged $350,000.</p>
+<p>That last price is full 2021 retail — it implies a product manager, a designer, two engineers (one senior) and four to six months of design, coding and testing. Plus maintenance. Bespoke software is joltingly expensive. Today, though, when the stars align and my prompts work out, I can do hundreds of thousands of dollars worth of work for fun (fun for me) over weekends and evenings, for the price of the Claude $200-a-month plan.</p>
+</blockquote>
+<p>He also neatly captures the inherent community tension involved in exploring this technology:</p>
+<blockquote>
+<p>All of the people I love hate this stuff, and all the people I hate love it. And yet, likely because of the same personality flaws that drew me to technology in the first place, I am annoyingly excited.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/new-york-times">new-york-times</a>, <a href="https://simonwillison.net/tags/paul-ford">paul-ford</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 18 Feb 2026 17:07:31 +0000</pubDate></item><item><title>Quoting Martin Fowler</title><link>https://simonwillison.net/2026/Feb/18/martin-fowler/#atom-everything</link><description><![CDATA[<blockquote cite="https://martinfowler.com/fragments/2026-02-18.html"><p>LLMs are eating specialty skills. There will be less use of specialist front-end and back-end developers as the LLM-driving skills become more important than the details of platform usage. Will this lead to a greater recognition of the role of <a href="https://martinfowler.com/articles/expert-generalist.html">Expert Generalists</a>? Or will the ability of LLMs to write lots of code mean they code around the silos rather than eliminating them?</p></blockquote>
 <p class="cite">&mdash; <a href="https://martinfowler.com/fragments/2026-02-18.html">Martin Fowler</a>, tidbits from the Thoughtworks Future of Software Development Retreat, <a href="https://news.ycombinator.com/item?id=47062534">via HN</a>)</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/martin-fowler">martin-fowler</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Wed, 18 Feb 2026 16:50:07 +0000</pubDate></item><item><title>Introducing Claude Sonnet 4.6</title><link>https://simonwillison.net/2026/Feb/17/claude-sonnet-46/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/news/claude-sonnet-4-6">Introducing Claude Sonnet 4.6</a></strong></p>
@@ -513,41 +531,4 @@ Scott Shambaugh helps maintain the excellent and venerable <a href="https://matp
 <p>“The Manosphere Report gave us a really fast and clear signal that this was not going over well with that segment of the President’s base,” said Seward. “There was a direct link between seeing that and then diving in to actually cover it.”</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.niemanlab.org/2026/02/how-the-new-york-times-uses-a-custom-ai-tool-to-track-the-manosphere/">Andrew Deck for Niemen Lab</a>, How The New York Times uses a custom AI tool to track the “manosphere”</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/new-york-times">new-york-times</a>, <a href="https://simonwillison.net/tags/journalism">journalism</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/data-journalism">data-journalism</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 11 Feb 2026 20:59:03 +0000</pubDate></item><item><title>Skills in OpenAI API</title><link>https://simonwillison.net/2026/Feb/11/skills-in-openai-api/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.openai.com/cookbook/examples/skills_in_api">Skills in OpenAI API</a></strong></p>
-OpenAI's adoption of Skills continues to gain ground. You can now use Skills directly in the OpenAI API with their <a href="https://developers.openai.com/api/docs/guides/tools-shell/">shell tool</a>. You can zip skills up and upload them first, but I think an even neater interface is the ability to send skills with the JSON request as inline base64-encoded zip data, as seen <a href="https://github.com/simonw/research/blob/main/openai-api-skills/openai_inline_skills.py">in this script</a>:</p>
-<pre><span class="pl-s1">r</span> <span class="pl-c1">=</span> <span class="pl-en">OpenAI</span>().<span class="pl-c1">responses</span>.<span class="pl-c1">create</span>(
-    <span class="pl-s1">model</span><span class="pl-c1">=</span><span class="pl-s">"gpt-5.2"</span>,
-    <span class="pl-s1">tools</span><span class="pl-c1">=</span>[
-      {
-        <span class="pl-s">"type"</span>: <span class="pl-s">"shell"</span>,
-        <span class="pl-s">"environment"</span>: {
-          <span class="pl-s">"type"</span>: <span class="pl-s">"container_auto"</span>,
-          <span class="pl-s">"skills"</span>: [
-            {
-              <span class="pl-s">"type"</span>: <span class="pl-s">"inline"</span>,
-              <span class="pl-s">"name"</span>: <span class="pl-s">"wc"</span>,
-              <span class="pl-s">"description"</span>: <span class="pl-s">"Count words in a file."</span>,
-              <span class="pl-s">"source"</span>: {
-                <span class="pl-s">"type"</span>: <span class="pl-s">"base64"</span>,
-                <span class="pl-s">"media_type"</span>: <span class="pl-s">"application/zip"</span>,
-                <span class="pl-s">"data"</span>: <span class="pl-s1">b64_encoded_zip_file</span>,
-              },
-            }
-          ],
-        },
-      }
-    ],
-    <span class="pl-s1">input</span><span class="pl-c1">=</span><span class="pl-s">"Use the wc skill to count words in its own SKILL.md file."</span>,
-)
-<span class="pl-en">print</span>(<span class="pl-s1">r</span>.<span class="pl-c1">output_text</span>)</pre>
-
-<p>I built that example script after first having Claude Code for web use <a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/">Showboat</a> to explore the API for me and create <a href="https://github.com/simonw/research/blob/main/openai-api-skills/README.md">this report</a>. My opening prompt for the research project was:</p>
-<blockquote>
-<p><code>Run uvx showboat --help - you will use this tool later</code></p>
-<p><code>Fetch https://developers.openai.com/cookbook/examples/skills_in_api.md to /tmp with curl, then read it</code></p>
-<p><code>Use the OpenAI API key you have in your environment variables</code></p>
-<p><code>Use showboat to build up a detailed demo of this, replaying the examples from the documents and then trying some experiments of your own</code></p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/skills">skills</a>, <a href="https://simonwillison.net/tags/showboat">showboat</a></p>]]></description><pubDate>Wed, 11 Feb 2026 19:19:22 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/new-york-times">new-york-times</a>, <a href="https://simonwillison.net/tags/journalism">journalism</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/data-journalism">data-journalism</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 11 Feb 2026 20:59:03 +0000</pubDate></item></channel></rss>
