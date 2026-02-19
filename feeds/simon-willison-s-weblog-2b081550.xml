@@ -13,7 +13,11 @@ The first in the Gemini 3.1 series, priced the same as Gemini 3 Pro ($2/million 
 <blockquote>
 <p>Last week, we released a major update to Gemini 3 Deep Think to solve modern challenges across science, research and engineering. Today, we’re releasing the upgraded core intelligence that makes those breakthroughs possible: Gemini 3.1 Pro.</p>
 </blockquote>
-<p><strong>Update</strong>: Google's Gemini Lead Jeff Dean <a href="https://x.com/JeffDean/status/2024525132266688757">tweeted this video</a>:</p>
+<p><strong>Update</strong>: In <a href="https://simonwillison.net/2025/nov/13/training-for-pelicans-riding-bicycles/">What happens if AI labs train for pelicans riding bicycles?</a> last November I said:</p>
+<blockquote>
+<p>If a model finally comes out that produces an excellent SVG of a pelican riding a bicycle you can bet I’m going to test it on all manner of creatures riding all sorts of transportation devices.</p>
+</blockquote>
+<p>Google's Gemini Lead Jeff Dean <a href="https://x.com/JeffDean/status/2024525132266688757">tweeted this video</a> featuring an animated pelican riding a bicycle, plus a frog on a penny-farthing and a giraffe driving a tiny car and an ostrich on roller skates and a turtle kickflipping a skateboard and a dachshund driving a stretch limousine.</p>
 <video poster="https://static.simonwillison.net/static/2026/gemini-animated-pelicans.jpg" muted controls preload="none" style="max-width: 100%">
   <source src="https://static.simonwillison.net/static/2026/gemini-animated-pelicans.mp4" type="video/mp4">
 </video>
