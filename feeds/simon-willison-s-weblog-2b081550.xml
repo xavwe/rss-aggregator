@@ -1,4 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Thariq Shihipar</title><link>https://simonwillison.net/2026/Feb/20/thariq-shihipar/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/trq212/status/2024574133011673516"><p>Long running agentic products like Claude Code are made feasible by prompt caching which allows us to reuse computation from previous roundtrips and significantly decrease latency and cost. [...]</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>ggml.ai joins Hugging Face to ensure the long-term progress of Local AI</title><link>https://simonwillison.net/2026/Feb/20/ggmlai-joins-hugging-face/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/ggml-org/llama.cpp/discussions/19759">ggml.ai joins Hugging Face to ensure the long-term progress of Local AI</a></strong></p>
+I don't normally cover acquisition news like this, but I have some thoughts.</p>
+<p>It's hard to overstate the impact Georgi Gerganov has had on the local model space. Back in March 2023 his release of <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> made it possible to run a local LLM on consumer hardware. The <a href="https://github.com/ggml-org/llama.cpp/blob/775328064e69db1ebd7e19ccb59d2a7fa6142470/README.md?plain=1#L7">original README</a> said:</p>
+<blockquote>
+<p>The main goal is to run the model using 4-bit quantization on a MacBook. [...] This was hacked in an evening - I have no idea if it works correctly.</p>
+</blockquote>
+<p>I wrote about trying llama.cpp out at the time in <a href="https://simonwillison.net/2023/Mar/11/llama/#llama-cpp">Large language models are having their Stable Diffusion moment</a>:</p>
+<blockquote>
+<p>I used it to run the 7B LLaMA model on my laptop last night, and then this morning upgraded to the 13B model—the one that Facebook claim is competitive with GPT-3.</p>
+</blockquote>
+<p>Meta's <a href="https://github.com/meta-llama/llama/tree/llama_v1">original LLaMA release</a> depended on PyTorch and their <a href="https://github.com/facebookresearch/fairscale">FairScale</a> PyTorch extension for running on multiple GPUs, and required CUDA and NVIDIA hardware. Georgi's work opened that up to a much wider range of hardware and kicked off the local model movement that has continued to grow since then.</p>
+<p>Hugging Face are already responsible for the incredibly influential <a href="https://github.com/huggingface/transformers">Transformers</a> library used by the majority of LLM releases today. They've proven themselves a good steward for that open source project, which makes me optimistic for the future of llama.cpp and related projects.</p>
+<p>This section from the announcement looks particularly promising:</p>
+<blockquote>
+<p>Going forward, our joint efforts will be geared towards the following objectives:</p>
+<ul>
+<li>Towards seamless "single-click" integration with the <a href="https://github.com/huggingface/transformers">transformers</a> library. The <code>transformers</code> framework has established itself as the 'source of truth' for AI model definitions. Improving the compatibility between the transformers and the ggml ecosystems is essential for wider model support and quality control.</li>
+<li>Better packaging and user experience of ggml-based software. As we enter the phase in which local inference becomes a meaningful and competitive alternative to cloud inference, it is crucial to improve and simplify the way in which casual users deploy and access local models. We will work towards making llama.cpp ubiquitous and readily available everywhere, and continue partnering with great downstream projects.</li>
+</ul>
+</blockquote>
+<p>Given the influence of Transformers, this closer integration could lead to model releases that are compatible with the GGML ecosystem out of the box. That would be a big win for the local model ecosystem.</p>
+<p>I'm also excited to see investment in "packaging and user experience of ggml-based software". This has mostly been left to tools like <a href="https://ollama.com">Ollama</a> and <a href="https://lmstudio.ai">LM Studio</a>. ggml-org released <a href="https://github.com/ggml-org/LlamaBarn">LlamaBarn</a> last year - "a macOS menu bar app for running local LLMs" - and I'm hopeful that further investment in this area will result in more high quality open source tools for running local models from the team best placed to deliver them.
+
+    <p><small></small>Via <a href="https://twitter.com/ggerganov/status/2024839991482777976">@ggerganov</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/transformers">transformers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llama">llama</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/hugging-face">hugging-face</a>, <a href="https://simonwillison.net/tags/llama-cpp">llama-cpp</a></p>]]></description><pubDate>Fri, 20 Feb 2026 17:12:55 +0000</pubDate></item><item><title>Quoting Thariq Shihipar</title><link>https://simonwillison.net/2026/Feb/20/thariq-shihipar/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/trq212/status/2024574133011673516"><p>Long running agentic products like Claude Code are made feasible by prompt caching which allows us to reuse computation from previous roundtrips and significantly decrease latency and cost. [...]</p>
 <p>At Claude Code, we build our entire harness around prompt caching. A high prompt cache hit rate decreases costs and helps us create more generous rate limits for our subscription plans, so we run alerts on our prompt cache hit rate and declare SEVs if they're too low.</p></blockquote>
 <p class="cite">&mdash; <a href="https://twitter.com/trq212/status/2024574133011673516">Thariq Shihipar</a></p>
 
@@ -518,39 +544,4 @@ Jake Archibald reports on Interop 2026, the initiative between Apple, Google, Ig
 
 <p><strong>Update</strong>: I found loosely equivalent but much less interesting documents <a href="https://simonwillison.net/2026/Feb/13/anthropic-public-benefit-mission/">from Anthropic</a>.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/propublica">propublica</a></p>]]></description><pubDate>Fri, 13 Feb 2026 23:38:29 +0000</pubDate></item><item><title>Introducing GPT‑5.3‑Codex‑Spark</title><link>https://simonwillison.net/2026/Feb/12/codex-spark/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">Introducing GPT‑5.3‑Codex‑Spark</a></strong></p>
-OpenAI announced a partnership with Cerebras <a href="https://openai.com/index/cerebras-partnership/">on January 14th</a>. Four weeks later they're already launching the first integration, "an ultra-fast model for real-time coding in Codex".</p>
-<p>Despite being named GPT-5.3-Codex-Spark it's not purely an accelerated alternative to GPT-5.3-Codex - the blog post calls it "a smaller version of GPT‑5.3-Codex" and clarifies that "at launch, Codex-Spark has a 128k context window and is text-only."</p>
-<p>I had some preview access to this model and I can confirm that it's significantly faster than their other models.</p>
-<p>Here's what that speed looks like running in Codex CLI:</p>
-<div style="max-width: 100%;">
-    <video 
-        controls 
-        preload="none"
-        poster="https://static.simonwillison.net/static/2026/gpt-5.3-codex-spark-medium-last.jpg"
-        style="width: 100%; height: auto;">
-        <source src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-spark-medium.mp4" type="video/mp4">
-    </video>
-</div>
-
-<p>That was the "Generate an SVG of a pelican riding a bicycle" prompt - here's the rendered result:</p>
-<p><img alt="Whimsical flat illustration of an orange duck merged with a bicycle, where the duck's body forms the seat and frame area while its head extends forward over the handlebars, set against a simple light blue sky and green grass background." src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-spark-pelican.png" /></p>
-<p>Compare that to the speed of regular GPT-5.3 Codex medium:</p>
-<div style="max-width: 100%;">
-    <video 
-        controls 
-        preload="none"
-        poster="https://static.simonwillison.net/static/2026/gpt-5.3-codex-medium-last.jpg"
-        style="width: 100%; height: auto;">
-        <source src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-medium.mp4" type="video/mp4">
-    </video>
-</div>
-
-<p>Significantly slower, but the pelican is a lot better:</p>
-<p><img alt="Whimsical flat illustration of a white pelican riding a dark blue bicycle at speed, with motion lines behind it, its long orange beak streaming back in the wind, set against a light blue sky and green grass background." src="https://static.simonwillison.net/static/2026/gpt-5.3-codex-pelican.png" /></p>
-<p>What's interesting about this model isn't the quality though, it's the <em>speed</em>. When a model responds this fast you can stay in flow state and iterate with the model much more productively.</p>
-<p>I showed a demo of Cerebras running Llama 3.1 70 B at 2,000 tokens/second against Val Town <a href="https://simonwillison.net/2024/Oct/31/cerebras-coder/">back in October 2024</a>. OpenAI claim 1,000 tokens/second for their new model, and I expect it will prove to be a ferociously useful partner for hands-on iterative coding sessions.</p>
-<p>It's not yet clear what the pricing will look like for this new model.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/cerebras">cerebras</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/inference-speed">inference-speed</a></p>]]></description><pubDate>Thu, 12 Feb 2026 21:16:07 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/propublica">propublica</a></p>]]></description><pubDate>Fri, 13 Feb 2026 23:38:29 +0000</pubDate></item></channel></rss>
