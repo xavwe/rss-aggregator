@@ -26,6 +26,7 @@ The first in the Gemini 3.1 series, priced the same as Gemini 3 Pro ($2/million 
   <source src="https://static.simonwillison.net/static/2026/gemini-animated-pelicans.mp4" type="video/mp4">
 </video>
 
+<p>I've been saying for a while that I wish AI labs would highlight things that their new models can do that their older models could not, so top marks to the Gemini team for this video.</p>
 <p><strong>Update 2</strong>: I used <code>llm-gemini</code> to run my <a href="https://simonwillison.net/2025/Nov/18/gemini-3/#and-a-new-pelican-benchmark">more detailed Pelican prompt</a>, with <a href="https://gist.github.com/simonw/a3bdd4ec9476ba9e9ba7aa61b46d8296">this result</a>:</p>
 <p><img alt="Flat-style illustration of a brown pelican riding a teal bicycle with dark blue-rimmed wheels against a plain white background. Unlike the previous image's white cartoon pelican, this pelican has realistic brown plumage with detailed feather patterns, a dark maroon head, yellow eye, and a large pink-tinged pouch bill. The bicycle is a simpler design without a basket, and the scene lacks the colorful background elements like the sun, clouds, road, hills, cap, and scarf from the first illustration, giving it a more minimalist feel." src="https://static.simonwillison.net/static/2026/gemini-3.1-pro-pelican-2.png" /></p>
 <p>From the SVG comments:</p>
