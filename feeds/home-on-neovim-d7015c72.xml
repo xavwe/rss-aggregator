@@ -1,4 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Home on Neovim</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/home-on-neovim-d7015c72.xml</link><description>Archived feed from https://neovim.io/news.xml</description><item><title>Neovim 0.11</title><link>/news/2025/03/</link><description><![CDATA[<p>Nvim 0.11 was released.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Home on Neovim</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/home-on-neovim-d7015c72.xml</link><description>Archived feed from https://neovim.io/news.xml</description><item><title>Google Summer of Code 2026</title><link>/news/2026/02/</link><description><![CDATA[<p>Neovim is participating in <a href="https://summerofcode.withgoogle.com/programs/2026/organizations/neovim">Google Summer of Code 2026</a>!</p>
+<p>If you&rsquo;re a student and want to work on Neovim for GSoC, <a href="https://github.com/neovim/neovim/wiki/Google-Summer-of-Code">start here</a>.</p>
+<p>The next steps are:</p>
+<ol>
+<li>Read the <a href="https://github.com/neovim/neovim/wiki/Google-Summer-of-Code">guidelines</a>.</li>
+<li>If you have a project idea or want to take one of the items listed there,
+create a new <a href="https://github.com/neovim/neovim/discussions">discussion</a> (which you can update over the next days/weeks) with
+a scope outline. Aim for &ldquo;clarity without verbosity&rdquo;.</li>
+<li>Start getting familiar with the codebase by working on one or more
+<a href="https://github.com/neovim/neovim/issues?q=is%3Aopen+is%3Aissue+label%3Acomplexity%3Alow">complexity:low</a> issues (or any other issue that feels tractable).</li>
+</ol>
+<p>Thank you for your interest in Neovim!</p>]]></description><pubDate>Sat, 21 Feb 2026 00:00:00 +0000</pubDate></item><item><title>Neovim 0.11</title><link>/news/2025/03/</link><description><![CDATA[<p>Nvim 0.11 was released.</p>
 <ul>
 <li>Newsletter: <a href="https://gpanders.com/blog/whats-new-in-neovim-0-11">https://gpanders.com/blog/whats-new-in-neovim-0-11</a></li>
 <li>Impressions and takeaways from the &ldquo;State of Neovim 2024&rdquo; VimconfLive presentation: <a href="https://thenewstack.io/neovims-future-could-have-ai-and-brain-computer-interfaces/">https://thenewstack.io/neovims-future-could-have-ai-and-brain-computer-interfaces/</a></li>
