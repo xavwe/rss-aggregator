@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>How I think about Codex</title><link>https://simonwillison.net/2026/Feb/22/how-i-think-about-codex/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.linkedin.com/pulse/how-i-think-codex-gabriel-chua-ukhic">How I think about Codex</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The Claude C Compiler: What It Reveals About the Future of Software</title><link>https://simonwillison.net/2026/Feb/22/ccc/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software">The Claude C Compiler: What It Reveals About the Future of Software</a></strong></p>
+On February 5th Anthropic's Nicholas Carlini wrote about a project to use <a href="https://www.anthropic.com/engineering/building-c-compiler">parallel Claudes to build a C compiler</a> on top of the brand new Opus 4.6</p>
+<p>Chris Lattner (Swift, LLVM, Clang, Mojo) knows more about C compilers than most. He just published this review of the code.</p>
+<p>Some points that stood out to me:</p>
+<blockquote>
+<ul>
+<li>Good software depends on judgment, communication, and clear abstraction. AI has amplified this.</li>
+<li>AI coding is automation of implementation, so design and stewardship become more important.</li>
+<li>Manual rewrites and translation work are becoming AI-native tasks, automating a large category of engineering effort.</li>
+</ul>
+</blockquote>
+<p>Chris is generally impressed with CCC (the Claude C Compiler):</p>
+<blockquote>
+<p>Taken together, CCC looks less like an experimental research compiler and more like a competent textbook implementation, the sort of system a strong undergraduate team might build early in a project before years of refinement. That alone is remarkable.</p>
+</blockquote>
+<p>It's a long way from being a production-ready compiler though:</p>
+<blockquote>
+<p>Several design choices suggest optimization toward passing tests rather than building general abstractions like a human would. [...] These flaws are informative rather than surprising, suggesting that current AI systems excel at assembling known techniques and optimizing toward measurable success criteria, while struggling with the open-ended generalization required for production-quality systems.</p>
+</blockquote>
+<p>The project also leads to deep open questions about how agentic engineering interacts with licensing and IP for both open source and proprietary code:</p>
+<blockquote>
+<p>If AI systems trained on decades of publicly available code can reproduce familiar structures, patterns, and even specific implementations, where exactly is the boundary between learning and copying?</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/c">c</a>, <a href="https://simonwillison.net/tags/compilers">compilers</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/nicholas-carlini">nicholas-carlini</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Sun, 22 Feb 2026 23:58:43 +0000</pubDate></item><item><title>London Stock Exchange: Raspberry Pi Holdings plc</title><link>https://simonwillison.net/2026/Feb/22/raspberry-pi-openclaw/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.londonstockexchange.com/stock/RPI/raspberry-pi-holdings-plc/company-page">London Stock Exchange: Raspberry Pi Holdings plc</a></strong></p>
+Striking graph illustrating stock in the UK Raspberry Pi holding company spiking on Tuesday:</p>
+<p><img alt="Stock price line chart for RASPBERRY PI showing a 3-month daily view from 24 Nov to 16 Feb. The price trends downward from around 325 to a low near 260, then sharply spikes upward. A tooltip highlights &quot;RASPBERRY PI: 415.00, 16/02/2026&quot;. The y-axis ranges from 240 to 420." src="https://static.simonwillison.net/static/2026/raspberry-pi-plc.jpg" /></p>
+<p>The Telegraph <a href="https://finance.yahoo.com/news/british-computer-maker-soars-ai-141836041.html">credited excitement around OpenClaw</a>: </p>
+<blockquote>
+<p>Raspberry Pi's stock price has surged 30pc in two days, amid chatter on social media that the company's tiny computers can be used to power a popular AI chatbot.</p>
+<p>Users have turned to Raspberry Pi's small computers to run a technology known as OpenClaw, <a href="https://www.telegraph.co.uk/business/2026/02/07/i-built-a-whatsapp-bot-and-now-it-runs-my-entire-life/">a viral AI personal assistant</a>. A flood of posts about the practice have been viewed millions of times since the weekend.</p>
+</blockquote>
+<p>Reuters <a href="https://finance.yahoo.com/news/raspberry-pi-soars-40-ceo-151342904.html">also credit a stock purchase by CEO Eben Upton</a>:</p>
+<blockquote>
+<p>Shares in Raspberry Pi rose as much as 42% on Tuesday in ‌a record two‑day rally after CEO Eben Upton bought ‌stock in the beaten‑down UK computer hardware firm, halting a months‑long slide, ​as chatter grew that its products could benefit from low‑cost artificial‑intelligence projects.</p>
+<p>Two London traders said the driver behind the surge was not clear, though the move followed a filing showing Upton bought ‌about 13,224 pounds ⁠worth of shares at around 282 pence each on Monday.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/raspberry-pi">raspberry-pi</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/openclaw">openclaw</a></p>]]></description><pubDate>Sun, 22 Feb 2026 23:54:39 +0000</pubDate></item><item><title>How I think about Codex</title><link>https://simonwillison.net/2026/Feb/22/how-i-think-about-codex/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.linkedin.com/pulse/how-i-think-codex-gabriel-chua-ukhic">How I think about Codex</a></strong></p>
 Gabriel Chua (Developer Experience Engineer for APAC at OpenAI) provides his take on the confusing terminology behind the term "Codex", which can refer to a bunch of of different things within the OpenAI ecosystem:</p>
 <blockquote>
 <p>In plain terms, Codex is OpenAI’s software engineering agent, available through multiple interfaces, and an agent is a model plus instructions and tools, wrapped in a runtime that can execute tasks on your behalf. [...]</p>
@@ -537,15 +577,4 @@ perfObserver.observe({ entryTypes: [ "resource" ] });
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47024506">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/archiving">archiving</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a></p>]]></description><pubDate>Sun, 15 Feb 2026 18:26:08 +0000</pubDate></item><item><title>Three months of OpenClaw</title><link>https://simonwillison.net/2026/Feb/15/openclaw/#atom-everything</link><description><![CDATA[<p>It's wild that the first commit to OpenClaw was <a href="https://github.com/openclaw/openclaw/commit/f6dd362d39b8e30bd79ef7560aab9575712ccc11">on November 25th 2025</a>, and less than three months later it's hit 10,000 commits from 600 contributors, attracted 196,000 GitHub stars and sort-of been featured in an extremely vague <a href="https://www.youtube.com/watch?v=n7I-D4YXbzg">Super Bowl commercial for AI.com</a>.</p>
-<p>Quoting AI.com founder <a href="https://twitter.com/kris/status/2020663711015514399">Kris Marszalek</a>, purchaser of the <a href="https://www.theregister.com/2026/02/09/70m_aicom_domain_sale/">most expensive domain in history</a> for $70m:</p>
-<blockquote>
-<p>ai.com is the world’s first easy-to-use and secure implementation of OpenClaw, the open source agent framework that went viral two weeks ago; we made it easy to use without any technical skills, while hardening security to keep your data safe.</p>
-</blockquote>
-<p>Looks like vaporware to me - all you can do right now is reserve a handle - but it's still remarkable to see an open source project get to <em>that</em> level of hype in such a short space of time.</p>
-<p><strong>Update</strong>: OpenClaw creator Peter Steinberger <a href="https://steipete.me/posts/2026/openclaw">just announced</a> that he's joining OpenAI and plans to transfer ownership of OpenClaw to a new independent foundation.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/openclaw">openclaw</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/domains">domains</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/peter-steinberger">peter-steinberger</a></p>]]></description><pubDate>Sun, 15 Feb 2026 17:23:28 +0000</pubDate></item><item><title>Quoting Eric Meyer</title><link>https://simonwillison.net/2026/Feb/15/eric-meyer/#atom-everything</link><description><![CDATA[<blockquote cite="https://mastodon.social/@Meyerweb/116065151451468199"><p>I saw yet another “CSS is a massively bloated mess” whine and I’m like.  My dude.  My brother in Chromium.  It is trying as hard as it can to express the totality of visual presentation and layout design and typography and animation and digital interactivity and a few other things in a human-readable text format.  It’s not bloated, it’s fantastically ambitious.  Its reach is greater than most of us can hope to grasp.  Put some <em>respect</em> on its <em>name</em>.</p></blockquote>
-<p class="cite">&mdash; <a href="https://mastodon.social/@Meyerweb/116065151451468199">Eric Meyer</a></p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/css">css</a>, <a href="https://simonwillison.net/tags/web-standards">web-standards</a>, <a href="https://simonwillison.net/tags/eric-meyer">eric-meyer</a></p>]]></description><pubDate>Sun, 15 Feb 2026 13:36:20 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/archiving">archiving</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a></p>]]></description><pubDate>Sun, 15 Feb 2026 18:26:08 +0000</pubDate></item></channel></rss>
