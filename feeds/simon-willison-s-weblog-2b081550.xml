@@ -68,7 +68,8 @@ Really interesting case-study from Andreas Kling on advanced, sophisticated use 
 <p>At the micro level we make hundreds of decisions a day predicated on available time and anticipated tradeoffs. Should I refactor that function to be slightly more elegant if it adds an extra hour of coding time? How about writing documentation? Is it worth adding a test for this edge case? Can I justify building a debug interface for this?</p>
 <p>Coding agents dramatically drop the cost of typing code into the computer, which disrupts <em>so many</em> of our existing personal and organizational intuitions about which trade-offs make sense.</p>
 <p>The ability to run parallel agents makes this even harder to evaluate, since one human engineer can now be implementing, refactoring, testing and documenting code in multiple places at the same time.</p>
-<h2>Good code still has a cost</h2>
+<h2 id="good-code">Good code still has a cost</h2>
+
 <p>Delivering new code has dropped in price to almost free... but delivering <em>good</em> code remains significantly more expensive than that.</p>
 <p>Here's what I mean by "good code":</p>
 <ul>
