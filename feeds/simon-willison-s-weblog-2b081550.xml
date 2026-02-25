@@ -1,4 +1,84 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Kellan Elliott-McCrea</title><link>https://simonwillison.net/2026/Feb/25/kellan-elliott-mccrea/#atom-everything</link><description><![CDATA[<blockquote cite="https://laughingmeme.org/2026/02/09/code-has-always-been-the-easy-part.html"><p>It’s also reasonable for people who entered technology in the last couple of decades because it was good job, or because they enjoyed coding to look at this moment with a real feeling of loss. That feeling of loss though can be hard to understand emotionally for people my age who entered tech because we were addicted to feeling of agency it gave us. The web was objectively awful as a technology, and genuinely amazing, and nobody got into it because programming in Perl was somehow aesthetically delightful.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Claude Code Remote Control</title><link>https://simonwillison.net/2026/Feb/25/claude-code-remote-control/#atom-everything</link><description><![CDATA[<p><strong><a href="https://code.claude.com/docs/en/remote-control">Claude Code Remote Control</a></strong></p>
+New Claude Code feature dropped yesterday: you can now run a "remote control" session on your computer and then use the Claude Code for web interfaces (on web, iOS and native desktop app) to send prompts to that session.</p>
+<p>It's a little bit janky right now. Initially when I tried it I got the error "Remote Control is not enabled for your account. Contact your administrator." (but I <em>am</em> my administrator?) - then I logged out and back into the Claude Code terminal app and it started working:</p>
+<pre><code>claude remote-control
+</code></pre>
+<p>You can only run one session on your machine at a time. If you upgrade the Claude iOS app it then shows up as "Remote Control Session (Mac)" in the Code tab.</p>
+<p>It appears not to support the <code>--dangerously-skip-permissions</code> flag (I passed that to <code>claude remote-control</code> and it didn't reject the option, but it also appeared to have no effect) - which means you have to approve every new action it takes.</p>
+<p>I also managed to get it to a state where every prompt I tried was met by an API 500 error.</p>
+<p style="text-align: center;"><img src="https://static.simonwillison.net/static/2026/vampire-remote.jpg" alt="Screenshot of a &quot;Remote Control session&quot; (Mac:dev:817b) chat interface. User message: &quot;Play vampire by Olivia Rodrigo in music app&quot;. Response shows an API Error: 500 {&quot;type&quot;:&quot;error&quot;,&quot;error&quot;:{&quot;type&quot;:&quot;api_error&quot;,&quot;message&quot;:&quot;Internal server error&quot;},&quot;request_id&quot;:&quot;req_011CYVBLH9yt2ze2qehrX8nk&quot;} with a &quot;Try again&quot; button. Below, the assistant responds: &quot;I&#39;ll play &quot;Vampire&quot; by Olivia Rodrigo in the Music app using AppleScript.&quot; A Bash command panel is open showing an osascript command: osascript -e &#39;tell application &quot;Music&quot; activate set searchResults to search playlist &quot;Library&quot; for &quot;vampire Olivia Rodrigo&quot; if (count of searchResults) &gt; 0 then play item 1 of searchResults else return &quot;Song not found in library&quot; end if end tell&#39;" style="max-width: 80%;" /></p>
+
+<p>Restarting the program on the machine also causes existing sessions to start returning mysterious API errors rather than neatly explaining that the session has terminated.</p>
+<p>I expect they'll iron out all of these issues relatively quickly. It's interesting to then contrast this to solutions like OpenClaw, where one of the big selling points is the ability to control your personal device from your phone.</p>
+<p>Claude Code still doesn't have a documented mechanism for running things on a schedule, which is the other killer feature of the Claw category of software.
+
+    <p><small></small>Via <a href="https://twitter.com/claudeai/status/2026418433911603668">@claudeai</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/applescript">applescript</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/openclaw">openclaw</a></p>]]></description><pubDate>Wed, 25 Feb 2026 17:33:24 +0000</pubDate></item><item><title>I vibe coded my dream macOS presentation app</title><link>https://simonwillison.net/2026/Feb/25/present/#atom-everything</link><description><![CDATA[<p>I gave a talk this weekend at Social Science FOO Camp in Mountain View. The event was a classic unconference format where anyone could present a talk without needing to propose it in advance. I grabbed a slot for a talk I titled "The State of LLMs, February 2026 edition", subtitle "It's all changed since November!". I vibe coded a custom macOS app for the presentation the night before.</p>
+<p><img src="https://static.simonwillison.net/static/2026/state-of-llms.jpg" alt="A sticky note on a board at FOO Camp. It reads: The state of LLMs, Feb 2026 edition - it's all changed since November! Simon Willison - the card is littered with names of new models: Qwen 3.5, DeepSeek 3.2, Sonnet 4.6, Kimi K2.5, GLM5, Opus 4.5/4.6, Gemini 3.1 Pro, Codex 5.3. The card next to it says Why do Social Scientists think they need genetics? Bill January (it's not all because of AI)" style="max-width: 100%;" /></p>
+<p>I've written about the last twelve months of development in LLMs in <a href="https://simonwillison.net/2023/Dec/31/ai-in-2023/">December 2023</a>, <a href="https://simonwillison.net/2024/Dec/31/llms-in-2024/">December 2024</a> and <a href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/">December 2025</a>. I also presented <a href="https://simonwillison.net/2025/Jun/6/six-months-in-llms/">The last six months in LLMs, illustrated by pelicans on bicycles</a> at the AI Engineer World’s Fair in June 2025. This was my first time dropping the time covered to just three months, which neatly illustrates how much the space keeps accelerating and felt appropriate given the <a href="https://simonwillison.net/2026/Jan/4/inflection/">November 2025 inflection point</a>.</p>
+<p>(I further illustrated this acceleration by wearing a Gemini 3 sweater to the talk, which I was given a couple of weeks ago and is already out-of-date <a href="https://simonwillison.net/2026/Feb/19/gemini-31-pro/">thanks to Gemini 3.1</a>.)</p>
+<p>I always like to have at least one gimmick in any talk I give, based on the STAR moment principle I <a href="https://simonwillison.net/2019/Dec/10/better-presentations/">learned at Stanford</a> - include Something They'll Always Remember to try and help your talk stand out.</p>
+<p>For this talk I had two gimmicks. I built the first part of the talk around coding agent assisted data analysis of Kākāpō breeding season (which meant I got to <a href="https://simonwillison.net/2026/Feb/8/kakapo-mug/">show off my mug</a>), then did a quick tour of some new pelicans riding bicycles before ending with the reveal that the entire presentation had been presented using a new macOS app I had vibe coded in ~45 minutes the night before the talk.</p>
+<h4 id="present-app">Present.app</h4>
+<p>The app is called <strong>Present</strong> - literally the first name I thought of. It's built using Swift and SwiftUI and weighs in at 355KB, or <a href="https://github.com/simonw/present/releases/tag/0.1a0">76KB compressed</a>. Swift apps are tiny!</p>
+<p>It may have been quick to build but the combined set of features is something I've wanted for <em>years</em>.</p>
+<p>I usually use Keynote for presentations, but sometimes I like to mix things up by presenting using a sequence of web pages. I do this by loading up a browser window with a tab for each page, then clicking through those tabs in turn while I talk.</p>
+<p>This works great, but comes with a very scary disadvantage: if the browser crashes I've just lost my entire deck!</p>
+<p>I always have the URLs in a notes file, so I can click back to that and launch them all manually if I need to, but it's not something I'd like to deal with in the middle of a talk.</p>
+<p>This was <a href="https://gisthost.github.io/?639d3c16dcece275af50f028b32480c7/page-001.html#msg-2026-02-21T05-53-43-395Z">my starting prompt</a>:</p>
+<blockquote>
+<p>Build a SwiftUI app for giving presentations where every slide is a URL. The app starts as a window with a webview on the right and a UI on the left for adding, removing and reordering the sequence of URLs. Then you click Play in a menu and the app goes full screen and the left and right keys switch between URLs</p>
+</blockquote>
+<p>That produced a plan. You can see <a href="https://gisthost.github.io/?bfbc338977ceb71e298e4d4d5ac7d63c">the transcript that implemented that plan here</a>.</p>
+<p>In Present a talk is an ordered sequence of URLs, with a sidebar UI for adding, removing and reordering those URLs. That's the entirety of the editing experience.</p>
+<p><img src="https://static.simonwillison.net/static/2026/present.jpg" alt="Screenshot of a macOS app window titled &quot;Present&quot; showing Google Image search results for &quot;kakapo&quot;. A web view shows a Google image search with thumbnail photos of kākāpō parrots with captions. A sidebar on the left shows a numbered list of URLs, mostly from simonwillison.net and static.simonwillison.net, with item 4 (https://www.google.com/search?...) highlighted in blue." style="max-width: 100%;" /></p>
+<p>When you select the "Play" option in the menu (or hit Cmd+Shift+P) the app switches to full screen mode. Left and right arrow keys navigate back and forth, and you can bump the font size up and down or scroll the page if you need to. Hit Escape when you're done.</p>
+<p>Crucially, Present saves your URLs automatically any time you make a change. If the app crashes you can start it back up again and restore your presentation state.</p>
+<p>You can also save presentations as a <code>.txt</code> file (literally a newline-delimited sequence of URLs) and load them back up again later.</p>
+<h4 id="remote-controlled-via-my-phone">Remote controlled via my phone</h4>
+<p>Getting the initial app working took so little time that I decided to get more ambitious.</p>
+<p>It's neat having a remote control for a presentation...</p>
+<p>So I prompted:</p>
+<blockquote>
+<p>Add a web server which listens on 0.0.0.0:9123 - the web server serves a single mobile-friendly page with prominent left and right buttons - clicking those buttons switches the slide left and right - there is also a button to start presentation mode or stop depending on the mode it is in.</p>
+</blockquote>
+<p>I have <a href="https://tailscale.com/">Tailscale</a> on my laptop and my phone, which means I don't have to worry about Wi-Fi networks blocking access between the two devices. My phone can access <code>http://100.122.231.116:9123/</code> directly from anywhere in the world and control the presentation running on my laptop.</p>
+<p>It took a few more iterative prompts to get to the final interface, which looked like this:</p>
+<p style="text-align: center;"><img src="https://static.simonwillison.net/static/2026/present-mobile.jpg" alt="Mobile phone web browser app with large buttons, Slide 4/31 at the top, Prev, Next and Start buttons, a thin bar with a up/down scroll icon and text size + and - buttons and the current slide URL at the bottom." style="max-width: 80%;" /></p>
+<p>There's a slide indicator at the top, prev and next buttons, a nice big "Start" button and buttons for adjusting the font size.</p>
+<p>The most complex feature is that thin bar next to the start button. That's a touch-enabled scroll bar - you can slide your finger up and down on it to scroll the currently visible web page up and down on the screen.</p>
+<p>It's <em>very</em> clunky but it works just well enough to solve the problem of a page loading with most interesting content below the fold.</p>
+<h4 id="learning-from-the-code">Learning from the code</h4>
+<p>I'd already <a href="https://github.com/simonw/present">pushed the code to GitHub</a> (with a big "This app was vibe coded [...] I make no promises other than it worked on my machine!" disclaimer) when I realized I should probably take a look at the code.</p>
+<p>I used this as an opportunity to document a recent pattern I've been using: asking the model to present a linear walkthrough of the entire codebase. Here's the resulting <a href="https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/">Linear walkthroughs</a> pattern in my ongoing <a href="https://simonwillison.net/2026/Feb/23/agentic-engineering-patterns/">Agentic Engineering Patterns guide</a>, including the prompt I used.</p>
+<p>The <a href="https://github.com/simonw/present/blob/main/walkthrough.md">resulting walkthrough document</a> is genuinely useful. It turns out Claude Code decided to implement the web server for the remote control feature <a href="https://github.com/simonw/present/blob/main/walkthrough.md#request-routing">using socket programming without a library</a>! Here's the minimal HTTP parser it used for routing:</p>
+<div class="highlight highlight-source-swift"><pre>    <span class="pl-k">private</span> <span class="pl-en">func</span> route<span class="pl-kos">(</span>_ raw<span class="pl-kos">:</span> <span class="pl-smi">String</span><span class="pl-kos">)</span> <span class="pl-c1">-&gt;</span> <span class="pl-smi">String</span> <span class="pl-kos">{</span>
+        <span class="pl-k">let</span> <span class="pl-s1">firstLine</span> <span class="pl-c1">=</span> raw<span class="pl-kos">.</span><span class="pl-en">components</span><span class="pl-kos">(</span>separatedBy<span class="pl-kos">:</span> <span class="pl-s">"</span><span class="pl-s">\r</span><span class="pl-s">\n</span><span class="pl-s">"</span><span class="pl-kos">)</span><span class="pl-kos">.</span>first <span class="pl-c1">??</span> <span class="pl-s">"</span><span class="pl-s">"</span>
+        <span class="pl-k">let</span> <span class="pl-s1">parts</span> <span class="pl-c1">=</span> firstLine<span class="pl-kos">.</span><span class="pl-en">split</span><span class="pl-kos">(</span>separator<span class="pl-kos">:</span> <span class="pl-s">"</span><span class="pl-s"> </span><span class="pl-s">"</span><span class="pl-kos">)</span>
+        <span class="pl-k">let</span> <span class="pl-s1">path</span> <span class="pl-c1">=</span> parts<span class="pl-kos">.</span>count <span class="pl-c1">&gt;=</span> <span class="pl-c1">2</span> <span class="pl-c1">?</span> <span class="pl-en">String</span><span class="pl-kos">(</span><span class="pl-en">parts</span><span class="pl-kos">[</span><span class="pl-c1">1</span><span class="pl-kos">]</span><span class="pl-kos">)</span> <span class="pl-k">:</span> <span class="pl-s">"</span><span class="pl-s">/</span><span class="pl-s">"</span>
+
+        <span class="pl-k">switch</span> path <span class="pl-kos">{</span>
+        <span class="pl-k">case</span> <span class="pl-s">"</span><span class="pl-s">/next</span><span class="pl-s">"</span><span class="pl-kos">:</span>
+            state<span class="pl-c1"><span class="pl-c1">?</span></span><span class="pl-kos">.</span><span class="pl-en">goToNext</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+            <span class="pl-k">return</span> <span class="pl-en">jsonResponse</span><span class="pl-kos">(</span><span class="pl-s">"</span><span class="pl-s">ok</span><span class="pl-s">"</span><span class="pl-kos">)</span>
+        <span class="pl-k">case</span> <span class="pl-s">"</span><span class="pl-s">/prev</span><span class="pl-s">"</span><span class="pl-kos">:</span>
+            state<span class="pl-c1"><span class="pl-c1">?</span></span><span class="pl-kos">.</span><span class="pl-en">goToPrevious</span><span class="pl-kos">(</span><span class="pl-kos">)</span>
+            <span class="pl-k">return</span> <span class="pl-en">jsonResponse</span><span class="pl-kos">(</span><span class="pl-s">"</span><span class="pl-s">ok</span><span class="pl-s">"</span><span class="pl-kos">)</span>
+<span class="pl-kos"></span><span class="pl-kos"></span></pre></div>
+<p>Using GET requests for state changes like that opens up some fun CSRF vulnerabilities. For this particular application I don't really care.</p>
+<h4 id="expanding-our-horizons">Expanding our horizons</h4>
+<p>Vibe coding stories like this are ten a penny these days. I think this one is worth sharing for a few reasons:</p>
+<ul>
+<li>Swift, a language I don't know, was absolutely the right choice here. I wanted a full screen app that embedded web content and could be controlled over the network. Swift had everything I needed.</li>
+<li>When I finally did look at the code it was simple, straightforward and did exactly what I needed and not an inch more.</li>
+<li>This solved a real problem for me. I've always wanted a good way to serve a presentation as a sequence of pages, and now I have exactly that.</li>
+</ul>
+<p>This doesn't mean native Mac developers are obsolete. I still used a whole bunch of my own accumulated technical knowledge (and the fact that I'd already installed Xcode and the like) to get this result, and someone who knew what they were doing could have built a far better solution in the same amount of time.</p>
+<p>It's a neat illustration of how those of us with software engineering experience can expand our horizons in fun and interesting directions. I'm no longer afraid of Swift! Next time I need a small, personal macOS app I know that it's achievable with our existing set of tools.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/swift">swift</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Wed, 25 Feb 2026 16:46:19 +0000</pubDate></item><item><title>Quoting Kellan Elliott-McCrea</title><link>https://simonwillison.net/2026/Feb/25/kellan-elliott-mccrea/#atom-everything</link><description><![CDATA[<blockquote cite="https://laughingmeme.org/2026/02/09/code-has-always-been-the-easy-part.html"><p>It’s also reasonable for people who entered technology in the last couple of decades because it was good job, or because they enjoyed coding to look at this moment with a real feeling of loss. That feeling of loss though can be hard to understand emotionally for people my age who entered tech because we were addicted to feeling of agency it gave us. The web was objectively awful as a technology, and genuinely amazing, and nobody got into it because programming in Perl was somehow aesthetically delightful.</p></blockquote>
 <p class="cite">&mdash; <a href="https://laughingmeme.org/2026/02/09/code-has-always-been-the-easy-part.html">Kellan Elliott-McCrea</a>, Code has <em>always</em> been the easy part</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/perl">perl</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/kellan-elliott-mccrea">kellan-elliott-mccrea</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/deep-blue">deep-blue</a></p>]]></description><pubDate>Wed, 25 Feb 2026 03:30:32 +0000</pubDate></item><item><title>Linear walkthroughs</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
@@ -6,7 +86,7 @@
 <p>Maybe it's existing code you need to get up to speed on, maybe it's your own code that you've forgotten the details of, or maybe you vibe coded the whole thing and need to understand how it actually works.</p>
 <p>Frontier models with the right agent harness can construct a detailed walkthrough to help you understand how code works.</p>
 <h2>An example using Showboat and Present</h2>
-<p>I recently vibe coded a SwiftUI slide presentation app on my Mac using Claude Code and Opus 4.6.</p>
+<p>I recently <a href="https://simonwillison.net/2026/Feb/25/present/">vibe coded a SwiftUI slide presentation app</a> on my Mac using Claude Code and Opus 4.6.</p>
 <p>I was speaking about the advances in frontier models between November 2025 and February 2026, and I like to include at least one gimmick in my talks (a <a href="https://simonwillison.net/2019/Dec/10/better-presentations/">STAR moment</a> - Something They'll Always Remember). In this case I decided the gimmick would be revealing at the end of the presentation that the slide mechanism itself was an example of what vibe coding could do.</p>
 <p>I released the code <a href="https://github.com/simonw/present">to GitHub</a> and then realized I didn't know anything about how it actually worked - I had prompted the whole thing into existence (<a href="https://gisthost.github.io/?bfbc338977ceb71e298e4d4d5ac7d63c">partial transcript here</a> without paying any attention to the code it was writing.</p>
 <p>So I fired up a new instance of Claude Code for web, pointed it at my repo and prompted:</p>
@@ -383,82 +463,4 @@ New opinion piece from Paul Ford in the New York Times. Unsurprisingly for a pie
     <p>Tags: <a href="https://simonwillison.net/tags/new-york-times">new-york-times</a>, <a href="https://simonwillison.net/tags/paul-ford">paul-ford</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Wed, 18 Feb 2026 17:07:31 +0000</pubDate></item><item><title>Quoting Martin Fowler</title><link>https://simonwillison.net/2026/Feb/18/martin-fowler/#atom-everything</link><description><![CDATA[<blockquote cite="https://martinfowler.com/fragments/2026-02-18.html"><p>LLMs are eating specialty skills. There will be less use of specialist front-end and back-end developers as the LLM-driving skills become more important than the details of platform usage. Will this lead to a greater recognition of the role of <a href="https://martinfowler.com/articles/expert-generalist.html">Expert Generalists</a>? Or will the ability of LLMs to write lots of code mean they code around the silos rather than eliminating them?</p></blockquote>
 <p class="cite">&mdash; <a href="https://martinfowler.com/fragments/2026-02-18.html">Martin Fowler</a>, tidbits from the Thoughtworks Future of Software Development Retreat, <a href="https://news.ycombinator.com/item?id=47062534">via HN</a>)</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/martin-fowler">martin-fowler</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Wed, 18 Feb 2026 16:50:07 +0000</pubDate></item><item><title>Introducing Claude Sonnet 4.6</title><link>https://simonwillison.net/2026/Feb/17/claude-sonnet-46/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/news/claude-sonnet-4-6">Introducing Claude Sonnet 4.6</a></strong></p>
-Sonnet 4.6 is out today, and Anthropic claim it offers similar performance to <a href="https://simonwillison.net/2025/Nov/24/claude-opus/">November's Opus 4.5</a> while maintaining the Sonnet pricing of $3/million input and $15/million output tokens (the Opus models are $5/$25). Here's <a href="https://www-cdn.anthropic.com/78073f739564e986ff3e28522761a7a0b4484f84.pdf">the system card PDF</a>.</p>
-<p>Sonnet 4.6 has a "reliable knowledge cutoff" of August 2025, compared to Opus 4.6's May 2025 and Haiku 4.5's February 2025. Both Opus and Sonnet default to 200,000 max input tokens but can stretch to 1 million in beta and at a higher cost.</p>
-<p>I just released <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.24">llm-anthropic 0.24</a> with support for both Sonnet 4.6 and Opus 4.6. Claude Code <a href="https://github.com/simonw/llm-anthropic/pull/65">did most of the work</a> - the new models had a fiddly amount of extra details around adaptive thinking and no longer supporting prefixes, as described <a href="https://platform.claude.com/docs/en/about-claude/models/migration-guide">in Anthropic's migration guide</a>.</p>
-<p>Here's <a href="https://gist.github.com/simonw/b185576a95e9321b441f0a4dfc0e297c">what I got</a> from:</p>
-<pre><code>uvx --with llm-anthropic llm 'Generate an SVG of a pelican riding a bicycle' -m claude-sonnet-4.6
-</code></pre>
-<p><img alt="The pelican has a jaunty top hat with a red band. There is a string between the upper and lower beaks for some reason. The bicycle frame is warped in the wrong way." src="https://static.simonwillison.net/static/2026/pelican-sonnet-4.6.png" /></p>
-<p>The SVG comments include:</p>
-<pre><code>&lt;!-- Hat (fun accessory) --&gt;
-</code></pre>
-<p>I tried a second time and also got a top hat. Sonnet 4.6 apparently loves top hats!</p>
-<p>For comparison, here's the pelican Opus 4.5 drew me <a href="(https://simonwillison.net/2025/Nov/24/claude-opus/)">in November</a>:</p>
-<p><img alt="The pelican is cute and looks pretty good. The bicycle is not great - the frame is wrong and the pelican is facing backwards when the handlebars appear to be forwards.There is also something that looks a bit like an egg on the handlebars." src="https://static.simonwillison.net/static/2025/claude-opus-4.5-pelican.jpg" /></p>
-<p>And here's Anthropic's current best pelican, drawn by Opus 4.6 <a href="https://simonwillison.net/2026/Feb/5/two-new-models/">on February 5th</a>:</p>
-<p><img alt="Slightly wonky bicycle frame but an excellent pelican, very clear beak and pouch, nice feathers." src="https://static.simonwillison.net/static/2026/opus-4.6-pelican.png" /></p>
-<p>Opus 4.6 produces the best pelican beak/pouch. I do think the top hat from Sonnet 4.6 is a nice touch though.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47050488">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Tue, 17 Feb 2026 23:58:58 +0000</pubDate></item><item><title>Rodney v0.4.0</title><link>https://simonwillison.net/2026/Feb/17/rodney/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/rodney/releases/tag/v0.4.0">Rodney v0.4.0</a></strong></p>
-My <a href="https://github.com/simonw/rodney">Rodney</a> CLI tool for browser automation attracted quite the flurry of PRs since I announced it <a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/#rodney-cli-browser-automation-designed-to-work-with-showboat">last week</a>. Here are the release notes for the just-released v0.4.0:</p>
-<blockquote>
-<ul>
-<li>Errors now use exit code 2, which means exit code 1 is just for for check failures. <a href="https://github.com/simonw/rodney/pull/15">#15</a></li>
-<li>New <code>rodney assert</code> command for running JavaScript tests, exit code 1 if they fail. <a href="https://github.com/simonw/rodney/issues/19">#19</a></li>
-<li>New directory-scoped sessions with <code>--local</code>/<code>--global</code> flags. <a href="https://github.com/simonw/rodney/pull/14">#14</a></li>
-<li>New <code>reload --hard</code> and <code>clear-cache</code> commands. <a href="https://github.com/simonw/rodney/pull/17">#17</a></li>
-<li>New <code>rodney start --show</code> option to make the browser window visible. Thanks, <a href="https://github.com/antocuni">Antonio Cuni</a>. <a href="https://github.com/simonw/rodney/paull/13">#13</a></li>
-<li>New <code>rodney connect PORT</code> command to debug an already-running Chrome instance. Thanks, <a href="https://github.com/pnf">Peter Fraenkel</a>. <a href="https://github.com/simonw/rodney/pull/12">#12</a></li>
-<li>New <code>RODNEY_HOME</code> environment variable to support custom state directories. Thanks, <a href="https://github.com/senko">Senko Rašić</a>. <a href="https://github.com/simonw/rodney/pull/11">#11</a></li>
-<li>New <code>--insecure</code> flag to ignore certificate errors. Thanks, <a href="https://github.com/zgolus">Jakub Zgoliński</a>. <a href="https://github.com/simonw/rodney/pull/10">#10</a></li>
-<li>Windows support: avoid <code>Setsid</code> on Windows via build-tag helpers. Thanks, <a href="https://github.com/adm1neca">adm1neca</a>. <a href="https://github.com/simonw/rodney/pull/18">#18</a></li>
-<li>Tests now run on <code>windows-latest</code> and <code>macos-latest</code> in addition to Linux.</li>
-</ul>
-</blockquote>
-<p>I've been using <a href="https://github.com/simonw/showboat">Showboat</a> to create demos of new features - here those are for <a href="https://github.com/simonw/rodney/tree/v0.4.0/notes/assert-command-demo">rodney assert</a>, <a href="https://github.com/simonw/rodney/tree/v0.4.0/notes/clear-cache-demo">rodney reload --hard</a>, <a href="https://github.com/simonw/rodney/tree/v0.4.0/notes/error-codes-demo">rodney exit codes</a>, and <a href="https://github.com/simonw/rodney/tree/v0.4.0/notes/local-sessions-demo">rodney start --local</a>.</p>
-<p>The <code>rodney assert</code> command is pretty neat: you can now Rodney to test a web app through multiple steps in a shell script that looks something like this (adapted from <a href="https://github.com/simonw/rodney/blob/v0.4.0/README.md#combining-checks-in-a-shell-script">the README</a>):</p>
-<div class="highlight highlight-source-shell"><pre><span class="pl-c"><span class="pl-c">#!</span>/bin/bash</span>
-<span class="pl-c1">set</span> -euo pipefail
-
-FAIL=0
-
-<span class="pl-en">check</span>() {
-    <span class="pl-k">if</span> <span class="pl-k">!</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$@</span><span class="pl-pds">"</span></span><span class="pl-k">;</span> <span class="pl-k">then</span>
-        <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>FAIL: <span class="pl-smi">$*</span><span class="pl-pds">"</span></span>
-        FAIL=1
-    <span class="pl-k">fi</span>
-}
-
-rodney start
-rodney open <span class="pl-s"><span class="pl-pds">"</span>https://example.com<span class="pl-pds">"</span></span>
-rodney waitstable
-
-<span class="pl-c"><span class="pl-c">#</span> Assert elements exist</span>
-check rodney exists <span class="pl-s"><span class="pl-pds">"</span>h1<span class="pl-pds">"</span></span>
-
-<span class="pl-c"><span class="pl-c">#</span> Assert key elements are visible</span>
-check rodney visible <span class="pl-s"><span class="pl-pds">"</span>h1<span class="pl-pds">"</span></span>
-check rodney visible <span class="pl-s"><span class="pl-pds">"</span>#main-content<span class="pl-pds">"</span></span>
-
-<span class="pl-c"><span class="pl-c">#</span> Assert JS expressions</span>
-check rodney assert <span class="pl-s"><span class="pl-pds">'</span>document.title<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>Example Domain<span class="pl-pds">'</span></span>
-check rodney assert <span class="pl-s"><span class="pl-pds">'</span>document.querySelectorAll("p").length<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>2<span class="pl-pds">'</span></span>
-
-<span class="pl-c"><span class="pl-c">#</span> Assert accessibility requirements</span>
-check rodney ax-find --role navigation
-
-rodney stop
-
-<span class="pl-k">if</span> [ <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$FAIL</span><span class="pl-pds">"</span></span> <span class="pl-k">-ne</span> 0 ]<span class="pl-k">;</span> <span class="pl-k">then</span>
-    <span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>Some checks failed<span class="pl-pds">"</span></span>
-    <span class="pl-c1">exit</span> 1
-<span class="pl-k">fi</span>
-<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">"</span>All checks passed<span class="pl-pds">"</span></span></pre></div>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/rodney">rodney</a></p>]]></description><pubDate>Tue, 17 Feb 2026 23:02:33 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/martin-fowler">martin-fowler</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Wed, 18 Feb 2026 16:50:07 +0000</pubDate></item></channel></rss>
