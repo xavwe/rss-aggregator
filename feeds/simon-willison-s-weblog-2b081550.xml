@@ -10,7 +10,12 @@ New Claude Code feature dropped yesterday: you can now run a "remote control" se
 
 <p>Restarting the program on the machine also causes existing sessions to start returning mysterious API errors rather than neatly explaining that the session has terminated.</p>
 <p>I expect they'll iron out all of these issues relatively quickly. It's interesting to then contrast this to solutions like OpenClaw, where one of the big selling points is the ability to control your personal device from your phone.</p>
-<p>Claude Code still doesn't have a documented mechanism for running things on a schedule, which is the other killer feature of the Claw category of software.
+<p>Claude Code still doesn't have a documented mechanism for running things on a schedule, which is the other killer feature of the Claw category of software.</p>
+<p><strong>Update</strong>: I spoke too soon: also today Anthropic announced <a href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-cowork">Schedule recurring tasks in Cowork</a>, Claude Code's <a href="https://simonwillison.net/2026/Jan/12/claude-cowork/">general agent sibling</a>. These do include an important limitation:</p>
+<blockquote>
+<p>Scheduled tasks only run while your computer is awake and the Claude Desktop app is open. If your computer is asleep or the app is closed when a task is scheduled to run, Cowork will skip the task, then run it automatically once your computer wakes up or you open the desktop app again.</p>
+</blockquote>
+<p>I really hope they're working on a Cowork Cloud product.
 
     <p><small></small>Via <a href="https://twitter.com/claudeai/status/2026418433911603668">@claudeai</a></small></p>
 
