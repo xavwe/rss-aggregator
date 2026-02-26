@@ -112,6 +112,7 @@ New Claude Code feature dropped yesterday: you can now run a "remote control" se
 <li>Swift, a language I don't know, was absolutely the right choice here. I wanted a full screen app that embedded web content and could be controlled over the network. Swift had everything I needed.</li>
 <li>When I finally did look at the code it was simple, straightforward and did exactly what I needed and not an inch more.</li>
 <li>This solved a real problem for me. I've always wanted a good way to serve a presentation as a sequence of pages, and now I have exactly that.</li>
+<li>I didn't have to open Xcode even once!</li>
 </ul>
 <p>This doesn't mean native Mac developers are obsolete. I still used a whole bunch of my own accumulated technical knowledge (and the fact that I'd already installed Xcode and the like) to get this result, and someone who knew what they were doing could have built a far better solution in the same amount of time.</p>
 <p>It's a neat illustration of how those of us with software engineering experience can expand our horizons in fun and interesting directions. I'm no longer afraid of Swift! Next time I need a small, personal macOS app I know that it's achievable with our existing set of tools.</p>
