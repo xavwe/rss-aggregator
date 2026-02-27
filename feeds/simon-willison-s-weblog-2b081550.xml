@@ -190,7 +190,17 @@ It's become very apparent over the past few months that a comprehensive test sui
 <blockquote>
 <p>The current tldraw codebase is in English, making it easy for external AI coding agents to replicate. It is imperative that we defend our intellectual property.</p>
 </blockquote>
-<p>Worth noting that tldraw aren't technically open source - their <a href="https://github.com/tldraw/tldraw?tab=License-1-ov-file#readme">custom license</a> requires a commercial license if you want to use it in "production environments".
+<p>Worth noting that tldraw aren't technically open source - their <a href="https://github.com/tldraw/tldraw?tab=License-1-ov-file#readme">custom license</a> requires a commercial license if you want to use it in "production environments".</p>
+<p><strong>Update</strong>: Well this is embarrassing, it turns out the issue I linked to about removing the tests was <a href="https://github.com/tldraw/tldraw/issues/8082#issuecomment-3964650501">a joke as well</a>:</p>
+<blockquote>
+<p>Sorry folks, this issue was more of a joke (am I allowed to do that?) but I'll keep the issue open since there's some discussion here. Writing from mobile</p>
+<ul>
+<li>moving our tests into another repo would complicate and slow down our development, and speed for us is more important than ever</li>
+<li>more canvas better, I know for sure that our decisions have inspired other products and that's fine and good</li>
+<li>tldraw itself may eventually be a vibe coded alternative to tldraw</li>
+<li>the value is in the ability to produce new and good product decisions for users / customers, however you choose to create the code</li>
+</ul>
+</blockquote>
 
     <p><small></small>Via <a href="https://twitter.com/steveruizok/status/2026581824428753211">@steveruizok</a></small></p>
 
