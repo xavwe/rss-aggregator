@@ -1,4 +1,28 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Please, please, please stop using passkeys for encrypting user data</title><link>https://simonwillison.net/2026/Feb/27/passkeys/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.timcappalli.me/p/passkeys-prf-warning/">Please, please, please stop using passkeys for encrypting user data</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Interactive explanations</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
+    <p>When we lose track of how code written by our agents works we take on <strong>cognitive debt</strong>.</p>
+<p>For a lot of things this doesn't matter: if the code fetches some data from a database and outputs it as JSON the implementation details are likely simple enough that we don't need to care. We can try out the new feature and make a very solid guess at how it works, then glance over the code to be sure.</p>
+<p>Often though the details really do matter. If the core of our application becomes a black box that we don't fully understand we can no longer confidently reason about it, which makes planning new features harder and eventually slows our progress in the same way that accumulated technical debt does.</p>
+<p>How do we pay down cognitive debt? By improving our understanding of how the code works.</p>
+<p>One of my favorite ways to do that is by building <strong>interactive explanations</strong>.</p>
+<h2 id="understanding-word-clouds">Understanding word clouds</h2>
+<p>In <a href="https://minimaxir.com/2026/02/ai-agent-coding/">An AI agent coding skeptic tries AI agent coding, in excessive detail</a> Max Woolf mentioned testing LLMs' Rust abilities with the prompt <code>Create a Rust app that can create "word cloud" data visualizations given a long input text</code>.</p>
+<p>This captured my imagination: I've always wanted to know how word clouds work, so I fired off an <a href="https://simonwillison.net/2025/Nov/6/async-code-research/">asynchronous research project</a> - <a href="https://github.com/simonw/research/pull/91#issue-4002426963">initial prompt here</a>, <a href="https://github.com/simonw/research/tree/main/rust-wordcloud">code and report here</a> - to explore the idea.</p>
+<p>This worked really well: Claude Code for web built me a Rust CLI tool that could produce images like
+this one:</p>
+<p><img alt="A word cloud, many words, different colors and sizes, larger words in the middle." src="https://raw.githubusercontent.com/simonw/research/refs/heads/main/rust-wordcloud/wordcloud.png" /></p>
+<p>But how does it actually work?</p>
+<p>Claude's report said it uses "<strong>Archimedean spiral placement</strong> with per-word random angular offset for natural-looking layouts". This did not help me much!</p>
+<p>I requested a <a href="https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/">linear walkthrough</a> of the codebase which helped me understand the Rust code in more detail - here's <a href="https://github.com/simonw/research/blob/main/rust-wordcloud/walkthrough.md">that walkthrough</a> (and <a href="https://github.com/simonw/research/commit/2cb8c62477173ef6a4c2e274be9f712734df6126">the prompt</a>). This helped me understand the structure of the Rust code but I still didn't have an intuitive understanding of how that "Archimedean spiral placement" part actually worked.</p>
+<p>So I asked for an <strong>animated explanation</strong>. I did this by pasting a link to that existing <code>walkthrough.md</code> document into a Claude Code session along with the following:</p>
+<p><div><markdown-copy><textarea>Fetch https://raw.githubusercontent.com/simonw/research/refs/heads/main/rust-wordcloud/walkthrough.md to /tmp using curl so you can read the whole thing
+
+Inspired by that, build animated-word-cloud.html - a page that accepts pasted text (which it persists in the `#fragment` of the URL such that a page loaded with that `#` populated will use that text as input and auto-submit it) such that when you submit the text it builds a word cloud using the algorithm described in that document but does it animated, to make the algorithm as clear to understand. Include a slider for the animation which can be paused and the speed adjusted or even stepped through frame by frame while paused. At any stage the visible in-progress word cloud can be downloaded as a PNG.</textarea></markdown-copy></div>
+You can <a href="https://tools.simonwillison.net/animated-word-cloud">play with the result here</a>. Here's an animated GIF demo:</p>
+<p><img alt="Words appear on the word cloud one at a time, with little boxes showing where the algorithm is attempting to place them - if those boxes overlap an existing word it tries again." src="https://static.simonwillison.net/static/2026/animated-word-cloud-demo.gif" /></p>
+<p>This was using Claude Opus 4.6, which turns out to have quite good taste when it comes to building explanatory animations.</p>
+<p>If you watch the animation closely you can see that for each word it attempts to place it somewhere on the page by showing a box, run checks if that box intersects an existing word. If so it continues to try to find a good spot, moving outward in a spiral from the center.</p>
+<p>I found that this animation really helped make the way the algorithm worked click for me.</p>
+<p>I have long been a fan of animations and interactive interfaces to help explain different concepts. A good coding agent can produce these on demand to help explain code - its own code or code written by others.</p>]]></description><pubDate>Sat, 28 Feb 2026 23:09:39 +0000</pubDate></item><item><title>Please, please, please stop using passkeys for encrypting user data</title><link>https://simonwillison.net/2026/Feb/27/passkeys/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.timcappalli.me/p/passkeys-prf-warning/">Please, please, please stop using passkeys for encrypting user data</a></strong></p>
 Because users lose their passkeys <em>all the time</em>, and may not understand that their data has been irreversibly encrypted using them and can no longer be recovered.</p>
 <p>Tim Cappalli:</p>
 <blockquote>
@@ -65,147 +89,141 @@ Here's a little prototype I built this morning from my phone as an experiment in
 <p>I didn’t want to work with images though, I wanted to work with PDFs. Then I remembered that I had also worked with Mozilla’s <a href="https://mozilla.github.io/pdf.js/">PDF.js</a> library, which among other things can turn individual pages of a PDF into rendered images.</p>
 <p>I had snippets of JavaScript for both of those libraries in my notes.</p>
 <p>Here’s the full prompt I fed into a model (at the time it was Claude 3 Opus), combining my two examples and describing the solution I was looking for:</p>
-<blockquote>
-<p>This code shows how to open a PDF and turn it into an image per page:
-<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>PDF to Images<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="w">    </span><span class="p">.</span><span class="nc">image-container</span><span class="w"> </span><span class="nt">img</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">margin-bottom</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="p">.</span><span class="nc">image-container</span><span class="w"> </span><span class="nt">p</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">      </span><span class="k">font-size</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="kt">px</span><span class="p">;</span>
-<span class="w">      </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#888</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;file&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fileInput&quot;</span> <span class="na">accept</span><span class="o">=</span><span class="s">&quot;.pdf&quot;</span> <span class="p">/&gt;</span>
-  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;image-container&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<div><markdown-copy><textarea>This code shows how to open a PDF and turn it into an image per page:
+```html
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;PDF to Images&lt;/title&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js&quot;&gt;&lt;/script&gt;
+  &lt;style&gt;
+    .image-container img {
+      margin-bottom: 10px;
+    }
+    .image-container p {
+      margin: 0;
+      font-size: 14px;
+      color: #888;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;input type=&quot;file&quot; id=&quot;fileInput&quot; accept=&quot;.pdf&quot; /&gt;
+  &lt;div class=&quot;image-container&quot;&gt;&lt;/div&gt;
 
-  <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">desiredWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">800</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">fileInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;fileInput&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageContainer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;.image-container&#39;</span><span class="p">);</span>
+  &lt;script&gt;
+  const desiredWidth = 800;
+    const fileInput = document.getElementById(&#x27;fileInput&#x27;);
+    const imageContainer = document.querySelector(&#x27;.image-container&#x27;);
 
-<span class="w">    </span><span class="nx">fileInput</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;change&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">handleFileUpload</span><span class="p">);</span>
+    fileInput.addEventListener(&#x27;change&#x27;, handleFileUpload);
 
-<span class="w">    </span><span class="nx">pdfjsLib</span><span class="p">.</span><span class="nx">GlobalWorkerOptions</span><span class="p">.</span><span class="nx">workerSrc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js&#39;</span><span class="p">;</span>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = &#x27;https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js&#x27;;
 
-<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">handleFileUpload</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">files</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageIterator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">convertPDFToImages</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+    async function handleFileUpload(event) {
+      const file = event.target.files[0];
+      const imageIterator = convertPDFToImages(file);
 
-<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">imageURL</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">imageIterator</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">imgElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;img&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">imgElement</span><span class="p">.</span><span class="nx">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">imageURL</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">imageContainer</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">imgElement</span><span class="p">);</span>
+      for await (const { imageURL, size } of imageIterator) {
+        const imgElement = document.createElement(&#x27;img&#x27;);
+        imgElement.src = imageURL;
+        imageContainer.appendChild(imgElement);
 
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">sizeElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">);</span>
-<span class="w">        </span><span class="nx">sizeElement</span><span class="p">.</span><span class="nx">textContent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`Size: </span><span class="si">${</span><span class="nx">formatSize</span><span class="p">(</span><span class="nx">size</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
-<span class="w">        </span><span class="nx">imageContainer</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">sizeElement</span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+        const sizeElement = document.createElement(&#x27;p&#x27;);
+        sizeElement.textContent = `Size: ${formatSize(size)}`;
+        imageContainer.appendChild(sizeElement);
+      }
+    }
 
-<span class="w">    </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="o">*</span><span class="w"> </span><span class="nx">convertPDFToImages</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">pdf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pdfjsLib</span><span class="p">.</span><span class="nx">getDocument</span><span class="p">(</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">)).</span><span class="nx">promise</span><span class="p">;</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">numPages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">pdf</span><span class="p">.</span><span class="nx">numPages</span><span class="p">;</span>
+    async function* convertPDFToImages(file) {
+      try {
+        const pdf = await pdfjsLib.getDocument(URL.createObjectURL(file)).promise;
+        const numPages = pdf.numPages;
 
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="nx">numPages</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">page</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">pdf</span><span class="p">.</span><span class="nx">getPage</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">viewport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getViewport</span><span class="p">({</span><span class="w"> </span><span class="nx">scale</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="w"> </span><span class="p">});</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">&#39;canvas&#39;</span><span class="p">);</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">context</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">&#39;2d&#39;</span><span class="p">);</span>
-<span class="w">          </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">desiredWidth</span><span class="p">;</span>
-<span class="w">          </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">desiredWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">viewport</span><span class="p">.</span><span class="nx">width</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">viewport</span><span class="p">.</span><span class="nx">height</span><span class="p">;</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">renderContext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">canvasContext</span><span class="o">:</span><span class="w"> </span><span class="nx">context</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">viewport</span><span class="o">:</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">getViewport</span><span class="p">({</span><span class="w"> </span><span class="nx">scale</span><span class="o">:</span><span class="w"> </span><span class="nx">desiredWidth</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nx">viewport</span><span class="p">.</span><span class="nx">width</span><span class="w"> </span><span class="p">}),</span>
-<span class="w">          </span><span class="p">};</span>
-<span class="w">          </span><span class="k">await</span><span class="w"> </span><span class="nx">page</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">renderContext</span><span class="p">).</span><span class="nx">promise</span><span class="p">;</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageURL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">toDataURL</span><span class="p">(</span><span class="s1">&#39;image/jpeg&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8</span><span class="p">);</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">calculateSize</span><span class="p">(</span><span class="nx">imageURL</span><span class="p">);</span>
-<span class="w">          </span><span class="k">yield</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">imageURL</span><span class="p">,</span><span class="w"> </span><span class="nx">size</span><span class="w"> </span><span class="p">};</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+        for (let i = 1; i &lt;= numPages; i++) {
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 1 });
+          const canvas = document.createElement(&#x27;canvas&#x27;);
+          const context = canvas.getContext(&#x27;2d&#x27;);
+          canvas.width = desiredWidth;
+          canvas.height = (desiredWidth / viewport.width) * viewport.height;
+          const renderContext = {
+            canvasContext: context,
+            viewport: page.getViewport({ scale: desiredWidth / viewport.width }),
+          };
+          await page.render(renderContext).promise;
+          const imageURL = canvas.toDataURL(&#x27;image/jpeg&#x27;, 0.8);
+          const size = calculateSize(imageURL);
+          yield { imageURL, size };
+        }
+      } catch (error) {
+        console.error(&#x27;Error:&#x27;, error);
+      }
+    }
 
-<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">calculateSize</span><span class="p">(</span><span class="nx">imageURL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">base64Length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">imageURL</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="s1">&#39;data:image/jpeg;base64,&#39;</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">sizeInBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">ceil</span><span class="p">(</span><span class="nx">base64Length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.75</span><span class="p">);</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="nx">sizeInBytes</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+    function calculateSize(imageURL) {
+      const base64Length = imageURL.length - &#x27;data:image/jpeg;base64,&#x27;.length;
+      const sizeInBytes = Math.ceil(base64Length * 0.75);
+      return sizeInBytes;
+    }
 
-<span class="w">    </span><span class="kd">function</span><span class="w"> </span><span class="nx">formatSize</span><span class="p">(</span><span class="nx">size</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">sizeInKB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">size</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">1024</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
-<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="sb">`</span><span class="si">${</span><span class="nx">sizeInKB</span><span class="si">}</span><span class="sb"> KB`</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
+    function formatSize(size) {
+      const sizeInKB = (size / 1024).toFixed(2);
+      return `${sizeInKB} KB`;
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+```
 This code shows how to OCR an image:
-<div class="codehilite"><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">ocrMissingAltText</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Load Tesseract</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;script&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="nb">document</span><span class="p">.</span><span class="nx">head</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">s</span><span class="p">);</span>
+```javascript
+async function ocrMissingAltText() {
+    // Load Tesseract
+    var s = document.createElement(&quot;script&quot;);
+    s.src = &quot;https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js&quot;;
+    document.head.appendChild(s);
 
-<span class="w">    </span><span class="nx">s</span><span class="p">.</span><span class="nx">onload</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">worker</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">Tesseract</span><span class="p">.</span><span class="nx">createWorker</span><span class="p">();</span>
-<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
-<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">loadLanguage</span><span class="p">(</span><span class="s2">&quot;eng&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">initialize</span><span class="p">(</span><span class="s2">&quot;eng&quot;</span><span class="p">);</span>
-<span class="w">      </span><span class="nx">ocrButton</span><span class="p">.</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;Running OCR...&quot;</span><span class="p">;</span>
+    s.onload = async () =&gt; {
+      const images = document.getElementsByTagName(&quot;img&quot;);
+      const worker = Tesseract.createWorker();
+      await worker.load();
+      await worker.loadLanguage(&quot;eng&quot;);
+      await worker.initialize(&quot;eng&quot;);
+      ocrButton.innerText = &quot;Running OCR...&quot;;
 
-<span class="w">      </span><span class="c1">// Iterate through all the images in the output div</span>
-<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">img</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">images</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">altTextarea</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">img</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;.textarea-alt&quot;</span><span class="p">);</span>
-<span class="w">        </span><span class="c1">// Check if the alt textarea is empty</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">altTextarea</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="kd">const</span><span class="w"> </span><span class="nx">imageUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">img</span><span class="p">.</span><span class="nx">src</span><span class="p">;</span>
-<span class="w">          </span><span class="kd">var</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">text</span><span class="w"> </span><span class="p">},</span>
-<span class="w">          </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">recognize</span><span class="p">(</span><span class="nx">imageUrl</span><span class="p">);</span>
-<span class="w">          </span><span class="nx">altTextarea</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">text</span><span class="p">;</span><span class="w"> </span><span class="c1">// Set the OCR result to the alt textarea</span>
-<span class="w">          </span><span class="nx">progressBar</span><span class="p">.</span><span class="nx">value</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">1</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
+      // Iterate through all the images in the output div
+      for (const img of images) {
+        const altTextarea = img.parentNode.querySelector(&quot;.textarea-alt&quot;);
+        // Check if the alt textarea is empty
+        if (altTextarea.value === &quot;&quot;) {
+          const imageUrl = img.src;
+          var {
+            data: { text },
+          } = await worker.recognize(imageUrl);
+          altTextarea.value = text; // Set the OCR result to the alt textarea
+          progressBar.value += 1;
+        }
+      }
 
-<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="nx">worker</span><span class="p">.</span><span class="nx">terminate</span><span class="p">();</span>
-<span class="w">      </span><span class="nx">ocrButton</span><span class="p">.</span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;OCR complete&quot;</span><span class="p">;</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="w">  </span><span class="p">}</span>
-</code></pre></div>
-Use these examples to put together a single HTML page with embedded HTML and CSS and JavaScript that provides a big square which users can drag and drop a PDF file onto and when they do that the PDF has every page converted to a JPEG and shown below on the page, then OCR is run with tesseract and the results are shown in textarea blocks below each image.</p>
-</blockquote>
+      await worker.terminate();
+      ocrButton.innerText = &quot;OCR complete&quot;;
+    };
+  }
+```
+Use these examples to put together a single HTML page with embedded HTML and CSS and JavaScript that provides a big square which users can drag and drop a PDF file onto and when they do that the PDF has every page converted to a JPEG and shown below on the page, then OCR is run with tesseract and the results are shown in textarea blocks below each image.</textarea></markdown-copy></div>
 <p>This worked flawlessly! The model kicked out a proof-of-concept page that did exactly what I needed.</p>
 <p>I ended up <a href="https://gist.github.com/simonw/6a9f077bf8db616e44893a24ae1d36eb">iterating with it a few times</a> to get to my final result, but it took just a few minutes to build a genuinely useful tool that I’ve benefited from ever since.</p>
 <h2 id="coding-agents-make-this-even-more-powerful">Coding agents make this even more powerful</h2>
 <p>I built that OCR example back in March 2024, nearly a year before the first release of Claude Code. Coding agents have made hoarding working examples even more valuable.</p>
 <p>If your coding agent has internet access you can tell it to do things like:</p>
-<blockquote>
-<p>Use curl to fetch the source of <code>https://tools.simonwillison.net/ocr</code> and <code>https://tools.simonwillison.net/gemini-bbox</code> and build a new tool that lets you select a page from a PDF and pass it to Gemini to return bounding boxes for illustrations on that page.</p>
-</blockquote>
-<p>(I specified <code>curl</code> there because Claude Code defaults to using a WebFetch tool which summarizes the page content rather than returning the raw HTML.)</p>
-<p>Coding agents are excellent at search, which means you can run them on your own machine and tell them where to find the examples of things you want them to do:</p>
-<blockquote>
-<p>Add mocked HTTP tests to the <code>~/dev/ecosystem/datasette-oauth</code> project inspired by how <code>~/dev/ecosystem/llm-mistral</code> is doing it.</p>
-</blockquote>
-<p>Often that's enough - the agent will fire up a search sub-agent to investigate and pull back just the details it needs to achieve the task.</p>
-<p>Since so much of my research code is public I'll often tell coding agents to clone my repositories to <code>/tmp</code> and use them as input:</p>
-<blockquote>
-<p>Clone <code>simonw/research</code> from GitHub to <code>/tmp</code> and find examples of compiling Rust to WebAssembly, then use that to build a demo HTML page for this project.</p>
-</blockquote>
-<p>The key idea here is that coding agents mean we only ever need to figure out a useful trick <em>once</em>. If that trick is then documented somewhere with a working code example our agents can consult that example and use it to solve any similar shaped project in the future.</p>
+<p><div><markdown-copy><textarea>Use curl to fetch the source of `https://tools.simonwillison.net/ocr` and `https://tools.simonwillison.net/gemini-bbox` and build a new tool that lets you select a page from a PDF and pass it to Gemini to return bounding boxes for illustrations on that page.</textarea></markdown-copy></div>
+(I specified <code>curl</code> there because Claude Code defaults to using a WebFetch tool which summarizes the page content rather than returning the raw HTML.)</p>
+<p>Coding agents are excellent at search, which means you can run them on your own machine and tell them where to find the examples of things you want them to do:
+<div><markdown-copy><textarea>Add mocked HTTP tests to the `~/dev/ecosystem/datasette-oauth` project inspired by how `~/dev/ecosystem/llm-mistral` is doing it.</textarea></markdown-copy></div>
+Often that's enough - the agent will fire up a search sub-agent to investigate and pull back just the details it needs to achieve the task.</p>
+<p>Since so much of my research code is public I'll often tell coding agents to clone my repositories to <code>/tmp</code> and use them as input:
+<div><markdown-copy><textarea>Clone `simonw/research` from GitHub to `/tmp` and find examples of compiling Rust to WebAssembly, then use that to build a demo HTML page for this project.</textarea></markdown-copy></div>
+The key idea here is that coding agents mean we only ever need to figure out a useful trick <em>once</em>. If that trick is then documented somewhere with a working code example our agents can consult that example and use it to solve any similar shaped project in the future.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Thu, 26 Feb 2026 20:33:27 +0000</pubDate></item><item><title>Quoting Andrej Karpathy</title><link>https://simonwillison.net/2026/Feb/26/andrej-karpathy/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/karpathy/status/2026731645169185220"><p>It is hard to communicate how much programming has changed due to AI in the last 2 months: not gradually and over time in the "progress as usual" way, but specifically this last December. There are a number of asterisks but imo coding agents basically didn’t work before December and basically work since - the models have significantly higher quality, long-term coherence and tenacity and they can power through large and long tasks, well past enough that it is extremely disruptive to the default programming workflow. [...]</p></blockquote>
 <p class="cite">&mdash; <a href="https://twitter.com/karpathy/status/2026731645169185220">Andrej Karpathy</a></p>
@@ -350,12 +368,11 @@ New Claude Code feature dropped yesterday: you can now run a "remote control" se
 <p>I recently <a href="https://simonwillison.net/2026/Feb/25/present/">vibe coded a SwiftUI slide presentation app</a> on my Mac using Claude Code and Opus 4.6.</p>
 <p>I was speaking about the advances in frontier models between November 2025 and February 2026, and I like to include at least one gimmick in my talks (a <a href="https://simonwillison.net/2019/Dec/10/better-presentations/">STAR moment</a> - Something They'll Always Remember). In this case I decided the gimmick would be revealing at the end of the presentation that the slide mechanism itself was an example of what vibe coding could do.</p>
 <p>I released the code <a href="https://github.com/simonw/present">to GitHub</a> and then realized I didn't know anything about how it actually worked - I had prompted the whole thing into existence (<a href="https://gisthost.github.io/?bfbc338977ceb71e298e4d4d5ac7d63c">partial transcript here</a> without paying any attention to the code it was writing.</p>
-<p>So I fired up a new instance of Claude Code for web, pointed it at my repo and prompted:</p>
-<blockquote>
-<p>Read the source and then plan a linear walkthrough of the code that explains how it all works in detail</p>
-<p>Then run “uvx showboat –help” to learn showboat - use showboat to create a walkthrough.md file in the repo and build the walkthrough in there, using showboat note for commentary and showboat exec plus sed or grep or cat or whatever you need to include snippets of code you are talking about</p>
-</blockquote>
-<p><a href="https://github.com/simonw/showboat">Showboat</a> is a tool I built to help coding agents write documents that demonstrate their work. You can see the <a href="https://github.com/simonw/showboat/blob/main/help.txt">showboat --help output here</a>, which is designed to give the model everything it needs to know in order to use the tool.</p>
+<p>So I fired up a new instance of Claude Code for web, pointed it at my repo and prompted:
+<div><markdown-copy><textarea>Read the source and then plan a linear walkthrough of the code that explains how it all works in detail
+
+Then run “uvx showboat –help” to learn showboat - use showboat to create a walkthrough.md file in the repo and build the walkthrough in there, using showboat note for commentary and showboat exec plus sed or grep or cat or whatever you need to include snippets of code you are talking about</textarea></markdown-copy></div>
+<a href="https://github.com/simonw/showboat">Showboat</a> is a tool I built to help coding agents write documents that demonstrate their work. You can see the <a href="https://github.com/simonw/showboat/blob/main/help.txt">showboat --help output here</a>, which is designed to give the model everything it needs to know in order to use the tool.</p>
 <p>The <code>showboat note</code> command adds Markdown to the document. The <code>showboat exec</code> command accepts a shell command, executes it and then adds both the command and its output to the document.</p>
 <p>By telling it to use "sed or grep or cat or whatever you need to include snippets of code you are talking about" I ensured that Claude Code would not manually copy snippets of code into the document, since that could introduce a risk of hallucinations or mistakes.</p>
 <p>This worked extremely well. Here's the <a href="https://github.com/simonw/present/blob/main/walkthrough.md">document Claude Code created with Showboat</a>, which talks through all six <code>.swift</code> files in detail and provides a clear and actionable explanation about how the code works.</p>
@@ -377,13 +394,11 @@ The Go ecosystem is <em>really</em> good at tooling. I just learned about this t
 <p>They're also <em>vital</em> for ensuring AI-generated code does what it claims to do.  If the code has never been executed it's pure luck if it actually works when deployed to production.</p>
 <p>Tests are also a great tool to help get an agent up to speed with an existing codebase. Watch what happens when you ask Claude Code or similar about an existing feature - the chances are high that they'll find and read the relevant tests.</p>
 <p>Agents are already biased towards testing, but the presence of an existing test suite will almost certainly push the agent into testing new changes that it makes.</p>
-<p>Any time I start a new session with an agent against an existing project I'll start by prompting a variant of the following:</p>
-<div class="codehilite"><pre><span></span><code>First run the tests
-</code></pre></div>
-<p>For my Python projects I have <a href="https://til.simonwillison.net/uv/dependency-groups">pyproject.toml set up</a> such that I can prompt this instead:</p>
-<div class="codehilite"><pre><span></span><code>Run &quot;uv run pytest&quot;
-</code></pre></div>
-<p>These four word prompts serve several purposes:</p>
+<p>Any time I start a new session with an agent against an existing project I'll start by prompting a variant of the following:
+<div><markdown-copy><textarea>First run the tests</textarea></markdown-copy></div>
+For my Python projects I have <a href="https://til.simonwillison.net/uv/dependency-groups">pyproject.toml set up</a> such that I can prompt this instead:
+<div><markdown-copy><textarea>Run &quot;uv run pytest&quot;</textarea></markdown-copy></div>
+These four word prompts serve several purposes:</p>
 <ol>
 <li>It tells the agent that there is a test suite and forces it to figure out how to run the tests. This makes it almost certain that the agent will run the tests in the future to ensure it didn't break anything.</li>
 <li>Most test harnesses will give the agent a rough indication of how many tests they are. This can act as a proxy for how large and complex the project is, and also hints that the agent should search the tests themselves if they want to learn more.</li>
@@ -473,10 +488,8 @@ Really interesting case-study from Andreas Kling on advanced, sophisticated use 
 <p>It's important to confirm that the tests fail before implementing the code to make them pass. If you skip that step you risk building a test that passes already, hence failing to exercise and confirm your new implementation.</p>
 <p>That's what "red/green" means: the red phase watches the tests fail, then the green phase confirms that they now pass.</p>
 <p>Every good model understands "red/green TDD" as a shorthand for the much longer "use test driven development, write the tests first, confirm that the tests fail before you implement the change that gets them to pass".</p>
-<p>Example prompt:</p>
-<blockquote>
-<p>Build a Python function to extract headers from a markdown string. Use red/green TDD.</p>
-</blockquote>
+<p>Example prompt:
+<div><markdown-copy><textarea>Build a Python function to extract headers from a markdown string. Use red/green TDD.</textarea></markdown-copy></div></p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/tdd">tdd</a>, <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Mon, 23 Feb 2026 07:12:28 +0000</pubDate></item><item><title>The Claude C Compiler: What It Reveals About the Future of Software</title><link>https://simonwillison.net/2026/Feb/22/ccc/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software">The Claude C Compiler: What It Reveals About the Future of Software</a></strong></p>
 On February 5th Anthropic's Nicholas Carlini wrote about a project to use <a href="https://www.anthropic.com/engineering/building-c-compiler">parallel Claudes to build a C compiler</a> on top of the brand new Opus 4.6</p>
@@ -592,30 +605,4 @@ This new Canadian hardware startup just announced their first product - a custom
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47086181">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llama">llama</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-performance">llm-performance</a></p>]]></description><pubDate>Fri, 20 Feb 2026 22:10:04 +0000</pubDate></item><item><title>ggml.ai joins Hugging Face to ensure the long-term progress of Local AI</title><link>https://simonwillison.net/2026/Feb/20/ggmlai-joins-hugging-face/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/ggml-org/llama.cpp/discussions/19759">ggml.ai joins Hugging Face to ensure the long-term progress of Local AI</a></strong></p>
-I don't normally cover acquisition news like this, but I have some thoughts.</p>
-<p>It's hard to overstate the impact Georgi Gerganov has had on the local model space. Back in March 2023 his release of <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> made it possible to run a local LLM on consumer hardware. The <a href="https://github.com/ggml-org/llama.cpp/blob/775328064e69db1ebd7e19ccb59d2a7fa6142470/README.md?plain=1#L7">original README</a> said:</p>
-<blockquote>
-<p>The main goal is to run the model using 4-bit quantization on a MacBook. [...] This was hacked in an evening - I have no idea if it works correctly.</p>
-</blockquote>
-<p>I wrote about trying llama.cpp out at the time in <a href="https://simonwillison.net/2023/Mar/11/llama/#llama-cpp">Large language models are having their Stable Diffusion moment</a>:</p>
-<blockquote>
-<p>I used it to run the 7B LLaMA model on my laptop last night, and then this morning upgraded to the 13B model—the one that Facebook claim is competitive with GPT-3.</p>
-</blockquote>
-<p>Meta's <a href="https://github.com/meta-llama/llama/tree/llama_v1">original LLaMA release</a> depended on PyTorch and their <a href="https://github.com/facebookresearch/fairscale">FairScale</a> PyTorch extension for running on multiple GPUs, and required CUDA and NVIDIA hardware. Georgi's work opened that up to a much wider range of hardware and kicked off the local model movement that has continued to grow since then.</p>
-<p>Hugging Face are already responsible for the incredibly influential <a href="https://github.com/huggingface/transformers">Transformers</a> library used by the majority of LLM releases today. They've proven themselves a good steward for that open source project, which makes me optimistic for the future of llama.cpp and related projects.</p>
-<p>This section from the announcement looks particularly promising:</p>
-<blockquote>
-<p>Going forward, our joint efforts will be geared towards the following objectives:</p>
-<ul>
-<li>Towards seamless "single-click" integration with the <a href="https://github.com/huggingface/transformers">transformers</a> library. The <code>transformers</code> framework has established itself as the 'source of truth' for AI model definitions. Improving the compatibility between the transformers and the ggml ecosystems is essential for wider model support and quality control.</li>
-<li>Better packaging and user experience of ggml-based software. As we enter the phase in which local inference becomes a meaningful and competitive alternative to cloud inference, it is crucial to improve and simplify the way in which casual users deploy and access local models. We will work towards making llama.cpp ubiquitous and readily available everywhere, and continue partnering with great downstream projects.</li>
-</ul>
-</blockquote>
-<p>Given the influence of Transformers, this closer integration could lead to model releases that are compatible with the GGML ecosystem out of the box. That would be a big win for the local model ecosystem.</p>
-<p>I'm also excited to see investment in "packaging and user experience of ggml-based software". This has mostly been left to tools like <a href="https://ollama.com">Ollama</a> and <a href="https://lmstudio.ai">LM Studio</a>. ggml-org released <a href="https://github.com/ggml-org/LlamaBarn">LlamaBarn</a> last year - "a macOS menu bar app for running local LLMs" - and I'm hopeful that further investment in this area will result in more high quality open source tools for running local models from the team best placed to deliver them.
-
-    <p><small></small>Via <a href="https://twitter.com/ggerganov/status/2024839991482777976">@ggerganov</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/transformers">transformers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llama">llama</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/hugging-face">hugging-face</a>, <a href="https://simonwillison.net/tags/llama-cpp">llama-cpp</a></p>]]></description><pubDate>Fri, 20 Feb 2026 17:12:55 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llama">llama</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-performance">llm-performance</a></p>]]></description><pubDate>Fri, 20 Feb 2026 22:10:04 +0000</pubDate></item></channel></rss>
