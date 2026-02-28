@@ -56,7 +56,7 @@ Here's a little prototype I built this morning from my phone as an experiment in
 <p>More recently I've used LLMs to help expand my collection of code solutions to interesting problems.</p>
 <p><a href="https://tools.simonwillison.net">tools.simonwillison.net</a> is my largest collection of LLM-assisted tools and prototypes. I use this to collect what I call <a href="https://simonwillison.net/2025/Dec/10/html-tools/">HTML tools</a> - single HTML pages that embed JavaScript and CSS and solve a specific problem.</p>
 <p>My <a href="https://github.com/simonw/research">simonw/research</a> repository has larger, more complex examples where I’ve challenged a coding agent to research a problem and come back with working code and a written report detailing what it found out.</p>
-<h2>Recombining things from your hoard</h2>
+<h2 id="recombining-things-from-your-hoard">Recombining things from your hoard</h2>
 <p>Why collect all of this stuff? Aside from helping you build and extend your own abilities, the assets you generate along the way become incredibly powerful inputs for your coding agents.</p>
 <p>One of my favorite prompting patterns is to tell an agent to build something new by combining two or more existing working examples.</p>
 <p>A project that helped crystallize how effective this can be was the first thing I added to my tools collection - a browser-based <a href="https://tools.simonwillison.net/ocr">OCR tool</a>, described <a href="https://simonwillison.net/2024/Mar/30/ocr-pdfs-images/">in more detail here</a>.</p>
@@ -189,7 +189,7 @@ Use these examples to put together a single HTML page with embedded HTML and CSS
 </blockquote>
 <p>This worked flawlessly! The model kicked out a proof-of-concept page that did exactly what I needed.</p>
 <p>I ended up <a href="https://gist.github.com/simonw/6a9f077bf8db616e44893a24ae1d36eb">iterating with it a few times</a> to get to my final result, but it took just a few minutes to build a genuinely useful tool that I’ve benefited from ever since.</p>
-<h2>Coding agents make this even more powerful</h2>
+<h2 id="coding-agents-make-this-even-more-powerful">Coding agents make this even more powerful</h2>
 <p>I built that OCR example back in March 2024, nearly a year before the first release of Claude Code. Coding agents have made hoarding working examples even more valuable.</p>
 <p>If your coding agent has internet access you can tell it to do things like:</p>
 <blockquote>
@@ -346,7 +346,7 @@ New Claude Code feature dropped yesterday: you can now run a "remote control" se
     <p>Sometimes it's useful to have a coding agent give you a structured walkthrough of a codebase. </p>
 <p>Maybe it's existing code you need to get up to speed on, maybe it's your own code that you've forgotten the details of, or maybe you vibe coded the whole thing and need to understand how it actually works.</p>
 <p>Frontier models with the right agent harness can construct a detailed walkthrough to help you understand how code works.</p>
-<h2>An example using Showboat and Present</h2>
+<h2 id="an-example-using-showboat-and-present">An example using Showboat and Present</h2>
 <p>I recently <a href="https://simonwillison.net/2026/Feb/25/present/">vibe coded a SwiftUI slide presentation app</a> on my Mac using Claude Code and Opus 4.6.</p>
 <p>I was speaking about the advances in frontier models between November 2025 and February 2026, and I like to include at least one gimmick in my talks (a <a href="https://simonwillison.net/2019/Dec/10/better-presentations/">STAR moment</a> - Something They'll Always Remember). In this case I decided the gimmick would be revealing at the end of the presentation that the slide mechanism itself was an example of what vibe coding could do.</p>
 <p>I released the code <a href="https://github.com/simonw/present">to GitHub</a> and then realized I didn't know anything about how it actually worked - I had prompted the whole thing into existence (<a href="https://gisthost.github.io/?bfbc338977ceb71e298e4d4d5ac7d63c">partial transcript here</a> without paying any attention to the code it was writing.</p>
@@ -448,7 +448,7 @@ Really interesting case-study from Andreas Kling on advanced, sophisticated use 
 <li>All of the other relevant "ilities" - accessibility, testability, reliability, security, maintainability, observability, scalability, usability - the non-functional quality measures that are appropriate for the particular class of software being developed.</li>
 </ul>
 <p>Coding agent tools can help with most of this, but there is still a substantial burden on the developer driving those tools to ensure that the produced code is good code for the subset of good that's needed for the current project.</p>
-<h2>We need to build new habits</h2>
+<h2 id="we-need-to-build-new-habits">We need to build new habits</h2>
 <p>The challenge is to develop new personal and organizational habits that respond to the affordances and opportunities of agentic engineering. </p>
 <p>These best practices are still being figured out across our industry. I'm still figuring them out myself.</p>
 <p>For now I think the best we can do is to second guess ourselves: any time our instinct says "don't build that, it's not worth the time" fire off a prompt anyway, in an asynchronous agent session where the worst that can happen is you check ten minutes later and find that it wasn't worth the tokens.</p>
