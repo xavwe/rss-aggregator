@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GIF optimization tool using WebAssembly and Gifsicle</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/gif-optimization/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Gemini 3.1 Flash-Lite</title><link>https://simonwillison.net/2026/Mar/3/gemini-31-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/">Gemini 3.1 Flash-Lite</a></strong></p>
+Google's latest model is an update to their inexpensive Flash-Lite family. At $0.25/million tokens of input and $1.5/million output this is 1/8th the price of Gemini 3.1 Pro.</p>
+<p>It supports four different thinking levels, so I had it output <a href="https://gist.github.com/simonw/99fb28dc11d0c24137d4ff8a33978a9e">four different pelicans</a>:</p>
+<div style="
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin: 0 auto;
+  ">
+    <div style="text-align: center;">
+      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
+        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-minimal.png" alt="A minimalist vector-style illustration of a stylized bird riding a bicycle." style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">minimal</p>
+    </div>
+    <div style="text-align: center;">
+      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
+        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-low.png" alt="A minimalist graphic of a light blue round bird with a single black dot for an eye, wearing a yellow backpack and riding a black bicycle on a flat grey line." style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">low</p>
+    </div>
+    <div style="text-align: center;">
+      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
+        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-medium.png" alt="A minimalist digital illustration of a light blue bird wearing a yellow backpack while riding a bicycle." style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">medium</p>
+    </div>
+    <div style="text-align: center;">
+      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
+        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-high.png" alt="A minimal, stylized line drawing of a bird-like creature with a yellow beak riding a bicycle made of simple geometric lines." style="width: 100%; height: 100%; object-fit: cover; display: block;">
+      </div>
+      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">high</p>
+    </div>
+</div>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 3 Mar 2026 21:53:54 +0000</pubDate></item><item><title>GIF optimization tool using WebAssembly and Gifsicle</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/gif-optimization/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
     <p>I like to include animated GIF demos in my online writing, often recorded using <a href="https://www.cockos.com/licecap/">LICEcap</a>. There's an example in the <a href="https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/">Interactive explanations</a> chapter.</p>
 <p>These GIFs can be pretty big. I've tried a few tools for optimizing GIF file size and my favorite is <a href="https://github.com/kohler/gifsicle">Gifsicle</a> by Eddie Kohler. It compresses GIFs by identifying regions of frames that have not changed and storing only the differences, and can optionally reduce the GIF color palette or apply visible lossy compression for greater size reductions.</p>
 <p>Gifsicle is written in C and the default interface is a command line tool. I wanted a web interface so I could access it in my browser and visually preview and compare the different settings.</p>
@@ -645,7 +681,4 @@ Gabriel Chua (Developer Experience Engineer for APAC at OpenAI) provides his tak
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Sun, 22 Feb 2026 15:53:43 +0000</pubDate></item><item><title>Quoting Thibault Sottiaux</title><link>https://simonwillison.net/2026/Feb/21/thibault-sottiaux/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/thsottiaux/status/2024947946849186064"><p>We’ve made GPT-5.3-Codex-Spark about 30% faster. It is now serving at over 1200 tokens per second.</p></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/thsottiaux/status/2024947946849186064">Thibault Sottiaux</a>, OpenAI</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llm-performance">llm-performance</a></p>]]></description><pubDate>Sat, 21 Feb 2026 01:30:21 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Sun, 22 Feb 2026 15:53:43 +0000</pubDate></item></channel></rss>
