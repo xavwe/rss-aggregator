@@ -502,7 +502,7 @@ New Claude Code feature dropped yesterday: you can now run a "remote control" se
 <h2 id="an-example-using-showboat-and-present">An example using Showboat and Present</h2>
 <p>I recently <a href="https://simonwillison.net/2026/Feb/25/present/">vibe coded a SwiftUI slide presentation app</a> on my Mac using Claude Code and Opus 4.6.</p>
 <p>I was speaking about the advances in frontier models between November 2025 and February 2026, and I like to include at least one gimmick in my talks (a <a href="https://simonwillison.net/2019/Dec/10/better-presentations/">STAR moment</a> - Something They'll Always Remember). In this case I decided the gimmick would be revealing at the end of the presentation that the slide mechanism itself was an example of what vibe coding could do.</p>
-<p>I released the code <a href="https://github.com/simonw/present">to GitHub</a> and then realized I didn't know anything about how it actually worked - I had prompted the whole thing into existence (<a href="https://gisthost.github.io/?bfbc338977ceb71e298e4d4d5ac7d63c">partial transcript here</a> without paying any attention to the code it was writing.</p>
+<p>I released the code <a href="https://github.com/simonw/present">to GitHub</a> and then realized I didn't know anything about how it actually worked - I had prompted the whole thing into existence (<a href="https://gisthost.github.io/?bfbc338977ceb71e298e4d4d5ac7d63c">partial transcript here</a>) without paying any attention to the code it was writing.</p>
 <p>So I fired up a new instance of Claude Code for web, pointed it at my repo and prompted:
 <div><markdown-copy><textarea>Read the source and then plan a linear walkthrough of the code that explains how it all works in detail
 
