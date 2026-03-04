@@ -1,4 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Something is afoot in the land of Qwen</title><link>https://simonwillison.net/2026/Mar/4/qwen/#atom-everything</link><description><![CDATA[<p>I'm behind on writing about Qwen 3.5, a truly remarkable family of open weight models released by Alibaba's Qwen team over the past few weeks. I'm hoping that the 3.5 family doesn't turn out to be Qwen's swan song, seeing as that team has had some very high profile departures in the past 24 hours.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Anti-patterns: things to avoid</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
+    <p>There are some behaviors that are anti-patterns in our weird new world of agentic engineering.</p>
+<h2 id="inflicting-unreviewed-code-on-collaborators">Inflicting unreviewed code on collaborators</h2>
+<p>This anti-pattern is common and deeply frustrating.</p>
+<p><strong>Don't file pull requests with code you haven't reviewed yourself</strong>.</p>
+<p>If you open a PR with hundreds (or thousands) of lines of code that an agent produced for you, and you haven't done the work to ensure that code is functional yourself, you are delegating the actual work to other people.</p>
+<p>They could have prompted an agent themselves. What value are you even providing?</p>
+<p>If you put code up for review you need to be confident that it's ready for other people to spend their time on it. The initial review pass is your responsibility, not something you should farm out to others.</p>
+<p>A good agentic engineering pull request has the following characteristics:</p>
+<ul>
+<li>The code works, and you are confident that it works. <a href="https://simonwillison.net/2025/Dec/18/code-proven-to-work/">Your job is to deliver code that works</a>.</li>
+<li>The change is small enough to be reviewed efficiently without inflicting too much additional cognitive load on the reviewer. Several small PRs beats one big one, and splitting code into separate commits is easy with a coding agent to do the Git finagling for you.</li>
+<li>The PR includes additional context to help explain the change. What's the higher level goal that the change serves? Linking to relevant issues or specifications is useful here.</li>
+<li>Agents write convincing looking pull request descriptions. You need to review these too! It's rude to expect someone else to read text that you haven't read and validated yourself.</li>
+</ul>
+<p>Given how easy it is to dump unreviewed code on other people, I recommend including some form of evidence that you've put that extra work in yourself. Notes on how you manually tested it, comments on specific implementation choices or even screenshots and video of the feature working go a <em>long</em> way to demonstrating that a reviewer's time will not be wasted digging into the details.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/code-review">code-review</a></p>]]></description><pubDate>Wed, 4 Mar 2026 17:34:42 +0000</pubDate></item><item><title>Something is afoot in the land of Qwen</title><link>https://simonwillison.net/2026/Mar/4/qwen/#atom-everything</link><description><![CDATA[<p>I'm behind on writing about Qwen 3.5, a truly remarkable family of open weight models released by Alibaba's Qwen team over the past few weeks. I'm hoping that the 3.5 family doesn't turn out to be Qwen's swan song, seeing as that team has had some very high profile departures in the past 24 hours.</p>
 <p>It all started with <a href="https://twitter.com/JustinLin610/status/2028865835373359513">this tweet</a> from Junyang Lin (<a href="https://twitter.com/JustinLin610">@JustinLin610</a>):</p>
 <blockquote>
 <p>me stepping down. bye my beloved qwen.</p>
@@ -657,29 +674,4 @@ Really interesting case-study from Andreas Kling on advanced, sophisticated use 
 <p>Example prompt:
 <div><markdown-copy><textarea>Build a Python function to extract headers from a markdown string. Use red/green TDD.</textarea></markdown-copy></div></p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/tdd">tdd</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Mon, 23 Feb 2026 07:12:28 +0000</pubDate></item><item><title>The Claude C Compiler: What It Reveals About the Future of Software</title><link>https://simonwillison.net/2026/Feb/22/ccc/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.modular.com/blog/the-claude-c-compiler-what-it-reveals-about-the-future-of-software">The Claude C Compiler: What It Reveals About the Future of Software</a></strong></p>
-On February 5th Anthropic's Nicholas Carlini wrote about a project to use <a href="https://www.anthropic.com/engineering/building-c-compiler">parallel Claudes to build a C compiler</a> on top of the brand new Opus 4.6</p>
-<p>Chris Lattner (Swift, LLVM, Clang, Mojo) knows more about C compilers than most. He just published this review of the code.</p>
-<p>Some points that stood out to me:</p>
-<blockquote>
-<ul>
-<li>Good software depends on judgment, communication, and clear abstraction. AI has amplified this.</li>
-<li>AI coding is automation of implementation, so design and stewardship become more important.</li>
-<li>Manual rewrites and translation work are becoming AI-native tasks, automating a large category of engineering effort.</li>
-</ul>
-</blockquote>
-<p>Chris is generally impressed with CCC (the Claude C Compiler):</p>
-<blockquote>
-<p>Taken together, CCC looks less like an experimental research compiler and more like a competent textbook implementation, the sort of system a strong undergraduate team might build early in a project before years of refinement. That alone is remarkable.</p>
-</blockquote>
-<p>It's a long way from being a production-ready compiler though:</p>
-<blockquote>
-<p>Several design choices suggest optimization toward passing tests rather than building general abstractions like a human would. [...] These flaws are informative rather than surprising, suggesting that current AI systems excel at assembling known techniques and optimizing toward measurable success criteria, while struggling with the open-ended generalization required for production-quality systems.</p>
-</blockquote>
-<p>The project also leads to deep open questions about how agentic engineering interacts with licensing and IP for both open source and proprietary code:</p>
-<blockquote>
-<p>If AI systems trained on decades of publicly available code can reproduce familiar structures, patterns, and even specific implementations, where exactly is the boundary between learning and copying?</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/c">c</a>, <a href="https://simonwillison.net/tags/compilers">compilers</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/nicholas-carlini">nicholas-carlini</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Sun, 22 Feb 2026 23:58:43 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/tdd">tdd</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Mon, 23 Feb 2026 07:12:28 +0000</pubDate></item></channel></rss>
