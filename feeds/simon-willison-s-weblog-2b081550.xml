@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Gemini 3.1 Flash-Lite</title><link>https://simonwillison.net/2026/Mar/3/gemini-31-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/">Gemini 3.1 Flash-Lite</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Donald Knuth</title><link>https://simonwillison.net/2026/Mar/3/donald-knuth/#atom-everything</link><description><![CDATA[<blockquote cite="https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf"><p>Shock! Shock! I learned yesterday that an open problem I'd been working on for several weeks had just been solved by Claude Opus 4.6 - Anthropic's hybrid reasoning model that had been released three weeks earlier! It seems that I'll have to revise my opinions about "generative AI" one of these days. What a joy it is to learn not only that my conjecture has a nice solution but also to celebrate this dramatic advance in automatic deduction and creative problem solving.</p></blockquote>
+<p class="cite">&mdash; <a href="https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf">Donald Knuth</a>, Claude's Cycles</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/november-2025-inflection">november-2025-inflection</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/donald-knuth">donald-knuth</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a></p>]]></description><pubDate>Tue, 3 Mar 2026 23:59:04 +0000</pubDate></item><item><title>Gemini 3.1 Flash-Lite</title><link>https://simonwillison.net/2026/Mar/3/gemini-31-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/">Gemini 3.1 Flash-Lite</a></strong></p>
 Google's latest model is an update to their inexpensive Flash-Lite family. At $0.25/million tokens of input and $1.5/million output this is 1/8th the price of Gemini 3.1 Pro.</p>
 <p>It supports four different thinking levels, so I had it output <a href="https://gist.github.com/simonw/99fb28dc11d0c24137d4ff8a33978a9e">four different pelicans</a>:</p>
 <div style="
@@ -663,22 +666,4 @@ Striking graph illustrating stock in the UK Raspberry Pi holding company spiking
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/raspberry-pi">raspberry-pi</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/openclaw">openclaw</a></p>]]></description><pubDate>Sun, 22 Feb 2026 23:54:39 +0000</pubDate></item><item><title>How I think about Codex</title><link>https://simonwillison.net/2026/Feb/22/how-i-think-about-codex/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.linkedin.com/pulse/how-i-think-codex-gabriel-chua-ukhic">How I think about Codex</a></strong></p>
-Gabriel Chua (Developer Experience Engineer for APAC at OpenAI) provides his take on the confusing terminology behind the term "Codex", which can refer to a bunch of of different things within the OpenAI ecosystem:</p>
-<blockquote>
-<p>In plain terms, Codex is OpenAI’s software engineering agent, available through multiple interfaces, and an agent is a model plus instructions and tools, wrapped in a runtime that can execute tasks on your behalf. [...]</p>
-<p>At a high level, I see Codex as three parts working together:</p>
-<p><em>Codex = Model + Harness + Surfaces</em> [...]</p>
-<ul>
-<li>Model + Harness = the Agent</li>
-<li>Surfaces = how you interact with the Agent</li>
-</ul>
-</blockquote>
-<p>He defines the harness as "the collection of instructions and tools", which is notably open source and lives in the <a href="https://github.com/openai/codex">openai/codex</a> repository.</p>
-<p>Gabriel also provides the first acknowledgment I've seen from an OpenAI insider that the Codex model family are directly trained for the Codex harness:</p>
-<blockquote>
-<p>Codex models are trained in the presence of the harness. Tool use, execution loops, compaction, and iterative verification aren’t bolted on behaviors — they’re part of how the model learns to operate. The harness, in turn, is shaped around how the model plans, invokes tools, and recovers from failure.</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Sun, 22 Feb 2026 15:53:43 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/raspberry-pi">raspberry-pi</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/openclaw">openclaw</a></p>]]></description><pubDate>Sun, 22 Feb 2026 23:54:39 +0000</pubDate></item></channel></rss>
