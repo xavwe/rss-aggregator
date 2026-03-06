@@ -23,7 +23,7 @@
 <p>Historically these have been difficult to test from code, but the past decade has seen notable improvements in systems for automating real web browsers. Running a real Chrome or Firefox or Safari browser against an application can uncover all sorts of interesting problems in a realistic setting.</p>
 <p>Coding agents know how to use these tools extremely well.</p>
 <p>The most powerful of these today is <strong><a href="https://playwright.dev/">Playwright</a></strong>, an open source library developed by Microsoft. Playwright offers a full-featured API with bindings in multiple popular programming languages and can automate any of the popular browser engines.</p>
-<p>Simply telling your agent to "test that with Playwright" may be enough. The agent can then select the language binding that makes the most sense, or use Playwright's default CLI tool.</p>
+<p>Simply telling your agent to "test that with Playwright" may be enough. The agent can then select the language binding that makes the most sense, or use Playwright's <a href="https://github.com/microsoft/playwright-cli">playwright-cli</a> tool.</p>
 <p>Coding agents work really well with dedicated CLIs. <a href="https://github.com/vercel-labs/agent-browser">agent-browser</a> by Vercel is a comprehensive CLI wrapper around Playwright specially designed for coding agents to use.</p>
 <p>My own project <a href="https://github.com/simonw/rodney">Rodney</a> serves a similar purpose, albeit using the Chrome DevTools Protocol to directly control an instance of Chrome.</p>
 <p>Here's an example prompt I use to test things with Rodney:</p>
@@ -116,6 +116,16 @@ Two new API models: <a href="https://developers.openai.com/api/docs/models/gpt-5
 <p>I have no idea how this one is going to play out. I'm personally leaning towards the idea that the rewrite is legitimate, but the arguments on both sides of this are entirely credible.</p>
 <p>I see this as a microcosm of the larger question around coding agents for fresh implementations of existing, mature code. This question is hitting the open source world first, but I expect it will soon start showing up in Compaq-like scenarios in the commercial world.</p>
 <p>Once commercial companies see that their closely held IP is under threat I expect we'll see some well-funded litigation.</p>
+
+<p><strong>Update 6th March 2026</strong>: A detail that's worth emphasizing is that Dan does <em>not</em> claim that the new implementation is a pure "clean room" rewrite. Quoting <a href="https://github.com/chardet/chardet/issues/327#issuecomment-4005195078">his comment</a> again:</p>
+<blockquote>
+<p>A traditional clean-room approach involves a strict separation between people with knowledge of the original and people writing the new implementation, and that separation did not exist here.</p>
+</blockquote>
+<p>I can't find it now, but I saw a comment somewhere that pointed out the absurdity of Dan being blocked from working on a new implementation of character detection as a result of the volunteer effort he put into helping to maintain an existing open source library in that domain.</p>
+<p>I enjoyed Armin's take on this situation in <a href="https://lucumr.pocoo.org/2026/3/5/theseus/">AI And The Ship of Theseus</a>, in particular:</p>
+<blockquote>
+<p>There are huge consequences to this. When the cost of generating code goes down that much, and we can re-implement it from test suites alone, what does that mean for the future of software? Will we see a lot of software re-emerging under more permissive licenses? Will we see a lot of proprietary software re-emerging as open source? Will we see a lot of software re-emerging as proprietary?</p>
+</blockquote>
     
         <p>Tags: <a href="https://simonwillison.net/tags/licensing">licensing</a>, <a href="https://simonwillison.net/tags/mark-pilgrim">mark-pilgrim</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Thu, 5 Mar 2026 16:49:33 +0000</pubDate></item><item><title>Anti-patterns: things to avoid</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/anti-patterns/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
     <p>There are some behaviors that are anti-patterns in our weird new world of agentic engineering.</p>
