@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Anthropic and the Pentagon</title><link>https://simonwillison.net/2026/Mar/6/anthropic-and-the-pentagon/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.schneier.com/blog/archives/2026/03/anthropic-and-the-pentagon.html">Anthropic and the Pentagon</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Ally Piechowski</title><link>https://simonwillison.net/2026/Mar/6/ally-piechowski/#atom-everything</link><description><![CDATA[<blockquote cite="https://piechowski.io/post/how-i-audit-a-legacy-rails-codebase/"><p><strong>Questions for developers:</strong></p>
+<ul>
+<li>“What’s the one area you’re afraid to touch?”</li>
+<li>“When’s the last time you deployed on a Friday?”</li>
+<li>“What broke in production in the last 90 days that wasn’t caught by tests?”</li>
+</ul>
+<p><strong>Questions for the CTO/EM:</strong></p>
+<ul>
+<li>“What feature has been blocked for over a year?”</li>
+<li>“Do you have real-time error visibility right now?”</li>
+<li>“What was the last feature that took significantly longer than estimated?”</li>
+</ul>
+<p><strong>Questions for business stakeholders:</strong></p>
+<ul>
+<li>“Are there features that got quietly turned off and never came back?”</li>
+<li>“Are there things you’ve stopped promising customers?”</li>
+</ul></blockquote>
+<p class="cite">&mdash; <a href="https://piechowski.io/post/how-i-audit-a-legacy-rails-codebase/">Ally Piechowski</a>, How to Audit a Rails Codebase</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/technical-debt">technical-debt</a>, <a href="https://simonwillison.net/tags/software-engineering">software-engineering</a>, <a href="https://simonwillison.net/tags/rails">rails</a></p>]]></description><pubDate>Fri, 6 Mar 2026 21:58:33 +0000</pubDate></item><item><title>Anthropic and the Pentagon</title><link>https://simonwillison.net/2026/Mar/6/anthropic-and-the-pentagon/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.schneier.com/blog/archives/2026/03/anthropic-and-the-pentagon.html">Anthropic and the Pentagon</a></strong></p>
 This piece by Bruce Schneier and Nathan E. Sanders is the most thoughtful and grounded coverage I've seen of the recent and ongoing Pentagon/OpenAI/Anthropic contract situation.</p>
 <blockquote>
 <p>AI models are increasingly commodified. The top-tier offerings have about the same performance, and there is little to differentiate one from the other. The latest models from Anthropic, OpenAI and Google, in particular, tend to leapfrog each other with minor hops forward in quality every few months. [...]</p>
@@ -733,16 +752,4 @@ These four word prompts serve several purposes:</p>
 </ol>
 <p>Similar to <a href="https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/">"Use red/green TDD"</a>, "First run the tests" provides a four word prompt that encompasses a substantial amount of software engineering discipline that's already baked into the models.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/tdd">tdd</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Tue, 24 Feb 2026 12:30:05 +0000</pubDate></item><item><title>Ladybird adopts Rust, with help from AI</title><link>https://simonwillison.net/2026/Feb/23/ladybird-adopts-rust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ladybird.org/posts/adopting-rust/">Ladybird adopts Rust, with help from AI</a></strong></p>
-Really interesting case-study from Andreas Kling on advanced, sophisticated use of coding agents for ambitious coding projects with critical code. After a few years hoping Swift's platform support outside of the Apple ecosystem would mature they switched tracks to Rust their memory-safe language of choice, starting with an AI-assisted port of a critical library:</p>
-<blockquote>
-<p>Our first target was <strong>LibJS</strong> , Ladybird's JavaScript engine. The lexer, parser, AST, and bytecode generator are relatively self-contained and have extensive test coverage through <a href="https://github.com/tc39/test262">test262</a>, which made them a natural starting point.</p>
-<p>I used <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> and <a href="https://openai.com/codex/">Codex</a> for the translation. This was human-directed, not autonomous code generation. I decided what to port, in what order, and what the Rust code should look like. It was hundreds of small prompts, steering the agents where things needed to go. [...]</p>
-<p>The requirement from the start was byte-for-byte identical output from both pipelines. The result was about 25,000 lines of Rust, and the entire port took about two weeks. The same work would have taken me multiple months to do by hand. We’ve verified that every AST produced by the Rust parser is identical to the C++ one, and all bytecode generated by the Rust compiler is identical to the C++ compiler’s output. Zero regressions across the board.</p>
-</blockquote>
-<p>Having an existing conformance testing suite of the quality of <code>test262</code> is a huge unlock for projects of this magnitude, and the ability to compare output with an existing trusted implementation makes agentic engineering much more of a safe bet.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47120899">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/andreas-kling">andreas-kling</a>, <a href="https://simonwillison.net/tags/ladybird">ladybird</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/swift">swift</a>, <a href="https://simonwillison.net/tags/conformance-suites">conformance-suites</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Mon, 23 Feb 2026 18:52:53 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/tdd">tdd</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Tue, 24 Feb 2026 12:30:05 +0000</pubDate></item></channel></rss>
