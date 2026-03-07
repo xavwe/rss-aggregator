@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Ally Piechowski</title><link>https://simonwillison.net/2026/Mar/6/ally-piechowski/#atom-everything</link><description><![CDATA[<blockquote cite="https://piechowski.io/post/how-i-audit-a-legacy-rails-codebase/"><p><strong>Questions for developers:</strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Codex for Open Source</title><link>https://simonwillison.net/2026/Mar/7/codex-for-open-source/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.openai.com/codex/community/codex-for-oss">Codex for Open Source</a></strong></p>
+Anthropic announced six months of free Claude Max for maintainers of popular open source projects (5,000+ stars or 1M+ NPM downloads) <a href="https://simonwillison.net/2026/Feb/27/claude-max-oss-six-months/">on 27th February</a>.</p>
+<p>Now OpenAI have launched their comparable offer: six months of ChatGPT Pro (same $200/month price as Claude Max) with Codex and "conditional access to Codex Security" for core maintainers.</p>
+<p>Unlike Anthropic they don't hint at the exact metrics they care about, but the <a href="https://openai.com/form/codex-for-oss/">application form</a> does ask for "information such as GitHub stars, monthly downloads, or why the project is important to the ecosystem."
+
+    <p><small></small>Via <a href="https://twitter.com/openaidevs/status/2029998191043911955">@openaidevs</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Sat, 7 Mar 2026 18:13:39 +0000</pubDate></item><item><title>Quoting Ally Piechowski</title><link>https://simonwillison.net/2026/Mar/6/ally-piechowski/#atom-everything</link><description><![CDATA[<blockquote cite="https://piechowski.io/post/how-i-audit-a-legacy-rails-codebase/"><p><strong>Questions for developers:</strong></p>
 <ul>
 <li>“What’s the one area you’re afraid to touch?”</li>
 <li>“When’s the last time you deployed on a Friday?”</li>
@@ -734,22 +742,4 @@ The Go ecosystem is <em>really</em> good at tooling. I just learned about this t
     <p><small></small>Via <a href="https://www.datadoghq.com/blog/engineering/agent-go-binaries/">Datadog: How we reduced the size of our Agent Go binaries by up to 77%</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/showboat">showboat</a></p>]]></description><pubDate>Tue, 24 Feb 2026 16:10:06 +0000</pubDate></item><item><title>First run the tests</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/first-run-the-tests/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
-    <p>Automated tests are no longer optional when working with coding agents.</p>
-<p>The old excuses for not writing them - that they're time consuming and expensive to constantly rewrite while a codebase is rapidly evolving - no longer hold when an agent can knock them into shape in just a few minutes.</p>
-<p>They're also <em>vital</em> for ensuring AI-generated code does what it claims to do.  If the code has never been executed it's pure luck if it actually works when deployed to production.</p>
-<p>Tests are also a great tool to help get an agent up to speed with an existing codebase. Watch what happens when you ask Claude Code or similar about an existing feature - the chances are high that they'll find and read the relevant tests.</p>
-<p>Agents are already biased towards testing, but the presence of an existing test suite will almost certainly push the agent into testing new changes that it makes.</p>
-<p>Any time I start a new session with an agent against an existing project I'll start by prompting a variant of the following:
-<div><markdown-copy><textarea>First run the tests</textarea></markdown-copy></div>
-For my Python projects I have <a href="https://til.simonwillison.net/uv/dependency-groups">pyproject.toml set up</a> such that I can prompt this instead:
-<div><markdown-copy><textarea>Run &quot;uv run pytest&quot;</textarea></markdown-copy></div>
-These four word prompts serve several purposes:</p>
-<ol>
-<li>It tells the agent that there is a test suite and forces it to figure out how to run the tests. This makes it almost certain that the agent will run the tests in the future to ensure it didn't break anything.</li>
-<li>Most test harnesses will give the agent a rough indication of how many tests they are. This can act as a proxy for how large and complex the project is, and also hints that the agent should search the tests themselves if they want to learn more.</li>
-<li>It puts the agent in a testing mindset. Having run the tests it's natural for it to then expand them with its own tests later on.</li>
-</ol>
-<p>Similar to <a href="https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/">"Use red/green TDD"</a>, "First run the tests" provides a four word prompt that encompasses a substantial amount of software engineering discipline that's already baked into the models.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/testing">testing</a>, <a href="https://simonwillison.net/tags/tdd">tdd</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Tue, 24 Feb 2026 12:30:05 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/webassembly">webassembly</a>, <a href="https://simonwillison.net/tags/showboat">showboat</a></p>]]></description><pubDate>Tue, 24 Feb 2026 16:10:06 +0000</pubDate></item></channel></rss>
