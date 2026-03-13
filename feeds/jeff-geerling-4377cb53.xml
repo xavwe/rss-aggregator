@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Can the MacBook Neo replace my M4 Air?</title><link>https://www.jeffgeerling.com/blog/2026/macbook-neo-replace-m4-air/</link><description><![CDATA[<p>Many of us wonder if the MacBook Neo is 'the one'.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Restoring an Xserve G5: When Apple built real servers</title><link>https://www.jeffgeerling.com/blog/2026/restoring-xserve-g5-apple-server/</link><description><![CDATA[<p>Recently I came into posession of a few Apple Xserves. The one in question today is an Xserve G5, <a href="https://everymac.com/systems/apple/xserve/specs/xserve_g5_2.0.html">RackMac3,1</a>, which was built when Apple at the top—and bottom—of it's PowerPC era.</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/restoring-xserve-g5-apple-server/xserve-g5-hero.jpeg"
+ alt="Xserve G5 on Jeff&#39;s desk" width="700" height="auto">
+</figure>
+
+<p>This isn't the first Xserve—that honor belongs to the G4<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>. And it wasn't the last—there were a few generations of Intel Xeon-powered RackMacs that followed. But in my opinion, it was the most interesting.</p>
+<p>Unfortunately, being manufactured in 2004, this Mac's Delta power supply suffers from the <a href="https://en.wikipedia.org/wiki/Capacitor_plague">Capacitor Plague</a>. The PSU tends to run hot, and some of the capacitors weren't even 105°C-rated, so they tend to wear out, especially if the Xserve was running high-end workloads.</p>]]></description><pubDate>Fri, 13 Mar 2026 14:00:00 +0000</pubDate></item><item><title>Can the MacBook Neo replace my M4 Air?</title><link>https://www.jeffgeerling.com/blog/2026/macbook-neo-replace-m4-air/</link><description><![CDATA[<p>Many of us wonder if the MacBook Neo is 'the one'.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/macbook-neo-replace-m4-air/macbook-neo-on-desk.jpeg"
  alt="MacBook Neo on top of a Mac Pro side panel" width="700" height="auto">
 </figure>
@@ -98,14 +104,4 @@
  alt="JeffGeerling.com - Old Drupal site" width="700" height="auto">
 </figure>
 
-<p>But as time progressed—especially after completing a <a href="https://www.jeffgeerling.com/blog/2020/migrating-jeffgeerlingcom-drupal-8-live">grueling upgrade from Drupal 7 to 8</a>—my enthusiasm for maintaining what's now a more enterprise-focused <a href="https://www.acquia.com/blog/what-digital-experience-platform-dxp">Digital Experience Platform</a> or 'DXP' for a personal blog has waned.</p>]]></description><pubDate>Sat, 3 Jan 2026 19:00:00 +0000</pubDate></item><item><title>Testing the Mono Gateway, a custom-built 10 Gbps Router</title><link>https://www.jeffgeerling.com/blog/2026/testing-mono-gateway-custom-built-10-gbps-router/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/testing-mono-gateway-custom-built-10-gbps-router/mono-gateway-router-hero.jpeg"
- alt="Mono Gateway" width="700" height="auto">
-</figure>
-
-<p>Last month, the stars aligned for me to bring the <a href="https://mono.si">Mono Gateway</a> (a 10 Gbps router that YouTuber <a href="https://www.youtube.com/@tomazzaman">Tomaž Zaman</a> and his team at Mono built from scratch) on a trip to Phoenix, and test it with one of the most OP network test boxes I've ever seen, at the <a href="https://www.servethehome.com">ServeTheHome</a> HQ.</p>
-<p>In this video, Patrick (from STH) and I put Gateway through a real-world torture test using CyPerf:</p>
-<div class="yt-embed">
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/3D5q3NWEMZY' frameborder='0' allowfullscreen></iframe></div>
-</div>
-<h2 id="mono-gateway">Mono Gateway</h2>
-<p>The Gateway is a small (1U/desktop) router with features like a 4-core Arm CPU, 8GB of ECC LPDDR RAM, and decent expansion options for a compact router.</p>]]></description><pubDate>Fri, 2 Jan 2026 15:12:25 +0000</pubDate></item></channel></rss>
+<p>But as time progressed—especially after completing a <a href="https://www.jeffgeerling.com/blog/2020/migrating-jeffgeerlingcom-drupal-8-live">grueling upgrade from Drupal 7 to 8</a>—my enthusiasm for maintaining what's now a more enterprise-focused <a href="https://www.acquia.com/blog/what-digital-experience-platform-dxp">Digital Experience Platform</a> or 'DXP' for a personal blog has waned.</p>]]></description><pubDate>Sat, 3 Jan 2026 19:00:00 +0000</pubDate></item></channel></rss>
