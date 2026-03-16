@@ -93,7 +93,7 @@
 <p>I had a project recently where I wanted to add file uploads to my own little web framework, Datasette—multipart file uploads and all of that. And the way I did it is I told Claude to build a test suite for file uploads that passes on Go and Node.js and Django and Starlette—just here's six different web frameworks that implement this, build tests that they all pass. Now I've got a test suite and I can say, okay, build me a new implementation for Datasette on top of those tests. And it did the job. It's really powerful—it's almost like you can reverse engineer six implementations of a standard to get a new standard and then you can implement the standard.</p>
 </blockquote>
 
-<p>Here's <a href="https://github.com/simonw/datasette/pull/2626">the PR</a> for that file upload feature.</p>
+<p>Here's <a href="https://github.com/simonw/datasette/pull/2626">the PR</a> for that file upload feature, and the <a href="https://github.com/simonw/multipart-form-data-conformance">multipart-form-data-conformance</a> test suite I developed for it.</p>
 
 <h4 id="does-code-quality-matter">Does code quality matter?</h4>
 
