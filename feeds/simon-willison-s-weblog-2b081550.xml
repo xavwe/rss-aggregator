@@ -1,4 +1,71 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>What is agentic engineering?</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>How coding agents work</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/how-coding-agents-work/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
+    <p>As with any tool, understanding how <a href="https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/">coding agents</a> work under the hood can help you make better decisions about how to apply them.</p>
+<p>A coding agent is a piece of software that acts as a <strong>harness</strong> for an LLM, extending that LLM with additional capabilities that are powered by invisible prompts and implemented as callable tools.</p>
+<h2 id="large-language-models">Large Language Models</h2>
+<p>At the heart of any coding agent is a Large Language Model, or LLM. These have names like GPT-5.4 or Claude Opus 4.6 or Gemini 3.1 Pro or Qwen3.5-35B-A3B.</p>
+<p>An LLM is a machine learning model that can complete a sentence of text. Give the model the phrase "the cat sat on the " and it will (almost certainly) suggest "mat" as the next word in the sentence.</p>
+<p>As these models get larger and train on increasing amounts of data, they can complete more complex sentences - like "a python function to download a file from a URL is def download_file(url): ".</p>
+<p>LLMs don't actually work directly with words - they work with tokens. A sequence of text is converted into a sequence of integer tokens, so "the cat sat on the " becomes <code>[3086, 9059, 10139, 402, 290, 220]</code>. This is worth understanding because LLM providers charge based on the number of tokens processed, and are limited in how many tokens they can consider at a time.</p>
+<p>You can experiment with the OpenAI tokenizer to see how this works at <a href="https://platform.openai.com/tokenizer">platform.openai.com/tokenizer</a>.</p>
+<p>The input to an LLM is called the <strong>prompt</strong>. The text returned by an LLM is called the <strong>completion</strong>, or sometimes the <strong>response</strong>.</p>
+<p>Many models today are <strong>multimodal</strong>, which means they can accept more than just text as input.  <strong>Vision LLMs</strong> (vLLMs) can accept images as part of the input, which means you can feed them sketches or photos or screenshots. A common misconception is that these are run through a separate process for OCR or image analysis, but these inputs are actually turned into yet more token integers which are processed in the same way as text.</p>
+<h2 id="chat-templated-prompts">Chat templated prompts</h2>
+<p>The first LLMs worked as completion engines - users were expected to provide a prompt which could then be completed by the model, such as the two examples shown above.</p>
+<p>This wasn't particularly user-friendly so models mostly switched to using <strong>chat templated prompts</strong> instead, which represent communication with the model as a simulated conversation.</p>
+<p>This is actually just a form of completion prompt with a special format that looks something like this.</p>
+<div class="codehilite"><pre><span></span><code>user: write a python function to download a file from a URL
+assistant:
+</code></pre></div>
+<p>The natural completion for this prompt is for the assistant (represented by the LLM) to answer the user's question with some Python code.</p>
+<p>LLMs are stateless: every time they execute a prompt they start from the same blank slate. </p>
+<p>To maintain the simulation of a conversation, the software that talks to the model needs to maintain its own state and replay the entire existing conversation every time the user enters a new chat prompt:</p>
+<div class="codehilite"><pre><span></span><code>user: write a python function to download a file from a URL
+assistant: def download_url(url):
+    return urllib.request.urlopen(url).read()
+user: use the requests library instead
+assistant:
+</code></pre></div>
+<p>Since providers charge for both input and output tokens, this means that as a conversation gets longer, each prompt becomes more expensive since the number of input tokens grows every time.</p>
+<h2 id="token-caching">Token caching</h2>
+<p>Most model providers offset this somewhat through a cheaper rate for <strong>cached input tokens</strong> - common token prefixes that have been processed within a short time period can be charged at a lower rate as the underlying infrastructure can cache and then reuse many of the expensive calculations used to process that input.</p>
+<p>Coding agents are designed with this optimization in mind - they avoid modifying earlier conversation content to ensure the cache is used as efficiently as possible.</p>
+<h2 id="calling-tools">Calling tools</h2>
+<p>The defining feature of an LLM <strong>agent</strong> is that agents can call <strong>tools</strong>. But what is a tool?</p>
+<p>A tool is a function that the agent harness makes available to the LLM.</p>
+<p>At the level of the prompt itself, that looks something like this:</p>
+<div class="codehilite"><pre><span></span><code>system: If you need to access the weather, end your turn with &lt;tool&gt;get_weather(city_name)&lt;/tool&gt;
+user: what&#39;s the weather in San Francisco?
+assistant:
+</code></pre></div>
+<p>Here the assistant might respond with the following text:</p>
+<div class="codehilite"><pre><span></span><code>&lt;tool&gt;get_weather(&quot;San Francisco&quot;)&lt;/tool&gt;
+</code></pre></div>
+<p>The model harness software then extracts that function call request from the response - probably with a regular expression - and executes the tool.</p>
+<p>It then returns the result to the model, with a constructed prompt that looks something like this:</p>
+<div class="codehilite"><pre><span></span><code>system: If you need to access the weather, end your turn with &lt;tool&gt;get_weather(city_name)&lt;/tool&gt;
+user: what&#39;s the weather in San Francisco?
+assistant: &lt;tool&gt;get_weather(&quot;San Francisco&quot;)&lt;/tool&gt;
+user: &lt;tool-result&gt;61°, Partly cloudy&lt;/tool-result&gt;
+assistant:
+</code></pre></div>
+<p>The LLM can now use that tool result to help generate an answer to the user's question.</p>
+<p>Most coding agents define a dozen or more tools for the agent to call. The most powerful of these allow for code execution - a <code>Bash()</code> tool for executing terminal commands, or a <code>Python()</code> tool for running Python code, for example.</p>
+<h2 id="the-system-prompt">The system prompt</h2>
+<p>In the previous example I included an initial message marked "system" which informed the LLM about the available tool and how to call it.</p>
+<p>Coding agents usually start every conversation with a system prompt like this, which is not shown to the user but provides instructions telling the model how it should behave.</p>
+<p>These system prompts can be hundreds of lines long. Here's <a href="https://github.com/openai/codex/blob/rust-v0.114.0/codex-rs/core/templates/model_instructions/gpt-5.2-codex_instructions_template.md">the system prompt for OpenAI Codex</a> as-of March 2026, which is a useful clear example of the kind of instructions that make these coding agents work.</p>
+<h2 id="reasoning">Reasoning</h2>
+<p>One of the big new advances in 2025 was the introduction of <strong>reasoning</strong> to the frontier model families.</p>
+<p>Reasoning, sometimes presented as <strong>thinking</strong> in the UI, is when a model spends additional time generating text that talks through the problem and its potential solutions before presenting a reply to the user.</p>
+<p>This can look similar to a person thinking out loud, and has a similar effect. Crucially it allows models to spend more time (and more tokens) working on a problem in order to hopefully get a better result.</p>
+<p>Reasoning is particularly useful for debugging issues in code as it gives the model an opportunity to navigate more complex code paths, mixing in tool calls and using the reasoning phase to follow function calls back to the potential source of an issue.</p>
+<p>Many coding agents include options for dialing up or down the reasoning effort level, encouraging models to spend more time chewing on harder problems.</p>
+<h2 id="llm-system-prompt-tools-in-a-loop">LLM + system prompt + tools in a loop</h2>
+<p>Believe it or not, that's most of what it takes to build a coding agent!</p>
+<p>If you want to develop a deeper understanding of how these things work, a useful exercise is to try building your own agent from scratch. A simple tool loop can be achieved with a few dozen lines of code on top of an existing LLM API.</p>
+<p>A <em>good</em> tool loop is a great deal more work than that, but the fundamental mechanics are surprisingly straightforward.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 16 Mar 2026 14:01:41 +0000</pubDate></item><item><title>What is agentic engineering?</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/what-is-agentic-engineering/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
     <p>I use the term <strong>agentic engineering</strong> to describe the practice of developing software with the assistance of coding agents.</p>
 <p>What are <strong>coding agents</strong>? They're agents that can both write and execute code. Popular examples include <a href="https://code.claude.com/">Claude Code</a>, <a href="https://openai.com/codex/">OpenAI Codex</a>, and <a href="https://geminicli.com/">Gemini CLI</a>.</p>
 <p>What's an <strong>agent</strong>? Clearly defining that term is a challenge that has frustrated AI researchers since <a href="https://simonwillison.net/2024/Oct/12/michael-wooldridge/">at least the 1990s</a> but the definition I've come to accept, at least in the field of Large Language Models (LLMs) like GPT-5 and Gemini and Claude, is this one:</p>
@@ -809,7 +876,4 @@ The phrasing &quot;lack of fruiting rimu trees&quot; is slightly imprecise. The 
 <p>I'll let an LLM update code documentation or even write a README for my project but I'll edit that to ensure it doesn't express opinions or say things like "This is designed to help make code easier to maintain" - because that's an expression of a rationale that the LLM just made up.</p>
 <p>I use LLMs to proofread text I publish on my blog. I just shared <a href="https://simonwillison.net/guides/agentic-engineering-patterns/prompts/#proofreader">my current prompt for that here</a>.</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/writing">writing</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 1 Mar 2026 16:06:43 +0000</pubDate></item><item><title>Quoting claude.com/import-memory</title><link>https://simonwillison.net/2026/Mar/1/claude-import-memory/#atom-everything</link><description><![CDATA[<blockquote cite="https://claude.com/import-memory"><p><code>I'm moving to another service and need to export my data. List every memory you have stored about me, as well as any context you've learned about me from past conversations. Output everything in a single code block so I can easily copy it. Format each entry as: [date saved, if available] - memory content. Make sure to cover all of the following — preserve my words verbatim where possible: Instructions I've given you about how to respond (tone, format, style, 'always do X', 'never do Y'). Personal details: name, location, job, family, interests. Projects, goals, and recurring topics. Tools, languages, and frameworks I use. Preferences and corrections I've made to your behavior. Any other stored context not covered above. Do not summarize, group, or omit any entries. After the code block, confirm whether that is the complete set or if any remain.</code></p></blockquote>
-<p class="cite">&mdash; <a href="https://claude.com/import-memory">claude.com/import-memory</a>, Anthropic's "import your memories to Claude" feature is a prompt</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/llm-memory">llm-memory</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 1 Mar 2026 11:21:45 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/writing">writing</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 1 Mar 2026 16:06:43 +0000</pubDate></item></channel></rss>
