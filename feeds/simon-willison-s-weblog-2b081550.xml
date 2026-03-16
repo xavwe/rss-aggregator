@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting A member of Anthropic’s alignment-science team</title><link>https://simonwillison.net/2026/Mar/16/blackmail/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.newyorker.com/news/annals-of-inquiry/the-pentagon-went-to-war-with-anthropic-whats-really-at-stake?_sp=9a6e0ff7-2bfd-46f8-a9e1-3941ef2003b5.1773495048769"><p>The point of <a href="https://simonwillison.net/2025/Jun/20/agentic-misalignment/">the blackmail exercise</a> was to have something to describe to policymakers—results that are visceral enough to land with people, and make misalignment risk actually salient in practice for people who had never thought about it before.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Use subagents and custom agents in Codex</title><link>https://simonwillison.net/2026/Mar/16/codex-subagents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.openai.com/codex/subagents">Use subagents and custom agents in Codex</a></strong></p>
+Subagents were announced in general availability today for OpenAI Codex, after several weeks of preview behind a feature flag.</p>
+<p>They're very similar to the Claude Code implementation, with default subagents for "explorer", "worker" and "default". It's unclear to me what the difference between "worker" and "default" is but based on their CSV example I think "worker" is intended for running large numbers of small tasks in parallel.</p>
+<p>Codex also lets you define custom agents as TOML files in <code>~/.codex/agents/</code>. These can have custom instructions and be assigned to use specific models - including <code>gpt-5.3-codex-spark</code> if you want <a href="https://simonwillison.net/2026/Feb/12/codex-spark/">some raw speed</a>. They can then be referenced by name, as demonstrated by this example prompt from the documentation:</p>
+<blockquote>
+<p><code>Investigate why the settings modal fails to save. Have browser_debugger reproduce it, code_mapper trace the responsible code path, and ui_fixer implement the smallest fix once the failure mode is clear.</code></p>
+</blockquote>
+<p>The subagents pattern is widely supported in coding agents now. Here's documentation across a number of different platforms:</p>
+<ul>
+<li><a href="https://developers.openai.com/codex/subagents/">OpenAI Codex subagents</a></li>
+<li><a href="https://code.claude.com/docs/en/sub-agents">Claude Code subagents</a></li>
+<li><a href="https://geminicli.com/docs/core/subagents/">Gemini CLI subagents</a> (experimental)</li>
+<li><a href="https://docs.mistral.ai/mistral-vibe/agents-skills#agent-selection">Mistral Vibe subagents</a></li>
+<li><a href="https://opencode.ai/docs/agents/">OpenCode agents</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/agents/subagents">Subagents in Visual Studio Code</a></li>
+<li><a href="https://cursor.com/docs/subagents">Cursor Subagents</a></li>
+</ul>
+
+    <p><small></small>Via <a href="https://twitter.com/OpenAIDevs/status/2033636701848174967">@OpenAIDevs</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Mon, 16 Mar 2026 23:03:56 +0000</pubDate></item><item><title>Quoting A member of Anthropic’s alignment-science team</title><link>https://simonwillison.net/2026/Mar/16/blackmail/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.newyorker.com/news/annals-of-inquiry/the-pentagon-went-to-war-with-anthropic-whats-really-at-stake?_sp=9a6e0ff7-2bfd-46f8-a9e1-3941ef2003b5.1773495048769"><p>The point of <a href="https://simonwillison.net/2025/Jun/20/agentic-misalignment/">the blackmail exercise</a> was to have something to describe to policymakers—results that are visceral enough to land with people, and make misalignment risk actually salient in practice for people who had never thought about it before.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.newyorker.com/news/annals-of-inquiry/the-pentagon-went-to-war-with-anthropic-whats-really-at-stake?_sp=9a6e0ff7-2bfd-46f8-a9e1-3941ef2003b5.1773495048769">A member of Anthropic’s alignment-science team</a>, as told to Gideon Lewis-Kraus</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 16 Mar 2026 21:38:55 +0000</pubDate></item><item><title>Quoting Guilherme Rambo</title><link>https://simonwillison.net/2026/Mar/16/guilherme-rambo/#atom-everything</link><description><![CDATA[<blockquote cite="https://daringfireball.net/2026/03/apple_enclaves_neo_camera_indicator"><p>Tidbit: the software-based camera indicator light in the MacBook Neo runs in the secure exclave¹ part of the chip, so it is almost as secure as the hardware indicator light. What that means in practice is that even a kernel-level exploit would not be able to turn on the camera without the light appearing on screen. It runs in a privileged environment separate from the kernel and blits the light directly onto the screen hardware.</p></blockquote>
@@ -772,40 +793,4 @@ Two new API models: <a href="https://developers.openai.com/api/docs/models/gpt-5
         <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Wed, 4 Mar 2026 15:50:03 +0000</pubDate></item><item><title>Quoting Donald Knuth</title><link>https://simonwillison.net/2026/Mar/3/donald-knuth/#atom-everything</link><description><![CDATA[<blockquote cite="https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf"><p>Shock! Shock! I learned yesterday that an open problem I'd been working on for several weeks had just been solved by Claude Opus 4.6 - Anthropic's hybrid reasoning model that had been released three weeks earlier! It seems that I'll have to revise my opinions about "generative AI" one of these days. What a joy it is to learn not only that my conjecture has a nice solution but also to celebrate this dramatic advance in automatic deduction and creative problem solving.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www-cs-faculty.stanford.edu/~knuth/papers/claude-cycles.pdf">Donald Knuth</a>, Claude's Cycles</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/november-2025-inflection">november-2025-inflection</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/donald-knuth">donald-knuth</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a></p>]]></description><pubDate>Tue, 3 Mar 2026 23:59:04 +0000</pubDate></item><item><title>Gemini 3.1 Flash-Lite</title><link>https://simonwillison.net/2026/Mar/3/gemini-31-flash-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-lite/">Gemini 3.1 Flash-Lite</a></strong></p>
-Google's latest model is an update to their inexpensive Flash-Lite family. At $0.25/million tokens of input and $1.5/million output this is 1/8th the price of Gemini 3.1 Pro.</p>
-<p>It supports four different thinking levels, so I had it output <a href="https://gist.github.com/simonw/99fb28dc11d0c24137d4ff8a33978a9e">four different pelicans</a>:</p>
-<div style="
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
-    margin: 0 auto;
-  ">
-    <div style="text-align: center;">
-      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
-        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-minimal.png" alt="A minimalist vector-style illustration of a stylized bird riding a bicycle." style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">minimal</p>
-    </div>
-    <div style="text-align: center;">
-      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
-        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-low.png" alt="A minimalist graphic of a light blue round bird with a single black dot for an eye, wearing a yellow backpack and riding a black bicycle on a flat grey line." style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">low</p>
-    </div>
-    <div style="text-align: center;">
-      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
-        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-medium.png" alt="A minimalist digital illustration of a light blue bird wearing a yellow backpack while riding a bicycle." style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">medium</p>
-    </div>
-    <div style="text-align: center;">
-      <div style="aspect-ratio: 1; overflow: hidden; border-radius: 4px;">
-        <img src="https://static.simonwillison.net/static/2026/gemini-3.1-flash-lite-high.png" alt="A minimal, stylized line drawing of a bird-like creature with a yellow beak riding a bicycle made of simple geometric lines." style="width: 100%; height: 100%; object-fit: cover; display: block;">
-      </div>
-      <p style="margin: 4px 0 0; font-size: 16px; color: #333;">high</p>
-    </div>
-</div>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 3 Mar 2026 21:53:54 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/november-2025-inflection">november-2025-inflection</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/donald-knuth">donald-knuth</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a></p>]]></description><pubDate>Tue, 3 Mar 2026 23:59:04 +0000</pubDate></item></channel></rss>
