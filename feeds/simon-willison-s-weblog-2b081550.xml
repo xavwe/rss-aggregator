@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Tim Schilling</title><link>https://simonwillison.net/2026/Mar/17/tim-schilling/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.better-simple.com/django/2026/03/16/give-django-your-time-and-money/"><p>If you do not understand the ticket, if you do not understand the solution, or if you do not understand the feedback on your PR, then your use of LLM is hurting Django as a whole. [...]</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GPT-5.4 mini and GPT-5.4 nano, which can describe 76,000 photos for $52</title><link>https://simonwillison.net/2026/Mar/17/mini-and-nano/#atom-everything</link><description><![CDATA[<p>OpenAI today: <a href="https://openai.com/index/introducing-gpt-5-4-mini-and-nano/">Introducing GPT‑5.4 mini and nano</a>. These models join GPT-5.4 which was released <a href="https://openai.com/index/introducing-gpt-5-4/">two weeks ago</a>.</p>
+<p>OpenAI's self-reported benchmarks show the new 5.4-nano out-performing their previous GPT-5 mini model when run at maximum reasoning effort. The new mini is also 2x faster than the previous mini.</p>
+<p>Here's how the pricing looks - <code>gpt-5.4-nano</code> is notably even cheaper than Google's Gemini 3.1 Flash-Lite:</p>
+<center><table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Input</th>
+      <th>Cached input</th>
+      <th>Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>gpt-5.4</td>
+      <td>$2.50</td>
+      <td>$0.25</td>
+      <td>$15.00</td>
+    </tr>
+    <tr>
+      <td>gpt-5.4-mini</td>
+      <td>$0.75</td>
+      <td>$0.075</td>
+      <td>$4.50</td>
+    </tr>
+    <tr>
+      <td>gpt-5.4-nano</td>
+      <td>$0.20</td>
+      <td>$0.02</td>
+      <td>$1.25</td>
+    </tr>
+    <tr><td colspan="4"><center>Other models for comparison</center></td></tr>
+    <tr>
+      <td>Claude Opus 4.6</td>
+      <td>$5.00</td>
+      <td>-</td>
+      <td>$25.00</td>
+    </tr>
+    <tr>
+      <td>Claude Sonnet 4.6</td>
+      <td>$3.00</td>
+      <td>-</td>
+      <td>$15.00</td>
+    </tr>
+    <tr>
+      <td>Gemini 3.1 Pro</td>
+      <td>$2.00</td>
+      <td>-</td>
+      <td>$12.00</td>
+    </tr>
+    <tr>
+      <td>Claude Haiku 4.5</td>
+      <td>$1.00</td>
+      <td>-</td>
+      <td>$5.00</td>
+    </tr>
+<tr>
+      <td>Gemini 3.1 Flash-Lite</td>
+      <td>$0.25</td>
+      <td>-</td>
+      <td>$1.50</td>
+    </tr>
+  </tbody>
+</table></center>
+<p>I used GPT-5.4 nano to generate a description of this photo I took at the <a href="https://www.niche-museums.com/118">John M. Mossman Lock Collection</a>:</p>
+<p><img src="https://static.simonwillison.net/static/2026/IMG_2324.jpeg" alt="Description below" style="max-width: 100%;" /></p>
+<pre><code>llm -m gpt-5.4-nano -a IMG_2324.jpeg 'describe image'
+</code></pre>
+<p>Here's the output:</p>
+<blockquote>
+<p>The image shows the interior of a museum gallery with a long display wall. White-painted brick walls are covered with many framed portraits arranged in neat rows. Below the portraits, there are multiple glass display cases with dark wooden frames and glass tops/fronts, containing various old historical objects and equipment. The room has a polished wooden floor, hanging ceiling light fixtures/cords, and a few visible pipes near the top of the wall. In the foreground, glass cases run along the length of the room, reflecting items from other sections of the gallery.</p>
+</blockquote>
+<p>That took 2,751 input tokens and 112 output tokens, at a cost of <a href="https://www.llm-prices.com/#it=2751&amp;ot=112&amp;sel=gpt-5.4-nano">0.069 cents</a> (less than a tenth of a cent). That means describing every single photo in my 76,000 photo collection would cost around $52.44.</p>
+<p>I released <a href="https://llm.datasette.io/en/stable/changelog.html#v0-29">llm 0.29</a> with support for the new models.</p>
+<p>Then I had OpenAI Codex loop through all five reasoning effort levels and all three models and produce this combined SVG grid of pelicans riding bicycles (<a href="https://gist.github.com/simonw/f16292d9a5b90b28054cff3ba497a3ca">generation transcripts here</a>). I do like the gpt-5.4 xhigh one the best, it has a good bicycle (with nice spokes) and the pelican has a fish in its beak!</p>
+<p><img src="https://static.simonwillison.net/static/2026/gpt-5.4-pelican-family.svg" alt="Described by Claude Opus 4.6: A 5x3 comparison grid of AI-generated cartoon illustrations of a pelican riding a bicycle. Columns are labeled &quot;gpt-5.4-nano&quot;, &quot;gpt-5.4-mini&quot;, and &quot;gpt-5.4&quot; across the top, and rows are labeled &quot;none&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, and &quot;xhigh&quot; down the left side, representing quality/detail settings. In the &quot;none&quot; row, gpt-5.4-nano shows a chaotic white bird with misplaced arrows and tangled wheels on grass, gpt-5.4-mini shows a duck-like brown bird awkwardly straddling a motorcycle-like bike, and gpt-5.4 shows a stiff gray-and-white pelican sitting atop a blue tandem bicycle with extra legs. In the &quot;low&quot; row, nano shows a chubby round white bird pedaling with small feet on grass, mini shows a cleaner white bird riding a blue bicycle with motion lines, and gpt-5.4 shows a pelican with a blue cap riding confidently but with slightly awkward proportions. In the &quot;medium&quot; row, nano regresses to a strange bird standing over bowling balls on ice, mini shows two plump white birds merged onto one yellow-wheeled bicycle, and gpt-5.4 shows a more recognizable gray-and-white pelican on a red bicycle but with tangled extra legs. In the &quot;high&quot; row, nano shows multiple small pelicans crowded around a broken green bicycle on grass with a sun overhead, mini shows a tandem bicycle with two white pelicans and clear blue sky, and gpt-5.4 shows two pelicans stacked on a red tandem bike with the most realistic proportions yet. In the &quot;xhigh&quot; row, nano shows the most detailed scene with a pelican on a detailed bicycle with grass and a large sun but still somewhat jumbled anatomy, mini produces the cleanest single pelican on a yellow-accented bicycle with a light blue sky, and gpt-5.4 shows a well-rendered gray pelican on a teal bicycle with the best overall coherence. Generally, quality improves moving right across models and down through quality tiers, though &quot;medium&quot; is inconsistently worse than &quot;low&quot; for some models, and all images maintain a lighthearted cartoon style with pastel skies and simple backgrounds." style="max-width: 100%;" /></p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 17 Mar 2026 19:39:17 +0000</pubDate></item><item><title>Quoting Tim Schilling</title><link>https://simonwillison.net/2026/Mar/17/tim-schilling/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.better-simple.com/django/2026/03/16/give-django-your-time-and-money/"><p>If you do not understand the ticket, if you do not understand the solution, or if you do not understand the feedback on your PR, then your use of LLM is hurting Django as a whole. [...]</p>
 <p>For a reviewer, it’s demoralizing to communicate with a facade of a human.</p>
 <p>This is because contributing to open source, especially Django, is a communal endeavor. Removing your humanity from that experience makes that endeavor more difficult. If you use an LLM to contribute to Django, it needs to be as a complementary tool, not as your vehicle.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.better-simple.com/django/2026/03/16/give-django-your-time-and-money/">Tim Schilling</a>, Give Django your time and money, not your tokens</p>
@@ -779,53 +856,4 @@ Two new API models: <a href="https://developers.openai.com/api/docs/models/gpt-5
 <p><img alt="Described by GPT-5.4: Illustration of a cartoon pelican riding a blue bicycle on pale green grass against a light gray background, with a large orange beak, gray-and-white body, and orange legs posed on the pedals." src="https://static.simonwillison.net/static/2026/gpt-5.4-pro-pelican.png" />
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Thu, 5 Mar 2026 23:56:09 +0000</pubDate></item><item><title>Can coding agents relicense open source through a “clean room” implementation of code?</title><link>https://simonwillison.net/2026/Mar/5/chardet/#atom-everything</link><description><![CDATA[<p>Over the past few months it's become clear that coding agents are extraordinarily good at building a weird version of a "clean room" implementation of code.</p>
-<p>The most famous version of this pattern is when Compaq created a clean-room clone of the IBM BIOS back <a href="https://en.wikipedia.org/wiki/Compaq#Introduction_of_Compaq_Portable">in 1982</a>. They had one team of engineers reverse engineer the BIOS to create a specification, then handed that specification to another team to build a new ground-up version.</p>
-<p>This process used to take multiple teams of engineers weeks or months to complete. Coding agents can do a version of this in hours - I experimented with a variant of this pattern against <a href="https://simonwillison.net/2025/Dec/15/porting-justhtml/">JustHTML</a> back in December.</p>
-<p>There are a <em>lot</em> of open questions about this, both ethically and legally. These appear to be coming to a head in the venerable <a href="https://github.com/chardet/chardet">chardet</a> Python library.</p>
-<p><code>chardet</code> was created by Mark Pilgrim <a href="https://pypi.org/project/chardet/1.0/">back in 2006</a> and released under the LGPL. Mark retired from public internet life in 2011 and chardet's maintenance was taken over by others, most notably Dan Blanchard who has been responsible for every release since <a href="https://pypi.org/project/chardet/1.1/">1.1 in July 2012</a>.</p>
-<p>Two days ago Dan released <a href="https://github.com/chardet/chardet/releases/tag/7.0.0">chardet 7.0.0</a> with the following note in the release notes:</p>
-<blockquote>
-<p>Ground-up, MIT-licensed rewrite of chardet. Same package name, same public API — drop-in replacement for chardet 5.x/6.x. Just way faster and more accurate!</p>
-</blockquote>
-<p>Yesterday Mark Pilgrim opened <a href="https://github.com/chardet/chardet/issues/327">#327: No right to relicense this project</a>:</p>
-<blockquote>
-<p>[...] First off, I would like to thank the current maintainers and everyone who has contributed to and improved this project over the years. Truly a Free Software success story.</p>
-<p>However, it has been brought to my attention that, in the release <a href="https://github.com/chardet/chardet/releases/tag/7.0.0">7.0.0</a>, the maintainers claim to have the right to "relicense" the project. They have no such right; doing so is an explicit violation of the LGPL. Licensed code, when modified, must be released under the same LGPL license. Their claim that it is a "complete rewrite" is irrelevant, since they had ample exposure to the originally licensed code (i.e. this is not a "clean room" implementation). Adding a fancy code generator into the mix does not somehow grant them any additional rights.</p>
-</blockquote>
-<p>Dan's <a href="https://github.com/chardet/chardet/issues/327#issuecomment-4005195078">lengthy reply</a> included:</p>
-<blockquote>
-<p>You're right that I have had extensive exposure to the original codebase: I've been maintaining it for over a decade. A traditional clean-room approach involves a strict separation between people with knowledge of the original and people writing the new implementation, and that separation did not exist here.</p>
-<p>However, the purpose of clean-room methodology is to ensure the resulting code is not a derivative work of the original. It is a means to an end, not the end itself. In this case, I can demonstrate that the end result is the same — the new code is structurally independent of the old code — through direct measurement rather than process guarantees alone.</p>
-</blockquote>
-<p>Dan goes on to present results from the <a href="https://github.com/jplag/JPlag">JPlag</a> tool - which describes itself as  "State-of-the-Art Source Code Plagiarism &amp; Collusion Detection" - showing that the new 7.0.0 release has a max similarity of 1.29% with the previous release and 0.64% with the 1.1 version. Other release versions had similarities more in the 80-93% range.</p>
-<p>He then shares critical details about his process, highlights mine:</p>
-<blockquote>
-<p>For full transparency, here's how the rewrite was conducted. I used the <a href="https://github.com/obra/superpowers">superpowers</a> brainstorming skill to create a <a href="https://github.com/chardet/chardet/commit/f51f523506a73f89f0f9538fd31be458d007ab93">design document</a> specifying the architecture and approach I wanted based on the following requirements I had for the rewrite [...]</p>
-<p><strong>I then started in an empty repository with no access to the old source tree, and explicitly instructed Claude not to base anything on LGPL/GPL-licensed code</strong>. I then reviewed, tested, and iterated on every piece of the result using Claude. [...]</p>
-<p>I understand this is a new and uncomfortable area, and that using AI tools in the rewrite of a long-standing open source project raises legitimate questions. But the evidence here is clear: 7.0 is an independent work, not a derivative of the LGPL-licensed codebase. The MIT license applies to it legitimately.</p>
-</blockquote>
-<p>Since the rewrite was conducted using Claude Code there are a whole lot of interesting artifacts available in the repo. <a href="https://github.com/chardet/chardet/blob/925bccbc85d1b13292e7dc782254fd44cc1e7856/docs/plans/2026-02-25-chardet-rewrite-plan.md">2026-02-25-chardet-rewrite-plan.md</a> is particularly detailed, stepping through each stage of the rewrite process in turn - starting with the tests, then fleshing out the planned replacement code.</p>
-<p>There are several twists that make this case particularly hard to confidently resolve:</p>
-<ul>
-<li>Dan has been immersed in chardet for over a decade, and has clearly been strongly influenced by the original codebase.</li>
-<li>There is one example where Claude Code referenced parts of the codebase while it worked, as shown in <a href="https://github.com/chardet/chardet/blob/925bccbc85d1b13292e7dc782254fd44cc1e7856/docs/plans/2026-02-25-chardet-rewrite-plan.md#task-3-encoding-registry">the plan</a> - it looked at <a href="https://github.com/chardet/chardet/blob/f0676c0d6a4263827924b78a62957547fca40052/chardet/metadata/charsets.py">metadata/charsets.py</a>, a file that lists charsets and their properties expressed as a dictionary of dataclasses.</li>
-<li>More complicated: Claude itself was very likely trained on chardet as part of its enormous quantity of training data - though we have no way of confirming this for sure. Can a model trained on a codebase produce a morally or legally defensible clean-room implementation?</li>
-<li>As discussed in <a href="https://github.com/chardet/chardet/issues/36">this issue from 2014</a> (where Dan first openly contemplated a license change) Mark Pilgrim's original code was a manual port from C to Python of Mozilla's MPL-licensed character detection library.</li>
-<li>How significant is the fact that the new release of chardet used the same PyPI package name as the old one? Would a fresh release under a new name have been more defensible?</li>
-</ul>
-<p>I have no idea how this one is going to play out. I'm personally leaning towards the idea that the rewrite is legitimate, but the arguments on both sides of this are entirely credible.</p>
-<p>I see this as a microcosm of the larger question around coding agents for fresh implementations of existing, mature code. This question is hitting the open source world first, but I expect it will soon start showing up in Compaq-like scenarios in the commercial world.</p>
-<p>Once commercial companies see that their closely held IP is under threat I expect we'll see some well-funded litigation.</p>
-
-<p><strong>Update 6th March 2026</strong>: A detail that's worth emphasizing is that Dan does <em>not</em> claim that the new implementation is a pure "clean room" rewrite. Quoting <a href="https://github.com/chardet/chardet/issues/327#issuecomment-4005195078">his comment</a> again:</p>
-<blockquote>
-<p>A traditional clean-room approach involves a strict separation between people with knowledge of the original and people writing the new implementation, and that separation did not exist here.</p>
-</blockquote>
-<p>I can't find it now, but I saw a comment somewhere that pointed out the absurdity of Dan being blocked from working on a new implementation of character detection as a result of the volunteer effort he put into helping to maintain an existing open source library in that domain.</p>
-<p>I enjoyed Armin's take on this situation in <a href="https://lucumr.pocoo.org/2026/3/5/theseus/">AI And The Ship of Theseus</a>, in particular:</p>
-<blockquote>
-<p>There are huge consequences to this. When the cost of generating code goes down that much, and we can re-implement it from test suites alone, what does that mean for the future of software? Will we see a lot of software re-emerging under more permissive licenses? Will we see a lot of proprietary software re-emerging as open source? Will we see a lot of software re-emerging as proprietary?</p>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/licensing">licensing</a>, <a href="https://simonwillison.net/tags/mark-pilgrim">mark-pilgrim</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Thu, 5 Mar 2026 16:49:33 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Thu, 5 Mar 2026 23:56:09 +0000</pubDate></item></channel></rss>
