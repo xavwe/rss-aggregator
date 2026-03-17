@@ -1,4 +1,67 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing Mistral Small 4</title><link>https://simonwillison.net/2026/Mar/16/mistral-small-4/#atom-everything</link><description><![CDATA[<p><strong><a href="https://mistral.ai/news/mistral-small-4">Introducing Mistral Small 4</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Subagents</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/subagents/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
+    <p>LLMs are restricted by their <strong>context limit</strong> - how many tokens they can fit in their working memory at any given time. These values have not increased much over the past two years even as the LLMs themselves have seen dramatic improvements in their abilities - they generally top out at around 1,000,000, and benchmarks frequently report better quality results below 200,000.</p>
+<p>Carefully managing the context such that it fits within those limits is critical to getting great results out of a model.</p>
+<p><strong>Subagents</strong> provide a simple but effective way to handle larger tasks without burning through too much of the coding agent’s valuable top-level context.</p>
+<p>When a coding agent uses a subagent it effectively dispatches a fresh copy of itself to achieve a specified goal, with a new context window that starts with a fresh prompt.</p>
+<h2 id="claude-codes-explore-subagent">Claude Code’s Explore subagent</h2>
+<p>Claude Code uses subagents extensively as part of its standard way of working. Let's use that as an illustrative example.</p>
+<p>Any time you start a new task against an existing repo Claude Code first needs to explore that repo to figure out its general shape and find relevant information needed to achieve that task.</p>
+<p>It does this by constructing a prompt and dispatching a subagent to perform that exploration and return a description of what it finds.</p>
+<p>I kicked off a Claude Code session with a screenshot of <a href="https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/changes/">a page from my guide</a> and this prompt:</p>
+<blockquote>
+<p>Make the chapter diffs also show which characters have changed in this diff view with a darker color of red or green for the individually changed segments of text within the line</p>
+</blockquote>
+<p>Here's <a href="https://gisthost.github.io/?effbdc564939b88fe5c6299387e217da/index.html">the transcript</a> of that session.</p>
+<p>Claude Code started by running an “Explore” subagent with the following starter prompt:</p>
+<blockquote>
+<p>Find the code that implements the diff view for "chapters" in this Django blog. I need to find:</p>
+<ol>
+<li>Templates that render diffs (look for diff-related HTML/CSS with red/green backgrounds)</li>
+<li>Python code that generates diffs (look for difflib usage or similar)</li>
+<li>Any JavaScript related to diff rendering</li>
+<li>CSS styles for the diff view (red/green line backgrounds)</li>
+</ol>
+<p>Search thoroughly - check templates/, static/, blog/ directories. Look for keywords like "diff", "chapter", "revision", "history", "compare".</p>
+</blockquote>
+<p>Subagents work similar to any other tool call: the parent agent dispatches them just as they would any other tool and waits for the response. It's interesting to see models prompt themselves in this way - they generally have good taste in prompting strategies.</p>
+<p>The Explore subagent churned away for a few seconds and returned a response that started like this:</p>
+<blockquote>
+<p>Perfect! Now let me create a comprehensive summary with all the findings:</p>
+<h3 id="summary-chapter-diff-view-implementation">Summary: Chapter Diff View Implementation</h3>
+<p>I found the complete implementation of the diff view for chapters in this Django blog. Here are the key components:</p>
+<h4 id="1-python-code-diff-generation-homeusersimonwillisonblogguidesviewspy-lines-139-202">1. <strong>Python Code - Diff Generation</strong> (<code>/home/user/simonwillisonblog/guides/views.py</code>, lines 139-202)</h4>
+<p>The <code>chapter_changes()</code> view function uses Python's built-in <code>difflib.unified_diff()</code> to generate diffs: […]</p>
+</blockquote>
+<p>The full subagent response included all of the details the parent agent needed in order to start editing the code to address my original request.</p>
+<h2 id="parallel-subagents">Parallel subagents</h2>
+<p>This Explore subagent is the simplest example of how subagents can work, with the parent agent pausing while the subagent runs. The principle advantage of this kind of subagent is that it can work with a fresh content in a way that avoids spending tokens from the parent’s available limit.</p>
+<p>Subagents can also provide a significant performance boost by having the parent agent run multiple subagents at the same time, potentially also using faster and cheaper models such as Claude Haiku to accelerate those tasks.</p>
+<p>Coding agents that support subagents can use them based on your instructions. Try prompts like this:</p>
+<p><div class="codehilite"><pre><span></span><code>Use subagents to find and update all of the templates that are affected by this change.
+</code></pre></div>
+For tasks that involve editing several files - and where those files are not dependent on each other - this can offer a significant speed boost.</p>
+<h2 id="specialist-subagents">Specialist subagents</h2>
+<p>Some coding agents allow subagents to run with further customizations, often in the form of a custom system prompt or custom tools or both, which allow those subagents to take on a different role.</p>
+<p>These roles can cover a variety of useful specialties:</p>
+<ul>
+<li>A <strong>code reviewer</strong> agent can review code and identify bugs, feature gaps or weaknesses in the design.</li>
+<li>A <strong>test runner</strong> agent can run the test. This is particularly worthwhile if your test suite is large and verbose, as the subagent can hide the full test output from the main coding agent and report back with just details of any failures.</li>
+<li>A <strong>debugger</strong> agent can specialize in debugging problems, spending its token allowance reasoning though the codebase and running snippets of code to help isolate steps to reproduce and determine the root cause of a bug.</li>
+</ul>
+<p>While it can be tempting to go overboard breaking up tasks across dozens of different specialist subagents, it's important to remember that the main value of subagents is in preserving that valuable root context and managing token-heavy operations. Your root coding agent is perfectly capable of debugging or reviewing its own output provided it has the tokens to spare.</p>
+<h2 id="official-documentation">Official documentation</h2>
+<p>Several popular coding agents support subagents, each with their own documentation on how to use them:</p>
+<ul>
+<li><a href="https://developers.openai.com/codex/subagents/">OpenAI Codex subagents</a></li>
+<li><a href="https://code.claude.com/docs/en/sub-agents">Claude subagents</a></li>
+<li><a href="https://geminicli.com/docs/core/subagents/">Gemini CLI subagents</a></li>
+<li><a href="https://docs.mistral.ai/mistral-vibe/agents-skills#agent-selection">Mistral Vibe subagents</a></li>
+<li><a href="https://opencode.ai/docs/agents/">OpenCode agents</a></li>
+<li><a href="https://code.visualstudio.com/docs/copilot/agents/subagents">Subagents in Visual Studio Code</a></li>
+<li><a href="https://cursor.com/docs/subagents">Cursor Subagents</a></li>
+</ul>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 17 Mar 2026 12:32:28 +0000</pubDate></item><item><title>Introducing Mistral Small 4</title><link>https://simonwillison.net/2026/Mar/16/mistral-small-4/#atom-everything</link><description><![CDATA[<p><strong><a href="https://mistral.ai/news/mistral-small-4">Introducing Mistral Small 4</a></strong></p>
 Big new release from Mistral today (despite the name) - a new Apache 2 licensed 119B parameter (Mixture-of-Experts, 6B active) model which they describe like this:</p>
 <blockquote>
 <p>Mistral Small 4 is the first Mistral model to unify the capabilities of our flagship models, Magistral for reasoning, Pixtral for multimodal, and Devstral for agentic coding, into a single, versatile model.</p>
@@ -776,35 +839,4 @@ Two new API models: <a href="https://developers.openai.com/api/docs/models/gpt-5
 </ul>
 <p>Given how easy it is to dump unreviewed code on other people, I recommend including some form of evidence that you've put that extra work in yourself. Notes on how you manually tested it, comments on specific implementation choices or even screenshots and video of the feature working go a <em>long</em> way to demonstrating that a reviewer's time will not be wasted digging into the details.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/code-review">code-review</a></p>]]></description><pubDate>Wed, 4 Mar 2026 17:34:42 +0000</pubDate></item><item><title>Something is afoot in the land of Qwen</title><link>https://simonwillison.net/2026/Mar/4/qwen/#atom-everything</link><description><![CDATA[<p>I'm behind on writing about Qwen 3.5, a truly remarkable family of open weight models released by Alibaba's Qwen team over the past few weeks. I'm hoping that the 3.5 family doesn't turn out to be Qwen's swan song, seeing as that team has had some very high profile departures in the past 24 hours.</p>
-<p>It all started with <a href="https://twitter.com/JustinLin610/status/2028865835373359513">this tweet</a> from Junyang Lin (<a href="https://twitter.com/JustinLin610">@JustinLin610</a>):</p>
-<blockquote>
-<p>me stepping down. bye my beloved qwen.</p>
-</blockquote>
-<p>Junyang Lin was the lead researcher building Qwen, and was key to releasing their open weight models from 2024 onwards.</p>
-<p>As far as I can tell a trigger for this resignation was a re-org within Alibaba where a new researcher hired from Google's Gemini team was put in charge of Qwen, but I've not confirmed that detail.</p>
-<p>More information is available in <a href="https://www.36kr.com/p/3708425301749891">this article from 36kr.com</a>. Here's <a href="https://en.wikipedia.org/wiki/36Kr">Wikipedia on 36Kr</a> confirming that it's a credible media source established in 2010 with a good track record reporting on the Chinese technology industry.</p>
-<p>The article is in Chinese - here are some quotes translated via Google Translate:</p>
-<blockquote>
-<p>At approximately 1:00 PM Beijing time on March 4th, Tongyi Lab held an emergency All Hands meeting, where Alibaba Group CEO Wu Yongming frankly told Qianwen employees.</p>
-<p>Twelve hours ago (at 0:11 AM Beijing time on March 4th), Lin Junyang, the technical lead for Alibaba's Qwen Big Data Model, suddenly announced his resignation on X. Lin Junyang was a key figure in promoting Alibaba's open-source AI models and one of Alibaba's youngest P10 employees. Amidst the industry uproar, many members of Qwen were also unable to accept the sudden departure of their team's key figure.</p>
-<p>"Given far fewer resources than competitors, Junyang's leadership is one of the core factors in achieving today's results," multiple Qianwen members told 36Kr. [...]</p>
-<p>Regarding Lin Junyang's whereabouts, no new conclusions were reached at the meeting. However, around 2 PM, Lin Junyang posted again on his WeChat Moments, stating, "Brothers of Qwen, continue as originally planned, no problem," without explicitly confirming whether he would return. [...]</p>
-</blockquote>
-<p>That piece also lists several other key members who have apparently resigned:</p>
-<blockquote>
-<p>With Lin Junyang's departure, several other Qwen members also announced their departure, including core leaders responsible for various sub-areas of Qwen models, such as:</p>
-<p>Binyuan Hui: Lead Qwen code development, principal of the Qwen-Coder series models, responsible for the entire agent training process from pre-training to post-training, and recently involved in robotics research.</p>
-<p>Bowen Yu: Lead Qwen post-training research, graduated from the University of Chinese Academy of Sciences, leading the development of the Qwen-Instruct series models.</p>
-<p>Kaixin Li: Core contributor to Qwen 3.5/VL/Coder, PhD from the National University of Singapore.</p>
-<p>Besides the aforementioned individuals, many young researchers also resigned on the same day.</p>
-</blockquote>
-<p>Based on the above it looks to me like everything is still very much up in the air. The presence of Alibaba's CEO at the "emergency All Hands meeting" suggests that the company understands the significance of these resignations and may yet retain some of the departing talent.</p>
-<h4 id="qwen-3-5-is-exceptional">Qwen 3.5 is exceptional</h4>
-<p>This story hits particularly hard right now because the Qwen 3.5 models appear to be <em>exceptionally</em> good.</p>
-<p>I've not spent enough time with them yet but the scale of the new model family is impressive. They started with <a href="https://simonwillison.net/2026/Feb/17/qwen35/">Qwen3.5-397B-A17B on February 17th</a> - an 807GB model - and then followed with <a href="https://huggingface.co/collections/Qwen/qwen35">a flurry of smaller siblings</a> in 122B, 35B, 27B, 9B, 4B, 2B, 0.8B sizes.</p>
-<p>I'm hearing positive noises about the 27B and 35B models for coding tasks that still fit on a 32GB/64GB Mac, and I've tried the 9B, 4B and 2B models and found them to be notably effective considering their tiny sizes. That 2B model is just 4.57GB - or as small as 1.27GB quantized - and is a full reasoning and multi-modal (vision) model.</p>
-<p>It would be a real tragedy if the Qwen team were to disband now, given their proven track record in continuing to find new ways to get high quality results out of smaller and smaller models.</p>
-<p>If those core Qwen team members either start something new or join another research lab I'm excited to see what they do next.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Wed, 4 Mar 2026 15:50:03 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/code-review">code-review</a></p>]]></description><pubDate>Wed, 4 Mar 2026 17:34:42 +0000</pubDate></item></channel></rss>
