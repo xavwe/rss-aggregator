@@ -34,7 +34,7 @@
 </blockquote>
 <p>The full subagent response included all of the details the parent agent needed in order to start editing the code to address my original request.</p>
 <h2 id="parallel-subagents">Parallel subagents</h2>
-<p>This Explore subagent is the simplest example of how subagents can work, with the parent agent pausing while the subagent runs. The principle advantage of this kind of subagent is that it can work with a fresh content in a way that avoids spending tokens from the parent’s available limit.</p>
+<p>This Explore subagent is the simplest example of how subagents can work, with the parent agent pausing while the subagent runs. The principle advantage of this kind of subagent is that it can work with a fresh context in a way that avoids spending tokens from the parent’s available limit.</p>
 <p>Subagents can also provide a significant performance boost by having the parent agent run multiple subagents at the same time, potentially also using faster and cheaper models such as Claude Haiku to accelerate those tasks.</p>
 <p>Coding agents that support subagents can use them based on your instructions. Try prompts like this:</p>
 <p><div class="codehilite"><pre><span></span><code>Use subagents to find and update all of the templates that are affected by this change.
