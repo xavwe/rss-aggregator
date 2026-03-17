@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GPT-5.4 mini and GPT-5.4 nano, which can describe 76,000 photos for $52</title><link>https://simonwillison.net/2026/Mar/17/mini-and-nano/#atom-everything</link><description><![CDATA[<p>OpenAI today: <a href="https://openai.com/index/introducing-gpt-5-4-mini-and-nano/">Introducing GPT‑5.4 mini and nano</a>. These models join GPT-5.4 which was released <a href="https://openai.com/index/introducing-gpt-5-4/">two weeks ago</a>.</p>
 <p>OpenAI's self-reported benchmarks show the new 5.4-nano out-performing their previous GPT-5 mini model when run at maximum reasoning effort. The new mini is also 2x faster than the previous mini.</p>
-<p>Here's how the pricing looks - <code>gpt-5.4-nano</code> is notably even cheaper than Google's Gemini 3.1 Flash-Lite:</p>
+<p>Here's how the pricing looks - all prices are per million tokens. <code>gpt-5.4-nano</code> is notably even cheaper than Google's Gemini 3.1 Flash-Lite:</p>
 <center><table>
   <thead>
     <tr>
