@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Thoughts on OpenAI acquiring Astral and uv/ruff/ty</title><link>https://simonwillison.net/2026/Mar/19/openai-acquiring-astral/#atom-everything</link><description><![CDATA[<p>The big news this morning: <a href="https://astral.sh/blog/openai">Astral to join OpenAI</a> (on the Astral blog) and <a href="https://openai.com/index/openai-to-acquire-astral/">OpenAI to acquire Astral</a> (the OpenAI announcement). Astral are the company behind <a href="https://simonwillison.net/tags/uv/">uv</a>, <a href="https://simonwillison.net/tags/ruff/">ruff</a>, and <a href="https://simonwillison.net/tags/ty/">ty</a> - three increasingly load-bearing open source projects in the Python ecosystem. I have thoughts!</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Kimi.ai @Kimi_Moonshot</title><link>https://simonwillison.net/2026/Mar/20/cursor-on-kimi/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/Kimi_Moonshot/status/2035074972943831491"><p>Congrats to the <a href="https://x.com/cursor_ai">@cursor_ai</a> team on the launch of Composer 2!</p>
+<p>We are proud to see Kimi-k2.5 provide the foundation. Seeing our model integrated effectively through Cursor's continued pretraining &amp; high-compute RL training is the open model ecosystem we love to support.</p>
+<p>Note: Cursor accesses Kimi-k2.5 via <a href="https://x.com/FireworksAI_HQ">@FireworksAI_HQ</a> hosted RL and inference platform as part of an authorized commercial partnership.</p></blockquote>
+<p class="cite">&mdash; <a href="https://twitter.com/Kimi_Moonshot/status/2035074972943831491">Kimi.ai @Kimi_Moonshot</a>, responding to reports that Composer 2 was built on top of Kimi K2.5</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/kimi">kimi</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/cursor">cursor</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Fri, 20 Mar 2026 20:29:23 +0000</pubDate></item><item><title>Thoughts on OpenAI acquiring Astral and uv/ruff/ty</title><link>https://simonwillison.net/2026/Mar/19/openai-acquiring-astral/#atom-everything</link><description><![CDATA[<p>The big news this morning: <a href="https://astral.sh/blog/openai">Astral to join OpenAI</a> (on the Astral blog) and <a href="https://openai.com/index/openai-to-acquire-astral/">OpenAI to acquire Astral</a> (the OpenAI announcement). Astral are the company behind <a href="https://simonwillison.net/tags/uv/">uv</a>, <a href="https://simonwillison.net/tags/ruff/">ruff</a>, and <a href="https://simonwillison.net/tags/ty/">ty</a> - three increasingly load-bearing open source projects in the Python ecosystem. I have thoughts!</p>
 <h4 id="the-official-line-from-openai-and-astral">The official line from OpenAI and Astral</h4>
 <p>The Astral team will become part of the Codex team at OpenAI.</p>
 <p>Charlie Marsh <a href="https://astral.sh/blog/openai">has this to say</a>:</p>
@@ -833,23 +838,4 @@ Anthropic announced six months of free Claude Max for maintainers of popular ope
     <p><small></small>Via <a href="https://twitter.com/openaidevs/status/2029998191043911955">@openaidevs</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Sat, 7 Mar 2026 18:13:39 +0000</pubDate></item><item><title>Quoting Ally Piechowski</title><link>https://simonwillison.net/2026/Mar/6/ally-piechowski/#atom-everything</link><description><![CDATA[<blockquote cite="https://piechowski.io/post/how-i-audit-a-legacy-rails-codebase/"><p><strong>Questions for developers:</strong></p>
-<ul>
-<li>“What’s the one area you’re afraid to touch?”</li>
-<li>“When’s the last time you deployed on a Friday?”</li>
-<li>“What broke in production in the last 90 days that wasn’t caught by tests?”</li>
-</ul>
-<p><strong>Questions for the CTO/EM:</strong></p>
-<ul>
-<li>“What feature has been blocked for over a year?”</li>
-<li>“Do you have real-time error visibility right now?”</li>
-<li>“What was the last feature that took significantly longer than estimated?”</li>
-</ul>
-<p><strong>Questions for business stakeholders:</strong></p>
-<ul>
-<li>“Are there features that got quietly turned off and never came back?”</li>
-<li>“Are there things you’ve stopped promising customers?”</li>
-</ul></blockquote>
-<p class="cite">&mdash; <a href="https://piechowski.io/post/how-i-audit-a-legacy-rails-codebase/">Ally Piechowski</a>, How to Audit a Rails Codebase</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/technical-debt">technical-debt</a>, <a href="https://simonwillison.net/tags/software-engineering">software-engineering</a>, <a href="https://simonwillison.net/tags/rails">rails</a></p>]]></description><pubDate>Fri, 6 Mar 2026 21:58:33 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Sat, 7 Mar 2026 18:13:39 +0000</pubDate></item></channel></rss>
