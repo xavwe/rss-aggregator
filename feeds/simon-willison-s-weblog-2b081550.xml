@@ -1,4 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Profiling Hacker News users based on their comments</title><link>https://simonwillison.net/2026/Mar/21/profiling-hacker-news-users/#atom-everything</link><description><![CDATA[<p>Here's a mildly dystopian prompt I've been experimenting with recently: "Profile this user", accompanied by a copy of their last 1,000 comments on Hacker News.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Starlette 1.0 skill</title><link>https://simonwillison.net/2026/Mar/23/starlette-1-skill/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/starlette-1-skill#readme">Starlette 1.0 skill</a></p>
+    <p>Starlette 1.0 Skill offers a concise guide for building robust web applications with Starlette, a lightweight ASGI framework. The accompanying demo showcases a task management app featuring projects, tasks, comments, and labels, illustrating Starlette&#x27;s flexibility in handling routing, templating (Jinja2), async database operations (aiosqlite), and real-time updates.</p>
+    <p>See <a href="https://simonwillison.net/2026/Mar/22/starlette/">Experimenting with Starlette 1.0 with Claude skills</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/starlette">starlette</a></p>]]></description><pubDate>Mon, 23 Mar 2026 00:05:00 +0000</pubDate></item><item><title>Experimenting with Starlette 1.0 with Claude skills</title><link>https://simonwillison.net/2026/Mar/22/starlette/#atom-everything</link><description><![CDATA[<p><a href="https://marcelotryle.com/blog/2026/03/22/starlette-10-is-here/">Starlette 1.0 is out</a>! This is a really big deal. I think Starlette may be the Python framework with the most usage compared to its relatively low brand recognition because Starlette is the foundation of <a href="https://fastapi.tiangolo.com/">FastAPI</a>, which has attracted a huge amount of buzz that seems to have overshadowed Starlette itself.</p>
+<p>Kim Christie started working on Starlette in 2018 and it quickly became my favorite out of the new breed of Python ASGI frameworks. The only reason I didn't use it as the basis for my own <a href="https://datasette.io/">Datasette</a> project was that it didn't yet promise stability, and I was determined to provide a stable API for Datasette's own plugins... albeit I still haven't been brave enough to ship my own 1.0 release (after 26 alphas and counting)!</p>
+<p>Then in September 2025 Marcelo Trylesinski <a href="https://github.com/Kludex/starlette/discussions/2997">announced that Starlette and Uvicorn were transferring to their GitHub account</a>, in recognition of their many years of contributions and to make it easier for them to receive sponsorship against those projects.</p>
+<p>The 1.0 version has a few breaking changes compared to the 0.x series, described in <a href="https://starlette.dev/release-notes/#100rc1-february-23-2026">the release notes for 1.0.0rc1</a> that came out in February.</p>
+<p>The most notable of these is a change to how code runs on startup and shutdown. Previously that was handled by <code>on_startup</code> and <code>on_shutdown</code> parameters, but the new system uses a neat <a href="https://starlette.dev/lifespan/">lifespan</a> mechanism instead based around an <a href="https://docs.python.org/3/library/contextlib.html#contextlib.asynccontextmanager">async context manager</a>:</p>
+<pre><span class="pl-en">@<span class="pl-s1">contextlib</span>.<span class="pl-c1">asynccontextmanager</span></span>
+<span class="pl-k">async</span> <span class="pl-k">def</span> <span class="pl-en">lifespan</span>(<span class="pl-s1">app</span>):
+    <span class="pl-k">async</span> <span class="pl-k">with</span> <span class="pl-en">some_async_resource</span>():
+        <span class="pl-en">print</span>(<span class="pl-s">"Run at startup!"</span>)
+        <span class="pl-k">yield</span>
+        <span class="pl-en">print</span>(<span class="pl-s">"Run on shutdown!"</span>)
+
+<span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-en">Starlette</span>(
+    <span class="pl-s1">routes</span><span class="pl-c1">=</span><span class="pl-s1">routes</span>,
+    <span class="pl-s1">lifespan</span><span class="pl-c1">=</span><span class="pl-s1">lifespan</span>
+)</pre>
+<p>If you haven't tried Starlette before it feels to me like an asyncio-native cross between Flask and Django, unsurprising since creator Kim Christie is also responsible for Django REST Framework. Crucially, this means you can write most apps as a single Python file, Flask style.</p>
+<p>This makes it <em>really</em> easy for LLMs to spit out a working Starlette app from a single prompt.</p>
+<p>There's just one problem there: if 1.0 breaks compatibility with the Starlette code that the models have been trained on, how can we have them generate code that works with 1.0?</p>
+<p>I decided to see if I could get this working <a href="https://simonwillison.net/2025/Oct/16/claude-skills/">with a Skill</a>.</p>
+<h4 id="building-a-skill-with-claude">Building a Skill with Claude</h4>
+<p>Regular Claude Chat on <a href="https://claude.ai/">claude.ai</a> has skills, and one of those default skills is the <a href="https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md">skill-creator skill</a>. This means Claude knows how to build its own skills.</p>
+<p>So I started <a href="https://claude.ai/share/b537c340-aea7-49d6-a14d-3134aa1bd957">a chat session</a> and told it:</p>
+<blockquote>
+<p>Clone Starlette from GitHub - it just had its 1.0 release. Build a skill markdown document for this release which includes code examples of every feature.</p>
+</blockquote>
+<p>I didn't even tell it where to find the repo, Starlette is widely enough known that I expected it could find it on its own.</p>
+<p>It ran <code>git clone https://github.com/encode/starlette.git</code> which is actually the old repository name, but GitHub handles redirects automatically so this worked just fine.</p>
+<p>The <a href="https://github.com/simonw/research/blob/main/starlette-1-skill/SKILL.md">resulting skill document</a> looked very thorough to me... and then I noticed a new button at the top I hadn't seen before labelled "Copy to your skills". So I clicked it:</p>
+<p><img src="https://static.simonwillison.net/static/2026/skill-button.jpg" alt="Screenshot of the Claude.ai interface showing a conversation titled &quot;Starlette 1.0 skill document with code examples.&quot; The left panel shows a chat where the user prompted: &quot;Clone Starlette from GitHub - it just had its 1.0 release. Build a skill markdown document for this release which includes code examples of every feature.&quot; Claude's responses include collapsed sections labeled &quot;Strategized cloning repository and documenting comprehensive feature examples,&quot; &quot;Examined version details and surveyed source documentation comprehensively,&quot; and &quot;Synthesized Starlette 1.0 knowledge to construct comprehensive skill documentation,&quot; with intermediate messages like &quot;I'll clone Starlette from GitHub and build a comprehensive skill document. Let me start by reading the skill-creator guide and then cloning the repo,&quot; &quot;Now let me read through all the documentation files to capture every feature:&quot; and &quot;Now I have a thorough understanding of the entire codebase. Let me build the comprehensive skill document.&quot; The right panel shows a skill preview pane with buttons &quot;Copy to your skills&quot; and &quot;Copy&quot; at the top, and a Description section reading: &quot;Build async web applications and APIs with Starlette 1.0, the lightweight ASGI framework for Python. Use this skill whenever a user wants to create an async Python web app, REST API, WebSocket server, or ASGI application using Starlette. Triggers include mentions of 'Starlette', 'ASGI', async Python web frameworks, or requests to build lightweight async APIs, WebSocket services, streaming responses, or middleware pipelines. Also use when the user is working with FastAPI internals (which is built on Starlette), needs ASGI middleware patterns, or wants a minimal async web server&quot; (text truncated)." style="max-width: 100%;" /></p>
+<p>And now my regular Claude chat has access to that skill!</p>
+<h4 id="a-task-management-demo-app">A task management demo app</h4>
+<p>I started <a href="https://claude.ai/share/b5285fbc-5849-4939-b473-dcb66f73503b">a new conversation</a> and prompted:</p>
+<blockquote>
+<p>Build a task management app with Starlette, it should have projects and tasks and comments and labels</p>
+</blockquote>
+<p>And Claude did exactly that, producing a simple GitHub Issues clone using Starlette 1.0, a SQLite database (via <a href="https://github.com/omnilib/aiosqlite">aiosqlite</a>) and a Jinja2 template.</p>
+<p>Claude even tested the app manually like this:</p>
+<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> /home/claude/taskflow <span class="pl-k">&amp;&amp;</span> timeout 5 python -c <span class="pl-s"><span class="pl-pds">"</span></span>
+<span class="pl-s">import asyncio</span>
+<span class="pl-s">from database import init_db</span>
+<span class="pl-s">asyncio.run(init_db())</span>
+<span class="pl-s">print('DB initialized successfully')</span>
+<span class="pl-s"><span class="pl-pds">"</span></span> <span class="pl-k">2&gt;&amp;1</span>
+
+pip install httpx --break-system-packages -q \
+  <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> /home/claude/taskflow <span class="pl-k">&amp;&amp;</span> \
+  python -c <span class="pl-s"><span class="pl-pds">"</span></span>
+<span class="pl-s">from starlette.testclient import TestClient</span>
+<span class="pl-s">from main import app</span>
+<span class="pl-s"></span>
+<span class="pl-s">client = TestClient(app)</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.get('/api/stats')</span>
+<span class="pl-s">print('Stats:', r.json())</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.get('/api/projects')</span>
+<span class="pl-s">print('Projects:', len(r.json()), 'found')</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.get('/api/tasks')</span>
+<span class="pl-s">print('Tasks:', len(r.json()), 'found')</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.get('/api/labels')</span>
+<span class="pl-s">print('Labels:', len(r.json()), 'found')</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.get('/api/tasks/1')</span>
+<span class="pl-s">t = r.json()</span>
+<span class="pl-s">print(f'Task 1: <span class="pl-cce">\"</span>{t[<span class="pl-cce">\"</span>title<span class="pl-cce">\"</span>]}<span class="pl-cce">\"</span> - {len(t[<span class="pl-cce">\"</span>comments<span class="pl-cce">\"</span>])} comments, {len(t[<span class="pl-cce">\"</span>labels<span class="pl-cce">\"</span>])} labels')</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.post('/api/tasks', json={'title':'Test task','project_id':1,'priority':'high','label_ids':[1,2]})</span>
+<span class="pl-s">print('Created task:', r.status_code, r.json()['title'])</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.post('/api/comments', json={'task_id':1,'content':'Test comment'})</span>
+<span class="pl-s">print('Created comment:', r.status_code)</span>
+<span class="pl-s"></span>
+<span class="pl-s">r = client.get('/')</span>
+<span class="pl-s">print('Homepage:', r.status_code, '- length:', len(r.text))</span>
+<span class="pl-s"></span>
+<span class="pl-s">print('\nAll tests passed!')</span>
+<span class="pl-s"><span class="pl-pds">"</span></span></pre></div>
+<p>For all of the buzz about Claude Code, it's easy to overlook that Claude itself counts as a coding agent now, fully able to both write and then test the code that it is writing.</p>
+<p>Here's what the resulting app looked like. The code is <a href="https://github.com/simonw/research/blob/main/starlette-1-skill/taskflow">here in my research repository</a>.</p>
+<p><img src="https://static.simonwillison.net/static/2026/taskflow.jpg" alt="Screenshot of a dark-themed Kanban board app called &quot;TaskFlow&quot; showing the &quot;Website Redesign&quot; project. The left sidebar has sections &quot;OVERVIEW&quot; with &quot;Dashboard&quot;, &quot;All Tasks&quot;, and &quot;Labels&quot;, and &quot;PROJECTS&quot; with &quot;Website Redesign&quot; (1) and &quot;API Platform&quot; (0). The main area has three columns: &quot;TO DO&quot; (0) showing &quot;No tasks&quot;, &quot;IN PROGRESS&quot; (1) with a card titled &quot;Blog about Starlette 1.0&quot; tagged &quot;MEDIUM&quot; and &quot;Documentation&quot;, and &quot;DONE&quot; (0) showing &quot;No tasks&quot;. Top-right buttons read &quot;+ New Task&quot; and &quot;Delete&quot;." style="max-width: 100%;" /></p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/asgi">asgi</a>, <a href="https://simonwillison.net/tags/kim-christie">kim-christie</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/skills">skills</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/starlette">starlette</a></p>]]></description><pubDate>Sun, 22 Mar 2026 23:57:44 +0000</pubDate></item><item><title>PCGamer Article Performance Audit</title><link>https://simonwillison.net/2026/Mar/22/pcgamer-audit/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/pcgamer-audit#readme">PCGamer Article Performance Audit</a></p>
+    <p>A performance audit of the March 2026 PCGamer article on RSS readers reveals severe page bloat, with over 82% of network traffic and transferred bytes traced to ad-tech, tracking, and programmatic advertising scripts. Despite the core content consisting of just 10-15 KB of text and a handful of images (~150 KB total), the page triggers over 431 network requests and 5.5 MB of transfer (18.8 MB decoded) within 60 seconds—ballooning to 200+ MB in Firefox due to autoplay video carousels and…</p>
+    <p>Stuart Breckenridge pointed out that <a href="https://stuartbreckenridge.net/2026-03-19-pc-gamer-recommends-rss-readers-in-a-37mb-article/">PC Gamer Recommends RSS Readers in a 37MB Article That Just Keeps Downloading</a>, highlighting a truly horrifying example of web bloat that added up to 100s more MBs thanks to auto-playing video ads. I decided to have Claude Code for web use <a href="https://github.com/simonw/rodney/">Rodney</a> to investigate the page - <a href="https://github.com/simonw/research/pull/101#issue-4117308562">prompt here</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/web-performance">web-performance</a>, <a href="https://simonwillison.net/tags/rodney">rodney</a></p>]]></description><pubDate>Sun, 22 Mar 2026 22:49:00 +0000</pubDate></item><item><title>JavaScript Sandboxing Research</title><link>https://simonwillison.net/2026/Mar/22/javascript-sandboxing-research/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/javascript-sandboxing-research#readme">JavaScript Sandboxing Research</a></p>
+    <p>Analyzing current JavaScript sandboxing options for running untrusted code, this research compares core approaches in Node.js (including worker_threads, node:vm, and the Permission Model), prominent npm packages (isolated-vm, vm2), and alternative engines like quickjs-emscripten.</p>
+    <p>Aaron Harper <a href="https://www.inngest.com/blog/node-worker-threads">wrote about Node.js worker threads</a>, which inspired me to run a research task to see if they might help with running JavaScript in a sandbox. Claude Code went way beyond my initial question and produced a comparison of <a href="https://github.com/laverdet/isolated-vm">isolated-vm</a>, <a href="https://github.com/patriksimek/vm2">vm2</a>, <a href="https://github.com/justjake/quickjs-emscripten">quickjs-emscripten</a>, <a href="https://github.com/quickjs-ng/quickjs">QuickJS-NG</a>, <a href="https://github.com/tc39/proposal-shadowrealm">ShadowRealm</a>, and <a href="https://docs.deno.com/runtime/manual/runtime/workers/">Deno Workers</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/nodejs">nodejs</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sun, 22 Mar 2026 19:53:00 +0000</pubDate></item><item><title>DNS Lookup</title><link>https://simonwillison.net/2026/Mar/22/dns/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/colophon#dns.html">DNS Lookup</a></p>
+    
+    <p>TIL that Cloudflare's 1.1.1.1 DNS service (and 1.1.1.2 and 1.1.1.3, which block malware and malware + adult content respectively) has a CORS-enabled JSON API, so I <a href="https://github.com/simonw/tools/pull/258#issue-4116864108">had Claude Code build me</a> a UI for running DNS queries against all three of those resolvers.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/dns">dns</a>, <a href="https://simonwillison.net/tags/cors">cors</a>, <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a></p>]]></description><pubDate>Sun, 22 Mar 2026 19:16:30 +0000</pubDate></item><item><title>Merge State Visualizer</title><link>https://simonwillison.net/2026/Mar/22/manyana/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/colophon#manyana.html">Merge State Visualizer</a></p>
+    <p># CRDT Merge State Visualizer</p>
+    <p>Bram Cohen wrote about his <a href="https://bramcohen.com/p/manyana">coherent vision for the future of version control</a> using CRDTs, illustrated by <a href="https://github.com/bramcohen/manyana/blob/main/manyana.py">470 lines of Python</a>.</p>
+<p>I fed that Python (minus comments) into Claude and asked for <a href="https://claude.ai/share/8ce777cd-c7c3-4656-a45e-acbf66bf994b">an explanation</a>, then had it use Pyodide to build me an interactive UI for seeing how the algorithms work.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/vcs">vcs</a>, <a href="https://simonwillison.net/tags/pyodide">pyodide</a>, <a href="https://simonwillison.net/tags/bram-cohen">bram-cohen</a>, <a href="https://simonwillison.net/tags/crdt">crdt</a></p>]]></description><pubDate>Sun, 22 Mar 2026 18:57:32 +0000</pubDate></item><item><title>Profiling Hacker News users based on their comments</title><link>https://simonwillison.net/2026/Mar/21/profiling-hacker-news-users/#atom-everything</link><description><![CDATA[<p>Here's a mildly dystopian prompt I've been experimenting with recently: "Profile this user", accompanied by a copy of their last 1,000 comments on Hacker News.</p>
 <p>Obtaining those comments is easy. The <a href="https://hn.algolia.com/api">Algolia Hacker News API</a> supports listing comments sorted by date that have a specific tag, and the author of a comment is tagged there as <code>author_username</code>. Here's a JSON feed of my (<code>simonw</code>) most recent comments, for example:</p>
 <p><a href="https://hn.algolia.com/api/v1/search_by_date?tags=comment,author_simonw&amp;hitsPerPage=1000">https://hn.algolia.com/api/v1/search_by_date?tags=comment,author_simonw&amp;hitsPerPage=1000</a></p>
 <p>The Algolia API is served with open CORS headers, which means you can access the API from JavaScript running on any web page.</p>
@@ -58,8 +163,9 @@ Run this on your main branch to fetch other contributions from the remote reposi
 <p>There are multiple ways to merge changes, including merge, rebase, squash or fast-forward. If you can't remember the details of these that's fine:
 <div><markdown-copy><textarea>Discuss options for integrating changes from main</textarea></markdown-copy></div>
 Agents are great at explaining the pros and cons of different merging strategies, and everything in git can always be undone so there's minimal risk in trying new things.
-<div><markdown-copy><textarea>Sort out this git mess for me</textarea></markdown-copy></div>
-I use this universal prompt surprisingly often! There are plenty of ways you can get into a mess with Git, often through pulls or rebase commands that end in a merge conflict, or just through adding the wrong things to Git's staging environment.</p>
+<div><markdown-copy><textarea>Sort out this git mess for me</textarea></markdown-copy></div></p>
+<p>I use this universal prompt surprisingly often! Here's <a href="https://gisthost.github.io/?2aa2ee2fbd08d272528bbfc3b54a1a7d/page-001.html">a recent example</a> where it fixed a cherry-pick for me that failed with a merge conflict.</p>
+<p>There are plenty of ways you can get into a mess with Git, often through pulls or rebase commands that end in a merge conflict, or just through adding the wrong things to Git's staging environment.</p>
 <p>Unpicking those used to be the most difficult and time consuming parts of working with Git. No more! Coding agents can navigate the most Byzantine of merge conflicts, reasoning through the intent of the new code and figuring out what to keep and how to combine conflicting changes. If your code has automated tests (and <a href="https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/">it should</a>) the agent can ensure those pass before finalizing that merge.</p>
 <p><div><markdown-copy><textarea>Find and recover my code that does ...</textarea></markdown-copy></div>
 If you lose code that you are working on that's previously been committed (or saved with <code>git stash</code>) your agent can probably find it for you. </p>
@@ -812,113 +918,4 @@ Brutal satire on the whole vibe-porting license washing thing (<a href="https://
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47350424">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a></p>]]></description><pubDate>Thu, 12 Mar 2026 20:08:55 +0000</pubDate></item><item><title>Coding After Coders: The End of Computer Programming as We Know It</title><link>https://simonwillison.net/2026/Mar/12/coding-after-coders/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.nytimes.com/2026/03/12/magazine/ai-coding-programming-jobs-claude-chatgpt.html?unlocked_article_code=1.SlA.DBan.wbQDi-hptjj6">Coding After Coders: The End of Computer Programming as We Know It</a></strong></p>
-Epic piece on AI-assisted development by Clive Thompson for the New York Times Magazine, who spoke to more than 70 software developers from companies like Google, Amazon, Microsoft, Apple, plus other individuals including Anil Dash, Thomas Ptacek, Steve Yegge, and myself.</p>
-<p>I think the piece accurately and clearly captures what's going on in our industry right now in terms appropriate for a wider audience.</p>
-<p>I talked to Clive a few weeks ago. Here's the quote from me that made it into the piece.</p>
-<blockquote>
-<p>Given A.I.’s penchant to hallucinate, it might seem reckless to let agents push code out into the real world. But software developers point out that coding has a unique quality: They can tether their A.I.s to reality, because they can demand the agents test the code to see if it runs correctly. “I feel like programmers have it easy,” says Simon Willison, a tech entrepreneur and an influential blogger about how to code using A.I. “If you’re a lawyer, you’re screwed, right?” There’s no way to automatically check a legal brief written by A.I. for hallucinations — other than face total humiliation in court.</p>
-</blockquote>
-<p>The piece does raise the question of what this means for the future of our chosen line of work, but the general attitude from the developers interviewed was optimistic - there's even a mention of the possibility that the Jevons paradox might increase demand overall.</p>
-<p>One critical voice came from an Apple engineer:</p>
-<blockquote>
-<p>A few programmers did say that they lamented the demise of hand-crafting their work. “I believe that it can be fun and fulfilling and engaging, and having the computer do it for you strips you of that,” one Apple engineer told me. (He asked to remain unnamed so he wouldn’t get in trouble for criticizing Apple’s embrace of A.I.)</p>
-</blockquote>
-<p>That request to remain anonymous is a sharp reminder that corporate dynamics may be suppressing an unknown number of voices on this topic.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/new-york-times">new-york-times</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/press-quotes">press-quotes</a>, <a href="https://simonwillison.net/tags/deep-blue">deep-blue</a></p>]]></description><pubDate>Thu, 12 Mar 2026 19:23:44 +0000</pubDate></item><item><title>Quoting Les Orchard</title><link>https://simonwillison.net/2026/Mar/12/les-orchard/#atom-everything</link><description><![CDATA[<blockquote cite="https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/"><p>Here's what I think is happening: AI-assisted coding is exposing a divide among developers that was always there but maybe less visible.</p>
-<p>Before AI, both camps were doing the same thing every day. Writing code by hand. Using the same editors, the same languages, the same pull request workflows. The craft-lovers and the make-it-go people sat next to each other, shipped the same products, looked indistinguishable. The <em>motivation</em> behind the work was invisible because the process was identical.</p>
-<p>Now there's a fork in the road. You can let the machine write the code and focus on directing what gets built, or you can insist on hand-crafting it. And suddenly the reason you got into this in the first place becomes visible, because the two camps are making different choices at that fork.</p></blockquote>
-<p class="cite">&mdash; <a href="https://blog.lmorchard.com/2026/03/11/grief-and-the-ai-split/">Les Orchard</a>, Grief and the AI Split</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/les-orchard">les-orchard</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/deep-blue">deep-blue</a></p>]]></description><pubDate>Thu, 12 Mar 2026 16:28:07 +0000</pubDate></item><item><title>Sorting algorithms</title><link>https://simonwillison.net/2026/Mar/11/sorting-algorithms/#atom-everything</link><description><![CDATA[<p><strong><a href="https://tools.simonwillison.net/sort-algorithms">Sorting algorithms</a></strong></p>
-Today in animated explanations built using Claude: I've always been a fan of animated demonstrations of sorting algorithms so I decided to spin some up on my phone using Claude Artifacts, then added Python's timsort algorithm, then a feature to run them all at once. Here's the <a href="https://claude.ai/share/2c09f6f7-57ed-47eb-af2e-fc39ddc4c39f">full sequence of prompts</a>:</p>
-<blockquote>
-<p>Interactive animated demos of the most common sorting algorithms</p>
-</blockquote>
-<p>This gave me bubble sort, selection sort, insertion sort, merge sort, quick sort, and heap sort.</p>
-<blockquote>
-<p>Add timsort, look up details in a clone of python/cpython from GitHub</p>
-</blockquote>
-<p>Let's add Python's <a href="https://en.wikipedia.org/wiki/Timsort">Timsort</a>! Regular Claude chat can clone repos from GitHub these days. In the transcript you can see it clone the repo and then consult <a href="https://github.com/python/cpython/blob/d19de375a204c74ab5f3a28ec42335bae139033d/Objects/listsort.txt">Objects/listsort.txt</a> and <a href="https://github.com/python/cpython/blob/d19de375a204c74ab5f3a28ec42335bae139033d/Objects/listobject.c">Objects/listobject.c</a>. (I should note that when I asked GPT-5.4 Thinking to review Claude's implementation <a href="https://chatgpt.com/share/69b1fc93-f360-8006-b8b7-22c3da639367">it picked holes in it</a> and said the code "is a simplified, Timsort-inspired adaptive mergesort".)</p>
-<blockquote>
-<p>I don't like the dark color scheme on the buttons, do better</p>
-<p>Also add a "run all" button which shows smaller animated charts for every algorithm at once in a grid and runs them all at the same time</p>
-</blockquote>
-<p>It came up with a color scheme I liked better, "do better" is a fun prompt, and now the "Run all" button produces this effect:</p>
-<p><img alt="Animated sorting algorithm race visualization titled &quot;All algorithms racing&quot; with controls for SIZE (50) and SPEED (100), Stop and Shuffle buttons, and a &quot;Back to single&quot; button. A legend shows Comparing (pink), Swapping (orange), Pivot (red), and Sorted (purple) indicators. Seven algorithms race simultaneously in card panels: Bubble sort (Sorting… — Comparisons: 312, Swaps: 250), Selection sort (Sorting… — Comparisons: 550, Swaps: 12), Insertion sort (Sorting… — Comparisons: 295, Swaps: 266), Merge sort (#3 — Comparisons: 225, Swaps: 225), Quick sort (#2 — Comparisons: 212, Swaps: 103), Heap sort (Sorting… — Comparisons: 358, Swaps: 203), and Timsort (#1 — Comparisons: 215, Swaps: 332). Finished algorithms (Timsort, Quick sort, Merge sort) display fully sorted purple bar charts and are highlighted with purple borders." src="https://static.simonwillison.net/static/2026/sorts-32-colors-lossy.gif" />
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/algorithms">algorithms</a>, <a href="https://simonwillison.net/tags/computer-science">computer-science</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/sorting">sorting</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/explorables">explorables</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Wed, 11 Mar 2026 22:58:06 +0000</pubDate></item><item><title>Quoting John Carmack</title><link>https://simonwillison.net/2026/Mar/11/john-carmack/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/ID_AA_Carmack/status/1405932642005041153"><p>It is hard for less experienced developers to appreciate how rarely architecting for future requirements / applications turns out net-positive.</p></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/ID_AA_Carmack/status/1405932642005041153">John Carmack</a>, a tweet in June 2021</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/john-carmack">john-carmack</a>, <a href="https://simonwillison.net/tags/software-engineering">software-engineering</a>, <a href="https://simonwillison.net/tags/yagni">yagni</a></p>]]></description><pubDate>Wed, 11 Mar 2026 14:47:09 +0000</pubDate></item><item><title>AI should help us produce better code</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/better-code/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
-    <p>Many developers worry that outsourcing their code to AI tools will result in a drop in quality, producing bad code that's churned out fast enough that decision makers are willing to overlook its flaws.</p>
-<p>If adopting coding agents demonstrably reduces the quality of the code and features you are producing, you should address that problem directly: figure out which aspects of your process are hurting the quality of your output and fix them.</p>
-<p>Shipping worse code with agents is a <em>choice</em>. We can choose to ship code <a href="https://simonwillison.net/guides/agentic-engineering-patterns/code-is-cheap/#good-code">that is better</a> instead.</p>
-<h2 id="avoiding-taking-on-technical-debt">Avoiding taking on technical debt</h2>
-<p>I like to think about shipping better code in terms of technical debt. We take on technical debt as the result of trade-offs: doing things "the right way" would take too long, so we work within the time constraints we are under and cross our fingers that our project will survive long enough to pay down the debt later on.</p>
-<p>The best mitigation for technical debt is to avoid taking it on in the first place.</p>
-<p>In my experience, a common category of technical debt fixes is changes that are simple but time-consuming.</p>
-<ul>
-<li>Our original API design doesn't cover an important case that emerged later on. Fixing that API would require changing code in dozens of different places, making it quicker to add a very slightly different new API and live with the duplication.</li>
-<li>We made a poor choice naming a concept early on - teams rather than groups for example - but cleaning up that nomenclature everywhere in the code is too much work so we only fix it in the UI.</li>
-<li>Our system has grown duplicate but slightly different functionality over time which needs combining and refactoring.</li>
-<li>One of our files has grown to several thousand lines of code which we would ideally split into separate modules.</li>
-</ul>
-<p>All of these changes are conceptually simple but still need time dedicated to them, which can be hard to justify given more pressing issues.</p>
-<h2 id="coding-agents-can-handle-these-for-us">Coding agents can handle these for us</h2>
-<p>Refactoring tasks like this are an <em>ideal</em> application of coding agents.</p>
-<p>Fire up an agent, tell it what to change and leave it to churn away in a branch or worktree somewhere in the background.</p>
-<p>I usually use asynchronous coding agents for this such as <a href="https://jules.google.com/">Gemini Jules</a>, <a href="https://developers.openai.com/codex/cloud/">OpenAI Codex web</a>, or <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code on the web</a>. That way I can run those refactoring jobs without interrupting my flow on my laptop.</p>
-<p>Evaluate the result in a Pull Request. If it's good, land it. If it's almost there, prompt it and tell it what to do differently. If it's bad, throw it away.</p>
-<p>The cost of these code improvements has dropped so low that we can afford a zero tolerance attitude to minor code smells and inconveniences.</p>
-<h2 id="ai-tools-let-us-consider-more-options">AI tools let us consider more options</h2>
-<p>Any software development task comes with a wealth of options for approaching the problem. Some of the most significant technical debt comes from making poor choices at the planning step - missing out on an obvious simple solution, or picking a technology that later turns out not to be exactly the right fit.</p>
-<p>LLMs can help ensure we don't miss any obvious solutions that may not have crossed our radar before. They'll only suggest solutions that are common in their training data but those tend to be the <a href="https://boringtechnology.club">Boring Technology</a> that's most likely to work.</p>
-<p>More importantly, coding agents can help with <strong>exploratory prototyping</strong>.</p>
-<p>The best way to make confident technology choices is to prove that they are fit for purpose with a prototype.</p>
-<p>Is Redis a good choice for the activity feed on a site which expects thousands of concurrent users?</p>
-<p>The best way to know for sure is to wire up a simulation of that system and run a load test against it to see what breaks.</p>
-<p>Coding agents can build this kind of simulation from a single well crafted prompt, which drops the cost of this kind of experiment to almost nothing. And since they're so cheap we can run multiple experiments at once, testing several solutions to pick the one that is the best fit for our problem.</p>
-<h2 id="embrace-the-compound-engineering-loop">Embrace the compound engineering loop</h2>
-<p>Agents follow instructions. We can evolve these instructions over time to get better results from future runs, based on what we've learned previously.</p>
-<p>Dan Shipper and Kieran Klaassen at Every describe their company's approach to working with coding agents as <a href="https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents">Compound Engineering</a>. Every coding project they complete ends with a retrospective, which they call the <strong>compound step</strong> where they take what worked and document that for future agent runs.</p>
-<p>If we want the best results from our agents, we should aim to continually increase the quality of our codebase over time. Small improvements compound. Quality enhancements that used to be time-consuming have now dropped in cost to the point that there's no excuse not to invest in quality at the same time as shipping new features. Coding agents mean we can finally have both.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 10 Mar 2026 22:25:09 +0000</pubDate></item><item><title>Production query plans without production data</title><link>https://simonwillison.net/2026/Mar/9/production-query-plans-without-production-data/#atom-everything</link><description><![CDATA[<p><strong><a href="https://boringsql.com/posts/portable-stats/">Production query plans without production data</a></strong></p>
-Radim Marek describes the new <a href="https://www.postgresql.org/docs/current/functions-admin.html#FUNCTIONS-ADMIN-STATSMOD"><code>pg_restore_relation_stats()</code> and <code>pg_restore_attribute_stats()</code> functions</a> that were introduced <a href="https://www.postgresql.org/docs/current/release-18.html">in PostgreSQL 18</a> in September 2025.</p>
-<p>The PostgreSQL query planner makes use of internal statistics to help it decide how to best execute a query. These statistics often differ between production data and development environments, which means the query plans used in production may not be replicable in development.</p>
-<p>PostgreSQL's new features now let you copy those statistics down to your development environment, allowing you to simulate the plans for production workloads without needing to copy in all of that data first.</p>
-<p>I found this illustrative example useful:</p>
-<pre><code>SELECT pg_restore_attribute_stats(
-    'schemaname', 'public',
-    'relname', 'test_orders',
-    'attname', 'status',
-    'inherited', false::boolean,
-    'null_frac', 0.0::real,
-    'avg_width', 9::integer,
-    'n_distinct', 5::real,
-    'most_common_vals', '{delivered,shipped,cancelled,pending,returned}'::text,
-    'most_common_freqs', '{0.95,0.015,0.015,0.015,0.005}'::real[]
-);
-</code></pre>
-<p>This simulates statistics for a <code>status</code> column that is 95% <code>delivered</code>. Based on these statistics PostgreSQL can decide to use an index for <code>status = 'shipped'</code> but to instead perform a full table scan for <code>status = 'delivered'</code>.</p>
-<p>These statistics are pretty small. Radim says:</p>
-<blockquote>
-<p>Statistics dumps are tiny. A database with hundreds of tables and thousands of columns produces a statistics dump under 1MB. The production data might be hundreds of GB. The statistics that describe it fit in a text file.</p>
-</blockquote>
-<p>I posted on the SQLite user forum asking if SQLite could offer a similar feature and D. Richard Hipp promptly replied <a href="https://sqlite.org/forum/forumpost/480c5cb8a3898346">that it has one already</a>:</p>
-<blockquote>
-<p>All of the data statistics used by the query planner in SQLite are available in the <a href="https://sqlite.org/fileformat.html#the_sqlite_stat1_table">sqlite_stat1 table</a> (or also in the <a href="https://sqlite.org/fileformat.html#the_sqlite_stat4_table">sqlite_stat4 table</a> if you happen to have compiled with SQLITE_ENABLE_STAT4).  That table is writable. You can inject whatever alternative statistics you like.</p>
-<p>This approach to controlling the query planner is mentioned in the documentation:
-<a href="https://sqlite.org/optoverview.html#manual_control_of_query_plans_using_sqlite_stat_tables">https://sqlite.org/optoverview.html#manual_control_of_query_plans_using_sqlite_stat_tables</a>.</p>
-<p>See also <a href="https://sqlite.org/lang_analyze.html#fixed_results_of_analyze">https://sqlite.org/lang_analyze.html#fixed_results_of_analyze</a>.</p>
-<p>The ".fullschema" command in the CLI outputs both the schema and the content of the sqlite_statN tables, exactly for the reasons outlined above - so that we can reproduce query problems for testing without have to load multi-terabyte database files.</p>
-</blockquote>
-
-    <p><small></small>Via <a href="https://lobste.rs/s/o8vbb7/production_query_plans_without">Lobste.rs</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/databases">databases</a>, <a href="https://simonwillison.net/tags/postgresql">postgresql</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/d-richard-hipp">d-richard-hipp</a></p>]]></description><pubDate>Mon, 9 Mar 2026 15:05:15 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a></p>]]></description><pubDate>Thu, 12 Mar 2026 20:08:55 +0000</pubDate></item></channel></rss>
