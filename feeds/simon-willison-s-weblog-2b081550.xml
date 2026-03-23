@@ -467,6 +467,7 @@ llm -m mistral/mistral-small-2603 "Generate an SVG of a pelican riding a bicycle
 </code></pre>
 <p><img alt="The bicycle is upside down and mangled and the pelican is a series of grey curves with a triangular beak." src="https://static.simonwillison.net/static/2026/mistral-small-4.png" /></p>
 <p>I couldn't find a way to set the reasoning effort in their <a href="https://docs.mistral.ai/api/endpoint/chat#operation-chat_completion_v1_chat_completions_post">API documentation</a>, so hopefully that's a feature which will land soon.</p>
+<p><em><strong>Update 23rd March</strong>: Here's new documentation for the <a href="https://docs.mistral.ai/capabilities/reasoning/adjustable">reasoning_effort parameter</a>.</em></p>
 <p>Also from Mistral today and fitting their -stral naming convention is <a href="https://mistral.ai/news/leanstral">Leanstral</a>, an open weight model that is specifically tuned to help output the <a href="https://lean-lang.org/">Lean 4</a> formally verifiable coding language. I haven't explored Lean at all so I have no way to credibly evaluate this, but it's interesting to see them target one specific language in this way.
 
 
