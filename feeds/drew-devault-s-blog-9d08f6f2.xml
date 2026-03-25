@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>The cults of TDD and GenAI</title><link>https://drewdevault.com/2026/01/29/2026-01-29-Cult-of-TDD-and-LLMs.html</link><description><![CDATA[<p>I&rsquo;ve gotten a lot of flack throughout my career over my disdain towards
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Drew DeVault&apos;s blog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/drew-devault-s-blog-9d08f6f2.xml</link><description>Archived feed from https://drewdevault.com/blog/index.xml</description><item><title>A eulogy for Vim</title><link>https://drewdevault.com/2026/03/25/2026-03-25-Forking-vim.html</link><description><![CDATA[<p>Vim is important to me. I&rsquo;m using it to write the words you&rsquo;re reading right
+now. In fact, almost every word I have ever committed to posterity, through this
+blog, in my code, all of the docs I&rsquo;ve written, emails I&rsquo;ve sent, and more,
+almost all of it has passed through Vim.</p>
+<p>My relationship with the software is intimate, almost as if it were an extra
+limb. I don&rsquo;t think about what I&rsquo;m doing when I use it. All of Vim&rsquo;s modes and
+keybindings are deeply ingrained in my muscle memory. Using it just feels like
+my thoughts flowing from my head, into my fingers, into a Vim-shaped extension
+of my body, and out into the world. The unique and profound nature of my
+relationship with this software is not lost on me.</p>
+<p><img src="https://redacted.moe/f/66af7169.jpg" alt="A picture of my right hand, with the letters &ldquo;hjkl&rdquo; tattooed on the wrist"></p>
+<p>I didn&rsquo;t know Bram Moolenaar. We never met, nor exchanged correspondence. But,
+after I moved to the Netherlands, Bram&rsquo;s home country, in a strange way I felt a
+little bit closer to him. He passed away a couple of years after I moved here,
+and his funeral was held not far from where I lived at the time. When that
+happened, I experienced an odd kind of mourning. He was still young, and he had
+affected my own life profoundly. He was a stranger, and I never got to thank
+him.</p>
+<p>The people he entrusted Vim to were not strangers, they knew Bram and worked
+with him often, and he trusted them. It&rsquo;s not my place to judge their work as
+disrespectful to his memory, or out of line with what he would have wanted. Even
+knowing Bram only through Vim, I know he and I disagreed often. However, the
+most personal thing I know about Bram, and that many people remember about him,
+was his altruistic commitment to a single cause: providing education and
+healthcare to Ugandan children in need. So, at the very least, I know that he
+cared.</p>
+<p>I won&rsquo;t speculate on how he would have felt about generative AI, but I can say
+that GenAI is something I care about. It causes a lot of problems for a lot of
+people. It drives rising energy prices in poor communities, disrupts wildlife
+and fresh water supplies, increases pollution, and stresses global supply
+chains. It re-enforces the horrible, dangerous working conditions that miners in
+many African countries are enduring to supply rare metals like Cobalt for the
+billions of new chips that this boom demands. And at a moment when the climate
+demands immediate action to reduce our footprint on this planet, the AI boom is
+driving data centers to consume a full 1.5% of the world&rsquo;s total energy
+production in order to eliminate the jobs of the poor and replace them with a
+robot that lies.</p>
+<p>Meanwhile, this whole circus is enabling the rising tide of fascism around the
+world, not only by supercharging propaganda but also by directly financially
+supporting fascist policies and policymakers.  All this to enrich the few,
+centralize power, reduce competition, and underwrite an enormous bubble that,
+once it bursts, will ruin the lives of millions of the world&rsquo;s poor and
+marginalized classes.</p>
+<p>I don&rsquo;t think it&rsquo;s <em>cute</em> that someone <a href="https://www.vim.org/vim-9.2-released.php#:~:text=The%20maturity,Copilot">vibe coded &ldquo;battleship&rdquo; in VimScript</a>.
+I think it&rsquo;s more important that we stop collectively pretending that we don&rsquo;t
+understand how awful all of this is. I don&rsquo;t want to use software which has
+slop in it. I do what I can to avoid it, and sadly even Vim now comes under
+scrutiny in that effort as both Vim and NeoVim are relying on LLMs to develop
+the software.</p>
+<p>So this is how, a few years after Bram&rsquo;s passing, I find myself in another
+unusual moment of mourning: mourning Vim itself. What an odd feeling.</p>
+<hr>
+<p>To keep my conscience clear, and continue to enjoy the relationship I have with
+this amazing piece of software, I have forked Vim. You can find my fork here:
+<a href="https://sr.ht/~sircmpwn/vim-classic/">Vim Classic</a>.</p>
+<p>The choice of which version to use as the basis for a fork was a bit difficult.
+The last version of Vim released during Bram&rsquo;s lifetime was Vim 9.0. To me, that
+seems like a good starting point. But, in the end, I chose to base my fork on
+Vim 8.2.0148 instead. Patch 148 was the patch immediately prior to the
+introduction of Vim9 Script, Vim 9.0&rsquo;s flagship feature.</p>
+<p>I&rsquo;m sure Bram worked hard on Vim9 script, and I want to honor that. At the same
+time, it was still very new when he passed away, and the job of fully realizing
+its potential was handed down to the current maintainers. Its absence from Vim
+Classic is an honest assessment that I don&rsquo;t have the time or energy to try to
+sort out all of the work on Vim9 which followed in Bram&rsquo;s footsteps, and decide
+what stays and what goes. It seems like a useful line to draw in the sand: Vim
+Classic is compatible with legacy plugins, but not the newfangled stuff.</p>
+<p>Since forking from this base, I have backported a handful of patches, most of
+which address CVEs discovered after this release, but others which address minor
+bug fixes. I also penned a handful of original patches which bring the codebase
+from this time up to snuff for building it on newer toolchains. My old vimrc
+<a href="https://paste.sr.ht/~sircmpwn/bf58300e4b11542b17eeece9a3671656172f86c8">needed very few changes</a> to work on this version of Vim, and all of
+my plugins work with the exception of fzf.vim, which I would like to fix at some
+point (or maybe a sympathetic reader is willing to work on backporting the
+necessary changes).</p>
+<p>I plan to use this for a little while, look for sore points and rough edges,
+collect feedback from other users, and then tag a little release soon. Going
+forward, maintenance will be slow and quiet. I welcome your patches,
+particularly to help with maintaining the runtime scripts, stuff like making
+sure new language features end up in the syntax files. I&rsquo;ll also gladly accept
+new bug fixes, and maybe even a few new features if a good case can be made for
+including them. Backporting small patches from Vim upstream will be considered,
+with extra scrutiny.</p>
+<p>In short, I invite you to use Vim Classic, if you feel the same way as me, and
+to maintain it with me, contributing the patches you need to support your own
+use cases.</p>]]></description><pubDate>Wed, 25 Mar 2026 00:00:00 +0000</pubDate></item><item><title>The cults of TDD and GenAI</title><link>https://drewdevault.com/2026/01/29/2026-01-29-Cult-of-TDD-and-LLMs.html</link><description><![CDATA[<p>I&rsquo;ve gotten a lot of flack throughout my career over my disdain towards
 test-driven development (TDD). I have met a lot of people who swear by it! And,
 I have also met a lot of people who insisted that I adopt it, too, often with
 the implied threat of appealing to my boss if appealing to me didn&rsquo;t work.</p>
