@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Auto mode for Claude Code</title><link>https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything</link><description><![CDATA[<p><strong><a href="https://claude.com/blog/auto-mode">Auto mode for Claude Code</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>LiteLLM Hack: Were You One of the 47,000?</title><link>https://simonwillison.net/2026/Mar/25/litellm-hack/#atom-everything</link><description><![CDATA[<p><strong><a href="https://futuresearch.ai/blog/litellm-hack-were-you-one-of-the-47000/">LiteLLM Hack: Were You One of the 47,000?</a></strong></p>
+Daniel Hnyk used the <a href="https://console.cloud.google.com/bigquery?p=bigquery-public-data&amp;d=pypi">BigQuery PyPI dataset</a> to determine how many downloads there were of <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">the exploited LiteLLM packages</a> during the 46 minute period they were live on PyPI.</p>
+<p>They also identified 2,337 packages that depended on LiteLLM - 88% of which did not pin versions in a way that would have avoided the exploited version.
+
+    <p><small></small>Via <a href="https://twitter.com/hnykda/status/2036834100342825369">@hnykda</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/supply-chain">supply-chain</a></p>]]></description><pubDate>Wed, 25 Mar 2026 17:21:04 +0000</pubDate></item><item><title>Auto mode for Claude Code</title><link>https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything</link><description><![CDATA[<p><strong><a href="https://claude.com/blog/auto-mode">Auto mode for Claude Code</a></strong></p>
 Really interesting new development in Claude Code today as an alternative to <code>--dangerously-skip-permissions</code>:</p>
 <blockquote>
 <p>Today, we're introducing auto mode, a new permissions mode in Claude Code where Claude makes permission decisions on your behalf, with safeguards monitoring actions before they run.</p>
@@ -558,22 +565,4 @@ For tasks that involve editing several files - and where those files are not dep
 <li><a href="https://cursor.com/docs/subagents">Cursor Subagents</a></li>
 </ul>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 17 Mar 2026 12:32:28 +0000</pubDate></item><item><title>Introducing Mistral Small 4</title><link>https://simonwillison.net/2026/Mar/16/mistral-small-4/#atom-everything</link><description><![CDATA[<p><strong><a href="https://mistral.ai/news/mistral-small-4">Introducing Mistral Small 4</a></strong></p>
-Big new release from Mistral today (despite the name) - a new Apache 2 licensed 119B parameter (Mixture-of-Experts, 6B active) model which they describe like this:</p>
-<blockquote>
-<p>Mistral Small 4 is the first Mistral model to unify the capabilities of our flagship models, Magistral for reasoning, Pixtral for multimodal, and Devstral for agentic coding, into a single, versatile model.</p>
-</blockquote>
-<p>It supports <code>reasoning_effort="none"</code> or <code>reasoning_effort="high"</code>, with the latter providing "equivalent verbosity to previous Magistral models". </p>
-<p>The new model is <a href="https://huggingface.co/mistralai/Mistral-Small-4-119B-2603/tree/main">242GB on Hugging Face</a>.</p>
-<p>I <a href="https://gist.github.com/simonw/3dec228577559f15f26204a3cc550583">tried it out</a> via the Mistral API using <a href="https://github.com/simonw/llm-mistral">llm-mistral</a>:</p>
-<pre><code>llm install llm-mistral
-llm mistral refresh
-llm -m mistral/mistral-small-2603 "Generate an SVG of a pelican riding a bicycle"
-</code></pre>
-<p><img alt="The bicycle is upside down and mangled and the pelican is a series of grey curves with a triangular beak." src="https://static.simonwillison.net/static/2026/mistral-small-4.png" /></p>
-<p>I couldn't find a way to set the reasoning effort in their <a href="https://docs.mistral.ai/api/endpoint/chat#operation-chat_completion_v1_chat_completions_post">API documentation</a>, so hopefully that's a feature which will land soon.</p>
-<p><em><strong>Update 23rd March</strong>: Here's new documentation for the <a href="https://docs.mistral.ai/capabilities/reasoning/adjustable">reasoning_effort parameter</a>.</em></p>
-<p>Also from Mistral today and fitting their -stral naming convention is <a href="https://mistral.ai/news/leanstral">Leanstral</a>, an open weight model that is specifically tuned to help output the <a href="https://lean-lang.org/">Lean 4</a> formally verifiable coding language. I haven't explored Lean at all so I have no way to credibly evaluate this, but it's interesting to see them target one specific language in this way.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/mistral">mistral</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 16 Mar 2026 23:41:17 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 17 Mar 2026 12:32:28 +0000</pubDate></item></channel></rss>

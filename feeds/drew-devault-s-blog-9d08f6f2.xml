@@ -33,8 +33,7 @@ many African countries are enduring to supply rare metals like Cobalt for the
 billions of new chips that this boom demands. And at a moment when the climate
 demands immediate action to reduce our footprint on this planet, the AI boom is
 driving data centers to consume a full 1.5% of the world&rsquo;s total energy
-production in order to eliminate the jobs of the poor and replace them with a
-robot that lies.</p>
+production in order to eliminate jobs and replace them with a robot that lies.</p>
 <p>Meanwhile, this whole circus is enabling the rising tide of fascism around the
 world, not only by supercharging propaganda but also by directly financially
 supporting fascist policies and policymakers.  All this to enrich the few,
@@ -45,8 +44,8 @@ marginalized classes.</p>
 I think it&rsquo;s more important that we stop collectively pretending that we don&rsquo;t
 understand how awful all of this is. I don&rsquo;t want to use software which has
 slop in it. I do what I can to avoid it, and sadly even Vim now comes under
-scrutiny in that effort as both Vim and NeoVim are relying on LLMs to develop
-the software.</p>
+scrutiny in that effort as both <a href="https://github.com/vim/vim/issues/18800#issuecomment-3568099543">Vim</a> and <a href="https://github.com/neovim/neovim/issues?q=label%3A%22AI%20assisted%20%F0%9F%A4%96%22">NeoVim</a> are
+relying on LLMs to develop the software.</p>
 <p>So this is how, a few years after Bram&rsquo;s passing, I find myself in another
 unusual moment of mourning: mourning Vim itself. What an odd feeling.</p>
 <hr>
