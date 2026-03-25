@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>LiteLLM Hack: Were You One of the 47,000?</title><link>https://simonwillison.net/2026/Mar/25/litellm-hack/#atom-everything</link><description><![CDATA[<p><strong><a href="https://futuresearch.ai/blog/litellm-hack-were-you-one-of-the-47000/">LiteLLM Hack: Were You One of the 47,000?</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Thoughts on slowing the fuck down</title><link>https://simonwillison.net/2026/Mar/25/thoughts-on-slowing-the-fuck-down/#atom-everything</link><description><![CDATA[<p><strong><a href="https://news.ycombinator.com/item?id=47517539">Thoughts on slowing the fuck down</a></strong></p>
+Mario Zechner created the <a href="https://github.com/badlogic/pi-mono">Pi agent framework</a> used by OpenClaw, giving considerable credibility to his opinions on current trends in agentic engineering. He's not impressed:</p>
+<blockquote>
+<p>We have basically given up all discipline and agency for a sort of addiction, where your highest goal is to produce the largest amount of code in the shortest amount of time. Consequences be damned.</p>
+</blockquote>
+<p>Agents and humans both make mistakes, but agent mistakes accumulate much faster:</p>
+<blockquote>
+<p>A human is a bottleneck. A human cannot shit out 20,000 lines of code in a few hours. Even if the human creates such booboos at high frequency, there's only so many booboos the human can introduce in a codebase per day. [...]</p>
+<p>With an orchestrated army of agents, there is no bottleneck, no human pain. These tiny little harmless booboos suddenly compound at a rate that's unsustainable. You have removed yourself from the loop, so you don't even know that all the innocent booboos have formed a monster of a codebase. You only feel the pain when it's too late. [...]</p>
+<p>You have zero fucking idea what's going on because you delegated all your agency to your agents. You let them run free, and they are merchants of complexity.</p>
+</blockquote>
+<p>I think Mario is exactly right about this. Agents let us move <em>so much faster</em>, but this speed also means that changes which we would normally have considered over the course of weeks are landing in a matter of hours.</p>
+<p>It's so easy to let the codebase evolve outside of our abilities to reason clearly about it. <a href="https://simonwillison.net/tags/cognitive-debt/">Cognitive debt</a> is real.</p>
+<p>Mario recommends slowing down:</p>
+<blockquote>
+<p>Give yourself time to think about what you're actually building and why. Give yourself an opportunity to say, fuck no, we don't need this. Set yourself limits on how much code you let the clanker generate per day, in line with your ability to actually review the code.</p>
+<p>Anything that defines the gestalt of your system, that is architecture, API, and so on, write it by hand. [...]</p>
+</blockquote>
+<p>I'm not convinced writing by hand is the best way to address this, but it's absolutely the case that we need the discipline to find a new balance of speed v.s. mental thoroughness now that typing out the code is no longer anywhere close to being the bottleneck on writing software.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/cognitive-debt">cognitive-debt</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:47:17 +0000</pubDate></item><item><title>datasette-llm 0.1a1</title><link>https://simonwillison.net/2026/Mar/25/datasette-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a1">datasette-llm 0.1a1</a></p>
+    <p>New release of the base plugin that makes models from <a href="https://llm.datasette.io/">LLM</a> available for use by other Datasette plugins such as <a href="https://github.com/datasette/datasette-enrichments-llm">datasette-enrichments-llm</a>.</p>
+<blockquote>
+<ul>
+<li>New <a href="https://github.com/datasette/datasette-llm/blob/main/README.md#register_llm_purposes"><code>register_llm_purposes()</code> plugin hook</a> and <code>get_purposes()</code> function for retrieving registered purpose strings. <a href="https://github.com/datasette/datasette-llm/issues/1">#1</a></li>
+</ul>
+</blockquote>
+<p>One of the responsibilities of this plugin is to configure which models are used for which purposes, so you can say in one place "data enrichment uses GPT-5.4-nano but SQL query assistance happens using Sonnet 4.6", for example.</p>
+<p>Plugins that depend on this can use <code>model = await llm.model(purpose="enrichment")</code> to indicate the purpose of the prompts they wish to execute against the model. Those plugins can now also use the new <code>register_llm_purposes()</code> hook to register those purpose strings, which means future plugins can list those purposes in one place to power things like an admin UI for assigning models to purposes.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/plugins">plugins</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:24:31 +0000</pubDate></item><item><title>LiteLLM Hack: Were You One of the 47,000?</title><link>https://simonwillison.net/2026/Mar/25/litellm-hack/#atom-everything</link><description><![CDATA[<p><strong><a href="https://futuresearch.ai/blog/litellm-hack-were-you-one-of-the-47000/">LiteLLM Hack: Were You One of the 47,000?</a></strong></p>
 Daniel Hnyk used the <a href="https://console.cloud.google.com/bigquery?p=bigquery-public-data&amp;d=pypi">BigQuery PyPI dataset</a> to determine how many downloads there were of <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">the exploited LiteLLM packages</a> during the 46 minute period they were live on PyPI. The answer was 46,996 across the two compromised release versions (1.82.7 and 1.82.8).</p>
 <p>They also identified 2,337 packages that depended on LiteLLM - 88% of which did not pin versions in a way that would have avoided the exploited version.
 
@@ -497,72 +528,4 @@ PromptArmor report on a prompt injection attack chain in Snowflake's <a href="ht
 <p><img src="https://static.simonwillison.net/static/2026/gpt-5.4-pelican-family.svg" alt="Described by Claude Opus 4.6: A 5x3 comparison grid of AI-generated cartoon illustrations of a pelican riding a bicycle. Columns are labeled &quot;gpt-5.4-nano&quot;, &quot;gpt-5.4-mini&quot;, and &quot;gpt-5.4&quot; across the top, and rows are labeled &quot;none&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, and &quot;xhigh&quot; down the left side, representing quality/detail settings. In the &quot;none&quot; row, gpt-5.4-nano shows a chaotic white bird with misplaced arrows and tangled wheels on grass, gpt-5.4-mini shows a duck-like brown bird awkwardly straddling a motorcycle-like bike, and gpt-5.4 shows a stiff gray-and-white pelican sitting atop a blue tandem bicycle with extra legs. In the &quot;low&quot; row, nano shows a chubby round white bird pedaling with small feet on grass, mini shows a cleaner white bird riding a blue bicycle with motion lines, and gpt-5.4 shows a pelican with a blue cap riding confidently but with slightly awkward proportions. In the &quot;medium&quot; row, nano regresses to a strange bird standing over bowling balls on ice, mini shows two plump white birds merged onto one yellow-wheeled bicycle, and gpt-5.4 shows a more recognizable gray-and-white pelican on a red bicycle but with tangled extra legs. In the &quot;high&quot; row, nano shows multiple small pelicans crowded around a broken green bicycle on grass with a sun overhead, mini shows a tandem bicycle with two white pelicans and clear blue sky, and gpt-5.4 shows two pelicans stacked on a red tandem bike with the most realistic proportions yet. In the &quot;xhigh&quot; row, nano shows the most detailed scene with a pelican on a detailed bicycle with grass and a large sun but still somewhat jumbled anatomy, mini produces the cleanest single pelican on a yellow-accented bicycle with a light blue sky, and gpt-5.4 shows a well-rendered gray pelican on a teal bicycle with the best overall coherence. Generally, quality improves moving right across models and down through quality tiers, though &quot;medium&quot; is inconsistently worse than &quot;low&quot; for some models, and all images maintain a lighthearted cartoon style with pastel skies and simple backgrounds." style="max-width: 100%;" /></p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 17 Mar 2026 19:39:17 +0000</pubDate></item><item><title>llm 0.29</title><link>https://simonwillison.net/2026/Mar/17/llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.29">llm 0.29</a></p>
-    <p>Adds support for OpenAI's new models <code>gpt-5.4</code>, <code>gpt-5.4-mini</code>, and <code>gpt-5.4-nano</code>.</p>]]></description><pubDate>Tue, 17 Mar 2026 19:24:10 +0000</pubDate></item><item><title>Quoting Tim Schilling</title><link>https://simonwillison.net/2026/Mar/17/tim-schilling/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.better-simple.com/django/2026/03/16/give-django-your-time-and-money/"><p>If you do not understand the ticket, if you do not understand the solution, or if you do not understand the feedback on your PR, then your use of LLM is hurting Django as a whole. [...]</p>
-<p>For a reviewer, it’s demoralizing to communicate with a facade of a human.</p>
-<p>This is because contributing to open source, especially Django, is a communal endeavor. Removing your humanity from that experience makes that endeavor more difficult. If you use an LLM to contribute to Django, it needs to be as a complementary tool, not as your vehicle.</p></blockquote>
-<p class="cite">&mdash; <a href="https://www.better-simple.com/django/2026/03/16/give-django-your-time-and-money/">Tim Schilling</a>, Give Django your time and money, not your tokens</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/django">django</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 17 Mar 2026 16:13:37 +0000</pubDate></item><item><title>Subagents</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/subagents/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
-    <p>LLMs are restricted by their <strong>context limit</strong> - how many tokens they can fit in their working memory at any given time. These values have not increased much over the past two years even as the LLMs themselves have seen dramatic improvements in their abilities - they generally top out at around 1,000,000, and benchmarks frequently report better quality results below 200,000.</p>
-<p>Carefully managing the context such that it fits within those limits is critical to getting great results out of a model.</p>
-<p><strong>Subagents</strong> provide a simple but effective way to handle larger tasks without burning through too much of the coding agent’s valuable top-level context.</p>
-<p>When a coding agent uses a subagent it effectively dispatches a fresh copy of itself to achieve a specified goal, with a new context window that starts with a fresh prompt.</p>
-<h2 id="claude-codes-explore-subagent">Claude Code’s Explore subagent</h2>
-<p>Claude Code uses subagents extensively as part of its standard way of working. Let's use that as an illustrative example.</p>
-<p>Any time you start a new task against an existing repo Claude Code first needs to explore that repo to figure out its general shape and find relevant information needed to achieve that task.</p>
-<p>It does this by constructing a prompt and dispatching a subagent to perform that exploration and return a description of what it finds.</p>
-<p>I kicked off a Claude Code session with a screenshot of <a href="https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/changes/">a page from my guide</a> and this prompt:</p>
-<blockquote>
-<p>Make the chapter diffs also show which characters have changed in this diff view with a darker color of red or green for the individually changed segments of text within the line</p>
-</blockquote>
-<p>Here's <a href="https://gisthost.github.io/?effbdc564939b88fe5c6299387e217da/index.html">the transcript</a> of that session.</p>
-<p>Claude Code started by running an “Explore” subagent with the following starter prompt:</p>
-<blockquote>
-<p>Find the code that implements the diff view for "chapters" in this Django blog. I need to find:</p>
-<ol>
-<li>Templates that render diffs (look for diff-related HTML/CSS with red/green backgrounds)</li>
-<li>Python code that generates diffs (look for difflib usage or similar)</li>
-<li>Any JavaScript related to diff rendering</li>
-<li>CSS styles for the diff view (red/green line backgrounds)</li>
-</ol>
-<p>Search thoroughly - check templates/, static/, blog/ directories. Look for keywords like "diff", "chapter", "revision", "history", "compare".</p>
-</blockquote>
-<p>Subagents work similar to any other tool call: the parent agent dispatches them just as they would any other tool and waits for the response. It's interesting to see models prompt themselves in this way - they generally have good taste in prompting strategies.</p>
-<p>The Explore subagent churned away for a few seconds and returned a response that started like this:</p>
-<blockquote>
-<p>Perfect! Now let me create a comprehensive summary with all the findings:</p>
-<h3 id="summary-chapter-diff-view-implementation">Summary: Chapter Diff View Implementation</h3>
-<p>I found the complete implementation of the diff view for chapters in this Django blog. Here are the key components:</p>
-<h4 id="1-python-code-diff-generation-homeusersimonwillisonblogguidesviewspy-lines-139-202">1. <strong>Python Code - Diff Generation</strong> (<code>/home/user/simonwillisonblog/guides/views.py</code>, lines 139-202)</h4>
-<p>The <code>chapter_changes()</code> view function uses Python's built-in <code>difflib.unified_diff()</code> to generate diffs: […]</p>
-</blockquote>
-<p>The full subagent response included all of the details the parent agent needed in order to start editing the code to address my original request.</p>
-<h2 id="parallel-subagents">Parallel subagents</h2>
-<p>This Explore subagent is the simplest example of how subagents can work, with the parent agent pausing while the subagent runs. The principle advantage of this kind of subagent is that it can work with a fresh context in a way that avoids spending tokens from the parent’s available limit.</p>
-<p>Subagents can also provide a significant performance boost by having the parent agent run multiple subagents at the same time, potentially also using faster and cheaper models such as Claude Haiku to accelerate those tasks.</p>
-<p>Coding agents that support subagents can use them based on your instructions. Try prompts like this:</p>
-<p><div class="codehilite"><pre><span></span><code>Use subagents to find and update all of the templates that are affected by this change.
-</code></pre></div>
-For tasks that involve editing several files - and where those files are not dependent on each other - this can offer a significant speed boost.</p>
-<h2 id="specialist-subagents">Specialist subagents</h2>
-<p>Some coding agents allow subagents to run with further customizations, often in the form of a custom system prompt or custom tools or both, which allow those subagents to take on a different role.</p>
-<p>These roles can cover a variety of useful specialties:</p>
-<ul>
-<li>A <strong>code reviewer</strong> agent can review code and identify bugs, feature gaps or weaknesses in the design.</li>
-<li>A <strong>test runner</strong> agent can run the test. This is particularly worthwhile if your test suite is large and verbose, as the subagent can hide the full test output from the main coding agent and report back with just details of any failures.</li>
-<li>A <strong>debugger</strong> agent can specialize in debugging problems, spending its token allowance reasoning though the codebase and running snippets of code to help isolate steps to reproduce and determine the root cause of a bug.</li>
-</ul>
-<p>While it can be tempting to go overboard breaking up tasks across dozens of different specialist subagents, it's important to remember that the main value of subagents is in preserving that valuable root context and managing token-heavy operations. Your root coding agent is perfectly capable of debugging or reviewing its own output provided it has the tokens to spare.</p>
-<h2 id="official-documentation">Official documentation</h2>
-<p>Several popular coding agents support subagents, each with their own documentation on how to use them:</p>
-<ul>
-<li><a href="https://developers.openai.com/codex/subagents/">OpenAI Codex subagents</a></li>
-<li><a href="https://code.claude.com/docs/en/sub-agents">Claude subagents</a></li>
-<li><a href="https://geminicli.com/docs/core/subagents/">Gemini CLI subagents</a></li>
-<li><a href="https://docs.mistral.ai/mistral-vibe/agents-skills#agent-selection">Mistral Vibe subagents</a></li>
-<li><a href="https://opencode.ai/docs/agents/">OpenCode agents</a></li>
-<li><a href="https://code.visualstudio.com/docs/copilot/agents/subagents">Subagents in Visual Studio Code</a></li>
-<li><a href="https://cursor.com/docs/subagents">Cursor Subagents</a></li>
-</ul>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 17 Mar 2026 12:32:28 +0000</pubDate></item></channel></rss>
+    <p>Adds support for OpenAI's new models <code>gpt-5.4</code>, <code>gpt-5.4-mini</code>, and <code>gpt-5.4-nano</code>.</p>]]></description><pubDate>Tue, 17 Mar 2026 19:24:10 +0000</pubDate></item></channel></rss>
