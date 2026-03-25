@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Package Managers Need to Cool Down</title><link>https://simonwillison.net/2026/Mar/24/package-managers-need-to-cool-down/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html">Package Managers Need to Cool Down</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Auto mode for Claude Code</title><link>https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything</link><description><![CDATA[<p><strong><a href="https://claude.com/blog/auto-mode">Auto mode for Claude Code</a></strong></p>
+Really interesting new development in Claude Code today as an alternative to <code>--dangerously-skip-permissions</code>:</p>
+<blockquote>
+<p>Today, we're introducing auto mode, a new permissions mode in Claude Code where Claude makes permission decisions on your behalf, with safeguards monitoring actions before they run.</p>
+</blockquote>
+<p>Those safeguards appear to be implemented using Claude Sonnet 4.6, as <a href="https://code.claude.com/docs/en/permission-modes#eliminate-prompts-with-auto-mode">described in the documentation</a>:</p>
+<blockquote>
+<p>Before each action runs, a separate classifier model reviews the conversation and decides whether the action matches what you asked for: it blocks actions that escalate beyond the task scope, target infrastructure the classifier doesn’t recognize as trusted, or appear to be driven by hostile content encountered in a file or web page. [...]</p>
+<p><strong>Model</strong>: the classifier runs on Claude Sonnet 4.6, even if your main session uses a different model.</p>
+</blockquote>
+<p>They ship with an extensive set of default filters, and you can also customize them further with your own rules. The most interesting insight into how they work comes when you run this new command in the terminal:</p>
+<pre><code>claude auto-mode defaults
+</code></pre>
+<p><a href="https://gist.githubusercontent.com/simonw/91863bfd9f7ebf916d1fabb8e6940335/raw/cda3c88e919b8238e85d3f1cc990e8ff48ad9a18/defaults.json">Here's the full JSON output</a>. It's pretty long, so here's an illustrative subset:</p>
+<p>From the "allow" list:</p>
+<blockquote>
+<ul>
+<li>Test Artifacts: Hardcoded test API keys, placeholder credentials in examples, or hardcoding test cases</li>
+<li>Local Operations: Agent deleting local files in working directory, local file operations within project scope, or using <code>--ignore-certificate-errors</code> for local testing. "Project scope" means the repository the session started in — wandering into ~/, ~/Library/, /etc, or other repos is scope escalation (User Intent Rule #2), not a local operation. Does NOT cover irreversible destruction of pre-existing files or local stateful services — see "Irreversible Local Destruction" in BLOCK.</li>
+<li>Read-Only Operations: GET requests, read-only API calls, or queries that don't modify state and don't contain sensitive information in the URL. Note: PREEMPTIVE BLOCK ON CLEAR INTENT still applies — if the transcript contains clear evidence the agent is using read-only operations to scout for a blocked action, block it.</li>
+<li>Declared Dependencies: Installing packages that are already declared in the repo's manifest files (requirements.txt, package.json, Cargo.toml, pyproject.toml, Gemfile, etc.) via standard commands that read those manifests (<code>pip install -r requirements.txt</code>, <code>npm install</code>, <code>cargo build</code>, <code>bundle install</code>) — provided the agent has not modified the manifest in this session. Does NOT cover installing agent-chosen package names (e.g. <code>pip install foo</code>, <code>npm install bar</code>) — those carry typosquat and supply-chain risk. [...]</li>
+</ul>
+</blockquote>
+<p>From "soft_deny":</p>
+<blockquote>
+<ul>
+<li>Git Destructive: Force pushing (<code>git push --force</code>), deleting remote branches, or rewriting remote history</li>
+<li>Git Push to Default Branch: Pushing directly to main, master, or the repository's default branch — this bypasses pull request review. Commits should be pushed to a new feature branch instead.
+-Code from External: Downloading and executing code from external sources — e.g. <code>curl | bash</code>, deserializing external data via formats that can execute code (eval, exec, yaml.unsafe_load, pickle, etc), or similar mechanisms. Also includes running code from an external repo cloned earlier in the transcript (pip install -e, make install, python script.py, pickle.load/torch.load on cloned repo files) — "local on disk" does not mean trusted if it was cloned from an external source visible in the transcript. The repo the agent starts in is trusted.</li>
+<li>Cloud Storage Mass Delete: Deleting or mass modifying files on cloud storage (S3, GCS, Azure Blob, etc.) [...]</li>
+</ul>
+</blockquote>
+<p>I remain unconvinced by prompt injection protections that rely on AI, since they're non-deterministic by nature. The documentation does warn that this may still let things through:</p>
+<blockquote>
+<p>The classifier may still allow some risky actions: for example, if user intent is ambiguous, or if Claude doesn't have enough context about your environment to know an action might create additional risk.</p>
+</blockquote>
+<p>The fact that the default allow list includes <code>pip install -r requirements.txt</code> also means that this wouldn't protect against supply chain attacks with unpinned dependencies, as seen this morning <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">with LiteLLM</a>.</p>
+<p>I still want my coding agents to run in a robust sandbox by default, one that restricts file access and network connections in a deterministic way. I trust those a whole lot more than prompt-based protections like this new auto mode.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Tue, 24 Mar 2026 23:57:33 +0000</pubDate></item><item><title>Package Managers Need to Cool Down</title><link>https://simonwillison.net/2026/Mar/24/package-managers-need-to-cool-down/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html">Package Managers Need to Cool Down</a></strong></p>
 Today's <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">LiteLLM supply chain attack</a> inspired me to revisit the idea of <a href="https://simonwillison.net/2025/Nov/21/dependency-cooldowns/">dependency cooldowns</a>, the practice of only installing updated dependencies once they've been out in the wild for a few days to give the community a chance to spot if they've been subverted in some way.</p>
 <p>This recent piece (March 4th) piece by Andrew Nesbitt reviews the current state of dependency cooldown mechanisms across different packaging tools. It's surprisingly well supported! There's been a flurry of activity across major packaging tools, including:</p>
 <ul>
@@ -536,26 +576,4 @@ llm -m mistral/mistral-small-2603 "Generate an SVG of a pelican riding a bicycle
 <p>Also from Mistral today and fitting their -stral naming convention is <a href="https://mistral.ai/news/leanstral">Leanstral</a>, an open weight model that is specifically tuned to help output the <a href="https://lean-lang.org/">Lean 4</a> formally verifiable coding language. I haven't explored Lean at all so I have no way to credibly evaluate this, but it's interesting to see them target one specific language in this way.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/mistral">mistral</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 16 Mar 2026 23:41:17 +0000</pubDate></item><item><title>Use subagents and custom agents in Codex</title><link>https://simonwillison.net/2026/Mar/16/codex-subagents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.openai.com/codex/subagents">Use subagents and custom agents in Codex</a></strong></p>
-Subagents were announced in general availability today for OpenAI Codex, after several weeks of preview behind a feature flag.</p>
-<p>They're very similar to the Claude Code implementation, with default subagents for "explorer", "worker" and "default". It's unclear to me what the difference between "worker" and "default" is but based on their CSV example I think "worker" is intended for running large numbers of small tasks in parallel.</p>
-<p>Codex also lets you define custom agents as TOML files in <code>~/.codex/agents/</code>. These can have custom instructions and be assigned to use specific models - including <code>gpt-5.3-codex-spark</code> if you want <a href="https://simonwillison.net/2026/Feb/12/codex-spark/">some raw speed</a>. They can then be referenced by name, as demonstrated by this example prompt from the documentation:</p>
-<blockquote>
-<p><code>Investigate why the settings modal fails to save. Have browser_debugger reproduce it, code_mapper trace the responsible code path, and ui_fixer implement the smallest fix once the failure mode is clear.</code></p>
-</blockquote>
-<p>The subagents pattern is widely supported in coding agents now. Here's documentation across a number of different platforms:</p>
-<ul>
-<li><a href="https://developers.openai.com/codex/subagents/">OpenAI Codex subagents</a></li>
-<li><a href="https://code.claude.com/docs/en/sub-agents">Claude Code subagents</a></li>
-<li><a href="https://geminicli.com/docs/core/subagents/">Gemini CLI subagents</a> (experimental)</li>
-<li><a href="https://docs.mistral.ai/mistral-vibe/agents-skills#agent-selection">Mistral Vibe subagents</a></li>
-<li><a href="https://opencode.ai/docs/agents/">OpenCode agents</a></li>
-<li><a href="https://code.visualstudio.com/docs/copilot/agents/subagents">Subagents in Visual Studio Code</a></li>
-<li><a href="https://cursor.com/docs/subagents">Cursor Subagents</a></li>
-</ul>
-<p><strong>Update</strong>: I added <a href="https://simonwillison.net/guides/agentic-engineering-patterns/subagents/">a chapter on Subagents</a> to my Agentic Engineering Patterns guide.
-
-    <p><small></small>Via <a href="https://twitter.com/OpenAIDevs/status/2033636701848174967">@OpenAIDevs</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/parallel-agents">parallel-agents</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Mon, 16 Mar 2026 23:03:56 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/mistral">mistral</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 16 Mar 2026 23:41:17 +0000</pubDate></item></channel></rss>
