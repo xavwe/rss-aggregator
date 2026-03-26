@@ -1,4 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-files-s3 0.1a1</title><link>https://simonwillison.net/2026/Mar/25/datasette-files-s3/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-files-s3/releases/tag/0.1a1">datasette-files-s3 0.1a1</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quantization from the ground up</title><link>https://simonwillison.net/2026/Mar/26/quantization-from-the-ground-up/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ngrok.com/blog/quantization">Quantization from the ground up</a></strong></p>
+Sam Rose continues <a href="https://simonwillison.net/tags/sam-rose/">his streak</a> of publishing spectacularly informative interactive essays, this time explaining how quantization of Large Language Models works.</p>
+<p>Also included is the best visual explanation I've ever seen of how floating point numbers are represented using binary digits.</p>
+<p><img alt="Screenshot of an interactive float32 binary representation tool showing the value -48.92364502, with color-coded bit fields labeled S (sign), EXPONENT (blue), and SIGNIFICAND (pink), displaying the 32-bit pattern 11000010010000111101100001110100000, and a slider control at the bottom along with minus, plus, and reset buttons." src="https://static.simonwillison.net/static/2026/float.jpg" /></p>
+<p>I hadn't heard about <strong>outlier values</strong> in quantization - rare float values that exist outside of the normal tiny-value distribution - but apparently they're very important:</p>
+<blockquote>
+<p>Why do these outliers exist? [...] tl;dr: no one conclusively knows, but a small fraction of these outliers are <em>very</em> important to model quality. Removing even a <em>single</em> "super weight," as Apple calls them, can cause the model to output complete gibberish.</p>
+<p>Given their importance, real-world quantization schemes sometimes do extra work to preserve these outliers. They might do this by not quantizing them at all, or by saving their location and value into a separate table, then removing them so that their block isn't destroyed.</p>
+</blockquote>
+<p>Plus there's a section on <a href="https://ngrok.com/blog/quantization#how-much-does-quantization-affect-model-accuracy">How much does quantization affect model accuracy?</a>. Sam explains the concepts of <strong>perplexity</strong> and ** KL divergence ** and then uses the <a href="https://github.com/ggml-org/llama.cpp/tree/master/tools/perplexity">llama.cpp perplexity tool</a> and a run of the GPQA benchmark to show how different quantization levels affect Qwen 3.5 9B.</p>
+<p>His conclusion:</p>
+<blockquote>
+<p>It looks like 16-bit to 8-bit carries almost no quality penalty. 16-bit to 4-bit is more noticeable, but it's certainly not a quarter as good as the original. Closer to 90%, depending on how you want to measure it.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/computer-science">computer-science</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/explorables">explorables</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/sam-rose">sam-rose</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a></p>]]></description><pubDate>Thu, 26 Mar 2026 16:21:09 +0000</pubDate></item><item><title>datasette-files-s3 0.1a1</title><link>https://simonwillison.net/2026/Mar/25/datasette-files-s3/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-files-s3/releases/tag/0.1a1">datasette-files-s3 0.1a1</a></p>
     <p>A backend for <a href="https://github.com/datasette/datasette-files">datasette-files</a> that adds the ability to store and retrieve files using an S3 bucket. This release added <a href="https://github.com/datasette/datasette-files-s3/blob/main/README.md#credentials-broker-response">a mechanism</a> for fetching S3 configuration periodically from a URL, which means we can use time limited IAM credentials that are restricted to a prefix within a bucket.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:57:05 +0000</pubDate></item><item><title>Thoughts on slowing the fuck down</title><link>https://simonwillison.net/2026/Mar/25/thoughts-on-slowing-the-fuck-down/#atom-everything</link><description><![CDATA[<p><strong><a href="https://news.ycombinator.com/item?id=47517539">Thoughts on slowing the fuck down</a></strong></p>
@@ -453,81 +469,4 @@ PromptArmor report on a prompt injection attack chain in Snowflake's <a href="ht
     <p>Tags: <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 18 Mar 2026 17:43:49 +0000</pubDate></item><item><title>Quoting Ken Jin</title><link>https://simonwillison.net/2026/Mar/17/ken-jin/#atom-everything</link><description><![CDATA[<blockquote cite="https://fidget-spinner.github.io/posts/jit-on-track.html"><p>Great news—we’ve hit our (very modest) performance goals for the CPython JIT over a year early for macOS AArch64, and a few months early for x86_64 Linux. The 3.15 alpha JIT is about <strong>11-12%</strong> faster on macOS AArch64 than the tail calling interpreter, and <strong>5-6%</strong>faster than the standard interpreter on x86_64 Linux.</p></blockquote>
 <p class="cite">&mdash; <a href="https://fidget-spinner.github.io/posts/jit-on-track.html">Ken Jin</a>, Python 3.15’s JIT is now back on track</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a></p>]]></description><pubDate>Tue, 17 Mar 2026 21:48:26 +0000</pubDate></item><item><title>GPT-5.4 mini and GPT-5.4 nano, which can describe 76,000 photos for $52</title><link>https://simonwillison.net/2026/Mar/17/mini-and-nano/#atom-everything</link><description><![CDATA[<p>OpenAI today: <a href="https://openai.com/index/introducing-gpt-5-4-mini-and-nano/">Introducing GPT‑5.4 mini and nano</a>. These models join GPT-5.4 which was released <a href="https://openai.com/index/introducing-gpt-5-4/">two weeks ago</a>.</p>
-<p>OpenAI's self-reported benchmarks show the new 5.4-nano out-performing their previous GPT-5 mini model when run at maximum reasoning effort. The new mini is also 2x faster than the previous mini.</p>
-<p>Here's how the pricing looks - all prices are per million tokens. <code>gpt-5.4-nano</code> is notably even cheaper than Google's Gemini 3.1 Flash-Lite:</p>
-<center><table>
-  <thead>
-    <tr>
-      <th>Model</th>
-      <th>Input</th>
-      <th>Cached input</th>
-      <th>Output</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>gpt-5.4</td>
-      <td>$2.50</td>
-      <td>$0.25</td>
-      <td>$15.00</td>
-    </tr>
-    <tr>
-      <td>gpt-5.4-mini</td>
-      <td>$0.75</td>
-      <td>$0.075</td>
-      <td>$4.50</td>
-    </tr>
-    <tr>
-      <td>gpt-5.4-nano</td>
-      <td>$0.20</td>
-      <td>$0.02</td>
-      <td>$1.25</td>
-    </tr>
-    <tr><td colspan="4"><center>Other models for comparison</center></td></tr>
-    <tr>
-      <td>Claude Opus 4.6</td>
-      <td>$5.00</td>
-      <td>-</td>
-      <td>$25.00</td>
-    </tr>
-    <tr>
-      <td>Claude Sonnet 4.6</td>
-      <td>$3.00</td>
-      <td>-</td>
-      <td>$15.00</td>
-    </tr>
-    <tr>
-      <td>Gemini 3.1 Pro</td>
-      <td>$2.00</td>
-      <td>-</td>
-      <td>$12.00</td>
-    </tr>
-    <tr>
-      <td>Claude Haiku 4.5</td>
-      <td>$1.00</td>
-      <td>-</td>
-      <td>$5.00</td>
-    </tr>
-<tr>
-      <td>Gemini 3.1 Flash-Lite</td>
-      <td>$0.25</td>
-      <td>-</td>
-      <td>$1.50</td>
-    </tr>
-  </tbody>
-</table></center>
-<p>I used GPT-5.4 nano to generate a description of this photo I took at the <a href="https://www.niche-museums.com/118">John M. Mossman Lock Collection</a>:</p>
-<p><img src="https://static.simonwillison.net/static/2026/IMG_2324.jpeg" alt="Description below" style="max-width: 100%;" /></p>
-<pre><code>llm -m gpt-5.4-nano -a IMG_2324.jpeg 'describe image'
-</code></pre>
-<p>Here's the output:</p>
-<blockquote>
-<p>The image shows the interior of a museum gallery with a long display wall. White-painted brick walls are covered with many framed portraits arranged in neat rows. Below the portraits, there are multiple glass display cases with dark wooden frames and glass tops/fronts, containing various old historical objects and equipment. The room has a polished wooden floor, hanging ceiling light fixtures/cords, and a few visible pipes near the top of the wall. In the foreground, glass cases run along the length of the room, reflecting items from other sections of the gallery.</p>
-</blockquote>
-<p>That took 2,751 input tokens and 112 output tokens, at a cost of <a href="https://www.llm-prices.com/#it=2751&amp;ot=112&amp;sel=gpt-5.4-nano">0.069 cents</a> (less than a tenth of a cent). That means describing every single photo in my 76,000 photo collection would cost around $52.44.</p>
-<p>I released <a href="https://llm.datasette.io/en/stable/changelog.html#v0-29">llm 0.29</a> with support for the new models.</p>
-<p>Then I had OpenAI Codex loop through all five reasoning effort levels and all three models and produce this combined SVG grid of pelicans riding bicycles (<a href="https://gist.github.com/simonw/f16292d9a5b90b28054cff3ba497a3ca">generation transcripts here</a>). I do like the gpt-5.4 xhigh one the best, it has a good bicycle (with nice spokes) and the pelican has a fish in its beak!</p>
-<p><img src="https://static.simonwillison.net/static/2026/gpt-5.4-pelican-family.svg" alt="Described by Claude Opus 4.6: A 5x3 comparison grid of AI-generated cartoon illustrations of a pelican riding a bicycle. Columns are labeled &quot;gpt-5.4-nano&quot;, &quot;gpt-5.4-mini&quot;, and &quot;gpt-5.4&quot; across the top, and rows are labeled &quot;none&quot;, &quot;low&quot;, &quot;medium&quot;, &quot;high&quot;, and &quot;xhigh&quot; down the left side, representing quality/detail settings. In the &quot;none&quot; row, gpt-5.4-nano shows a chaotic white bird with misplaced arrows and tangled wheels on grass, gpt-5.4-mini shows a duck-like brown bird awkwardly straddling a motorcycle-like bike, and gpt-5.4 shows a stiff gray-and-white pelican sitting atop a blue tandem bicycle with extra legs. In the &quot;low&quot; row, nano shows a chubby round white bird pedaling with small feet on grass, mini shows a cleaner white bird riding a blue bicycle with motion lines, and gpt-5.4 shows a pelican with a blue cap riding confidently but with slightly awkward proportions. In the &quot;medium&quot; row, nano regresses to a strange bird standing over bowling balls on ice, mini shows two plump white birds merged onto one yellow-wheeled bicycle, and gpt-5.4 shows a more recognizable gray-and-white pelican on a red bicycle but with tangled extra legs. In the &quot;high&quot; row, nano shows multiple small pelicans crowded around a broken green bicycle on grass with a sun overhead, mini shows a tandem bicycle with two white pelicans and clear blue sky, and gpt-5.4 shows two pelicans stacked on a red tandem bike with the most realistic proportions yet. In the &quot;xhigh&quot; row, nano shows the most detailed scene with a pelican on a detailed bicycle with grass and a large sun but still somewhat jumbled anatomy, mini produces the cleanest single pelican on a yellow-accented bicycle with a light blue sky, and gpt-5.4 shows a well-rendered gray pelican on a teal bicycle with the best overall coherence. Generally, quality improves moving right across models and down through quality tiers, though &quot;medium&quot; is inconsistently worse than &quot;low&quot; for some models, and all images maintain a lighthearted cartoon style with pastel skies and simple backgrounds." style="max-width: 100%;" /></p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 17 Mar 2026 19:39:17 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/python">python</a></p>]]></description><pubDate>Tue, 17 Mar 2026 21:48:26 +0000</pubDate></item></channel></rss>
