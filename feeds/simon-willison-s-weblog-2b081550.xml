@@ -1,4 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>We Rewrote JSONata with AI in a Day, Saved $500K/Year</title><link>https://simonwillison.net/2026/Mar/27/vine-porting-jsonata/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.reco.ai/blog/we-rewrote-jsonata-with-ai">We Rewrote JSONata with AI in a Day, Saved $500K/Year</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Richard Fontana</title><link>https://simonwillison.net/2026/Mar/27/richard-fontana/#atom-everything</link><description><![CDATA[<blockquote cite="https://github.com/chardet/chardet/issues/334#issuecomment-4098524555"><p>FWIW, IANDBL, TINLA, etc., I don’t currently see any basis for concluding that chardet 7.0.0 is required to be released under the LGPL. AFAIK no one including Mark Pilgrim has identified persistence of copyrightable expressive material from earlier versions in 7.0.0 nor has anyone articulated some viable alternate theory of license violation. [...]</p></blockquote>
+<p class="cite">&mdash; <a href="https://github.com/chardet/chardet/issues/334#issuecomment-4098524555">Richard Fontana</a>, LGPLv3 co-author, weighing in on the <a href="https://simonwillison.net/2026/Mar/5/chardet/">chardet relicensing situation</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Fri, 27 Mar 2026 21:11:17 +0000</pubDate></item><item><title>Vibe coding SwiftUI apps is a lot of fun</title><link>https://simonwillison.net/2026/Mar/27/vibe-coding-swiftui/#atom-everything</link><description><![CDATA[<p>I have a new laptop - a 128GB M5 MacBook Pro, which early impressions show to be <em>very</em> capable for running good local LLMs. I got frustrated with Activity Monitor and decided to vibe code up some alternative tools for monitoring performance and I'm very happy with the results.</p>
+<p>This is my second experiment with vibe coding macOS apps - the first was <a href="https://simonwillison.net/2026/Feb/25/present/">this presentation app a few weeks ago</a>.</p>
+<p>It turns out Claude Opus 4.6 and GPT-5.4 are both very competent at SwiftUI - and a full SwiftUI app can fit in a single text file, which means I can use them to spin something up without even opening Xcode.</p>
+<p>I’ve built two apps so far: Bandwidther shows me what apps are using network bandwidth and Gpuer to show me what’s going on with the GPU. At Claude’s suggestion both of these are now menu bar icons that open a panel full of information.</p>
+<h4 id="bandwidther">Bandwidther</h4>
+<p>I built this app first, because I wanted to see what Dropbox was doing. It looks like this:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/simonw/bandwidther/raw/main/screenshot.png"><img src="https://github.com/simonw/bandwidther/raw/main/screenshot.png" alt="Screenshot of Bandwidther macOS app showing two columns: left side displays overall download/upload speeds, a bandwidth graph over the last 60 seconds, cumulative totals, internet and LAN connection counts, and internet destinations; right side shows per-process bandwidth usage sorted by rate with processes like nsurlsessiond, apsd, rapportd, mDNSResponder, Dropbox, and others listed with their individual download/upload speeds and progress bars." style="max-width: 100%;" /></a></p>
+<p>I’ve shared <a href="https://gisthost.github.io/?6e06d4724c64c10d1fc3fbe19d9c8575/index.html">the full transcript</a> I used to build the first version of the app. My prompts were pretty minimal:</p>
+<blockquote>
+<p>Show me how much network bandwidth is in use from this machine to the internet as opposed to local LAN</p>
+</blockquote>
+<p>(My initial curiosity was to see if Dropbox was transferring files via the LAN from my old computer or was downloading from the internet.)</p>
+<blockquote>
+<p>mkdir /tmp/bandwidther and write a native Swift UI app in there that shows me these details on a live ongoing basis</p>
+</blockquote>
+<p>This got me the first version, which proved to me this was worth pursuing further.</p>
+<blockquote>
+<p>git init and git commit what you have so far</p>
+</blockquote>
+<p>Since I was about to start adding new features.</p>
+<blockquote>
+<p>Now suggest features we could add to that app, the goal is to provide as much detail as possible concerning network usage including by different apps</p>
+</blockquote>
+<p>The nice thing about having Claude suggest features is that it has a much better idea for what’s possible than I do.</p>
+<p>We had a bit of back and forth fixing some bugs, then I sent a few more prompts to get to the two column layout shown above:</p>
+<blockquote>
+<p>add Per-Process Bandwidth, relaunch the app once that is done</p>
+</blockquote>
+<blockquote>
+<p>now add the reverse DNS feature but make sure original IP addresses are still visible too, albeit in smaller typeface</p>
+</blockquote>
+<blockquote>
+<p>redesign the app so that it is wider, I want two columns - the per-process one on the left and the rest on the right</p>
+</blockquote>
+<blockquote>
+<p>OK make it a task bar icon thing, when I click the icon I want the app to appear, the icon itself should be a neat minimal little thing</p>
+</blockquote>
+<p>The source code and build instructions are available in <a href="https://github.com/simonw/bandwidther">simonw/bandwidther</a>.</p>
+<h4 id="gpuer">Gpuer</h4>
+<p>While I was building Bandwidther in one session I had another session running to build a similar tool for seeing what the GPU was doing. Here’s what I ended up with:</p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/simonw/gpuer/raw/main/screenshot.png"><img src="https://github.com/simonw/gpuer/raw/main/screenshot.png" alt="Screenshot of the Gpuer app on macOS showing memory usage for an Apple M5 Max with 40 GPU cores. Left panel: a large orange &quot;38 GB Available&quot; readout showing usage of 128.0 GB unified memory, &quot;Room for ~18 more large apps before pressure&quot;, a warning banner reading &quot;1.5 GB pushed to disk — system was under pressure recently&quot;, a horizontal segmented bar chart labeled &quot;Where your memory is going&quot; with green, blue, and grey segments and a legend, an explanatory note about GPU unified memory, a GPU Utilization section showing 0%, and a History graph showing Available and GPU Utilization over time as line charts. Right panel: a Memory Footprint list sorted by Memory, showing process names with horizontal pink/purple usage bars and CPU percentage labels beside each entry, covering processes including Dropbox, WebKit, Virtualization, node, Claude Helper, Safari, LM Studio, WindowServer, Finder, and others." style="max-width: 100%;" /></a></p>
+<p>Here's <a href="https://gisthost.github.io/?71ffe216ceca8d7da59a07c478d17529">the transcript</a>. This one took even less prompting because I could use the in-progress Bandwidther as an example:</p>
+<blockquote>
+<p>I want to know how much RAM and GPU this computer is using, which is hard because stuff on the GPU and RAM does not seem to show up in Activity Monitor</p>
+</blockquote>
+<p>This collected information using <code>system_profiler</code> and <code>memory_pressure</code> and gave me <a href="https://gisthost.github.io/?71ffe216ceca8d7da59a07c478d17529/page-001.html#msg-2026-03-24T22-13-26-614Z">an answer</a> - more importantly it showed me this was possible, so I said:</p>
+<blockquote>
+<p>Look at /tmp/bandwidther and then create a similar app in /tmp/gpuer which shows the information from above on an ongoing basis, or maybe does it better</p>
+</blockquote>
+<p>After a few more changes to the Bandwidther app I told it to catch up:</p>
+<blockquote>
+<p>Now take a look at recent changes in /tmp/bandwidther - that app now uses a sys tray icon, imitate that</p>
+</blockquote>
+<p>This remains one of my favorite tricks for using coding agents: having them <a href="https://simonwillison.net/guides/agentic-engineering-patterns/hoard-things-you-know-how-to-do/#recombining-things-from-your-hoard">recombine elements</a> from other projects.</p>
+<p>The code for Gpuer can be found in <a href="https://github.com/simonw/gpuer">simonw/gpuer</a> on GitHub.</p>
+<h4 id="you-shouldn-t-trust-these-apps">You shouldn't trust these apps</h4>
+<p>These two apps are classic vibe coding: I don't know Swift and I hardly glanced at the code they were writing.</p>
+<p>More importantly though, I have very little experience with macOS internals such as the values these tools are measuring. I am completely unqualified to evaluate if the numbers and charts being spat out by these tools are credible or accurate!</p>
+<p>I've added warnings to both GitHub repositories to that effect.</p>
+<p>This morning I caught Gpuer reporting that I had just 5GB of memory left when that clearly wasn't the case (according to Activity Monitor). I <a href="https://gisthost.github.io/?9ae12fff0fecc9a4482c9b02e8599c70/page-001.html#msg-2026-03-27T19-35-35-866Z">pasted a screenshot into Claude Code</a> and it <a href="https://github.com/simonw/gpuer/commit/a3cd655f5ccb274d3561e4cbfcc771b0bb7e256a">adjusted the calculations</a> and the new numbers <em>look</em> right, but I'm still not confident that it's reporting things correctly.</p>
+<p>I only shared them on GitHub because I think they're interesting as an example of what Claude can do with SwiftUI.</p>
+<p>Despite my lack of confidence in the apps themselves, I did learn some useful things from these projects:</p>
+<ul>
+<li>A SwiftUI app can get a whole lot done with a single file of code - here's <a href="https://github.com/simonw/gpuer/blob/main/GpuerApp.swift">GpuerApp.swift</a> (880 lines) and <a href="https://github.com/simonw/bandwidther/blob/main/BandwidtherApp.swift">BandwidtherApp.swift</a> (1063 lines).</li>
+<li>Wrapping various terminal commands in a neat UI with Swift is easily achieved.</li>
+<li>Claude has surprisingly good design taste when it comes to SwiftUI applications.</li>
+<li>Turning an app into a menu bar app is just a few lines of extra code as well.</li>
+<li>You don't need to open Xcode to build this kind of application!</li>
+</ul>
+<p>These two apps took very little time to build and have convinced me that building macOS apps in SwiftUI is a new capability I should consider for future projects.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/macos">macos</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/swift">swift</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Fri, 27 Mar 2026 20:59:53 +0000</pubDate></item><item><title>We Rewrote JSONata with AI in a Day, Saved $500K/Year</title><link>https://simonwillison.net/2026/Mar/27/vine-porting-jsonata/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.reco.ai/blog/we-rewrote-jsonata-with-ai">We Rewrote JSONata with AI in a Day, Saved $500K/Year</a></strong></p>
 Bit of a hyperbolic framing but this looks like another case study of <strong>vibe porting</strong>, this time spinning up a new custom Go implementation of the <a href="https://jsonata.org">JSONata</a> JSON expression language - similar in focus to jq, and heavily associated with the <a href="https://nodered.org">Node-RED</a> platform.</p>
 <p>As with other vibe-porting projects the key enabling factor was JSONata's existing test suite, which helped build the first working Go version in 7 hours and $400 of token spend.</p>
 <p>The Reco team then used a shadow deployment for a week to run the new and old versions in parallel to confirm the new implementation exactly matched the behavior of the old one.
@@ -460,20 +534,4 @@ In <a href="https://prog21.dadgum.com/116.html">Things That Turbo Pascal is Smal
 <p>OpenAI don't yet have much of a track record with respect to acquiring and maintaining open source projects. They've been on a bit of an acquisition spree over the past three months though, snapping up <a href="https://openai.com/index/openai-to-acquire-promptfoo/">Promptfoo</a> and <a href="https://steipete.me/posts/2026/openclaw">OpenClaw</a> (sort-of, they hired creator Peter Steinberger and are spinning OpenClaw off to a foundation), plus closed source LaTeX platform <a href="https://openai.com/index/introducing-prism/">Crixet (now Prism)</a>.</p>
 <p>If things do go south for <code>uv</code> and the other Astral projects we'll get to see how credible the forking exit strategy turns out to be.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ruff">ruff</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/astral">astral</a>, <a href="https://simonwillison.net/tags/charlie-marsh">charlie-marsh</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/ty">ty</a></p>]]></description><pubDate>Thu, 19 Mar 2026 16:45:15 +0000</pubDate></item><item><title>Autoresearching Apple&apos;s &quot;LLM in a Flash&quot; to run Qwen 397B locally</title><link>https://simonwillison.net/2026/Mar/18/llm-in-a-flash/#atom-everything</link><description><![CDATA[<p><strong><a href="https://twitter.com/danveloper/status/2034353876753592372">Autoresearching Apple&#x27;s &quot;LLM in a Flash&quot; to run Qwen 397B locally</a></strong></p>
-Here's a fascinating piece of research by Dan Woods, who managed to get a custom version of <a href="https://huggingface.co/Qwen/Qwen3.5-397B-A17B/tree/main">Qwen3.5-397B-A17B</a> running at 5.5+ tokens/second on a 48GB MacBook Pro M3 Max despite that model taking up 209GB (120GB quantized) on disk.</p>
-<p>Qwen3.5-397B-A17B is a Mixture-of-Experts (MoE) model, which means that each token only needs to run against a subset of the overall model weights. These expert weights can be streamed into memory from SSD, saving them from all needing to be held in RAM at the same time.</p>
-<p>Dan used techniques described in Apple's 2023 paper <a href="https://arxiv.org/abs/2312.11514">LLM in a flash: Efficient Large Language Model Inference with Limited Memory</a>:</p>
-<blockquote>
-<p>This paper tackles the challenge of efficiently running LLMs that exceed the available DRAM capacity by storing the model parameters in flash memory, but bringing them on demand to DRAM. Our method involves constructing an inference cost model that takes into account the characteristics of flash memory, guiding us to optimize in two critical areas: reducing the volume of data transferred from flash and reading data in larger, more contiguous chunks.</p>
-</blockquote>
-<p>He fed the paper to Claude Code and used a variant of Andrej Karpathy's <a href="https://simonwillison.net/2026/Mar/13/liquid/">autoresearch pattern</a> to have Claude run 90 experiments and produce MLX Objective-C and Metal code that ran the model as efficiently as possible.</p>
-<p><a href="https://github.com/danveloper/flash-moe">danveloper/flash-moe</a> has the resulting code plus <a href="https://github.com/danveloper/flash-moe/blob/main/paper/flash_moe.pdf">a PDF paper</a> mostly written by Claude Opus 4.6 describing the experiment in full.</p>
-<p>The final model has the experts quantized to 2-bit, but the non-expert parts of the model such as the embedding table and routing matrices are kept at their original precision, adding up to 5.5GB which stays resident in memory while the model is running.</p>
-<p>Qwen 3.5 usually runs 10 experts per token, but this setup dropped that to 4 while claiming that the biggest quality drop-off occurred at 3.</p>
-<p>It's not clear to me how much the quality of the model results are affected. Claude claimed that "Output quality at 2-bit is indistinguishable from 4-bit for these evaluations", but the description of the evaluations it ran is quite thin.</p>
-<p><strong>Update</strong>: Dan's <a href="https://twitter.com/danveloper/status/2034686509748462022">latest version</a> upgrades to 4-bit quantization of the experts (209GB on disk, 4.36 tokens/second) after finding that the 2-bit version broke tool calling while 4-bit handles that well.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/mlx">mlx</a>, <a href="https://simonwillison.net/tags/autoresearch">autoresearch</a></p>]]></description><pubDate>Wed, 18 Mar 2026 23:56:46 +0000</pubDate></item><item><title>datasette 1.0a26</title><link>https://simonwillison.net/2026/Mar/18/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a26">datasette 1.0a26</a></p>
-    <p>Datasette now has a mechanism for assigning semantic column types. Built-in column types include <code>url</code>, <code>email</code>, and <code>json</code>, and plugins can register additional types using the new <a href="https://docs.datasette.io/en/latest/plugin_hooks.html#plugin-register-column-types">register_column_types()</a> plugin hook.</p>]]></description><pubDate>Wed, 18 Mar 2026 22:16:19 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ruff">ruff</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/astral">astral</a>, <a href="https://simonwillison.net/tags/charlie-marsh">charlie-marsh</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/ty">ty</a></p>]]></description><pubDate>Thu, 19 Mar 2026 16:45:15 +0000</pubDate></item></channel></rss>
