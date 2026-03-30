@@ -89,7 +89,7 @@ marginalized classes.</p>
 I think it&rsquo;s more important that we stop collectively pretending that we don&rsquo;t
 understand how awful all of this is. I don&rsquo;t want to use software which has
 slop in it. I do what I can to avoid it, and sadly even Vim now comes under
-scrutiny in that effort as both <a href="https://github.com/vim/vim/issues/18800#issuecomment-3568099543">Vim</a> and <a href="https://github.com/neovim/neovim/issues?q=label%3A%22AI%20assisted%20%F0%9F%A4%96%22">NeoVim</a> are
+scrutiny in that effort as both <a href="https://github.com/vim/vim/issues/18800#issuecomment-3568099543">Vim</a> and <a href="https://github.com/neovim/neovim/labels/AI%20assisted%20%F0%9F%A4%96">NeoVim</a> are
 relying on LLMs to develop the software.</p>
 <p>So this is how, a few years after Bram&rsquo;s passing, I find myself in another
 unusual moment of mourning: mourning Vim itself. What an odd feeling.</p>
