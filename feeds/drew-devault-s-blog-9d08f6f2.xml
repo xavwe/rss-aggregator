@@ -40,9 +40,9 @@ directory before tar does this, on either end, by passing <code>tar -C &lt;path&
 <hr>
 <p><strong>Update</strong>: As a fun little challenge I wrapped up this concept in a small
 program that makes it easier to use:</p>
-<p><a href="https://git.sr.ht/~sircmpwn/rtar">https://git.sr.ht/~sircmpwn/rtar</a></p>
+<p><a href="https://git.sr.ht/~sircmpwn/xtar">https://git.sr.ht/~sircmpwn/xtar</a></p>
 <p>Example:</p>
-<pre tabindex="0"><code>rtar -R /var/www me@example.org public/*
+<pre tabindex="0"><code>xtar -R /var/www me@example.org public/*
 </code></pre>]]></description><pubDate>Sat, 28 Mar 2026 00:00:00 +0000</pubDate></item><item><title>A eulogy for Vim</title><link>https://drewdevault.com/2026/03/25/2026-03-25-Forking-vim.html</link><description><![CDATA[<p>Vim is important to me. I&rsquo;m using it to write the words you&rsquo;re reading right
 now. In fact, almost every word I have ever committed to posterity, through this
 blog, in my code, all of the docs I&rsquo;ve written, emails I&rsquo;ve sent, and more,
