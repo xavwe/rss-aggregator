@@ -1,4 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-files 0.1a3</title><link>https://simonwillison.net/2026/Mar/30/datasette-files/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-files/releases/tag/0.1a3">datasette-files 0.1a3</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-llm 0.1a4</title><link>https://simonwillison.net/2026/Mar/31/datasette-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a4">datasette-llm 0.1a4</a></p>
+    <blockquote>
+<ul>
+<li>Ability to <a href="https://github.com/datasette/datasette-llm/blob/0.1a4/README.md#model-references-with-custom-api-keys">configure different API keys for models based on their purpose</a> - for example, set it up so enrichments always use <code>gpt-5.4-mini</code> with an API key dedicated to that purpose. <a href="https://github.com/datasette/datasette-llm/pull/4">#4</a></li>
+</ul>
+</blockquote>
+<p>I released <a href="https://github.com/simonw/llm-echo/releases/tag/0.3">llm-echo 0.3</a> to provide an API key testing utility I needed for the tests for this new feature.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Tue, 31 Mar 2026 21:17:23 +0000</pubDate></item><item><title>llm-all-models-async 0.1</title><link>https://simonwillison.net/2026/Mar/31/llm-all-models-async/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-all-models-async/releases/tag/0.1">llm-all-models-async 0.1</a></p>
+    <p>LLM plugins can define new models in both <a href="https://llm.datasette.io/en/stable/plugins/tutorial-model-plugin.html">sync</a> and <a href="https://llm.datasette.io/en/stable/plugins/advanced-model-plugins.html#async-models">async</a> varieties. The async variants are most common for API-backed models - sync variants tend to be things that run the model directly within the plugin.</p>
+<p>My <a href="https://simonwillison.net/2026/Mar/30/mr-chatterbox/#running-it-locally-with-llm">llm-mrchatterbox</a> plugin is sync only. I wanted to try it out with various Datasette LLM features (specifically <a href="https://github.com/datasette/datasette-enrichments-llm">datasette-enrichments-llm</a>) but Datasette can only use async models.</p>
+<p>So... I had Claude spin up this plugin that turns sync models into async models using a thread pool. This ended up needing an extra plugin hook mechanism in LLM itself, which I shipped just now in <a href="https://llm.datasette.io/en/stable/changelog.html#v0-30">LLM 0.30</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/async">async</a>, <a href="https://simonwillison.net/tags/python">python</a></p>]]></description><pubDate>Tue, 31 Mar 2026 20:52:02 +0000</pubDate></item><item><title>llm 0.30</title><link>https://simonwillison.net/2026/Mar/31/llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.30">llm 0.30</a></p>
+    <blockquote>
+<ul>
+<li>The <a href="http://llm.datasette.io/en/stable/plugins/plugin-hooks.html#plugin-hooks-register-models">register_models() plugin hook</a> now takes an optional <code>model_aliases</code> parameter listing all of the models, async models and aliases that have been registered so far by other plugins. A plugin with <code>@hookimpl(trylast=True)</code> can use this to take previously registered models into account. <a href="https://github.com/simonw/llm/issues/1389">#1389</a></li>
+<li>Added docstrings to public classes and methods and included those directly in the documentation.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 20:35:51 +0000</pubDate></item><item><title>llm-echo 0.4</title><link>https://simonwillison.net/2026/Mar/31/llm-echo/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-echo/releases/tag/0.4">llm-echo 0.4</a></p>
+    <blockquote>
+<ul>
+<li>Prompts now have the <code>input_tokens</code> and <code>output_tokens</code> fields populated on the response.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 16:48:59 +0000</pubDate></item><item><title>llm-echo 0.3</title><link>https://simonwillison.net/2026/Mar/31/llm-echo-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-echo/releases/tag/0.3">llm-echo 0.3</a></p>
+    <blockquote>
+<ul>
+<li>Mechanisms for <a href="https://github.com/simonw/llm-echo/blob/0.3/README.md#tool-calling">testing tool calls</a>. #3</li>
+<li>Mechanism for <a href="https://github.com/simonw/llm-echo/blob/0.3/README.md#raw-responses">testing raw responses</a>. #4</li>
+<li>New <code>echo-needs-key</code> model for <a href="https://github.com/simonw/llm-echo/blob/0.3/README.md#echo-needs-key-model">testing model key logic</a>. #7</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 15:43:26 +0000</pubDate></item><item><title>datasette-files 0.1a3</title><link>https://simonwillison.net/2026/Mar/30/datasette-files/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-files/releases/tag/0.1a3">datasette-files 0.1a3</a></p>
     <p>I'm working on integrating <code>datasette-files</code> into other plugins, such as <a href="https://github.com/datasette/datasette-extract">datasette-extract</a>. This necessitated a new release of the base plugin.</p>
 <blockquote>
 <ul>
@@ -320,113 +357,4 @@ The LiteLLM v1.82.8 package published to PyPI was compromised with a particularl
     <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/autoresearch">autoresearch</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/kimi">kimi</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a></p>]]></description><pubDate>Tue, 24 Mar 2026 05:09:03 +0000</pubDate></item><item><title>Quoting Neurotica</title><link>https://simonwillison.net/2026/Mar/23/neurotica/#atom-everything</link><description><![CDATA[<blockquote cite="https://bsky.app/profile/schwarzgerat.bsky.social/post/3mhqu5dogos2v"><p>slop is something that takes more human effort to consume than it took to produce. When my coworker sends me raw Gemini output he’s not expressing his freedom to create, he’s disrespecting the value of my time</p></blockquote>
 <p class="cite">&mdash; <a href="https://bsky.app/profile/schwarzgerat.bsky.social/post/3mhqu5dogos2v">Neurotica</a>, @schwarzgerat.bsky.social</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 23 Mar 2026 23:31:45 +0000</pubDate></item><item><title>datasette-files 0.1a2</title><link>https://simonwillison.net/2026/Mar/23/datasette-files/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-files/releases/tag/0.1a2">datasette-files 0.1a2</a></p>
-    <p>The most interesting alpha of <a href="https://github.com/datasette/datasette-files">datasette-files</a> yet, a new plugin which adds the ability to upload files directly into a Datasette instance. Here are the release notes in full:</p>
-<blockquote>
-<ul>
-<li>Columns are now configured using the <a href="https://docs.datasette.io/en/latest/changelog.html#new-column-types-system">new column_types system</a> from Datasette 1.0a26. <a href="https://github.com/datasette/datasette-files/issues/8">#8</a></li>
-<li>New <code>file_actions</code> plugin hook, plus ability to import an uploaded CSV/TSV file to a table. <a href="https://github.com/datasette/datasette-files/issues/10">#10</a></li>
-<li>UI for uploading multiple files at once via the new documented JSON upload API. <a href="https://github.com/datasette/datasette-files/issues/11">#11</a></li>
-<li>Thumbnails are now generated for image files and stored in an internal <code>datasette_files_thumbnails</code> table. <a href="https://github.com/datasette/datasette-files/issues/13">#13</a></li>
-</ul>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Mon, 23 Mar 2026 23:06:38 +0000</pubDate></item><item><title>Quoting David Abram</title><link>https://simonwillison.net/2026/Mar/23/david-abram/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/"><p>I have been doing this for years, and the hardest parts of the job were never about typing out code. I have always struggled most with understanding systems, debugging things that made no sense, designing architectures that wouldn't collapse under heavy load, and making decisions that would save months of pain later.</p>
-<p>None of these problems can be solved LLMs. They can suggest code, help with boilerplate, sometimes can act as a sounding board. But they don't understand the system, they don't carry context in their "minds", and they certianly don't know why a decision is right or wrong.</p>
-<p>And the most importantly, they don't choose. That part is still yours. The real work of software development, the part that makes someone valuable, is knowing what should exist in the first place, and why.</p></blockquote>
-<p class="cite">&mdash; <a href="https://www.davidabram.dev/musings/the-machine-didnt-take-your-craft/">David Abram</a>, The machine didn't take your craft. You gave it up.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 23 Mar 2026 18:56:18 +0000</pubDate></item><item><title>Beats now have notes</title><link>https://simonwillison.net/2026/Mar/23/beats-now-have-notes/#atom-everything</link><description><![CDATA[<p>Last month I <a href="https://simonwillison.net/2026/Feb/20/beats/">added a feature I call beats</a> to this blog, pulling in some of my other content from <a href="https://simonwillison.net/elsewhere/">external sources</a> and including it on the homepage, search and various archive pages on the site.</p>
-<p>On any given day these frequently outnumber my regular posts. They were looking a little bit thin and were lacking any form of explanation beyond a link, so I've added the ability to annotate them with a "note" which now shows up as part of their display.</p>
-<p>Here's what that looks like <a href="https://simonwillison.net/2026/Mar/22/">for the content I published yesterday</a>:</p>
-<p><img class="blogmark-image" style="width:80%" src="https://static.simonwillison.net/static/2026/beats-notes.jpg" alt="Screenshot of part of my blog homepage showing four &quot;beats&quot; entries from March 22, 2026, each tagged as RESEARCH or TOOL, with titles like &quot;PCGamer Article Performance Audit&quot; and &quot;DNS Lookup&quot;, now annotated with short descriptive notes explaining the context behind each linked item."></p>
-<p>I've also updated the <a href="https://simonwillison.net/atom/everything/">/atom/everything/</a> Atom feed to include any beats that I've attached notes to.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/atom">atom</a>, <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/site-upgrades">site-upgrades</a></p>]]></description><pubDate>Mon, 23 Mar 2026 02:13:13 +0000</pubDate></item><item><title>Starlette 1.0 skill</title><link>https://simonwillison.net/2026/Mar/23/starlette-1-skill/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/starlette-1-skill#readme">Starlette 1.0 skill</a></p>
-    <p>See <a href="https://simonwillison.net/2026/Mar/22/starlette/">Experimenting with Starlette 1.0 with Claude skills</a>.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/starlette">starlette</a></p>]]></description><pubDate>Mon, 23 Mar 2026 00:05:00 +0000</pubDate></item><item><title>Experimenting with Starlette 1.0 with Claude skills</title><link>https://simonwillison.net/2026/Mar/22/starlette/#atom-everything</link><description><![CDATA[<p><a href="https://marcelotryle.com/blog/2026/03/22/starlette-10-is-here/">Starlette 1.0 is out</a>! This is a really big deal. I think Starlette may be the Python framework with the most usage compared to its relatively low brand recognition because Starlette is the foundation of <a href="https://fastapi.tiangolo.com/">FastAPI</a>, which has attracted a huge amount of buzz that seems to have overshadowed Starlette itself.</p>
-<p>Kim Christie started working on Starlette in 2018 and it quickly became my favorite out of the new breed of Python ASGI frameworks. The only reason I didn't use it as the basis for my own <a href="https://datasette.io/">Datasette</a> project was that it didn't yet promise stability, and I was determined to provide a stable API for Datasette's own plugins... albeit I still haven't been brave enough to ship my own 1.0 release (after 26 alphas and counting)!</p>
-<p>Then in September 2025 Marcelo Trylesinski <a href="https://github.com/Kludex/starlette/discussions/2997">announced that Starlette and Uvicorn were transferring to their GitHub account</a>, in recognition of their many years of contributions and to make it easier for them to receive sponsorship against those projects.</p>
-<p>The 1.0 version has a few breaking changes compared to the 0.x series, described in <a href="https://starlette.dev/release-notes/#100rc1-february-23-2026">the release notes for 1.0.0rc1</a> that came out in February.</p>
-<p>The most notable of these is a change to how code runs on startup and shutdown. Previously that was handled by <code>on_startup</code> and <code>on_shutdown</code> parameters, but the new system uses a neat <a href="https://starlette.dev/lifespan/">lifespan</a> mechanism instead based around an <a href="https://docs.python.org/3/library/contextlib.html#contextlib.asynccontextmanager">async context manager</a>:</p>
-<pre><span class="pl-en">@<span class="pl-s1">contextlib</span>.<span class="pl-c1">asynccontextmanager</span></span>
-<span class="pl-k">async</span> <span class="pl-k">def</span> <span class="pl-en">lifespan</span>(<span class="pl-s1">app</span>):
-    <span class="pl-k">async</span> <span class="pl-k">with</span> <span class="pl-en">some_async_resource</span>():
-        <span class="pl-en">print</span>(<span class="pl-s">"Run at startup!"</span>)
-        <span class="pl-k">yield</span>
-        <span class="pl-en">print</span>(<span class="pl-s">"Run on shutdown!"</span>)
-
-<span class="pl-s1">app</span> <span class="pl-c1">=</span> <span class="pl-en">Starlette</span>(
-    <span class="pl-s1">routes</span><span class="pl-c1">=</span><span class="pl-s1">routes</span>,
-    <span class="pl-s1">lifespan</span><span class="pl-c1">=</span><span class="pl-s1">lifespan</span>
-)</pre>
-<p>If you haven't tried Starlette before it feels to me like an asyncio-native cross between Flask and Django, unsurprising since creator Kim Christie is also responsible for Django REST Framework. Crucially, this means you can write most apps as a single Python file, Flask style.</p>
-<p>This makes it <em>really</em> easy for LLMs to spit out a working Starlette app from a single prompt.</p>
-<p>There's just one problem there: if 1.0 breaks compatibility with the Starlette code that the models have been trained on, how can we have them generate code that works with 1.0?</p>
-<p>I decided to see if I could get this working <a href="https://simonwillison.net/2025/Oct/16/claude-skills/">with a Skill</a>.</p>
-<h4 id="building-a-skill-with-claude">Building a Skill with Claude</h4>
-<p>Regular Claude Chat on <a href="https://claude.ai/">claude.ai</a> has skills, and one of those default skills is the <a href="https://github.com/anthropics/skills/blob/main/skills/skill-creator/SKILL.md">skill-creator skill</a>. This means Claude knows how to build its own skills.</p>
-<p>So I started <a href="https://claude.ai/share/b537c340-aea7-49d6-a14d-3134aa1bd957">a chat session</a> and told it:</p>
-<blockquote>
-<p>Clone Starlette from GitHub - it just had its 1.0 release. Build a skill markdown document for this release which includes code examples of every feature.</p>
-</blockquote>
-<p>I didn't even tell it where to find the repo, Starlette is widely enough known that I expected it could find it on its own.</p>
-<p>It ran <code>git clone https://github.com/encode/starlette.git</code> which is actually the old repository name, but GitHub handles redirects automatically so this worked just fine.</p>
-<p>The <a href="https://github.com/simonw/research/blob/main/starlette-1-skill/SKILL.md">resulting skill document</a> looked very thorough to me... and then I noticed a new button at the top I hadn't seen before labelled "Copy to your skills". So I clicked it:</p>
-<p><img src="https://static.simonwillison.net/static/2026/skill-button.jpg" alt="Screenshot of the Claude.ai interface showing a conversation titled &quot;Starlette 1.0 skill document with code examples.&quot; The left panel shows a chat where the user prompted: &quot;Clone Starlette from GitHub - it just had its 1.0 release. Build a skill markdown document for this release which includes code examples of every feature.&quot; Claude's responses include collapsed sections labeled &quot;Strategized cloning repository and documenting comprehensive feature examples,&quot; &quot;Examined version details and surveyed source documentation comprehensively,&quot; and &quot;Synthesized Starlette 1.0 knowledge to construct comprehensive skill documentation,&quot; with intermediate messages like &quot;I'll clone Starlette from GitHub and build a comprehensive skill document. Let me start by reading the skill-creator guide and then cloning the repo,&quot; &quot;Now let me read through all the documentation files to capture every feature:&quot; and &quot;Now I have a thorough understanding of the entire codebase. Let me build the comprehensive skill document.&quot; The right panel shows a skill preview pane with buttons &quot;Copy to your skills&quot; and &quot;Copy&quot; at the top, and a Description section reading: &quot;Build async web applications and APIs with Starlette 1.0, the lightweight ASGI framework for Python. Use this skill whenever a user wants to create an async Python web app, REST API, WebSocket server, or ASGI application using Starlette. Triggers include mentions of 'Starlette', 'ASGI', async Python web frameworks, or requests to build lightweight async APIs, WebSocket services, streaming responses, or middleware pipelines. Also use when the user is working with FastAPI internals (which is built on Starlette), needs ASGI middleware patterns, or wants a minimal async web server&quot; (text truncated)." style="max-width: 100%;" /></p>
-<p>And now my regular Claude chat has access to that skill!</p>
-<h4 id="a-task-management-demo-app">A task management demo app</h4>
-<p>I started <a href="https://claude.ai/share/b5285fbc-5849-4939-b473-dcb66f73503b">a new conversation</a> and prompted:</p>
-<blockquote>
-<p>Build a task management app with Starlette, it should have projects and tasks and comments and labels</p>
-</blockquote>
-<p>And Claude did exactly that, producing a simple GitHub Issues clone using Starlette 1.0, a SQLite database (via <a href="https://github.com/omnilib/aiosqlite">aiosqlite</a>) and a Jinja2 template.</p>
-<p>Claude even tested the app manually like this:</p>
-<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> /home/claude/taskflow <span class="pl-k">&amp;&amp;</span> timeout 5 python -c <span class="pl-s"><span class="pl-pds">"</span></span>
-<span class="pl-s">import asyncio</span>
-<span class="pl-s">from database import init_db</span>
-<span class="pl-s">asyncio.run(init_db())</span>
-<span class="pl-s">print('DB initialized successfully')</span>
-<span class="pl-s"><span class="pl-pds">"</span></span> <span class="pl-k">2&gt;&amp;1</span>
-
-pip install httpx --break-system-packages -q \
-  <span class="pl-k">&amp;&amp;</span> <span class="pl-c1">cd</span> /home/claude/taskflow <span class="pl-k">&amp;&amp;</span> \
-  python -c <span class="pl-s"><span class="pl-pds">"</span></span>
-<span class="pl-s">from starlette.testclient import TestClient</span>
-<span class="pl-s">from main import app</span>
-<span class="pl-s"></span>
-<span class="pl-s">client = TestClient(app)</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.get('/api/stats')</span>
-<span class="pl-s">print('Stats:', r.json())</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.get('/api/projects')</span>
-<span class="pl-s">print('Projects:', len(r.json()), 'found')</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.get('/api/tasks')</span>
-<span class="pl-s">print('Tasks:', len(r.json()), 'found')</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.get('/api/labels')</span>
-<span class="pl-s">print('Labels:', len(r.json()), 'found')</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.get('/api/tasks/1')</span>
-<span class="pl-s">t = r.json()</span>
-<span class="pl-s">print(f'Task 1: <span class="pl-cce">\"</span>{t[<span class="pl-cce">\"</span>title<span class="pl-cce">\"</span>]}<span class="pl-cce">\"</span> - {len(t[<span class="pl-cce">\"</span>comments<span class="pl-cce">\"</span>])} comments, {len(t[<span class="pl-cce">\"</span>labels<span class="pl-cce">\"</span>])} labels')</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.post('/api/tasks', json={'title':'Test task','project_id':1,'priority':'high','label_ids':[1,2]})</span>
-<span class="pl-s">print('Created task:', r.status_code, r.json()['title'])</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.post('/api/comments', json={'task_id':1,'content':'Test comment'})</span>
-<span class="pl-s">print('Created comment:', r.status_code)</span>
-<span class="pl-s"></span>
-<span class="pl-s">r = client.get('/')</span>
-<span class="pl-s">print('Homepage:', r.status_code, '- length:', len(r.text))</span>
-<span class="pl-s"></span>
-<span class="pl-s">print('\nAll tests passed!')</span>
-<span class="pl-s"><span class="pl-pds">"</span></span></pre></div>
-<p>For all of the buzz about Claude Code, it's easy to overlook that Claude itself counts as a coding agent now, fully able to both write and then test the code that it is writing.</p>
-<p>Here's what the resulting app looked like. The code is <a href="https://github.com/simonw/research/blob/main/starlette-1-skill/taskflow">here in my research repository</a>.</p>
-<p><img src="https://static.simonwillison.net/static/2026/taskflow.jpg" alt="Screenshot of a dark-themed Kanban board app called &quot;TaskFlow&quot; showing the &quot;Website Redesign&quot; project. The left sidebar has sections &quot;OVERVIEW&quot; with &quot;Dashboard&quot;, &quot;All Tasks&quot;, and &quot;Labels&quot;, and &quot;PROJECTS&quot; with &quot;Website Redesign&quot; (1) and &quot;API Platform&quot; (0). The main area has three columns: &quot;TO DO&quot; (0) showing &quot;No tasks&quot;, &quot;IN PROGRESS&quot; (1) with a card titled &quot;Blog about Starlette 1.0&quot; tagged &quot;MEDIUM&quot; and &quot;Documentation&quot;, and &quot;DONE&quot; (0) showing &quot;No tasks&quot;. Top-right buttons read &quot;+ New Task&quot; and &quot;Delete&quot;." style="max-width: 100%;" /></p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/asgi">asgi</a>, <a href="https://simonwillison.net/tags/kim-christie">kim-christie</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/skills">skills</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/starlette">starlette</a></p>]]></description><pubDate>Sun, 22 Mar 2026 23:57:44 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 23 Mar 2026 23:31:45 +0000</pubDate></item></channel></rss>
