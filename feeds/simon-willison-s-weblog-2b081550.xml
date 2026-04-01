@@ -15,7 +15,7 @@
 <ul>
 <li>Removed features relating to allowances and estimated pricing. These are now the domain of <a href="https://github.com/datasette/datasette-llm-accountant">datasette-llm-accountant</a>.</li>
 <li>Now depends on <a href="https://github.com/datasette/datasette-llm">datasette-llm</a> for model configuration. <a href="https://github.com/datasette/datasette-llm-usage/pull/3">#3</a></li>
-<li>Full prompts and responses and tool calls can now be logged to the<code>llm_usage_prompt_log</code> table in the internal database if you set the new <code>datasette-llm-usage.log_prompts</code> plugin configuration setting.</li>
+<li>Full prompts and responses and tool calls can now be logged to the <code>llm_usage_prompt_log</code> table in the internal database if you set the new <code>datasette-llm-usage.log_prompts</code> plugin configuration setting.</li>
 <li>Redesigned the <code>/-/llm-usage-simple-prompt</code> page, which now requires the <code>llm-usage-simple-prompt</code> permission.</li>
 </ul>
 </blockquote>
