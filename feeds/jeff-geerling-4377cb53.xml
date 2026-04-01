@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Bring back MiniDV with this Raspberry Pi FireWire HAT</title><link>https://www.jeffgeerling.com/blog/2026/minidv-with-raspberry-pi-firewire-hat/</link><description><![CDATA[<p>In my last post, I showed you to use <a href="https://www.jeffgeerling.com/blog/2026/firewire-on-a-raspberry-pi/">FireWire on a Raspberry Pi</a> with a PCI Express IEEE 1394 adapter. Now I'll show you how I'm using a new <a href="https://equip-1.c-e.group">FireWire HAT</a> and a <a href="https://amzn.to/4dKtuyg">PiSugar3 Plus</a> battery to make a portable MRU, or 'Memory Recording Unit', to replace tape in older FireWire/i.Link/DV cameras.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>DRAM pricing is killing the hobbyist SBC market</title><link>https://www.jeffgeerling.com/blog/2026/dram-pricing-is-killing-the-hobbyist-sbc-market/</link><description><![CDATA[<p>Today Raspberry Pi announced <a href="https://www.raspberrypi.com/news/a-new-3gb-raspberry-pi-4-for-83-75-and-more-memory-driven-price-increases/">more price increases for all Pis with LPDDR4 RAM</a>, alongside a 'right-sized' 3GB RAM Pi 4 for $83.75.</p>
+<p>The price increases bring the 16GB Pi 5 up to <em>$299.99</em>.</p>
+<p>Despite today's date, this is not a joke.</p>
+<p>I published a video going over the state of the hobbyist 'high end SBC' market (4/8/16 GB models in the current generation), which I'll embed below:</p>
+<div class="yt-embed">
+ <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/HeX22LnKdFY' frameborder='0' allowfullscreen></iframe></div>
+</div>
+<p>But if you'd like the <strong>tl;dr</strong>:</p>]]></description><pubDate>Wed, 1 Apr 2026 21:00:00 +0000</pubDate></item><item><title>Bring back MiniDV with this Raspberry Pi FireWire HAT</title><link>https://www.jeffgeerling.com/blog/2026/minidv-with-raspberry-pi-firewire-hat/</link><description><![CDATA[<p>In my last post, I showed you to use <a href="https://www.jeffgeerling.com/blog/2026/firewire-on-a-raspberry-pi/">FireWire on a Raspberry Pi</a> with a PCI Express IEEE 1394 adapter. Now I'll show you how I'm using a new <a href="https://equip-1.c-e.group">FireWire HAT</a> and a <a href="https://amzn.to/4dKtuyg">PiSugar3 Plus</a> battery to make a portable MRU, or 'Memory Recording Unit', to replace tape in older FireWire/i.Link/DV cameras.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/minidv-with-raspberry-pi-firewire-hat/firehat-raspberry-pi-recording-from-firewire.jpeg"
  alt="Firehat on Raspberry Pi recording video from Canon GL1 over FireWire" width="700" height="auto">
 </figure>
@@ -87,16 +94,4 @@
 </figure>
 
 <p>Today Raspberry Pi launched their new <a href="https://www.raspberrypi.com/products/ai-hat-plus-2/">$130 AI HAT+ 2</a> which includes a Hailo 10H and 8 GB of <a href="https://www.micron.com/products/memory/dram-components/lpddr4/part-catalog/part-detail/mt53e2g32d4de-046-wt-c">LPDDR4X RAM</a>.</p>
-<p>With that, the Hailo 10H is capable of running LLMs entirely standalone, freeing the Pi's CPU and system RAM for other tasks. The chip runs at a maximum of 3W, with 40 TOPS of INT8 NPU inference performance in addition to the equivalent 26 TOPS INT4 machine vision performance on the earlier AI HAT with Hailo 8.</p>]]></description><pubDate>Thu, 15 Jan 2026 08:00:00 +0000</pubDate></item><item><title>Raspberry Pi Pico Mini Rack GPS Clock</title><link>https://www.jeffgeerling.com/blog/2026/pico-gps-clock-mini-rack/</link><description><![CDATA[<p>I wanted to have the most accurate timepiece possible mounted in my mini rack. Therefore I built this:</p>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/pico-gps-clock-mini-rack/pico-gps-clock-mini-rack.jpg"
- alt="Raspberry Pi Pico GPS Clock for Mini Rack" width="700" height="auto">
-</figure>
-
-<p>This is a GPS-based clock running on a Raspberry Pi Pico in a custom 1U 10&quot; rack faceplate. The clock displays time based on a GPS input, and will not display time until a GPS timing lock has been acquired.</p>
-<ul>
-<li>When you turn on the Pico, the display reads <code>----</code></li>
-<li>Upon 3D fix, you get a time on the clock, and the colon starts blinking</li>
-<li>If the 3D fix is lost, the colon goes solid</li>
-<li>When the 3D fix is regained, the colon starts blinking again</li>
-</ul>
-<p>For full details on designing and building this clock, see:</p>]]></description><pubDate>Mon, 12 Jan 2026 15:00:00 +0000</pubDate></item></channel></rss>
+<p>With that, the Hailo 10H is capable of running LLMs entirely standalone, freeing the Pi's CPU and system RAM for other tasks. The chip runs at a maximum of 3W, with 40 TOPS of INT8 NPU inference performance in addition to the equivalent 26 TOPS INT4 machine vision performance on the earlier AI HAT with Hailo 8.</p>]]></description><pubDate>Thu, 15 Jan 2026 08:00:00 +0000</pubDate></item></channel></rss>
