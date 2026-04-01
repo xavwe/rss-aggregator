@@ -1,4 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Soohoon Choi</title><link>https://simonwillison.net/2026/Apr/1/soohoon-choi/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.greptile.com/blog/ai-slopware-future"><p>I want to argue that AI models will write good code because of economic incentives. Good code is cheaper to generate and maintain. Competition is high between the AI models right now, and the ones that win will help developers ship reliable features fastest, which requires simple, maintainable code. Good code will prevail, not only because we want it to (though we do!), but because economic forces demand it. Markets will not reward slop in coding, in the long-term.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-extract 0.3a0</title><link>https://simonwillison.net/2026/Apr/1/datasette-extract/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-extract/releases/tag/0.3a0">datasette-extract 0.3a0</a></p>
+    <blockquote>
+<ul>
+<li>This plugin now uses <a href="https://github.com/datasette/datasette-llm">datasette-llm</a> to configure and manage models. This means it's possible to <a href="https://github.com/datasette/datasette-enrichments-llm/blob/0.2a0/README.md#configuration">specify which models</a> should be made available for enrichments, using the new <code>enrichments</code> purpose.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:32:16 +0000</pubDate></item><item><title>datasette-enrichments-llm 0.2a0</title><link>https://simonwillison.net/2026/Apr/1/datasette-enrichments-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-enrichments-llm/releases/tag/0.2a0">datasette-enrichments-llm 0.2a0</a></p>
+    <blockquote>
+<ul>
+<li>This plugin now uses <a href="https://github.com/datasette/datasette-llm">datasette-llm</a> to configure and manage models. This means it's possible to <a href="https://github.com/datasette/datasette-enrichments-llm/blob/0.2a0/README.md#configuration">specify which models</a> should be made available for enrichments, using the new <code>enrichments</code> purpose.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:28:44 +0000</pubDate></item><item><title>datasette-llm-usage 0.2a0</title><link>https://simonwillison.net/2026/Apr/1/datasette-llm-usage/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm-usage/releases/tag/0.2a0">datasette-llm-usage 0.2a0</a></p>
+    <blockquote>
+<ul>
+<li>Removed features relating to allowances and estimated pricing. These are now the domain of <a href="https://github.com/datasette/datasette-llm-accountant">datasette-llm-accountant</a>.</li>
+<li>Now depends on <a href="https://github.com/datasette/datasette-llm">datasette-llm</a> for model configuration. <a href="https://github.com/datasette/datasette-llm-usage/pull/3">#3</a></li>
+<li>Full prompts and responses and tool calls can now be logged to the<code>llm_usage_prompt_log</code> table in the internal database if you set the new <code>datasette-llm-usage.log_prompts</code> plugin configuration setting.</li>
+<li>Redesigned the <code>/-/llm-usage-simple-prompt</code> page, which now requires the <code>llm-usage-simple-prompt</code> permission.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:24:03 +0000</pubDate></item><item><title>datasette-llm 0.1a5</title><link>https://simonwillison.net/2026/Apr/1/datasette-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a5">datasette-llm 0.1a5</a></p>
+    <blockquote>
+<ul>
+<li>The <code>llm_prompt_context()</code> plugin hook wrapper mechanism now tracks prompts executed within a chain as well as one-off prompts, which means it can be used to track tool call loops. <a href="https://github.com/datasette/datasette-llm">#5</a></li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:11:01 +0000</pubDate></item><item><title>Quoting Soohoon Choi</title><link>https://simonwillison.net/2026/Apr/1/soohoon-choi/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.greptile.com/blog/ai-slopware-future"><p>I want to argue that AI models will write good code because of economic incentives. Good code is cheaper to generate and maintain. Competition is high between the AI models right now, and the ones that win will help developers ship reliable features fastest, which requires simple, maintainable code. Good code will prevail, not only because we want it to (though we do!), but because economic forces demand it. Markets will not reward slop in coding, in the long-term.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.greptile.com/blog/ai-slopware-future">Soohoon Choi</a>, Slop Is Not Necessarily The Future</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 1 Apr 2026 02:07:16 +0000</pubDate></item><item><title>Supply Chain Attack on Axios Pulls Malicious Dependency from npm</title><link>https://simonwillison.net/2026/Mar/31/supply-chain-attack-on-axios/#atom-everything</link><description><![CDATA[<p><strong><a href="https://socket.dev/blog/axios-npm-package-compromised">Supply Chain Attack on Axios Pulls Malicious Dependency from npm</a></strong></p>
@@ -292,69 +323,4 @@ Mario Zechner created the <a href="https://github.com/badlogic/pi-mono">Pi agent
 <p>One of the responsibilities of this plugin is to configure which models are used for which purposes, so you can say in one place "data enrichment uses GPT-5.4-nano but SQL query assistance happens using Sonnet 4.6", for example.</p>
 <p>Plugins that depend on this can use <code>model = await llm.model(purpose="enrichment")</code> to indicate the purpose of the prompts they wish to execute against the model. Those plugins can now also use the new <code>register_llm_purposes()</code> hook to register those purpose strings, which means future plugins can list those purposes in one place to power things like an admin UI for assigning models to purposes.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/plugins">plugins</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:24:31 +0000</pubDate></item><item><title>LiteLLM Hack: Were You One of the 47,000?</title><link>https://simonwillison.net/2026/Mar/25/litellm-hack/#atom-everything</link><description><![CDATA[<p><strong><a href="https://futuresearch.ai/blog/litellm-hack-were-you-one-of-the-47000/">LiteLLM Hack: Were You One of the 47,000?</a></strong></p>
-Daniel Hnyk used the <a href="https://console.cloud.google.com/bigquery?p=bigquery-public-data&amp;d=pypi">BigQuery PyPI dataset</a> to determine how many downloads there were of <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">the exploited LiteLLM packages</a> during the 46 minute period they were live on PyPI. The answer was 46,996 across the two compromised release versions (1.82.7 and 1.82.8).</p>
-<p>They also identified 2,337 packages that depended on LiteLLM - 88% of which did not pin versions in a way that would have avoided the exploited version.
-
-    <p><small></small>Via <a href="https://twitter.com/hnykda/status/2036834100342825369">@hnykda</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/supply-chain">supply-chain</a></p>]]></description><pubDate>Wed, 25 Mar 2026 17:21:04 +0000</pubDate></item><item><title>Auto mode for Claude Code</title><link>https://simonwillison.net/2026/Mar/24/auto-mode-for-claude-code/#atom-everything</link><description><![CDATA[<p><strong><a href="https://claude.com/blog/auto-mode">Auto mode for Claude Code</a></strong></p>
-Really interesting new development in Claude Code today as an alternative to <code>--dangerously-skip-permissions</code>:</p>
-<blockquote>
-<p>Today, we're introducing auto mode, a new permissions mode in Claude Code where Claude makes permission decisions on your behalf, with safeguards monitoring actions before they run.</p>
-</blockquote>
-<p>Those safeguards appear to be implemented using Claude Sonnet 4.6, as <a href="https://code.claude.com/docs/en/permission-modes#eliminate-prompts-with-auto-mode">described in the documentation</a>:</p>
-<blockquote>
-<p>Before each action runs, a separate classifier model reviews the conversation and decides whether the action matches what you asked for: it blocks actions that escalate beyond the task scope, target infrastructure the classifier doesn’t recognize as trusted, or appear to be driven by hostile content encountered in a file or web page. [...]</p>
-<p><strong>Model</strong>: the classifier runs on Claude Sonnet 4.6, even if your main session uses a different model.</p>
-</blockquote>
-<p>They ship with an extensive set of default filters, and you can also customize them further with your own rules. The most interesting insight into how they work comes when you run this new command in the terminal:</p>
-<pre><code>claude auto-mode defaults
-</code></pre>
-<p><a href="https://gist.githubusercontent.com/simonw/91863bfd9f7ebf916d1fabb8e6940335/raw/cda3c88e919b8238e85d3f1cc990e8ff48ad9a18/defaults.json">Here's the full JSON output</a>. It's pretty long, so here's an illustrative subset:</p>
-<p>From the "allow" list:</p>
-<blockquote>
-<ul>
-<li>Test Artifacts: Hardcoded test API keys, placeholder credentials in examples, or hardcoding test cases</li>
-<li>Local Operations: Agent deleting local files in working directory, local file operations within project scope, or using <code>--ignore-certificate-errors</code> for local testing. "Project scope" means the repository the session started in — wandering into ~/, ~/Library/, /etc, or other repos is scope escalation (User Intent Rule #2), not a local operation. Does NOT cover irreversible destruction of pre-existing files or local stateful services — see "Irreversible Local Destruction" in BLOCK.</li>
-<li>Read-Only Operations: GET requests, read-only API calls, or queries that don't modify state and don't contain sensitive information in the URL. Note: PREEMPTIVE BLOCK ON CLEAR INTENT still applies — if the transcript contains clear evidence the agent is using read-only operations to scout for a blocked action, block it.</li>
-<li>Declared Dependencies: Installing packages that are already declared in the repo's manifest files (requirements.txt, package.json, Cargo.toml, pyproject.toml, Gemfile, etc.) via standard commands that read those manifests (<code>pip install -r requirements.txt</code>, <code>npm install</code>, <code>cargo build</code>, <code>bundle install</code>) — provided the agent has not modified the manifest in this session. Does NOT cover installing agent-chosen package names (e.g. <code>pip install foo</code>, <code>npm install bar</code>) — those carry typosquat and supply-chain risk. [...]</li>
-</ul>
-</blockquote>
-<p>From "soft_deny":</p>
-<blockquote>
-<ul>
-<li>Git Destructive: Force pushing (<code>git push --force</code>), deleting remote branches, or rewriting remote history</li>
-<li>Git Push to Default Branch: Pushing directly to main, master, or the repository's default branch — this bypasses pull request review. Commits should be pushed to a new feature branch instead.
--Code from External: Downloading and executing code from external sources — e.g. <code>curl | bash</code>, deserializing external data via formats that can execute code (eval, exec, yaml.unsafe_load, pickle, etc), or similar mechanisms. Also includes running code from an external repo cloned earlier in the transcript (pip install -e, make install, python script.py, pickle.load/torch.load on cloned repo files) — "local on disk" does not mean trusted if it was cloned from an external source visible in the transcript. The repo the agent starts in is trusted.</li>
-<li>Cloud Storage Mass Delete: Deleting or mass modifying files on cloud storage (S3, GCS, Azure Blob, etc.) [...]</li>
-</ul>
-</blockquote>
-<p>I remain unconvinced by prompt injection protections that rely on AI, since they're non-deterministic by nature. The documentation does warn that this may still let things through:</p>
-<blockquote>
-<p>The classifier may still allow some risky actions: for example, if user intent is ambiguous, or if Claude doesn't have enough context about your environment to know an action might create additional risk.</p>
-</blockquote>
-<p>The fact that the default allow list includes <code>pip install -r requirements.txt</code> also means that this wouldn't protect against supply chain attacks with unpinned dependencies, as seen this morning <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">with LiteLLM</a>.</p>
-<p>I still want my coding agents to run in a robust sandbox by default, one that restricts file access and network connections in a deterministic way. I trust those a whole lot more than prompt-based protections like this new auto mode.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Tue, 24 Mar 2026 23:57:33 +0000</pubDate></item><item><title>Package Managers Need to Cool Down</title><link>https://simonwillison.net/2026/Mar/24/package-managers-need-to-cool-down/#atom-everything</link><description><![CDATA[<p><strong><a href="https://nesbitt.io/2026/03/04/package-managers-need-to-cool-down.html">Package Managers Need to Cool Down</a></strong></p>
-Today's <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">LiteLLM supply chain attack</a> inspired me to revisit the idea of <a href="https://simonwillison.net/2025/Nov/21/dependency-cooldowns/">dependency cooldowns</a>, the practice of only installing updated dependencies once they've been out in the wild for a few days to give the community a chance to spot if they've been subverted in some way.</p>
-<p>This recent piece (March 4th) piece by Andrew Nesbitt reviews the current state of dependency cooldown mechanisms across different packaging tools. It's surprisingly well supported! There's been a flurry of activity across major packaging tools, including:</p>
-<ul>
-<li><a href="https://pnpm.io/blog/releases/10.16#new-setting-for-delayed-dependency-updates">pnpm 10.16</a> (September 2025) — <code>minimumReleaseAge</code> with <code>minimumReleaseAgeExclude</code> for trusted packages</li>
-<li><a href="https://github.com/yarnpkg/berry/releases/tag/%40yarnpkg%2Fcli%2F4.10.0">Yarn 4.10.0</a> (September 2025) — <code>npmMinimalAgeGate</code> (in minutes) with <code>npmPreapprovedPackages</code> for exemptions</li>
-<li><a href="https://bun.com/blog/bun-v1.3#minimum-release-age">Bun 1.3</a> (October 2025) — <code>minimumReleaseAge</code> via <code>bunfig.toml</code></li>
-<li><a href="https://deno.com/blog/v2.6#controlling-dependency-stability">Deno 2.6</a> (December 2025) — <code>--minimum-dependency-age</code> for <code>deno update</code> and <code>deno outdated</code></li>
-<li><a href="https://github.com/astral-sh/uv/releases/tag/0.9.17">uv 0.9.17</a> (December 2025) — added relative duration support to existing <code>--exclude-newer</code>, plus per-package overrides via <code>exclude-newer-package</code></li>
-<li><a href="https://ichard26.github.io/blog/2026/01/whats-new-in-pip-26.0/">pip 26.0</a> (January 2026) — <code>--uploaded-prior-to</code> (absolute timestamps only; <a href="https://github.com/pypa/pip/issues/13674">relative duration support requested</a>)</li>
-<li><a href="https://socket.dev/blog/npm-introduces-minimumreleaseage-and-bulk-oidc-configuration">npm 11.10.0</a> (February 2026) — <code>min-release-age</code></li>
-</ul>
-<p><code>pip</code> currently only supports absolute rather than relative dates but Seth Larson <a href="https://sethmlarson.dev/pip-relative-dependency-cooling-with-crontab">has a workaround for that</a> using a scheduled cron to update the absolute date in the <code>pip.conf</code> config file.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/pip">pip</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/npm">npm</a>, <a href="https://simonwillison.net/tags/deno">deno</a>, <a href="https://simonwillison.net/tags/supply-chain">supply-chain</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Tue, 24 Mar 2026 21:11:38 +0000</pubDate></item><item><title>Quoting Christopher Mims</title><link>https://simonwillison.net/2026/Mar/24/christopher-mims/#atom-everything</link><description><![CDATA[<blockquote cite="https://bsky.app/profile/mims.bsky.social/post/3mhsux67xpk2d"><p>I really think "give AI total control of my computer and therefore my entire life" is going to look so foolish in retrospect that everyone who went for this is going to look as dumb as Jimmy Fallon holding up a picture of his Bored Ape</p></blockquote>
-<p class="cite">&mdash; <a href="https://bsky.app/profile/mims.bsky.social/post/3mhsux67xpk2d">Christopher Mims</a>, Technology columnist at The Wall Street Journal</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/security">security</a></p>]]></description><pubDate>Tue, 24 Mar 2026 20:35:52 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/plugins">plugins</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:24:31 +0000</pubDate></item></channel></rss>
