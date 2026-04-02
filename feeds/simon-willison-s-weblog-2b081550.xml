@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-extract 0.3a0</title><link>https://simonwillison.net/2026/Apr/1/datasette-extract/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-extract/releases/tag/0.3a0">datasette-extract 0.3a0</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-llm 0.1a6</title><link>https://simonwillison.net/2026/Apr/1/datasette-llm-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a6">datasette-llm 0.1a6</a></p>
+    <blockquote>
+<ul>
+<li>The same model ID no longer needs to be repeated in both the default model and allowed models lists - setting it as a default model automatically adds it to the allowed models list. <a href="https://github.com/datasette/datasette-llm/issues/6">#6</a></li>
+<li>Improved documentation for <a href="https://github.com/datasette/datasette-llm/blob/0.1a6/README.md#usage">Python API usage</a>.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 23:01:37 +0000</pubDate></item><item><title>datasette-enrichments-llm 0.2a1</title><link>https://simonwillison.net/2026/Apr/1/datasette-enrichments-llm-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-enrichments-llm/releases/tag/0.2a1">datasette-enrichments-llm 0.2a1</a></p>
+    <blockquote>
+<ul>
+<li>The <code>actor</code> who triggers an enrichment is now passed to the <code>llm.mode(... actor=actor)</code> method. <a href="https://github.com/datasette/datasette-enrichments-llm/issues/3">#3</a></li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/enrichments">enrichments</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 22:00:34 +0000</pubDate></item><item><title>datasette-extract 0.3a0</title><link>https://simonwillison.net/2026/Apr/1/datasette-extract/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-extract/releases/tag/0.3a0">datasette-extract 0.3a0</a></p>
     <ul>
 <li>Now uses <a href="https://github.com/datasette/datasette-llm">datasette-llm</a> to manage model configuration, which means you can control which models are available for extraction tasks using the <code>extract</code> purpose and <a href="https://github.com/datasette/datasette-llm/blob/main/README.md#configuration">LLM model configuration</a>. <a href="https://github.com/datasette/datasette-extract/issues/38">#38</a></li>
 </ul>
@@ -290,35 +305,4 @@ Sam Rose continues <a href="https://simonwillison.net/tags/sam-rose/">his streak
         <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Thu, 26 Mar 2026 15:52:32 +0000</pubDate></item><item><title>datasette-files-s3 0.1a1</title><link>https://simonwillison.net/2026/Mar/25/datasette-files-s3/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-files-s3/releases/tag/0.1a1">datasette-files-s3 0.1a1</a></p>
     <p>A backend for <a href="https://github.com/datasette/datasette-files">datasette-files</a> that adds the ability to store and retrieve files using an S3 bucket. This release added <a href="https://github.com/datasette/datasette-files-s3/blob/main/README.md#credentials-broker-response">a mechanism</a> for fetching S3 configuration periodically from a URL, which means we can use time limited IAM credentials that are restricted to a prefix within a bucket.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:57:05 +0000</pubDate></item><item><title>Thoughts on slowing the fuck down</title><link>https://simonwillison.net/2026/Mar/25/thoughts-on-slowing-the-fuck-down/#atom-everything</link><description><![CDATA[<p><strong><a href="https://news.ycombinator.com/item?id=47517539">Thoughts on slowing the fuck down</a></strong></p>
-Mario Zechner created the <a href="https://github.com/badlogic/pi-mono">Pi agent framework</a> used by OpenClaw, giving considerable credibility to his opinions on current trends in agentic engineering. He's not impressed:</p>
-<blockquote>
-<p>We have basically given up all discipline and agency for a sort of addiction, where your highest goal is to produce the largest amount of code in the shortest amount of time. Consequences be damned.</p>
-</blockquote>
-<p>Agents and humans both make mistakes, but agent mistakes accumulate much faster:</p>
-<blockquote>
-<p>A human is a bottleneck. A human cannot shit out 20,000 lines of code in a few hours. Even if the human creates such booboos at high frequency, there's only so many booboos the human can introduce in a codebase per day. [...]</p>
-<p>With an orchestrated army of agents, there is no bottleneck, no human pain. These tiny little harmless booboos suddenly compound at a rate that's unsustainable. You have removed yourself from the loop, so you don't even know that all the innocent booboos have formed a monster of a codebase. You only feel the pain when it's too late. [...]</p>
-<p>You have zero fucking idea what's going on because you delegated all your agency to your agents. You let them run free, and they are merchants of complexity.</p>
-</blockquote>
-<p>I think Mario is exactly right about this. Agents let us move <em>so much faster</em>, but this speed also means that changes which we would normally have considered over the course of weeks are landing in a matter of hours.</p>
-<p>It's so easy to let the codebase evolve outside of our abilities to reason clearly about it. <a href="https://simonwillison.net/tags/cognitive-debt/">Cognitive debt</a> is real.</p>
-<p>Mario recommends slowing down:</p>
-<blockquote>
-<p>Give yourself time to think about what you're actually building and why. Give yourself an opportunity to say, fuck no, we don't need this. Set yourself limits on how much code you let the clanker generate per day, in line with your ability to actually review the code.</p>
-<p>Anything that defines the gestalt of your system, that is architecture, API, and so on, write it by hand. [...]</p>
-</blockquote>
-<p>I'm not convinced writing by hand is the best way to address this, but it's absolutely the case that we need the discipline to find a new balance of speed v.s. mental thoroughness now that typing out the code is no longer anywhere close to being the bottleneck on writing software.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/cognitive-debt">cognitive-debt</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:47:17 +0000</pubDate></item><item><title>datasette-llm 0.1a1</title><link>https://simonwillison.net/2026/Mar/25/datasette-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a1">datasette-llm 0.1a1</a></p>
-    <p>New release of the base plugin that makes models from <a href="https://llm.datasette.io/">LLM</a> available for use by other Datasette plugins such as <a href="https://github.com/datasette/datasette-enrichments-llm">datasette-enrichments-llm</a>.</p>
-<blockquote>
-<ul>
-<li>New <a href="https://github.com/datasette/datasette-llm/blob/main/README.md#register_llm_purposes"><code>register_llm_purposes()</code> plugin hook</a> and <code>get_purposes()</code> function for retrieving registered purpose strings. <a href="https://github.com/datasette/datasette-llm/issues/1">#1</a></li>
-</ul>
-</blockquote>
-<p>One of the responsibilities of this plugin is to configure which models are used for which purposes, so you can say in one place "data enrichment uses GPT-5.4-nano but SQL query assistance happens using Sonnet 4.6", for example.</p>
-<p>Plugins that depend on this can use <code>model = await llm.model(purpose="enrichment")</code> to indicate the purpose of the prompts they wish to execute against the model. Those plugins can now also use the new <code>register_llm_purposes()</code> hook to register those purpose strings, which means future plugins can list those purposes in one place to power things like an admin UI for assigning models to purposes.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/plugins">plugins</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:24:31 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:57:05 +0000</pubDate></item></channel></rss>
