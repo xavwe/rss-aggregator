@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-llm 0.1a6</title><link>https://simonwillison.net/2026/Apr/1/datasette-llm-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a6">datasette-llm 0.1a6</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>March 2026 sponsors-only newsletter</title><link>https://simonwillison.net/2026/Apr/2/march-newsletter/#atom-everything</link><description><![CDATA[<p>I just sent the March edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a>. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2026-03-march.md">access it here</a>. In this month's newsletter:</p>
+<ul>
+<li>More agentic engineering patterns</li>
+<li>Streaming experts with MoE models on a Mac</li>
+<li>Model releases in March</li>
+<li>Vibe porting</li>
+<li>Supply chain attacks against PyPI and NPM</li>
+<li>Stuff I shipped</li>
+<li>What I'm using, March 2026 edition</li>
+<li>And a couple of museums</li>
+</ul>
+<p>Here's <a href="https://gist.github.com/simonw/8b5fa061937842659dbcd5bd676ce0e8">a copy of the February newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Thu, 2 Apr 2026 05:15:04 +0000</pubDate></item><item><title>datasette-llm 0.1a6</title><link>https://simonwillison.net/2026/Apr/1/datasette-llm-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a6">datasette-llm 0.1a6</a></p>
     <blockquote>
 <ul>
 <li>The same model ID no longer needs to be repeated in both the default model and allowed models lists - setting it as a default model automatically adds it to the allowed models list. <a href="https://github.com/datasette/datasette-llm/issues/6">#6</a></li>
@@ -302,7 +315,4 @@ Sam Rose continues <a href="https://simonwillison.net/tags/sam-rose/">his streak
 </ul>
 </blockquote>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Thu, 26 Mar 2026 15:52:32 +0000</pubDate></item><item><title>datasette-files-s3 0.1a1</title><link>https://simonwillison.net/2026/Mar/25/datasette-files-s3/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-files-s3/releases/tag/0.1a1">datasette-files-s3 0.1a1</a></p>
-    <p>A backend for <a href="https://github.com/datasette/datasette-files">datasette-files</a> that adds the ability to store and retrieve files using an S3 bucket. This release added <a href="https://github.com/datasette/datasette-files-s3/blob/main/README.md#credentials-broker-response">a mechanism</a> for fetching S3 configuration periodically from a URL, which means we can use time limited IAM credentials that are restricted to a prefix within a bucket.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/s3">s3</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 25 Mar 2026 21:57:05 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Thu, 26 Mar 2026 15:52:32 +0000</pubDate></item></channel></rss>
