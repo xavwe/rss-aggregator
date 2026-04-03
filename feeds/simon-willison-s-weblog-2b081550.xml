@@ -144,7 +144,7 @@
 <p><a href="https://youtu.be/wc8FBhQtdsA?t=5698">1:34:58</a> - You would have thought that AI is a very bad fit for journalism where the whole idea is to find the truth. But the flip side is journalists deal with untrustworthy sources all the time. The art of journalism is you talk to a bunch of people and some of them lie to you and you figure out what's true. So as long as the journalist treats the AI as yet another unreliable source, they're actually better equipped to work with AI than most other professions are.</p>
 </blockquote>
 <h2 id="the-pelican-benchmark">The pelican benchmark</h2>
-<p>Of course we talked about <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">pelicans riding bicycles</a>:</p>
+<p>Obviously we talked about <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">pelicans riding bicycles</a>:</p>
 <blockquote>
 <p><a href="https://youtu.be/wc8FBhQtdsA?t=3370">56:10</a> - There appears to be a very strong correlation between how good their drawing of a pelican riding a bicycle is and how good they are at everything else. And nobody can explain to me why that is. [...]</p>
 <p>People kept on asking me, what if labs cheat on the benchmark? And my answer has always been, really, <a href="https://simonwillison.net/2025/Nov/13/training-for-pelicans-riding-bicycles/">all I want from life is a really good picture of a pelican riding a bicycle</a>. And if I can trick every AI lab in the world into cheating on benchmarks to get it, then that just achieves my goal.</p>
@@ -231,6 +231,11 @@ Four new vision-capable Apache 2.0 licensed reasoning LLMs from Google DeepMind,
 <p>The smaller models incorporate Per-Layer Embeddings (PLE) to maximize parameter efficiency in on-device deployments. Rather than adding more layers or parameters to the model, PLE gives each decoder layer its own small embedding for every token. These embedding tables are large but are only used for quick lookups, which is why the effective parameter count is much smaller than the total.</p>
 </blockquote>
 <p>I don't entirely understand that, but apparently that's what the "E" in E2B means!</p>
+<p>One particularly exciting feature of these models is that they are multi-modal beyond just images:</p>
+<blockquote>
+<p><strong>Vision and audio</strong>: All models natively process video and images, supporting variable resolutions, and excelling at visual tasks like OCR and chart understanding. Additionally, the E2B and E4B models feature native audio input for speech recognition and understanding.</p>
+</blockquote>
+<p>I've not figured out a way to run audio input locally - I don't think that feature is in LM Studio or Ollama yet.</p>
 <p>I tried them out using the GGUFs for <a href="https://lmstudio.ai/models/gemma-4">LM Studio</a>. The 2B (4.41GB), 4B (6.33GB) and 26B-A4B (17.99GB) models all worked perfectly, but the 31B (19.89GB) model was broken and spat out <code>"---\n"</code> in a loop for every prompt I tried.</p>
 <p>The succession of <a href="https://gist.github.com/simonw/12ae4711288637a722fd6bd4b4b56bdb">pelican quality</a> from 2B to 4B to 26B-A4B is notable:</p>
 <p>E2B:</p>
