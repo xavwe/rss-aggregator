@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Syntaqlite Playground</title><link>https://simonwillison.net/2026/Apr/5/syntaqlite/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/syntaqlite">Syntaqlite Playground</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Chengpeng Mou</title><link>https://simonwillison.net/2026/Apr/5/chengpeng-mou/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/cpmou2022/status/2040606209800290404"><p>From anonymized U.S. ChatGPT data, we are seeing:</p>
+<ul>
+<li>~2M weekly messages on health insurance</li>
+<li>~600K weekly messages [classified as healthcare] from people living in “hospital deserts” (30 min drive to nearest hospital)</li>
+<li>7 out of 10 msgs happen outside clinic hours</li>
+</ul></blockquote>
+<p class="cite">&mdash; <a href="https://twitter.com/cpmou2022/status/2040606209800290404">Chengpeng Mou</a>, Head of Business Finance, OpenAI</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 5 Apr 2026 21:47:06 +0000</pubDate></item><item><title>Syntaqlite Playground</title><link>https://simonwillison.net/2026/Apr/5/syntaqlite/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/syntaqlite">Syntaqlite Playground</a></p>
     <p>Lalit Maganti's <a href="https://github.com/LalitMaganti/syntaqlite">syntaqlite</a> is currently being discussed <a href="https://news.ycombinator.com/item?id=47648828">on Hacker News</a> thanks to <a href="https://lalitm.com/post/building-syntaqlite-ai/">Eight years of wanting, three months of building with AI</a>, a deep dive into how it was built.</p>
 <p>This inspired me to revisit <a href="https://github.com/simonw/research/tree/main/syntaqlite-python-extension#readme">a research project</a> I ran when Lalit first released it a couple of weeks ago, where I tried it out and then compiled it to a WebAssembly wheel so it could run in Pyodide in a browser (the library itself uses C and Rust).</p>
 <p>This <a href="https://tools.simonwillison.net/syntaqlite">new playground</a> loads up the Python library and provides a UI for trying out its different features: formating, parsing into an AST, validating, and tokenizing SQLite SQL queries.</p>
@@ -453,13 +461,4 @@ Useful writeup of today's supply chain attack against Axios, the HTTP client NPM
 </ul>
 </blockquote>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 16:48:59 +0000</pubDate></item><item><title>llm-echo 0.3</title><link>https://simonwillison.net/2026/Mar/31/llm-echo-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-echo/releases/tag/0.3">llm-echo 0.3</a></p>
-    <blockquote>
-<ul>
-<li>Mechanisms for <a href="https://github.com/simonw/llm-echo/blob/0.3/README.md#tool-calling">testing tool calls</a>. #3</li>
-<li>Mechanism for <a href="https://github.com/simonw/llm-echo/blob/0.3/README.md#raw-responses">testing raw responses</a>. #4</li>
-<li>New <code>echo-needs-key</code> model for <a href="https://github.com/simonw/llm-echo/blob/0.3/README.md#echo-needs-key-model">testing model key logic</a>. #7</li>
-</ul>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 15:43:26 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 16:48:59 +0000</pubDate></item></channel></rss>
