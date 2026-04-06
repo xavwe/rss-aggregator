@@ -1,4 +1,77 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Chengpeng Mou</title><link>https://simonwillison.net/2026/Apr/5/chengpeng-mou/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/cpmou2022/status/2040606209800290404"><p>From anonymized U.S. ChatGPT data, we are seeing:</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Google AI Edge Gallery</title><link>https://simonwillison.net/2026/Apr/6/google-ai-edge-gallery/#atom-everything</link><description><![CDATA[<p><strong><a href="https://apps.apple.com/nl/app/google-ai-edge-gallery/id6749645337">Google AI Edge Gallery</a></strong></p>
+Terrible name, really great app: this is Google's official app for running their Gemma 4 models (the E2B and E4B sizes, plus some members of the Gemma 3 family) directly on your iPhone.</p>
+<p>It works <em>really</em> well. The E2B model is a 2.54GB download and is both fast and genuinely useful.</p>
+<p>The app also provides "ask questions about images" and audio transcription (up to 30s) with the two small Gemma 4 models, and has an interesting "skills" demo which demonstrates tool calling against eight different interactive widgets, each implemented as an HTML page (though sadly the source code is not visible): interactive-map, kitchen-adventure, calculate-hash, text-spinner, mood-tracker, mnemonic-password, query-wikipedia, and qr-code.</p>
+<p><img src="https://static.simonwillison.net/static/2026/gemini-agent-skills.jpg" alt="Screenshot of an &quot;Agent Skills&quot; chat interface using the Gemma-4-E2B-it model. The user prompt reads &quot;Show me the Castro Theatre on a map.&quot; The model response, labeled &quot;Model on GPU,&quot; shows it &quot;Called JS skill &#39;interactive-map/index.html&#39;&quot; and displays an embedded Google Map centered on a red pin at The Castro Theatre in San Francisco, with nearby landmarks visible including Starbelly, Cliff&#39;s Variety, Blind Butcher, GLBT Historical Society Museum, and Fable. An &quot;Open in Maps&quot; link and &quot;View in full screen&quot; button are shown. Below the map, the model states &quot;The interactive map view for the Castro Theatre has been shown.&quot; with a response time of 2.4 s. A text input field with &quot;Type prompt...&quot; placeholder, a &quot;+&quot; button, and a &quot;Skills&quot; button appear at the bottom." style="max-width: min(400px, 100%); margin: 0 auto; display: block;"></p>
+<p>(That demo did freeze the app when I tried to add a follow-up prompt though.)</p>
+<p>This is the first time I've seen a local model vendor release an official app for trying out their models on in iPhone. Sadly it's missing permanent logs - conversations with this app are ephemeral.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47652561">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/iphone">iphone</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a></p>]]></description><pubDate>Mon, 6 Apr 2026 05:18:26 +0000</pubDate></item><item><title>datasette-ports 0.2</title><link>https://simonwillison.net/2026/Apr/6/datasette-ports-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ports/releases/tag/0.2">datasette-ports 0.2</a></p>
+    <blockquote>
+<ul>
+<li>No longer requires Datasette - running <code>uvx datasette-ports</code> now works as well.</li>
+<li>Installing it as a Datasette plugin continues to provide the <code>datasette ports</code> command.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Mon, 6 Apr 2026 03:25:43 +0000</pubDate></item><item><title>scan-for-secrets 0.3</title><link>https://simonwillison.net/2026/Apr/6/scan-for-secrets/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/scan-for-secrets/releases/tag/0.3">scan-for-secrets 0.3</a></p>
+    <blockquote>
+<ul>
+<li>New <code>-r/--redact</code> option which shows the list of matches, asks for confirmation and then replaces every match with <code>REDACTED</code>, taking escaping rules into account.</li>
+<li>New Python function <code>redact_file(file_path: str | Path, secrets: list[str], replacement: str = "REDACTED") -&gt; int</code>.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a></p>]]></description><pubDate>Mon, 6 Apr 2026 02:59:28 +0000</pubDate></item><item><title>Cleanup Claude Code Paste</title><link>https://simonwillison.net/2026/Apr/6/cleanup-claude-code-paste/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/cleanup-claude-code-paste">Cleanup Claude Code Paste</a></p>
+    <p>Super-niche tool this. I sometimes copy prompts out of the Claude Code terminal app and they come out with a bunch of weird additional whitespace. This tool cleans that up.</p>
+<p><img alt="Screenshot of a web tool titled &quot;Cleanup Claude Code Paste&quot; with the subtitle &quot;Paste terminal output to remove the ❯ prompt, fix wrapped-line whitespace, and join lines into clean text.&quot; An input textarea contains pasted terminal output starting with &quot;❯ Add a -r/--redact option which asks for user approval (after telling it how many replacements will happen and in which files and which lines – standard output basically) and then rewrites the files in that folder to replace all matched secrets with REDACTED. Run tests with 'uv run pytest' and use red/green TDD&quot;. Below is a &quot;Cleaned output:&quot; section showing the same text with the ❯ prompt removed and whitespace cleaned up. A blue &quot;Copy to clipboard&quot; button appears at the bottom." src="https://static.simonwillison.net/static/2026/claude-code-cleanup.jpg" /></p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 6 Apr 2026 02:55:23 +0000</pubDate></item><item><title>datasette-ports 0.1</title><link>https://simonwillison.net/2026/Apr/6/datasette-ports/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ports/releases/tag/0.1">datasette-ports 0.1</a></p>
+    <p>Another <a href="https://gisthost.github.io/?f92d8a6bdadee1c77972b5e51954144e">example</a> of README-driven development, this time solving a problem that might be unique to me.</p>
+<p>I often find myself running a bunch of different <a href="https://datasette.io">Datasette</a> instances with different databases and different in-development plugins, spreads across dozens of different terminal windows - enough that I frequently lose them!</p>
+<p>Now I can run this:</p>
+<pre><code>datasette install datasette-ports
+datasette ports
+</code></pre>
+<p>And get a list of every running instance that looks something like this:</p>
+<pre><code>http://127.0.0.1:8333/ - v1.0a26
+  Databases: data
+  Plugins: datasette-enrichments, datasette-enrichments-llm, datasette-llm, datasette-secrets
+http://127.0.0.1:8001/ - v1.0a26
+  Databases: creatures
+  Plugins: datasette-extract, datasette-llm, datasette-secrets
+http://127.0.0.1:8900/ - v0.65.2
+  Databases: logs
+</code></pre>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Mon, 6 Apr 2026 00:23:55 +0000</pubDate></item><item><title>Eight years of wanting, three months of building with AI</title><link>https://simonwillison.net/2026/Apr/5/building-with-ai/#atom-everything</link><description><![CDATA[<p><strong><a href="https://lalitm.com/post/building-syntaqlite-ai/">Eight years of wanting, three months of building with AI</a></strong></p>
+Lalit Maganti provides one of my favorite pieces of long-form writing on agentic engineering I've seen in ages.</p>
+<p>They spent eight years thinking about and then three months building <a href="https://github.com/lalitMaganti/syntaqlite">syntaqlite</a>, which they describe as "<a href="https://lalitm.com/post/syntaqlite/">high-fidelity devtools that SQLite deserves</a>".</p>
+<p>The goal was to provide fast, robust and comprehensive linting and verifying tools for SQLite, suitable for use in language servers and other development tools - a parser, formatter, and verifier for SQLite queries. I've found myself wanting this kind of thing in the past myself, hence my (far less production-ready) <a href="https://simonwillison.net/2026/Jan/30/sqlite-ast-2/">sqlite-ast</a> project from a few months ago.</p>
+<p>Lalit had been procrastinating on this project for years, because of the inevitable tedium of needing to work through 400+ grammar rules to help build a parser. That's exactly the kind of tedious work that coding agents excel at!</p>
+<p>Claude Code helped get over that initial hump and build the first prototype:</p>
+<blockquote>
+<p>AI basically let me put aside all my doubts on technical calls, my uncertainty of building the right thing and my reluctance to get started by giving me very concrete problems to work on. Instead of “I need to understand how SQLite’s parsing works”, it was “I need to get AI to suggest an approach for me so I can tear it up and build something better". I work so much better with concrete prototypes to play with and code to look at than endlessly thinking about designs in my head, and AI lets me get to that point at a pace I could not have dreamed about before. Once I took the first step, every step after that was so much easier.</p>
+</blockquote>
+<p>That first vibe-coded prototype worked great as a proof of concept, but they eventually made the decision to throw it away and start again from scratch. AI worked great for the low level details but did not produce a coherent high-level architecture:</p>
+<blockquote>
+<p>I found that AI made me procrastinate on key design decisions. Because refactoring was cheap, I could always say “I’ll deal with this later.” And because AI could refactor at the same industrial scale it generated code, the cost of deferring felt low. But it wasn’t: deferring decisions corroded my ability to think clearly because the codebase stayed confusing in the meantime.</p>
+</blockquote>
+<p>The second attempt took a lot longer and involved a great deal more human-in-the-loop decision making, but the result is a robust library that can stand the test of time.</p>
+<p>It's worth setting aside some time to read this whole thing - it's full of non-obvious downsides to working heavily with AI, as well as a detailed explanation of how they overcame those hurdles.</p>
+<p>The key idea I took away from this concerns AI's weakness in terms of design and architecture:</p>
+<blockquote>
+<p>When I was working on something where I didn’t even know what I wanted, AI was somewhere between unhelpful and harmful. The architecture of the project was the clearest case: I spent weeks in the early days following AI down dead ends, exploring designs that felt productive in the moment but collapsed under scrutiny. In hindsight, I have to wonder if it would have been faster just thinking it through without AI in the loop at all.</p>
+<p>But expertise alone isn’t enough. Even when I understood a problem deeply, AI still struggled if the task had no objectively checkable answer. Implementation has a right answer, at least at a local level: the code compiles, the tests pass, the output matches what you asked for. Design doesn’t. We’re still arguing about OOP decades after it first took off.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47648828">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Sun, 5 Apr 2026 23:54:18 +0000</pubDate></item><item><title>Quoting Chengpeng Mou</title><link>https://simonwillison.net/2026/Apr/5/chengpeng-mou/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/cpmou2022/status/2040606209800290404"><p>From anonymized U.S. ChatGPT data, we are seeing:</p>
 <ul>
 <li>~2M weekly messages on health insurance</li>
 <li>~600K weekly messages [classified as healthcare] from people living in “hospital deserts” (30 min drive to nearest hospital)</li>
@@ -423,42 +496,4 @@ Four new vision-capable Apache 2.0 licensed reasoning LLMs from Google DeepMind,
 </ul>
 </blockquote>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:11:01 +0000</pubDate></item><item><title>Quoting Soohoon Choi</title><link>https://simonwillison.net/2026/Apr/1/soohoon-choi/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.greptile.com/blog/ai-slopware-future"><p>I want to argue that AI models will write good code because of economic incentives. Good code is cheaper to generate and maintain. Competition is high between the AI models right now, and the ones that win will help developers ship reliable features fastest, which requires simple, maintainable code. Good code will prevail, not only because we want it to (though we do!), but because economic forces demand it. Markets will not reward slop in coding, in the long-term.</p></blockquote>
-<p class="cite">&mdash; <a href="https://www.greptile.com/blog/ai-slopware-future">Soohoon Choi</a>, Slop Is Not Necessarily The Future</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Wed, 1 Apr 2026 02:07:16 +0000</pubDate></item><item><title>Supply Chain Attack on Axios Pulls Malicious Dependency from npm</title><link>https://simonwillison.net/2026/Mar/31/supply-chain-attack-on-axios/#atom-everything</link><description><![CDATA[<p><strong><a href="https://socket.dev/blog/axios-npm-package-compromised">Supply Chain Attack on Axios Pulls Malicious Dependency from npm</a></strong></p>
-Useful writeup of today's supply chain attack against Axios, the HTTP client NPM package with <a href="https://www.npmjs.com/package/axios">101 million weekly downloads</a>. Versions <code>1.14.1</code> and <code>0.30.4</code> both included a new dependency called <code>plain-crypto-js</code> which was freshly published malware, stealing credentials and installing a remote access trojan (RAT).</p>
-<p>It looks like the attack came from a leaked long-lived npm token. Axios have <a href="https://github.com/axios/axios/issues/7055">an open issue to adopt trusted publishing</a>, which would ensure that only their GitHub Actions workflows are able to publish to npm. The malware packages were published without an accompanying GitHub release, which strikes me as a useful heuristic for spotting potentially malicious releases - the same pattern was present for LiteLLM <a href="https://simonwillison.net/2026/Mar/24/malicious-litellm/">last week</a> as well.
-
-    <p><small></small>Via <a href="https://lobste.rs/s/l57wuc/supply_chain_attack_on_axios">lobste.rs</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/npm">npm</a>, <a href="https://simonwillison.net/tags/supply-chain">supply-chain</a></p>]]></description><pubDate>Tue, 31 Mar 2026 23:28:40 +0000</pubDate></item><item><title>datasette-llm 0.1a4</title><link>https://simonwillison.net/2026/Mar/31/datasette-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a4">datasette-llm 0.1a4</a></p>
-    <blockquote>
-<ul>
-<li>Ability to <a href="https://github.com/datasette/datasette-llm/blob/0.1a4/README.md#model-references-with-custom-api-keys">configure different API keys for models based on their purpose</a> - for example, set it up so enrichments always use <code>gpt-5.4-mini</code> with an API key dedicated to that purpose. <a href="https://github.com/datasette/datasette-llm/pull/4">#4</a></li>
-</ul>
-</blockquote>
-<p>I released <a href="https://github.com/simonw/llm-echo/releases/tag/0.3">llm-echo 0.3</a> to provide an API key testing utility I needed for the tests for this new feature.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Tue, 31 Mar 2026 21:17:23 +0000</pubDate></item><item><title>llm-all-models-async 0.1</title><link>https://simonwillison.net/2026/Mar/31/llm-all-models-async/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-all-models-async/releases/tag/0.1">llm-all-models-async 0.1</a></p>
-    <p>LLM plugins can define new models in both <a href="https://llm.datasette.io/en/stable/plugins/tutorial-model-plugin.html">sync</a> and <a href="https://llm.datasette.io/en/stable/plugins/advanced-model-plugins.html#async-models">async</a> varieties. The async variants are most common for API-backed models - sync variants tend to be things that run the model directly within the plugin.</p>
-<p>My <a href="https://simonwillison.net/2026/Mar/30/mr-chatterbox/#running-it-locally-with-llm">llm-mrchatterbox</a> plugin is sync only. I wanted to try it out with various Datasette LLM features (specifically <a href="https://github.com/datasette/datasette-enrichments-llm">datasette-enrichments-llm</a>) but Datasette can only use async models.</p>
-<p>So... I had Claude spin up this plugin that turns sync models into async models using a thread pool. This ended up needing an extra plugin hook mechanism in LLM itself, which I shipped just now in <a href="https://llm.datasette.io/en/stable/changelog.html#v0-30">LLM 0.30</a>.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/async">async</a>, <a href="https://simonwillison.net/tags/python">python</a></p>]]></description><pubDate>Tue, 31 Mar 2026 20:52:02 +0000</pubDate></item><item><title>llm 0.30</title><link>https://simonwillison.net/2026/Mar/31/llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.30">llm 0.30</a></p>
-    <blockquote>
-<ul>
-<li>The <a href="http://llm.datasette.io/en/stable/plugins/plugin-hooks.html#plugin-hooks-register-models">register_models() plugin hook</a> now takes an optional <code>model_aliases</code> parameter listing all of the models, async models and aliases that have been registered so far by other plugins. A plugin with <code>@hookimpl(trylast=True)</code> can use this to take previously registered models into account. <a href="https://github.com/simonw/llm/issues/1389">#1389</a></li>
-<li>Added docstrings to public classes and methods and included those directly in the documentation.</li>
-</ul>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 20:35:51 +0000</pubDate></item><item><title>llm-echo 0.4</title><link>https://simonwillison.net/2026/Mar/31/llm-echo/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-echo/releases/tag/0.4">llm-echo 0.4</a></p>
-    <blockquote>
-<ul>
-<li>Prompts now have the <code>input_tokens</code> and <code>output_tokens</code> fields populated on the response.</li>
-</ul>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 31 Mar 2026 16:48:59 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:11:01 +0000</pubDate></item></channel></rss>
