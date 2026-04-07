@@ -1,4 +1,88 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Google AI Edge Gallery</title><link>https://simonwillison.net/2026/Apr/6/google-ai-edge-gallery/#atom-everything</link><description><![CDATA[<p><strong><a href="https://apps.apple.com/nl/app/google-ai-edge-gallery/id6749645337">Google AI Edge Gallery</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GLM-5.1: Towards Long-Horizon Tasks</title><link>https://simonwillison.net/2026/Apr/7/glm-51/#atom-everything</link><description><![CDATA[<p><strong><a href="https://z.ai/blog/glm-5.1">GLM-5.1: Towards Long-Horizon Tasks</a></strong></p>
+Chinese AI lab Z.ai's latest model is a giant 754B parameter 1.51TB (on <a href="https://huggingface.co/zai-org/GLM-5.1">Hugging Face</a>) MIT-licensed monster - the same size as their previous GLM-5 release, and sharing the <a href="https://huggingface.co/papers/2602.15763">same paper</a>.</p>
+<p>It's available <a href="https://openrouter.ai/z-ai/glm-5.1">via OpenRouter</a> so I asked it to draw me a pelican:</p>
+<pre><code>llm install llm-openrouter
+llm -m openrouter/z-ai/glm-5.1 'Generate an SVG of a pelican on a bicycle'
+</code></pre>
+<p>And something new happened... unprompted, the model <a href="https://gist.github.com/simonw/af7170f54256cc007ef28a8721564be8">decided to give me</a> an HTML page that included both the SVG and a separate set of CSS animations!</p>
+<p>The SVG was excellent, and might be my new favorite from an open weights model:</p>
+<p><img alt="The bicycle is red and has a frame the correct shape and wheels with spokes. The pelican is a perky little fella." src="https://static.simonwillison.net/static/2026/glm-5.1-pelican.png" /></p>
+<p>But the animation <a href="https://gisthost.github.io/?73bb6808b18c2482f66e5f082c75f36e">broke it</a>:</p>
+<p><img alt="Animation - the wheels and pedals rotate, the clouds move... and the pelican has vanished, but there is a little blob bobbing up and down in the top left corner." src="https://static.simonwillison.net/static/2026/glm-5.1-broken-light-lossy.gif" /></p>
+<p>That's the pelican, floating up in the top left corner.</p>
+<p>I usually don't do follow-up prompts for the pelican test, but in this case I made an exception:</p>
+<pre><code>llm -c 'the animation is a bit broken, the pelican ends up positioned off the screen at the top right'
+</code></pre>
+<p>GLM 5.1 replied:</p>
+<blockquote>
+<p>The issue is that CSS <code>transform</code> animations on SVG elements override the SVG <code>transform</code> attribute used for positioning, causing the pelican to lose its placement and fly off to the top-right. The fix is to separate positioning (SVG attribute) from animation (inner group) and use <code>&lt;animateTransform&gt;</code> for SVG rotations since it handles coordinate systems correctly.</p>
+</blockquote>
+<p>And spat out <a href="https://static.simonwillison.net/static/2026/glm-5.1-pelican-fixed.html">fresh HTML</a> which fixed the problem!</p>
+<p><img alt="Now everything is right - the bicycle rotates correctly, the pelican sits on it and bobs up and down, and its lower beak moves slightly as well." src="https://static.simonwillison.net/static/2026/glm-5.1-pelican-fixed-medium-lossy.gif" /></p>
+<p>I particularly like the animation of the beak, which is described in the SVG comments like so:</p>
+<div class="highlight highlight-text-xml-svg"><pre><span class="pl-c"><span class="pl-c">&lt;!--</span> Pouch (lower beak) with wobble <span class="pl-c">--&gt;</span></span>
+&lt;<span class="pl-ent">g</span>&gt;
+    &lt;<span class="pl-ent">path</span> <span class="pl-e">d</span>=<span class="pl-s"><span class="pl-pds">"</span>M42,-58 Q43,-50 48,-42 Q55,-35 62,-38 Q70,-42 75,-60 L42,-58 Z<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>url(#pouchGrad)<span class="pl-pds">"</span></span> <span class="pl-e">stroke</span>=<span class="pl-s"><span class="pl-pds">"</span>#b06008<span class="pl-pds">"</span></span> <span class="pl-e">stroke-width</span>=<span class="pl-s"><span class="pl-pds">"</span>1<span class="pl-pds">"</span></span> <span class="pl-e">opacity</span>=<span class="pl-s"><span class="pl-pds">"</span>0.9<span class="pl-pds">"</span></span>/&gt;
+    &lt;<span class="pl-ent">path</span> <span class="pl-e">d</span>=<span class="pl-s"><span class="pl-pds">"</span>M48,-50 Q55,-46 60,-52<span class="pl-pds">"</span></span> <span class="pl-e">fill</span>=<span class="pl-s"><span class="pl-pds">"</span>none<span class="pl-pds">"</span></span> <span class="pl-e">stroke</span>=<span class="pl-s"><span class="pl-pds">"</span>#c06a08<span class="pl-pds">"</span></span> <span class="pl-e">stroke-width</span>=<span class="pl-s"><span class="pl-pds">"</span>0.8<span class="pl-pds">"</span></span> <span class="pl-e">opacity</span>=<span class="pl-s"><span class="pl-pds">"</span>0.6<span class="pl-pds">"</span></span>/&gt;
+    &lt;<span class="pl-ent">animateTransform</span> <span class="pl-e">attributeName</span>=<span class="pl-s"><span class="pl-pds">"</span>transform<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>scale<span class="pl-pds">"</span></span>
+    <span class="pl-e">values</span>=<span class="pl-s"><span class="pl-pds">"</span>1,1; 1.03,0.97; 1,1<span class="pl-pds">"</span></span> <span class="pl-e">dur</span>=<span class="pl-s"><span class="pl-pds">"</span>0.75s<span class="pl-pds">"</span></span> <span class="pl-e">repeatCount</span>=<span class="pl-s"><span class="pl-pds">"</span>indefinite<span class="pl-pds">"</span></span>
+    <span class="pl-e">additive</span>=<span class="pl-s"><span class="pl-pds">"</span>sum<span class="pl-pds">"</span></span>/&gt;
+&lt;/<span class="pl-ent">g</span>&gt;</pre></div>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/css">css</a>, <a href="https://simonwillison.net/tags/svg">svg</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a>, <a href="https://simonwillison.net/tags/glm">glm</a></p>]]></description><pubDate>Tue, 7 Apr 2026 21:25:14 +0000</pubDate></item><item><title>Anthropic&apos;s Project Glasswing - restricting Claude Mythos to security researchers - sounds necessary to me</title><link>https://simonwillison.net/2026/Apr/7/project-glasswing/#atom-everything</link><description><![CDATA[<p>Anthropic <em>didn't</em> release their latest model, Claude Mythos (<a href="https://www-cdn.anthropic.com/53566bf5440a10affd749724787c8913a2ae0841.pdf">system card PDF</a>), today. They have instead made it available to a very restricted set of preview partners under their newly announced <a href="https://www.anthropic.com/glasswing">Project Glasswing</a>.</p>
+<p>The model is a general purpose model, similar to Claude Opus 4.6, but Anthropic claim that its cyber-security research abilities are strong enough that they need to give the software industry as a whole time to prepare.</p>
+<blockquote>
+<p>Mythos Preview has already found thousands of high-severity vulnerabilities, including some in <em>every major operating system and web browser</em>. Given the rate of AI progress, it will not be long before such capabilities proliferate, potentially beyond actors who are committed to deploying them safely.</p>
+<p>[...]</p>
+<p>Project Glasswing partners will receive access to Claude Mythos Preview to find and fix vulnerabilities or weaknesses in their foundational systems—systems that represent a very large portion of the world’s shared cyberattack surface. We anticipate this work will focus on tasks like local vulnerability detection, black box testing of binaries, securing endpoints, and penetration testing of systems.</p>
+</blockquote>
+
+<p>There's a great deal more technical detail in <a href="https://red.anthropic.com/2026/mythos-preview/"> Assessing Claude Mythos Preview’s cybersecurity capabilities</a> on the Anthropic Red Team blog:</p>
+
+<blockquote><p>In one case, Mythos Preview wrote a web browser exploit that chained together four vulnerabilities, writing a complex <a href="https://en.wikipedia.org/wiki/JIT_spraying ">JIT heap spray</a> that escaped both renderer and OS sandboxes. It autonomously obtained local privilege escalation exploits on Linux and other operating systems by exploiting subtle race conditions and KASLR-bypasses. And it autonomously wrote a remote code execution exploit on FreeBSD's NFS server that granted full root access to unauthenticated users by splitting a 20-gadget ROP chain over multiple packets.</p>
+<p>[...]</p>
+<p> Our internal evaluations showed that Opus 4.6 generally had a near-0% success rate at autonomous exploit development. But Mythos Preview is in a different league. For example, Opus 4.6 turned the vulnerabilities it had found in Mozilla’s Firefox 147 JavaScript engine—all patched in Firefox 148—into JavaScript shell exploits only two times out of several hundred attempts. We re-ran this experiment as a benchmark for Mythos Preview, which developed working exploits 181 times, and achieved register control on 29 more.</p>
+</blockquote>
+
+<p>Saying "our model is too dangerous to release" is a great way to build buzz around a new model, but in this case I expect their caution is warranted.</p>
+<p>Just a few days (<a href="https://simonwillison.net/2026/Apr/3/">last Friday</a>) ago I started a new <a href="https://simonwillison.net/tags/ai-security-research/">ai-security-research</a> tag on this blog to acknowledge an uptick in credible security professionals pulling the alarm on how good modern LLMs have got at vulnerability research.</p>
+<p><a href="https://www.theregister.com/2026/03/26/greg_kroahhartman_ai_kernel/">Greg Kroah-Hartman</a> of the Linux kernel:</p>
+<blockquote>
+<p>Months ago, we were getting what we called 'AI slop,' AI-generated security reports that were obviously wrong or low quality. It was kind of funny. It didn't really worry us.</p>
+<p>Something happened a month ago, and the world switched. Now we have real reports. All open source projects have real reports that are made with AI, but they're good, and they're real.</p>
+</blockquote>
+<p><a href="https://mastodon.social/@bagder/116336957584445742">Daniel Stenberg</a> of <code>curl</code>:</p>
+<blockquote>
+<p>The challenge with AI in open source security has transitioned from an AI slop tsunami into more of a ... plain security report tsunami. Less slop but lots of reports. Many of them really good.</p>
+<p>I'm spending hours per day on this now. It's intense.</p>
+</blockquote>
+<p>And Thomas Ptacek published <a href="https://sockpuppet.org/blog/2026/03/30/vulnerability-research-is-cooked/">Vulnerability Research Is Cooked</a>, a post inspired by his <a href="https://securitycryptographywhatever.com/2026/03/25/ai-bug-finding/">podcast conversation</a> with Anthropic's Nicholas Carlini.</p>
+<p>Anthropic have a 5 minute <a href="https://www.youtube.com/watch?v=INGOC6-LLv0">talking heads video</a> describing the Glasswing project. Nicholas Carlini appears as one of those talking heads, where he said (highlights mine):</p>
+<blockquote>
+<p>It has the ability to chain together vulnerabilities. So what this means is you find two vulnerabilities, either of which doesn't really get you very much independently. But this model is able to create exploits out of three, four, or sometimes five vulnerabilities that in sequence give you some kind of very sophisticated end outcome. [...]</p>
+<p><strong>I've found more bugs in the last couple of weeks than I found in the rest of my life combined</strong>. We've used the model to scan a bunch of open source code, and the thing that we went for first was operating systems, because this is the code that underlies the entire internet infrastructure. <strong>For OpenBSD, we found a bug that's been present for 27 years, where I can send a couple of pieces of data to any OpenBSD server and crash it</strong>. On Linux, we found a number of vulnerabilities where as a user with no permissions, I can elevate myself to the administrator by just running some binary on my machine. For each of these bugs, we told the maintainers who actually run the software about them, and they went and fixed them and have deployed the patches  patches so that anyone who runs the software is no longer vulnerable to these attacks.</p>
+</blockquote>
+<p>I found this on the <a href="https://www.openbsd.org/errata78.html">OpenBSD 7.8 errata page</a>:</p>
+<blockquote>
+<p><strong>025: RELIABILITY FIX: March 25, 2026</strong>  <em>All architectures</em></p>
+<p>TCP packets with invalid SACK options could crash the kernel.</p>
+<p><a href="https://ftp.openbsd.org/pub/OpenBSD/patches/7.8/common/025_sack.patch.sig">A source code patch exists which remedies this problem.</a></p>
+</blockquote>
+<p>I tracked that change down in the <a href="https://github.com/openbsd/src">GitHub mirror</a> of the OpenBSD CVS repo (apparently they still use CVS!) and found it <a href="https://github.com/openbsd/src/blame/master/sys/netinet/tcp_input.c#L2461">using git blame</a>:</p>
+<p><img src="https://static.simonwillison.net/static/2026/openbsd-27-years.jpg" alt="Screenshot of a Git blame view of C source code around line 2455 showing TCP SACK hole validation logic. Code includes checks using SEQ_GT, SEQ_LT macros on fields like th-&gt;th_ack, tp-&gt;snd_una, sack.start, sack.end, tp-&gt;snd_max, and tp-&gt;snd_holes. Most commits are from 25–27 years ago with messages like &quot;more SACK hole validity testin...&quot; and &quot;knf&quot;, while one recent commit from 3 weeks ago (&quot;Ignore TCP SACK packets wit...&quot;) is highlighted with an orange left border, adding a new guard &quot;if (SEQ_LT(sack.start, tp-&gt;snd_una)) continue;&quot;" style="max-width: 100%;" /></p>
+<p>Sure enough, the surrounding code is from 27 years ago.</p>
+<p>I'm not sure which Linux vulnerability Nicholas was describing, but it may have been <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/commit/?id=5133b61aaf437e5f25b1b396b14242a6bb0508e2">this NFS one</a> recently covered <a href="https://mtlynch.io/claude-code-found-linux-vulnerability/">by Michael Lynch
+</a>.</p>
+<p>There's enough smoke here that I believe there's a fire. It's not surprising to find vulnerabilities in decades-old software, especially given that they're mostly written in C, but what's new is that coding agents run by the latest frontier LLMs are proving tirelessly capable at digging up these issues.</p>
+<p>I actually thought to myself on Friday that this sounded like an industry-wide reckoning in the making, and that it might warrant a huge investment of time and money to get ahead of the inevitable barrage of vulnerabilities. Project Glasswing incorporates "$100M in usage credits ... as well as $4M in direct donations to open-source security organizations". Partners include AWS, Apple, Microsoft, Google, and the Linux Foundation. It would be great to see OpenAI involved as well - GPT-5.4 already has a strong reputation for finding security vulnerabilities and they have stronger models on the near horizon.</p>
+<p>The bad news for those of us who are <em>not</em> trusted partners is this:</p>
+<blockquote>
+<p>We do not plan to make Claude Mythos Preview generally available, but our eventual goal is to enable our users to safely deploy Mythos-class models at scale—for cybersecurity purposes, but also for the myriad other benefits that such highly capable models will bring. To do so, we need to make progress in developing cybersecurity (and other) safeguards that detect and block the model’s most dangerous outputs. We plan to launch new safeguards with an upcoming Claude Opus model, allowing us to improve and refine them with a model that does not pose the same level of risk as Mythos Preview.</p>
+</blockquote>
+<p>I can live with that. I think the security risks really are credible here, and having extra time for trusted teams to get ahead of them is a reasonable trade-off.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/thomas-ptacek">thomas-ptacek</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/nicholas-carlini">nicholas-carlini</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a></p>]]></description><pubDate>Tue, 7 Apr 2026 20:52:54 +0000</pubDate></item><item><title>Google AI Edge Gallery</title><link>https://simonwillison.net/2026/Apr/6/google-ai-edge-gallery/#atom-everything</link><description><![CDATA[<p><strong><a href="https://apps.apple.com/nl/app/google-ai-edge-gallery/id6749645337">Google AI Edge Gallery</a></strong></p>
 Terrible name, really great app: this is Google's official app for running their Gemma 4 models (the E2B and E4B sizes, plus some members of the Gemma 3 family) directly on your iPhone.</p>
 <p>It works <em>really</em> well. The E2B model is a 2.54GB download and is both fast and genuinely useful.</p>
 <p>The app also provides "ask questions about images" and audio transcription (up to 30s) with the two small Gemma 4 models, and has an interesting "skills" demo which demonstrates tool calling against eight different interactive widgets, each implemented as an HTML page (though sadly the source code is not visible): interactive-map, kitchen-adventure, calculate-hash, text-spinner, mood-tracker, mnemonic-password, query-wikipedia, and qr-code.</p>
@@ -479,21 +563,4 @@ Four new vision-capable Apache 2.0 licensed reasoning LLMs from Google DeepMind,
 </ul>
 </blockquote>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:28:44 +0000</pubDate></item><item><title>datasette-llm-usage 0.2a0</title><link>https://simonwillison.net/2026/Apr/1/datasette-llm-usage/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm-usage/releases/tag/0.2a0">datasette-llm-usage 0.2a0</a></p>
-    <blockquote>
-<ul>
-<li>Removed features relating to allowances and estimated pricing. These are now the domain of <a href="https://github.com/datasette/datasette-llm-accountant">datasette-llm-accountant</a>.</li>
-<li>Now depends on <a href="https://github.com/datasette/datasette-llm">datasette-llm</a> for model configuration. <a href="https://github.com/datasette/datasette-llm-usage/pull/3">#3</a></li>
-<li>Full prompts and responses and tool calls can now be logged to the <code>llm_usage_prompt_log</code> table in the internal database if you set the new <code>datasette-llm-usage.log_prompts</code> plugin configuration setting.</li>
-<li>Redesigned the <code>/-/llm-usage-simple-prompt</code> page, which now requires the <code>llm-usage-simple-prompt</code> permission.</li>
-</ul>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:24:03 +0000</pubDate></item><item><title>datasette-llm 0.1a5</title><link>https://simonwillison.net/2026/Apr/1/datasette-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a5">datasette-llm 0.1a5</a></p>
-    <blockquote>
-<ul>
-<li>The <code>llm_prompt_context()</code> plugin hook wrapper mechanism now tracks prompts executed within a chain as well as one-off prompts, which means it can be used to track tool call loops. <a href="https://github.com/datasette/datasette-llm">#5</a></li>
-</ul>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:11:01 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 1 Apr 2026 03:28:44 +0000</pubDate></item></channel></rss>
