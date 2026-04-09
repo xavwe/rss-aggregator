@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>asgi-gzip 0.3</title><link>https://simonwillison.net/2026/Apr/9/asgi-gzip/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/asgi-gzip/releases/tag/0.3">asgi-gzip 0.3</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GitHub Repo Size</title><link>https://simonwillison.net/2026/Apr/9/github-repo-size/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/github-repo-size">GitHub Repo Size</a></p>
+    <p>GitHub doesn't tell you the repo size in the UI, but it's available in the CORS-friendly <a href="https://api.github.com/repos/simonw/datasette">API</a>. Paste a repo into this tool to see the size, <a href="https://tools.simonwillison.net/github-repo-size?repo=simonw%2Fdatasette">for example for simonw/datasette</a> (8.1MB).</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/cors">cors</a>, <a href="https://simonwillison.net/tags/github">github</a></p>]]></description><pubDate>Thu, 9 Apr 2026 21:31:50 +0000</pubDate></item><item><title>asgi-gzip 0.3</title><link>https://simonwillison.net/2026/Apr/9/asgi-gzip/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/asgi-gzip/releases/tag/0.3">asgi-gzip 0.3</a></p>
     <p>I ran into trouble deploying a new feature using <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events">SSE</a> to a production Datasette instance, and it turned out that instance was using <a href="https://github.com/simonw/datasette-gzip">datasette-gzip</a> which uses <a href="https://github.com/simonw/asgi-gzip">asgi-gzip</a> which was incorrectly compressing <code>event/text-stream</code> responses.</p>
 <p><code>asgi-gzip</code> was extracted from Starlette, and has <a href="https://simonwillison.net/2022/Apr/28/issue-on-changes/">a GitHub Actions scheduled workflow</a> to check Starlette for updates that need to be ported to the library... but that action had stopped running and hence had missed <a href="https://github.com/Kludex/starlette/commit/a9a8dab0cc3cbd05dca37650fc392717b9fe5bbf">Starlette's own fix</a> for this issue.</p>
 <p>I ran the workflow and integrated the new fix, and now <code>datasette-gzip</code> and <code>asgi-gzip</code> both correctly handle <code>text/event-stream</code> in SSE responses.</p>
@@ -87,7 +90,7 @@
 </ul>
 </blockquote>
 <p>So it can take an image path, optional object names and return things in format <code>bbox</code>, <code>point</code> or <code>count</code>.</p>
-<p>Sounds to me like Meta's <a href="https://github.com/facebookresearch/segment-anything">Segment Anything</a>. I decided to take it for a spin.</p>
+<p>This sounded to me like Meta's <a href="https://github.com/facebookresearch/segment-anything">Segment Anything</a>, (<em>I later heard that it's not, this is a native feature of the model itself via a tool call with a custom system prompt</em>). I decided to take it for a spin.</p>
 <p><strong>Prompt</strong>:</p>
 <blockquote>
 <p>generate a photo of a raccoon sitting on a trash can wearing trash as a hat</p>
@@ -770,17 +773,4 @@ Four new vision-capable Apache 2.0 licensed reasoning LLMs from Google DeepMind,
     <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/vision-llms">vision-llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/gemma">gemma</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a></p>]]></description><pubDate>Thu, 2 Apr 2026 18:28:54 +0000</pubDate></item><item><title>llm-gemini 0.30</title><link>https://simonwillison.net/2026/Apr/2/llm-gemini/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-gemini/releases/tag/0.30">llm-gemini 0.30</a></p>
     <p>New models <code>gemini-3.1-flash-lite-preview</code>, <code>gemma-4-26b-a4b-it</code> and <code>gemma-4-31b-it</code>. See <a href="https://simonwillison.net/2026/Apr/2/gemma-4/">my notes on Gemma 4</a>.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemma">gemma</a></p>]]></description><pubDate>Thu, 2 Apr 2026 18:25:08 +0000</pubDate></item><item><title>March 2026 sponsors-only newsletter</title><link>https://simonwillison.net/2026/Apr/2/march-newsletter/#atom-everything</link><description><![CDATA[<p>I just sent the March edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a>. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2026-03-march.md">access it here</a>. In this month's newsletter:</p>
-<ul>
-<li>More agentic engineering patterns</li>
-<li>Streaming experts with MoE models on a Mac</li>
-<li>Model releases in March</li>
-<li>Vibe porting</li>
-<li>Supply chain attacks against PyPI and NPM</li>
-<li>Stuff I shipped</li>
-<li>What I'm using, March 2026 edition</li>
-<li>And a couple of museums</li>
-</ul>
-<p>Here's <a href="https://gist.github.com/simonw/8b5fa061937842659dbcd5bd676ce0e8">a copy of the February newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Thu, 2 Apr 2026 05:15:04 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemma">gemma</a></p>]]></description><pubDate>Thu, 2 Apr 2026 18:25:08 +0000</pubDate></item></channel></rss>
