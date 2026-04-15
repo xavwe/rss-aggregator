@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Trusted access for the next era of cyber defense</title><link>https://simonwillison.net/2026/Apr/14/trusted-access-openai/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/scaling-trusted-access-for-cyber-defense/">Trusted access for the next era of cyber defense</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Zig 0.16.0 release notes: &quot;Juicy Main&quot;</title><link>https://simonwillison.net/2026/Apr/15/juicy-main/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ziglang.org/download/0.16.0/release-notes.html#Juicy-Main">Zig 0.16.0 release notes: &quot;Juicy Main&quot;</a></strong></p>
+Zig has <em>really good</em> release notes - comprehensive, detailed, and with relevant usage examples for each of the new features.</p>
+<p>Of particular note in the newly released Zig 0.16.0 is what they are calling "Juicy Main" - a dependency injection feature for your program's <code>main()</code> function where accepting a <code>process.Init</code> parameter grants access to a struct of useful properties:</p>
+<div class="highlight highlight-source-zig"><pre><span class="pl-k">const</span> <span class="pl-v">std</span> <span class="pl-k">=</span> <span class="pl-k">@import</span>(<span class="pl-s">"std"</span>);
+
+<span class="pl-k">pub</span> <span class="pl-k">fn</span> <span class="pl-en">main</span>(<span class="pl-v">init</span>: <span class="pl-k">std.process.Init</span>) <span class="pl-k">!</span><span class="pl-k">void</span> {
+    <span class="pl-c">/// general purpose allocator for temporary heap allocations:</span>
+    <span class="pl-k">const</span> <span class="pl-v">gpa</span> <span class="pl-k">=</span> <span class="pl-v">init</span>.<span class="pl-v">gpa</span>;
+    <span class="pl-c">/// default Io implementation:</span>
+    <span class="pl-k">const</span> <span class="pl-v">io</span> <span class="pl-k">=</span> <span class="pl-v">init</span>.<span class="pl-v">io</span>;
+    <span class="pl-c">/// access to environment variables:</span>
+    <span class="pl-v">std</span>.<span class="pl-v">log</span>.<span class="pl-v">info</span>(<span class="pl-s">"{d} env vars"</span>, .{<span class="pl-v">init</span>.<span class="pl-v">environ_map</span>.<span class="pl-v">count</span>()});
+    <span class="pl-c">/// access to CLI arguments</span>
+    <span class="pl-k">const</span> <span class="pl-v">args</span> <span class="pl-k">=</span> <span class="pl-k">try</span> <span class="pl-v">init</span>.<span class="pl-v">minimal</span>.<span class="pl-v">args</span>.<span class="pl-v">toSlice</span>(
+        <span class="pl-v">init</span>.<span class="pl-v">arena</span>.<span class="pl-v">allocator</span>()
+    );
+}</pre></div>
+
+    <p><small></small>Via <a href="https://lobste.rs/s/4vvozb/zig_0_16_0_release_notes">Lobste.rs</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/zig">zig</a></p>]]></description><pubDate>Wed, 15 Apr 2026 01:59:21 +0000</pubDate></item><item><title>datasette PR #2689: Replace token-based CSRF with Sec-Fetch-Site header protection</title><link>https://simonwillison.net/2026/Apr/14/replace-token-based-csrf/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/datasette/pull/2689">datasette PR #2689: Replace token-based CSRF with Sec-Fetch-Site header protection</a></strong></p>
+Datasette has long protected against CSRF attacks using CSRF tokens, implemented using my <a href="https://github.com/simonw/asgi-csrf">asgi-csrf</a> Python library. These are something of a pain to work with - you need to scatter forms in templates with <code>&lt;input type="hidden" name="csrftoken" value="{{ csrftoken() }}"&gt;</code> lines and then selectively disable CSRF protection for APIs that are intended to be called from outside the browser.</p>
+<p>I've been following Filippo Valsorda's research here with interest, described in <a href="https://words.filippo.io/csrf/">this detailed essay from August 2025</a> and shipped <a href="https://tip.golang.org/doc/go1.25#nethttppkgnethttp">as part of Go 1.25</a> that same month.</p>
+<p>I've now landed the same change in Datasette. Here's the PR description - Claude Code did much of the work (across 10 commits, closely guided by me and cross-reviewed by GPT-5.4) but I've decided to start writing these PR descriptions by hand, partly to make them more concise and also as an exercise in keeping myself honest.</p>
+<blockquote>
+<ul>
+<li>New CSRF protection middleware inspired by Go 1.25 and <a href="https://words.filippo.io/csrf/">this research</a> by Filippo Valsorda. This replaces the old CSRF token based protection.</li>
+<li>Removes all instances of <code>&lt;input type="hidden" name="csrftoken" value="{{ csrftoken() }}"&gt;</code> in the templates - they are no longer needed.</li>
+<li>Removes the <code>def skip_csrf(datasette, scope):</code> plugin hook defined in <code>datasette/hookspecs.py</code> and its documentation and tests.</li>
+<li>Updated <a href="https://docs.datasette.io/en/latest/internals.html#csrf-protection">CSRF protection documentation</a> to describe the new approach.</li>
+<li>Upgrade guide now <a href="https://docs.datasette.io/en/latest/upgrade_guide.html#csrf-protection-is-now-header-based">describes the CSRF change</a>.</li>
+</ul>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/csrf">csrf</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Tue, 14 Apr 2026 23:58:53 +0000</pubDate></item><item><title>Trusted access for the next era of cyber defense</title><link>https://simonwillison.net/2026/Apr/14/trusted-access-openai/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/scaling-trusted-access-for-cyber-defense/">Trusted access for the next era of cyber defense</a></strong></p>
 OpenAI's answer to <a href="https://simonwillison.net/2026/Apr/7/project-glasswing/">Claude Mythos</a> appears to be a new model called GPT-5.4-Cyber:</p>
 <blockquote>
 <p>In preparation for increasingly more capable models from OpenAI over the next few months, we are fine-tuning our models specifically to enable defensive cybersecurity use cases, starting today with a variant of GPT‑5.4 trained to be cyber-permissive: GPT‑5.4‑Cyber.</p>
@@ -559,12 +595,4 @@ awk -F= '/aws_secret_access_key/{print $2}' ~/.aws/credentials | xargs
 </code></pre>
 <p>I built this tool using README-driven-development: I carefully constructed the README describing exactly how the tool should work, then <a href="https://gisthost.github.io/?d4b1a398bf3b6b14aade923dea69a1ac/index.html">dumped it into Claude Code</a> and told it to build the actual tool (using <a href="https://simonwillison.net/guides/agentic-engineering-patterns/red-green-tdd/">red/green TDD</a>, naturally.)</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sun, 5 Apr 2026 03:27:13 +0000</pubDate></item><item><title>research-llm-apis 2026-04-04</title><link>https://simonwillison.net/2026/Apr/5/research-llm-apis/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/research-llm-apis/releases/tag/2026-04-04">research-llm-apis 2026-04-04</a></p>
-    <p>I'm working on a <a href="https://github.com/simonw/llm/issues/1314">major change</a> to my LLM Python library and CLI tool. LLM provides an abstraction layer over hundreds of different LLMs from dozens of different vendors thanks to its plugin system, and some of those vendors have grown new features over the past year which LLM's abstraction layer can't handle, such as server-side tool execution.</p>
-<p>To help design that new abstraction layer I had Claude Code read through the Python client libraries for Anthropic, OpenAI, Gemini and Mistral and use those to help craft <code>curl</code> commands to access the raw JSON for both streaming and non-streaming modes across a range of different scenarios. Both the scripts and the captured outputs now live in this new repo.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/apis">apis</a>, <a href="https://simonwillison.net/tags/json">json</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 5 Apr 2026 00:32:11 +0000</pubDate></item><item><title>Quoting Kyle Daigle</title><link>https://simonwillison.net/2026/Apr/4/kyle-daigle/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/kdaigle/status/2040164759836778878"><p>[GitHub] platform activity is surging. There were 1 billion commits in 2025. Now, it's 275 million per week, on pace for 14 billion this year if growth remains linear (spoiler: it won't.)</p>
-<p>GitHub Actions has grown from 500M minutes/week in 2023 to 1B minutes/week in 2025, and now 2.1B minutes so far this week.</p></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/kdaigle/status/2040164759836778878">Kyle Daigle</a>, COO, GitHub</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/github-actions">github-actions</a></p>]]></description><pubDate>Sat, 4 Apr 2026 02:20:17 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Sun, 5 Apr 2026 03:27:13 +0000</pubDate></item></channel></rss>
