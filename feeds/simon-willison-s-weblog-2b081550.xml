@@ -1,7 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Kyle Kingsbury</title><link>https://simonwillison.net/2026/Apr/15/kyle-kingsbury/#atom-everything</link><description><![CDATA[<blockquote cite="https://aphyr.com/posts/419-the-future-of-everything-is-lies-i-guess-new-jobs"><p>I think we will see some people employed (though perhaps not explicitly) as <em>meat shields</em>: people who are accountable for ML systems under their supervision. The accountability may be purely internal, as when Meta hires human beings to review the decisions of automated moderation systems. It may be external, as when lawyers are penalized for submitting LLM lies to the court. It may involve formalized responsibility, like a Data Protection Officer. It may be convenient for a company to have third-party subcontractors, like Buscaglia, who can be thrown under the bus when the system as a whole misbehaves.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting John Gruber</title><link>https://simonwillison.net/2026/Apr/15/john-gruber/#atom-everything</link><description><![CDATA[<blockquote cite="https://daringfireball.net/2026/04/piece_android_iphone_apps"><p>The real goldmine isn’t that Apple gets a cut of every App Store transaction. It’s that Apple’s platforms have the best apps, and users who are drawn to the best apps are thus drawn to the iPhone, Mac, and iPad. That edge is waning. Not because software on other platforms is getting better, but because third-party software on iPhone, Mac, and iPad is regressing to the mean, <em>to some extent</em>, because fewer developers feel motivated — artistically, financially, or both — to create well-crafted idiomatic native apps exclusively for Apple’s platforms.</p></blockquote>
+<p class="cite">&mdash; <a href="https://daringfireball.net/2026/04/piece_android_iphone_apps">John Gruber</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/john-gruber">john-gruber</a></p>]]></description><pubDate>Wed, 15 Apr 2026 17:13:57 +0000</pubDate></item><item><title>Gemini 3.1 Flash TTS</title><link>https://simonwillison.net/2026/Apr/15/gemini-31-flash-tts/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-flash-tts/">Gemini 3.1 Flash TTS</a></strong></p>
+Google released Gemini 3.1 Flash TTS today, a new text-to-speech model that can be directed using prompts.</p>
+<p>It's presented via the standard Gemini API using <code>gemini-3.1-flash-tts-preview</code> as the model ID, but can only output audio files.</p>
+<p>The <a href="https://ai.google.dev/gemini-api/docs/speech-generation#transcript-tags">prompting guide</a> is surprising, to say the least. Here's their example prompt to generate just a few short sentences of audio:</p>
+<pre><code># AUDIO PROFILE: Jaz R.
+## "The Morning Hype"
+
+## THE SCENE: The London Studio
+It is 10:00 PM in a glass-walled studio overlooking the moonlit London skyline, but inside, it is blindingly bright. The red "ON AIR" tally light is blazing. Jaz is standing up, not sitting, bouncing on the balls of their heels to the rhythm of a thumping backing track. Their hands fly across the faders on a massive mixing desk. It is a chaotic, caffeine-fueled cockpit designed to wake up an entire nation.
+
+### DIRECTOR'S NOTES
+Style:
+* The "Vocal Smile": You must hear the grin in the audio. The soft palate is always raised to keep the tone bright, sunny, and explicitly inviting.
+* Dynamics: High projection without shouting. Punchy consonants and elongated vowels on excitement words (e.g., "Beauuutiful morning").
+
+Pace: Speaks at an energetic pace, keeping up with the fast music.  Speaks with A "bouncing" cadence. High-speed delivery with fluid transitions — no dead air, no gaps.
+
+Accent: Jaz is from Brixton, London
+
+### SAMPLE CONTEXT
+Jaz is the industry standard for Top 40 radio, high-octane event promos, or any script that requires a charismatic Estuary accent and 11/10 infectious energy.
+
+#### TRANSCRIPT
+[excitedly] Yes, massive vibes in the studio! You are locked in and it is absolutely popping off in London right now. If you're stuck on the tube, or just sat there pretending to work... stop it. Seriously, I see you.
+[shouting] Turn this up! We've got the project roadmap landing in three, two... let's go!
+</code></pre>
+<p>Here's what I got using that example prompt:</p>
+<p><audio controls style="width: 100%">
+  <source src="https://static.simonwillison.net/static/2026/gemini-flash-tts-london.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio></p>
+<p>Then I modified it to say "Jaz is from Newcastle" and "... requires a charismatic Newcastle accent" and got this result:</p>
+<p><audio controls style="width: 100%">
+  <source src="https://static.simonwillison.net/static/2026/gemini-flash-tts-newcastle.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio></p>
+<p>Here's Exeter, Devon for good measure:</p>
+<p><audio controls style="width: 100%">
+  <source src="https://static.simonwillison.net/static/2026/gemini-flash-tts-devon.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio></p>
+<p>I <a href="https://gemini.google.com/share/dd0fba5a83c4">had Gemini 3.1 Pro</a> vibe code <a href="https://tools.simonwillison.net/gemini-flash-tts">this UI for trying it out</a>:</p>
+<p><img alt="Screenshot of a &quot;Gemini 3.1 Flash TTS&quot; web application interface. At the top is an &quot;API Key&quot; field with a masked password. Below is a &quot;TTS Mode&quot; section with a dropdown set to &quot;Multi-Speaker (Conversation)&quot;. &quot;Speaker 1 Name&quot; is set to &quot;Joe&quot; with &quot;Speaker 1 Voice&quot; set to &quot;Puck (Upbeat)&quot;. &quot;Speaker 2 Name&quot; is set to &quot;Jane&quot; with &quot;Speaker 2 Voice&quot; set to &quot;Kore (Firm)&quot;. Under &quot;Script / Prompt&quot; is a tip reading &quot;Tip: Format your text as a script using the Exact Speaker Names defined above.&quot; The script text area contains &quot;TTS the following conversation between Joe and Jane:\n\nJoe: How's it going today Jane?\nJane: [yawn] Not too bad, how about you?&quot; A blue &quot;Generate Audio&quot; button is below. At the bottom is a &quot;Success!&quot; message with an audio player showing 00:00 / 00:06 and a &quot;Download WAV&quot; link." src="https://static.simonwillison.net/static/2026/gemini-flash-tts.jpg" />
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/text-to-speech">text-to-speech</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Wed, 15 Apr 2026 17:13:14 +0000</pubDate></item><item><title>Gemini 3.1 Flash TTS</title><link>https://simonwillison.net/2026/Apr/15/gemini-flash-tts/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/gemini-flash-tts">Gemini 3.1 Flash TTS</a></p>
+    <p>See <a href="https://simonwillison.net/2026/Apr/15/gemini-31-flash-tts/">my notes</a> on Google's new Gemini 3.1 Flash TTS text-to-speech model.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/google">google</a></p>]]></description><pubDate>Wed, 15 Apr 2026 16:41:46 +0000</pubDate></item><item><title>Quoting Kyle Kingsbury</title><link>https://simonwillison.net/2026/Apr/15/kyle-kingsbury/#atom-everything</link><description><![CDATA[<blockquote cite="https://aphyr.com/posts/419-the-future-of-everything-is-lies-i-guess-new-jobs"><p>I think we will see some people employed (though perhaps not explicitly) as <em>meat shields</em>: people who are accountable for ML systems under their supervision. The accountability may be purely internal, as when Meta hires human beings to review the decisions of automated moderation systems. It may be external, as when lawyers are penalized for submitting LLM lies to the court. It may involve formalized responsibility, like a Data Protection Officer. It may be convenient for a company to have third-party subcontractors, like Buscaglia, who can be thrown under the bus when the system as a whole misbehaves.</p></blockquote>
 <p class="cite">&mdash; <a href="https://aphyr.com/posts/419-the-future-of-everything-is-lies-i-guess-new-jobs">Kyle Kingsbury</a>, The Future of Everything is Lies, I Guess: New Jobs</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/kyle-kingsbury">kyle-kingsbury</a></p>]]></description><pubDate>Wed, 15 Apr 2026 15:36:02 +0000</pubDate></item><item><title>Zig 0.16.0 release notes: &quot;Juicy Main&quot;</title><link>https://simonwillison.net/2026/Apr/15/juicy-main/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ziglang.org/download/0.16.0/release-notes.html#Juicy-Main">Zig 0.16.0 release notes: &quot;Juicy Main&quot;</a></strong></p>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/kyle-kingsbury">kyle-kingsbury</a></p>]]></description><pubDate>Wed, 15 Apr 2026 15:36:02 +0000</pubDate></item><item><title>datasette-ports 0.3</title><link>https://simonwillison.net/2026/Apr/15/datasette-ports/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ports/releases/tag/0.3">datasette-ports 0.3</a></p>
+    <p>A small update for my tool for helping me figure out what all of the Datasette instances on my laptop are up to.</p>
+<blockquote>
+<ul>
+<li>Show working directory derived from each PID</li>
+<li>Show the full path to each database file</li>
+</ul>
+</blockquote>
+<p>Output now looks like this:</p>
+<pre><code>http://127.0.0.1:8007/ - v1.0a26
+  Directory: /Users/simon/dev/blog
+  Databases:
+    simonwillisonblog: /Users/simon/dev/blog/simonwillisonblog.db
+  Plugins:
+    datasette-llm
+    datasette-secrets
+http://127.0.0.1:8001/ - v1.0a26
+  Directory: /Users/simon/dev/creatures
+  Databases:
+    creatures: /tmp/creatures.db
+</code></pre>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 15 Apr 2026 02:50:57 +0000</pubDate></item><item><title>Zig 0.16.0 release notes: &quot;Juicy Main&quot;</title><link>https://simonwillison.net/2026/Apr/15/juicy-main/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ziglang.org/download/0.16.0/release-notes.html#Juicy-Main">Zig 0.16.0 release notes: &quot;Juicy Main&quot;</a></strong></p>
 Zig has <em>really good</em> release notes - comprehensive, detailed, and with relevant usage examples for each of the new features.</p>
 <p>Of particular note in the newly released Zig 0.16.0 is what they are calling "Juicy Main" - a dependency injection feature for your program's <code>main()</code> function where accepting a <code>process.Init</code> parameter grants access to a struct of useful properties:</p>
 <div class="highlight highlight-source-zig"><pre><span class="pl-k">const</span> <span class="pl-v">std</span> <span class="pl-k">=</span> <span class="pl-k">@import</span>(<span class="pl-s">"std"</span>);
@@ -554,32 +627,4 @@ Lalit Maganti provides one of my favorite pieces of long-form writing on agentic
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47648828">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Sun, 5 Apr 2026 23:54:18 +0000</pubDate></item><item><title>Quoting Chengpeng Mou</title><link>https://simonwillison.net/2026/Apr/5/chengpeng-mou/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/cpmou2022/status/2040606209800290404"><p>From anonymized U.S. ChatGPT data, we are seeing:</p>
-<ul>
-<li>~2M weekly messages on health insurance</li>
-<li>~600K weekly messages [classified as healthcare] from people living in “hospital deserts” (30 min drive to nearest hospital)</li>
-<li>7 out of 10 msgs happen outside clinic hours</li>
-</ul></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/cpmou2022/status/2040606209800290404">Chengpeng Mou</a>, Head of Business Finance, OpenAI</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sun, 5 Apr 2026 21:47:06 +0000</pubDate></item><item><title>Syntaqlite Playground</title><link>https://simonwillison.net/2026/Apr/5/syntaqlite/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/syntaqlite">Syntaqlite Playground</a></p>
-    <p>Lalit Maganti's <a href="https://github.com/LalitMaganti/syntaqlite">syntaqlite</a> is currently being discussed <a href="https://news.ycombinator.com/item?id=47648828">on Hacker News</a> thanks to <a href="https://lalitm.com/post/building-syntaqlite-ai/">Eight years of wanting, three months of building with AI</a>, a deep dive into how it was built.</p>
-<p>This inspired me to revisit <a href="https://github.com/simonw/research/tree/main/syntaqlite-python-extension#readme">a research project</a> I ran when Lalit first released it a couple of weeks ago, where I tried it out and then compiled it to a WebAssembly wheel so it could run in Pyodide in a browser (the library itself uses C and Rust).</p>
-<p>This <a href="https://tools.simonwillison.net/syntaqlite">new playground</a> loads up the Python library and provides a UI for trying out its different features: formating, parsing into an AST, validating, and tokenizing SQLite SQL queries.</p>
-<p><img src="https://static.simonwillison.net/static/2026/syntaqlite-playground.jpg" alt="Screenshot of a dark-themed SQL validation playground called SyntaqLite. The &quot;Validate&quot; tab is selected from options including Format, Parse, Validate, and Tokenize. The SQL input contains &quot;SELECT id, name FROM usr WHERE active = 1&quot; with a schema defining &quot;users&quot; and &quot;posts&quot; tables. Example buttons for &quot;Table typo&quot;, &quot;Column typo&quot;, and &quot;Valid query&quot; are shown above a red &quot;Validate SQL&quot; button. The Diagnostics panel shows an error for unknown table 'usr' with the suggestion &quot;did you mean 'users'?&quot;, and the JSON panel displays the corresponding error object with severity, message, and offset fields."></p>
-<p><strong>Update</strong>: not sure how I missed this but <a href="https://playground.syntaqlite.com/#p=sqlite-basic-select">syntaqlite has its own WebAssembly playground</a> linked to from the README.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Sun, 5 Apr 2026 19:32:59 +0000</pubDate></item><item><title>scan-for-secrets 0.2</title><link>https://simonwillison.net/2026/Apr/5/scan-for-secrets/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/scan-for-secrets/releases/tag/0.2">scan-for-secrets 0.2</a></p>
-    <ul>
-<li>CLI tool now streams results as they are found rather than waiting until the end, which is better for large directories.</li>
-<li><code>-d/--directory</code> option can now be used multiple times to scan multiple directories.</li>
-<li>New <code>-f/--file</code> option for specifying one or more individual files to scan.</li>
-<li>New <code>scan_directory_iter()</code>, <code>scan_file()</code> and <code>scan_file_iter()</code> Python API functions.</li>
-<li>New <code>-v/--verbose</code> option which shows each directory that is being scanned.</li>
-</ul>]]></description><pubDate>Sun, 5 Apr 2026 04:07:13 +0000</pubDate></item><item><title>scan-for-secrets 0.1.1</title><link>https://simonwillison.net/2026/Apr/5/scan-for-secrets-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/scan-for-secrets/releases/tag/0.1.1">scan-for-secrets 0.1.1</a></p>
-    <blockquote>
-<ul>
-<li>Added documentation of the escaping schemes that are also scanned.</li>
-<li>Removed unnecessary <code>repr</code> escaping scheme, which was already covered by <code>json</code>.</li>
-</ul>
-</blockquote>]]></description><pubDate>Sun, 5 Apr 2026 03:39:33 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a></p>]]></description><pubDate>Sun, 5 Apr 2026 23:54:18 +0000</pubDate></item></channel></rss>
