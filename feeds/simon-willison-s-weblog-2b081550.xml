@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette 1.0a27</title><link>https://simonwillison.net/2026/Apr/15/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a27">datasette 1.0a27</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette.io news preview</title><link>https://simonwillison.net/2026/Apr/16/datasette-io-preview/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/datasette-io-preview">datasette.io news preview</a></p>
+    <p>The <a href="https://datasette.io/">datasette.io</a> website has a news section built from this <a href="https://github.com/simonw/datasette.io/blob/main/news.yaml">news.yaml</a> file in the underlying GitHub repository. The YAML format looks like this:</p>
+<pre><code>- date: 2026-04-15
+  body: |-
+    [Datasette 1.0a27](https://docs.datasette.io/en/latest/changelog.html#a27-2026-04-15) changes how CSRF protection works in a way that simplifies form and API integration, and introduces a new `RenameTableEvent` for when a table is renamed by a SQL query.
+- date: 2026-03-18
+  body: |-
+    ...
+</code></pre>
+<p>This format is a little hard to edit, so I finally <a href="https://claude.ai/share/c96129b9-bcb0-4eba-aee9-4a7ad236dfb7">had Claude build a custom preview UI</a> to make checking for errors have slightly less friction.</p>
+<p>I built it using standard <a href="https://claude.ai/">claude.ai</a> and Claude Artifacts, taking advantage of Claude's ability to clone GitHub repos and look at their content as part of a regular chat:</p>
+<blockquote>
+<p><code>Clone https://github.com/simonw/datasette.io and look at the news.yaml file and how it is rendered on the homepage. Build an artifact I can paste that YAML into which previews what it will look like, and highlights any markdown errors or YAML errors</code></p>
+</blockquote>
+<p><img alt="Screenshot showing two side-by-side views of a datasette.io news preview tool. The left panel shows a dark-themed YAML editor with news entries containing date and body fields in Markdown format, with a red validation error at the bottom indicating the date field has an invalid format. The right panel shows the rendered preview output with formatted headings by date (April 2026, 18th March 2026), displaying 115 news entries with linked release names, inline code snippets, and changelog descriptions. A red badge with &quot;1&quot; appears on the left panel header indicating one validation error." src="https://static.simonwillison.net/static/2026/datasette-io-preview.jpg" /></p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Thu, 16 Apr 2026 00:18:03 +0000</pubDate></item><item><title>datasette-export-database 0.3a1</title><link>https://simonwillison.net/2026/Apr/15/datasette-export-database/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-export-database/releases/tag/0.3a1">datasette-export-database 0.3a1</a></p>
+    <p>This plugin was using the <code>ds_csrftoken</code> cookie as part of a custom signed URL, which needed upgrading now that Datasette 1.0a27 <a href="https://simonwillison.net/2026/Apr/14/replace-token-based-csrf/">no longer sets that cookie</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 15 Apr 2026 23:52:35 +0000</pubDate></item><item><title>datasette 1.0a27</title><link>https://simonwillison.net/2026/Apr/15/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a27">datasette 1.0a27</a></p>
     <p>Two major changes in this new Datasette alpha. I covered the first of those <a href="https://simonwillison.net/2026/Apr/14/replace-token-based-csrf/">in detail yesterday</a> - Datasette no longer uses Django-style CSRF form tokens, instead using modern browser headers <a href="https://words.filippo.io/csrf">as described by Filippo Valsorda</a>.</p>
 <p>The second big change is that Datasette now fires a new <a href="https://docs.datasette.io/en/latest/events.html#datasette.events.RenameTableEvent">RenameTableEvent</a> any time a table is renamed during a SQLite transaction. This is useful because some plugins (like <a href="https://github.com/datasette/datasette-comments">datasette-comments</a>) attach additional data to table records by name, so a renamed table requires them to react in appropriate ways.</p>
 <p>Here are the rest of the changes in the alpha:</p>
@@ -596,26 +615,4 @@ Terrible name, really great app: this is Google's official app for running their
 </ul>
 </blockquote>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a></p>]]></description><pubDate>Mon, 6 Apr 2026 02:59:28 +0000</pubDate></item><item><title>Cleanup Claude Code Paste</title><link>https://simonwillison.net/2026/Apr/6/cleanup-claude-code-paste/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/cleanup-claude-code-paste">Cleanup Claude Code Paste</a></p>
-    <p>Super-niche tool this. I sometimes copy prompts out of the Claude Code terminal app and they come out with a bunch of weird additional whitespace. This tool cleans that up.</p>
-<p><img alt="Screenshot of a web tool titled &quot;Cleanup Claude Code Paste&quot; with the subtitle &quot;Paste terminal output to remove the ❯ prompt, fix wrapped-line whitespace, and join lines into clean text.&quot; An input textarea contains pasted terminal output starting with &quot;❯ Add a -r/--redact option which asks for user approval (after telling it how many replacements will happen and in which files and which lines – standard output basically) and then rewrites the files in that folder to replace all matched secrets with REDACTED. Run tests with 'uv run pytest' and use red/green TDD&quot;. Below is a &quot;Cleaned output:&quot; section showing the same text with the ❯ prompt removed and whitespace cleaned up. A blue &quot;Copy to clipboard&quot; button appears at the bottom." src="https://static.simonwillison.net/static/2026/claude-code-cleanup.jpg" /></p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Mon, 6 Apr 2026 02:55:23 +0000</pubDate></item><item><title>datasette-ports 0.1</title><link>https://simonwillison.net/2026/Apr/6/datasette-ports/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ports/releases/tag/0.1">datasette-ports 0.1</a></p>
-    <p>Another <a href="https://gisthost.github.io/?f92d8a6bdadee1c77972b5e51954144e">example</a> of README-driven development, this time solving a problem that might be unique to me.</p>
-<p>I often find myself running a bunch of different <a href="https://datasette.io">Datasette</a> instances with different databases and different in-development plugins, spreads across dozens of different terminal windows - enough that I frequently lose them!</p>
-<p>Now I can run this:</p>
-<pre><code>datasette install datasette-ports
-datasette ports
-</code></pre>
-<p>And get a list of every running instance that looks something like this:</p>
-<pre><code>http://127.0.0.1:8333/ - v1.0a26
-  Databases: data
-  Plugins: datasette-enrichments, datasette-enrichments-llm, datasette-llm, datasette-secrets
-http://127.0.0.1:8001/ - v1.0a26
-  Databases: creatures
-  Plugins: datasette-extract, datasette-llm, datasette-secrets
-http://127.0.0.1:8900/ - v0.65.2
-  Databases: logs
-</code></pre>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Mon, 6 Apr 2026 00:23:55 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a></p>]]></description><pubDate>Mon, 6 Apr 2026 02:59:28 +0000</pubDate></item></channel></rss>
