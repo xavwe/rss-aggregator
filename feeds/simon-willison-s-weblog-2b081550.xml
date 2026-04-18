@@ -4,11 +4,11 @@
 <p>I generate the newsletter with my <a href="https://tools.simonwillison.net/blog-to-newsletter">blog-to-newsletter</a> tool - an HTML and JavaScript app that fetches my latest content from <a href="https://datasette.simonwillison.net/">this Datasette instance</a> and formats it as rich text HTML, which I can then copy to my clipboard and paste into the Substack editor. Here's a <a href="https://simonwillison.net/2023/Apr/4/substack-observable/">detailed explanation of how that works</a>.</p>
 <p>I recently <a href="https://simonwillison.net/2026/Feb/20/beats/">added a new type of content</a> to my blog to capture content that I post elsewhere, which I called "beats". These include things like releases of my open source projects, new tools that I've built, museums that I've visited (from <a href="https://www.niche-museums.com/">niche-museums.com</a>) and other external content.</p>
 <p>I wanted to include these in the generated newsletter. Here's the prompt I ran against the <a href="https://github.com/simonw/tools">simonw/tools</a> repository that hosts my <code>blog-to-newsletter</code> tool, using <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code on the web</a>.</p>
-<p><div><markdown-copy><textarea>Clone simonw/simonwillisonblog from github to /tmp for reference
+<p><pre>Clone simonw/simonwillisonblog from github to /tmp for reference
 
 Update blog-to-newsletter.html to include beats that have descriptions - similar to how the Atom everything feed on the blog works
 
-Run it with python -m http.server and use `uvx rodney --help` to test it - compare what shows up in the newsletter with what&#x27;s on the homepage of https://simonwillison.net</textarea></markdown-copy></div>
+Run it with python -m http.server and use `uvx rodney --help` to test it - compare what shows up in the newsletter with what&#x27;s on the homepage of https://simonwillison.net</pre>
 This got me the <a href="https://github.com/simonw/tools/pull/268">exact solution</a> I needed. Let's break down the prompt.</p>
 <blockquote>
 <p><code>Clone simonw/simonwillisonblog from github to /tmp for reference</code></p>
