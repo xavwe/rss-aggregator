@@ -468,6 +468,11 @@ The UK's AI Safety Institute recently published <a href="https://www.aisi.gov.uk
 <blockquote>
 <p>Maybe tell your buddy to do some actual work and to stop spreading absolute nonsense. This post is completely false and just pure clickbait.</p>
 </blockquote>
+<p><strong>Update 20th April 2026</strong>: Steve <a href="https://twitter.com/Steve_Yegge/status/2046260541912707471">doubled down</a>:</p>
+<blockquote>
+<p>My tweet last week about Google's AI adoption drew a lot of pushback, to say the least.</p>
+<p>Since then, Googlers from multiple orgs have reached out to me independently and anonymously. They've expressed fear of being doxxed, concern about what they saw as bullying of me, and general corroboration of my original tweet. [...]</p>
+</blockquote>
 
     <p>Tags: <a href="https://simonwillison.net/tags/addy-osmani">addy-osmani</a>, <a href="https://simonwillison.net/tags/steve-yegge">steve-yegge</a>, <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 13 Apr 2026 20:59:00 +0000</pubDate></item><item><title>Exploring the new `servo` crate</title><link>https://simonwillison.net/2026/Apr/13/servo-crate-exploration/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/servo-crate-exploration#readme">Exploring the new `servo` crate</a></p>
     <p>In <a href="https://servo.org/blog/2026/04/13/servo-0.1.0-release/">Servo is now available on crates.io</a> the Servo team announced the initial release of the <a href="https://crates.io/crates/servo">servo</a> crate, which packages their browser engine as an embeddable library.</p>
