@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>SQL functions in Google Sheets to fetch data from Datasette</title><link>https://simonwillison.net/2026/Apr/20/datasette-sql/#atom-everything</link><description><![CDATA[<p><strong>TIL:</strong> <a href="https://til.simonwillison.net/google-sheets/datasette-sql">SQL functions in Google Sheets to fetch data from Datasette</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>llm-openrouter 0.6</title><link>https://simonwillison.net/2026/Apr/20/llm-openrouter/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-openrouter/releases/tag/0.6">llm-openrouter 0.6</a></p>
+    <blockquote>
+<ul>
+<li><code>llm openrouter refresh</code> command for refreshing the list of available models without waiting for the cache to expire.</li>
+</ul>
+</blockquote>
+<p>I added this feature so I could try Kimi 2.6 on OpenRouter as soon as it became available there.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Mon, 20 Apr 2026 18:00:26 +0000</pubDate></item><item><title>SQL functions in Google Sheets to fetch data from Datasette</title><link>https://simonwillison.net/2026/Apr/20/datasette-sql/#atom-everything</link><description><![CDATA[<p><strong>TIL:</strong> <a href="https://til.simonwillison.net/google-sheets/datasette-sql">SQL functions in Google Sheets to fetch data from Datasette</a></p>
     <p>I put together some notes on patterns for fetching data from a Datasette instance directly into Google Sheets - using the <code>importdata()</code> function, a "named function" that wraps it or a Google Apps Script if you need to send an API token in an HTTP header (not supported by <code>importdata()</code>.)</p>
 <p>Here's <a href="https://docs.google.com/spreadsheets/d/14lRV2-AeBmjI3lJbl2apwfC_ncXqL0uSV68lmtzUI7I/edit?gid=0#gid=0">an example sheet</a> demonstrating all three methods.</p>
     
@@ -510,16 +518,4 @@ SQLite 3.52.0 was withdrawn so this is a pretty big release with a whole lot of 
 ><track src="https://static.simonwillison.net/static/cors-allow/2026/kakapo-lenny.vtt" kind="captions" srclang="en" label="English"></video>
 </p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/kakapo">kakapo</a></p>]]></description><pubDate>Fri, 10 Apr 2026 19:07:02 +0000</pubDate></item><item><title>ChatGPT voice mode is a weaker model</title><link>https://simonwillison.net/2026/Apr/10/voice-mode-is-weaker/#atom-everything</link><description><![CDATA[<p>I think it's non-obvious to many people that the OpenAI voice mode runs on a much older, much weaker model - it feels like the AI that you can talk to should be the smartest AI but it really isn't.</p>
-<p>If you ask ChatGPT voice mode for its knowledge cutoff date it tells you April 2024 - it's a GPT-4o era model.</p>
-<p>This thought inspired by <a href="https://twitter.com/karpathy/status/2042334451611693415">this Andrej Karpathy tweet</a> about the growing gap in understanding of AI capability based on the access points and domains people are using the models with:</p>
-<blockquote>
-<p>[...] It really is simultaneously the case that OpenAI's free and I think slightly orphaned (?) "Advanced Voice Mode" will fumble the dumbest questions in your Instagram's reels and <em>at the same time</em>, OpenAI's highest-tier and paid Codex model will go off for 1 hour to coherently restructure an entire code base, or find and exploit vulnerabilities in computer systems.</p>
-<p>This part really works and has made dramatic strides because 2 properties:</p>
-<ol>
-<li>these domains offer explicit reward functions that are verifiable meaning they are easily amenable to reinforcement learning training (e.g. unit tests passed yes or no, in contrast to writing, which is much harder to explicitly judge),  but also</li>
-<li>they are a lot more valuable in b2b settings, meaning that the biggest fraction of the team is focused on improving them.</li>
-</ol>
-</blockquote>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/andrej-karpathy">andrej-karpathy</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 10 Apr 2026 15:56:02 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/kakapo">kakapo</a></p>]]></description><pubDate>Fri, 10 Apr 2026 19:07:02 +0000</pubDate></item></channel></rss>
