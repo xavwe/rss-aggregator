@@ -1,12 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>llm-openrouter 0.6</title><link>https://simonwillison.net/2026/Apr/20/llm-openrouter/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-openrouter/releases/tag/0.6">llm-openrouter 0.6</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Andreas Påhlsson-Notini</title><link>https://simonwillison.net/2026/Apr/21/andreas-pahlsson-notini/#atom-everything</link><description><![CDATA[<blockquote cite="https://nial.se/blog/less-human-ai-agents-please/"><p>AI agents are already too human. Not in the romantic sense, not because they love or fear or dream, but in the more banal and frustrating one. The current implementations keep showing their human origin again and again: lack of stringency, lack of patience, lack of focus. Faced with an awkward task, they drift towards the familiar. Faced with hard constraints, they start negotiating with reality.</p></blockquote>
+<p class="cite">&mdash; <a href="https://nial.se/blog/less-human-ai-agents-please/">Andreas Påhlsson-Notini</a>, Less human AI agents, please.</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-agents">ai-agents</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Tue, 21 Apr 2026 16:39:33 +0000</pubDate></item><item><title>scosman/pelicans_riding_bicycles</title><link>https://simonwillison.net/2026/Apr/21/scosman/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/scosman/pelicans_riding_bicycles">scosman/pelicans_riding_bicycles</a></strong></p>
+I firmly approve of Steve Cosman's efforts to pollute the training set of pelicans riding bicycles.</p>
+<p><img alt="The heading says &quot;Pelican Riding a Bicycle #1 - the image is a bear on a snowboard" src="https://static.simonwillison.net/static/2026/pelican-poison-bear.jpg" /></p>
+<p>(To be fair, most of the examples <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">I've published</a> count as poisoning too.)
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47835735#47839493">Hacker News comment</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/training-data">training-data</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Tue, 21 Apr 2026 15:54:43 +0000</pubDate></item><item><title>llm-openrouter 0.6</title><link>https://simonwillison.net/2026/Apr/20/llm-openrouter/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-openrouter/releases/tag/0.6">llm-openrouter 0.6</a></p>
     <blockquote>
 <ul>
 <li><code>llm openrouter refresh</code> command for refreshing the list of available models without waiting for the cache to expire.</li>
 </ul>
 </blockquote>
-<p>I added this feature so I could try Kimi 2.6 on OpenRouter as soon as it became available there.</p>
+<p>I added this feature so I could try <a href="https://www.kimi.com/blog/kimi-k2-6">Kimi 2.6</a> on OpenRouter as soon as it <a href="https://openrouter.ai/moonshotai/kimi-k2.6">became available there</a>.</p>
+<p>Here's <a href="https://gisthost.github.io/?ecaad98efe0f747e27bc0e0ebc669e94/pelican.html">its pelican</a> - this time as an HTML page because Kimi chose to include an HTML and JavaScript UI to control the animation. <a href="https://gist.github.com/simonw/ecaad98efe0f747e27bc0e0ebc669e94#2026-04-20t164936----conversation-01kpnwt8d2bt5qwkm60j9sbkbs-id-01kpnwra0prz6v822cct5b08kq">Transcript here</a>.</p>
+<p><img alt="The bicycle is about right. The pelican is OK. It is pedaling furiously and flapping its wings a bit. Controls below the animation provide a pause button and sliders for controlling the speed and the wing flap." src="https://static.simonwillison.net/static/2026/kimi-k2-pelican-64-colors.gif" /></p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Mon, 20 Apr 2026 18:00:26 +0000</pubDate></item><item><title>SQL functions in Google Sheets to fetch data from Datasette</title><link>https://simonwillison.net/2026/Apr/20/datasette-sql/#atom-everything</link><description><![CDATA[<p><strong>TIL:</strong> <a href="https://til.simonwillison.net/google-sheets/datasette-sql">SQL functions in Google Sheets to fetch data from Datasette</a></p>
+        <p>Tags: <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/kimi">kimi</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Mon, 20 Apr 2026 18:00:26 +0000</pubDate></item><item><title>SQL functions in Google Sheets to fetch data from Datasette</title><link>https://simonwillison.net/2026/Apr/20/datasette-sql/#atom-everything</link><description><![CDATA[<p><strong>TIL:</strong> <a href="https://til.simonwillison.net/google-sheets/datasette-sql">SQL functions in Google Sheets to fetch data from Datasette</a></p>
     <p>I put together some notes on patterns for fetching data from a Datasette instance directly into Google Sheets - using the <code>importdata()</code> function, a "named function" that wraps it or a Google Apps Script if you need to send an API token in an HTTP header (not supported by <code>importdata()</code>.)</p>
 <p>Here's <a href="https://docs.google.com/spreadsheets/d/14lRV2-AeBmjI3lJbl2apwfC_ncXqL0uSV68lmtzUI7I/edit?gid=0#gid=0">an example sheet</a> demonstrating all three methods.</p>
     
@@ -504,18 +517,4 @@ SQLite 3.52.0 was withdrawn so this is a pretty big release with a whole lot of 
     <p><small></small>Via <a href="https://lobste.rs/s/sqsb24/sqlite_3_53_0">Lobste.rs</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a></p>]]></description><pubDate>Sat, 11 Apr 2026 19:56:53 +0000</pubDate></item><item><title>SQLite Query Result Formatter Demo</title><link>https://simonwillison.net/2026/Apr/11/sqlite-qrf/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/sqlite-qrf">SQLite Query Result Formatter Demo</a></p>
-    <p>See my notes <a href="https://simonwillison.net/2026/Apr/11/sqlite/">on SQLite 3.53.0</a>. This playground provides a UI for trying out the various rendering options for SQL result tables from the new Query Result Formatter library, compiled to WebAssembly.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a></p>]]></description><pubDate>Sat, 11 Apr 2026 19:35:31 +0000</pubDate></item><item><title>Kākāpō parrots</title><link>https://simonwillison.net/2026/Apr/10/kakapo/#atom-everything</link><description><![CDATA[<p>Lenny <a href="https://twitter.com/lennysan/status/2042615413494939943">posted</a> another snippet from <a href="https://simonwillison.net/2026/Apr/2/lennys-podcast/">our 1 hour 40 minute podcast recording</a> and it's about kākāpō parrots!</p>
-<p><video
-  src="https://static.simonwillison.net/static/2026/kakapo-lenny.mp4"
-  poster="https://static.simonwillison.net/static/2026/kakapo-lenny.jpg"
-  controls
-  preload="none"
-  playsinline
-  style="display:block; max-width:400px; width:100%; height:auto; margin:0 auto"
-><track src="https://static.simonwillison.net/static/cors-allow/2026/kakapo-lenny.vtt" kind="captions" srclang="en" label="English"></video>
-</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/kakapo">kakapo</a></p>]]></description><pubDate>Fri, 10 Apr 2026 19:07:02 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a></p>]]></description><pubDate>Sat, 11 Apr 2026 19:56:53 +0000</pubDate></item></channel></rss>
