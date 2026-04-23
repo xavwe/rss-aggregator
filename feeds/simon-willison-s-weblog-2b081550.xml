@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Maggie Appleton</title><link>https://simonwillison.net/2026/Apr/23/maggie-appleton/#atom-everything</link><description><![CDATA[<blockquote cite="https://maggieappleton.com/gathering-structures"><p>[...] if you ever needed another reason to <a href="https://www.swyx.io/learn-in-public">learn in public</a> by <a href="https://maggieappleton.com/garden-history">digital gardening</a> or podcasting or streaming or whathaveyou, add on that people will assume you’re more competent than you are. This will get you invites to very cool exclusive events filled with high-achieving, interesting people, even though you have no right to be there. A+ side benefit.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>A pelican for GPT-5.5 via the semi-official Codex backdoor API</title><link>https://simonwillison.net/2026/Apr/23/gpt-5-5/#atom-everything</link><description><![CDATA[<p><a href="https://openai.com/index/introducing-gpt-5-5/">GPT-5.5 is out</a>. It's available in OpenAI Codex and is rolling out to paid ChatGPT subscribers. I've had some preview access and found it to be a fast, effective and highly capable model. As is usually the case these days, it's hard to put into words what's good about it - I ask it to build things and it builds exactly what I ask for!</p>
+<p>There's one notable omission from today's release - the API:</p>
+<blockquote>
+<p>API deployments require different safeguards and we are working closely with partners and customers on the safety and security requirements for serving it at scale. We'll bring GPT‑5.5 and GPT‑5.5 Pro to the API very soon.</p>
+</blockquote>
+<p>When I run my <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">pelican benchmark</a> I always prefer to use an API, to avoid hidden system prompts in ChatGPT or other agent harnesses from impacting the results.</p>
+<h4 id="the-openclaw-backdoor">The OpenClaw backdoor</h4>
+<p>One of the ongoing tension points in the AI world over the past few months has concerned how agent harnesses like OpenClaw and Pi interact with the APIs provided by the big providers.</p>
+<p>Both OpenAI and Anthropic offer popular monthly subscriptions which provide access to their models at a significant discount to their raw API.</p>
+<p>OpenClaw integrated directly with this mechanism, and was then <a href="https://www.theverge.com/ai-artificial-intelligence/907074/anthropic-openclaw-claude-subscription-ban">blocked from doing so</a> by Anthropic. This kicked off a whole thing. OpenAI - who recently hired OpenClaw creator Peter Steinberger - saw an opportunity for an easy karma win and announced that OpenClaw was welcome to continue integrating with OpenAI's subscriptions via the same mechanism used by their (open source) Codex CLI tool.</p>
+<p>Does this mean <em>anyone</em> can write code that integrates with OpenAI's Codex-specific APIs to hook into those existing subscriptions?</p>
+<p>The other day <a href="https://twitter.com/jeremyphoward/status/2046537816834965714">Jeremy Howard asked</a>:</p>
+<blockquote>
+<p>Anyone know whether OpenAI officially supports the use of the <code>/backend-api/codex/responses</code> endpoint that Pi and Opencode (IIUC) uses?</p>
+</blockquote>
+<p>It turned out that on March 30th OpenAI's Romain Huet <a href="https://twitter.com/romainhuet/status/2038699202834841962">had tweeted</a>:</p>
+<blockquote>
+<p>We want people to be able to use Codex, and their ChatGPT subscription, wherever they like! That means in the app, in the terminal, but also in JetBrains, Xcode, OpenCode, Pi, and now Claude Code.</p>
+<p>That’s why Codex CLI and Codex app server are open source too! 🙂</p>
+</blockquote>
+<p>And Peter Steinberger <a href="https://twitter.com/steipete/status/2046775849769148838">replied to Jeremy</a> that:</p>
+<blockquote>
+<p>OpenAI sub is officially supported.</p>
+</blockquote>
+<h4 id="llm-openai-via-codex">llm-openai-via-codex</h4>
+<p>So... I had Claude Code reverse-engineer the <a href="https://github.com/openai/codex">openai/codex</a> repo, figure out how authentication tokens were stored and build me <a href="https://github.com/simonw/llm-openai-via-codex">llm-openai-via-codex</a>, a new plugin for <a href="https://llm.datasette.io/">LLM</a> which picks up your existing Codex subscription and uses it to run prompts!</p>
+<p>(With hindsight I wish I'd used GPT-5.4 or the GPT-5.5 preview, it would have been funnier. I genuinely considered rewriting the project from scratch using Codex and GPT-5.5 for the sake of the joke, but decided not to spend any more time on this!)</p>
+<p>Here's how to use it:</p>
+<ol>
+<li>Install Codex CLI, buy an OpenAI plan, login to Codex</li>
+<li>Install LLM: <code>uv tool install llm</code>
+</li>
+<li>Install the new plugin: <code>llm install llm-openai-via-codex</code>
+</li>
+<li>Start prompting: <code>llm -m openai-codex/gpt-5.5 'Your prompt goes here'</code>
+</li>
+</ol>
+<p>All existing LLM features should also work - use <code>-a filepath.jpg/URL</code> to attach an image, <code>llm chat -m openai-codex/gpt-5.5</code> to start an ongoing chat, <code>llm logs</code> to view logged conversations and <code>llm --tool ...</code> to <a href="https://llm.datasette.io/en/stable/tools.html">try it out with tool support</a>.</p>
+<h4 id="and-some-pelicans">And some pelicans</h4>
+<p>Let's generate a pelican!</p>
+<div class="highlight highlight-source-shell"><pre>llm install llm-openai-via-codex
+llm -m openai-codex/gpt-5.5 <span class="pl-s"><span class="pl-pds">'</span>Generate an SVG of a pelican riding a bicycle<span class="pl-pds">'</span></span></pre></div>
+<p>Here's <a href="https://gist.github.com/simonw/edda1d98f7ba07fd95eeff473cb16634">what I got back</a>:</p>
+<p><img src="https://static.simonwillison.net/static/2026/gpt-5.5-pelican.png" alt="It is a bit mangled to be honest - good beak, pelican body shapes are slightly weird, legs do at least extend to the pedals, bicycle frame is not quite right." style="max-width: 100%;" /></p>
+<p>I've seen better <a href="https://simonwillison.net/2026/Mar/17/mini-and-nano/#pelicans">from GPT-5.4</a>, so I tagged on <code>-o reasoning_effort xhigh</code> and <a href="https://gist.github.com/simonw/a6168e4165a258e4d664aeae8e602cc5">tried again</a>:</p>
+<p>That one took almost four minutes to generate, but I think it's a much better effort.</p>
+<p><img src="https://static.simonwillison.net/static/2026/gpt-5.5-pelican-xhigh.png" alt="Pelican has gradients now, body is much better put together, bicycle is nearly the right shape albeit with one extra bar between pedals and front wheel, clearly a better image overall." style="max-width: 100%;" /></p>
+<p>If you compare the SVG code (<a href="https://gist.github.com/simonw/edda1d98f7ba07fd95eeff473cb16634#response">default</a>, <a href="https://gist.github.com/simonw/a6168e4165a258e4d664aeae8e602cc5#response">xhigh</a>) the <code>xhigh</code> one took a very different approach, which is much more CSS-heavy - as demonstrated by those gradients. <code>xhigh</code> used 9,322 reasoning tokens where the default used just 39.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a></p>]]></description><pubDate>Thu, 23 Apr 2026 19:59:47 +0000</pubDate></item><item><title>Quoting Maggie Appleton</title><link>https://simonwillison.net/2026/Apr/23/maggie-appleton/#atom-everything</link><description><![CDATA[<blockquote cite="https://maggieappleton.com/gathering-structures"><p>[...] if you ever needed another reason to <a href="https://www.swyx.io/learn-in-public">learn in public</a> by <a href="https://maggieappleton.com/garden-history">digital gardening</a> or podcasting or streaming or whathaveyou, add on that people will assume you’re more competent than you are. This will get you invites to very cool exclusive events filled with high-achieving, interesting people, even though you have no right to be there. A+ side benefit.</p></blockquote>
 <p class="cite">&mdash; <a href="https://maggieappleton.com/gathering-structures">Maggie Appleton</a>, Gathering Structures (<a href="https://notes.andymatuschak.org/Work_with_the_garage_door_up">via</a>)</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/maggie-appleton">maggie-appleton</a></p>]]></description><pubDate>Thu, 23 Apr 2026 13:35:37 +0000</pubDate></item><item><title>Qwen3.6-27B: Flagship-Level Coding in a 27B Dense Model</title><link>https://simonwillison.net/2026/Apr/22/qwen36-27b/#atom-everything</link><description><![CDATA[<p><strong><a href="https://qwen.ai/blog?id=qwen3.6-27b">Qwen3.6-27B: Flagship-Level Coding in a 27B Dense Model</a></strong></p>
@@ -590,16 +639,4 @@ Datasette has long protected against CSRF attacks using CSRF tokens, implemented
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/csrf">csrf</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Tue, 14 Apr 2026 23:58:53 +0000</pubDate></item><item><title>Trusted access for the next era of cyber defense</title><link>https://simonwillison.net/2026/Apr/14/trusted-access-openai/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/scaling-trusted-access-for-cyber-defense/">Trusted access for the next era of cyber defense</a></strong></p>
-OpenAI's answer to <a href="https://simonwillison.net/2026/Apr/7/project-glasswing/">Claude Mythos</a> appears to be a new model called GPT-5.4-Cyber:</p>
-<blockquote>
-<p>In preparation for increasingly more capable models from OpenAI over the next few months, we are fine-tuning our models specifically to enable defensive cybersecurity use cases, starting today with a variant of GPT‑5.4 trained to be cyber-permissive: GPT‑5.4‑Cyber.</p>
-</blockquote>
-<p>They're also extending a program they launched in February (which I had missed) called <a href="https://openai.com/index/trusted-access-for-cyber/">Trusted Access for Cyber</a>, where users can verify their identity (via a photo of a government-issued ID processed by <a href="https://withpersona.com/">Persona</a>) to gain "reduced friction" access to OpenAI's models for cybersecurity work.</p>
-<p>Honestly, this OpenAI announcement is difficult to follow. Unsurprisingly they don't mention Anthropic at all, but much of the piece emphasizes their many years of existing cybersecurity work and their goal to "democratize access" to these tools, hence the emphasis on that self-service verification flow from February.</p>
-<p>If you want access to their best security tools you still need to go through an extra Google Form application process though, which doesn't feel particularly different to me from Anthropic's <a href="https://www.anthropic.com/glasswing">Project Glasswing</a>.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47770770">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a></p>]]></description><pubDate>Tue, 14 Apr 2026 21:23:59 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/csrf">csrf</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Tue, 14 Apr 2026 23:58:53 +0000</pubDate></item></channel></rss>
