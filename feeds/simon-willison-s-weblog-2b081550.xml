@@ -1,4 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Extract PDF text in your browser with LiteParse for the web</title><link>https://simonwillison.net/2026/Apr/23/liteparse-for-the-web/#atom-everything</link><description><![CDATA[<p>LlamaIndex have a most excellent open source project called <a href="https://github.com/run-llama/liteparse">LiteParse</a>, which provides a Node.js CLI tool for extracting text from PDFs. I got a version of LiteParse working entirely in the browser, using most of the same libraries that LiteParse uses to run in Node.js.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>russellromney/honker</title><link>https://simonwillison.net/2026/Apr/24/honker/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/russellromney/honker">russellromney/honker</a></strong></p>
+"Postgres NOTIFY/LISTEN semantics" for SQLite, implemented as a Rust SQLite extension and various language bindings to help make use of it.</p>
+<p>The design of this looks very solid. It lets you write Python code for queues that looks like this:</p>
+<pre><span class="pl-k">import</span> <span class="pl-s1">honker</span>
+
+<span class="pl-s1">db</span> <span class="pl-c1">=</span> <span class="pl-s1">honker</span>.<span class="pl-c1">open</span>(<span class="pl-s">"app.db"</span>)
+<span class="pl-s1">emails</span> <span class="pl-c1">=</span> <span class="pl-s1">db</span>.<span class="pl-c1">queue</span>(<span class="pl-s">"emails"</span>)
+<span class="pl-c1">emails</span>.<span class="pl-c1">enqueue</span>({<span class="pl-s">"to"</span>: <span class="pl-s">"alice@example.com"</span>})
+
+<span class="pl-c"># Consume (in a worker process)</span>
+<span class="pl-k">async</span> <span class="pl-k">for</span> <span class="pl-s1">job</span> <span class="pl-c1">in</span> <span class="pl-s1">emails</span>.<span class="pl-c1">claim</span>(<span class="pl-s">"worker-1"</span>):
+    <span class="pl-en">send</span>(<span class="pl-s1">job</span>.<span class="pl-c1">payload</span>)
+    <span class="pl-s1">job</span>.<span class="pl-c1">ack</span>()</pre>
+<p>And Kafka-style durable streams like this:</p>
+<pre><span class="pl-s1">stream</span> <span class="pl-c1">=</span> <span class="pl-s1">db</span>.<span class="pl-c1">stream</span>(<span class="pl-s">"user-events"</span>)
+
+<span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">transaction</span>() <span class="pl-k">as</span> <span class="pl-s1">tx</span>:
+    <span class="pl-s1">tx</span>.<span class="pl-c1">execute</span>(<span class="pl-s">"UPDATE users SET name=? WHERE id=?"</span>, [<span class="pl-s1">name</span>, <span class="pl-s1">uid</span>])
+    <span class="pl-s1">stream</span>.<span class="pl-c1">publish</span>({<span class="pl-s">"user_id"</span>: <span class="pl-s1">uid</span>, <span class="pl-s">"change"</span>: <span class="pl-s">"name"</span>}, <span class="pl-s1">tx</span><span class="pl-c1">=</span><span class="pl-s1">tx</span>)
+
+<span class="pl-k">async</span> <span class="pl-k">for</span> <span class="pl-s1">event</span> <span class="pl-c1">in</span> <span class="pl-s1">stream</span>.<span class="pl-c1">subscribe</span>(<span class="pl-s1">consumer</span><span class="pl-c1">=</span><span class="pl-s">"dashboard"</span>):
+    <span class="pl-k">await</span> <span class="pl-en">push_to_browser</span>(<span class="pl-s1">event</span>)</pre>
+<p>It also adds 20+ custom SQL functions including these two:</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">SELECT</span> notify(<span class="pl-s"><span class="pl-pds">'</span>orders<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>{"id":42}<span class="pl-pds">'</span></span>);
+<span class="pl-k">SELECT</span> honker_stream_read_since(<span class="pl-s"><span class="pl-pds">'</span>orders<span class="pl-pds">'</span></span>, <span class="pl-c1">0</span>, <span class="pl-c1">1000</span>);</pre></div>
+<p>The extension requires WAL mode, and workers can poll the <code>.db-wal</code> file with a stat call every 1ms to get as close to real-time as possible without the expense of running a full SQL query.</p>
+<p>honker implements the <strong>transactional outbox pattern</strong>, which ensures items are only queued if a transaction successfully commits. My favorite explanation of that pattern remains <a href="https://brandur.org/job-drain">Transactionally Staged Job Drains in Postgres</a> by Brandur Leach. It's great to see a new implementation of that pattern for SQLite.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47874647">Show HN</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/databases">databases</a>, <a href="https://simonwillison.net/tags/postgresql">postgresql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/rust">rust</a></p>]]></description><pubDate>Fri, 24 Apr 2026 01:50:07 +0000</pubDate></item><item><title>An update on recent Claude Code quality reports</title><link>https://simonwillison.net/2026/Apr/24/recent-claude-code-quality-reports/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/engineering/april-23-postmortem">An update on recent Claude Code quality reports</a></strong></p>
+It turns out the high volume of complaints that Claude Code was providing worse quality results over the past two months was grounded in real problems.</p>
+<p>The models themselves were not to blame, but three separate issues in the Claude Code harness caused complex but material problems which directly affected users.</p>
+<p>Anthropic's postmortem describes these in detail. This one in particular stood out to me:</p>
+<blockquote>
+<p>On March 26, we shipped a change to clear Claude's older thinking from sessions that had been idle for over an hour, to reduce latency when users resumed those sessions. A bug caused this to keep happening every turn for the rest of the session instead of just once, which made Claude seem forgetful and repetitive.</p>
+</blockquote>
+<p>I <em>frequently</em> have Claude Code sessions which I leave for an hour (or often a day or longer) before returning to them. Right now I have 11 of those (according to <code>ps aux  | grep 'claude '</code>) and that's after closing down dozens more the other day.</p>
+<p>I estimate I spend more time prompting in these "stale" sessions than sessions that I've recently started!</p>
+<p>If you're building agentic systems it's worth reading this article in detail - the kinds of bugs that affect harnesses are deeply complicated, even if you put aside the inherent non-deterministic nature of the models themselves.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=47878905">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a></p>]]></description><pubDate>Fri, 24 Apr 2026 01:31:25 +0000</pubDate></item><item><title>Serving the For You feed</title><link>https://simonwillison.net/2026/Apr/24/serving-the-for-you-feed/#atom-everything</link><description><![CDATA[<p><strong><a href="https://atproto.com/blog/serving-the-for-you-feed">Serving the For You feed</a></strong></p>
+One of Bluesky's most interesting features is that anyone can run their own <a href="bluesky custom feed">custom "feed" implementation</a> and make it available to other users - effectively enabling custom algorithms that can use any mechanism they like to recommend posts.</p>
+<p>spacecowboy runs the <a href="https://bsky.app/profile/did:plc:3guzzweuqraryl3rdkimjamk/feed/for-you">For You Feed</a>, used by around 72,000 people. This guest post on the AT Protocol blog explains how it works.</p>
+<p>The architecture is <em>fascinating</em>. The feed is served by a single Go process using SQLite on a "gaming" PC in spacecowboy's living room - 16 cores, 96GB of RAM and 4TB of attached NVMe storage.</p>
+<p>Recommendations are based on likes: what else are the people who like the same things as you liking on the platform?</p>
+<p>That Go server consumes the Bluesky firehose and stores the relevant details in SQLite, keeping the last 90 days of relevant data, which currently uses around 419GB of SQLite storage.</p>
+<p>Public internet traffic is handled by a $7/month VPS on OVH, which talks to the living room server via Tailscale.</p>
+<p>Total cost is now $30/month: $20 in electricity, $7 in VPS and $3 for the two domain names. spacecowboy estimates that the existing system could handle all ~1 million daily active Bluesky users if they were to switch to the cheapest algorithm they have found to work.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/go">go</a>, <a href="https://simonwillison.net/tags/scaling">scaling</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/software-architecture">software-architecture</a>, <a href="https://simonwillison.net/tags/tailscale">tailscale</a>, <a href="https://simonwillison.net/tags/bluesky">bluesky</a></p>]]></description><pubDate>Fri, 24 Apr 2026 01:08:17 +0000</pubDate></item><item><title>Extract PDF text in your browser with LiteParse for the web</title><link>https://simonwillison.net/2026/Apr/23/liteparse-for-the-web/#atom-everything</link><description><![CDATA[<p>LlamaIndex have a most excellent open source project called <a href="https://github.com/run-llama/liteparse">LiteParse</a>, which provides a Node.js CLI tool for extracting text from PDFs. I got a version of LiteParse working entirely in the browser, using most of the same libraries that LiteParse uses to run in Node.js.</p>
 <h4 id="spatial-text-parsing">Spatial text parsing</h4>
 <p>Refreshingly, LiteParse doesn't use AI models to do what it does: it's good old-fashioned PDF parsing, falling back to Tesseract OCR (or other pluggable OCR engines) for PDFs that contain images of text rather than the text itself.</p>
 <p>The hard problem that LiteParse solves is extracting text in a sensible order despite the infuriating vagaries of PDF layouts. They describe this as "spatial text parsing" - they use some very clever heuristics to detect things like multi-column layouts and group and return the text in a sensible linear flow.</p>
@@ -679,50 +734,4 @@ Jaz is the industry standard for Top 40 radio, high-octane event promos, or any 
     <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/text-to-speech">text-to-speech</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Wed, 15 Apr 2026 17:13:14 +0000</pubDate></item><item><title>Gemini 3.1 Flash TTS</title><link>https://simonwillison.net/2026/Apr/15/gemini-flash-tts/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/gemini-flash-tts">Gemini 3.1 Flash TTS</a></p>
     <p>See <a href="https://simonwillison.net/2026/Apr/15/gemini-31-flash-tts/">my notes</a> on Google's new Gemini 3.1 Flash TTS text-to-speech model.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/google">google</a></p>]]></description><pubDate>Wed, 15 Apr 2026 16:41:46 +0000</pubDate></item><item><title>Quoting Kyle Kingsbury</title><link>https://simonwillison.net/2026/Apr/15/kyle-kingsbury/#atom-everything</link><description><![CDATA[<blockquote cite="https://aphyr.com/posts/419-the-future-of-everything-is-lies-i-guess-new-jobs"><p>I think we will see some people employed (though perhaps not explicitly) as <em>meat shields</em>: people who are accountable for ML systems under their supervision. The accountability may be purely internal, as when Meta hires human beings to review the decisions of automated moderation systems. It may be external, as when lawyers are penalized for submitting LLM lies to the court. It may involve formalized responsibility, like a Data Protection Officer. It may be convenient for a company to have third-party subcontractors, like Buscaglia, who can be thrown under the bus when the system as a whole misbehaves.</p></blockquote>
-<p class="cite">&mdash; <a href="https://aphyr.com/posts/419-the-future-of-everything-is-lies-i-guess-new-jobs">Kyle Kingsbury</a>, The Future of Everything is Lies, I Guess: New Jobs</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/kyle-kingsbury">kyle-kingsbury</a></p>]]></description><pubDate>Wed, 15 Apr 2026 15:36:02 +0000</pubDate></item><item><title>datasette-ports 0.3</title><link>https://simonwillison.net/2026/Apr/15/datasette-ports/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ports/releases/tag/0.3">datasette-ports 0.3</a></p>
-    <p>A small update for my tool for helping me figure out what all of the Datasette instances on my laptop are up to.</p>
-<blockquote>
-<ul>
-<li>Show working directory derived from each PID</li>
-<li>Show the full path to each database file</li>
-</ul>
-</blockquote>
-<p>Output now looks like this:</p>
-<pre><code>http://127.0.0.1:8007/ - v1.0a26
-  Directory: /Users/simon/dev/blog
-  Databases:
-    simonwillisonblog: /Users/simon/dev/blog/simonwillisonblog.db
-  Plugins:
-    datasette-llm
-    datasette-secrets
-http://127.0.0.1:8001/ - v1.0a26
-  Directory: /Users/simon/dev/creatures
-  Databases:
-    creatures: /tmp/creatures.db
-</code></pre>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Wed, 15 Apr 2026 02:50:57 +0000</pubDate></item><item><title>Zig 0.16.0 release notes: &quot;Juicy Main&quot;</title><link>https://simonwillison.net/2026/Apr/15/juicy-main/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ziglang.org/download/0.16.0/release-notes.html#Juicy-Main">Zig 0.16.0 release notes: &quot;Juicy Main&quot;</a></strong></p>
-Zig has <em>really good</em> release notes - comprehensive, detailed, and with relevant usage examples for each of the new features.</p>
-<p>Of particular note in the newly released Zig 0.16.0 is what they are calling "Juicy Main" - a dependency injection feature for your program's <code>main()</code> function where accepting a <code>process.Init</code> parameter grants access to a struct of useful properties:</p>
-<div class="highlight highlight-source-zig"><pre><span class="pl-k">const</span> <span class="pl-v">std</span> <span class="pl-k">=</span> <span class="pl-k">@import</span>(<span class="pl-s">"std"</span>);
-
-<span class="pl-k">pub</span> <span class="pl-k">fn</span> <span class="pl-en">main</span>(<span class="pl-v">init</span>: <span class="pl-k">std.process.Init</span>) <span class="pl-k">!</span><span class="pl-k">void</span> {
-    <span class="pl-c">/// general purpose allocator for temporary heap allocations:</span>
-    <span class="pl-k">const</span> <span class="pl-v">gpa</span> <span class="pl-k">=</span> <span class="pl-v">init</span>.<span class="pl-v">gpa</span>;
-    <span class="pl-c">/// default Io implementation:</span>
-    <span class="pl-k">const</span> <span class="pl-v">io</span> <span class="pl-k">=</span> <span class="pl-v">init</span>.<span class="pl-v">io</span>;
-    <span class="pl-c">/// access to environment variables:</span>
-    <span class="pl-v">std</span>.<span class="pl-v">log</span>.<span class="pl-v">info</span>(<span class="pl-s">"{d} env vars"</span>, .{<span class="pl-v">init</span>.<span class="pl-v">environ_map</span>.<span class="pl-v">count</span>()});
-    <span class="pl-c">/// access to CLI arguments</span>
-    <span class="pl-k">const</span> <span class="pl-v">args</span> <span class="pl-k">=</span> <span class="pl-k">try</span> <span class="pl-v">init</span>.<span class="pl-v">minimal</span>.<span class="pl-v">args</span>.<span class="pl-v">toSlice</span>(
-        <span class="pl-v">init</span>.<span class="pl-v">arena</span>.<span class="pl-v">allocator</span>()
-    );
-}</pre></div>
-
-    <p><small></small>Via <a href="https://lobste.rs/s/4vvozb/zig_0_16_0_release_notes">Lobste.rs</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/zig">zig</a></p>]]></description><pubDate>Wed, 15 Apr 2026 01:59:21 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/google">google</a></p>]]></description><pubDate>Wed, 15 Apr 2026 16:41:46 +0000</pubDate></item></channel></rss>
