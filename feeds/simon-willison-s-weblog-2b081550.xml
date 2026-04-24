@@ -13,7 +13,7 @@ llm -m openrouter/deepseek/deepseek-v4-pro 'Generate an SVG of a pelican riding 
 <p><img src="https://static.simonwillison.net/static/2026/deepseek-v4-pro.png" alt="Another solid bicycle, albeit the spokes are a little jagged and the frame is compressed a bit. Pelican has gone a bit wrong - it has a VERY large body, only one wing, a weirdly hairy backside and generally loos like it was drown be a different artist from the bicycle." style="max-width: 100%;" /></p>
 <p>For comparison, take a look at the pelicans I got from <a href="https://simonwillison.net/2025/Dec/1/deepseek-v32/">DeepSeek V3.2 in December</a>, <a href="https://simonwillison.net/2025/Aug/22/deepseek-31/">V3.1 in August</a>, and <a href="https://simonwillison.net/2025/Mar/24/deepseek/">V3-0324 in March 2025</a>.</p>
 <p>So the pelicans are pretty good, but what's really notable here is the <em>cost</em>. DeepSeek V4 is a very, very inexpensive model.</p>
-<p>Here's <a href="https://api-docs.deepseek.com/quick_start/pricing">DeepSeek's pricing page</a>. They're charging $0.14/million tokens input and $0.28/million tokens output for Flash, and $1.74/million input and $3.48/million output for Pro.</p>
+<p>This is <a href="https://api-docs.deepseek.com/quick_start/pricing">DeepSeek's pricing page</a>. They're charging $0.14/million tokens input and $0.28/million tokens output for Flash, and $1.74/million input and $3.48/million output for Pro.</p>
 <p>Here's a comparison table with the frontier models from Gemini, OpenAI and Anthropic:</p>
 <center>
 <table>
