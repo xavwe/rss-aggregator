@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>GPT-5.5 prompting guide</title><link>https://simonwillison.net/2026/Apr/25/gpt-5-5-prompting-guide/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5">GPT-5.5 prompting guide</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Romain Huet</title><link>https://simonwillison.net/2026/Apr/25/romain-huet/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/romainhuet/status/2047955381578838357"><p>Since GPT-5.4, we’ve unified Codex and the main model into a single system, so there’s no separate coding line anymore.</p>
+<p>GPT-5.5 takes this further, with strong gains in agentic coding, computer use, and any task on a computer.</p></blockquote>
+<p class="cite">&mdash; <a href="https://twitter.com/romainhuet/status/2047955381578838357">Romain Huet</a>, confirming OpenAI won't release a GPT-5.5-Codex model</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 25 Apr 2026 12:06:55 +0000</pubDate></item><item><title>GPT-5.5 prompting guide</title><link>https://simonwillison.net/2026/Apr/25/gpt-5-5-prompting-guide/#atom-everything</link><description><![CDATA[<p><strong><a href="https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5">GPT-5.5 prompting guide</a></strong></p>
 Now that GPT-5.5 is <a href="https://developers.openai.com/api/docs/models/gpt-5.5">available in the API</a>, OpenAI have released a wealth of useful tips on how best to prompt the new model.</p>
 <p>Here's a neat trick they recommend for applications that might spend considerable time thinking before returning a user-visible response:</p>
 <pre><code>Before any tool calls for a multi-step task, send a short user-visible update that acknowledges the request and states the first step. Keep it to one or two sentences.
@@ -756,14 +760,4 @@ Telling agents to use another codebase as reference is a powerful shortcut for c
 </blockquote>
 <p>Most of the changes in this release were implemented using Claude Code and the newly released Claude Opus 4.7.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Fri, 17 Apr 2026 04:01:56 +0000</pubDate></item><item><title>llm-anthropic 0.25</title><link>https://simonwillison.net/2026/Apr/16/llm-anthropic/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.25">llm-anthropic 0.25</a></p>
-    <blockquote>
-<ul>
-<li>New model: <code>claude-opus-4.7</code>, which supports <code>thinking_effort</code>: <code>xhigh</code>. #66</li>
-<li>New <code>thinking_display</code> and <code>thinking_adaptive</code> boolean options. <code>thinking_display</code> summarized output is currently only available in JSON output or JSON logs.</li>
-<li>Increased default <code>max_tokens</code> to the maximum allowed for each model.</li>
-<li>No longer uses obsolete <code>structured-outputs-2025-11-13</code> beta header for older models.</li>
-</ul>
-</blockquote>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a></p>]]></description><pubDate>Thu, 16 Apr 2026 20:37:12 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Fri, 17 Apr 2026 04:01:56 +0000</pubDate></item></channel></rss>
