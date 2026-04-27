@@ -1,4 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>WHY ARE YOU LIKE THIS</title><link>https://simonwillison.net/2026/Apr/25/why-are-you-like-this/#atom-everything</link><description><![CDATA[<p>@scottjla <a href="https://twitter.com/scottjla/status/2047535371664457863">on Twitter</a> in reply to my <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">pelican riding a bicycle</a> benchmark:</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Tracking the history of the now-deceased OpenAI Microsoft AGI clause</title><link>https://simonwillison.net/2026/Apr/27/now-deceased-agi-clause/#atom-everything</link><description><![CDATA[<p>For many years, Microsoft and OpenAI's relationship has included a weird clause saying that, should AGI be achieved, Microsoft's commercial IP rights to OpenAI's technology would be null and void. That clause appeared to end today. I decided to try and track its expression over time on <a href="https://openai.com/">openai.com</a>.</p>
+<p>OpenAI, July 22nd 2019 in <a href="https://openai.com/index/microsoft-invests-in-and-partners-with-openai/">Microsoft invests in and partners with OpenAI to support us building beneficial AGI</a> (emphasis mine):</p>
+<blockquote>
+<p>OpenAI is producing a sequence of increasingly powerful AI technologies, which requires a lot of capital for computational power. The most obvious way to cover costs is to build a product, but that would mean changing our focus. Instead, we intend to license <strong>some of our pre-AGI technologies</strong>, with Microsoft becoming our preferred partner for commercializing them.</p>
+</blockquote>
+<p>But what <em>is</em> AGI? The <a href="https://openai.com/charter/">OpenAI Charter</a> was first published in April 2018 and has remained unchanged at least since this <a href="https://web.archive.org/web/20190311213352/https://openai.com/charter/">March 11th 2019 archive.org capture</a>:</p>
+<blockquote>
+<p>OpenAI’s mission is to ensure that artificial general intelligence (AGI)—by which we mean highly autonomous systems that outperform humans at most economically valuable work—benefits all of humanity.</p>
+</blockquote>
+<p>Here's the problem: if you're going to sign an agreement with Microsoft that is dependent on knowing when "AGI" has been achieved, you need something a little more concrete.</p>
+<p>In December 2024 <a href="https://www.theinformation.com/articles/microsoft-and-openai-wrangle-over-terms-of-their-blockbuster-partnership">The Information reported the details</a> (summarized here outside of their paywall <a href="https://techcrunch.com/2024/12/26/microsoft-and-openai-have-a-financial-definition-of-agi-report/">by TechCrunch</a>):</p>
+<blockquote>
+<p>Last year’s agreement between Microsoft and OpenAI, which hasn’t been disclosed, said AGI would be achieved only when OpenAI has developed systems that have the ability to generate the maximum total profits to which its earliest investors, including Microsoft, are entitled, according to documents OpenAI distributed to investors. Those profits total about $100 billion, the documents showed.</p>
+</blockquote>
+<p>So AGI is now whenever OpenAI's systems are capable of generating $100 billion in profit?</p>
+<p>In October 2025 the process changed to being judged by an "independent expert panel". In <a href="https://openai.com/index/next-chapter-of-microsoft-openai-partnership/">The next chapter of the Microsoft–OpenAI partnership</a>:</p>
+<blockquote>
+<p>The agreement preserves key elements that have fueled this successful partnership—meaning OpenAI remains Microsoft’s frontier model partner and Microsoft continues to have exclusive IP rights and Azure API exclusivity until Artificial General Intelligence (AGI). [...]</p>
+<p>Once AGI is declared by OpenAI, that declaration will now be verified by an independent expert panel. [...]</p>
+<p>Microsoft’s IP rights to research, defined as the confidential methods used in the development of models and systems, will remain until either the expert panel verifies AGI or through 2030, whichever is first.</p>
+</blockquote>
+<p>OpenAI on February 27th, 2026 in <a href="https://openai.com/index/continuing-microsoft-partnership/">Joint Statement from OpenAI and Microsoft</a>:</p>
+<blockquote>
+<p><strong>AGI definition and processes are unchanged</strong>. The contractual definition of AGI and the process for determining if it has been achieved remains the same.</p>
+</blockquote>
+<p>OpenAI today, April 27th 2026 in <a href="https://openai.com/index/next-phase-of-microsoft-partnership/">The next phase of the Microsoft OpenAI partnership</a> (emphasis mine):</p>
+<blockquote>
+<ul>
+<li>Microsoft will continue to have a license to OpenAI IP for models and products through 2032.  Microsoft’s license will now be non-exclusive.</li>
+<li>Microsoft will no longer pay a revenue share to OpenAI.</li>
+<li>Revenue share payments from OpenAI to Microsoft continue through 2030, <strong>independent of OpenAI’s technology progress</strong>, at the same percentage but subject to a total cap.</li>
+</ul>
+</blockquote>
+<p>As far as I can tell "independent of OpenAI’s technology progress" is a declaration that the AGI clause is now dead. Here's The Verge coming to the same conclusion: <a href="https://www.theverge.com/ai-artificial-intelligence/918981/openai-microsoft-renegotiate-contract">The AGI clause is dead</a>.</p>
+<p>My all-time favorite commentary on OpenAI's approach to AGI remains this 2023 hypothetical <a href="https://www.bloomberg.com/opinion/articles/2023-11-20/who-controls-openai">by Matt Levine</a>:</p>
+<blockquote>
+<p>And the investors wailed and gnashed their teeth but it’s true, that is what they agreed to, and they had no legal recourse. And OpenAI’s new CEO, and its nonprofit board, cut them a check for their capped return and said “bye” and went back to running OpenAI for the benefit of humanity. It turned out that a benign, carefully governed artificial superintelligence is really good for humanity, and OpenAI quickly solved all of humanity’s problems and ushered in an age of peace and abundance in which nobody wanted for anything or needed any Microsoft products. And capitalism came to an end.</p>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/computer-history">computer-history</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a></p>]]></description><pubDate>Mon, 27 Apr 2026 18:38:17 +0000</pubDate></item><item><title>Speech translation in Google Meet is now rolling out to mobile devices</title><link>https://simonwillison.net/2026/Apr/27/speech-translation-in-google-meet-is-now-rolling-out-to-mobile-d/#atom-everything</link><description><![CDATA[<p><strong><a href="https://workspaceupdates.googleblog.com/2026/04/speech-translation-in-google-meet-is-now-rolling-out-to-mobile-devices.html">Speech translation in Google Meet is now rolling out to mobile devices</a></strong></p>
+I just encountered this feature via a "try this out now" prompt in a Google Meet meeting. It kind-of worked!</p>
+<p>This is Google's implementation of the ultimate sci-fi translation app, where two people can talk to each other in two separate languages and Meet translates from one to the other and - with a short delay - repeats the text in your preferred language, with a rough imitation of the original speaker's voice.</p>
+<p>It can only handle English, Spanish, French, German, Portuguese, and Italian at the moment. It's also still very alpha - I ran it successfully between two laptops running web browsers, but then when I tried between an iPhone and an iPad it didn't seem to work.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/translation">translation</a></p>]]></description><pubDate>Mon, 27 Apr 2026 17:37:47 +0000</pubDate></item><item><title>WHY ARE YOU LIKE THIS</title><link>https://simonwillison.net/2026/Apr/25/why-are-you-like-this/#atom-everything</link><description><![CDATA[<p>@scottjla <a href="https://twitter.com/scottjla/status/2047535371664457863">on Twitter</a> in reply to my <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle/">pelican riding a bicycle</a> benchmark:</p>
 <blockquote>
 <p>I feel like we need to stack these tests now</p>
 <p><img alt="AI generated image. A pelican is riding a bicycle along a dirt track, chased by a police car. The pelican looks panicked, likely because there is an astronaut (with prehensile toes for some reason) riding the pelican clinging on to where its ears should be. The astronaut is being ridden by a horse, with an equally wild expression. A slice of pizza and a can and a cowboy hat are falling next to them. A road sign in the background reads WHY ARE YOU LIKE THIS." src="https://static.simonwillison.net/static/2026/why-are-you-like-this.jpeg" /></p>
@@ -668,96 +713,4 @@ Matt Webb thinks <strong>headless</strong> services are about to become much mor
     <p>Anthropic <a href="https://platform.claude.com/docs/en/release-notes/system-prompts">publish the system prompts</a> for Claude chat and make that page <a href="https://platform.claude.com/docs/en/release-notes/system-prompts.md">available as Markdown</a>. I had Claude Code turn that page into separate files for each model and model family with fake git commit dates to enable browsing the changes via the GitHub commit view.</p>
 <p>I used this to write my own <a href="https://simonwillison.net/2026/Apr/18/opus-system-prompt/">detailed notes on the changes between Opus 4.6 and 4.7</a>.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/system-prompts">system-prompts</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 18 Apr 2026 12:25:00 +0000</pubDate></item><item><title>Adding a new content type to my blog-to-newsletter tool</title><link>https://simonwillison.net/guides/agentic-engineering-patterns/adding-a-new-content-type/#atom-everything</link><description><![CDATA[<p><em><a href="https://simonwillison.net/guides/agentic-engineering-patterns/">Agentic Engineering Patterns</a> &gt;</em></p>
-    <p>Here's an example of a deceptively short prompt that got a quite a lot of work done in a single shot.</p>
-<p>First, some background. I send out a <a href="https://simonw.substack.com/">free Substack newsletter</a> around once a week containing content copied-and-pasted from my blog. I'm effectively using Substack as a lightweight way to allow people to subscribe to my blog via email.</p>
-<p>I generate the newsletter with my <a href="https://tools.simonwillison.net/blog-to-newsletter">blog-to-newsletter</a> tool - an HTML and JavaScript app that fetches my latest content from <a href="https://datasette.simonwillison.net/">this Datasette instance</a> and formats it as rich text HTML, which I can then copy to my clipboard and paste into the Substack editor. Here's a <a href="https://simonwillison.net/2023/Apr/4/substack-observable/">detailed explanation of how that works</a>.</p>
-<p>I recently <a href="https://simonwillison.net/2026/Feb/20/beats/">added a new type of content</a> to my blog to capture content that I post elsewhere, which I called "beats". These include things like releases of my open source projects, new tools that I've built, museums that I've visited (from <a href="https://www.niche-museums.com/">niche-museums.com</a>) and other external content.</p>
-<p>I wanted to include these in the generated newsletter. Here's the prompt I ran against the <a href="https://github.com/simonw/tools">simonw/tools</a> repository that hosts my <code>blog-to-newsletter</code> tool, using <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code on the web</a>.</p>
-<p><pre>Clone simonw/simonwillisonblog from github to /tmp for reference
-
-Update blog-to-newsletter.html to include beats that have descriptions - similar to how the Atom everything feed on the blog works
-
-Run it with python -m http.server and use `uvx rodney --help` to test it - compare what shows up in the newsletter with what&#x27;s on the homepage of https://simonwillison.net</pre>
-This got me the <a href="https://github.com/simonw/tools/pull/268">exact solution</a> I needed. Let's break down the prompt.</p>
-<blockquote>
-<p><code>Clone simonw/simonwillisonblog from github to /tmp for reference</code></p>
-</blockquote>
-<p>I use this pattern a lot. Coding agents can clone code from GitHub, and the best way to explain a problem is often to have them look at relevant code. By telling them to clone to <code>/tmp</code> I ensure they don't accidentally end up including that reference code in their own commit later on.</p>
-<p>The <a href="https://github.com/simonw/simonwillisonblog">simonw/simonwillisonblog</a> repository contains the source code for my Django-powered <a href="https://simonwillison.net/">simonwillison.net</a> blog. This includes the logic and database schema for my new "beats" feature.</p>
-<blockquote>
-<p><code>Update blog-to-newsletter.html to include beats that have descriptions - similar to how the Atom everything feed on the blog works</code></p>
-</blockquote>
-<p>Referencing <code>blog-to-newsletter.html</code> is all I need here to tell Claude which of the 200+ HTML apps in that <code>simonw/tools</code> repo it should be modifying.</p>
-<p>Beats are automatically imported from multiple sources. Often they aren't very interesting - a dot-release bug fix for one of my smaller open source projects, for example.</p>
-<p>My blog includes a way for me to add additional descriptions to any beat, which provides extra commentary but also marks that beat as being more interesting than those that I haven't annotated in some way.</p>
-<p>I already use this as a distinction to decide which beats end up in my site's <a href="https://simonwillison.net/about/#atom">Atom feed</a>. Telling Claude to imitate that saves me from having to describe the logic in any extra detail.</p>
-<blockquote>
-<p><code>Run it with python -m http.server and use `uvx rodney --help` to test it - compare what shows up in the newsletter with what's on the homepage of https://simonwillison.net</code></p>
-</blockquote>
-<p>Coding agents always work best if they have some kind of validation mechanism they can use to test their own work.</p>
-<p>In this case I wanted Claude Code to actively check that the changes it made to my tool would correctly fetch and display the latest data.</p>
-<p>I reminded it to use <code>python -m http.server</code> as a static server because I've had issues in the past with applications that fetch data and break when served as a file from disk instead of a localhost server. In this particular case that may not have been necessary, but my prompting muscle memory has <code>python -m http.server</code> baked in at this point!</p>
-<p>I described the <code>uvx rodney --help</code> trick in <a href="https://simonwillison.net/guides/agentic-engineering-patterns/agentic-manual-testing/#using-browser-automation-for-web-uis">the agentic manual testing chapter</a>. Rodney is browser automation software that can be installed using <code>uvx</code>, and that has <code>--help</code> output designed to teach an agent everything it needs to know in order to use the tool.</p>
-<p>I figured that telling Claude to compare the results in the newsletter to the content of my blog's homepage would be enough for it to confidently verify that the new changes were working correctly, since I had recently posted content that matched the new requirements.</p>
-<p>You can see <a href="https://claude.ai/code/session_01BibYBuvJi2qNUyCYGaY3Ss">the full session here</a>, or if that doesn't work I have an <a href="https://gisthost.github.io/?e906e938100ab42f4d6a932505219324/page-001.html#msg-2026-04-18T00-13-57-081Z">alternative transcript</a> showing all of the individual tool calls.</p>
-<p>The <a href="https://github.com/simonw/tools/pull/268">resulting PR</a> made exactly the right change. It added an additional UNION clause to the SQL query that fetched the blog's content, filtering out draft beats and beats that have nothing in their <code>note</code> column:</p>
-<p><div class="codehilite"><pre><span></span><code><span class="p">...</span>
-<span class="k">union</span><span class="w"> </span><span class="k">all</span>
-<span class="k">select</span>
-<span class="w">  </span><span class="n">id</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;beat&#39;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">type</span><span class="p">,</span>
-<span class="w">  </span><span class="n">title</span><span class="p">,</span>
-<span class="w">  </span><span class="n">created</span><span class="p">,</span>
-<span class="w">  </span><span class="n">slug</span><span class="p">,</span>
-<span class="w">  </span><span class="s1">&#39;No HTML&#39;</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">html</span><span class="p">,</span>
-<span class="w">  </span><span class="n">json_object</span><span class="p">(</span>
-<span class="w">    </span><span class="s1">&#39;created&#39;</span><span class="p">,</span><span class="w"> </span><span class="nb">date</span><span class="p">(</span><span class="n">created</span><span class="p">),</span>
-<span class="w">    </span><span class="s1">&#39;beat_type&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">beat_type</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">title</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;url&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;commentary&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">commentary</span><span class="p">,</span>
-<span class="w">    </span><span class="s1">&#39;note&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">note</span>
-<span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">json</span><span class="p">,</span>
-<span class="w">  </span><span class="n">url</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">external_url</span>
-<span class="k">from</span><span class="w"> </span><span class="n">blog_beat</span>
-<span class="k">where</span><span class="w"> </span><span class="k">coalesce</span><span class="p">(</span><span class="n">note</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">is_draft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
-<span class="k">union</span><span class="w"> </span><span class="k">all</span>
-<span class="p">...</span>
-</code></pre></div>
-And it figured out a mapping of beat types to their formal names, presumably derived from the <a href="https://github.com/simonw/simonwillisonblog/blob/2e9d7ebe64da799b3927e61b4f85d98f7e9bc9aa/blog/models.py#L545-L551">Django ORM definition</a> that it read while it was exploring the reference codebase:
-<div class="codehilite"><pre><span></span><code>const beatTypeDisplay = {
-  release: &#39;Release&#39;,
-  til: &#39;TIL&#39;,
-  til_update: &#39;TIL updated&#39;,
-  research: &#39;Research&#39;,
-  tool: &#39;Tool&#39;,
-  museum: &#39;Museum&#39;
-};
-</code></pre></div>
-Telling agents to use another codebase as reference is a powerful shortcut for communicating complex concepts with minimal additional information needed in the prompt.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/github">github</a></p>]]></description><pubDate>Sat, 18 Apr 2026 03:15:36 +0000</pubDate></item><item><title>Join us at PyCon US 2026 in Long Beach - we have new AI and security tracks this year</title><link>https://simonwillison.net/2026/Apr/17/pycon-us-2026/#atom-everything</link><description><![CDATA[<p>This year's <a href="https://us.pycon.org/2026/">PyCon US</a> is coming up next month from May 13th to May 19th, with the core conference talks from Friday 15th to Sunday 17th and tutorial and sprint days either side. It's in Long Beach, California this year, the first time PyCon US has come to the West Coast since Portland, Oregon in 2017 and the first time in California since Santa Clara in 2013.</p>
-<p>If you're based in California this is a great opportunity to catch up with the Python community, meet a whole lot of interesting people and learn a ton of interesting things.</p>
-<p>In addition to regular PyCon programming we have two new dedicated tracks at the conference this year: an <a href="https://us.pycon.org/2026/tracks/ai/">AI track</a> on Friday and a <a href="https://us.pycon.org/2026/tracks/security/">Security track</a> on Saturday.</p>
-<p>The AI program was put together by track chairs Silona Bonewald (CitableAI) and Zac Hatfield-Dodds (Anthropic). I'll be an in-the-room chair this year, introducing speakers and helping everything run as smoothly as possible.</p>
-<p>Here's <a href="https://us.pycon.org/2026/schedule/talks/#May15">the AI track schedule</a> in full:</p>
-<ul>
-<li>11:00: <a href="https://us.pycon.org/2026/schedule/presentation/105/">AI-Assisted Contributions and Maintainer Load</a> - Paolo Melchiorre</li>
-<li>11:45: <a href="https://us.pycon.org/2026/schedule/presentation/66/">AI-Powered Python Education : Towards Adaptive and Inclusive Learning</a> - Sonny Mupfuni</li>
-<li>12:30: <a href="https://us.pycon.org/2026/schedule/presentation/23/">Making African Languages Visible: A Python-Based Guide to Low-Resource Language ID</a> - Gift Ojeabulu</li>
-<li>2:00: <a href="https://us.pycon.org/2026/schedule/presentation/138/">Running Large Language Models on Laptops: Practical Quantization Techniques in Python</a> - Aayush Kumar JVS</li>
-<li>2:45: <a href="https://us.pycon.org/2026/schedule/presentation/126/">Distributing AI with Python in the Browser: Edge Inference and Flexibility Without Infrastructure</a> - Fabio Pliger</li>
-<li>3:30: <a href="https://us.pycon.org/2026/schedule/presentation/110/">Don't Block the Loop: Python Async Patterns for AI Agents</a> - Aditya Mehra</li>
-<li>4:30: <a href="https://us.pycon.org/2026/schedule/presentation/81/">What Python Developers Need to Know About Hardware: A Practical Guide to GPU Memory, Kernel Scheduling, and Execution Models</a> - Santosh Appachu Devanira Poovaiah</li>
-<li>5:15: <a href="https://us.pycon.org/2026/schedule/presentation/101/">How to Build Your First Real-Time Voice Agent in Python (Without Losing Your Mind)</a> - Camila Hinojosa Añez, Elizabeth Fuentes</li>
-</ul>
-<p>(And here's <a href="https://gisthost.github.io/?dab27f61d85eb98f60db5991aa21ec89">how I scraped that as a Markdown list</a> from the schedule page using Claude Code and <a href="https://github.com/simonw/rodney">Rodney</a>.)</p>
-<h4 id="you-should-come-to-pycon-">You should come to PyCon US!</h4>
-<p>I've been going to PyCon for over twenty years now - I first went <a href="https://simonwillison.net/2005/Mar/28/pycon/">back in 2005</a>. It's one of my all-time favourite conference series. Even as it's grown to more than 2,000 attendees PyCon US has remained a heavily community-focused conference - it's the least <em>corporate</em> feeling large event I've ever attended.</p>
-<p>The talks are always great, but it's the add-ons around the talks that really make it work for me. The <a href="https://us.pycon.org/2026/events/lightning-talks/">lightning talks</a> slots are some of the most heavily attended sessions. The PyLadies auction is always deeply entertaining. The sprints are an incredible opportunity to contribute directly to projects that you use, coached by their maintainers.</p>
-<p>In addition to scheduled talks, the event has <strong>open spaces</strong>, where anyone can reserve space for a conversation about a topic - effectively PyCon's version of an <a href="https://en.wikipedia.org/wiki/Unconference">unconference</a>. I plan to spend a lot of my time in the open spaces this year - I'm hoping to join or instigate sessions about both <a href="https://datasette.io/">Datasette</a> and <a href="https://simonwillison.net/guides/agentic-engineering-patterns/">agentic engineering</a>.</p>
-<p>I'm on the board of the Python Software Foundation, and PyCon US remains one of our most important responsibilities - in the past it's been a key source of funding for the organization, but it's also core to our mission to "promote, protect, and advance the Python programming language, and to support and facilitate the growth of a diverse and international community of Python programmers".</p>
-<p><small>If you do come to Long Beach, we'd really appreciate it if you could book accommodation in the official hotel block, for reasons <a href="https://pyfound.blogspot.com/2026/04/pycon-us-2026-hotels.html">outlined in this post on the PSF blog</a>.</small></p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/conferences">conferences</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/pycon">pycon</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/psf">psf</a></p>]]></description><pubDate>Fri, 17 Apr 2026 23:59:03 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/system-prompts">system-prompts</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Sat, 18 Apr 2026 12:25:00 +0000</pubDate></item></channel></rss>
