@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>microsoft/VibeVoice</title><link>https://simonwillison.net/2026/Apr/27/vibevoice/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/microsoft/VibeVoice">microsoft/VibeVoice</a></strong></p>
 VibeVoice is Microsoft's Whisper-style audio model for speech-to-text, MIT licensed and with speaker diarization built into the model.</p>
 <p>Microsoft released it on January 21st, 2026 but I hadn't tried it until today. Here's a one-liner to run it on a Mac with <code>uv</code>, <a href="https://github.com/Blaizzy/mlx-audio">mlx-audio</a> (by Prince Canuma) and the 5.71GB <a href="https://huggingface.co/mlx-community/VibeVoice-ASR-4bit">mlx-community/VibeVoice-ASR-4bit</a> MLX conversion of the <a href="https://huggingface.co/microsoft/VibeVoice-ASR/tree/main">17.3GB VibeVoice-ASR</a> model, in this case against a downloaded copy of my recent <a href="https://simonwillison.net/2026/Apr/2/lennys-podcast/">podcast appearance with Lenny Rachitsky</a>:</p>
-<pre><code>uv run --with mlx-audio python -m mlx_audio.stt.generate \
+<pre><code>uv run --with mlx-audio mlx_audio.stt.generate \
   --model mlx-community/VibeVoice-ASR-4bit \
   --audio lenny.mp3 --output-path lenny \
   --format json --verbose --max-tokens 32768
