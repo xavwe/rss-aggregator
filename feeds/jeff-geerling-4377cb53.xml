@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>New 10 GbE USB adapters are cooler, smaller, cheaper</title><link>https://www.jeffgeerling.com/blog/2026/new-10-gbe-usb-adapters-cooler-smaller-cheaper/</link><description><![CDATA[<p>For years, the best way to get 10 gigabit networking on laptops was to buy an expensive, large, and hot 10 GbE Thunderbolt adapter. With new RTL8159-based 10G USB 3.2 adapters coming onto the market, the bulky adapters might be a thing of the past. Just look at the size of the thing in comparison to my Thunderbolt adapters:</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Raspberry Pi Connect may control Windows soon</title><link>https://www.jeffgeerling.com/blog/2026/raspberry-pi-connect-may-control-windows-soon/</link><description><![CDATA[<p>Support for <a href="https://forums.raspberrypi.com/viewtopic.php?p=2373678">remote controlling Windows PCs</a> may be added to <a href="https://www.raspberrypi.com/software/connect/">Raspberry Pi Connect</a>, Raspberry Pi's free remote access service.</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/raspberry-pi-connect-may-control-windows-soon/pi-connect-windows-11.jpg"
+ alt="Raspberry Pi Connect controlling a Windows 11 PC" width="700" height="auto">
+</figure>
+
+<p>When they <a href="https://www.jeffgeerling.com/blog/2024/raspberry-pi-getting-services-game/">announced Pi Connect in 2024</a>, I speculated the service was launched in response to RealVNC's sluggish adoption of Wayland, leading to Pi users lacking a solid remote access solution after Pi OS 12 'Bookworm' was launched.</p>
+<p>The service was helpful for those who had one or more Raspberry Pis to access, but the Pi Connect daemon didn't run on Windows or macOS at the time, so a true competitor to RealVNC (at least for basic use cases) it was not.</p>]]></description><pubDate>Wed, 29 Apr 2026 17:00:00 +0000</pubDate></item><item><title>New 10 GbE USB adapters are cooler, smaller, cheaper</title><link>https://www.jeffgeerling.com/blog/2026/new-10-gbe-usb-adapters-cooler-smaller-cheaper/</link><description><![CDATA[<p>For years, the best way to get 10 gigabit networking on laptops was to buy an expensive, large, and hot 10 GbE Thunderbolt adapter. With new RTL8159-based 10G USB 3.2 adapters coming onto the market, the bulky adapters might be a thing of the past. Just look at the size of the thing in comparison to my Thunderbolt adapters:</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/new-10-gbe-usb-adapters-cooler-smaller-cheaper/thunderbolt-and-usb-c-10g-ethernet-adapters.jpg"
  alt="10 Gbps Ethernet adapters for Thunderbolt and USB" width="700" height="auto">
 </figure>
@@ -89,12 +95,4 @@
  alt="Argon ONE UP laptop with Raspberry Pi mug on desk" width="700" height="auto">
 </figure>
 
-<p>You could swap out a low spec CM5 for a higher spec, and get an instant computer upgrade. Or, assuming a CM6 comes out someday in the same form factor, the laptop chassis could get an entirely new life with that upgrade.</p>]]></description><pubDate>Fri, 6 Feb 2026 15:00:00 +0000</pubDate></item><item><title>Ode to the AA Battery</title><link>https://www.jeffgeerling.com/blog/2026/ode-to-the-aa-battery/</link><description><![CDATA[<p>Recently <a href="https://x.com/Merocle/status/2015496917472489751">this post from @Merocle</a> caught my eye:</p>
-<blockquote>
-<p>I'm fixing my iFixit soldering station. I haven't used it for a long time and the battery has gone overdischarge. I hope it will come back to life. Unfortunately, there are no replacements available for sale at the moment.</p>
-</blockquote>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/ode-to-the-aa-battery/ifixit-soldering-usb-battery-merocle-torn-down.jpg"
- alt="iFixit soldering hub torn down - used with permission" width="500" height="auto">
-</figure>
-
-<p>Devices with built-in rechargeable batteries have been bugging me a lot lately. It's convenient to have a device you can take with you and use anywhere. And with modern Li-ion cells, battery life is remarkable.</p>]]></description><pubDate>Thu, 29 Jan 2026 17:00:00 +0000</pubDate></item></channel></rss>
+<p>You could swap out a low spec CM5 for a higher spec, and get an instant computer upgrade. Or, assuming a CM6 comes out someday in the same form factor, the laptop chassis could get an entirely new life with that upgrade.</p>]]></description><pubDate>Fri, 6 Feb 2026 15:00:00 +0000</pubDate></item></channel></rss>
