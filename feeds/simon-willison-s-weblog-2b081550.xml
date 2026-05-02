@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>iNaturalist Sightings</title><link>https://simonwillison.net/2026/May/1/inat-sightings/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/inat-sightings">iNaturalist Sightings</a></p>
-    <p>I wanted to see my <a href="https://www.inaturalist.org">iNaturalist</a> observations - across two separate accounts - grouped by when they occurred. I'm camping this weekend so I built this entirely on my phone using Claude Code for web.</p>
+        <p>I wanted to see my <a href="https://www.inaturalist.org">iNaturalist</a> observations - across two separate accounts - grouped by when they occurred. I'm camping this weekend so I built this entirely on my phone using Claude Code for web.</p>
 <p>I started by building an <a href="https://github.com/simonw/inaturalist-clumper">inaturalist-clumper</a> Python CLI for fetching and "clumping" observations - by default clumps use observations within 2 hours and 5km of each other.</p>
 <p>Then I setup <a href="https://github.com/simonw/inaturalist-clumps">simonw/inaturalist-clumps</a> as a <a href="https://simonwillison.net/series/git-scraping/">Git scraping</a> repository to run that tool and record the result to <a href="https://github.com/simonw/inaturalist-clumps/blob/main/clumps.json">clumps.json</a>.</p>
 <p>That JSON file is hosted on GitHub, which means it can be fetched by JavaScript using CORS.</p>
@@ -7,6 +7,7 @@
 <blockquote>
 <p><code>Build inat-sightings.html - an app that does a fetch() against https://raw.githubusercontent.com/simonw/inaturalist-clumps/refs/heads/main/clumps.json and then displays all of the observations on one page using the https://static.inaturalist.org/photos/538073008/small.jpg small.jpg URLs for the thumbnails - with loading=lazy - but when a thumbnail is clicked showing the large.jpg in an HTML modal. Both small and large should include the common species names if available</code></p>
 </blockquote>
+    
     
         <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/inaturalist">inaturalist</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 1 May 2026 19:35:41 +0000</pubDate></item><item><title>Codex CLI 0.128.0 adds /goal</title><link>https://simonwillison.net/2026/Apr/30/codex-goals/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/openai/codex/releases/tag/rust-v0.128.0">Codex CLI 0.128.0 adds /goal</a></strong></p>
 The latest version of OpenAI's Codex CLI coding agent adds their own version of the <a href="https://ghuntley.com/ralph/">Ralph loop</a>: you can now set a <code>/goal</code> and Codex will keep on looping until it evaluates that the goal has been completed... or the configured token budget has been exhausted.</p>
@@ -57,11 +58,12 @@ Matt Webb:</p>
 <p>This makes a lot of sense to me. It relates to an idea I've seen circulating elsewhere: if a PR was mostly written by an LLM, why should a project maintainer spend time reviewing and discussing that PR as opposed to firing up their own LLM to solve the same problem?</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/zig">zig</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/bun">bun</a></p>]]></description><pubDate>Thu, 30 Apr 2026 01:24:23 +0000</pubDate></item><item><title>llm 0.32a1</title><link>https://simonwillison.net/2026/Apr/29/llm-3/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.32a1">llm 0.32a1</a></p>
-    <blockquote>
+        <blockquote>
 <ul>
 <li>Fixed a bug in 0.32a0 where tool-calling conversations were not correctly reinflated from SQLite. <a href="https://github.com/simonw/llm/issues/1426">#1426</a></li>
 </ul>
 </blockquote>
+    
     
         <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Wed, 29 Apr 2026 23:52:50 +0000</pubDate></item><item><title>LLM 0.32a0  is a major backwards-compatible refactor</title><link>https://simonwillison.net/2026/Apr/29/llm/#atom-everything</link><description><![CDATA[<p>I just released <a href="https://llm.datasette.io/en/latest/changelog.html#a0-2026-04-28">LLM 0.32a0</a>, an alpha release of my <a href="https://llm.datasette.io/">LLM</a> Python library and CLI tool for accessing LLMs, with some consequential changes that I've been working towards for quite a while.</p>
 <p>Previous versions of LLM modeled the world in terms of prompts and responses. Send the model a text prompt, get back a text response.</p>
@@ -229,7 +231,8 @@ assistant:
 <p>I'm undecided as to whether that should be a feature in 0.32 or I should hold it for 0.33.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Wed, 29 Apr 2026 19:01:47 +0000</pubDate></item><item><title>llm 0.32a0</title><link>https://simonwillison.net/2026/Apr/29/llm-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.32a0">llm 0.32a0</a></p>
-    <p>See <a href="https://simonwillison.net/2026/Apr/29/llm/">the annotated release notes</a>.</p>
+        <p>See <a href="https://simonwillison.net/2026/Apr/29/llm/">the annotated release notes</a>.</p>
+    
     
         <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Wed, 29 Apr 2026 18:57:47 +0000</pubDate></item><item><title>Quoting OpenAI Codex base_instructions</title><link>https://simonwillison.net/2026/Apr/28/openai-codex/#atom-everything</link><description><![CDATA[<blockquote cite="https://github.com/openai/codex/blob/66b0781502be5de3b1909525c987643b9e5e407d/codex-rs/models-manager/models.json#L55"><p><code>Never talk about goblins, gremlins, raccoons, trolls, ogres, pigeons, or other animals or creatures unless it is absolutely and unambiguously relevant to the user's query.</code></p></blockquote>
 <p class="cite">&mdash; <a href="https://github.com/openai/codex/blob/66b0781502be5de3b1909525c987643b9e5e407d/codex-rs/models-manager/models.json#L55">OpenAI Codex base_instructions</a>, for GPT-5.5</p>
@@ -427,7 +430,7 @@ Now that GPT-5.5 is <a href="https://developers.openai.com/api/docs/models/gpt-5
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a></p>]]></description><pubDate>Sat, 25 Apr 2026 04:13:36 +0000</pubDate></item><item><title>llm 0.31</title><link>https://simonwillison.net/2026/Apr/24/llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.31">llm 0.31</a></p>
-    <blockquote>
+        <blockquote>
 <ul>
 <li>New GPT-5.5 OpenAI model: <code>llm -m gpt-5.5</code>. <a href="https://github.com/simonw/llm/issues/1418">#1418</a></li>
 <li>New option to set the <a href="https://developers.openai.com/cookbook/examples/gpt-5/gpt-5_new_params_and_tools#1-verbosity-parameter">text verbosity level</a> for GPT-5+ OpenAI models: <code>-o verbosity low</code>. Values are <code>low</code>, <code>medium</code>, <code>high</code>.</li>
@@ -435,6 +438,7 @@ Now that GPT-5.5 is <a href="https://developers.openai.com/api/docs/models/gpt-5
 <li>Models listed in <code>extra-openai-models.yaml</code> are now also registered as asynchronous. <a href="https://github.com/simonw/llm/issues/1395">#1395</a></li>
 </ul>
 </blockquote>
+    
     
         <p>Tags: <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Fri, 24 Apr 2026 23:35:07 +0000</pubDate></item><item><title>The people do not yearn for automation</title><link>https://simonwillison.net/2026/Apr/24/the-people-do-not-yearn-for-automation/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.theverge.com/podcast/917029/software-brain-ai-backlash-databases-automation">The people do not yearn for automation</a></strong></p>
 This written and video essay by Nilay Patel explores why AI is unpopular with the general public even as usage numbers for ChatGPT continue to skyrocket.</p>
@@ -551,7 +555,8 @@ llm -m openrouter/deepseek/deepseek-v4-pro 'Generate an SVG of a pelican riding 
 <p>I'm keeping an eye on <a href="https://huggingface.co/unsloth/models">huggingface.co/unsloth/models</a> as I expect the Unsloth team will have a set of quantized versions out pretty soon. It's going to be very interesting to see how well that Flash model runs on my own machine.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/deepseek">deepseek</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/openrouter">openrouter</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Fri, 24 Apr 2026 06:01:04 +0000</pubDate></item><item><title>Millisecond Converter</title><link>https://simonwillison.net/2026/Apr/24/milliseconds/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/milliseconds">Millisecond Converter</a></p>
-    <p><a href="https://llm.datasette.io/">LLM</a> reports prompt durations in milliseconds and I got fed up of having to think about how to convert those to seconds and minutes.</p>
+        <p><a href="https://llm.datasette.io/">LLM</a> reports prompt durations in milliseconds and I got fed up of having to think about how to convert those to seconds and minutes.</p>
+    
     
         <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a></p>]]></description><pubDate>Fri, 24 Apr 2026 04:23:11 +0000</pubDate></item><item><title>It&apos;s a big one</title><link>https://simonwillison.net/2026/Apr/24/weekly/#atom-everything</link><description><![CDATA[<p><a href="https://simonw.substack.com/p/gpt-55-chatgpt-images-20-qwen36-27b">This week's edition</a> of my email newsletter (aka <a href="https://simonwillison.net/2023/Apr/4/substack-observable/">content from this blog</a> delivered to your inbox) features 4 pelicans riding bicycles, 1 possum on an e-scooter, up to 5 raccoons with ham radios hiding in crowds, 5 blog posts, 8 links, 3 quotes and a new chapter of my Agentic Engineering Patterns guide.</p>
 
@@ -761,6 +766,7 @@ llm -m openai-codex/gpt-5.5 <span class="pl-s"><span class="pl-pds">'</span>Gene
 <p>Ethan Mollick has a <a href="https://www.oneusefulthing.org/p/sign-of-the-future-gpt-55">detailed review of GPT-5.5</a> where he put it (and GPT-5.5 Pro) through an array of interesting challenges. His verdict: the jagged frontier continues to hold, with GPT-5.5 excellent at some things and challenged by others in a way that remains difficult to predict.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a></p>]]></description><pubDate>Thu, 23 Apr 2026 19:59:47 +0000</pubDate></item><item><title>llm-openai-via-codex 0.1a0</title><link>https://simonwillison.net/2026/Apr/23/llm-openai-via-codex/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-openai-via-codex/releases/tag/0.1a0">llm-openai-via-codex 0.1a0</a></p>
-    <p>Hijacks your Codex CLI credentials to make API calls with LLM, as described <a href="https://simonwillison.net/2026/Apr/23/gpt-5-5/#llm-openai-via-codex">in my post about GPT-5.5</a>.</p>
+        <p>Hijacks your Codex CLI credentials to make API calls with LLM, as described <a href="https://simonwillison.net/2026/Apr/23/gpt-5-5/#llm-openai-via-codex">in my post about GPT-5.5</a>.</p>
+    
     
         <p>Tags: <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/codex-cli">codex-cli</a></p>]]></description><pubDate>Thu, 23 Apr 2026 19:22:29 +0000</pubDate></item></channel></rss>
