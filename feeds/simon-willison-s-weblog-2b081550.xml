@@ -1,4 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Learning on the Shop floor</title><link>https://simonwillison.net/2026/May/11/learning-on-the-shop-floor/#atom-everything</link><description><![CDATA[<p><strong><a href="https://twitter.com/tobi/status/2053121182044451016">Learning on the Shop floor</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Your AI Use Is Breaking My Brain</title><link>https://simonwillison.net/2026/May/11/zombie-internet/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.404media.co/your-ai-use-is-breaking-my-brain/">Your AI Use Is Breaking My Brain</a></strong></p>
+Excellent, angry piece by Jason Koebler on how AI writing online is becoming impossible to avoid, filtering it is mentally exhausting and it's even starting to distort regular human writing styles.</p>
+<p>I particularly liked his use of the term "Zombie Internet" to define a different, more insidious alternative to the "Dead Internet" (which is just bots talking to each other):</p>
+<blockquote>
+<p>I called it the Zombie Internet because the truth is that large parts of the internet are not just bots talking to bots or bots talking to people. It’s people talking to bots, people talking to people, people creating “AI agents” and then instructing them to interact with people. It’s people using AI talking to people who are not using AI, and it’s people using AI talking to other people who are using AI. It’s influencer hustlebros who are teaching each other how to make AI influencers and have spun up automated YouTube channels and blogs and social media accounts that are spamming the internet for the sole purpose of making money. It is whatever the fuck “Moltbook” is and whatever the fuck X and LinkedIn have become. It’s AI summaries of real books being sold as the book itself and inspirational Reddit posts and comment threads in which people give heartfelt advice to some account that’s actually being run by a marketing firm. [...]</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://bsky.app/profile/jasonkoebler.bsky.social/post/3mllgvidacs2n">@jasonkoebler.bsky.social</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/definitions">definitions</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/slop">slop</a>, <a href="https://simonwillison.net/tags/jason-koebler">jason-koebler</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a></p>]]></description><pubDate>Mon, 11 May 2026 19:21:27 +0000</pubDate></item><item><title>Using LLM in the shebang line of a script</title><link>https://simonwillison.net/2026/May/11/llm-shebang/#atom-everything</link><description><![CDATA[<p><strong>TIL:</strong> <a href="https://til.simonwillison.net/llms/llm-shebang">Using LLM in the shebang line of a script</a></p>
+        <p>Kim_Bruning <a href="https://news.ycombinator.com/item?id=48073246#48090590">on Hacker News</a>:</p>
+<blockquote>
+<p>But seriously, you can put a shebang on an english text file now (if you're sufficiently brave) [...]</p>
+</blockquote>
+<p>This inspired me to look at patterns for doing exactly that with <a href="https://llm.datasette.io/en/stable/">LLM</a>. Here's the simplest, which takes advantage of <a href="https://llm.datasette.io/en/stable/fragments.html">LLM fragments</a>:</p>
+<pre><code>#!/usr/bin/env -S llm -f
+Generate an SVG of a pelican riding a bicycle
+</code></pre>
+<p>But you can also incorporate <a href="https://llm.datasette.io/en/stable/tools.html">tool calls</a> using the <code>-T name_of_tool</code> option:</p>
+<pre><code>#!/usr/bin/env -S llm -T llm_time -f
+Write a haiku that mentions the exact current time
+</code></pre>
+<p>Or even execute YAML templates directly that define extra tools as Python functions:</p>
+<pre><span class="pl-c"><span class="pl-c">#</span>!/usr/bin/env -S llm -t</span>
+<span class="pl-ent">model</span>: <span class="pl-s">gpt-5.4-mini</span>
+<span class="pl-ent">system</span>: <span class="pl-s">|</span>
+<span class="pl-s">  Use tools to run calculations</span>
+<span class="pl-s"></span><span class="pl-ent">functions</span>: <span class="pl-s">|</span>
+<span class="pl-s">  def add(a: int, b: int) -&gt; int:</span>
+<span class="pl-s">      return a + b</span>
+<span class="pl-s">  def multiply(a: int, b: int) -&gt; int:</span>
+<span class="pl-s">      return a * b</span></pre>
+
+<p>Then:</p>
+<pre><code>./calc.sh 'what is 2344 * 5252 + 134' --td
+</code></pre>
+<p>Which outputs (thanks to that <code>--td</code> tools debug option):</p>
+<pre><code>Tool call: multiply({'a': 2344, 'b': 5252})
+  12310688
+
+Tool call: add({'a': 12310688, 'b': 134})
+  12310822
+
+2344 × 5252 + 134 = **12,310,822**
+</code></pre>
+<p>Read the full TIL for <a href="https://til.simonwillison.net/llms/llm-shebang#templates-with-tools">a more complex example</a> that uses the Datasette SQL API to answer questions about content on my blog.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Mon, 11 May 2026 18:48:57 +0000</pubDate></item><item><title>Learning on the Shop floor</title><link>https://simonwillison.net/2026/May/11/learning-on-the-shop-floor/#atom-everything</link><description><![CDATA[<p><strong><a href="https://twitter.com/tobi/status/2053121182044451016">Learning on the Shop floor</a></strong></p>
 Tobias Lütke describes Shopify's internal coding agent tool, River, which operates entirely in public on their Slack:</p>
 <blockquote>
 <p>River does not respond to direct messages. She politely declines and suggests to create a public channel for you and her to start working in. I myself work with river in <code>#tobi_river</code> channel and many followed this pattern.  Every conversation is therefore searchable.  Anyone at Shopify  can jump in. In my own channel, there are over 100 people who, react to threads, add color and add context, pick up the torch, help with the reviews, remind me how rusty I am, and importantly, learn from watching. [...]</p>
@@ -285,37 +334,4 @@ The UK's AI Security Institute <a href="https://www.aisi.gov.uk/blog/our-evaluat
 <p>I'm not telling you not to smoke, but I am telling you not to smoke in my house.</p></blockquote>
 <p class="cite">&mdash; <a href="https://lobste.rs/s/ifcyr1/contributor_poker_zig_s_ai_ban#c_cbtxub">Andrew Kelley</a>, Creator of Zig</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/zig">zig</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Thu, 30 Apr 2026 21:24:55 +0000</pubDate></item><item><title>We need RSS for sharing abundant vibe-coded apps</title><link>https://simonwillison.net/2026/Apr/30/rss-vibe-coded-apps/#atom-everything</link><description><![CDATA[<p><strong><a href="https://interconnected.org/home/2026/04/29/syndicating-vibes">We need RSS for sharing abundant vibe-coded apps</a></strong></p>
-Matt Webb:</p>
-<blockquote>
-<p>I would love an RSS web feed for all those various tools and apps pages, each item with an “Install” button. (But install to where?)</p>
-<p>The lesson here is that when vibe-coding accelerates app development, apps become more personal, more situated, and more frequent. Shipping a tool or a micro-app is less like launching a website and more like posting on a blog.</p>
-</blockquote>
-<p>This inspired me to <a href="https://github.com/simonw/simonwillisonblog/pull/665">have Claude</a> add an Atom feed (and icon) to my <a href="https://simonwillison.net/elsewhere/tool/">/elsewhere/tools/</a> page, which itself is populated by content from my <a href="https://tools.simonwillison.net/">tools.simonwillison.net</a> site.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/atom">atom</a>, <a href="https://simonwillison.net/tags/matt-webb">matt-webb</a>, <a href="https://simonwillison.net/tags/rss">rss</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a></p>]]></description><pubDate>Thu, 30 Apr 2026 18:38:48 +0000</pubDate></item><item><title>The Zig project&apos;s rationale for their firm anti-AI contribution policy</title><link>https://simonwillison.net/2026/Apr/30/zig-anti-ai/#atom-everything</link><description><![CDATA[<p><a href="https://ziglang.org/">Zig</a> has one of the most stringent <a href="https://ziglang.org/code-of-conduct/">anti-LLM policies</a> of any major open source project:</p>
-<blockquote>
-<p>No LLMs for issues.</p>
-<p>No LLMs for pull requests.</p>
-<p>No LLMs for comments on the bug tracker, including translation. English is encouraged, but not required. You are welcome to post in your native language and rely on others to have their own translation tools of choice to interpret your words.</p>
-</blockquote>
-<p>The most prominent project written in Zig may be the <a href="https://bun.com/">Bun</a> JavaScript runtime, which was <a href="https://bun.com/blog/bun-joins-anthropic">acquired by Anthropic</a> in December 2025 and, unsurprisingly, makes heavy use of AI assistance.</p>
-<p>Bun operates its own fork of Zig, and recently <a href="https://x.com/bunjavascript/status/2048427636414923250">achieved a 4x performance improvement</a> on Bun compile after adding "parallel semantic analysis and multiple codegen units to the llvm backend". Here's <a href="https://github.com/oven-sh/zig/compare/upgrade-0.15.2%E2%80%A6upgrade-0.15.2-fast">that code</a>. But <a href="https://twitter.com/bunjavascript/status/2048428104893542781">@bunjavascript says</a>:</p>
-<blockquote>
-<p>We do not currently plan to upstream this, as Zig has a strict ban on LLM-authored contributions.</p>
-</blockquote>
-<p>(Update: here's <a href="https://ziggit.dev/t/bun-s-zig-fork-got-4x-faster-compilation-times/15183/19">a Zig core contributor</a> providing details on why they wouldn't accept that particular patch independent of the LLM issue - parallel semantic analysis is a long planned feature but has implications "for the Zig language itself".)</p>
-<p>In <a href="https://kristoff.it/blog/contributor-poker-and-ai/">Contributor Poker and Zig's AI Ban</a> (<a href="https://lobste.rs/s/ifcyr1/contributor_poker_zig_s_ai_ban">via Lobste.rs</a>) Zig Software Foundation VP of Community Loris Cro explains the rationale for this strict ban. It's the best articulation I've seen yet for a blanket ban on LLM-assisted contributions:</p>
-<blockquote>
-<p>In successful open source projects you eventually reach a point where you start getting more PRs than what you’re capable of processing. Given what I mentioned so far, it would make sense to stop accepting imperfect PRs in order to maximize ROI from your work, but that’s not what we do in the Zig project. Instead, <strong>we try our best to help new contributors to get their work in, even if they need some help getting there</strong>. We don’t do this just because it’s the “right” thing to do, but also <strong>because it’s the smart thing to do</strong>.</p>
-</blockquote>
-<p>Zig values contributors over their contributions. Each contributor represents an investment by the Zig core team - the primary goal of reviewing and accepting PRs isn't to land new code, it's to help grow new contributors who can become trusted and prolific over time.</p>
-<p>LLM assistance breaks that completely. It doesn't matter if the LLM helps you submit a <em>perfect</em> PR to Zig - the time the Zig team spends reviewing your work does nothing to help them add new, confident, trustworthy contributors to their overall project.</p>
-<p>Loris explains the name here:</p>
-<blockquote>
-<p>The reason I call it “contributor poker” is because, just like people say about the actual card game, “you play the person, not the cards”. In contributor poker, you bet on the contributor, not on the contents of their first PR.</p>
-</blockquote>
-<p>This makes a lot of sense to me. It relates to an idea I've seen circulating elsewhere: if a PR was mostly written by an LLM, why should a project maintainer spend time reviewing and discussing that PR as opposed to firing up their own LLM to solve the same problem?</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/zig">zig</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/bun">bun</a></p>]]></description><pubDate>Thu, 30 Apr 2026 01:24:23 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/zig">zig</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a></p>]]></description><pubDate>Thu, 30 Apr 2026 21:24:55 +0000</pubDate></item></channel></rss>
