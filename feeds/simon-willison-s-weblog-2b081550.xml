@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Boris Mann</title><link>https://simonwillison.net/2026/May/13/boris-mann/#atom-everything</link><description><![CDATA[<blockquote cite="https://bsky.app/profile/bmann.ca/post/3mlp2ipupv22z"><p>“11 AI agents” is meaningless as a phrase. </p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Welcome to the Datasette blog</title><link>https://simonwillison.net/2026/May/13/welcome-to-the-datasette-blog/#atom-everything</link><description><![CDATA[<p><strong><a href="https://datasette.io/blog/2026/new-blog/">Welcome to the Datasette blog</a></strong></p>
+...]]></description><pubDate>Wed, 13 May 2026 23:50:39 +0000</pubDate></item><item><title>Quoting Boris Mann</title><link>https://simonwillison.net/2026/May/13/boris-mann/#atom-everything</link><description><![CDATA[<blockquote cite="https://bsky.app/profile/bmann.ca/post/3mlp2ipupv22z"><p>“11 AI agents” is meaningless as a phrase. </p>
 <p>If I said “I have 11 spreadsheets” or “I have 11 browser tabs” to do my work, it means about the same thing.</p></blockquote>
 <p class="cite">&mdash; <a href="https://bsky.app/profile/bmann.ca/post/3mlp2ipupv22z">Boris Mann</a></p>
 
@@ -330,16 +331,4 @@ IBM released their <a href="https://research.ibm.com/blog/granite-4-1-ai-foundat
 <p>And then, in the middle of all this, a farmer in Loudoun County sells a few acres of mediocre hay field to a hyperscaler for ten times its agricultural value, and the response is that we’re running out of farmland.</p></blockquote>
 <p class="cite">&mdash; <a href="https://blog.andymasley.com/p/data-center-land-use-issues-are-fake">Andy Masley</a>, pushing back against the "land use" argument against data center construction</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/andy-masley">andy-masley</a></p>]]></description><pubDate>Mon, 4 May 2026 22:51:09 +0000</pubDate></item><item><title>April 2026 newsletter</title><link>https://simonwillison.net/2026/May/4/april-newsletter/#atom-everything</link><description><![CDATA[<p>I just sent out the April edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a>. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2026-04-april.md">access it here</a>.</p>
-<p>In this month's newsletter:</p>
-<ul>
-<li>Opus 4.7 and GPT-5.5, both with price increases</li>
-<li>Claude Mythos and LLM security research</li>
-<li>ChatGPT Images 2.0</li>
-<li>More model releases</li>
-<li>Other highlights from my blog</li>
-<li>What I'm using, April 2026 edition</li>
-</ul>
-<p>Here's <a href="https://github.com/simonw/monthly-newsletter-archive/blob/main/2026-03-march.md">a copy of the March newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Mon, 4 May 2026 22:38:36 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/andy-masley">andy-masley</a></p>]]></description><pubDate>Mon, 4 May 2026 22:51:09 +0000</pubDate></item></channel></rss>
