@@ -1,4 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Welcome to the Datasette blog</title><link>https://simonwillison.net/2026/May/13/welcome-to-the-datasette-blog/#atom-everything</link><description><![CDATA[<p><strong><a href="https://datasette.io/blog/2026/new-blog/">Welcome to the Datasette blog</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette-ip-rate-limit 0.1a0</title><link>https://simonwillison.net/2026/May/14/datasette-ip-rate-limit/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ip-rate-limit/releases/tag/0.1a0">datasette-ip-rate-limit 0.1a0</a></p>
+        <p>The <a href="https://datasette.io/">datasette.io</a> site was being hammered by poorly-behaved crawlers, so I had Codex (GPT-5.5 xhigh) build a configurable rate limiting plugin to block IPs that were hammering specific areas of the site too quickly.</p>
+<p>Here's <a href="https://github.com/simonw/datasette.io/blob/b6022bf9987661b94a26d3143028193a6cabfdcf/datasette.yml#L103-L116">the production configuration</a> I'm using on that site for the new plugin:</p>
+<pre>  <span class="pl-ent">datasette-ip-rate-limit</span>:
+    <span class="pl-ent">header</span>: <span class="pl-s">Fly-Client-IP</span>
+    <span class="pl-ent">max_keys</span>: <span class="pl-c1">10000</span>
+    <span class="pl-ent">exempt_paths</span>:
+    - <span class="pl-s"><span class="pl-pds">"</span>/static/*<span class="pl-pds">"</span></span>
+    - <span class="pl-s"><span class="pl-pds">"</span>/-/turnstile*<span class="pl-pds">"</span></span>
+    <span class="pl-ent">rules</span>:
+    - <span class="pl-ent">name</span>: <span class="pl-s">public-demo-multi-parameter-table-pages</span>
+      <span class="pl-ent">paths</span>:
+      - <span class="pl-s"><span class="pl-pds">"</span>/global-power-plants/*<span class="pl-pds">"</span></span>
+      - <span class="pl-s"><span class="pl-pds">"</span>/legislators/*<span class="pl-pds">"</span></span>
+      <span class="pl-ent">window_seconds</span>: <span class="pl-c1">60</span>
+      <span class="pl-ent">max_requests</span>: <span class="pl-c1">60</span>
+      <span class="pl-ent">block_seconds</span>: <span class="pl-c1">20</span></pre>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/rate-limiting">rate-limiting</a>, <a href="https://simonwillison.net/tags/codex">codex</a></p>]]></description><pubDate>Thu, 14 May 2026 04:10:23 +0000</pubDate></item><item><title>Welcome to the Datasette blog</title><link>https://simonwillison.net/2026/May/13/welcome-to-the-datasette-blog/#atom-everything</link><description><![CDATA[<p><strong><a href="https://datasette.io/blog/2026/new-blog/">Welcome to the Datasette blog</a></strong></p>
 We have a bunch of neat Datasette announcements in the pipeline so we decided it was time the project grew an official blog.</p>
 <p>I built this using OpenAI Codex desktop, which turns out to have the Markdown session transcript export feature I've always wanted. Here's <a href="https://gist.github.com/simonw/885b11eee46822622b8031a1f4e5f3a3">the session that built the blog</a>. See also <a href="https://github.com/simonw/datasette.io/issues/179">issue 179</a>.
 
@@ -331,8 +350,4 @@ IBM released their <a href="https://research.ibm.com/blog/granite-4-1-ai-foundat
 <p>I'll likely try this again in the future with a model that's better at drawing pelicans.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ibm">ibm</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 4 May 2026 23:49:24 +0000</pubDate></item><item><title>Quoting Andy Masley</title><link>https://simonwillison.net/2026/May/4/andy-masley/#atom-everything</link><description><![CDATA[<blockquote cite="https://blog.andymasley.com/p/data-center-land-use-issues-are-fake"><p>[...] Between 2000 and 2024, farmers sold in total a Colorado-sized chunk of land all on their own, 77 times all land on data center property in 2028, and grew more food than ever on what was left. None of this caused any problems for US food access.</p>
-<p>And then, in the middle of all this, a farmer in Loudoun County sells a few acres of mediocre hay field to a hyperscaler for ten times its agricultural value, and the response is that we’re running out of farmland.</p></blockquote>
-<p class="cite">&mdash; <a href="https://blog.andymasley.com/p/data-center-land-use-issues-are-fake">Andy Masley</a>, pushing back against the "land use" argument against data center construction</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/andy-masley">andy-masley</a></p>]]></description><pubDate>Mon, 4 May 2026 22:51:09 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ibm">ibm</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Mon, 4 May 2026 23:49:24 +0000</pubDate></item></channel></rss>
