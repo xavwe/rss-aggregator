@@ -8,7 +8,7 @@
     - <span class="pl-s"><span class="pl-pds">"</span>/static/*<span class="pl-pds">"</span></span>
     - <span class="pl-s"><span class="pl-pds">"</span>/-/turnstile*<span class="pl-pds">"</span></span>
     <span class="pl-ent">rules</span>:
-    - <span class="pl-ent">name</span>: <span class="pl-s">public-demo-multi-parameter-table-pages</span>
+    - <span class="pl-ent">name</span>: <span class="pl-s">demo-databases</span>
       <span class="pl-ent">paths</span>:
       - <span class="pl-s"><span class="pl-pds">"</span>/global-power-plants/*<span class="pl-pds">"</span></span>
       - <span class="pl-s"><span class="pl-pds">"</span>/legislators/*<span class="pl-pds">"</span></span>
