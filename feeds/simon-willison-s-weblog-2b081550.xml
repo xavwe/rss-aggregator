@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Not so locked in any more</title><link>https://simonwillison.net/2026/May/14/not-so-locked-in/#atom-everything</link><description><![CDATA[<p>This <a href="https://simonwillison.net/2026/May/14/mitchell-hashimoto/">Mitchell Hashimoto quote</a> about Bun migrating from Zig to Rust reminded me of a similar conversation I had at a conference last week.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>QR code generator</title><link>https://simonwillison.net/2026/May/15/qr-code-generator/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/qr-code-generator">QR code generator</a></p>
+        <p>Claude helped me build this tool for creating QR codes, for both text/URLs and for connecting to WiFi networks.</p>
+<p><img alt="Screenshot of a QR code generator web form. Heading &quot;QR code generator&quot; with subtitle &quot;Create a scannable code for a URL, text, or WiFi network.&quot; A segmented toggle shows &quot;URL / text&quot; and &quot;WiFi&quot; with WiFi selected. Below are fields: &quot;Network name (SSID)&quot; with placeholder &quot;My WiFi&quot;; &quot;Password&quot; with placeholder &quot;Password&quot; and a blue &quot;Show&quot; link; &quot;Security&quot; dropdown set to &quot;WPA / WPA2 / WPA3 (most common)&quot;; an unchecked &quot;Hidden&quot; checkbox; helper text &quot;Not sure? Leave it on WPA / WPA2 / WPA3 — that covers almost every home WiFi network.&quot; Below that: &quot;Style&quot; dropdown set to &quot;Square&quot;, an unchecked &quot;Border&quot; checkbox, &quot;Size&quot; dropdown set to &quot;Medium&quot;, and a &quot;Color&quot; swatch showing black. At the bottom is a blue &quot;Generate QR code&quot; button." src="https://static.simonwillison.net/static/2026/qr-code-generate.jpg" /></p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 15 May 2026 04:00:49 +0000</pubDate></item><item><title>Not so locked in any more</title><link>https://simonwillison.net/2026/May/14/not-so-locked-in/#atom-everything</link><description><![CDATA[<p>This <a href="https://simonwillison.net/2026/May/14/mitchell-hashimoto/">Mitchell Hashimoto quote</a> about Bun migrating from Zig to Rust reminded me of a similar conversation I had at a conference last week.</p>
 <p>I was talking to someone who worked for a medium sized technology company with a pair of legacy/<a href="https://simonwillison.net/2018/Jul/17/mark-norman-francis/">legendary</a> iPhone and Android apps.</p>
 <p>They told me they had just completed a coding-agent driven rewrite of both apps to React Native.</p>
 <p>I asked why they chose that, given that coding agents presumably drive down the cost of maintaining separate iPhone and Android apps.</p>
@@ -339,16 +344,4 @@ Andon Labs previously <a href="https://andonlabs.com/blog/andon-market-launch">s
 <p>Part of Datasette's evolving support mechanism for plugins that use LLMs. It's now possible to configure a model with default options, e.g. to say all <a href="https://github.com/datasette/datasette-enrichments-llm">enrichment</a> operations should use a specific model with temperature set to 0.5.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Tue, 5 May 2026 01:56:55 +0000</pubDate></item><item><title>llm-echo 0.5a0</title><link>https://simonwillison.net/2026/May/5/llm-echo/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-echo/releases/tag/0.5a0">llm-echo 0.5a0</a></p>
-        <blockquote>
-<ul>
-<li>New <code>-o thinking 1</code> option to help test against <a href="https://llm.datasette.io/en/latest/changelog.html#a0-2026-04-28">LLM 0.32a0</a> and higher.</li>
-</ul>
-</blockquote>
-<p>This plugin provides a fake model called "echo" for LLM which doesn't run an LLM at all - it's useful for writing automated tests. You can now do this:</p>
-<pre><code>uvx --with llm==0.32a1 --with llm-echo==0.5a0 llm -m echo hi -o thinking 1
-</code></pre>
-<p>This will fake a reasoning block to standard error before returning JSON echoing the prompt.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 5 May 2026 01:31:54 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Tue, 5 May 2026 01:56:55 +0000</pubDate></item></channel></rss>
