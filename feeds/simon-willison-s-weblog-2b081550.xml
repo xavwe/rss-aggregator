@@ -1,4 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Julia Evans</title><link>https://simonwillison.net/2026/May/16/julia-evans/#atom-everything</link><description><![CDATA[<blockquote cite="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/"><p>[...] in the last 10 years I’ve learned to really love and respect CSS as a technology.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Warelay -&gt; OpenClaw</title><link>https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything</link><description><![CDATA[<p>In preparation for a lightning talk I'm giving at PyCon US <a href="https://us.pycon.org/2026/schedule/presentation/175/">this afternoon</a> I decided to figure out how many names OpenClaw has <em>actually</em> had since that <a href="https://github.com/openclaw/openclaw/commit/f6dd362d39b8e30bd79ef7560aab9575712ccc11">first commit</a> back in November.</p>
+<p>Thanks to this <a href="https://tools.simonwillison.net/python/#first_line_historypy">first_line_history.py tool</a> (<a href="https://github.com/simonw/tools/blob/main/python/first_line_history.py">code here</a>) the answer, according to the Git history of the OpenClaw README, is:</p>
+<p>Warelay → CLAWDIS → CLAWDBOT → Clawdbot → Moltbot →🦞 OpenClaw</p>
+<p>Or in detail (the output from the tool):</p>
+<pre>
+2025-11-24T11:23:15+01:00 <a href="https://github.com/openclaw/openclaw/commit/16dfc1">16dfc1</a> # Warelay — WhatsApp Relay CLI (Twilio)
+2025-11-24T11:41:37+01:00 <a href="https://github.com/openclaw/openclaw/commit/d4153d">d4153d</a> # 📡 Warelay — WhatsApp Relay CLI (Twilio)
+2025-11-24T17:47:57+01:00 <a href="https://github.com/openclaw/openclaw/commit/343ef9">343ef9</a> # 📡 warelay — WhatsApp Relay CLI (Twilio)
+2025-11-25T04:44:10+01:00 <a href="https://github.com/openclaw/openclaw/commit/14b3c6">14b3c6</a> # 📡 warelay — WhatsApp Relay CLI
+2025-11-25T12:48:40+01:00 <a href="https://github.com/openclaw/openclaw/commit/481402">481402</a> # 📡 warelay — Send, receive, and auto-reply on WhatsApp—Twilio-backed or QR-linked.
+2025-11-25T13:50:18+01:00 <a href="https://github.com/openclaw/openclaw/commit/d51a3e">d51a3e</a> # warelay 📡 - Send, receive, and auto-reply on WhatsApp via Twilio or QR-linked WhatsApp Web; webhook setup in one command
+2025-11-25T13:51:13+01:00 <a href="https://github.com/openclaw/openclaw/commit/4d2a8a">4d2a8a</a> # 📡 warelay — Send, receive, and auto-reply on WhatsApp—Twilio-backed or QR-linked.
+2025-11-25T14:52:43+01:00 <a href="https://github.com/openclaw/openclaw/commit/1ef7f4">1ef7f4</a> # 📡 warelay — Send, receive, and auto-reply on WhatsApp.
+2025-12-03T15:45:32+00:00 <a href="https://github.com/openclaw/openclaw/commit/a27ee2">a27ee2</a> # 🦞 CLAWDIS — WhatsApp Gateway for AI Agents
+2025-12-08T12:43:13+01:00 <a href="https://github.com/openclaw/openclaw/commit/17fa2f">17fa2f</a> # 🦞 CLAWDIS — WhatsApp & Telegram Gateway for AI Agents
+2025-12-19T18:41:17+01:00 <a href="https://github.com/openclaw/openclaw/commit/771043">771043</a> # 🦞 CLAWDIS — Personal AI Assistant
+2026-01-04T14:32:47+00:00 <a href="https://github.com/openclaw/openclaw/commit/246ada">246ada</a> # 🦞 CLAWDBOT — Personal AI Assistant
+2026-01-10T05:14:09+01:00 <a href="https://github.com/openclaw/openclaw/commit/cdb915">cdb915</a> # 🦞 Clawdbot — Personal AI Assistant
+2026-01-27T13:37:47-05:00 <a href="https://github.com/openclaw/openclaw/commit/3fe4b2">3fe4b2</a> # 🦞 Moltbot — Personal AI Assistant
+2026-01-30T03:15:10+01:00 <a href="https://github.com/openclaw/openclaw/commit/9a7160">9a7160</a> # 🦞 OpenClaw — Personal AI Assistant
+</pre>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/openclaw">openclaw</a>, <a href="https://simonwillison.net/tags/git">git</a>, <a href="https://simonwillison.net/tags/tools">tools</a></p>]]></description><pubDate>Sat, 16 May 2026 20:23:30 +0000</pubDate></item><item><title>Quoting Julia Evans</title><link>https://simonwillison.net/2026/May/16/julia-evans/#atom-everything</link><description><![CDATA[<blockquote cite="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/"><p>[...] in the last 10 years I’ve learned to really love and respect CSS as a technology.</p>
 <p>So I decided years ago that I wanted to react to “CSS is hard” by getting better at CSS and taking it seriously as a technology, instead of devaluing it. Doing that changed everything for me: I learned that so many of my frustrations (“centering is impossible”) had been addressed in CSS a long time ago, and that also what “centering” means is not always straightforward and it makes sense that there are many ways to do it. CSS is hard because it’s solving a hard problem!</p></blockquote>
 <p class="cite">&mdash; <a href="https://jvns.ca/blog/2026/05/15/moving-away-from-tailwind--and-learning-to-structure-my-css-/">Julia Evans</a>, Moving away from Tailwind, and learning to structure my CSS</p>
 
@@ -281,6 +303,4 @@ Fascinating, in-depth details on how Mozilla used their access to the Claude Myt
 <p>Example output for <a href="https://tools.simonwillison.net/github-repo-stats?repo=simonw%2Fdatasette">simonw/datasette</a> and <a href="https://tools.simonwillison.net/github-repo-stats?repo=simonw%2Fllm">simonw/llm</a>.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/github">github</a></p>]]></description><pubDate>Thu, 7 May 2026 07:25:14 +0000</pubDate></item><item><title>Live blog: Code w/ Claude 2026</title><link>https://simonwillison.net/2026/May/6/code-w-claude-2026/#atom-everything</link><description><![CDATA[<p>I'm at Anthropic's Code w/ Claude event today. Here's my live blog of the morning keynote sessions.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/live-blog">live-blog</a></p>]]></description><pubDate>Wed, 6 May 2026 15:58:27 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/github">github</a></p>]]></description><pubDate>Thu, 7 May 2026 07:25:14 +0000</pubDate></item></channel></rss>
