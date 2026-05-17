@@ -116,7 +116,7 @@ We have a bunch of neat Datasette announcements in the pipeline so we decided it
     <p>Tags: <a href="https://simonwillison.net/tags/marketing">marketing</a>, <a href="https://simonwillison.net/tags/mitchell-hashimoto">mitchell-hashimoto</a>, <a href="https://simonwillison.net/tags/redis">redis</a></p>]]></description><pubDate>Tue, 12 May 2026 22:21:51 +0000</pubDate></item><item><title>llm 0.32a2</title><link>https://simonwillison.net/2026/May/12/llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.32a2">llm 0.32a2</a></p>
         <p>A bunch of useful stuff in this <a href="https://llm.datasette.io/">LLM</a> alpha, but the most important detail is this one:</p>
 <blockquote>
-<p>Most reasoning-capable OpenAI models now use the <a href="https://platform.openai.com/docs/api-reference/responses"><code>/v1/responses</code></a> endpoint instead of <code>/v1/chat/completions</code>. This enables interleaved reasoning across tool calls for GPT-5 class models. <a href="https://github.com/simonw/llm/pull/1435">#1435</a></p>
+<p>Most reasoning-capable OpenAI models now use the <a href="https://developers.openai.com/api/reference/responses/overview"><code>/v1/responses</code></a> endpoint instead of <code>/v1/chat/completions</code>. This enables interleaved reasoning across tool calls for GPT-5 class models. <a href="https://github.com/simonw/llm/pull/1435">#1435</a></p>
 </blockquote>
 <p>This means you can now see the summarized reasoning tokens when you run prompts against an OpenAI model, displayed in a different color to standard error. Use the <code>-R</code> or <code>--hide-reasoning</code> flags if you don't want to see that.</p>
     
