@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The memory shortage is causing a repricing of consumer electronics</title><link>https://simonwillison.net/2026/May/22/memory-shortage/#atom-everything</link><description><![CDATA[<p><strong><a href="https://davidoks.blog/p/ai-is-killing-the-cheap-smartphone">The memory shortage is causing a repricing of consumer electronics</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>On the &lt;dl&gt;</title><link>https://simonwillison.net/2026/May/23/on-the-dl/#atom-everything</link><description><![CDATA[<p><strong><a href="https://benmyers.dev/blog/on-the-dl/">On the &lt;dl&gt;</a></strong></p>
+I learned a few new-to-me things about the <code>&lt;dl&gt;</code> element from this article by Ben Meyer:</p>
+<ol>
+<li>A <code>&lt;dt&gt;</code> can be followed by <em>multiple</em> <code>&lt;dd&gt;</code></li>
+<li>You can optionally group the <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> elements in a <code>&lt;div&gt;</code> for styling - but only a <code>&lt;div&gt;</code>.</li>
+<li>You can label them using ARIA.</li>
+<li>They've been called "description lists", not "definition lists", since <a href="https://www.w3.org/TR/2008/WD-html5-20080122/#the-dl">an HTML5 draft in 2008</a>.</li>
+</ol>
+<p>So this is valid:</p>
+<pre><span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">id</span>="<span class="pl-s">credits</span>"<span class="pl-kos">&gt;</span>Credits<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;</span><span class="pl-ent">dl</span> <span class="pl-c1">aria-labelledby</span>="<span class="pl-s">credits</span>"<span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">dt</span><span class="pl-kos">&gt;</span>Author<span class="pl-kos">&lt;/</span><span class="pl-ent">dt</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>Jeffrey Zeldman<span class="pl-kos">&lt;/</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>
+    <span class="pl-kos">&lt;</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>Ethan Marcotte<span class="pl-kos">&lt;/</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>
+  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
+<span class="pl-kos">&lt;/</span><span class="pl-ent">dl</span><span class="pl-kos">&gt;</span></pre>
+
+<p>Here's a useful note from Adrian Roselli on <a href="https://adrianroselli.com/2025/01/updated-brief-note-on-description-list-support.html">screen reader support for description lists</a>.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48247325">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/css">css</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/screen-readers">screen-readers</a>, <a href="https://simonwillison.net/tags/web-standards">web-standards</a></p>]]></description><pubDate>Sat, 23 May 2026 20:24:48 +0000</pubDate></item><item><title>The memory shortage is causing a repricing of consumer electronics</title><link>https://simonwillison.net/2026/May/22/memory-shortage/#atom-everything</link><description><![CDATA[<p><strong><a href="https://davidoks.blog/p/ai-is-killing-the-cheap-smartphone">The memory shortage is causing a repricing of consumer electronics</a></strong></p>
 David Oks provides the clearest explanation I've seen yet of why consumer products that use memory are likely to get significantly more expensive over the next few years.</p>
 <p>The short version is that memory manufacturers - of which there are just three remaining large companies - have a fixed capacity in terms of how many wafers they can process at any one time. This fixed wafer capacity is then split between DDR - used in desktops and servers, LPDDR - used in mobile phones and low-energy devices, and HBM - used with GPUs.</p>
 <p>Until recently, HBM got just 2% of that wafer allocation. The enormous growth in AI data centers has pushed that up to an expected 20% by the end of 2026, and "a single gigabyte of HBM consumes more than three times the wafer capacity that a gigabyte of DDR or LPDDR does".</p>
@@ -584,9 +607,4 @@ Terence Eden continues his coverage of the NHS' <a href="https://shkspr.mobi/blo
       <span class="pl-ent">block_seconds</span>: <span class="pl-c1">20</span></pre>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/rate-limiting">rate-limiting</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/codex">codex</a></p>]]></description><pubDate>Thu, 14 May 2026 04:10:23 +0000</pubDate></item><item><title>Welcome to the Datasette blog</title><link>https://simonwillison.net/2026/May/13/welcome-to-the-datasette-blog/#atom-everything</link><description><![CDATA[<p><strong><a href="https://datasette.io/blog/2026/new-blog/">Welcome to the Datasette blog</a></strong></p>
-We have a bunch of neat Datasette announcements in the pipeline so we decided it was time the project grew an official blog.</p>
-<p>I built this using OpenAI Codex desktop, which turns out to have the Markdown session transcript export feature I've always wanted. Here's <a href="https://gist.github.com/simonw/885b11eee46822622b8031a1f4e5f3a3">the session that built the blog</a>. See also <a href="https://github.com/simonw/datasette.io/issues/179">issue 179</a>.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/codex">codex</a></p>]]></description><pubDate>Wed, 13 May 2026 23:59:39 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/rate-limiting">rate-limiting</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/codex">codex</a></p>]]></description><pubDate>Thu, 14 May 2026 04:10:23 +0000</pubDate></item></channel></rss>
