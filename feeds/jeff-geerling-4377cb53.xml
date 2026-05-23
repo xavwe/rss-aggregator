@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Wi-Wi Is Wireless Time Sync at 1 nanosecond</title><link>https://www.jeffgeerling.com/blog/2026/wi-wi-is-wireless-time-sync-less-than-5ns/</link><description><![CDATA[<p>At NAB, I found a demo of <a href="https://www.wiwistamp.com">Wi-Wi STAMP</a>, a wireless time synchronization protocol that <a href="https://archive.gps.gov/cgsic/meetings/2024/shiga.pdf">came out of Japan's NICT</a>.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>News about Raspberry Pi 6 and Microcontroller Development</title><link>https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/</link><description><![CDATA[<p>On Thursday, three of the <a href="https://investors.raspberrypi.com/leadership">lead Raspberry Pi engineers</a> hosted an <a href="https://www.reddit.com/r/engineering/comments/1tcyfvk/hello_rengineering_were_eben_upton_ceo_james/">AMA on the r/engineering subreddit</a>.</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/pi-reddit-ama.jpg"
+ alt="Raspberry Pi Reddit AMA with Eben Upton, Gordon Hollingworth, and James Adams" width="500" height="auto">
+</figure>
+
+<h2 id="raspberry-pi-6">Raspberry Pi 6</h2>
+<p>One of the most interesting tidbits was on the Pi 6.</p>
+<p>Looking back at previous launches:</p>
+<ul>
+<li>2012: Raspberry Pi</li>
+<li>2015: Raspberry Pi 2 (+3 years)</li>
+<li>2016: Raspberry Pi 3 (+1 year)</li>
+<li>2019: Raspberry Pi 4 (+3 years)</li>
+<li>2023: Raspberry Pi 5 (+4 years)</li>
+</ul>
+<p>Following that cycle, one would expect a Pi 6 3-4 years after the Pi 5, which would put it in 2026 or 2027.</p>]]></description><pubDate>Fri, 22 May 2026 20:15:00 +0000</pubDate></item><item><title>Wi-Wi Is Wireless Time Sync at 1 nanosecond</title><link>https://www.jeffgeerling.com/blog/2026/wi-wi-is-wireless-time-sync-less-than-5ns/</link><description><![CDATA[<p>At NAB, I found a demo of <a href="https://www.wiwistamp.com">Wi-Wi STAMP</a>, a wireless time synchronization protocol that <a href="https://archive.gps.gov/cgsic/meetings/2024/shiga.pdf">came out of Japan's NICT</a>.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/wi-wi-is-wireless-time-sync-less-than-5ns/wi-wi-stamp-leader-timing-hardware.jpg"
  alt="Wi-Wi STAMP time synchronization hardware" width="700" height="auto">
 </figure>
@@ -103,5 +118,4 @@
  alt="Secure Erase option missing in macOS Tahoe Disk Utility" width="700" height="auto">
 </figure>
 
-<p>Lo and behold, there's no 'Security Options' button on there, as there had been since—I believe—the very first version of Disk Utility in Mac OS X!</p>]]></description><pubDate>Thu, 26 Feb 2026 20:30:00 +0000</pubDate></item><item><title>Frigate with Hailo for object detection on a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2026/frigate-with-hailo-for-object-detection-on-a-raspberry-pi/</link><description><![CDATA[<p>I run <a href="https://frigate.video">Frigate</a> to record security cameras and detect people, cars, and animals when in view. My <a href="https://www.jeffgeerling.com/blog/2024/building-pi-frigate-nvr-axzezs-interceptor-1u-case/">current Frigate server</a> runs on a Raspberry Pi CM4 and a <a href="https://amzn.to/4aWdOpQ">Coral TPU</a> plugged in via USB.</p>
-<p>Raspberry Pi offers <a href="https://www.raspberrypi.com/products/ai-hat/">multiple AI HAT+'s</a> for the Raspberry Pi 5 with built-in Hailo-8 or Hailo-8L AI coprocessors, and they're useful for low-power inference (like for image object detection) on the Pi. Hailo coprocessors can be used with other SBCs and computers too, if you buy an <a href="https://www.waveshare.com/hailo-8.htm">M.2 version</a>.</p>]]></description><pubDate>Wed, 18 Feb 2026 20:50:00 +0000</pubDate></item></channel></rss>
+<p>Lo and behold, there's no 'Security Options' button on there, as there had been since—I believe—the very first version of Disk Utility in Mac OS X!</p>]]></description><pubDate>Thu, 26 Feb 2026 20:30:00 +0000</pubDate></item></channel></rss>
