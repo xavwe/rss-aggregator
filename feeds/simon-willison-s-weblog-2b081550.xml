@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>On the &lt;dl&gt;</title><link>https://simonwillison.net/2026/May/23/on-the-dl/#atom-everything</link><description><![CDATA[<p><strong><a href="https://benmyers.dev/blog/on-the-dl/">On the &lt;dl&gt;</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Armin Ronacher</title><link>https://simonwillison.net/2026/May/24/armin-ronacher/#atom-everything</link><description><![CDATA[<blockquote cite="https://lucumr.pocoo.org/2026/5/24/pi-oss/"><p>The most frustrating failure mode right now is that people submit issues that are not in their own voice. They contain an observed problem somewhere, but it has been thrown into a clanker and the clanker reworded it and made a huge mess of it. Typically, it was prompted so badly that the conclusions produced are more often than not inaccurate but always full of confidence. The result is complete guesswork on root causes, fake-minimal repros, suggested implementation strategies, analogies to adjacent but often the wrong code, and long lists of error classes that might or might not matter. [...]</p>
+<p>So at least personally, I increasingly want issue reports to be condensed to what the human actually observed:</p>
+<ol>
+<li>I ran this command.</li>
+<li>I expected this to happen.</li>
+<li>This happened instead.</li>
+<li>Here is the exact error or log.</li>
+</ol></blockquote>
+<p class="cite">&mdash; <a href="https://lucumr.pocoo.org/2026/5/24/pi-oss/">Armin Ronacher</a>, on slop issues filed against <a href="https://pi.dev/">Pi</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/github-issues">github-issues</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/armin-ronacher">armin-ronacher</a>, <a href="https://simonwillison.net/tags/pi">pi</a>, <a href="https://simonwillison.net/tags/slop">slop</a></p>]]></description><pubDate>Sun, 24 May 2026 18:46:53 +0000</pubDate></item><item><title>On the &lt;dl&gt;</title><link>https://simonwillison.net/2026/May/23/on-the-dl/#atom-everything</link><description><![CDATA[<p><strong><a href="https://benmyers.dev/blog/on-the-dl/">On the &lt;dl&gt;</a></strong></p>
 I learned a few new-to-me things about the <code>&lt;dl&gt;</code> element from this article by Ben Meyer:</p>
 <ol>
 <li>A <code>&lt;dt&gt;</code> can be followed by <em>multiple</em> <code>&lt;dd&gt;</code></li>
@@ -588,23 +598,4 @@ Terence Eden continues his coverage of the NHS' <a href="https://shkspr.mobi/blo
 </blockquote>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Thu, 14 May 2026 22:01:42 +0000</pubDate></item><item><title>datasette-ip-rate-limit 0.1a0</title><link>https://simonwillison.net/2026/May/14/datasette-ip-rate-limit/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ip-rate-limit/releases/tag/0.1a0">datasette-ip-rate-limit 0.1a0</a></p>
-        <p>The <a href="https://datasette.io/">datasette.io</a> site was being hammered by poorly-behaved crawlers, so I had Codex (GPT-5.5 xhigh) build a configurable rate limiting plugin to block IPs that were hammering specific areas of the site too quickly.</p>
-<p>Here's <a href="https://github.com/simonw/datasette.io/blob/b6022bf9987661b94a26d3143028193a6cabfdcf/datasette.yml#L103-L116">the production configuration</a> I'm using on that site for the new plugin:</p>
-<pre>  <span class="pl-ent">datasette-ip-rate-limit</span>:
-    <span class="pl-ent">header</span>: <span class="pl-s">Fly-Client-IP</span>
-    <span class="pl-ent">max_keys</span>: <span class="pl-c1">10000</span>
-    <span class="pl-ent">exempt_paths</span>:
-    - <span class="pl-s"><span class="pl-pds">"</span>/static/*<span class="pl-pds">"</span></span>
-    - <span class="pl-s"><span class="pl-pds">"</span>/-/turnstile*<span class="pl-pds">"</span></span>
-    <span class="pl-ent">rules</span>:
-    - <span class="pl-ent">name</span>: <span class="pl-s">demo-databases</span>
-      <span class="pl-ent">paths</span>:
-      - <span class="pl-s"><span class="pl-pds">"</span>/global-power-plants/*<span class="pl-pds">"</span></span>
-      - <span class="pl-s"><span class="pl-pds">"</span>/legislators/*<span class="pl-pds">"</span></span>
-      <span class="pl-ent">window_seconds</span>: <span class="pl-c1">60</span>
-      <span class="pl-ent">max_requests</span>: <span class="pl-c1">60</span>
-      <span class="pl-ent">block_seconds</span>: <span class="pl-c1">20</span></pre>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/rate-limiting">rate-limiting</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/codex">codex</a></p>]]></description><pubDate>Thu, 14 May 2026 04:10:23 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Thu, 14 May 2026 22:01:42 +0000</pubDate></item></channel></rss>
