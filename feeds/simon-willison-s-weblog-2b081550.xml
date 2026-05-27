@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Microsoft Copilot Cowork Exfiltrates Files</title><link>https://simonwillison.net/2026/May/26/copilot-cowork-exfiltrates-files/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.promptarmor.com/resources/microsoft-copilot-cowork-exfiltrates-files">Microsoft Copilot Cowork Exfiltrates Files</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The pressure</title><link>https://simonwillison.net/2026/May/26/the-pressure/#atom-everything</link><description><![CDATA[<p><strong><a href="https://daniel.haxx.se/blog/2026/05/26/the-pressure/">The pressure</a></strong></p>
+Daniel Stenberg on the unprecedented level of pressure the <code>curl</code> team are facing right now thanks to the deluge of (credible) AI-assisted security issues being reported.</p>
+<blockquote>
+<p>The rate of incoming security reports is 4-5 times higher than it was in 2024 and double the speed of 2025 -- meaning that <strong>on average we now get more than one report per day</strong>. The quality is way higher than ever before. The reports are typically <em>very</em> detailed and long. [...]</p>
+<p>For the first time in my life, my wife voiced concerns about my work hours and my imbalanced work/life situation. I work more than I’ve done before, but the flood keeps coming. [...]</p>
+<p>This is a never-before seen or experienced pressure on the curl project and its security team members. An avalanche of high priority work that trumps all other things in the project that is primarily mental because we certainly <em>could</em> ignore them all if we wanted, but we feel a responsibility, we have a conscience and we are proud about our work.</p>
+</blockquote>
+<p>The good news is that <code>curl</code> is a very solid piece of software, so the vulnerabilities people are finding tend not to be of high severity:</p>
+<blockquote>
+<p>What is also a good trend: almost no one finds <em>terrible</em> vulnerabilities. All vulnerabilities found the last few years in curl have <em>all</em> been deemed severity LOW or MEDIUM. I'm not saying there won't be any more HIGH ever, but at least they are rare. The <a href="https://curl.se/docs/CVE-2023-38545.html">most recent severity high curl CVE</a> was published in October 2023.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://lobste.rs/s/dw02ye/pressure">Lobste.rs</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/curl">curl</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/daniel-stenberg">daniel-stenberg</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a></p>]]></description><pubDate>Tue, 26 May 2026 23:48:45 +0000</pubDate></item><item><title>Microsoft Copilot Cowork Exfiltrates Files</title><link>https://simonwillison.net/2026/May/26/copilot-cowork-exfiltrates-files/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.promptarmor.com/resources/microsoft-copilot-cowork-exfiltrates-files">Microsoft Copilot Cowork Exfiltrates Files</a></strong></p>
 The biggest challenge in designing agentic systems continues to be preventing them from enabling attackers to exfiltrate data.</p>
 <p>In this case Microsoft Copilot Cowork (yes, that's <a href="https://www.microsoft.com/en-us/microsoft-365/blog/2026/03/09/copilot-cowork-a-new-way-of-getting-work-done/">a real product name</a>) was allowing agents to send emails to the user's own inbox without approval... but those messages were then displayed in a way that could leak data to an attacker via rendered images:</p>
 <blockquote>
@@ -653,26 +668,4 @@ Terence Eden continues his coverage of the NHS' <a href="https://shkspr.mobi/blo
 </blockquote>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gov-uk">gov-uk</a>, <a href="https://simonwillison.net/tags/terence-eden">terence-eden</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a></p>]]></description><pubDate>Sun, 17 May 2026 15:59:41 +0000</pubDate></item><item><title>Warelay -&gt; OpenClaw</title><link>https://simonwillison.net/2026/May/16/openclaw-names/#atom-everything</link><description><![CDATA[<p>In preparation for a lightning talk I'm giving at PyCon US <a href="https://us.pycon.org/2026/schedule/presentation/175/">this afternoon</a> I decided to figure out how many names OpenClaw has <em>actually</em> had since that <a href="https://github.com/openclaw/openclaw/commit/f6dd362d39b8e30bd79ef7560aab9575712ccc11">first commit</a> back in November.</p>
-<p>Thanks to this <a href="https://tools.simonwillison.net/python/#first_line_historypy">first_line_history.py tool</a> (<a href="https://github.com/simonw/tools/blob/main/python/first_line_history.py">code here</a>) the answer, according to the Git history of the OpenClaw README, is:</p>
-<p>Warelay → CLAWDIS → CLAWDBOT → Clawdbot → Moltbot →🦞 OpenClaw</p>
-<p>Or in detail (the output from the tool):</p>
-<pre>
-2025-11-24T11:23:15+01:00 <a href="https://github.com/openclaw/openclaw/commit/16dfc1a">16dfc1a</a> # Warelay — WhatsApp Relay CLI (Twilio)
-2025-11-24T11:41:37+01:00 <a href="https://github.com/openclaw/openclaw/commit/d4153da">d4153da</a> # 📡 Warelay — WhatsApp Relay CLI (Twilio)
-2025-11-24T17:47:57+01:00 <a href="https://github.com/openclaw/openclaw/commit/343ef9b">343ef9b</a> # 📡 warelay — WhatsApp Relay CLI (Twilio)
-2025-11-25T04:44:10+01:00 <a href="https://github.com/openclaw/openclaw/commit/14b3c6f">14b3c6f</a> # 📡 warelay — WhatsApp Relay CLI
-2025-11-25T12:48:40+01:00 <a href="https://github.com/openclaw/openclaw/commit/4814021">4814021</a> # 📡 warelay — Send, receive, and auto-reply on WhatsApp—Twilio-backed or QR-linked.
-2025-11-25T13:50:18+01:00 <a href="https://github.com/openclaw/openclaw/commit/d51a3e9">d51a3e9</a> # warelay 📡 - Send, receive, and auto-reply on WhatsApp via Twilio or QR-linked WhatsApp Web; webhook setup in one command
-2025-11-25T13:51:13+01:00 <a href="https://github.com/openclaw/openclaw/commit/4d2a8a8">4d2a8a8</a> # 📡 warelay — Send, receive, and auto-reply on WhatsApp—Twilio-backed or QR-linked.
-2025-11-25T14:52:43+01:00 <a href="https://github.com/openclaw/openclaw/commit/1ef7f4d">1ef7f4d</a> # 📡 warelay — Send, receive, and auto-reply on WhatsApp.
-2025-12-03T15:45:32+00:00 <a href="https://github.com/openclaw/openclaw/commit/a27ee23">a27ee23</a> # 🦞 CLAWDIS — WhatsApp Gateway for AI Agents
-2025-12-08T12:43:13+01:00 <a href="https://github.com/openclaw/openclaw/commit/17fa2f4">17fa2f4</a> # 🦞 CLAWDIS — WhatsApp &amp; Telegram Gateway for AI Agents
-2025-12-19T18:41:17+01:00 <a href="https://github.com/openclaw/openclaw/commit/7710439">7710439</a> # 🦞 CLAWDIS — Personal AI Assistant
-2026-01-04T14:32:47+00:00 <a href="https://github.com/openclaw/openclaw/commit/246adaa">246adaa</a> # 🦞 CLAWDBOT — Personal AI Assistant
-2026-01-10T05:14:09+01:00 <a href="https://github.com/openclaw/openclaw/commit/cdb915d">cdb915d</a> # 🦞 Clawdbot — Personal AI Assistant
-2026-01-27T13:37:47-05:00 <a href="https://github.com/openclaw/openclaw/commit/3fe4b25">3fe4b25</a> # 🦞 Moltbot — Personal AI Assistant
-2026-01-30T03:15:10+01:00 <a href="https://github.com/openclaw/openclaw/commit/9a71607">9a71607</a> # 🦞 OpenClaw — Personal AI Assistant
-</pre>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/openclaw">openclaw</a>, <a href="https://simonwillison.net/tags/git">git</a>, <a href="https://simonwillison.net/tags/tools">tools</a></p>]]></description><pubDate>Sat, 16 May 2026 20:23:30 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gov-uk">gov-uk</a>, <a href="https://simonwillison.net/tags/terence-eden">terence-eden</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a></p>]]></description><pubDate>Sun, 17 May 2026 15:59:41 +0000</pubDate></item></channel></rss>
