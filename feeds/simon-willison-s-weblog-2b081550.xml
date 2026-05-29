@@ -1,4 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Anthropic&apos;s run-rate revenue hits $47 billion</title><link>https://simonwillison.net/2026/May/29/anthropic/#atom-everything</link><description><![CDATA[<p>The most interesting thing about <a href="https://www.anthropic.com/news/series-h">Anthropic's $65B Series H announcement</a> is this line (emphasis mine):</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette 1.0a31</title><link>https://simonwillison.net/2026/May/29/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a31">datasette 1.0a31</a></p>
+        <p>Another significant alpha release, with two new headline features.</p>
+<blockquote>
+<p>Datasette now offers users with the necessary permissions the ability to both <strong>execute write queries</strong> against their database and to <strong>save stored queries</strong> (renamed from "canned queries") both privately and for use by other members of their Datasette instance.</p>
+</blockquote>
+<p>There's more detail in <a href="https://datasette.io/blog/2026/sql-write-queries/">SQL write queries and stored queries in Datasette 1.0a31</a> on the Datasette blog, which now has <a href="https://datasette.io/blog/">three posts introducing new features</a> since the blog launched two weeks ago.</p>
+<p>Here's an animated demo from <a href="https://datasette.io/blog/2026/sql-write-queries/">the blog post</a> showing how the new execute query interface lets people get started with templated insert/update/delete queries from tables they have permission to edit:</p>
+<p><img alt="The user starts on the data database page, selects actions and &quot;Execute write SQL&quot;, then selects the insert document template on the next page and executes it with a title of &quot;My document!&quot;. Also demonstrates that a create table statement cannot be executed because the user does not have create-table permission." src="https://datasette.io/static/blog/2026/sql-write-ui.gif" /></p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a></p>]]></description><pubDate>Fri, 29 May 2026 03:32:02 +0000</pubDate></item><item><title>Anthropic&apos;s run-rate revenue hits $47 billion</title><link>https://simonwillison.net/2026/May/29/anthropic/#atom-everything</link><description><![CDATA[<p>The most interesting thing about <a href="https://www.anthropic.com/news/series-h">Anthropic's $65B Series H announcement</a> is this line (emphasis mine):</p>
 <blockquote>
 <p>Since our Series G in February, adoption has continued to grow across global enterprise customers, and our run-rate revenue crossed <strong>$47 billion</strong> earlier this month.</p>
 </blockquote>
@@ -91,7 +101,12 @@
 <li>Default max_tokens for each model now defaults to that model's maximum output rather than 8,192. <a href="https://github.com/simonw/llm-anthropic/issues/72">#72</a></li>
 </ul>
 </blockquote>
-<p>See also my <a href="https://simonwillison.net/2026/May/28/claude-opus-4-8/">notes on Opus 4.8</a> - I used this new release of <code>llm-anthropic</code> to generate the pelicans.</p>]]></description><pubDate>Thu, 28 May 2026 23:54:56 +0000</pubDate></item><item><title>sqlite AGENTS.md</title><link>https://simonwillison.net/2026/May/27/sqlite-agents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/sqlite/sqlite/blob/master/AGENTS.md">sqlite AGENTS.md</a></strong></p>
+<p>See also my <a href="https://simonwillison.net/2026/May/28/claude-opus-4-8/">notes on Opus 4.8</a> - I used this new release of <code>llm-anthropic</code> to generate the pelicans.</p>]]></description><pubDate>Thu, 28 May 2026 23:54:56 +0000</pubDate></item><item><title>markdown-svg-renderer</title><link>https://simonwillison.net/2026/May/28/markdown-svg-renderer/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/markdown-svg-renderer">markdown-svg-renderer</a></p>
+        <p>A slightly customized Markdown rendering tool with special treatment for fenced code SVG blocks - it both renders the image and provides a tab for switching to the code view.</p>
+<p>You can paste in Markdown or give it a URL to a CORS-enabled Markdown file or Gist. <a href="https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Ffea4f7546626d627862dc241a4e3a86a">Here's an example</a> where it loads a Markdown file full of LLM pelican logs for <a href="https://simonwillison.net/2026/May/28/claude-opus-4-8/#and-some-pelicans">Opus 4.8</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/svg">svg</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/markdown">markdown</a>, <a href="https://simonwillison.net/tags/cors">cors</a></p>]]></description><pubDate>Thu, 28 May 2026 19:45:14 +0000</pubDate></item><item><title>sqlite AGENTS.md</title><link>https://simonwillison.net/2026/May/27/sqlite-agents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/sqlite/sqlite/blob/master/AGENTS.md">sqlite AGENTS.md</a></strong></p>
 SQLite gained an AGENTS.md file <a href="https://github.com/sqlite/sqlite/commit/a1e5778889252d2609a59fd9b819d70392c5789e">five days ago</a> - but it's not intended for their own development, it's presumably aimed at people who are pointing agents at the SQLite codebase. It includes:</p>
 <blockquote>
 <p>SQLite does not accept pull requests without prior agreement and/or accompanying legal paperwork that places the pull request in the public domain. However, the human SQLite developers will review a concise and well-written pull request as a proof-of-concept prior to reimplementing the changes themselves.</p>
@@ -523,64 +538,4 @@ Neat little HTML app by Mike Veerman (<a href="https://github.com/MikeVeerman/to
 </blockquote>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Wed, 20 May 2026 14:52:16 +0000</pubDate></item><item><title>llm-gemini 0.32</title><link>https://simonwillison.net/2026/May/19/llm-gemini-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-gemini/releases/tag/0.32">llm-gemini 0.32</a></p>
-        <blockquote>
-<ul>
-<li>New model <code>gemini-3.5-flash</code> for <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/">Gemini 3.5 Flash</a>.</li>
-</ul>
-</blockquote>
-<p>See also my <a href="https://simonwillison.net/2026/May/19/gemini-35-flash/">notes on Gemini 3.5 Flash</a>, and <a href="https://simonwillison.net/2026/May/19/gemini-35-flash/#a-pelican-on-a-bicycle">the pelican</a> I drew using this upgrade to the plugin.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a></p>]]></description><pubDate>Tue, 19 May 2026 23:46:27 +0000</pubDate></item><item><title>Gemini 3.5 Flash: more expensive, but Google plan to use it for everything</title><link>https://simonwillison.net/2026/May/19/gemini-35-flash/#atom-everything</link><description><![CDATA[<p>Today at Google I/O, Google <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/">released Gemini 3.5 Flash</a>. This one skipped the <code>-preview</code> modifier and went straight to general availability, and Google appear to be using it for a whole lot of their key products:</p>
-<blockquote>
-<p>3.5 Flash is available today to billions of people globally:</p>
-<ul>
-<li>For everyone via the Gemini app and AI Mode in <a href="https://blog.google/products-and-platforms/products/search/search-io-2026">Google Search</a>
-</li>
-<li>For developers in our agent-first development platform Google Antigravity and Gemini API in Google AI Studio and Android Studio</li>
-<li>For enterprises in Gemini Enterprise Agent Platform and Gemini Enterprise.</li>
-</ul>
-</blockquote>
-<p>As usual with Gemini, the most interesting details are tucked away in the <a href="https://ai.google.dev/gemini-api/docs/whats-new-gemini-3.5">What's new in Gemini 3.5 Flash</a> developer documentation. It mostly has the same set of platform features as the previous Gemini 3.x series, albeit with no <a href="https://ai.google.dev/gemini-api/docs/computer-use">computer use</a>. The model ID is <code>gemini-3.5-flash</code>. The knowledge cut-off is January 2025, and it supports 1,048,576 input tokens and 65,536 maximum output tokens.</p>
-<p>Google are also pushing a new <a href="https://ai.google.dev/gemini-api/docs/interactions">Interactions API</a>, currently in beta, which looks to me like their version of the patterns introduced by <a href="https://developers.openai.com/api/reference/responses/overview">OpenAI Responses</a> - in particular server-side history management.</p>
-<h4 id="the-price-has-gone-up">The price has gone up</h4>
-<p>Gemini 3.5 Flash is accompanied by a notable price bump. The previous models in the "Flash" family were <a href="https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview">Gemini 3 Flash Preview</a> and <a href="https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite">Gemini 3.1 Flash-Lite</a>. The new 3.5 Flash is 3x the price of 3 Flash Preview and 6x the price of 3.1 Flash-Lite (see <a href="https://www.llm-prices.com/#sel=gemini-3-flash-preview%2Cgemini-3.5-flash%2Cgemini-3.1-flash-lite-preview">price comparison here</a>).</p>
-<p>At $1.50/million input and $9/million output it's getting close in price to Google's Gemini 3.1 Pro, which is $2 and $12.</p>
-<p>The Gemini team promise that 3.5 Pro will roll out "next month" - presumably at an even higher price.</p>
-<p>This fits a trend: OpenAI's GPT-5.5 was 2x the price of GPT-5.4, and Claude Opus 4.7 is around 1.46x the price of 4.6 when you take the <a href="https://simonwillison.net/2026/Apr/20/claude-token-counts/">new tokenizer into account</a>.</p>
-<p>Given the price increase it's interesting to see Google roll it out for so many of their own free-to-consumer products. It feels like all three of the major AI labs are starting to probe the price tolerance of their API customers.</p>
-<p>Artificial Analysis publish the cost to run their proprietary benchmark against models, which is a useful way to take things like tokenization and increased volume of reasoning tokens into account. Some numbers worth comparing:</p>
-<ul>
-<li>
-<a href="https://artificialanalysis.ai/models/gemini-3-5-flash">Gemini 3.5 Flash (high)</a>: $1,551.60</li>
-<li>
-<a href="https://artificialanalysis.ai/models/gemini-3-1-pro-preview">Gemini 3.1 Pro Preview</a>: $892.28</li>
-<li>
-<a href="https://artificialanalysis.ai/models/gemini-3-flash-reasoning">Gemini 3 Flash Preview (Reasoning)</a>: $278.26</li>
-<li>
-<a href="https://artificialanalysis.ai/models/gemini-3-1-flash-lite-preview">Gemini 3.1 Flash-Lite Preview</a>: $93.60</li>
-</ul>
-<p>Running the benchmark for 3.5 Flash (high) cost significantly more than 3.1 Pro Preview!</p>
-<p>Here are some numbers from other vendors:</p>
-<ul>
-<li>
-<a href="https://artificialanalysis.ai/models/claude-opus-4-7">Claude Opus 4.7 (Adaptive Reasoning, Max Effort)</a>: $5,117.14</li>
-<li>
-<a href="https://artificialanalysis.ai/models/claude-opus-4-7-non-reasoning">Claude Opus 4.7 (Non-reasoning, High Effort)</a>: $1,217.23</li>
-<li>
-<a href="https://artificialanalysis.ai/models/gpt-5-5">GPT-5.5 (xhigh)</a>: $3,357.00</li>
-<li>
-<a href="https://artificialanalysis.ai/models/gpt-5-5-medium">GPT-5.5 (medium)</a>: $1,199.14</li>
-</ul>
-<h4 id="a-pelican-on-a-bicycle">A pelican on a bicycle</h4>
-<p>I ran "Generate an SVG of a pelican riding a bicycle" <a href="https://gist.github.com/simonw/09cc5a5545d7e75b33b75ffa92a34601">against the Gemini API</a> and got back this pelican, which is a <em>lot</em>:</p>
-<p><img src="https://static.simonwillison.net/static/2026/gemini-3.5-flash.png" alt="Black background, bats in the sky against a stylized moon. Pelican is funky looking. Very good beak. Bicycle frame is a bit twisted, and the bar from pedals to back wheel is missing. Bike lamp illuminates the road in front. Quite stylish." style="max-width: 100%;" /></p>
-<p>From the code comments: <code>&lt;!-- Pelican Eye / Sunglasses (Cool Retro Aviators) --&gt;</code></p>
-<p><a href="https://news.ycombinator.com/item?id=48196570#48198275">hedgehog on Hacker News</a>:</p>
-<blockquote>
-<p>That pelican looks like it's in Miami for a crypto conference.</p>
-</blockquote>
-<p>That one cost me 11 input tokens and 14,403 output tokens, for a total cost of <a href="https://www.llm-prices.com/#it=11&amp;ot=14403&amp;sel=gemini-3.5-flash">just under 13 cents</a>.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 19 May 2026 22:40:25 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Wed, 20 May 2026 14:52:16 +0000</pubDate></item></channel></rss>
