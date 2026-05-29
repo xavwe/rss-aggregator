@@ -1,4 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>sqlite AGENTS.md</title><link>https://simonwillison.net/2026/May/27/sqlite-agents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/sqlite/sqlite/blob/master/AGENTS.md">sqlite AGENTS.md</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Anthropic&apos;s run-rate revenue hits $47 billion</title><link>https://simonwillison.net/2026/May/29/anthropic/#atom-everything</link><description><![CDATA[<p>The most interesting thing about <a href="https://www.anthropic.com/news/series-h">Anthropic's $65B Series H announcement</a> is this line (emphasis mine):</p>
+<blockquote>
+<p>Since our Series G in February, adoption has continued to grow across global enterprise customers, and our run-rate revenue crossed <strong>$47 billion</strong> earlier this month.</p>
+</blockquote>
+<p>Anthropic have made a bit of a habit of sharing their "run-rate revenue" in this kind of announcement, which is an annualized projection of their current revenue - typically calculated by taking the most recent month and multiplying by 12.</p>
+<p>Earlier this year:</p>
+<ul>
+<li>Apr 6, 2026 in <a href="https://www.anthropic.com/news/google-broadcom-partnership-compute">Anthropic expands partnership with Google and Broadcom</a>: "Our run-rate revenue has now surpassed <strong>$30 billion</strong>—up from approximately <strong>$9 billion</strong> at the end of 2025."</li>
+<li>Feb 12, 2026 in <a href="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation">Anthropic raises $30 billion in Series G</a>: "Today, our run-rate revenue is <strong>$14 billion</strong>, with this figure growing over 10x annually in each of those past three years."</li>
+</ul>
+<p>I had <a href="https://claude.ai/share/f52e82bd-7e09-49a5-b658-0b9999ce5a45">Claude Opus 4.8 make me</a> this chart using <a href="https://matplotlib.org/">Matplotlib</a> (Claude: "a data line chart is more straightforward matplotlib work—not really a design piece"):</p>
+<p><img alt="Line chart titled &quot;Run-rate revenue&quot; with y-axis &quot;Run-rate revenue ($bn)&quot; from $0bn to $50bn, showing four data points rising sharply: Dec 31 2025 $9bn, Feb 12 2026 $14bn, Apr 1 2026 $30bn, May 7 2026 $47bn." src="https://static.simonwillison.net/static/2026/anthropic-run-rate.png" /></p>
+<p>Back in April <a href="https://www.axios.com/2026/04/13/anthropic-revenue-growth-ai">Axios CEO Jim VandeHei wrote</a> that he could not find "any company — in any industry, in any era — that has scaled organic revenue this quickly at this level as Anthropic" - and that was when they were at a paltry $30 billion.</p>
+<p>(Also <a href="https://www.axios.com/2026/05/28/ai-spending-roi-enterprise-costs">in Axios today</a> is an anonymously sourced note that "An AI consultant tells Axios one of their clients recently spent half a billion dollars in a single month after failing to put usage limits on Claude licenses for employees" - times that by 12 and you get an extra $6 billion in annualized run-rate!)</p>
+<p>Ed Zitron was <a href="https://www.wheresyoured.at/anthropics-profitability-swindle/">extremely skeptical of that $30 billion number</a> - I wonder if his skepticism will update for the new $47 billion figure.</p>
+<p>I've seen a few people dismiss this as untrustworthy, because the numbers come from Anthropic. That doesn't hold up: these numbers were included in announcements of their fundraises, and lying to investors who just put in $65 billion would be securities fraud. They're even less likely to lie given that the real numbers will no doubt come out in their S-1 when they file for their IPO.</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Fri, 29 May 2026 01:23:08 +0000</pubDate></item><item><title>Claude Opus 4.8: &quot;a modest but tangible improvement&quot;</title><link>https://simonwillison.net/2026/May/28/claude-opus-4-8/#atom-everything</link><description><![CDATA[<p>Anthropic shipped <a href="https://www.anthropic.com/news/claude-opus-4-8">Claude Opus 4.8</a> today. My favourite thing about it is this note in the release announcement:</p>
+<blockquote>
+<p>Users will find Opus 4.8 to be a modest but tangible improvement on its predecessor. There’s still more to be done: we’re working on developing and releasing models that provide many of the same capabilities as Opus at a lower cost.</p>
+</blockquote>
+<p>It's so refreshing to see an AI lab honestly describe a release as a minor incremental improvement over the previous model!</p>
+<p>Honesty seems to be a theme. Here's my other favorite note from that announcement:</p>
+<blockquote>
+<p>One of the most prominent improvements in Opus 4.8 is its <em>honesty</em>. We train all our models to be honest---for instance, to avoid making claims that they can't support. But a general problem with AI models is that they sometimes jump to conclusions, confidently claiming to have made progress in their work despite the evidence being thin. Early testers report that Opus 4.8 is more likely to flag uncertainties about its work and less likely to make unsupported claims. This is borne out in <a href="https://www.anthropic.com/claude-opus-4-8-system-card">our evaluations</a>, which show that Opus 4.8 is around four times less likely than its predecessor to allow flaws in code it has written to pass unremarked.</p>
+</blockquote>
+<p>That linked system card includes the following:</p>
+<blockquote>
+<p>Claude Opus 4.8 had the lowest incorrect-rate of the six models on every benchmark—the most direct measure of factual hallucination. It achieved this mainly by abstaining on questions about which it was uncertain rather than by answering more questions correctly.</p>
+</blockquote>
+<h4 id="model-characteristics">Model characteristics</h4>
+<p>Not much has changed since 4.7.</p>
+<p>It's priced the same as Opus 4.5/4.6/4.7 - $5/million input and $25 per million output. "Fast mode" is twice that price, which is a significant reduction from their previous models - fast mode on 4.6/4.7 remains at $30/$150. Note that <a href="https://platform.claude.com/docs/en/build-with-claude/fast-mode">fast mode</a> is only available to organizations that are part of the research preview, "Contact your account manager to request access".</p>
+<p>Both the reliable knowledge cutoff and the training data cutoff are January 2026, the same as for 4.7.</p>
+<p>The context window is still 1,000,000 tokens, and the max output is 128,000 tokens.</p>
+<p>The <a href="https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-8">What's new in Claude Opus 4.8</a> document has some of the more interesting details. These caught my eye:</p>
+<blockquote>
+<p><strong>Mid-conversation system messages</strong>. Claude Opus 4.8 accepts <code>role: "system"</code> messages immediately after a user turn in the <code>messages</code> array (subject to <a href="https://platform.claude.com/docs/en/build-with-claude/mid-conversation-system-messages#limitations">placement rules</a>). This lets you append updated instructions later in a long-running conversation without restating the full system prompt, which preserves <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">prompt cache</a> hits on the earlier turns and reduces input cost on agentic loops.</p>
+</blockquote>
+<p>See also <a href="https://github.com/anthropics/anthropic-sdk-python/commit/2b826760101664ef89db42132932f53ba97c894d#diff-a947c9c02eab58e8ddbe799a11832d533836d242e07c7251997f8543f0981f2f">this update</a> to the Anthropic Python SDK. Being able to steer the system prompt mid-conversation sounds really powerful. I was worried this would be incompatible with the abstraction provided by my own <a href="https://llm.datasette.io/en/stable/python-api.html#system-prompts">LLM library</a>, which expects a single system prompt per conversation... but it turns out my recent <a href="https://simonwillison.net/2026/Apr/29/llm/">redesign</a> should handle that <a href="https://github.com/simonw/llm-anthropic/issues/73">just fine</a>.</p>
+<blockquote>
+<p><strong>Lower prompt cache minimum</strong>. The minimum cacheable prompt length on Claude Opus 4.8 is 1,024 tokens, lower than on Claude Opus 4.7.</p>
+</blockquote>
+<p>I checked and 4.7's minimum <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching#cache-limitations">was 4,096</a>.</p>
+<h4 id="and-some-pelicans">And some pelicans</h4>
+<p>Here are <a href="https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Ffea4f7546626d627862dc241a4e3a86a">pelicans riding bicycles</a> for all five thinking levels, <code>low</code>, <code>medium</code>, <code>high</code>, <code>xhigh</code>, and <code>max</code>:</p>
+
+<div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; max-width: 900px; margin: 0 auto;">
+    <figure style="grid-column: span 2; margin: 0; text-align: center;">
+        <img src="https://static.simonwillison.net/static/2026/claude-opus-4.8-low.png" alt="Flat-style cartoon illustration of a white duck with an orange beak and legs riding a black bicycle, its feet on the pedals, against a blue sky and green grass background." style="width: 100%; height: auto; border: 1px solid #ccc;" />
+        <figcaption style="margin-top: 0.5rem; font-family: system-ui, sans-serif; font-weight: bold;">
+            <a href="https://gist.github.com/simonw/fea4f7546626d627862dc241a4e3a86a#response">low</a>
+        </figcaption>
+    </figure>
+    <figure style="grid-column: span 2; margin: 0; text-align: center;">
+        <img src="https://static.simonwillison.net/static/2026/claude-opus-4.8-medium.png" alt="Flat-style illustration of a white egret or heron with an orange beak and legs riding a black bicycle, against a blue sky and green grass background." style="width: 100%; height: auto; border: 1px solid #ccc;" />
+        <figcaption style="margin-top: 0.5rem; font-family: system-ui, sans-serif; font-weight: bold;">
+            <a href="https://gist.github.com/simonw/fea4f7546626d627862dc241a4e3a86a#response-1">medium</a>
+        </figcaption>
+    </figure>
+    <figure style="grid-column: span 2; margin: 0; text-align: center;">
+        <img src="https://static.simonwillison.net/static/2026/claude-opus-4.8-high.png" alt="Cartoon illustration of a white duck with an orange beak riding a black bicycle, against a light blue sky with a pale yellow sun in the upper left and a green ground line at the bottom." style="width: 100%; height: auto; border: 1px solid #ccc;" />
+        <figcaption style="margin-top: 0.5rem; font-family: system-ui, sans-serif; font-weight: bold;">
+            <a href="https://gist.github.com/simonw/fea4f7546626d627862dc241a4e3a86a#response-2">high</a>
+        </figcaption>
+    </figure>
+    <figure style="grid-column: span 3; margin: 0; text-align: center;">
+        <img src="https://static.simonwillison.net/static/2026/claude-opus-4.8-xhigh.png" alt="Cartoon illustration of a white pelican with an orange beak riding a black bicycle, its orange legs extending down to the pedals, against a blue sky with a yellow sun and green ground." style="width: 100%; height: auto; border: 1px solid #ccc;" />
+        <figcaption style="margin-top: 0.5rem; font-family: system-ui, sans-serif; font-weight: bold;">
+            <a href="https://gist.github.com/simonw/fea4f7546626d627862dc241a4e3a86a#response-3">xhigh</a>
+        </figcaption>
+    </figure>
+    <figure style="grid-column: span 3; margin: 0; text-align: center;">
+        <img src="https://static.simonwillison.net/static/2026/claude-opus-4.8-max.png" alt="Cartoon illustration of a white pelican with an orange beak riding a red bicycle on green grass, against a light blue sky with a fluffy white cloud and a yellow sun." style="width: 100%; height: auto; border: 1px solid #ccc;" />
+        <figcaption style="margin-top: 0.5rem; font-family: system-ui, sans-serif; font-weight: bold;"><a href="https://gist.github.com/simonw/fea4f7546626d627862dc241a4e3a86a#response-4">max</a></figcaption>
+    </figure>
+</div>
+
+
+<p>This time I ran them using the <a href="https://llm.datasette.io/en/stable/usage.html">LLM CLI</a>, exported the logs to Markdown and then had Claude Opus 4.8 <a href="https://github.com/simonw/tools/commit/71e4944766b577a327ff048cc63b739ba4cbade9">build me</a> an HTML tool that could render that Markdown with the <code>svg</code> fenced code blocks displayed as SVGs on the page.</p>
+
+<p>(I later had GPT-5.5 xhigh in Codex <a href="https://gist.github.com/simonw/bb5a267f8144dfe4e92e50a014e49e98">update that code</a> to remove any XSS holes. I'm sure Claude could have done that if I'd asked, but GPT-5.5 is my code security blanket at the moment.)</p>
+
+<p>The max one  was clearly the best, but it did take 25 input, 17,167 output tokens for a total cost of <a href="https://www.llm-prices.com/#it=25&amp;ot=17167&amp;ic=5&amp;oc=25&amp;sel=claude-opus-4-5">43 cents</a>!</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Thu, 28 May 2026 23:59:50 +0000</pubDate></item><item><title>llm-anthropic 0.25.1</title><link>https://simonwillison.net/2026/May/28/llm-anthropic/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-anthropic/releases/tag/0.25.1">llm-anthropic 0.25.1</a></p>
+        <blockquote>
+<ul>
+<li>New model: <a href="https://www.anthropic.com/news/claude-opus-4-8">Claude Opus 4.8</a> (<code>claude-opus-4.8</code>).</li>
+<li>New <code>-o fast 1</code> option for <a href="https://platform.claude.com/docs/en/build-with-claude/fast-mode">fast mode</a>, for organizations with that feature enabled on their account.</li>
+<li>Default max_tokens for each model now defaults to that model's maximum output rather than 8,192. <a href="https://github.com/simonw/llm-anthropic/issues/72">#72</a></li>
+</ul>
+</blockquote>
+<p>See also my <a href="https://simonwillison.net/2026/May/28/claude-opus-4-8/">notes on Opus 4.8</a> - I used this new release of <code>llm-anthropic</code> to generate the pelicans.</p>]]></description><pubDate>Thu, 28 May 2026 23:54:56 +0000</pubDate></item><item><title>sqlite AGENTS.md</title><link>https://simonwillison.net/2026/May/27/sqlite-agents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/sqlite/sqlite/blob/master/AGENTS.md">sqlite AGENTS.md</a></strong></p>
 SQLite gained an AGENTS.md file <a href="https://github.com/sqlite/sqlite/commit/a1e5778889252d2609a59fd9b819d70392c5789e">five days ago</a> - but it's not intended for their own development, it's presumably aimed at people who are pointing agents at the SQLite codebase. It includes:</p>
 <blockquote>
 <p>SQLite does not accept pull requests without prior agreement and/or accompanying legal paperwork that places the pull request in the public domain. However, the human SQLite developers will review a concise and well-written pull request as a proof-of-concept prior to reimplementing the changes themselves.</p>
@@ -490,25 +583,4 @@ Neat little HTML app by Mike Veerman (<a href="https://github.com/MikeVeerman/to
 </blockquote>
 <p>That one cost me 11 input tokens and 14,403 output tokens, for a total cost of <a href="https://www.llm-prices.com/#it=11&amp;ot=14403&amp;sel=gemini-3.5-flash">just under 13 cents</a>.</p>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 19 May 2026 22:40:25 +0000</pubDate></item><item><title>datasette-llm-accountant 0.1a4</title><link>https://simonwillison.net/2026/May/19/datasette-llm-accountant/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm-accountant/releases/tag/0.1a4">datasette-llm-accountant 0.1a4</a></p>
-        <blockquote>
-<ul>
-<li>Fixed bug tracking chains of responses. Refs <a href="https://github.com/datasette/datasette-llm/issues/7">datasette-llm#7</a></li>
-</ul>
-</blockquote>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Tue, 19 May 2026 20:45:43 +0000</pubDate></item><item><title>llm-gemini 0.32a0</title><link>https://simonwillison.net/2026/May/19/llm-gemini/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-gemini/releases/tag/0.32a0">llm-gemini 0.32a0</a></p>
-        <blockquote>
-<ul>
-<li>Compatible with <code>llm&gt;=0.32a0</code> alpha - adds the ability to stream reasoning tokens.</li>
-</ul>
-</blockquote>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a></p>]]></description><pubDate>Tue, 19 May 2026 20:36:23 +0000</pubDate></item><item><title>datasette-llm 0.1a8</title><link>https://simonwillison.net/2026/May/19/datasette-llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-llm/releases/tag/0.1a8">datasette-llm 0.1a8</a></p>
-        <blockquote>
-<ul>
-<li>Fix for bug where <code>llm_prompt_context()</code> hook did not fully collect chains of responses. #7</li>
-</ul>
-</blockquote>]]></description><pubDate>Tue, 19 May 2026 20:28:16 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/google">google</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 19 May 2026 22:40:25 +0000</pubDate></item></channel></rss>
