@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>How we contain Claude across products</title><link>https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/engineering/how-we-contain-claude">How we contain Claude across products</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Karen Kwok for Reuters Breakingviews</title><link>https://simonwillison.net/2026/May/31/anthropic-run-rate/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.reuters.com/commentary/breakingviews/anthropic-gives-lesson-ai-revenue-hallucination-2026-03-10/"><p>Anthropic defines “run-rate revenue” in two parts. Use the last 28 days of sales ⁠from customers charged on a consumption basis and multiply it by 13. Then, multiply the monthly subscription take by 12, ​and add the two together.</p></blockquote>
+<p class="cite">&mdash; <a href="https://www.reuters.com/commentary/breakingviews/anthropic-gives-lesson-ai-revenue-hallucination-2026-03-10/">Karen Kwok for Reuters Breakingviews</a>, citing "a person familiar with the matter"</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Sun, 31 May 2026 01:48:12 +0000</pubDate></item><item><title>How we contain Claude across products</title><link>https://simonwillison.net/2026/May/30/how-we-contain-claude/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/engineering/how-we-contain-claude">How we contain Claude across products</a></strong></p>
 A complaint I often have about sandboxing products is that they are rarely thoroughly <em>documented</em>, and in the absence of detailed documentation it's hard to know how much I can trust them.</p>
 <p>Anthropic just published a fantastic overview of how their various sandbox techniques work across <a href="https://claude.ai/">Claude.ai</a>, Claude Code, and Cowork.</p>
 <blockquote>
@@ -535,15 +538,4 @@ Back in 2024 Cox Media Group were caught trying to sell advertisers packages bas
 </blockquote>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Thu, 21 May 2026 15:15:58 +0000</pubDate></item><item><title>datasette-agent 0.1a3</title><link>https://simonwillison.net/2026/May/21/datasette-agent-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-agent/releases/tag/0.1a3">datasette-agent 0.1a3</a></p>
-        <blockquote>
-<ul>
-<li>"View SQL query" buttons for both visible tables and collapsed SQL result tool calls.</li>
-<li>Don't display empty reasoning chunks</li>
-<li>Improved handling of truncated responses - table still displays to the user even if the SQL results were truncated when showing the agent.</li>
-</ul>
-</blockquote>
-<p>See <a href="https://datasette.io/blog/2026/datasette-agent/">Datasette Agent, an extensible AI assistant for Datasette</a>.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Thu, 21 May 2026 15:04:09 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Thu, 21 May 2026 15:15:58 +0000</pubDate></item></channel></rss>
