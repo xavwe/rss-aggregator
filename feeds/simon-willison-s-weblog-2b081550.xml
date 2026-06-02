@@ -1,4 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Pasted File Editor</title><link>https://simonwillison.net/2026/Jun/2/pasted-file-editor/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/pasted-file-editor">Pasted File Editor</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Microsoft&apos;s new MAI models</title><link>https://simonwillison.net/2026/Jun/2/microsofts-new-models/#atom-everything</link><description><![CDATA[<p>Microsoft <a href="https://microsoft.ai/news/building-a-hillclimbing-machine-launching-seven-new-mai-models/">announced two new text LLMs</a> this morning - <strong><a href="https://microsoft.ai/news/introducing-mai-thinking-1/">MAI-Thinking-1</a></strong> (reasoning, 35B parameters, available to "select early partners") and <strong><a href="https://microsoft.ai/news/introducingmai-code-1-flash/">MAI-Code-1-Flash</a></strong> (5B parameters, "purpose-built for GitHub Copilot and VS Code to deliver high performance and lower cost [...] rolling out to GitHub Copilot individual users in Visual Studio Code"). I've not been able to try either of them just yet.</p>
+<p>It's very interesting to see Microsoft releasing models with such low parameter counts, especially given how expensive larger models are to access right now. They claim MAI-Thinking-1 "is preferred to Sonnet 4.6 in our blind human side-by-side evaluations", which is impressive for a 35B model seeing as I frequently run models larger than that on my own laptop.</p>
+<p>Also <a href="https://microsoft.ai/news/introducing-mai-thinking-1/">of note</a>:</p>
+<blockquote>
+<p>We trained [MAI-Thinking-1] from the ground up on enterprise grade, clean and commercially licensed data, without distillation from third-party models.</p>
+</blockquote>
+<p>And for <a href="https://microsoft.ai/news/introducingmai-code-1-flash/">MAI-Code-1-Flash</a> as well:</p>
+<blockquote>
+<p>It is built end-to-end by Microsoft using clean and appropriately licensed data.</p>
+</blockquote>
+<p>I would <em>very much</em> like to learn more about this "appropriately licensed" data! Could these be the first generally useful code-specialist models that didn't train on an unlicensed dump of the web?</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/microsoft">microsoft</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 2 Jun 2026 22:21:52 +0000</pubDate></item><item><title>California Brown Pelican</title><link>https://simonwillison.net/2026/Jun/2/sighting-367841339/#atom-everything</link><description><![CDATA[<p><img src="https://static.inaturalist.org/photos/671786719/large.jpg" alt="California Brown Pelican"></p><p>California Brown Pelican, in Fort Mason, CA, US</p><p>I'm at the <a href="https://build.microsoft.com/">Microsoft Build</a> conference today, held at <a href="https://en.wikipedia.org/wiki/Fort_Mason">Fort Mason</a> in San Francisco. There are California Brown Pelicans diving into the water directly behind venue!</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/microsoft">microsoft</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Tue, 2 Jun 2026 18:17:03 +0000</pubDate></item><item><title>Pasted File Editor</title><link>https://simonwillison.net/2026/Jun/2/pasted-file-editor/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/pasted-file-editor">Pasted File Editor</a></p>
         <p>I really like how you can paste a large volume of text into <a href="https://claude.ail">claude.ai</a> (or the Claude desktop/mobile apps) and it will detect it as a large paste and turn it into a file attachment instead.</p>
 <p>I decided to have Codex desktop <a href="https://gist.github.com/simonw/74c79119b487a5acce18b4dcc26b9f79">build me a version of that</a> as a prototype.</p>
 <p>You can also open files directly - including images which will be shown as thumbnails - or drag files onto the textarea.</p>
@@ -448,38 +463,4 @@ The biggest challenge in designing agentic systems continues to be preventing th
 </ol></blockquote>
 <p class="cite">&mdash; <a href="https://lucumr.pocoo.org/2026/5/24/pi-oss/">Armin Ronacher</a>, on slop issues filed against <a href="https://pi.dev/">Pi</a></p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/github-issues">github-issues</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/armin-ronacher">armin-ronacher</a>, <a href="https://simonwillison.net/tags/pi">pi</a>, <a href="https://simonwillison.net/tags/slop">slop</a></p>]]></description><pubDate>Sun, 24 May 2026 18:46:53 +0000</pubDate></item><item><title>Mad House — Usborne Creepy Computer Games</title><link>https://simonwillison.net/2026/May/24/usborne-mad-house/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/usborne-mad-house">Mad House — Usborne Creepy Computer Games</a></p>
-        <p>Via <a href="https://news.ycombinator.com/item?id=48258194">Hacker News</a> I learned that UK publisher Usborne published <a href="https://usborne.com/us/books/computer-and-coding-books">free PDFs of their 1980s Computer Books</a>, some of which I remember working through on my Commodore 64 as a child.</p>
-<p>These were so great! Beautifully illustrated books with fun projects made up of code you could type into your own machine.</p>
-<p>I remember playing "Mad House" typed in from the 1983 book "Creepy Computer Games", so I fed that PDF <a href="https://claude.ai/share/7b4a5617-f586-4744-b082-1650cab607cb">into Claude</a> and had it build an interactive version of that game in JavaScript and HTML:</p>
-<blockquote>
-<p><code>Build a vanilla JS artifact that exactly recreates the game Mad House from this book, make sure it's mobile friendly and has a suitable retro aesthetic</code></p>
-<p><code>Credit the book title and link to https://usborne.com/us/books/computer-and-coding-books</code></p>
-</blockquote>
-<p><img alt="Screenshot of a retro green-on-black terminal-style game interface titled &quot;MAD HOUSE — A REAL NIGHTMARE —&quot; with a REC indicator, FOOTSTEPS 240, DOORS counter, three rows of ASCII corridors made of asterisks with &quot;&gt;&quot; and &quot;&lt;&quot; door markers, &quot;PRESS START TO BEGIN&quot; text, NEAR DOOR controls (X and C) and FAR DOOR controls (N and M), and a &quot;▶ START / RESTART&quot; button at the bottom." src="https://static.simonwillison.net/static/2026/mad-house.jpg" /></p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/computer-history">computer-history</a>, <a href="https://simonwillison.net/tags/games">games</a>, <a href="https://simonwillison.net/tags/tools">tools</a></p>]]></description><pubDate>Sun, 24 May 2026 17:14:11 +0000</pubDate></item><item><title>On the &lt;dl&gt;</title><link>https://simonwillison.net/2026/May/23/on-the-dl/#atom-everything</link><description><![CDATA[<p><strong><a href="https://benmyers.dev/blog/on-the-dl/">On the &lt;dl&gt;</a></strong></p>
-I learned a few new-to-me things about the <code>&lt;dl&gt;</code> element from this article by Ben Meyer:</p>
-<ol>
-<li>A <code>&lt;dt&gt;</code> can be followed by <em>multiple</em> <code>&lt;dd&gt;</code></li>
-<li>You can optionally group the <code>&lt;dt&gt;</code> and <code>&lt;dd&gt;</code> elements in a <code>&lt;div&gt;</code> for styling - but only a <code>&lt;div&gt;</code>.</li>
-<li>You can label them using ARIA.</li>
-<li>They've been called "description lists", not "definition lists", since <a href="https://www.w3.org/TR/2008/WD-html5-20080122/#the-dl">an HTML5 draft in 2008</a>.</li>
-</ol>
-<p>So this is valid:</p>
-<pre><span class="pl-kos">&lt;</span><span class="pl-ent">h2</span> <span class="pl-c1">id</span>="<span class="pl-s">credits</span>"<span class="pl-kos">&gt;</span>Credits<span class="pl-kos">&lt;/</span><span class="pl-ent">h2</span><span class="pl-kos">&gt;</span>
-<span class="pl-kos">&lt;</span><span class="pl-ent">dl</span> <span class="pl-c1">aria-labelledby</span>="<span class="pl-s">credits</span>"<span class="pl-kos">&gt;</span>
-  <span class="pl-kos">&lt;</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
-    <span class="pl-kos">&lt;</span><span class="pl-ent">dt</span><span class="pl-kos">&gt;</span>Author<span class="pl-kos">&lt;/</span><span class="pl-ent">dt</span><span class="pl-kos">&gt;</span>
-    <span class="pl-kos">&lt;</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>Jeffrey Zeldman<span class="pl-kos">&lt;/</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>
-    <span class="pl-kos">&lt;</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>Ethan Marcotte<span class="pl-kos">&lt;/</span><span class="pl-ent">dd</span><span class="pl-kos">&gt;</span>
-  <span class="pl-kos">&lt;/</span><span class="pl-ent">div</span><span class="pl-kos">&gt;</span>
-<span class="pl-kos">&lt;/</span><span class="pl-ent">dl</span><span class="pl-kos">&gt;</span></pre>
-
-<p>Here's a useful note from Adrian Roselli on <a href="https://adrianroselli.com/2025/01/updated-brief-note-on-description-list-support.html">screen reader support for description lists</a>.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48247325">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/css">css</a>, <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/screen-readers">screen-readers</a>, <a href="https://simonwillison.net/tags/web-standards">web-standards</a></p>]]></description><pubDate>Sat, 23 May 2026 20:24:48 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/github-issues">github-issues</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/armin-ronacher">armin-ronacher</a>, <a href="https://simonwillison.net/tags/pi">pi</a>, <a href="https://simonwillison.net/tags/slop">slop</a></p>]]></description><pubDate>Sun, 24 May 2026 18:46:53 +0000</pubDate></item></channel></rss>
