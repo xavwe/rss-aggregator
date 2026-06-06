@@ -109,7 +109,11 @@ OpenAI first teased this <a href="https://openai.com/index/introducing-lockdown-
 <p>The <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">Lethal Trifecta</a> occurs when an LLM system has access to all three of access to private data, exposure to untrusted content and a way to steal data and transmit it back to the attacker.</p>
 <p>The only way to solve the trifecta is to cut off one of the three legs, and by far the easiest leg to restrict without making your LLM systems far less useful is the exfiltration vectors to steal data.</p>
 <p>It looks to me like lockdown mode directly attacks that leg, using mechanisms that are deterministic and, crucially, are not evaluated by AI systems that themselves can be subverted by sufficiently devious attacks.</p>
-<p>The existence of lockdown mode does however imply that ChatGPT, in its default settings, does <em>not</em> provide robust protection against sufficiently determined data exfiltration attacks!
+<p>The existence of lockdown mode does however imply that ChatGPT, in its default settings, does <em>not</em> provide robust protection against sufficiently determined data exfiltration attacks!</p>
+<p><strong>Update</strong>: <a href="https://twitter.com/cryps1s/status/2062923575049531422">This tweet</a> OpenAI CISO Dane Stuckey:</p>
+<blockquote>
+<p>Lockdown mode is not meant for everyone. However, for folks who have an elevated risk profile - due to who they are, what they work on, or the types of data they work with - it's an excellent tool for further securing themselves. This has some tradeoffs on functionality and utility, but for these users, the tradeoff is worthwhile.</p>
+</blockquote>
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a></p>]]></description><pubDate>Fri, 5 Jun 2026 23:56:40 +0000</pubDate></item><item><title>Quoting Andreas Kling</title><link>https://simonwillison.net/2026/Jun/5/andreas-kling/#atom-everything</link><description><![CDATA[<blockquote cite="https://ladybird.org/posts/changing-how-we-develop-ladybird/"><p>We will no longer accept public pull requests. [...]</p>
