@@ -12,6 +12,8 @@ Big scoop for Maxwell Zeff at Wired:</p>
 <p>We wanted to deploy Fable 5 to our users quickly and safely. Visible safeguards can be probed, so they have to be robust, which takes time to get right. Invisible safeguards can be targeted more narrowly, allowing us to ship quickly with very few false positives. We went with invisible safeguards for this reason—and that was the wrong tradeoff. You should have visibility into the safeguards we have in place, and why. We’re sorry for not getting the balance right.</p>
 </blockquote>
 
+    <p><small></small>Via <a href="https://twitter.com/zeffmax/status/2064910040503627917">@zeffmax</a></small></p>
+
 
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/claude-mythos">claude-mythos</a></p>]]></description><pubDate>Thu, 11 Jun 2026 03:45:49 +0000</pubDate></item><item><title>datasette-agent 0.2a0</title><link>https://simonwillison.net/2026/Jun/10/datasette-agent/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-agent/releases/tag/0.2a0">datasette-agent 0.2a0</a></p>
         <p>Highlights from the release notes:</p>
