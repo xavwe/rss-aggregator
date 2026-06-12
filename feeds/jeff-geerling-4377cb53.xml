@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>I tested every IP KVM in my Homelab</title><link>https://www.jeffgeerling.com/blog/2026/i-tested-every-ip-kvm/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/i-tested-every-ip-kvm/all-ip-kvms.jpg"
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>You can finally power on a Mac remotely</title><link>https://www.jeffgeerling.com/blog/2026/power-on-your-mac-remotely/</link><description><![CDATA[<p>Apple FINALLY lets you <a href="https://support.apple.com/en-us/125517">turn on your Mac remotely</a>, without having to press the power button. In the media, articles suggest it's a reaction to <a href="https://9to5mac.com/2026/05/11/macos-26-5-adds-new-way-to-control-your-macs-power-state-via-switches/">Mac mini power button complaints</a>.</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/power-on-your-mac-remotely/m4-mini-remote-power-button.jpg"
+ alt="Turning on an M4 Mac mini remotely using Home Assistant on a Framework 12" width="700" height="auto">
+</figure>
+
+<p>While I agree the M4 mini's power button is in a really dumb spot, that's not why I care about this feature. The two <em>bigger</em> use cases for me have been a pain for years:</p>]]></description><pubDate>Fri, 12 Jun 2026 14:00:00 +0000</pubDate></item><item><title>I tested every IP KVM in my Homelab</title><link>https://www.jeffgeerling.com/blog/2026/i-tested-every-ip-kvm/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/i-tested-every-ip-kvm/all-ip-kvms.jpg"
  alt="IP KVMs on desk" width="700" height="auto">
 </figure>
 
@@ -116,9 +121,4 @@
 </figure>
 
 <p>Because I have a faster desktop (currently a M4 Max Mac Studio), I've always used a lower-end Mac laptop, like the iBook or MacBook Air, for travel. I've used MacBook Pros in the past, but I like the portability of smaller, cheaper models.</p>
-<p>In fact, my favorite Mac laptop <em>ever</em> was the 11&quot; Air.</p>]]></description><pubDate>Thu, 12 Mar 2026 17:50:00 +0000</pubDate></item><item><title>A PTP Wall Clock is impractical and a little too precise</title><link>https://www.jeffgeerling.com/blog/2026/ptp-wall-clock-impractical-too-precise/</link><description><![CDATA[<p>After seeing Oliver Ettlin's 39C3 presentation <a href="https://media.ccc.de/v/39c3-excuse-me-what-precise-time-is-it">Excuse me, what precise time is It?</a>, I wanted to replicate the PTP (<a href="https://en.wikipedia.org/wiki/Precision_Time_Protocol">Precision Time Protocol</a>) clock he used live to demonstrate PTP clock sync:</p>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/ptp-wall-clock-impractical-too-precise/39c3-oliver-ettlin-ptp-clock.jpg"
- alt="Oliver Ettlin with PTP wallclock at 39C3" width="700" height="auto">
-</figure>
-
-<p>I pinged him on LinkedIn inquiring about the build (I wasn't the only one!), and shortly thereafter, he published <a href="https://github.com/Gemini2350/ptp-wallclock">Gemini2350/ptp-wallclock</a>, a repository with rough instructions for the build, and his C++ application to display PTP time (if available on the network) on a set of two LED matrix displays, using a Raspberry Pi.</p>]]></description><pubDate>Fri, 6 Mar 2026 15:00:00 +0000</pubDate></item></channel></rss>
+<p>In fact, my favorite Mac laptop <em>ever</em> was the 11&quot; Air.</p>]]></description><pubDate>Thu, 12 Mar 2026 17:50:00 +0000</pubDate></item></channel></rss>
