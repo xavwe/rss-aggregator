@@ -1,4 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Temporary Cloudflare Accounts for AI agents</title><link>https://simonwillison.net/2026/Jun/21/temporary-cloudflare-accounts/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.cloudflare.com/temporary-accounts/">Temporary Cloudflare Accounts for AI agents</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>sqlite-utils 4.0rc1 adds migrations and nested transactions</title><link>https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/#atom-everything</link><description><![CDATA[<p><a href="https://sqlite-utils.datasette.io/en/latest/">sqlite-utils</a> is my combined Python library and CLI tool for working with SQLite databases. It provides an extensive set of higher-level operations on top of Python's default <a href="https://docs.python.org/3/library/sqlite3.html">sqlite3 package</a>, including support for <a href="https://sqlite-utils.datasette.io/en/latest/cli.html#transforming-tables">complex table transformations</a>, automatic table creation <a href="https://sqlite-utils.datasette.io/en/latest/cli.html#inserting-json-data">from JSON data</a> and a whole lot more.</p>
+<p>I released <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#rc1-2026-06-21">sqlite-utils 4.0rc1</a>, the first release candidate for sqlite-utils v4. The major version bump indicates some (minor) backwards incompatible changes, so I'm interested in having people try this out before I commit to a stable release.</p>
+<h4 id="new-feature-migrations">New feature: migrations</h4>
+<p>There are two significant new features in this RC compared to the previous 4.0 alphas.</p>
+<p>The first is support for <strong>database migrations</strong>. This isn't a completely new implementation - it's a slightly modified port of the <a href="https://github.com/simonw/sqlite-migrate">sqlite-migrate</a> package I released a few years ago. I think that package has proved itself over time, so I'm now ready to bundle it with <code>sqlite-utils</code> directly.</p>
+<p>Here's what a set of migrations in a <code>migrations.py</code> file looks like:</p>
+<pre><span class="pl-k">from</span> <span class="pl-s1">sqlite_utils</span> <span class="pl-k">import</span> <span class="pl-v">Database</span>, <span class="pl-v">Migrations</span>
+
+<span class="pl-s1">migrations</span> <span class="pl-c1">=</span> <span class="pl-en">Migrations</span>(<span class="pl-s">"creatures"</span>)
+
+<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
+<span class="pl-k">def</span> <span class="pl-en">create_table</span>(<span class="pl-s1">db</span>):
+    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">create</span>(
+        {<span class="pl-s">"id"</span>: <span class="pl-s1">int</span>, <span class="pl-s">"name"</span>: <span class="pl-s1">str</span>, <span class="pl-s">"species"</span>: <span class="pl-s1">str</span>},
+        <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>,
+    )
+
+<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
+<span class="pl-k">def</span> <span class="pl-en">add_weight</span>(<span class="pl-s1">db</span>):
+    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">add_column</span>(<span class="pl-s">"weight"</span>, <span class="pl-s1">float</span>)</pre>
+<p>This defines a set of two migrations, one creating the <code>creatures</code> table and another adding a column to it.</p>
+<p>You can then run those migrations either using Python:</p>
+<pre><span class="pl-s1">db</span> <span class="pl-c1">=</span> <span class="pl-en">Database</span>(<span class="pl-s">"creatures.db"</span>)
+<span class="pl-s1">migrations</span>.<span class="pl-c1">apply</span>(<span class="pl-s1">db</span>)</pre>
+<p>Or with the command-line <code>migrate</code> command:</p>
+<div class="highlight highlight-source-shell"><pre>sqlite-utils migrate creatures.db migrations.py</pre></div>
+<p>The system is deliberately small: it doesn't provide reverse migrations, so any mistakes you make should be fixed by deploying a fresh migration to undo them.</p>
+<p>Its predecessor has been used by <a href="https://llm.datasette.io/">LLM</a> and various other projects for several years, so I'm confident that the design is stable and works well.</p>
+<p>The new migrations feature <a href="https://sqlite-utils.datasette.io/en/latest/migrations.html">is documented here</a>.</p>
+<h4 id="new-feature-db-atomic-transactions">New feature: db.atomic() transactions</h4>
+<p>This feature is a lot less exercised than migrations, so it deserves more attention from testers.</p>
+<p>Previously, <code>sqlite-utils</code> mostly left transaction management up to its users, via a <code>with db.conn:</code> construct that reused the <code>sqlite3</code> mechanism directly.</p>
+<p>SQLite supports nested transactions in the form of savepoints, so I wanted an abstraction that could make those as easy to use as possible.</p>
+<p>I borrowed the terminology "atomic" from Django and Peewee. Here's what the new API looks like:</p>
+<pre><span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">atomic</span>():
+    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">1</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Cleo"</span>}, <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>)
+    <span class="pl-k">try</span>:
+        <span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">atomic</span>():
+            <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">2</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Pancakes"</span>})
+            <span class="pl-k">raise</span> <span class="pl-en">ValueError</span>(<span class="pl-s">"skip this one"</span>)
+    <span class="pl-k">except</span> <span class="pl-v">ValueError</span>:
+        <span class="pl-k">pass</span>
+    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">3</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Marnie"</span>})</pre>
+<p>More details <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#transactions-with-db-atomic">in the documentation</a>.</p>
+<h4 id="backwards-incompatible-changes">Backwards incompatible changes</h4>
+<p>The backwards incompatible changes in v4 were described in the alpha release notes. For <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a0-2025-05-08">4.0a0</a>:</p>
+<blockquote>
+<ul>
+<li>Upsert operations now use SQLite's <code>INSERT ... ON CONFLICT SET</code> syntax on all SQLite versions later than 3.23.1. This is a very slight breaking change for apps that depend on the previous <code>INSERT OR IGNORE</code> followed by <code>UPDATE</code> behavior. (<a href="https://github.com/simonw/sqlite-utils/issues/652">#652</a>)</li>
+<li>Python library users can opt-in to the previous implementation by passing <code>use_old_upsert=True</code> to the <code>Database()</code> constructor, see <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-old-upsert">Alternative upserts using INSERT OR IGNORE</a>.</li>
+<li>Dropped support for Python 3.8, added support for Python 3.13. (<a href="https://github.com/simonw/sqlite-utils/issues/646">#646</a>)</li>
+<li>
+<code>sqlite-utils tui</code> is now provided by the <a href="https://github.com/simonw/sqlite-utils-tui">sqlite-utils-tui</a> plugin. (<a href="https://github.com/simonw/sqlite-utils/issues/648">#648</a>)</li>
+<li>Test suite now also runs against SQLite 3.23.1, the last version (from 2018-04-10) before the new <code>INSERT ... ON CONFLICT SET</code> syntax was added. (<a href="https://github.com/simonw/sqlite-utils/issues/654">#654</a>)</li>
+</ul>
+</blockquote>
+<p>And for <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a1-2025-11-23">4.0a1</a>:</p>
+<blockquote>
+<ul>
+<li>
+<strong>Breaking change</strong>: The <code>db.table(table_name)</code> method now only works with tables. To access a SQL view use <code>db.view(view_name)</code> instead. (<a href="https://github.com/simonw/sqlite-utils/issues/657">#657</a>)</li>
+<li>The <code>table.insert_all()</code> and <code>table.upsert_all()</code> methods can now accept an iterator of lists or tuples as an alternative to dictionaries. The first item should be a list/tuple of column names. See <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-insert-lists">Inserting data from a list or tuple iterator</a> for details. (<a href="https://github.com/simonw/sqlite-utils/issues/672">#672</a>)</li>
+<li>
+<strong>Breaking change</strong>: The default floating point column type has been changed from <code>FLOAT</code> to <code>REAL</code>, which is the correct SQLite type for floating point values. This affects auto-detected columns when inserting data. (<a href="https://github.com/simonw/sqlite-utils/issues/645">#645</a>)</li>
+<li>Now uses <code>pyproject.toml</code> in place of <code>setup.py</code> for packaging. (<a href="https://github.com/simonw/sqlite-utils/issues/675">#675</a>)</li>
+<li>Tables in the Python API now do a much better job of remembering the primary key and other schema details from when they were first created. (<a href="https://github.com/simonw/sqlite-utils/issues/655">#655</a>)</li>
+<li>
+<strong>Breaking change</strong>: The <code>table.convert()</code> and <code>sqlite-utils convert</code> mechanisms no longer skip values that evaluate to <code>False</code>. Previously the <code>--skip-false</code> option was needed, this has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/542">#542</a>)</li>
+<li>
+<strong>Breaking change</strong>: Tables created by this library now wrap table and column names in <code>"double-quotes"</code> in the schema. Previously they would use <code>[square-braces]</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/677">#677</a>)</li>
+<li>The <code>--functions</code> CLI argument now accepts a path to a Python file in addition to accepting a string full of Python code. It can also now be specified multiple times. (<a href="https://github.com/simonw/sqlite-utils/issues/659">#659</a>)</li>
+<li>
+<strong>Breaking change:</strong> Type detection is now the default behavior for the <code>insert</code> and <code>upsert</code> CLI commands when importing CSV or TSV data. Previously all columns were treated as <code>TEXT</code> unless the <code>--detect-types</code> flag was passed. Use the new <code>--no-detect-types</code> flag to restore the old behavior. The <code>SQLITE_UTILS_DETECT_TYPES</code> environment variable has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/679">#679</a>)</li>
+</ul>
+</blockquote>
+<h4 id="try-it-out">Try it out</h4>
+<p>You can install the new RC like this:</p>
+<div class="highlight highlight-source-shell"><pre>pip install sqlite-utils==4.0rc1</pre></div>
+<p>Or try the CLI version directly with <code>uvx</code> like this:</p>
+<div class="highlight highlight-source-shell"><pre>uvx --with sqlite-utils==4.0rc1 sqlite-utils --help</pre></div>
+<p>Come chat with us about it in the <a href="https://discord.gg/Ass7bCAMDw">sqlite-utils Discord channel</a>, or file any bugs in <a href="https://github.com/simonw/sqlite-utils/issues">GitHub Issues</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/migrations">migrations</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a></p>]]></description><pubDate>Sun, 21 Jun 2026 23:35:47 +0000</pubDate></item><item><title>sqlite-utils 4.0rc1</title><link>https://simonwillison.net/2026/Jun/21/sqlite-utils/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0rc1">sqlite-utils 4.0rc1</a></p>
+        <p>See <a href="https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/">sqlite-utils 4.0rc1 adds migrations and nested transactions</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>]]></description><pubDate>Sun, 21 Jun 2026 23:30:04 +0000</pubDate></item><item><title>Temporary Cloudflare Accounts for AI agents</title><link>https://simonwillison.net/2026/Jun/21/temporary-cloudflare-accounts/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.cloudflare.com/temporary-accounts/">Temporary Cloudflare Accounts for AI agents</a></strong></p>
 The announcement says this is "for AI agents" but (as is pretty common these days) the AI hook isn't really necessary, this is an interesting feature for everyone else as well.</p>
 <p>Short version: you can now create a Cloudflare Workers project and run this, without even creating a Cloudflare account:</p>
 <pre><code>npx wrangler deploy --temporary
@@ -448,25 +534,4 @@ Cost:          ~$12.11 (claude-fable-5, claude-opus-4-8)
 <p><img alt="Screenshot of a web application titled &quot;Datasette extras explorer&quot;. A URL input field contains https://latest.datasette.io/fixtures/facetable.json with a teal Explore button next to it. Below, a left panel labeled EXTRAS (30) lists checkboxes: all_columns - All columns in the table, regardless of _col/_nocol filtering; column_types - Column type assignments for this table; columns (checked) - Column names returned by this query; count - Total count of rows matching these filters; count_sql - SQL query used to calculate the total count; custom_table_templates - Custom template names considered for this table; database - Database name; database_color - Color assigned to the database. A right panel labeled RESPONSE shows GET /fixtures/fac… with Copy JSON and Copy URL buttons, then a dark JSON viewer showing 200 - 9.9 KB - 114ms and JSON: &quot;ok&quot;: true, &quot;next&quot;: null, &quot;columns&quot;: (highlighted array) &quot;pk&quot;, &quot;created&quot;, &quot;planet_int&quot;, &quot;on_earth&quot;, &quot;state&quot;, &quot;_city_id&quot;, &quot;_neighborhood&quot;, &quot;tags&quot;, &quot;complex_array&quot;, &quot;distinct_some_null&quot;, &quot;n&quot;, &quot;rows&quot;: list of objects." src="https://static.simonwillison.net/static/2026/extras-explorer.png" /></p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Thu, 11 Jun 2026 15:26:49 +0000</pubDate></item><item><title>asyncinject 0.7</title><link>https://simonwillison.net/2026/Jun/11/asyncinject/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/asyncinject/releases/tag/0.7">asyncinject 0.7</a></p>
-        <p>I built this utility library to support an <code>asyncio</code> dependency injection pattern a few years ago. I was using it with Datasette and Claude Fable 5 spotted some bugs in the dependency which it then fixed for me. It's a very proactive model!</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/async">async</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/claude-mythos">claude-mythos</a></p>]]></description><pubDate>Thu, 11 Jun 2026 06:28:09 +0000</pubDate></item><item><title>Anthropic Walks Back Policy That Could Have ‘Sabotaged’ AI Researchers Using Claude</title><link>https://simonwillison.net/2026/Jun/11/anthropic-walks-back-policy/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.wired.com/story/anthropic-responds-to-backlash-on-claudes-secret-sabotage-on-ai-research/">Anthropic Walks Back Policy That Could Have ‘Sabotaged’ AI Researchers Using Claude</a></strong></p>
-Big scoop for Maxwell Zeff at Wired:</p>
-<blockquote>
-<p>“We’re changing Fable 5’s safeguards for frontier LLM development to make them visible.” Anthropic said in a statement to WIRED. “We made the wrong tradeoff and we apologize for not getting the balance right.”</p>
-</blockquote>
-<p>There's been a <em>huge</em> outcry about Anthropic's policy, <a href="https://simonwillison.net/2026/Jun/10/if-claude-fable-stops-helping-you/">tucked away in their system card</a>, that Claude Fable/Mythos would identify "requests targeting frontier LLM development" and "limit effectiveness" without notifying the user.</p>
-<p>It's good news that they're dropping the invisible aspect of this. It would be a whole lot better of they dropped this category of refusals entirely.</p>
-<p><strong>Update</strong>: More details from <a href="https://twitter.com/claudedevs/status/2064949876463645026">@ClaudeDevs on Twitter</a>:</p>
-<blockquote>
-<p>We’re rolling out changes to make Fable 5’s safeguards for frontier LLM development visible.</p>
-<p>Starting this week, flagged requests will visibly fall back to Opus 4.8—the same as our safeguards for cyber and bio. You will see this every time it happens. On the API, any flagged requests will return a reason for their refusal (coming to server-side fallback in the next few days).</p>
-<p>We wanted to deploy Fable 5 to our users quickly and safely. Visible safeguards can be probed, so they have to be robust, which takes time to get right. Invisible safeguards can be targeted more narrowly, allowing us to ship quickly with very few false positives. We went with invisible safeguards for this reason—and that was the wrong tradeoff. You should have visibility into the safeguards we have in place, and why. We’re sorry for not getting the balance right.</p>
-</blockquote>
-
-    <p><small></small>Via <a href="https://twitter.com/zeffmax/status/2064910040503627917">@zeffmax</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/claude-mythos">claude-mythos</a></p>]]></description><pubDate>Thu, 11 Jun 2026 03:45:49 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Thu, 11 Jun 2026 15:26:49 +0000</pubDate></item></channel></rss>
