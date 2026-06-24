@@ -5,7 +5,7 @@
 <p class="cite">&mdash; <a href="https://macwright.com/2026/06/24/accidental-anonymity.html">Tom MacWright</a>, Accidental anonymity</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/tom-macwright">tom-macwright</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a></p>]]></description><pubDate>Wed, 24 Jun 2026 18:13:51 +0000</pubDate></item><item><title>datasette 1.0a35</title><link>https://simonwillison.net/2026/Jun/23/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a35">datasette 1.0a35</a></p>
-        <p>I'll write more about this one tomorrow, but it's a big release. Three highlights from the release notes:</p>
+        <p>I'll write more about this one soon, but it's a big release. Three highlights from the release notes:</p>
 <blockquote>
 <ul>
 <li>New "Create table" interface in the database actions menu, backed by the <code>/&lt;database&gt;/-/create</code> <a href="https://docs.datasette.io/en/latest/json_api.html#tablecreateview">JSON API</a>. It can define columns, primary keys, custom column types, <code>NOT NULL</code> constraints, literal defaults, expression defaults and single-column foreign keys. (<a href="https://github.com/simonw/datasette/issues/2787">#2787</a>)</li>
