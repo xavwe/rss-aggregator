@@ -1,4 +1,64 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Using DSPy to evaluate and improve Datasette Agent&apos;s SQL system prompts</title><link>https://simonwillison.net/2026/Jul/2/dspy-datasette-agent-prompts/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/dspy-datasette-agent-prompts#readme">Using DSPy to evaluate and improve Datasette Agent&#x27;s SQL system prompts</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>llm-coding-agent 0.1a0</title><link>https://simonwillison.net/2026/Jul/2/llm-coding-agent/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-coding-agent/releases/tag/0.1a0">llm-coding-agent 0.1a0</a></p>
+        <p>Another Fable 5 experiment. Now that my <a href="https://llm.datasette.io/">LLM library</a> has evolved into more of an agent framework it's time to see what a simple coding agent would look like built on it.</p>
+<p>I started a <a href="https://github.com/simonw/llm-coding-agent/tree/2466fa03ba8e5122c3bfa93d52167d33bce40ac6">new Python library</a> using my <a href="https://github.com/simonw/python-lib-template-repository">python-lib-template-repository</a> GitHub template repository, then ran these two prompts (here's the <a href="https://claude.ai/code/session_01TEUBvBbMipbFSoqjMiJ7ha">Claude Code for web transcript</a>):</p>
+<blockquote>
+<p><code>Write a spec.md for this project - it will depend on the latest “llm” alpha from PyPI and implement a Claude code style coding agent complete with tools for reading and editing files and executing commands</code></p>
+</blockquote>
+<p>Then:</p>
+<blockquote>
+<p><code>Commit the spec, then build it using red/green TDD in a series of sensible commits (each with passing tests and updated docs) - occasionally manually test it using the OpenAI API key in your environment</code></p>
+</blockquote>
+<p>Here's the <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md">resulting README file</a> and the <a href="https://github.com/simonw/llm-coding-agent/commits/0.1a0">sequence of commits</a>.</p>
+<p>I've shipped a slop-alpha to PyPI, so you can run the new agent like this:</p>
+<pre><code>uvx --prerelease=allow --with llm-coding-agent llm code
+</code></pre>
+<p>It's pretty good for a first attempt! Here's the (Fable-authored) <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md">README</a>, which lists recipes like <code>llm code --yolo</code> and <code>llm code --allow "pytest*" --allow "git diff*"</code>.</p>
+<p>It also presents <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md#codingagent">a Python API</a> based around a <code>CodingAgent(model="gpt-5.5", root="/path", approve=True).run("Fix the failing test in tests/test_parser.py")</code> class which I didn't ask for but I'm delighted to see implemented.</p>
+<p>Here's the suite of tools <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/llm_coding_agent/tools.py#L22">it implemented</a>, listed using <code>uvx ... llm tools</code>:</p>
+<blockquote>
+<p><code>CodingTools_edit_file(path: str, old_string: str, new_string: str, replace_all: bool = False) -&gt; str</code></p>
+<p>Replace an exact string in a file.</p>
+<p>old_string must match the file contents exactly (including
+whitespace) and must identify a unique location unless replace_all
+is true. Returns a diff of the change so it can be verified.</p>
+<p><code>CodingTools_execute_command(command: str, timeout: int = 120) -&gt; str</code></p>
+<p>Run a shell command in the session root directory.</p>
+<p>Returns combined stdout and stderr followed by an Exit code line.
+timeout is in seconds (maximum 600); on timeout the whole process
+tree is killed.</p>
+<p><code>CodingTools_list_files(pattern: str = '**/*', path: str = '.') -&gt; str</code></p>
+<p>List files matching a glob pattern, newest first.</p>
+<p>Skips hidden directories, node_modules, __pycache__ and (in a git
+repository) anything covered by .gitignore. Returns at most 200
+paths relative to the searched directory.</p>
+<p><code>CodingTools_read_file(path: str, offset: int = 0, limit: int = 2000) -&gt; str</code></p>
+<p>Read a text file, returning numbered lines like cat -n.</p>
+<p>Paths are relative to the session root. Use offset (0-based first
+line) and limit (max lines) to page through files too large to read
+in one call.</p>
+<p><code>CodingTools_search_files(pattern: str, path: str = '.', glob: str = None, max_results: int = 100) -&gt; str</code></p>
+<p>Search file contents for a regular expression.</p>
+<p>Returns matches as path:line_number:line, capped at max_results.
+Use glob (e.g. "*.py") to restrict which files are searched.</p>
+<p><code>CodingTools_write_file(path: str, content: str) -&gt; str</code></p>
+<p>Create or overwrite a file with the given content.</p>
+<p>Parent directories are created as needed. Prefer edit_file for
+modifying existing files.</p>
+</blockquote>
+<p>I tried it out by running <code>llm code --yolo</code> and then prompting:</p>
+<blockquote>
+<p><code>mkdir /tmp/demo and then in that folder create a simple swiftui CLI app for telling the time in ascii art</code></p>
+</blockquote>
+<p>Here's <a href="https://gist.github.com/simonw/750009007050124cd1b390cfe8488e41">the transcript</a>, in which GPT-5.5 reasoning notes that "SwiftUI isn't suitable for a true CLI" and then builds an app that outputs this on <code>swift run AsciiTime</code>:</p>
+<pre><code>  █    █████         ████     █             █     ███   
+ ██    █        █        █   ██      █     ██    █   █  
+  █    ████           ███     █             █       █   
+  █        █    █        █    █      █      █      █    
+ ███   ████          ████    ███           ███   █████
+</code></pre>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>]]></description><pubDate>Thu, 2 Jul 2026 19:33:12 +0000</pubDate></item><item><title>Using DSPy to evaluate and improve Datasette Agent&apos;s SQL system prompts</title><link>https://simonwillison.net/2026/Jul/2/dspy-datasette-agent-prompts/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/dspy-datasette-agent-prompts#readme">Using DSPy to evaluate and improve Datasette Agent&#x27;s SQL system prompts</a></p>
         <p>One of this morning's AIE keynotes covered <a href="https://github.com/stanfordnlp/dspy">dspy</a>, which reminded me I've been meaning to see if it could help me improve the system prompt used by <a href="https://agent.datasette.io">Datasette Agent</a> - so I fired off an asynchronous research task in Claude Code for web using Claude Fable 5:</p>
 <blockquote>
 <p><code>Pip install the latest Datasette alpha and datasette-agent and dspy - then figure out how to use dspy to evaluate and improve the main system prompts used by Datasette Agent for the feature where it can execute read only SQL queries to answer user questions about data.</code></p>
@@ -9,7 +69,7 @@
 </blockquote>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/dspy">dspy</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a>, <a href="https://simonwillison.net/tags/claude-mythos">claude-mythos</a></p>]]></description><pubDate>Thu, 2 Jul 2026 18:25:00 +0000</pubDate></item><item><title>Understand to participate</title><link>https://simonwillison.net/2026/Jul/2/understand-to-participate/#atom-everything</link><description><![CDATA[<p>I saw Geoffrey Litt speak at <a href="https://www.ai.engineer/worldsfair/2026">AIE</a> yesterday, and one framing he used particularly resonated with me:</p>
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/dspy">dspy</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>]]></description><pubDate>Thu, 2 Jul 2026 18:25:00 +0000</pubDate></item><item><title>Understand to participate</title><link>https://simonwillison.net/2026/Jul/2/understand-to-participate/#atom-everything</link><description><![CDATA[<p>I saw Geoffrey Litt speak at <a href="https://www.ai.engineer/worldsfair/2026">AIE</a> yesterday, and one framing he used particularly resonated with me:</p>
 <p><strong>Understand to participate</strong></p>
 <p>Geoffrey was talking about the challenge of collaborating with coding agents as they construct increasingly large and sophisticated changes, and the need to avoid taking on <a href="https://simonwillison.net/tags/cognitive-debt/">cognitive debt</a> as your understanding drifts from how the code actually works.</p>
 <p>His argument is that you need to understand the code to a depth that enables you to participate further with the model:</p>
@@ -24,7 +84,7 @@
 <p>We'll begin restoring access tomorrow, and will share an update soon.</p></blockquote>
 <p class="cite">&mdash; <a href="https://twitter.com/anthropicai/status/2072106151890809341">Anthropic</a>, on Twitter</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/claude-mythos">claude-mythos</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 30 Jun 2026 23:58:15 +0000</pubDate></item><item><title>Nano Banana 2 Lite</title><link>https://simonwillison.net/2026/Jun/30/nano-banana-2-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://deepmind.google/models/gemini-image/flash-lite/">Nano Banana 2 Lite</a></strong></p>
+    <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 30 Jun 2026 23:58:15 +0000</pubDate></item><item><title>Nano Banana 2 Lite</title><link>https://simonwillison.net/2026/Jun/30/nano-banana-2-lite/#atom-everything</link><description><![CDATA[<p><strong><a href="https://deepmind.google/models/gemini-image/flash-lite/">Nano Banana 2 Lite</a></strong></p>
 Also known as Gemini 3.1 Flash Lite Image (<code>gemini-3.1-flash-lite-image</code> <a href="https://ai.google.dev/gemini-api/docs/image-generation">in their API</a>), this is the "fastest and cheapest Gemini image model, engineered for velocity and scale".</p>
 <p>I <a href="https://aistudio.google.com/app/prompts/new_chat?model=gemini-3.1-flash-lite-image">used AI studio</a> to run this prompt:</p>
 <blockquote>
@@ -112,7 +172,7 @@ This political compass style quiz <a href="https://bambamramfan.tumblr.com/post/
         <source src="https://static.simonwillison.net/static/2026/datasette-bulk-insert-demo.mp4" type="video/mp4" />
     </video>
 </div>
-<p>That video was created <a href="">by running this command</a>:</p>
+<p>That video was created by running this command:</p>
 <div class="highlight highlight-source-shell"><pre>shot-scraper video datasette-bulk-insert-storyboard.yml \
   --auth datasette-demo-auth.json --mp4</pre></div>
 <p>(That <code>--auth</code> JSON file <a href="https://gist.github.com/simonw/287b26aff53fcb72942b19f5b69d7e5c">contains a cookie</a>, as <a href="https://shot-scraper.datasette.io/en/stable/authentication.html">described here</a> in the documentation.)</p>
@@ -629,8 +689,4 @@ The announcement says this is "for AI agents" but (as is pretty common these day
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48608394">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a></p>]]></description><pubDate>Sun, 21 Jun 2026 22:01:04 +0000</pubDate></item><item><title>Quoting Sean Lynch</title><link>https://simonwillison.net/2026/Jun/19/sean-lynch/#atom-everything</link><description><![CDATA[<blockquote cite="https://news.ycombinator.com/item?id=48592163#48593190"><p>The real valuable capability MCP offers over skills/CLI is isolating the auth flow outside of the agent’s context window, and potentially out of the harness completely. [...]</p>
-<p>Maybe the idealized form of MCP is just an auth gateway for the API and nothing else. That’d still be a win.</p></blockquote>
-<p class="cite">&mdash; <a href="https://news.ycombinator.com/item?id=48592163#48593190">Sean Lynch</a>, comment on Hacker News</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/skills">skills</a></p>]]></description><pubDate>Fri, 19 Jun 2026 22:45:49 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a></p>]]></description><pubDate>Sun, 21 Jun 2026 22:01:04 +0000</pubDate></item></channel></rss>
