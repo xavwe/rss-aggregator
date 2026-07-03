@@ -8,7 +8,7 @@
 <blockquote>
 <p><code>Commit the spec, then build it using red/green TDD in a series of sensible commits (each with passing tests and updated docs) - occasionally manually test it using the OpenAI API key in your environment</code></p>
 </blockquote>
-<p>Here's the <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md">resulting README file</a> and the <a href="https://github.com/simonw/llm-coding-agent/commits/0.1a0">sequence of commits</a>.</p>
+<p>Here's <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/spec.md">the spec</a>, the <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md">resulting README file</a>, and the <a href="https://github.com/simonw/llm-coding-agent/commits/0.1a0">sequence of commits</a>.</p>
 <p>I've shipped a slop-alpha to PyPI, so you can run the new agent like this:</p>
 <pre><code>uvx --prerelease=allow --with llm-coding-agent llm code
 </code></pre>
@@ -50,12 +50,13 @@ modifying existing files.</p>
 <p><code>mkdir /tmp/demo and then in that folder create a simple swiftui CLI app for telling the time in ascii art</code></p>
 </blockquote>
 <p>Here's <a href="https://gist.github.com/simonw/750009007050124cd1b390cfe8488e41">the transcript</a>, in which GPT-5.5 reasoning notes that "SwiftUI isn't suitable for a true CLI" and then builds an app that outputs this on <code>swift run AsciiTime</code>:</p>
-<pre><code>  █    █████         ████     █             █     ███   
- ██    █        █        █   ██      █     ██    █   █  
-  █    ████           ███     █             █       █   
-  █        █    █        █    █      █      █      █    
- ███   ████          ████    ███           ███   █████
-</code></pre>
+<pre style="font-size: 9px">
+      █    █████         ████     █             █     ███   
+     ██    █        █        █   ██      █     ██    █   █  
+      █    ████           ███     █             █       █   
+      █        █    █        █    █      █      █      █    
+     ███   ████          ████    ███           ███   █████
+</pre>
     
     
         <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>]]></description><pubDate>Thu, 2 Jul 2026 19:33:12 +0000</pubDate></item><item><title>Using DSPy to evaluate and improve Datasette Agent&apos;s SQL system prompts</title><link>https://simonwillison.net/2026/Jul/2/dspy-datasette-agent-prompts/#atom-everything</link><description><![CDATA[<p><strong>Research:</strong> <a href="https://github.com/simonw/research/tree/main/dspy-datasette-agent-prompts#readme">Using DSPy to evaluate and improve Datasette Agent&#x27;s SQL system prompts</a></p>
