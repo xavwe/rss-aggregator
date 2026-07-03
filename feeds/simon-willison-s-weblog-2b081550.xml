@@ -1,4 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Fable&apos;s judgement</title><link>https://simonwillison.net/2026/Jul/3/judgement/#atom-everything</link><description><![CDATA[<p>One of the most interesting tips I got from <a href="https://www.ai.engineer/worldsfair/schedule?session=asn_slot_2026_06_30_main_stage_1230_2026_06_08t09_35_43_039z">the Fireside Chat</a> I hosted with Cat Wu and Thariq Shihipar from the Claude Code team at AIE on Wednesday was to let Fable (and to a certain extent Opus) use their own judgement rather than dictating how they should work.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Open Source AI Gap Map</title><link>https://simonwillison.net/2026/Jul/3/open-source-ai-gap-map/#atom-everything</link><description><![CDATA[<p><strong><a href="https://map.currentai.org">Open Source AI Gap Map</a></strong></p>
+<a href="https://www.currentai.org">Current AI</a> is "a global partnership building a public option for AI", founded as a non-profit at the AI Action Summit in Paris in February 2025 and backed by serious capital ($400m already committed).</p>
+<p>They <a href="https://www.currentai.org/blogs/introducing-the-gap-map-v0-1">launched their Gap Map</a> a couple of days ago - an attempt at indexing the current state of open source AI:</p>
+<blockquote>
+<p>The Gap Map v0.1 details 421 products in depth: 266 software tools and libraries, 85 models, 50 datasets, and 20 hardware projects, produced by 228 organizations. These products are organized into 14 categories across 3 layers of the stack (model components, product / UX, and infrastructure). The remaining 24,400 artifacts constitute the uncategorized long tail of the open source AI ecosystem, and will carry no score until they are researched and cited.</p>
+</blockquote>
+<p>The map itself is interesting to explore, but I'm more excited about the underlying data - released under an MIT license in the <a href="https://github.com/currentai-org/os-ai-map">currentai-org/os-ai-map</a> GitHub account: 1,184 YAML files plus the notebooks, schemas and other scripts used to help gather them.</p>
+<p>Since the files are on GitHub you can use Datasette Lite to explore some of them - here are <a href="https://lite.datasette.io/?csv=https://github.com/currentai-org/os-ai-map/blob/main/warehouse/catalog/goodailist/repos.csv#/data/repos?_sort_desc=stars">16,185 GitHub repos the project is tracking</a> as a CSV file loaded into Datasette Lite.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette-lite">datasette-lite</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 3 Jul 2026 22:04:31 +0000</pubDate></item><item><title>Quoting Josh W. Comeau</title><link>https://simonwillison.net/2026/Jul/3/josh-w-comeau/#atom-everything</link><description><![CDATA[<blockquote cite="https://bsky.app/profile/joshwcomeau.com/post/3mkxyqgrp2d2t"><p>I just launched my third course, Whimsical Animations, and so far, it’s on track to sell roughly ⅓ as many copies as a typical course launch.</p>
+<p>It’s a similar story with my two existing courses. Sales are down significantly from last year.</p>
+<p>There are likely a lot of reasons for this, but I think the biggest is AI. There’s sort of a double whammy with AI:</p>
+<ol>
+<li>Many people are wondering whether developer jobs will even exist in a few months, so they’re reluctant to spend time/money learning new dev skills.</li>
+<li>Even if they do want to learn new dev skills, LLMs can provide personalized tutoring, so there’s less incentive to buy a paid course.</li>
+</ol>
+<p>[...] I’ve spoken to a few course creators now, and we’re all seeing the same trend. Revenue down 50%+. Fewer people engaging with our content. People switching to LLMs, which slurp up all of our work and regurgitate it, without consent or compensation.</p></blockquote>
+<p class="cite">&mdash; <a href="https://bsky.app/profile/joshwcomeau.com/post/3mkxyqgrp2d2t">Josh W. Comeau</a>, via <a href="https://whitep4nth3r.com/blog/goodbye-forever-probably/">Salma Alam-Naylor</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/josh-comeau">josh-comeau</a></p>]]></description><pubDate>Fri, 3 Jul 2026 21:25:52 +0000</pubDate></item><item><title>Fable&apos;s judgement</title><link>https://simonwillison.net/2026/Jul/3/judgement/#atom-everything</link><description><![CDATA[<p>One of the most interesting tips I got from <a href="https://www.ai.engineer/worldsfair/schedule?session=asn_slot_2026_06_30_main_stage_1230_2026_06_08t09_35_43_039z">the Fireside Chat</a> I hosted with Cat Wu and Thariq Shihipar from the Claude Code team at AIE on Wednesday was to let Fable (and to a certain extent Opus) use their own judgement rather than dictating how they should work.</p>
 <p>The example they gave was testing. You can tell Fable "only use automated testing for larger features, don't update and run tests for small copy or design changes" - but it's better to just tell Fable to use its own judgement when deciding to write tests instead.</p>
 <p>Jesse Vincent just gave me a related tip to help avoid burning too many of those valuable Fable tokens in the few days we have left before the prices go up. Tell Fable to use other models for smaller tasks, applying its own judgement about which model to use.</p>
 <p>I prompted Claude Code just now with:</p>
@@ -507,215 +527,4 @@ only if the user is wearing green.</p>
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48631888">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/jailbreaking">jailbreaking</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 22 Jun 2026 23:59:53 +0000</pubDate></item><item><title>Porting the Moebius 0.2B image inpainting model to run in the browser with Claude Code</title><link>https://simonwillison.net/2026/Jun/22/porting-moebius/#atom-everything</link><description><![CDATA[<p>This morning <a href="https://news.ycombinator.com/item?id=48630171">on Hacker News</a> I saw <a href="https://hustvl.github.io/Moebius/">Moebius: 0.2B Lightweight Image Inpainting Framework with 10B-Level Performance</a>, describing a small but effective inpainting model - a model where you can mark regions of an image to remove and the model imagines what should fill the space. The released model <a href="https://github.com/hustvl/Moebius/blob/9310b76e368f5f7a8ecdf06493231af279c9973b/requirements.txt#L1">required PyTorch and NVIDIA CUDA</a>, but since it described itself as 0.2B I decided to try and get it running using WebGPU in a browser. TL;DR: I got it working, and you can try the demo at <a href="https://simonw.github.io/moebius-web/">simonw.github.io/moebius-web/</a>. Read on for the details.</p>
-<h4 id="the-finished-tool">The finished tool</h4>
-<p>Here's a video demo of the finished tool:</p>
-
-<video
-width="1280"
-height="1070"
-poster="https://static.simonwillison.net/static/2026/inpainting_1280_poster.jpg"
-preload="none"
-controls="controls"
-playsinline="playsinline"
-style="max-width:100%;height:auto">
-<source src="https://static.simonwillison.net/static/2026/inpainting_1280.mp4" type="video/mp4" />
-</video>
-
-<p>You can open any image in it (non-square images get letterboxed), highlight areas to remove, click the "Run inpaint" button and wait for the model to do its magic.</p>
-<h4 id="a-parallel-agent-side-project">A parallel agent side-project</h4>
-<p>My main project for today was landing a major feature in Datasette: a UI for creating and altering tables, as a follow-up to the <a href="https://simonwillison.net/2026/Jun/16/datasette/">insert and edit rows feature</a> I released last week.</p>
-<p>I was working on that in Codex Desktop (here's <a href="https://github.com/simonw/datasette/pull/2789">the PR</a>) and often found myself spending 5-10 minutes spinning my fingers waiting for it to complete a mid-sized refactor or add the finishing touches to a change to the UI.</p>
-<p>(An amusing thing about coding agents is that the harder a problem is the <em>more</em> time you have to get distracted while you wait for them to finish crunching!)</p>
-<p>So I decided to spin up Claude Code in a terminal window and see how far I could get at porting Moebius to the web.</p>
-<h4 id="some-agentic-research-to-kick-off-the-project">Some agentic research to kick off the project</h4>
-<p>My first step was to ask regular Claude about the feasibility of this project. In <a href="https://claude.ai/">Claude.ai</a>, which has the ability to clone repos from GitHub:</p>
-<blockquote>
-<p><code>Clone https://github.com/hustvl/Moebius/ and tell me if they published the code and weights to run this model anywhere</code></p>
-</blockquote>
-<p>(I hadn't spotted the link to the weights yet, that's tucked away in the "News" section.)</p>
-<p>Then:</p>
-<blockquote>
-<p><code>For Moebius what are the options for running it right now - Python and NVIDIA CUDA only or other options too?</code></p>
-</blockquote>
-<p>And:</p>
-<blockquote>
-<p><code>Muse on the feasibility of porting it to Transformers.js or similar and running it in a browser</code></p>
-</blockquote>
-<p>I like telling models to "muse on X", it's the shortest way I've found of expressing that I want them to contemplate a problem for me without providing them with a concrete goal.</p>
-<p>Here's <a href="https://claude.ai/share/551c3dc8-17ce-4a4b-a0c9-8cbded6c7bf1">that chat transcript</a>. I copied out the last answer and saved it as <a href="https://github.com/simonw/moebius-web/blob/main/research.md">research.md</a> for Claude Code to read later.</p>
-<p>Claude suggested using <strong>ONNX Runtime Web on the WebGPU backend</strong> - the layer <em>below</em> the <a href="https://huggingface.co/docs/transformers.js/en/index">Transformers.js</a> library I had suggested.</p>
-<p>That was enough to convince me it was worth setting Claude Code loose and seeing how far it could get.</p>
-<p>I usually start projects like this by gathering as much information as the coding agent might need as possible. Since I didn't expect this project to actually work I did everything in my <code>/tmp</code> folder:</p>
-<div class="highlight highlight-source-shell"><pre><span class="pl-c1">cd</span> /tmp
-mkdir Moebius
-<span class="pl-c1">cd</span> Moebius
-<span class="pl-c"><span class="pl-c">#</span> Grab the Moebius python code</span>
-git clone https://github.com/hustvl/Moebius
-<span class="pl-c"><span class="pl-c">#</span> And the model weights (Claude figured this out):</span>
-GIT_LFS_SKIP_SMUDGE=0 git clone \
-  https://huggingface.co/hustvl/Moebius Moebius-weights
-<span class="pl-c"><span class="pl-c">#</span> Finally a couple of libraries we might use:</span>
-git clone https://github.com/huggingface/transformers.js
-git clone https://github.com/microsoft/onnxruntime</pre></div>
-<h4 id="setting-off-claude-code">Setting off Claude Code</h4>
-<p>I created a directory for the rest of the project and ran <code>git init</code> in that so Claude could start committing code notes:</p>
-<div class="highlight highlight-source-shell"><pre>mkdir /tmp/Moebius/moebius-web
-<span class="pl-c1">cd</span> /tmp/Moebius/moebius-web
-git init
-<span class="pl-c"><span class="pl-c">#</span> Copy in that research.md from earlier</span>
-git add research.md
-git commit -m <span class="pl-s"><span class="pl-pds">"</span>Initial research by Claude Opus 4.8<span class="pl-pds">"</span></span></pre></div>
-<p>I fired up a <code>claude</code> instance in the <code>/tmp/Moebius</code> folder, the level above all of the research materials I had prepared for it. I prompted:</p>
-<blockquote>
-<p><code>Read ./moebius-web/research.md - your goal is to port this model to ONNX and WebGPU so we can run it directly in a browser, with a simple UI</code></p>
-</blockquote>
-<p>As it started to work I dropped in this follow-up (typos included):</p>
-<blockquote>
-<p><code>Bulid this in /tmp/Moebius/moebius-web and commit early and often, also maintain a notes.md file in there with notes about what you figure out along the way - also start by writing out a plan.md in there and update that plan as oy work too</code></p>
-</blockquote>
-<p>I often ask agents to keep notes like this - the end result is often interesting, both for myself and for the next agent session that touches the same project. Here's what that <a href="https://github.com/simonw/moebius-web/blob/main/notes.md">notes.md file</a> looked like at the end of the project.</p>
-<p>I kicked it off and went back to my main project, checking in occasionally to see how Claude was doing. When it looked like it might have something that worked I prompted:</p>
-<blockquote>
-<p><code>Tell me what URL I can visit in my own browser to try this</code></p>
-</blockquote>
-<p>Then I tried it out in Chrome and pasted some errors (and screenshots of errors) back into Claude Code.</p>
-<p>After a few rounds of this we had something that appeared to work! Time to put it on the internet so other people could use it.</p>
-<blockquote>
-<p><code>How would we publish this to Hugging Face such that the model weights were on there and the HTML demo would show up in Hugging Face spaces?</code></p>
-</blockquote>
-<p>Claude Code knows how to use the <code>hf</code> CLI tool, so I created a model repo on <a href="https://huggingface.co/">Hugging Face</a>, then <a href="https://huggingface.co/settings/tokens">created a token</a> that could write to that repo and dropped it into a <code>/tmp/Moebius/token.txt</code> file so Claude could use it.</p>
-<p>It published the 1.24GB of converted ONNX weights to <a href="https://huggingface.co/simonw/Moebius-ONNX">huggingface.co/simonw/Moebius-ONNX</a> for me.</p>
-<p>I'd seen other demos load weights into the browser from Hugging Face before, so I knew it was possible. I decided to host my own frontend code on GitHub Pages, so I said:</p>
-<blockquote>
-<p><code>I want to publish the moebius-web folder to GitHub, minus the large files (so maybe minus the models/ folder), such that when I turn on GitHub Pages for that repo navigating to https://simonw.github.io/moebius-web/ serves the UI</code></p>
-</blockquote>
-<p>Telling it the final URL was important in case it needed to fix the URLs in the demos that it was building so they would work when deployed to production.</p>
-<p>After a few more rounds of iteration, in between working on my main project, we got to a working, deployed version!</p>
-<p>Except... each time I reloaded the page it seemed to download ~1.3GB of model weights. Browser caching seemed pretty important for this!</p>
-<blockquote>
-<p><code>anything clever we can do with serviceworkers or similar to help cache this stuff? It seems to reload every time, I am concerned that there might be something weird about the way HF redirects work that mean we don't benefit from browser caching</code></p>
-</blockquote>
-<p>I knew that Transformers.js projects could handle this properly, so I grabbed a copy of the <a href="https://huggingface.co/spaces/Xenova/whisper-web">Whisper Web</a> demo, dropped it into <code>/tmp/Moebius/whisper-web</code> and said:</p>
-<blockquote>
-<p><code>look in /tmp/Moebius/whisper-web (with a subagent) and see how they do this</code></p>
-</blockquote>
-<p>That project was entirely obfuscated, built JavaScript files so I figured using a subagent would avoid spending the rest of my top-level token context deciphering those files.</p>
-<p>Claude figured out that it was using <code>caches.open("transformers-cache")</code> - the <a href="https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open">CacheStorage API</a> - and <a href="https://github.com/simonw/moebius-web/commit/05c1cbc4894460a70a8bc1718ac6d152219e0f28#diff-fb89c342dfa36f544a2d16a885b0f3d1d49f436a7d0eaeb80505f80a1f922603">added that to our project</a>.</p>
-<p>I've shared the <a href="https://gisthost.github.io/?58039ba5c1ca3ed177e8659168996ee4">full Claude Code transcript</a> for this project (published using my <a href="https://github.com/simonw/claude-code-transcripts">claude-code-transcripts</a> tool).</p>
-<h4 id="what-did-i-learn-from-all-of-this-">What did I learn from all of this?</h4>
-<p>This definitely counts as vibe coding: I didn't look at a single line of code from the project, restricting my input to testing, suggesting small feature improvements (like a progress bar for the large file downloads) and pointing the model in the direction of examples of how I wanted things to work.</p>
-<p>Since I didn't write any code the amount I learned about the underlying technologies - WebGPU, ONNX, and the Moebius model itself - was very limited.</p>
-<p>As is usually the case with this kind of project the most important things I learned concerned what was <em>possible</em>:</p>
-<ul>
-<li>Claude Opus 4.8 is capable of converting a PyTorch model to ONNX, publishing the result to Hugging Face and then building out a web application and interface that can load and execute that model.</li>
-<li>Chrome, Firefox and Safari are all now capable of running this kind of model - I tried it in all three.</li>
-<li>The CacheStorage API works with ~1.3GB model files.</li>
-<li>... which means we can have inpainting as a feature of a client-only web application! (If our users can tolerate the 1.3GB download.)</li>
-</ul>
-<p>I felt like I should probably try and learn a little more about my project. I fired up <a href="https://claude.ai/">Claude.ai</a> and prompted:</p>
-<blockquote>
-<p><code>Clone https://github.com/simonw/moebius-web/ and use it to teach me all about the model and ONNX and the process of converting a model to ONNX and WebGPU and basically everything I'd need to know in order to fully understand this repo</code></p>
-</blockquote>
-<p>Here's <a href="https://claude.ai/share/d11b8f2b-a52d-4ca2-be75-a710eaf18572">the transcript</a> and the <a href="https://github.com/simonw/moebius-web/blob/main/understanding.md">understanding.md</a> Markdown file it created, which I've now added to the GitHub repo. I found the explanation of ONNX particularly enlightening:</p>
-<blockquote>
-<p><strong>ONNX</strong> (Open Neural Network Exchange) is a portable, framework-neutral file format for neural networks. An <code>.onnx</code> file is essentially two things bundled together:</p>
-<ol>
-<li>
-<strong>A computation graph</strong> — a directed graph of <em>nodes</em>, where each node is an <strong>operator</strong> (<code>Conv</code>, <code>MatMul</code>, <code>Add</code>, <code>Einsum</code>, <code>Softmax</code>, <code>Gather</code>, <code>Resize</code>, …) wired together by named tensors flowing between them. This is the "recipe" for the forward pass.</li>
-<li>
-<strong>The weights</strong> — the learned parameter tensors (the convolution kernels, the embedding table, etc.), stored as initializers in that same graph.</li>
-</ol>
-<p>Crucially, ONNX describes <em>what to compute</em>, abstractly, without saying <em>how</em> or <em>on what hardware</em>. The operator set is versioned by an <strong>opset</strong> number (this repo uses <strong>opset 18</strong>), which pins down exactly which operators exist and what their semantics are.</p>
-</blockquote>
-<p>It turns out PyTorch has built in mechanisms for exporting to ONNX, as seen <a href="https://github.com/simonw/moebius-web/blob/080be6e737ec976130e260d34707d7d9b7f63d5b/python/export_onnx.py#L91">here in export_onnx.py</a>:</p>
-<pre><span class="pl-s1">torch</span>.<span class="pl-c1">onnx</span>.<span class="pl-c1">export</span>(
-    <span class="pl-s1">dec</span>, (<span class="pl-s1">lat</span>,), <span class="pl-s1">dec_path</span>, <span class="pl-s1">opset_version</span><span class="pl-c1">=</span><span class="pl-s1">args</span>.<span class="pl-c1">opset</span>,
-    <span class="pl-s1">input_names</span><span class="pl-c1">=</span>[<span class="pl-s">"latent"</span>], <span class="pl-s1">output_names</span><span class="pl-c1">=</span>[<span class="pl-s">"image"</span>],
-    <span class="pl-s1">dynamic_axes</span><span class="pl-c1">=</span>{<span class="pl-s">"latent"</span>: {<span class="pl-c1">0</span>: <span class="pl-s">"B"</span>}, <span class="pl-s">"image"</span>: {<span class="pl-c1">0</span>: <span class="pl-s">"B"</span>}},
-)</pre>
-<p>Claude also included a <a href="https://github.com/simonw/moebius-web/blob/main/understanding.md#12-mini-glossary">handy glossary</a> and an only-slightly-broken <a href="https://github.com/simonw/moebius-web/blob/main/understanding.md#10-putting-the-whole-pipeline-in-one-picture">ASCII-art diagram</a> showing how the model pipeline fits together.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/browsers">browsers</a>, <a href="https://simonwillison.net/tags/transformers-js">transformers-js</a>, <a href="https://simonwillison.net/tags/webgl">webgl</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/onnx">onnx</a></p>]]></description><pubDate>Mon, 22 Jun 2026 23:43:51 +0000</pubDate></item><item><title>sqlite-utils 4.0rc1 adds migrations and nested transactions</title><link>https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/#atom-everything</link><description><![CDATA[<p><a href="https://sqlite-utils.datasette.io/en/latest/">sqlite-utils</a> is my combined Python library and CLI tool for working with SQLite databases. It provides an extensive set of higher-level operations on top of Python's default <a href="https://docs.python.org/3/library/sqlite3.html">sqlite3 package</a>, including support for <a href="https://sqlite-utils.datasette.io/en/latest/cli.html#transforming-tables">complex table transformations</a>, automatic table creation <a href="https://sqlite-utils.datasette.io/en/latest/cli.html#inserting-json-data">from JSON data</a> and a whole lot more.</p>
-<p>I released <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#rc1-2026-06-21">sqlite-utils 4.0rc1</a>, the first release candidate for sqlite-utils v4. The major version bump indicates some (minor) backwards incompatible changes, so I'm interested in having people try this out before I commit to a stable release.</p>
-<h4 id="new-feature-migrations">New feature: migrations</h4>
-<p>There are two significant new features in this RC compared to the previous 4.0 alphas.</p>
-<p>The first is support for <strong>database migrations</strong>. This isn't a completely new implementation - it's a slightly modified port of the <a href="https://github.com/simonw/sqlite-migrate">sqlite-migrate</a> package I released a few years ago. I think that package has proved itself over time, so I'm now ready to bundle it with <code>sqlite-utils</code> directly.</p>
-<p>Here's what a set of migrations in a <code>migrations.py</code> file looks like:</p>
-<pre><span class="pl-k">from</span> <span class="pl-s1">sqlite_utils</span> <span class="pl-k">import</span> <span class="pl-v">Database</span>, <span class="pl-v">Migrations</span>
-
-<span class="pl-s1">migrations</span> <span class="pl-c1">=</span> <span class="pl-en">Migrations</span>(<span class="pl-s">"creatures"</span>)
-
-<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
-<span class="pl-k">def</span> <span class="pl-en">create_table</span>(<span class="pl-s1">db</span>):
-    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">create</span>(
-        {<span class="pl-s">"id"</span>: <span class="pl-s1">int</span>, <span class="pl-s">"name"</span>: <span class="pl-s1">str</span>, <span class="pl-s">"species"</span>: <span class="pl-s1">str</span>},
-        <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>,
-    )
-
-<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
-<span class="pl-k">def</span> <span class="pl-en">add_weight</span>(<span class="pl-s1">db</span>):
-    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">add_column</span>(<span class="pl-s">"weight"</span>, <span class="pl-s1">float</span>)</pre>
-<p>This defines a set of two migrations, one creating the <code>creatures</code> table and another adding a column to it.</p>
-<p>You can then run those migrations either using Python:</p>
-<pre><span class="pl-s1">db</span> <span class="pl-c1">=</span> <span class="pl-en">Database</span>(<span class="pl-s">"creatures.db"</span>)
-<span class="pl-s1">migrations</span>.<span class="pl-c1">apply</span>(<span class="pl-s1">db</span>)</pre>
-<p>Or with the command-line <code>migrate</code> command:</p>
-<div class="highlight highlight-source-shell"><pre>sqlite-utils migrate creatures.db migrations.py</pre></div>
-<p>The system is deliberately small: it doesn't provide reverse migrations, so any mistakes you make should be fixed by deploying a fresh migration to undo them.</p>
-<p>Its predecessor has been used by <a href="https://llm.datasette.io/">LLM</a> and various other projects for several years, so I'm confident that the design is stable and works well.</p>
-<p>The new migrations feature <a href="https://sqlite-utils.datasette.io/en/latest/migrations.html">is documented here</a>.</p>
-<h4 id="new-feature-db-atomic-transactions">New feature: db.atomic() transactions</h4>
-<p>This feature is a lot less exercised than migrations, so it deserves more attention from testers.</p>
-<p>Previously, <code>sqlite-utils</code> mostly left transaction management up to its users, via a <code>with db.conn:</code> construct that reused the <code>sqlite3</code> mechanism directly.</p>
-<p>SQLite supports nested transactions in the form of savepoints, so I wanted an abstraction that could make those as easy to use as possible.</p>
-<p>I borrowed the terminology "atomic" from Django and Peewee. Here's what the new API looks like:</p>
-<pre><span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">atomic</span>():
-    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">1</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Cleo"</span>}, <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>)
-    <span class="pl-k">try</span>:
-        <span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">atomic</span>():
-            <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">2</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Pancakes"</span>})
-            <span class="pl-k">raise</span> <span class="pl-en">ValueError</span>(<span class="pl-s">"skip this one"</span>)
-    <span class="pl-k">except</span> <span class="pl-v">ValueError</span>:
-        <span class="pl-k">pass</span>
-    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">3</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Marnie"</span>})</pre>
-<p>More details <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#transactions-with-db-atomic">in the documentation</a>.</p>
-<h4 id="backwards-incompatible-changes">Backwards incompatible changes</h4>
-<p>The backwards incompatible changes in v4 were described in the alpha release notes. For <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a0-2025-05-08">4.0a0</a>:</p>
-<blockquote>
-<ul>
-<li>Upsert operations now use SQLite's <code>INSERT ... ON CONFLICT SET</code> syntax on all SQLite versions later than 3.23.1. This is a very slight breaking change for apps that depend on the previous <code>INSERT OR IGNORE</code> followed by <code>UPDATE</code> behavior. (<a href="https://github.com/simonw/sqlite-utils/issues/652">#652</a>)</li>
-<li>Python library users can opt-in to the previous implementation by passing <code>use_old_upsert=True</code> to the <code>Database()</code> constructor, see <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-old-upsert">Alternative upserts using INSERT OR IGNORE</a>.</li>
-<li>Dropped support for Python 3.8, added support for Python 3.13. (<a href="https://github.com/simonw/sqlite-utils/issues/646">#646</a>)</li>
-<li>
-<code>sqlite-utils tui</code> is now provided by the <a href="https://github.com/simonw/sqlite-utils-tui">sqlite-utils-tui</a> plugin. (<a href="https://github.com/simonw/sqlite-utils/issues/648">#648</a>)</li>
-<li>Test suite now also runs against SQLite 3.23.1, the last version (from 2018-04-10) before the new <code>INSERT ... ON CONFLICT SET</code> syntax was added. (<a href="https://github.com/simonw/sqlite-utils/issues/654">#654</a>)</li>
-</ul>
-</blockquote>
-<p>And for <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a1-2025-11-23">4.0a1</a>:</p>
-<blockquote>
-<ul>
-<li>
-<strong>Breaking change</strong>: The <code>db.table(table_name)</code> method now only works with tables. To access a SQL view use <code>db.view(view_name)</code> instead. (<a href="https://github.com/simonw/sqlite-utils/issues/657">#657</a>)</li>
-<li>The <code>table.insert_all()</code> and <code>table.upsert_all()</code> methods can now accept an iterator of lists or tuples as an alternative to dictionaries. The first item should be a list/tuple of column names. See <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-insert-lists">Inserting data from a list or tuple iterator</a> for details. (<a href="https://github.com/simonw/sqlite-utils/issues/672">#672</a>)</li>
-<li>
-<strong>Breaking change</strong>: The default floating point column type has been changed from <code>FLOAT</code> to <code>REAL</code>, which is the correct SQLite type for floating point values. This affects auto-detected columns when inserting data. (<a href="https://github.com/simonw/sqlite-utils/issues/645">#645</a>)</li>
-<li>Now uses <code>pyproject.toml</code> in place of <code>setup.py</code> for packaging. (<a href="https://github.com/simonw/sqlite-utils/issues/675">#675</a>)</li>
-<li>Tables in the Python API now do a much better job of remembering the primary key and other schema details from when they were first created. (<a href="https://github.com/simonw/sqlite-utils/issues/655">#655</a>)</li>
-<li>
-<strong>Breaking change</strong>: The <code>table.convert()</code> and <code>sqlite-utils convert</code> mechanisms no longer skip values that evaluate to <code>False</code>. Previously the <code>--skip-false</code> option was needed, this has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/542">#542</a>)</li>
-<li>
-<strong>Breaking change</strong>: Tables created by this library now wrap table and column names in <code>"double-quotes"</code> in the schema. Previously they would use <code>[square-braces]</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/677">#677</a>)</li>
-<li>The <code>--functions</code> CLI argument now accepts a path to a Python file in addition to accepting a string full of Python code. It can also now be specified multiple times. (<a href="https://github.com/simonw/sqlite-utils/issues/659">#659</a>)</li>
-<li>
-<strong>Breaking change:</strong> Type detection is now the default behavior for the <code>insert</code> and <code>upsert</code> CLI commands when importing CSV or TSV data. Previously all columns were treated as <code>TEXT</code> unless the <code>--detect-types</code> flag was passed. Use the new <code>--no-detect-types</code> flag to restore the old behavior. The <code>SQLITE_UTILS_DETECT_TYPES</code> environment variable has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/679">#679</a>)</li>
-</ul>
-</blockquote>
-<h4 id="try-it-out">Try it out</h4>
-<p>You can install the new RC like this:</p>
-<div class="highlight highlight-source-shell"><pre>pip install sqlite-utils==4.0rc1</pre></div>
-<p>Or try the CLI version directly with <code>uvx</code> like this:</p>
-<div class="highlight highlight-source-shell"><pre>uvx --with sqlite-utils==4.0rc1 sqlite-utils --help</pre></div>
-<p>Come chat with us about it in the <a href="https://discord.gg/Ass7bCAMDw">sqlite-utils Discord channel</a>, or file any bugs in <a href="https://github.com/simonw/sqlite-utils/issues">GitHub Issues</a>.</p>
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/migrations">migrations</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a></p>]]></description><pubDate>Sun, 21 Jun 2026 23:35:47 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/jailbreaking">jailbreaking</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 22 Jun 2026 23:59:53 +0000</pubDate></item></channel></rss>
