@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>llm-coding-agent 0.1a0</title><link>https://simonwillison.net/2026/Jul/2/llm-coding-agent/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-coding-agent/releases/tag/0.1a0">llm-coding-agent 0.1a0</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>June 2026 newsletter</title><link>https://simonwillison.net/2026/Jul/3/june-newsletter/#atom-everything</link><description><![CDATA[<p>The June edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a> is out. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2026-06-june.md">access it here</a>.</p>
+<p>This month:</p>
+<ul>
+<li>Claude Fable 5, GPT-5.6, and US export restrictions</li>
+<li>GLM-5.2 is the new best open weights model</li>
+<li>Tokenmaxxing is so over</li>
+<li>Datasette Apps</li>
+<li>sqlite-utils and shot-scraper and Datasette</li>
+<li>Miscellaneous WASM projects</li>
+<li>Other model releases</li>
+<li>What I'm using</li>
+</ul>
+<p>Here's <a href="https://github.com/simonw/monthly-newsletter-archive/blob/main/2026-05-may.md">a copy of the May newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Fri, 3 Jul 2026 14:50:50 +0000</pubDate></item><item><title>llm-coding-agent 0.1a0</title><link>https://simonwillison.net/2026/Jul/2/llm-coding-agent/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-coding-agent/releases/tag/0.1a0">llm-coding-agent 0.1a0</a></p>
         <p>Another Fable 5 experiment. Now that my <a href="https://llm.datasette.io/">LLM library</a> has evolved into more of an agent framework it's time to see what a simple coding agent would look like built on it.</p>
 <p>I started a <a href="https://github.com/simonw/llm-coding-agent/tree/2466fa03ba8e5122c3bfa93d52167d33bce40ac6">new Python library</a> using my <a href="https://github.com/simonw/python-lib-template-repository">python-lib-template-repository</a> GitHub template repository, then ran these two prompts (here's the <a href="https://claude.ai/code/session_01TEUBvBbMipbFSoqjMiJ7ha">Claude Code for web transcript</a>):</p>
 <blockquote>
@@ -677,17 +691,4 @@ git commit -m <span class="pl-s"><span class="pl-pds">"</span>Initial research b
         <p>See <a href="https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/">sqlite-utils 4.0rc1 adds migrations and nested transactions</a>.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>]]></description><pubDate>Sun, 21 Jun 2026 23:30:04 +0000</pubDate></item><item><title>Temporary Cloudflare Accounts for AI agents</title><link>https://simonwillison.net/2026/Jun/21/temporary-cloudflare-accounts/#atom-everything</link><description><![CDATA[<p><strong><a href="https://blog.cloudflare.com/temporary-accounts/">Temporary Cloudflare Accounts for AI agents</a></strong></p>
-The announcement says this is "for AI agents" but (as is pretty common these days) the AI hook isn't really necessary, this is an interesting feature for everyone else as well.</p>
-<p>Short version: you can now create a Cloudflare Workers project and run this, without even creating a Cloudflare account:</p>
-<pre><code>npx wrangler deploy --temporary
-</code></pre>
-<p>Cloudflare will deploy the application to a new, ephemeral project which will stay live for 60 minutes.</p>
-<p>I <a href="https://gist.github.com/simonw/264bd6b8a39fc34c91c9c867454c64b9">had GPT-5.5 xhigh</a> in Codex Desktop <a href="https://github.com/simonw/cloudflare-redirect-resolver">build this test application</a> providing a tool for following HTTP redirects and returning the final destination. The temporary deployment worked as advertised.</p>
-<p>Running the deployment spits out the URL to a page for claiming the new project, for if you want it to last for more than 60 minutes. Here's what that claim screen looks like:</p>
-<p><img alt="Screenshot of a Cloudflare account claim page. A red banner at top reads &quot;This claim link expires in 49:26&quot;. Below, a card titled &quot;Educated Celery&quot; with the text &quot;Claim this account to take ownership of cloudflare-redirect-resolver and all its resources.&quot; and a blue &quot;Claim Account&quot; button. A worker entry shows &quot;cloudflare-redirect-resolver&quot; with the URL &quot;cloudflare-redirect-resolver.educated-celery.workers.dev&quot;." src="https://static.simonwillison.net/static/2026/cloudflare-claim.jpg" />
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48608394">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a></p>]]></description><pubDate>Sun, 21 Jun 2026 22:01:04 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>]]></description><pubDate>Sun, 21 Jun 2026 23:30:04 +0000</pubDate></item></channel></rss>
