@@ -1,7 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Quickly apply LUTs (color grading) with ffmpeg</title><link>https://www.jeffgeerling.com/blog/2026/apply-lut-color-grade-with-ffmpeg/</link><description><![CDATA[<p>This is a quick post, mostly for my own reference.</p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>The Special Value Pi 4 was extremely short-lived</title><link>https://www.jeffgeerling.com/blog/2026/special-value-pi-4-extremely-short-lived/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/special-value-pi-4-extremely-short-lived/special-value-pi-4-4gb.jpg"
+ alt="Special Value Pi 4 4GB in hand" width="700" height="auto">
+</figure>
+
+<p>The 'Special Value' Pi 4 pictured above is probably the rarest Raspberry Pi I own—even rarer than my <a href="https://www.jeffgeerling.com/blog/2025/limited-time-flavor-blue-raspberry-pi/">blue special edition Pi</a>.</p>
+<p>A Raspberry Pi reseller <a href="https://www.cnx-software.com/2026/06/26/discounted-1-25-ghz-raspberry-pi-4-model-b/">briefly listed a special 'value edition' Pi 4</a>. But the product page 404's now. While it was up, my curiosity got the better of me, and now I have two 'value' Pi 4s.</p>
+<p>What makes them a 'value'? They're only certified to run at 1.25 GHz (retail Pi 4s run at 1.8 GHz, and can usually be overclocked).</p>]]></description><pubDate>Wed, 8 Jul 2026 14:00:00 +0000</pubDate></item><item><title>Quickly apply LUTs (color grading) with ffmpeg</title><link>https://www.jeffgeerling.com/blog/2026/apply-lut-color-grade-with-ffmpeg/</link><description><![CDATA[<p>This is a quick post, mostly for my own reference.</p>
 <p>I've avoided LUTs and 'Log' video footage for years<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>, mostly because of the extra tiny bit of workflow involved. Like RAW photos, 'Log' footage retains the video sensor's full dynamic range, so you can pull more color and luminance information out of the footage later.</p>
 <p>But unlike photography, where RAW has been a thing for decades, and many workflows 'just work' without me having to 'grade' every individual photo, in video precious few consumer apps handle Log footage gracefully. You generally end up with a muddy grey mess.</p>]]></description><pubDate>Fri, 26 Jun 2026 02:23:00 +0000</pubDate></item><item><title>Framework&apos;s 10G Ethernet module exposes USB-C&apos;s complexity</title><link>https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/framework-10g-ethernet-module-usb-c-complexity/wisdpi-framework-10g-module.jpeg"
-			alt="WisdPi&#39;s Framework 10G Ethernet module" width="700" height="auto">
+ alt="WisdPi&#39;s Framework 10G Ethernet module" width="700" height="auto">
 </figure>
 
 <p>I've been following WisdPi's development of various <a href="https://www.youtube.com/watch?v=tRG_I_3VeTc">5 Gbps</a> and <a href="https://www.jeffgeerling.com/blog/2026/new-10-gbe-usb-adapters-cooler-smaller-cheaper/">10 Gbps</a> Ethernet adapters for the past couple years.</p>
@@ -9,35 +15,35 @@
 <p>In today's video, I tested the new <a href="https://frame.work/products/wisdpi-10g-ethernet-expansion-card">WisdPi 10G Ethernet Expansion Card</a> for Framework computers. It fits in any available Framework Expansion slot—even on the Framework Desktop.</p>
 <p>But Expansion Cards use USB-C for their connection to the mainboard—and therein lies the rub...</p>]]></description><pubDate>Wed, 24 Jun 2026 14:00:00 +0000</pubDate></item><item><title>You can finally power on a Mac remotely</title><link>https://www.jeffgeerling.com/blog/2026/power-on-your-mac-remotely/</link><description><![CDATA[<p>Apple FINALLY lets you <a href="https://support.apple.com/en-us/125517">turn on your Mac remotely</a>, without having to press the power button. In the media, articles suggest it's a reaction to <a href="https://9to5mac.com/2026/05/11/macos-26-5-adds-new-way-to-control-your-macs-power-state-via-switches/">Mac mini power button complaints</a>.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/power-on-your-mac-remotely/m4-mini-remote-power-button.jpg"
-			alt="Turning on an M4 Mac mini remotely using Home Assistant on a Framework 12" width="700" height="auto">
+ alt="Turning on an M4 Mac mini remotely using Home Assistant on a Framework 12" width="700" height="auto">
 </figure>
 
 <p>While I agree the M4 mini's power button is in a really dumb spot, that's not why I care about this feature. The two <em>bigger</em> use cases for me have been a pain for years:</p>]]></description><pubDate>Fri, 12 Jun 2026 14:00:00 +0000</pubDate></item><item><title>I tested every IP KVM in my Homelab</title><link>https://www.jeffgeerling.com/blog/2026/i-tested-every-ip-kvm/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/i-tested-every-ip-kvm/all-ip-kvms.jpg"
-			alt="IP KVMs on desk" width="700" height="auto">
+ alt="IP KVMs on desk" width="700" height="auto">
 </figure>
 
 <p>Since the PiKVM came out in 2017, there's been an <em>explosion</em> of IP KVMs. I've tested <em>almost every one</em>. But what are they good for?</p>
 <p>You can use Remote Desktop, Screen Sharing, or VNC to remote control a computer from anywhere on a LAN. And if you don't have a private VPN, you could use <a href="https://www.realvnc.com/">RealVNC</a>, <a href="https://www.raspberrypi.com/software/connect/">Raspberry Pi Connect</a>, or wire up <a href="https://tailscale.com">Tailscale</a> or <a href="https://pangolin.net">Pangolin</a> for fully remote access. Those solutions are great, and so is SSH if you don't need a full desktop.</p>]]></description><pubDate>Fri, 5 Jun 2026 14:00:00 +0000</pubDate></item><item><title>It&apos;s hard to justify buying a Framework 12</title><link>https://www.jeffgeerling.com/blog/2026/its-hard-to-justify-framework-12/</link><description><![CDATA[<p>My nephew just graduated high school, and wants a laptop. When he decides what computer to buy, price (or more precisely, <em>value</em>) is the most important attribute.</p>
 <p>Apple's MacBook Neo upended the 'value laptop' equation—Apple's not supposed to be both the cheapest option <em>and</em> the best value... but it seems like that's squarely where the Neo landed for the good-but-cheap laptop category.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/its-hard-to-justify-framework-12/macbook-neo-and-framework-12.jpeg"
-			alt="MacBook Neo on top of Framework 12" width="700" height="auto">
+ alt="MacBook Neo on top of Framework 12" width="700" height="auto">
 </figure>
 
 <p>My nephew is also my godson, and to kick off his computing journey, I thought I'd let him choose from a Framework 12 I bought to test, or the MacBook Neo I bought a couple months ago to use around the studio.</p>]]></description><pubDate>Fri, 29 May 2026 14:00:00 +0000</pubDate></item><item><title>Tuning in FM Radio on a 3D Printer Heatbed</title><link>https://www.jeffgeerling.com/blog/2026/tuning-in-fm-radio-on-a-3d-printer-heatbed/</link><description><![CDATA[<p><a href="https://linktr.ee/repkord">Pooch</a> from Repkord dropped by my studio while he was in St. Louis, and asked a simple question:</p>
 <p><em>Can a 3D printer's heatbed act as an antenna?</em></p>
 <p>A fair question, as many an antenna is embedded in a PCB these days... and the traces on a <a href="https://www.prusa3d.com/product/heatbed-set/">PCB heatbed</a> like the one used in Prusa's Core One look kinda like an antenna, if you squint the right way.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/tuning-in-fm-radio-on-a-3d-printer-heatbed/nanovna-3d-printer-heatbed.jpg"
-			alt="NanoVNA hooked up to 3D Printer Heatbed" width="500" height="auto">
+ alt="NanoVNA hooked up to 3D Printer Heatbed" width="500" height="auto">
 </figure>
 
 <p>Really, anything (or anyone) can be an antenna, given enough power.</p>]]></description><pubDate>Thu, 28 May 2026 14:00:00 +0000</pubDate></item><item><title>I patched iozone for better disk benchmarks on modern macOS</title><link>https://www.jeffgeerling.com/blog/2026/i-patched-iozone-for-better-disk-benchmarks-on-modern-macos/</link><description><![CDATA[<p>A decade ago, I settled on <a href="https://iozone.org"><code>iozone</code></a> for disk benchmarking on all my systems. Tools like <code>fio</code> ('Flexible IO' tester) are a little more capable for raw disk performance testing, and other tools test network-scale filesystems better, but <code>iozone</code> gives me an easy overview of real-world disk performance across hard drives and SSDs, and runs on Mac, Windows, and Linux (and a smattering of other OSes).</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/i-patched-iozone-for-better-disk-benchmarks-on-modern-macos/iozone-website.jpg"
-			alt="iozone Website with filesystem performance graph" width="700" height="auto">
+ alt="iozone Website with filesystem performance graph" width="700" height="auto">
 </figure>
 
 <p>It's been around <a href="https://www.iozone.org/src/stable/iozone.c">since 1991</a>, and is still updated today—in fact, the two latest updates (version 509 and 510) contain patches I sent in to get iozone to compile on Apple Silicon Macs running newer releases of macOS.</p>]]></description><pubDate>Wed, 27 May 2026 01:32:00 +0000</pubDate></item><item><title>News about Raspberry Pi 6 and Microcontroller Development</title><link>https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/</link><description><![CDATA[<p>On Thursday, three of the <a href="https://investors.raspberrypi.com/leadership">lead Raspberry Pi engineers</a> hosted an <a href="https://www.reddit.com/r/engineering/comments/1tcyfvk/hello_rengineering_were_eben_upton_ceo_james/">AMA on the r/engineering subreddit</a>.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/news-about-raspberry-pi-6-and-microcontroller-development/pi-reddit-ama.jpg"
-			alt="Raspberry Pi Reddit AMA with Eben Upton, Gordon Hollingworth, and James Adams" width="500" height="auto">
+ alt="Raspberry Pi Reddit AMA with Eben Upton, Gordon Hollingworth, and James Adams" width="500" height="auto">
 </figure>
 
 <h2 id="raspberry-pi-6">Raspberry Pi 6</h2>
@@ -52,7 +58,7 @@
 </ul>
 <p>Following that cycle, one would expect a Pi 6 3-4 years after the Pi 5, which would put it in 2026 or 2027.</p>]]></description><pubDate>Fri, 22 May 2026 20:15:00 +0000</pubDate></item><item><title>Wi-Wi Is Wireless Time Sync at 1 nanosecond</title><link>https://www.jeffgeerling.com/blog/2026/wi-wi-is-wireless-time-sync-less-than-5ns/</link><description><![CDATA[<p>At NAB, I found a demo of <a href="https://www.wiwistamp.com">Wi-Wi STAMP</a>, a wireless time synchronization protocol that <a href="https://archive.gps.gov/cgsic/meetings/2024/shiga.pdf">came out of Japan's NICT</a>.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/wi-wi-is-wireless-time-sync-less-than-5ns/wi-wi-stamp-leader-timing-hardware.jpg"
-			alt="Wi-Wi STAMP time synchronization hardware" width="700" height="auto">
+ alt="Wi-Wi STAMP time synchronization hardware" width="700" height="auto">
 </figure>
 
 <p>Wi-Wi stands for Wireless 2Way interferometry, and it uses the 900 MHz band for picosecond-level time sync, and mm-level distance accuracy, in a tiny box, currently the size of a smartphone.</p>
@@ -65,36 +71,36 @@
 <li>I deleted Bambu Studio and started using <a href="https://www.orcaslicer.com">OrcaSlicer</a></li>
 </ul>
 <p>I had to do that to keep it under <em>my</em> control, instead of Bambu's.</p>]]></description><pubDate>Tue, 12 May 2026 14:00:00 +0000</pubDate></item><item><title>HomePod mini feels like magic, but it&apos;s just good timing</title><link>https://www.jeffgeerling.com/blog/2026/homepod-mini-feels-like-magic--but-it-s-just-good-timing/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/homepod-mini-feels-like-magic--but-it-s-just-good-timing/homepod-minis-stereo-pair-iphone-playing-music.jpg"
-			alt="HomePod mini stereo pair demonstration with iPhone" width="700" height="auto">
+ alt="HomePod mini stereo pair demonstration with iPhone" width="700" height="auto">
 </figure>
 
 <p>Apple introduced the <a href="https://www.apple.com/homepod-mini/">HomePod mini</a> <em>six years ago</em>, in 2020.</p>
 <p>I'm not one into smart speakers, but the feature that made me take a closer look was their ability to form stereo pairs, without any direct wired connection.</p>
 <p>I know there are other speaker manufacturers with wireless speakers, but to my knowledge, Apple was just using AirPlay over WiFi... so how does it work?</p>
 <p>Through the magic of buying two HomePods mini (pictured above), I found out. A video detailing the process is embedded below:</p>]]></description><pubDate>Fri, 8 May 2026 14:00:00 +0000</pubDate></item><item><title>SBC Clusters are a terrible value, but they&apos;re fun anyway</title><link>https://www.jeffgeerling.com/blog/2026/deskpi-super4c-sbc-cluster/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/deskpi-super4c-sbc-cluster/deskpi-super4c-in-waveshare-homerack-mini-rack.jpg"
-			alt="DeskPi Super4C SBC Cluster Board in Waveshare HomeRack Mini Rack" width="700" height="auto">
+ alt="DeskPi Super4C SBC Cluster Board in Waveshare HomeRack Mini Rack" width="700" height="auto">
 </figure>
 
 <p>Pictured above is the new <a href="https://amzn.to/4w4rUOq">DeskPi Super4C</a> installed in an 8U mini rack. The Super4C is a 4-node Raspberry Pi CM5 cluster board that solves two pain points I had with the older <a href="https://www.jeffgeerling.com/blog/2022/6-raspberry-pis-6-ssds-on-mini-itx-motherboard/">Super6C</a>.</p>
 <p>I was testing this board around the same time I helped kick off the <a href="https://sbcc.sdsc.edu/main-page.html">SBCC 2026</a>, the Single Board Cluster Competition for students. A dozen or so university teams squared off to run the best mini HPC cluster with a budget of $6,000, and a couple days to benchmark <a href="https://single-board-cluster-competition.github.io/sbcc26-competition-site/grading.html">six HPC workloads</a>.</p>]]></description><pubDate>Fri, 1 May 2026 14:00:00 +0000</pubDate></item><item><title>Raspberry Pi Connect may control Windows soon</title><link>https://www.jeffgeerling.com/blog/2026/raspberry-pi-connect-may-control-windows-soon/</link><description><![CDATA[<p>Support for <a href="https://forums.raspberrypi.com/viewtopic.php?p=2373678">remote controlling Windows PCs</a> may be added to <a href="https://www.raspberrypi.com/software/connect/">Raspberry Pi Connect</a>, Raspberry Pi's free remote access service.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/raspberry-pi-connect-may-control-windows-soon/pi-connect-windows-11.jpg"
-			alt="Raspberry Pi Connect controlling a Windows 11 PC" width="700" height="auto">
+ alt="Raspberry Pi Connect controlling a Windows 11 PC" width="700" height="auto">
 </figure>
 
 <p>When they <a href="https://www.jeffgeerling.com/blog/2024/raspberry-pi-getting-services-game/">announced Pi Connect in 2024</a>, I speculated the service was launched in response to RealVNC's sluggish adoption of Wayland, leading to Pi users lacking a solid remote access solution after Pi OS 12 'Bookworm' was launched.</p>
 <p>The service was helpful for those who had one or more Raspberry Pis to access, but the Pi Connect daemon didn't run on Windows or macOS at the time, so a true competitor to RealVNC (at least for basic use cases) it was not.</p>]]></description><pubDate>Wed, 29 Apr 2026 17:00:00 +0000</pubDate></item><item><title>New 10 GbE USB adapters are cooler, smaller, cheaper</title><link>https://www.jeffgeerling.com/blog/2026/new-10-gbe-usb-adapters-cooler-smaller-cheaper/</link><description><![CDATA[<p>For years, the best way to get 10 gigabit networking on laptops was to buy an expensive, large, and hot 10 GbE Thunderbolt adapter. With new RTL8159-based 10G USB 3.2 adapters coming onto the market, the bulky adapters might be a thing of the past. Just look at the size of the thing in comparison to my Thunderbolt adapters:</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/new-10-gbe-usb-adapters-cooler-smaller-cheaper/thunderbolt-and-usb-c-10g-ethernet-adapters.jpg"
-			alt="10 Gbps Ethernet adapters for Thunderbolt and USB" width="700" height="auto">
+ alt="10 Gbps Ethernet adapters for Thunderbolt and USB" width="700" height="auto">
 </figure>
 
 <p><a href="https://amzn.to/3QIkfFm">2.5G</a> and even <a href="https://amzn.to/4mytCmZ">5G USB adapters</a> have been out for a while, but sometimes you need more bandwidth.</p>]]></description><pubDate>Fri, 24 Apr 2026 14:00:00 +0000</pubDate></item><item><title>An Arm Mainboard for the Framework Laptop</title><link>https://www.jeffgeerling.com/blog/2026/arm-mainboard-for-framework-laptop/</link><description><![CDATA[<p>Using the repair-friendly Framework 13 laptop chassis, I've tested the low-end x86 option (a <a href="https://github.com/geerlingguy/sbc-reviews/issues/90">Ryzen AI 5 340 Mainboard</a>), the fastest RISC-V option (<a href="https://github.com/geerlingguy/sbc-reviews/issues/82">DC-ROMA II</a>), and today I'm publishing results from the only Arm Mainboard, the <a href="https://github.com/geerlingguy/sbc-reviews/issues/103">MetaComputing AI PC</a>, which has a 12-core Arm SoC and up to 32 GB of soldered-on RAM.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/arm-mainboard-for-framework-laptop/metacomputing-arm-framework-hero.jpg"
-			alt="MetaComputing AI PC Mainboard next to Framework 13 laptop" width="700" height="auto">
+ alt="MetaComputing AI PC Mainboard next to Framework 13 laptop" width="700" height="auto">
 </figure>
 
 <p>My Framework 13 has run on x86, RISC-V, and now Arm, making it something of a 'Ship of Theseus'.</p>]]></description><pubDate>Wed, 15 Apr 2026 14:49:00 +0000</pubDate></item><item><title>Build your own Dial-up ISP with a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2026/build-your-own-dial-up-isp-with-a-raspberry-pi/</link><description><![CDATA[<p>Last year my aunt let me add her <a href="https://everymac.com/systems/apple/ibook/specs/ibook.html">original Tangerine iBook G3 clamshell</a> to my collection of old Macs<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/build-your-own-dial-up-isp-with-a-raspberry-pi/pi-isp-ibook-hero.jpeg"
-			alt="iBook G3 accessing dial-up Internet over WiFi browsing the vintage web" width="700" height="auto">
+ alt="iBook G3 accessing dial-up Internet over WiFi browsing the vintage web" width="700" height="auto">
 </figure>
 
 <p>It came with an AirPort card—a $99 add-on Apple made that ushered in the Wi-Fi era. The iBook G3 was the first consumer laptop with built-in Wi-Fi antennas, and by <em>far</em> <a href="https://www.eetimes.com/the-secret-success-of-steve-jobs-wireless-internet/">the cheapest way</a> to get a computer onto an 802.11 wireless network.</p>]]></description><pubDate>Fri, 3 Apr 2026 14:00:00 +0000</pubDate></item><item><title>DRAM pricing is killing the hobbyist SBC market</title><link>https://www.jeffgeerling.com/blog/2026/dram-pricing-is-killing-the-hobbyist-sbc-market/</link><description><![CDATA[<p>Today Raspberry Pi announced <a href="https://www.raspberrypi.com/news/a-new-3gb-raspberry-pi-4-for-83-75-and-more-memory-driven-price-increases/">more price increases for all Pis with LPDDR4 RAM</a>, alongside a 'right-sized' 3GB RAM Pi 4 for $83.75.</p>
@@ -106,16 +112,12 @@
 </div>
 <p>But if you'd like the <strong>tl;dr</strong>:</p>]]></description><pubDate>Wed, 1 Apr 2026 21:00:00 +0000</pubDate></item><item><title>Bring back MiniDV with this Raspberry Pi FireWire HAT</title><link>https://www.jeffgeerling.com/blog/2026/minidv-with-raspberry-pi-firewire-hat/</link><description><![CDATA[<p>In my last post, I showed you to use <a href="https://www.jeffgeerling.com/blog/2026/firewire-on-a-raspberry-pi/">FireWire on a Raspberry Pi</a> with a PCI Express IEEE 1394 adapter. Now I'll show you how I'm using a new <a href="https://equip-1.c-e.group">FireWire HAT</a> and a <a href="https://amzn.to/4dKtuyg">PiSugar3 Plus</a> battery to make a portable MRU, or 'Memory Recording Unit', to replace tape in older FireWire/i.Link/DV cameras.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/minidv-with-raspberry-pi-firewire-hat/firehat-raspberry-pi-recording-from-firewire.jpeg"
-			alt="Firehat on Raspberry Pi recording video from Canon GL1 over FireWire" width="700" height="auto">
+ alt="Firehat on Raspberry Pi recording video from Canon GL1 over FireWire" width="700" height="auto">
 </figure>
 
 <p>The alternative is an old used MRU like <a href="https://pro.sony/s3/cms-static-content/operation-manual/3290149121.pdf">Sony's HVR-MRC1</a>, which runs around $300 on eBay<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>]]></description><pubDate>Fri, 27 Mar 2026 14:00:00 +0000</pubDate></item><item><title>Using FireWire on a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2026/firewire-on-a-raspberry-pi/</link><description><![CDATA[<p>After learning Apple <a href="https://512pixels.net/2025/07/tahoe-no-firewire/">killed off FireWire (IEEE 1394) support in macOS 26 Tahoe</a>, I started looking at alternatives for old FireWire equipment like hard drives, DV cameras, and A/V gear.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/firewire-on-a-raspberry-pi/g4-canon-gl1-firewire.jpg"
-			alt="Power Mac G4 MDD with Canon GL1 DV Camera importing footage into Final Cut Express" width="700" height="auto">
+ alt="Power Mac G4 MDD with Canon GL1 DV Camera importing footage into Final Cut Express" width="700" height="auto">
 </figure>
 
-<p>I own an old Canon GL1 camera, with a 'DV' port. I could plug that into an old Mac (like the dual G4 MDD above) with FireWire—or even a modern Mac running macOS &lt; 26, <a href="https://youtu.be/nqCO4Z_VP3c?t=1281">with some dongles</a>—and transfer digital video footage between the camera and an application like Final Cut Pro.</p>]]></description><pubDate>Tue, 24 Mar 2026 16:00:00 +0000</pubDate></item><item><title>The best laptop Apple ever made</title><link>https://www.jeffgeerling.com/blog/2026/best-laptop-apple-ever-made/</link><description><![CDATA[<p>Today I posted a video titled <a href="https://www.youtube.com/watch?v=JpPIrmZB828">The best laptop Apple ever made</a>, and <em>tl;dw</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> it's the 11&quot; MacBook Air.</p>
-<div class="yt-embed">
- <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/JpPIrmZB828' frameborder='0' allowfullscreen></iframe></div>
-</div>
-<p>I acknowledge in the video my pick is slightly subjective, and I also asked a number of other YouTubers which Mac laptop <em>they</em> consider the best (or at least most influential). If you don't want to watch the video, I'll summarize their choices here:</p>]]></description><pubDate>Fri, 20 Mar 2026 14:00:00 +0000</pubDate></item></channel></rss>
+<p>I own an old Canon GL1 camera, with a 'DV' port. I could plug that into an old Mac (like the dual G4 MDD above) with FireWire—or even a modern Mac running macOS &lt; 26, <a href="https://youtu.be/nqCO4Z_VP3c?t=1281">with some dongles</a>—and transfer digital video footage between the camera and an application like Final Cut Pro.</p>]]></description><pubDate>Tue, 24 Mar 2026 16:00:00 +0000</pubDate></item></channel></rss>
