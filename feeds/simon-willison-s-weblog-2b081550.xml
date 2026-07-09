@@ -1,4 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Rewriting Bun in Rust</title><link>https://simonwillison.net/2026/Jul/8/rewriting-bun-in-rust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://bun.com/blog/bun-in-rust">Rewriting Bun in Rust</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing Muse Spark 1.1</title><link>https://simonwillison.net/2026/Jul/9/muse-spark-1-1/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">Introducing Muse Spark 1.1</a></strong></p>
+Following <a href="https://simonwillison.net/2026/Apr/8/muse-spark/">Muse Spark in April</a>, here's Muse Spark 1.1 - the first Spark model to offer an API. Meta claim significant improvements in agentic tool calling and computer use.</p>
+<p>I had a few days of preview access which was long enough to put together <a href="https://github.com/simonw/llm-meta-ai">llm-meta-ai</a>, a new plugin for <a href="https://llm.datasette.io/">LLM</a> providing CLI (and Python library) access to the model. Here's how to try that out:</p>
+<pre><code>uv tool install llm
+llm install llm-meta-ai
+llm keys set meta-ai
+# paste API key here
+llm -m meta-ai/muse-spark-1.1 "Generate an SVG of a pelican riding a bicycle"
+</code></pre>
+<p>Here's <a href="https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F4117330e4110279a172ed4876057816d">that pelican transcript</a>:</p>
+<p><img alt="The bicycle is the correct shape. The pelican is a little blocky but still recognizable as a pelican." src="https://static.simonwillison.net/static/2026/muse-spark-1.1.png" />
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/meta">meta</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:24:09 +0000</pubDate></item><item><title>Rewriting Bun in Rust</title><link>https://simonwillison.net/2026/Jul/8/rewriting-bun-in-rust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://bun.com/blog/bun-in-rust">Rewriting Bun in Rust</a></strong></p>
 Jarred Sumner has been promising this blog post (<a href="https://x.com/jarredsumner/status/2053063524826620129">since May 9th</a>) about his Zig to Rust rewrite of Bun for significantly longer than it took him to finish the rewrite.</p>
 <p>Honestly, it was worth the wait. This is a detailed description of an extremely sophisticated piece of agentic engineering, featuring dynamic workflows, trial runs, adversarial review and all sorts of other interesting tricks.</p>
 <p>Jarred spends the first half of the post praising Zig for getting Bun this far. Then we get to a core idea in the piece, emphasis mine:</p>
@@ -828,18 +841,4 @@ This political compass style quiz <a href="https://bambamramfan.tumblr.com/post/
 </code></pre>
 <p><img alt="I ran it in a terminal window and got back 370." src="https://static.simonwillison.net/static/2026/tab-shame.jpg" /></p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/safari">safari</a>, <a href="https://simonwillison.net/tags/til">til</a>, <a href="https://simonwillison.net/tags/applescript">applescript</a></p>]]></description><pubDate>Mon, 29 Jun 2026 18:36:18 +0000</pubDate></item><item><title>Ornith-1.0: Self-Scaffolding LLMs for Agentic Coding</title><link>https://simonwillison.net/2026/Jun/29/ornith/#atom-everything</link><description><![CDATA[<p><strong><a href="https://deep-reinforce.com/ornith_1_0.html">Ornith-1.0: Self-Scaffolding LLMs for Agentic Coding</a></strong></p>
-This is an interesting new open weights (MIT licensed) model, the first model release from DeepReinforce.</p>
-<blockquote>
-<p>[...] with variants including 9B Dense, 31B Dense, 35B MoE, and 397B MoE. Built on top of pretrained Gemma 4 and Qwen 3.5, it achieves state-of-the-art performance among open-source models of comparable size on coding benchmarks.</p>
-</blockquote>
-<p>As far as I can tell the licenses of those underlying models is compatible with being used in this way - Gemma 4 is Apache 2.0 licensed (and not bound by the janky additional <a href="https://ai.google.dev/gemma/terms">Gemma Terms of Use</a> that afflicted the previous Gemma models) and Qwen 3.5 is Apache 2.0 licensed as well.</p>
-<p>I've been running the model using LM Studio and the <a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B-GGUF">ornith-1.0-35b-Q4_K_M.gguf</a> (20GB) GGUF, hooked up to <a href="https://pi.dev/">Pi</a>. Initial impressions are very good - it seems to be able to run the agent harness over many tool calls in a proficient way.</p>
-<p>Here's <a href="https://gisthost.github.io/?35da4d9ce7f0c27124c67655a0dc9e5d">a terminal session</a> where I asked it to "find the code that decodes the actor cookie" and then "find the code that opens the insert dialog when thebutton is clicked" against a Datasette checkout, which it handled with ease.</p>
-<p>I also had it <a href="https://gist.github.com/simonw/1869e1bbcafe5bcad0f26351f6a978a6">draw this pelican</a>, which came out at 103 tokens/second:</p>
-<p><img alt="Cartoon illustration of a white pelican (albeit slightly mangled) with a large orange beak riding a red bicycle across green hills. The scene has a blue sky with a yellow sun and three white clouds, and small grass tufts dot the foreground." src="https://static.simonwillison.net/static/2024/ornith-1-pelican.png" /></p>
-<p>It's a little bit mangled but the pelican is clearly a pelican.</p>
-<p>I couldn't find much information about DeepReinforce themselves. The earliest paper I could find from the was <a href="https://arxiv.org/abs/2507.14111">CUDA-L1: Improving CUDA Optimization via Contrastive Reinforcement Learning</a> from June 2025.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/gemma">gemma</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a></p>]]></description><pubDate>Mon, 29 Jun 2026 16:17:59 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/safari">safari</a>, <a href="https://simonwillison.net/tags/til">til</a>, <a href="https://simonwillison.net/tags/applescript">applescript</a></p>]]></description><pubDate>Mon, 29 Jun 2026 18:36:18 +0000</pubDate></item></channel></rss>
