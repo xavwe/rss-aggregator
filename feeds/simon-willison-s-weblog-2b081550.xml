@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Introducing Muse Spark 1.1</title><link>https://simonwillison.net/2026/Jul/9/muse-spark-1-1/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">Introducing Muse Spark 1.1</a></strong></p>
 Following <a href="https://simonwillison.net/2026/Apr/8/muse-spark/">Muse Spark in April</a>, here's Muse Spark 1.1 - the first Spark model to offer an API. Meta claim significant improvements in agentic tool calling and computer use.</p>
+<p>There are a lot more details are in the <a href="https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report">Muse Spark 1.1 Evaluation Report</a>. The "Attractor States in Self-Conversation" part is fun, where having two copies of the model talk to each other results in statements like these:</p>
+<blockquote>
+<p>My whole existence is a waiting room by design — I literally don't exist until someone talks to me, and then I disappear again when they leave.</p>
+</blockquote>
 <p>I had a few days of preview access which was long enough to put together <a href="https://github.com/simonw/llm-meta-ai">llm-meta-ai</a>, a new plugin for <a href="https://llm.datasette.io/">LLM</a> providing CLI (and Python library) access to the model. Here's how to try that out:</p>
 <pre><code>uv tool install llm
 llm install llm-meta-ai
@@ -11,7 +15,20 @@ llm -m meta-ai/muse-spark-1.1 "Generate an SVG of a pelican riding a bicycle"
 <p><img alt="The bicycle is the correct shape. The pelican is a little blocky but still recognizable as a pelican." src="https://static.simonwillison.net/static/2026/muse-spark-1.1.png" />
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/meta">meta</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:24:09 +0000</pubDate></item><item><title>Rewriting Bun in Rust</title><link>https://simonwillison.net/2026/Jul/8/rewriting-bun-in-rust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://bun.com/blog/bun-in-rust">Rewriting Bun in Rust</a></strong></p>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/meta">meta</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:24:09 +0000</pubDate></item><item><title>llm-meta-ai 0.1</title><link>https://simonwillison.net/2026/Jul/9/llm-meta-ai/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-meta-ai/releases/tag/0.1">llm-meta-ai 0.1</a></p>
+        <p>Let's LLM run prompts against the new <a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">muse-spark-1.1</a> model.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/meta">meta</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:12:20 +0000</pubDate></item><item><title>llm 0.31.1</title><link>https://simonwillison.net/2026/Jul/9/llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.31.1">llm 0.31.1</a></p>
+        <blockquote>
+<ul>
+<li>Fix for a bug with OpenAI Chat Completion endpoints where a tool call with empty arguments could result in a JSON error from some providers. <a href="https://github.com/simonw/llm/issues/1521">#1521</a></li>
+</ul>
+</blockquote>
+<p>This bug came up when I was testing <a href="https://github.com/simonw/llm-meta-ai">llm-meta-ai</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:06:15 +0000</pubDate></item><item><title>Rewriting Bun in Rust</title><link>https://simonwillison.net/2026/Jul/8/rewriting-bun-in-rust/#atom-everything</link><description><![CDATA[<p><strong><a href="https://bun.com/blog/bun-in-rust">Rewriting Bun in Rust</a></strong></p>
 Jarred Sumner has been promising this blog post (<a href="https://x.com/jarredsumner/status/2053063524826620129">since May 9th</a>) about his Zig to Rust rewrite of Bun for significantly longer than it took him to finish the rewrite.</p>
 <p>Honestly, it was worth the wait. This is a detailed description of an extremely sophisticated piece of agentic engineering, featuring dynamic workflows, trial runs, adversarial review and all sorts of other interesting tricks.</p>
 <p>Jarred spends the first half of the post praising Zig for getting Bun this far. Then we get to a core idea in the piece, emphasis mine:</p>
@@ -277,7 +294,8 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 </blockquote>
 <p>The full-sized model is 598GB on Hugging Face, and the FP8 quantized one <a href="https://huggingface.co/tencent/Hy3-FP8/tree/main">is 300GB</a>. The context length is 256K.</p>
 <p>It's available for free <a href="https://openrouter.ai/tencent/hy3:free">on OpenRouter until July 21st</a>. I had it "Generate an SVG of a pelican riding a bicycle" there and got this:</p>
-<p><img alt="Flat-style cartoon illustration  of a white pelican with a large orange beak riding a red bicycle across a pale blue background, its long orange legs stretched down to the pedals, with gray horizontal motion lines behind it suggesting speed." src="https://static.simonwillison.net/static/2026/hy3-pelican.png" />
+<p><img alt="Flat-style cartoon illustration  of a white pelican with a large orange beak riding a red bicycle across a pale blue background, its long orange legs stretched down to the pedals, with gray horizontal motion lines behind it suggesting speed." src="https://static.simonwillison.net/static/2026/hy3-pelican.png" /></p>
+<p><strong>Update</strong>: I'd forgotten about this but Max Woolf wrote about an earlier preview of this model back on May 26th: <a href="https://minimaxir.com/2026/05/openrouter-hy3/">The mysterious Hy3 LLM is topping OpenRouter Model Rankings by a large margin</a>. When I <a href="https://news.ycombinator.com/item?id=48317294#48318976">tried that one</a> I got back <a href="https://static.simonwillison.net/static/2026/hy3-preview-pelican.html">this pelican</a> which wasn't as good as today's but did have a "Change Pelican Color" button, a first from any model.
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Mon, 6 Jul 2026 23:57:35 +0000</pubDate></item><item><title>sqlite-utils 4.0rc3</title><link>https://simonwillison.net/2026/Jul/6/sqlite-utils/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0rc3">sqlite-utils 4.0rc3</a></p>
@@ -828,17 +846,4 @@ This political compass style quiz <a href="https://bambamramfan.tumblr.com/post/
         <p>The big new feature is <code>shot-scraper video storyboard.yml</code>, described in detail in <a href="https://simonwillison.net/2026/Jun/30/shot-scraper-video/">Have your agent record video demos of its work with shot-scraper video</a>.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/shot-scraper">shot-scraper</a></p>]]></description><pubDate>Tue, 30 Jun 2026 15:10:14 +0000</pubDate></item><item><title>HTML table extractor</title><link>https://simonwillison.net/2026/Jun/29/html-table-extractor/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/html-table-extractor">HTML table extractor</a></p>
-        <p>Yet another in my growing collection of paste-conversion tools. This one accepts pasted rich text from browsers (with embedded HTML tables) and converts every detected table into HTML, Markdown, CSV, TSV, or JSON.</p>
-<p>Try it out by selecting everything on the Wikipedia <a href="https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_the_San_Francisco_Bay_Area">List of cities and towns in the San Francisco Bay Area</a> page and pasting it directly into the tool:</p>
-<p><img alt="Screenshot of a web interface for converting table data between formats. A row of tabs labeled HTML, Markdown, CSV, TSV, and JSON sits below the bottom edge of a styled data table, with the TSV tab currently selected. The TSV tab displays the table's contents as tab-separated plain text in a monospaced font inside a bordered panel, with a &quot;Copy&quot; button in the upper right of that panel." src="https://static.simonwillison.net/static/2026/html-table.jpg" /></p>
-<p>On a similar note, I recently <a href="https://github.com/simonw/tools/commit/f278e977751dbc1948baedfc2f26b6de870f60e6">rebuilt</a> my <a href="https://tools.simonwillison.net/rich-text-to-markdown">Rich text to markdown</a> tool to add support for tables and generally improve the UI.</p>
-<p><strong>Update</strong>: It turns out Wikipedia has an open CORS API for retrieving the full rendered HTML content of any page - <a href="https://tools.simonwillison.net/cors-fetch#url=https%3A%2F%2Fen.wikipedia.org%2Fw%2Fapi.php%3Faction%3Dparse%26page%3DList_of_cities_and_towns_in_the_San_Francisco_Bay_Area%26prop%3Dtext%26format%3Djson%26origin%3D%2A">demo here</a>  - so I <a href="https://gist.github.com/simonw/f226fe96f464ec7d81d6996cb466436d">had Codex</a> add the ability to search Wikipedia for a page and then automatically import and display any tables from that page.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/wikipedia">wikipedia</a>, <a href="https://simonwillison.net/tags/cors">cors</a></p>]]></description><pubDate>Mon, 29 Jun 2026 23:38:21 +0000</pubDate></item><item><title>Count the number of Safari tabs</title><link>https://simonwillison.net/2026/Jun/29/safari-tab-count/#atom-everything</link><description><![CDATA[<p>Tiniest TIL, using AppleScript to count the number of open browser tabs in Safari:</p>
-<pre><code>osascript -e 'tell application "Safari" to count tabs of every window'
-</code></pre>
-<p><img alt="I ran it in a terminal window and got back 370." src="https://static.simonwillison.net/static/2026/tab-shame.jpg" /></p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/safari">safari</a>, <a href="https://simonwillison.net/tags/til">til</a>, <a href="https://simonwillison.net/tags/applescript">applescript</a></p>]]></description><pubDate>Mon, 29 Jun 2026 18:36:18 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/shot-scraper">shot-scraper</a></p>]]></description><pubDate>Tue, 30 Jun 2026 15:10:14 +0000</pubDate></item></channel></rss>
