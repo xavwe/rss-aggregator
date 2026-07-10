@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The new GPT-5.6 family: Luna, Terra, Sol</title><link>https://simonwillison.net/2026/Jul/9/gpt-5-6/#atom-everything</link><description><![CDATA[<p>OpenAI's latest flagship model <a href="https://openai.com/index/gpt-5-6/">hit general availability this morning</a>, and comes in three sizes: Luna, Terra, and Sol (from smallest to largest).</p>
 <p>The new models are priced per 1M input/output tokens as Luna $1/$6, Terra $2.50/$15, Sol $5/$30. For comparison, the Claude Opus series are $5/$25 and the Claude Fable 5 is $10/$50, but price-per-million tokens doesn't tell us much now that the number of reasoning tokens can differ so much between models for the same task.</p>
 
+<p>All three models have a February 16th 2026 knowledge cutoff, a million token context window, and 128,000 maximum output tokens.</p>
 
 <p>OpenAI's biggest benchmark claim concerns long-running agentic performance, with one benchmark showing all three models outperforming Claude Fable 5:</p>
 <blockquote>
