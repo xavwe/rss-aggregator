@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>The Special Value Pi 4 was extremely short-lived</title><link>https://www.jeffgeerling.com/blog/2026/special-value-pi-4-extremely-short-lived/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/special-value-pi-4-extremely-short-lived/special-value-pi-4-4gb.jpg"
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>QuadRF can spot drones and see WiFi through my wall</title><link>https://www.jeffgeerling.com/blog/2026/quadrf-can-spot-drones-and-see-wifi-through-my-wall/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/quadrf-can-spot-drones-and-see-wifi-through-my-wall/quadrf-antennna-array.jpeg"
+ alt="QuadRF antenna array from front" width="700" height="auto">
+</figure>
+
+<p>The <a href="https://scalerf.com">QuadRF</a> (pictured above) a phased-array radio built around a Raspberry Pi 5 and an FPGA board with picosecond-level timing. It does advanced signal processing and beamforming.</p>
+<p>It can see WiFi through walls and track drones in flight.</p>
+<p>If the open source community can come up with something like this, just imagine what governments are capable of.</p>
+<p>When you plug a computer into a network, tools like <a href="https://www.wireshark.org">Wireshark</a> can show all the hidden traffic you might not even know is there. <em>WiFi</em> packets are the same, but those travel through the air, allowing snooping without physical access.</p>]]></description><pubDate>Fri, 10 Jul 2026 14:00:00 +0000</pubDate></item><item><title>The Special Value Pi 4 was extremely short-lived</title><link>https://www.jeffgeerling.com/blog/2026/special-value-pi-4-extremely-short-lived/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/special-value-pi-4-extremely-short-lived/special-value-pi-4-4gb.jpg"
  alt="Special Value Pi 4 4GB in hand" width="700" height="auto">
 </figure>
 
@@ -115,9 +122,4 @@
  alt="Firehat on Raspberry Pi recording video from Canon GL1 over FireWire" width="700" height="auto">
 </figure>
 
-<p>The alternative is an old used MRU like <a href="https://pro.sony/s3/cms-static-content/operation-manual/3290149121.pdf">Sony's HVR-MRC1</a>, which runs around $300 on eBay<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>]]></description><pubDate>Fri, 27 Mar 2026 14:00:00 +0000</pubDate></item><item><title>Using FireWire on a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2026/firewire-on-a-raspberry-pi/</link><description><![CDATA[<p>After learning Apple <a href="https://512pixels.net/2025/07/tahoe-no-firewire/">killed off FireWire (IEEE 1394) support in macOS 26 Tahoe</a>, I started looking at alternatives for old FireWire equipment like hard drives, DV cameras, and A/V gear.</p>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/firewire-on-a-raspberry-pi/g4-canon-gl1-firewire.jpg"
- alt="Power Mac G4 MDD with Canon GL1 DV Camera importing footage into Final Cut Express" width="700" height="auto">
-</figure>
-
-<p>I own an old Canon GL1 camera, with a 'DV' port. I could plug that into an old Mac (like the dual G4 MDD above) with FireWire—or even a modern Mac running macOS &lt; 26, <a href="https://youtu.be/nqCO4Z_VP3c?t=1281">with some dongles</a>—and transfer digital video footage between the camera and an application like Final Cut Pro.</p>]]></description><pubDate>Tue, 24 Mar 2026 16:00:00 +0000</pubDate></item></channel></rss>
+<p>The alternative is an old used MRU like <a href="https://pro.sony/s3/cms-static-content/operation-manual/3290149121.pdf">Sony's HVR-MRC1</a>, which runs around $300 on eBay<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>]]></description><pubDate>Fri, 27 Mar 2026 14:00:00 +0000</pubDate></item></channel></rss>
