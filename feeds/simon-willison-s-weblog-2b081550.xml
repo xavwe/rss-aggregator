@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette code-frequency chart on GitHub</title><link>https://simonwillison.net/2026/Jul/13/datasette-code-frequency/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/datasette/graphs/code-frequency">datasette code-frequency chart on GitHub</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>DOOMQL</title><link>https://simonwillison.net/2026/Jul/13/doomql/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/petergpt/doomql">DOOMQL</a></strong></p>
+Peter Gostev built this using GPT-5.6 Sol. This is a <em>lot</em> of fun: </p>
+<blockquote>
+<p>DOOMQL started with a deliberately unreasonable question: what if SQLite were the game engine, not merely the place where a game stores data?</p>
+<p>The result is a small, original Doom-like game in which SQL owns movement, collision, enemies, combat, progression and every RGB pixel on screen.</p>
+</blockquote>
+<p>It's implemented as a Python terminal script - I tried it out like this:</p>
+<pre><code>cd /tmp
+git clone https://github.com/petergpt/doomql
+cd doomql
+uv run host/doomql.py
+</code></pre>
+<p><img alt="Screenshot of a macOS terminal window titled &quot;doomql — python3.14 ◂ uv run host/doomql.py — 134×31&quot; showing a retro Doom-style game rendered as text-mode pixel art. The scene is a pixelated first-person corridor with gray paneled walls, dark red doors on the far left and right, a floating cyan-and-gold coin pickup on the right side, a white crosshair near the center, and a dark weapon barrel rising from the bottom center. A status bar below the scene reads &quot;HP 100/100 AMMO 037 SCORE 00225 INDEX MISSING TICK 0028450&quot;, followed by an orange line &quot;FIND THE INDEX TOKEN&quot; and a cyan controls line &quot;WASD MOVE J/L OR ARROWS TURN SPACE FIRE E USE P PAUSE CTRL-C EXIT&quot;." src="https://static.simonwillison.net/static/2026/doomql-window.png" /></p>
+<p>Here's <a href="https://github.com/petergpt/doomql/blob/main/sql/003_render.sql">the huge SQL query</a> that implements a full ray tracer in SQLite using a recursive CTE.</p>
+<p>Running the above script creates a <code>/tmp/doomql/.doomql/doomql.sqlite</code> SQLite database, which you can explore using Datasette like this:</p>
+<pre><code>uvx --prerelease=allow  --with datasette-apps datasette \
+  /tmp/doomql/.doomql/doomql.sqlite \
+  -p 4444 --root --secret 1 --internal internal.db
+</code></pre>
+<p>The <code>--with datasette-apps</code> option installs the new <a href="https://simonwillison.net/2026/Jun/18/datasette-apps/">Datasette Apps</a> plugin, which supports creating custom HTML+JavaScript apps that can run SQL queries directly within the Datasette interface.</p>
+<p>I created a new app, pasted the copy-paste prompt into Claude chat (Fable 5) <a href="https://claude.ai/share/c793280c-2ef1-4555-a7c2-31281abfdf78">and told it</a>:</p>
+<blockquote>
+<p><code>Build an app that displays the current state of the screen using the frame_pixels view with its x, y, r, g, b columns. have it refresh once a second.</code></p>
+</blockquote>
+<p>This got me a working HTML+JavaScript app inside Datasette that could reflect the current state while I played the game in my terminal. Then I added:</p>
+<blockquote>
+<p><code>add a minimap</code></p>
+</blockquote>
+<p>And now my Datasette App looks like this:</p>
+<p><img alt="Screenshot of a dark-themed web app running a retro Doom-style game rendered from SQL queries. The page header reads &quot;DOOMQL&quot; with buttons &quot;All apps&quot;, &quot;Edit app&quot;, &quot;Pin&quot;, and &quot;Full screen&quot;. Inside the game panel, the title &quot;DOOMQL&quot; sits above the subtitle &quot;auto-refreshing once a second · frame and tactical map straight from SQL&quot;. The left side shows a pixelated first-person corridor view with gray walls, dark red doors, a floating cyan-and-gold coin pickup, a white crosshair, and a weapon barrel at bottom center. A status bar below reads &quot;HP 100/100 AMMO 037 SCORE 00225 INDEX MISSING TICK 0027847&quot;. On the right, a panel titled &quot;TACTICAL MAP&quot; shows a top-down grid map with a player triangle, a red enemy circle, yellow pickup dots, red wall markers, and a green exit square, with a legend reading &quot;you&quot;, &quot;enemy&quot;, &quot;pickup&quot;, &quot;locked door&quot;, &quot;door&quot;, &quot;exit&quot;. Below the game view, an orange banner reads &quot;FIND THE INDEX TOKEN&quot;, followed by the cyan line &quot;READ-ONLY VIEWER · SELECT x, y, r, g, b FROM frame_pixels&quot;. At the bottom, a green &quot;RUNNING&quot; badge appears beside the stats &quot;160×54 · 8,640 pixels · 3 hostiles · query 89 ms · refreshing every 1 s&quot;." src="https://static.simonwillison.net/static/2026/doomql-datasette-app.png" /></p>
+<p>Here's <a href="https://gist.github.com/simonw/7c78184476fccd4b70b02f7f9048dffa">the HTML app code</a> - paste that into your own Datasette instance (using the <code>uvx --with datasette-apps</code> recipe from above) to try it yourself.
+
+    <p><small></small>Via <a href="https://twitter.com/petergostev/status/2076692164310884468">@petergostev</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/games">games</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/datasette-apps">datasette-apps</a></p>]]></description><pubDate>Mon, 13 Jul 2026 22:34:41 +0000</pubDate></item><item><title>datasette code-frequency chart on GitHub</title><link>https://simonwillison.net/2026/Jul/13/datasette-code-frequency/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/datasette/graphs/code-frequency">datasette code-frequency chart on GitHub</a></strong></p>
 Out of curiosity I decided to see if I could find a useful illustration of the impact of coding agents and Opus 4.5 class models on my own output. The best I've found so far is this GitHub chart of frequency of code changes to my <a href="https://datasette.io/">Datasette</a> open source project:</p>
 <p><img alt="Screenshot of a GitHub &quot;Code frequency&quot; bar chart, subtitled &quot;Additions and deletions per week&quot;, showing green addition bars and red deletion bars per week from 2018 through 2026, with a y-axis labeled Frequency ranging from -20k to 30k. Activity comes in sporadic bursts: the largest spike is 37,022 additions with -9,528 deletions in 2026, followed by 14,638 additions with -6,584 deletions in late 2025, 15,998 additions in early 2018, and a standout deletion spike of -10,658 in mid-2020, with quieter periods of smaller weekly changes in between." src="https://static.simonwillison.net/static/2026/datasette-code-frequency.png" /></p>
 <p>The big spike in activity at the end aligns with Opus 4.8, GPT-5.5, Fable 5 and GPT-5.6 Sol.
@@ -682,18 +717,4 @@ model. See also [[project-goals]].</p>
 </blockquote>
 <p>So far it seems to be working well. I'm getting a <em>ton</em> of work done and my Fable allowance is shrinking less quickly than before.</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a></p>]]></description><pubDate>Fri, 3 Jul 2026 18:51:06 +0000</pubDate></item><item><title>June 2026 newsletter</title><link>https://simonwillison.net/2026/Jul/3/june-newsletter/#atom-everything</link><description><![CDATA[<p>The June edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a> is out. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2026-06-june.md">access it here</a>.</p>
-<p>This month:</p>
-<ul>
-<li>Claude Fable 5, GPT-5.6, and US export restrictions</li>
-<li>GLM-5.2 is the new best open weights model</li>
-<li>Tokenmaxxing is so over</li>
-<li>Datasette Apps</li>
-<li>sqlite-utils and shot-scraper and Datasette</li>
-<li>Miscellaneous WASM projects</li>
-<li>Other model releases</li>
-<li>What I'm using</li>
-</ul>
-<p>Here's <a href="https://github.com/simonw/monthly-newsletter-archive/blob/main/2026-05-may.md">a copy of the May newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Fri, 3 Jul 2026 14:50:50 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a></p>]]></description><pubDate>Fri, 3 Jul 2026 18:51:06 +0000</pubDate></item></channel></rss>
