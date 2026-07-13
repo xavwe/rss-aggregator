@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Directly Responsible Individuals (DRI)</title><link>https://simonwillison.net/2026/Jul/12/directly-responsible-individuals/#atom-everything</link><description><![CDATA[<p><strong><a href="https://handbook.gitlab.com/handbook/people-group/directly-responsible-individuals/">Directly Responsible Individuals (DRI)</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette code-frequency chart on GitHub</title><link>https://simonwillison.net/2026/Jul/13/datasette-code-frequency/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/simonw/datasette/graphs/code-frequency">datasette code-frequency chart on GitHub</a></strong></p>
+Out of curiosity I decided to see if I could find a useful illustration of the impact of coding agents and Opus 4.5 class models on my own output. The best I've found so far is this GitHub chart of frequency of code changes to my <a href="https://datasette.io/">Datasette</a> open source project:</p>
+<p><img alt="Screenshot of a GitHub &quot;Code frequency&quot; bar chart, subtitled &quot;Additions and deletions per week&quot;, showing green addition bars and red deletion bars per week from 2018 through 2026, with a y-axis labeled Frequency ranging from -20k to 30k. Activity comes in sporadic bursts: the largest spike is 37,022 additions with -9,528 deletions in 2026, followed by 14,638 additions with -6,584 deletions in late 2025, 15,998 additions in early 2018, and a standout deletion spike of -10,658 in mid-2020, with quieter periods of smaller weekly changes in between." src="https://static.simonwillison.net/static/2026/datasette-code-frequency.png" /></p>
+<p>The big spike in activity at the end aligns with Opus 4.8, GPT-5.5, Fable 5 and GPT-5.6 Sol.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Mon, 13 Jul 2026 21:45:27 +0000</pubDate></item><item><title>Directly Responsible Individuals (DRI)</title><link>https://simonwillison.net/2026/Jul/12/directly-responsible-individuals/#atom-everything</link><description><![CDATA[<p><strong><a href="https://handbook.gitlab.com/handbook/people-group/directly-responsible-individuals/">Directly Responsible Individuals (DRI)</a></strong></p>
 I went looking for a definition of "Directly Responsible Individuals" and the best I found was in the GitLab handbook. Apparently the term originated at Apple, where it's used to describe the person who is "ultimately accountable for the success or failure of a specific project, initiative, or activity".</p>
 <p>I've been thinking about this term recently in the context of LLM-powered agents and how they fit into human organizations. I don't think an agent should <em>ever</em> be considered the DRI for a project - that's something that feels uniquely human to me, because humans can take accountability for their actions where machines cannot.</p>
 <p>(See also <a href="https://simonwillison.net/2025/Feb/3/a-computer-can-never-be-held-accountable/">IBM's legendary 1979 training slide</a> that states "A computer can never be held accountable, therefore a computer must never make a management decision.")
@@ -690,65 +696,4 @@ model. See also [[project-goals]].</p>
 </ul>
 <p>Here's <a href="https://github.com/simonw/monthly-newsletter-archive/blob/main/2026-05-may.md">a copy of the May newsletter</a> as a preview of what you'll get. Pay $10/month to stay a month ahead of the free copy!</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Fri, 3 Jul 2026 14:50:50 +0000</pubDate></item><item><title>llm-coding-agent 0.1a0</title><link>https://simonwillison.net/2026/Jul/2/llm-coding-agent/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-coding-agent/releases/tag/0.1a0">llm-coding-agent 0.1a0</a></p>
-        <p>Another Fable 5 experiment. Now that my <a href="https://llm.datasette.io/">LLM library</a> has evolved into more of an agent framework it's time to see what a simple coding agent would look like built on it.</p>
-<p>I started a <a href="https://github.com/simonw/llm-coding-agent/tree/2466fa03ba8e5122c3bfa93d52167d33bce40ac6">new Python library</a> using my <a href="https://github.com/simonw/python-lib-template-repository">python-lib-template-repository</a> GitHub template repository, then ran these two prompts (here's the <a href="https://claude.ai/code/session_01TEUBvBbMipbFSoqjMiJ7ha">Claude Code for web transcript</a>):</p>
-<blockquote>
-<p><code>Write a spec.md for this project - it will depend on the latest “llm” alpha from PyPI and implement a Claude code style coding agent complete with tools for reading and editing files and executing commands</code></p>
-</blockquote>
-<p>Then:</p>
-<blockquote>
-<p><code>Commit the spec, then build it using red/green TDD in a series of sensible commits (each with passing tests and updated docs) - occasionally manually test it using the OpenAI API key in your environment</code></p>
-</blockquote>
-<p>Here's <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/spec.md">the spec</a>, the <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md">resulting README file</a>, and the <a href="https://github.com/simonw/llm-coding-agent/commits/0.1a0">sequence of commits</a>.</p>
-<p>I've shipped a slop-alpha to PyPI, so you can run the new agent like this:</p>
-<pre><code>uvx --prerelease=allow --with llm-coding-agent llm code
-</code></pre>
-<p>It's pretty good for a first attempt! Here's the (Fable-authored) <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md">README</a>, which lists recipes like <code>llm code --yolo</code> and <code>llm code --allow "pytest*" --allow "git diff*"</code>.</p>
-<p>It also presents <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/README.md#codingagent">a Python API</a> based around a <code>CodingAgent(model="gpt-5.5", root="/path", approve=True).run("Fix the failing test in tests/test_parser.py")</code> class which I didn't ask for but I'm delighted to see implemented.</p>
-<p>Here's the suite of tools <a href="https://github.com/simonw/llm-coding-agent/blob/0.1a0/llm_coding_agent/tools.py#L22">it implemented</a>, listed using <code>uvx ... llm tools</code>:</p>
-<blockquote>
-<p><code>CodingTools_edit_file(path: str, old_string: str, new_string: str, replace_all: bool = False) -&gt; str</code></p>
-<p>Replace an exact string in a file.</p>
-<p>old_string must match the file contents exactly (including
-whitespace) and must identify a unique location unless replace_all
-is true. Returns a diff of the change so it can be verified.</p>
-<p><code>CodingTools_execute_command(command: str, timeout: int = 120) -&gt; str</code></p>
-<p>Run a shell command in the session root directory.</p>
-<p>Returns combined stdout and stderr followed by an Exit code line.
-timeout is in seconds (maximum 600); on timeout the whole process
-tree is killed.</p>
-<p><code>CodingTools_list_files(pattern: str = '**/*', path: str = '.') -&gt; str</code></p>
-<p>List files matching a glob pattern, newest first.</p>
-<p>Skips hidden directories, node_modules, __pycache__ and (in a git
-repository) anything covered by .gitignore. Returns at most 200
-paths relative to the searched directory.</p>
-<p><code>CodingTools_read_file(path: str, offset: int = 0, limit: int = 2000) -&gt; str</code></p>
-<p>Read a text file, returning numbered lines like cat -n.</p>
-<p>Paths are relative to the session root. Use offset (0-based first
-line) and limit (max lines) to page through files too large to read
-in one call.</p>
-<p><code>CodingTools_search_files(pattern: str, path: str = '.', glob: str = None, max_results: int = 100) -&gt; str</code></p>
-<p>Search file contents for a regular expression.</p>
-<p>Returns matches as path:line_number:line, capped at max_results.
-Use glob (e.g. "*.py") to restrict which files are searched.</p>
-<p><code>CodingTools_write_file(path: str, content: str) -&gt; str</code></p>
-<p>Create or overwrite a file with the given content.</p>
-<p>Parent directories are created as needed. Prefer edit_file for
-modifying existing files.</p>
-</blockquote>
-<p>I tried it out by running <code>llm code --yolo</code> and then prompting:</p>
-<blockquote>
-<p><code>mkdir /tmp/demo and then in that folder create a simple swiftui CLI app for telling the time in ascii art</code></p>
-</blockquote>
-<p>Here's <a href="https://gist.github.com/simonw/750009007050124cd1b390cfe8488e41">the transcript</a>, in which GPT-5.5 reasoning notes that "SwiftUI isn't suitable for a true CLI" and then builds an app that outputs this on <code>swift run AsciiTime</code>:</p>
-<pre style="font-size: 9px">
-      █    █████         ████     █             █     ███   
-     ██    █        █        █   ██      █     ██    █   █  
-      █    ████           ███     █             █       █   
-      █        █    █        █    █      █      █      █    
-     ███   ████          ████    ███           ███   █████
-</pre>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>]]></description><pubDate>Thu, 2 Jul 2026 19:33:12 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>]]></description><pubDate>Fri, 3 Jul 2026 14:50:50 +0000</pubDate></item></channel></rss>
