@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>DOOMQL</title><link>https://simonwillison.net/2026/Jul/13/doomql/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/petergpt/doomql">DOOMQL</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Using uvx in GitHub Actions in a cache-friendly way</title><link>https://simonwillison.net/2026/Jul/14/uvx-github-actions-cache/#atom-everything</link><description><![CDATA[<p><strong>TIL:</strong> <a href="https://til.simonwillison.net/github-actions/uvx-github-actions-cache">Using uvx in GitHub Actions in a cache-friendly way</a></p>
+        <p>I finally found a cache-friendly recipe for using <code>uvx tool-name</code> in GitHub Actions workflows that I like.</p>
+<p>The trick is setting a <code>UV_EXCLUDE_NEWER: "2026-07-12"</code> environment variable at the start of the workflow and then using that as part of the GitHub Actions cache key. This means any <code>uvx tool-name</code> commands will resolve to the most recent version as-of that date, and you can bust the cache and upgrade the tools by bumping the date in the future.</p>
+<p>My goal here is to use Python tools in GitHub Actions without every run of the workflow hitting PyPI to download a fresh copy of the tool and its dependencies.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/github-actions">github-actions</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Tue, 14 Jul 2026 00:56:20 +0000</pubDate></item><item><title>DOOMQL</title><link>https://simonwillison.net/2026/Jul/13/doomql/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/petergpt/doomql">DOOMQL</a></strong></p>
 Peter Gostev built this using GPT-5.6 Sol. This is a <em>lot</em> of fun: </p>
 <blockquote>
 <p>DOOMQL started with a deliberately unreasonable question: what if SQLite were the game engine, not merely the place where a game stores data?</p>
@@ -686,35 +692,4 @@ Armin reports on a weird problem he ran into while hacking on Pi:</p>
 <p>[...] I’ve spoken to a few course creators now, and we’re all seeing the same trend. Revenue down 50%+. Fewer people engaging with our content. People switching to LLMs, which slurp up all of our work and regurgitate it, without consent or compensation.</p></blockquote>
 <p class="cite">&mdash; <a href="https://bsky.app/profile/joshwcomeau.com/post/3mkxyqgrp2d2t">Josh W. Comeau</a>, via <a href="https://whitep4nth3r.com/blog/goodbye-forever-probably/">Salma Alam-Naylor</a></p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/josh-comeau">josh-comeau</a></p>]]></description><pubDate>Fri, 3 Jul 2026 21:25:52 +0000</pubDate></item><item><title>Fable&apos;s judgement</title><link>https://simonwillison.net/2026/Jul/3/judgement/#atom-everything</link><description><![CDATA[<p>One of the most interesting tips I got from <a href="https://www.ai.engineer/worldsfair/schedule?session=asn_slot_2026_06_30_main_stage_1230_2026_06_08t09_35_43_039z">the Fireside Chat</a> I hosted with Cat Wu and Thariq Shihipar from the Claude Code team at AIE on Wednesday was to let Fable (and to a certain extent Opus) use their own judgement rather than dictating how they should work.</p>
-<p>The example they gave was testing. You can tell Fable "only use automated testing for larger features, don't update and run tests for small copy or design changes" - but it's better to just tell Fable to use its own judgement when deciding to write tests instead.</p>
-<p>Jesse Vincent just gave me a related tip to help avoid burning too many of those valuable Fable tokens in the few days we have left before the prices go up. Tell Fable to use other models for smaller tasks, applying its own judgement about which model to use.</p>
-<p>I prompted Claude Code just now with:</p>
-<blockquote>
-<p><code>For all coding tasks use your judgement to decide an appropriate lower power model and run that in a subagent</code></p>
-</blockquote>
-<p>Claude saved this memory file in <code>~/.claude/projects/name-of-project/memory/delegate-coding-to-subagents.md</code>:</p>
-<blockquote>
-<pre><code>---
-name: delegate-coding-to-subagents
-description: Simon wants coding tasks delegated to subagents running an appropriately lower-power model
-metadata: 
-  node_type: memory
-  type: feedback
-  originSessionId: 30068d78-43a9-4fb1-bb29-9799e18c526a
----
-</code></pre>
-<p>Stated by Simon on 2026-07-03: "For all coding tasks use your judgement to
-decide an appropriate lower power model and run that in a subagent."</p>
-<p><strong>Why:</strong> cost/efficiency — implementation work rarely needs the top-tier
-model; judgment, review, and synthesis stay with the main loop.</p>
-<p><strong>How to apply:</strong> when a task in this project is primarily writing/editing
-code, spawn an Agent with a model override (sonnet for substantive
-implementation, haiku for trivial/mechanical edits) and a self-contained
-prompt; review the result in the main loop before committing. Design,
-auditing, data synthesis, and anything judgment-heavy stays in the main
-model. See also [[project-goals]].</p>
-</blockquote>
-<p>So far it seems to be working well. I'm getting a <em>ton</em> of work done and my Fable allowance is shrinking less quickly than before.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a></p>]]></description><pubDate>Fri, 3 Jul 2026 18:51:06 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/josh-comeau">josh-comeau</a></p>]]></description><pubDate>Fri, 3 Jul 2026 21:25:52 +0000</pubDate></item></channel></rss>
