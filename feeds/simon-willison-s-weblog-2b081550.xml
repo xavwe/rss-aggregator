@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Inkling: Our open-weights model</title><link>https://simonwillison.net/2026/Jul/16/inkling/#atom-everything</link><description><![CDATA[<p><strong><a href="https://thinkingmachines.ai/news/introducing-inkling/">Inkling: Our open-weights model</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Thibault Sottiaux</title><link>https://simonwillison.net/2026/Jul/16/bad-codex-bug/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/thsottiaux/status/2077630111499882637"><p>On file deletions. We’ve investigated a handful of reports where GPT-5.6 unexpectedly deleted files. </p>
+<p>What we have  found is that this most commonly occurs when:</p>
+<ul>
+<li>Full access mode is enabled and codex is run without sandboxing protections, including without auto review being enabled</li>
+<li>The model attempts  to override the $HOME env var to define a temporary directory.</li>
+<li>The model makes an honest mistake and mistakenly deletes $HOME instead.</li>
+</ul></blockquote>
+<p class="cite">&mdash; <a href="https://twitter.com/thsottiaux/status/2077630111499882637">Thibault Sottiaux</a>, describing a pretty gnarly Codex bug</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/codex">codex</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 16 Jul 2026 17:45:59 +0000</pubDate></item><item><title>Inkling: Our open-weights model</title><link>https://simonwillison.net/2026/Jul/16/inkling/#atom-everything</link><description><![CDATA[<p><strong><a href="https://thinkingmachines.ai/news/introducing-inkling/">Inkling: Our open-weights model</a></strong></p>
 Mira Murati's Thinking Machines Lab just released their first open-weights model. Inkling is "a Mixture-of-Experts transformer with 975B total parameters, 41B active" - an Apache-2.0 licensed multimodal model trained on 45 trillion tokens of text, images, audio and video.</p>
 <p>They're also promising Inkling-Small, a 276B (12B active) model, but that's still being tested and the weights will be released "once that work is complete".</p>
 <p>The <a href="https://thinkingmachines.ai/model-card/inkling/">model card</a> is much shorter than I've come to expect from US AI labs. It links to even shorter <a href="https://thinkingmachines.ai/training-data-documentation/">Training Data Documentation</a> with almost nothing of interest in it - it's best summarized by these two paragraphs:</p>
@@ -621,16 +630,4 @@ OpenAI <em>finally</em> upgraded the model used by ChatGPT voice mode!</p>
         <p>The version that retires the library, instead implementing a compatibility shim against the new sqlite-utils 4.0 dependency.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>]]></description><pubDate>Tue, 7 Jul 2026 16:33:55 +0000</pubDate></item><item><title>github-code Web Component</title><link>https://simonwillison.net/2026/Jul/7/github-code-component/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/github-code-component">github-code Web Component</a></p>
-        <p>An experimental Web Component built using GPT-5.5 and <a href="https://gist.github.com/simonw/0e3db21947b5ae7e29e8a4f69a0b0617">the following prompt</a>:</p>
-<blockquote>
-<p><code>let's build a Web Component for embedding code from GitHub</code></p>
-<p><code>&lt;github-code href="https://github.com/simonw/sqlite-ast/blob/437c759129154f05296324a7f82aa1246340dd14/sqlite_ast/parser.py#L9-L18"&gt;&lt;/github-code&gt;</code></p>
-<p><code>It takes URLs like that, converts them to https://raw.githubusercontent.com/simonw/sqlite-ast/437c759129154f05296324a7f82aa1246340dd14/sqlite_ast/parser.py, then uses fetch() to fetch them and displays the specified range of lines - with line numbers, no syntax highlighting though</code></p>
-<p><code>Show me a preview web browser so I can see your work</code></p>
-</blockquote>
-<p>Here's what it looks like embedded on this page:</p>
-<p><github-code href="https://github.com/simonw/sqlite-ast/blob/437c759129154f05296324a7f82aa1246340dd14/sqlite_ast/parser.py#L9-L18"></github-code></p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/web-components">web-components</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a></p>]]></description><pubDate>Tue, 7 Jul 2026 16:18:16 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>]]></description><pubDate>Tue, 7 Jul 2026 16:33:55 +0000</pubDate></item></channel></rss>
