@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Kimi K3</title><link>https://simonwillison.net/2026/Jul/17/kimi-k3/#atom-everything</link><description><![CDATA[<blockquote cite="https://news.ycombinator.com/item?id=48935342#48936515"><p>Is there something I can actually help you with today?</p></blockquote>
 <p class="cite">&mdash; <a href="https://news.ycombinator.com/item?id=48935342#48936515">Kimi K3</a>, after refusing to leak its system prompt</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/kimi">kimi</a>, <a href="https://simonwillison.net/tags/ai-personality">ai-personality</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 17 Jul 2026 13:43:53 +0000</pubDate></item><item><title>Spot birds not golf</title><link>https://simonwillison.net/2026/Jul/17/spot-birds-not-golf/#atom-everything</link><description><![CDATA[<p>Suggestion for hyperscalers feeling pressure over data center water use:</p>
+    <p>Tags: <a href="https://simonwillison.net/tags/kimi">kimi</a>, <a href="https://simonwillison.net/tags/ai-personality">ai-personality</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 17 Jul 2026 13:43:53 +0000</pubDate></item><item><title>LLM cliché highlighter</title><link>https://simonwillison.net/2026/Jul/17/llm-cliche-highlighter/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/llm-cliche-highlighter">LLM cliché highlighter</a></p>
+        <p>I got frustrated reading <em>yet another</em> article that was crammed with the clichés of LLM-generated writing - "no fluff, no filler, no jargon" type stuff - so I had Fable 5 vibe code up this app for highlighting ten common patterns that show up in that sort of writing.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 17 Jul 2026 12:11:11 +0000</pubDate></item><item><title>Spot birds not golf</title><link>https://simonwillison.net/2026/Jul/17/spot-birds-not-golf/#atom-everything</link><description><![CDATA[<p>Suggestion for hyperscalers feeling pressure over data center water use:</p>
 <p>Buy up a few exclusive country clubs, convert the golf courses into public parks, pay for guides and binoculars to get the previous members into birdwatching - help them embrace a more sustainable hobby!</p>
 <p>Google <a href="https://sustainability.google/reports/google-2026-environmental-report/">used 10.9 billion gallons in 2025</a>, so about 30 million gallons per day.</p>
 <p>The Coachella Valley has <a href="https://www.cvwd.org/167/Water-Conservation">120 golf courses each using ~800 acre-feet per year</a>,  which is ~750,000 gallons per day.</p>
@@ -212,7 +216,7 @@ Clearly I wasn't paying attention when these were <a href="https://twitter.com/O
   </video>
 </p>
 <p>The most interesting thing about this process was watching how the custom pet was created. I told it I wanted a custom pet that was a pelican riding a bicycle and GPT-5.6 Sol xhigh did the rest of the work, using several rounds with <a href="https://developers.openai.com/api/docs/models/gpt-image-2">gpt-image-2</a> to generate the necessary sprite assets.</p>
-<p>I had it make <a href="https://github.com/simonw/pedalican-pet/blob/main/notes-on-creating-a-pet.md">extensive notes</a> and record all of the <a href="https://github.com/simonw/pedalican-pet/tree/main/run">intermediary steps</a>. My GItHub repo includes every generated image and combined sprite sheet, plus GIFs for each of the animation loops such as this one, called <a href="https://github.com/simonw/pedalican-pet/blob/main/run/qa/previews/waving.gif">waving.gif</a>:</p>
+<p>I had it make <a href="https://github.com/simonw/pedalican-pet/blob/main/notes-on-creating-a-pet.md">extensive notes</a> and record all of the <a href="https://github.com/simonw/pedalican-pet/tree/main/run">intermediary steps</a>. My GitHub repo includes every generated image and combined sprite sheet, plus GIFs for each of the animation loops such as this one, called <a href="https://github.com/simonw/pedalican-pet/blob/main/run/qa/previews/waving.gif">waving.gif</a>:</p>
 <p><img alt="A cute pelican on a bicycle waving its wing" src="https://static.simonwillison.net/static/2026/waving.gif" /></p>
 <p>That GIF was compiled from <a href="https://github.com/simonw/pedalican-pet/blob/main/run/api-generation/waving.png">a single image</a> generated by <code>gpt-image-2</code> that looked like this:</p>
 <p><img alt="Four frames of the animation presented on a bright magenta background" src="https://static.simonwillison.net/static/2026/waving.webp" /></p>
@@ -458,13 +462,4 @@ llm -m meta-ai/muse-spark-1.1 "Generate an SVG of a pelican riding a bicycle"
         <p>Let's LLM run prompts against the new <a href="https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/">muse-spark-1.1</a> model.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/meta">meta</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:12:20 +0000</pubDate></item><item><title>llm 0.31.1</title><link>https://simonwillison.net/2026/Jul/9/llm/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.31.1">llm 0.31.1</a></p>
-        <blockquote>
-<ul>
-<li>Fix for a bug with OpenAI Chat Completion endpoints where a tool call with empty arguments could result in a JSON error from some providers. <a href="https://github.com/simonw/llm/issues/1521">#1521</a></li>
-</ul>
-</blockquote>
-<p>This bug came up when I was testing <a href="https://github.com/simonw/llm-meta-ai">llm-meta-ai</a>.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:06:15 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/meta">meta</a></p>]]></description><pubDate>Thu, 9 Jul 2026 16:12:20 +0000</pubDate></item></channel></rss>
