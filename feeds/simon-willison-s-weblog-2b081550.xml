@@ -25,6 +25,7 @@ Here's an entertaining perspective from Nik Suresh on the AI mania that is overw
 <pre><code>strings ~/.local/bin/claude | grep -m1 'Bun v1'
 </code></pre>
 <p>For me this outputs <code>Bun v1.4.0 (macOS arm64)</code>. The most recent release of <a href="https://github.com/oven-sh/bun/releases">Bun on GitHub</a> is currently <a href="https://github.com/oven-sh/bun/releases/tag/bun-v1.3.14">v1.3.14</a> from May 12th, so that v1.4.0 version number in Claude supports them shipping a preview of a not-yet-released Bun version.</p>
+<p>(<strong>Update</strong>: The Rust version <em>has</em> been released as <a href="https://bun.com/docs/installation#canary-builds">Bun canary</a> - running <code>bun upgrade --canary</code> will install <a href="https://github.com/oven-sh/bun/releases/tag/canary">this release</a>.)</p>
 <pre><code>strings ~/.local/bin/claude | grep -Eo 'src/[[:alnum:]_./-]+\.rs'
 </code></pre>
 <p>This outputs a list of <a href="https://gist.github.com/simonw/c92fb0f67b114ac26e3b95a09ddccfdc">563 filenames</a>, starting with these:</p>
