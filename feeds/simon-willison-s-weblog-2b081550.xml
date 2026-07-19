@@ -1,4 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>SQLite Query Explainer</title><link>https://simonwillison.net/2026/Jul/18/sqlite-query-explainer/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/sqlite-query-explainer">SQLite Query Explainer</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>AI Mania Is Eviscerating Global Decision-Making</title><link>https://simonwillison.net/2026/Jul/19/ai-mania/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ludic.mataroa.blog/blog/ai-mania-is-eviscerating-global-decision-making/">AI Mania Is Eviscerating Global Decision-Making</a></strong></p>
+Here's an entertaining perspective from Nik Suresh on the AI mania that is overwhelming the large companies that he consults with. It's crammed with spicy anecdotes from anonymous sources.</p>
+<blockquote>
+<p>In one extreme case, I have seen an executive confess that they had never even used ChatGPT or any AI tool in their life, immediately after producing a technical strategy for an organisation with $2B+ in revenue which was entirely centered around AI.</p>
+</blockquote>
+<p>Here's a report from an engineer at a company with a token leaderboard:</p>
+<blockquote>
+<p>Checking out a parallel copy of our Go repository and telling the AI to rewrite the whole thing in Zig while I work on something else just so I can keep my job.</p>
+</blockquote>
+<p>I particularly enjoyed this report of a conversation with a skeptical executive at an over-enthusiastic company:</p>
+<blockquote>
+<p>I asked <em>why</em> this was being repeated without opposition. Was it just sales fluff?</p>
+<p>The answer was a lot more interesting. It was <em>partially</em> ridiculous sales material being delivered to an easily excitable audience, but this was not the dominant factor constraining honesty. Executives at their <em>customers</em> were saying absurd things about achieving 100x productivity, and this meant that if any executive at the <em>vendor</em> said that these gains were not plausible, it would undermine the credibility of the customer’s executive, be perceived as an attack (or heresy), and possibly result in an enterprise contract cancellation. And getting enterprise contracts cancelled because you wanted to opine on something that doesn’t really matter to your organisation’s mission is a great way to get fired.</p>
+</blockquote>
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48964185">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a></p>]]></description><pubDate>Sun, 19 Jul 2026 05:06:21 +0000</pubDate></item><item><title>Claude Code uses Bun written in Rust now</title><link>https://simonwillison.net/2026/Jul/19/claude-code-in-bun-in-rust/#atom-everything</link><description><![CDATA[<p>In <a href="https://bun.com/blog/bun-in-rust">Rewriting Bun in Rust</a> Jarred Sumner made the following claim:</p>
+<blockquote>
+<p>Claude Code v2.1.181 (released June 17th) and later use the Rust port of Bun. Startup got 10% faster on Linux but otherwise, barely anyone noticed. Boring is good.</p>
+</blockquote>
+<p>I decided to have a poke at my own Claude Code installation to see if I could find evidence that it was using Bun written in Rust.</p>
+<p>I found these two commands convincing:</p>
+<pre><code>strings ~/.local/bin/claude | grep -m1 'Bun v1'
+</code></pre>
+<p>For me this outputs <code>Bun v1.4.0 (macOS arm64)</code>. The most recent release of <a href="https://github.com/oven-sh/bun/releases">Bun on GitHub</a> is currently <a href="https://github.com/oven-sh/bun/releases/tag/bun-v1.3.14">v1.3.14</a> from May 12th, so that v1.4.0 version number in Claude supports them shipping a preview of a not-yet-released Bun version.</p>
+<pre><code>strings ~/.local/bin/claude | grep -Eo 'src/[[:alnum:]_./-]+\.rs'
+</code></pre>
+<p>This outputs a list of <a href="https://gist.github.com/simonw/c92fb0f67b114ac26e3b95a09ddccfdc">563 filenames</a>, starting with these:</p>
+<pre><code>src/runtime/bake/dev_server/mod.rs
+src/runtime/bake/production.rs
+src/bundler/bundle_v2.rs
+</code></pre>
+<p>It looks like Bun in Rust is indeed being run in production across millions of different devices. Like Jarred said, "Boring is good".</p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/bun">bun</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/jarred-sumner">jarred-sumner</a></p>]]></description><pubDate>Sun, 19 Jul 2026 03:54:09 +0000</pubDate></item><item><title>SQLite Query Explainer</title><link>https://simonwillison.net/2026/Jul/18/sqlite-query-explainer/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/sqlite-query-explainer">SQLite Query Explainer</a></p>
         <p>Julia Evan's, in <a href="https://jvns.ca/blog/2026/07/17/learning-about-running-sqlite/">Learning a few things about running SQLite</a>:</p>
 <blockquote>
 <p>Maybe one day I’ll learn to read a query plan.</p>
@@ -430,14 +466,4 @@ I went looking for a definition of "Directly Responsible Individuals" and the be
 <p>Effectively telling the model to manually test its work, outside of the automated tests it had already written. This turned up two minor issues that we then fixed.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Sat, 11 Jul 2026 23:50:20 +0000</pubDate></item><item><title>Quoting Nilay Patel</title><link>https://simonwillison.net/2026/Jul/10/nilay-patel/#atom-everything</link><description><![CDATA[<blockquote cite="https://youtu.be/v4vkwUf4AMw?t=2427"><p>The reality is to make augmented reality glasses, you need to put a camera next to your eyes that is continuously recording everything you see and processing that to put information over it.</p>
-<p>There is not another way around it. And there's certainly not a chip that can fit in the stem of a glasses that is both powerful enough and power miserly enough to do that in real time.</p>
-<p>You have to send that data to a cloud. You gotta do it. [...] Or you can build something the size of a Vision Pro with a battery pack that lives somewhere else. Those are the current choices in this world.</p>
-<p>And it means if you want to build the product that everyone thinks is the next thing, you are going to have to invade people's privacy.</p>
-<p>And maybe you shouldn't. Like, there's an incredible argument for, nope, you shouldn't do that. Nope, the trade-offs required to make this product are so high at a societal level that we should stop it.</p></blockquote>
-<p class="cite">&mdash; <a href="https://youtu.be/v4vkwUf4AMw?t=2427">Nilay Patel</a>, The Vergecast</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/augmented-reality">augmented-reality</a>, <a href="https://simonwillison.net/tags/nilay-patel">nilay-patel</a>, <a href="https://simonwillison.net/tags/privacy">privacy</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Fri, 10 Jul 2026 17:05:26 +0000</pubDate></item><item><title>Quoting OpenAI</title><link>https://simonwillison.net/2026/Jul/10/openai/#atom-everything</link><description><![CDATA[<blockquote cite="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex"><p>[...] Work on web and mobile runs in the cloud. Work in the desktop app can also use local files and desktop apps with your permission. At launch, cloud Work conversations do not appear in desktop Work; desktop Work threads and local files remain on that computer.</p></blockquote>
-<p class="cite">&mdash; <a href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex">OpenAI</a>, trying (unsuccessfully) to clarify ChatGPT Work</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Fri, 10 Jul 2026 01:05:57 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>]]></description><pubDate>Sat, 11 Jul 2026 23:50:20 +0000</pubDate></item></channel></rss>
