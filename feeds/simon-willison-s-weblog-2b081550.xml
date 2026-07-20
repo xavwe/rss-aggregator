@@ -70,7 +70,7 @@ An update from the <code>@claudeai</code> account on Twitter:</p>
 
 
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>]]></description><pubDate>Sat, 18 Jul 2026 06:00:13 +0000</pubDate></item><item><title>nascheme/quixote</title><link>https://simonwillison.net/2026/Jul/18/quixote/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/nascheme/quixote">nascheme/quixote</a></strong></p>
-A certain vintage if Python web nerd might be delighted to learn that the most recent commit to the Quixote web framework was <a href="(https://github.com/nascheme/quixote/commit/7f775cf9d1e7e80fcbb2706b4a1d971e55ca74a3)">six hours ago</a>.</p>
+A certain vintage of Python web nerd might be delighted to learn that the most recent commit to the Quixote web framework was <a href="(https://github.com/nascheme/quixote/commit/7f775cf9d1e7e80fcbb2706b4a1d971e55ca74a3)">six hours ago</a>.</p>
 <p>The <a href="https://github.com/nascheme/quixote/commit/d6b73c5768c2d041b68b54cc71863604249abc18">oldest commit</a> in that repo is from 21 years ago, and that was the initial import of Quixote 2.4 from Subversion into Git.
 
 
