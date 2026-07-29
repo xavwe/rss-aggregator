@@ -7,7 +7,8 @@ The best part of this article (here's <a href="https://github.com/anthropics/cry
 <p>no we don't want to change the targets [...] agian we need to find something that worth publishing</p>
 <p>again we are not looking for low hanging fruit, we want proper research to find genuinly hard findings.</p>
 </blockquote>
-<p>Mythos Preview worked for 60 hours in total (~$100,000 in estimated API cost) and the main human interventions were to encourage it not to give up and "find something that worth publishing".
+<p>Mythos Preview worked for 60 hours in total (~$100,000 in estimated API cost) and the main human interventions were to encourage it not to give up and "find something that worth publishing".</p>
+<p>The paper <a href="https://arxiv.org/abs/2607.18538">CryptanalysisBench: Can LLMs do Cryptanalysis?</a> describes the new eval that was created as part of this work, in partnership with ETH Zurich, Tel Aviv University, and University of Haifa.
 
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=49087091">Hacker News</a></small></p>
 
@@ -98,7 +99,11 @@ Fascinating investigation by Matt Lenhard into the market that has grown up arou
     <p><small></small>Via <a href="https://news.ycombinator.com/item?id=49058993">Hacker News</a></small></p>
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Sun, 26 Jul 2026 19:30:54 +0000</pubDate></item><item><title>Ruff v0.16.0</title><link>https://simonwillison.net/2026/Jul/25/ruff/#atom-everything</link><description><![CDATA[<p><strong><a href="https://astral.sh/blog/ruff-v0.16.0">Ruff v0.16.0</a></strong></p>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Sun, 26 Jul 2026 19:30:54 +0000</pubDate></item><item><title>sqlite-utils 3.39.1</title><link>https://simonwillison.net/2026/Jul/26/sqlite-utils/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/3.39.1">sqlite-utils 3.39.1</a></p>
+        <p>I back-ported <a href="https://github.com/simonw/sqlite-utils/issues/815">a fix</a> for <code>table.delete_where()</code> that shipped in version 4.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>]]></description><pubDate>Sun, 26 Jul 2026 04:38:46 +0000</pubDate></item><item><title>Ruff v0.16.0</title><link>https://simonwillison.net/2026/Jul/25/ruff/#atom-everything</link><description><![CDATA[<p><strong><a href="https://astral.sh/blog/ruff-v0.16.0">Ruff v0.16.0</a></strong></p>
 Astral shipped a significant new version of their Ruff Python linting tool a few days ago on July 23rd. I noticed today because my various CI jobs all started failing thanks to new default Ruff checks and my unpinned <code>"ruff"</code> dev dependency.</p>
 <p>From Brent Westbrook's announcement post:</p>
 <blockquote>
@@ -665,10 +670,4 @@ A certain vintage of Python web nerd might be delighted to learn that the most r
 <p><img alt="Screenshot of a text-analysis web tool. Top summary row: &quot;2 matches&quot;, &quot;1 flagged sentence&quot;, &quot;0 chain items&quot;. Below, a collapsed &quot;▶ Patterns · all 11 on&quot; panel, then a URL input reading &quot;https://example.com/article — fetched via r.jina.ai&quot; with a &quot;Load URL&quot; button. A text area contains &quot;That loss is real and it's worth naming&quot;. Below are &quot;Load example&quot; and &quot;Clear&quot; buttons and a checked checkbox &quot;Show just the highlights&quot;. A &quot;Highlighted text&quot; section shows &quot;That loss is real and it's worth naming&quot; with &quot;That loss&quot; in pale yellow (flagged sentence) and &quot;is real and&quot; plus &quot;'s worth naming&quot; in darker yellow (pattern match). Legend: &quot;flagged sentence&quot;, &quot;pattern match&quot;, &quot;3 chain item count&quot;. &quot;Matches&quot; section: 1. &quot;is real and&quot; — &quot;Is real … and / not&quot;; 2. &quot;'s worth naming&quot; — &quot;Worth naming&quot;." src="https://static.simonwillison.net/static/2026/the-loss-is-real.webp" /></p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 17 Jul 2026 12:11:11 +0000</pubDate></item><item><title>Spot birds not golf</title><link>https://simonwillison.net/2026/Jul/17/spot-birds-not-golf/#atom-everything</link><description><![CDATA[<p>Suggestion for hyperscalers feeling pressure over data center water use:</p>
-<p>Buy up a few exclusive country clubs, convert the golf courses into public parks, pay for guides and binoculars to get the previous members into birdwatching - help them embrace a more sustainable hobby!</p>
-<p>Google <a href="https://sustainability.google/reports/google-2026-environmental-report/">used 10.9 billion gallons in 2025</a>, so about 30 million gallons per day.</p>
-<p>The Coachella Valley has <a href="https://www.cvwd.org/167/Water-Conservation">120 golf courses each using ~800 acre-feet per year</a>,  which is ~750,000 gallons per day.</p>
-<p>So Google buying up 40 of those courses (1/3) should do the trick.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-energy-usage">ai-energy-usage</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>]]></description><pubDate>Fri, 17 Jul 2026 02:58:07 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Fri, 17 Jul 2026 12:11:11 +0000</pubDate></item></channel></rss>
