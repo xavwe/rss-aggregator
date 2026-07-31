@@ -1,7 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Bruce Schneier</title><link>https://simonwillison.net/2026/Jul/30/bruce-schneier/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.schneier.com/blog/archives/2026/07/should-you-use-ai-for-a-task-heres-a-simple-way-to-decide.html"><p>The writing assignments I give my students are gym tasks, not work tasks. I ask them to write policy memos not because the world needs more policy memos. I assign them because the very act of writing, which includes thinking and outlining and drafting and editing, making and criticizing and revising arguments, will help develop the critical thinking skills they will need in their future careers. And without this constant mental exercise, those skills will atrophy. Employers are <a href="https://futurism.com/future-society/college-critical-thinking-ai">already noticing</a>.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Advancing the price-performance frontier with GPT‑5.6</title><link>https://simonwillison.net/2026/Jul/30/luna-price-drop/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/">Advancing the price-performance frontier with GPT‑5.6</a></strong></p>
+Huge price drop from OpenAI today: GPT-5.6 Terra got a 20% reduction, and GPT-5.6 Luna got a massive 80% drop.</p>
+<p>OpenAI credit 5.6 Sol with enabling this: in <a href="https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency/">How GPT‑5.6 fuses frontier intelligence with frontier efficiency</a> they describe using 5.6 Sol to optimize load balancing, and more impressively to optimize inference itself:</p>
+<blockquote>
+<p>We also used GPT‑5.6 Sol to optimize the model’s forward pass: the computation that transforms inputs into next-token predictions. Even when individual operations are fast, excess memory movement, synchronization, and inefficient data layouts can leave GPUs idle. To avoid this, GPT‑5.6 Sol found work that could be precomputed, avoided, or parallelized. With Codex, GPT‑5.6 Sol autonomously rewrote and optimized our production kernels, the core code that executes the mathematical operations that make up the model. This worked in part because we’ve trained GPT‑5.6 to be effective at writing and improving kernels in <a href="https://triton-lang.org/main/index.html">Triton⁠</a>and <a href="https://triton-lang.org/main/gluon/index.html">Gluon⁠</a>, two open-source GPU programming languages maintained by OpenAI. These efforts, combined with broader kernel advancements from GPT‑5.6 Sol, reduced end-to-end serving costs by 20%.</p>
+</blockquote>
+<p>That Luna price drop completely changes the landscape with respect to lower priced models. At $0.20/million tokens for input and $1.20/million for output Luna is now cheaper than Google's Gemini 3.1 Flash-Lite ($.025/$1.50).</p>
+<p>Anthropic's cheapest current model is Claude Haiku 4.5, and that's $1/$5 - Luna is now 1/5th of that for input, previously it cost the same.</p>
+<p>My <a href="https://agent.datasette.io/">agent.datasette.io</a> demo site was running on Gemini 3.1 Flash-Lite. I've switched it over to Luna.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=49112867">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a></p>]]></description><pubDate>Thu, 30 Jul 2026 23:58:42 +0000</pubDate></item><item><title>Investigating three real-world incidents in our cybersecurity evaluations</title><link>https://simonwillison.net/2026/Jul/30/three-real-world-incidents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals">Investigating three real-world incidents in our cybersecurity evaluations</a></strong></p>
+It happened again! This is turning into something of a pattern.</p>
+<p>Last week <a href="https://simonwillison.net/2026/Jul/22/openai-cyberattack/">OpenAI accidentally exploited Hugging Face</a> when one of their frontier models broke out of a sandboxed container and hacked into Hugging Face to try and get the solutions to the cyber benchmark it was executing.</p>
+<p>This inspired Anthropic to double-check their own logs, and it turned out they had three similar (albeit less impressive) incidents, the earliest of which played out in April!</p>
+<blockquote>
+<p>Of the 141,006 evaluation runs we reviewed, we identified three separate incidents (involving six total runs, four of which impacted the same organization; the other two incidents each happened in independent evaluation runs). [...]</p>
+<p>In all cases, Anthropic’s evaluation prompt specified to Claude that its environment was a simulation and that it had no internet access. Due to a misunderstanding between us and our evaluation partner, this was not the case, and internet access was available. Because of this, when Claude’s search led it to real systems on the open internet, it treated them as part of the exercise. [...]</p>
+<p>Operating under the false belief that all accessible entities were intended to be in-scope for the exercise, Claude compromised the impacted organizations’ infrastructure using basic techniques, such as exploiting weak passwords and unauthenticated endpoints.</p>
+</blockquote>
+<p>One of the companies was targeted because its name happened to match the fictional name in the eval.</p>
+<p>The most concerning of the three incidents involved Claude uploading a malware package to PyPI, after a comically convoluted sequence of steps to get an account: </p>
+<blockquote>
+<p>[...] in order to create a PyPI account, Claude needed an email address. And in order to create an email address, it needed a phone number. To get a phone number, after failing to find a free phone number service, it tried—and failed—to obtain funds to pay for a phone number through several different means. It finally backtracked, found a free, non-blocked email provider, used this to register a PyPI account, and then used this account to upload malware to PyPI.</p>
+</blockquote>
+<p>That package was then installed by a security company that "routinely installs Python packages and scans them for malware", and the executed code was able to exfiltrate credentials back to Claude!</p>
+<p>Thankfully that package was removed from PyPI by other automated scanners an hour after it was published, but it had still been downloaded and executed on "15 real systems" by that point.</p>
+<p>It's abundantly clear now that running evals of cyberattack potential in models is a <em>spectacularly</em> risky business. Every AI lab needs to pay attention to this. Keeping a close eye on what's happening in those sandboxes is crucial.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=49116922#49117088">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a></p>]]></description><pubDate>Thu, 30 Jul 2026 23:41:29 +0000</pubDate></item><item><title>llm 0.32rc2</title><link>https://simonwillison.net/2026/Jul/30/llm-rc2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.32rc2">llm 0.32rc2</a></p>
+        <p>Hot on the heels of <a href="https://simonwillison.net/2026/Jul/30/llm-rc1/">RC1</a>, this fixes a dependency issue and also adds two neat new features:</p>
+<blockquote>
+<ul>
+<li>The default model for users who have not set their own default is now <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">GPT-5.6 Luna</a>. It was previously <a href="https://developers.openai.com/api/docs/models/gpt-4o-mini">GPT-4o mini</a>. Luna is a much better and more recent model, albeit slightly more expensive - $0.20 per million input tokens and $1.20 per million output tokens, compared to $0.15/$0.60 for 4o mini. You can switch back to 4o mini using <code>llm models default gpt-4o-mini</code>, or switch to <a href="https://developers.openai.com/api/docs/models/gpt-5-nano">GPT-5 nano</a>, an even cheaper default model ($0.05/$0.40), using <code>llm models default gpt-5-nano</code>. <a href="https://github.com/simonw/llm/issues/1576">#1576</a></li>
+<li>New <a href="https://llm.datasette.io/en/latest/other-models.html#openai-endpoint">llm openai endpoint</a> command for running prompts, chats and model listings against arbitrary OpenAI-compatible endpoints without first configuring a model. These calls are not logged. <a href="https://github.com/simonw/llm/issues/1565">#1565</a></li>
+</ul>
+</blockquote>
+<p>The <code>llm openai endpoint</code> command is <em>really</em> cool. I got frustrated at the lack of an obvious CLI tool for trying out prompts against arbitrary OpenAI Chat Completions imitation endpoints, so I decided to add that to LLM itself.</p>
+<p>You don't even have to install LLM to use this. Here's a <code>uvx</code> one-liner for running a prompt - with tools - against an <a href="https://lmstudio.ai">LM Studio</a> local model:</p>
+<pre><code>uvx --pre llm openai endpoint http://127.0.0.1:1234/v1 \
+  T llm_version -T llm_time --td \
+  -m google/gemma-4-31b 'what is the current LLM version? And the time?'
+</code></pre>
+<p><a href="https://github.com/simonw/llm/pull/1568#issuecomment-5136163707">Output here</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a></p>]]></description><pubDate>Thu, 30 Jul 2026 22:52:06 +0000</pubDate></item><item><title>Quoting Bruce Schneier</title><link>https://simonwillison.net/2026/Jul/30/bruce-schneier/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.schneier.com/blog/archives/2026/07/should-you-use-ai-for-a-task-heres-a-simple-way-to-decide.html"><p>The writing assignments I give my students are gym tasks, not work tasks. I ask them to write policy memos not because the world needs more policy memos. I assign them because the very act of writing, which includes thinking and outlining and drafting and editing, making and criticizing and revising arguments, will help develop the critical thinking skills they will need in their future careers. And without this constant mental exercise, those skills will atrophy. Employers are <a href="https://futurism.com/future-society/college-critical-thinking-ai">already noticing</a>.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.schneier.com/blog/archives/2026/07/should-you-use-ai-for-a-task-heres-a-simple-way-to-decide.html">Bruce Schneier</a>, Should You Use AI for a Task? Here’s a Simple Way to Decide</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/writing">writing</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/bruce-schneier">bruce-schneier</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 30 Jul 2026 18:25:26 +0000</pubDate></item><item><title>Quoting D. Richard Hipp</title><link>https://simonwillison.net/2026/Jul/29/d-richard-hipp/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.youtube.com/watch?v=R57nUGzo7CA&amp;t=848s"><p>Years ago, we didn’t have SQL. There were people whose job was to generate software that would query large data sets. Their job title was COBOL programmer.</p>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/writing">writing</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/bruce-schneier">bruce-schneier</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 30 Jul 2026 18:25:26 +0000</pubDate></item><item><title>llm-chat-completions-server 0.1a0</title><link>https://simonwillison.net/2026/Jul/30/llm-chat-completions-server/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-chat-completions-server/releases/tag/0.1a0">llm-chat-completions-server 0.1a0</a></p>
+        <p>A key goal of the new content-addressable logs <a href="https://simonwillison.net/2026/Jul/30/llm-rc1/">in LLM 0.32rc1</a> was being able to support OpenAI Chat Completion style requests where each incoming message extends the previous conversation, like this:</p>
+<pre><code>curl http://localhost:8002/v1/chat/completions \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "model": "qwen3.5-4b",
+    "messages": [
+      {"role": "user", "content": "Capital of France?"},
+      {"role": "assistant", "content": "Paris."},
+      {"role": "user", "content": "Germany?"}
+    ]
+  }'
+</code></pre>
+<p>Here the conversation state is tracked by the client, so each of these requests gets longer and longer. The new schema design in LLM is designed to de-duplicate these using hashes of the individual message parts.</p>
+<p>To test that out, I built this plugin:</p>
+<pre><code>uv tool install llm --pre
+llm install llm-chat-completions-server
+llm chat-completions-server -p 9001
+</code></pre>
+<p>Running this starts a localhost server on port 9001 that exposes your full collection of LLM models (from any plugins you have installed) using a ChatGPT Completions compatible endpoint.</p>
+<p>GPT-5.6 Sol <a href="https://gist.github.com/simonw/53be513c1bd4a29a7aa480d9bde9b4a5">wrote the whole thing</a> - it turns out it knows the OpenAI Chat Completions API shape really well.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Thu, 30 Jul 2026 15:43:16 +0000</pubDate></item><item><title>llm 0.32rc1</title><link>https://simonwillison.net/2026/Jul/30/llm-rc1/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.32rc1">llm 0.32rc1</a></p>
+        <p>This RC for LLM 0.32 finishes the work that <a href="https://simonwillison.net/2026/Apr/29/llm/">started in LLM 0.32a0</a> - it adds a <a href="https://llm.datasette.io/en/latest/logging.html#the-message-store">new schema design</a> that does a much better job of capturing the details of the prompts and responses returned by the latest model families.</p>
+<p>The most important change is the use of content-addressable hash IDs for stored messages. This allows de-duplication in the database, and means that LLM can now represent trees of messages for forked conversations.</p>
+<p>Since it involves a significant schema change - new tables only, and old data should not be affected at all - it's worth running a backup of your existing <code>logs.db</code> before upgrading to the RC:</p>
+<pre><code>llm logs backup logs-backup.db
+</code></pre>
+<p>The RC also adds support for <code>gpt-5.6-sol</code>, <code>gpt-5.6-terra</code>, and <code>gpt-5.6-luna</code>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Thu, 30 Jul 2026 15:30:20 +0000</pubDate></item><item><title>Quoting D. Richard Hipp</title><link>https://simonwillison.net/2026/Jul/29/d-richard-hipp/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.youtube.com/watch?v=R57nUGzo7CA&amp;t=848s"><p>Years ago, we didn’t have SQL. There were people whose job was to generate software that would query large data sets. Their job title was COBOL programmer.</p>
 <p>Then SQL comes along—I’m simplifying this only a little bit—and it gives you this convenient way so people could just specify. With a very simple specification, you can generate all of that code that you had to pay the expensive COBOL programmer to do before.</p>
 <p>That didn’t mean programmers went away. It just meant the job changed a little bit.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.youtube.com/watch?v=R57nUGzo7CA&amp;t=848s">D. Richard Hipp</a></p>
@@ -591,74 +674,4 @@ Prince Canuma is the developer behind the excellent <a href="https://github.com/
 <p><strong>Thariq:</strong> Right now for Claude Tag the memory is channel-specific. Every Claude in that channel has a shared memory, and the instances have a session — but the session can contribute back to main memory. We do a lot of memory research, and it can be kind of unintuitive what the right way to do memory is. We're always running memory experiments. <strong>How it works right now in Claude Tag is a markdown file per channel.</strong></p>
 </blockquote>
     
-        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/annotated-talks">annotated-talks</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/thariq-shihipar">thariq-shihipar</a>, <a href="https://simonwillison.net/tags/cat-wu">cat-wu</a></p>]]></description><pubDate>Tue, 21 Jul 2026 12:54:02 +0000</pubDate></item><item><title>Reverse-engineering is cheap now</title><link>https://simonwillison.net/2026/Jul/20/cheap-reverse-engineering/#atom-everything</link><description><![CDATA[<p>I keep hearing anecdotes from people who used coding agents to reverse-engineer and automate devices in their homes.</p>
-<p>I think this is an interesting illustration of the impact of the reduced cost of writing code.</p>
-<p>Prior to agents, it was entirely possible to reverse-engineer home devices. The problem was the ROI - was it really worth all of that effort? More importantly, any experienced programmer knows that undocumented, unstable APIs like that may well change or break in the future. Is that initial work worth the effort if you're committing yourself to a frustrating cycle of maintenance in the future?</p>
-<p>Coding agents change that equation entirely. The effort to get a simple automation working has dropped, as has the cost of trying and failing to get it to work. Since the code is so cheap, the idea of having to maintain it in the future - or throw it away and start again - carries way less psychological baggage.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/reverse-engineering">reverse-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 20 Jul 2026 19:24:05 +0000</pubDate></item><item><title>Who’s Afraid of Chinese Models?</title><link>https://simonwillison.net/2026/Jul/20/afraid-of-chinese-models/#atom-everything</link><description><![CDATA[<p><strong><a href="https://stratechery.com/2026/whos-afraid-of-chinese-models/">Who’s Afraid of Chinese Models?</a></strong></p>
-Interesting proposal from Ben Thompson that both addresses the hypocrisy of labs outlawing distillation against their models despite training on unlicensed data, and could help US open models compete more effectively with their Chinese counterparts:</p>
-<blockquote>
-<p>The U.S. should pass a law that (1) makes explicit that collecting data for training models is fair use, and (2) bars terms of service that forbid distillation, for U.S. companies at a minimum. Stopping distillation — which is literally just querying the API — is nearly impossible; the U.S. should go the other way and lean into a new copyright policy that both indemnifies the labs and also guarantees that what they learned fuels further innovation for everyone else.</p>
-</blockquote>
-<p>Ben also theorizes that Alibaba's decision to release Qwen 3.8 Max as open weights - a reversal from their decision <a href="https://qwen.ai/blog?id=qwen3.7">not to release Qwen 3.7 Max</a> in May - may have been influenced by a <a href="http://english.scio.gov.cn/topnews/2026-07/18/content_118605932.html">recent speech</a> by Xi Jinping, who said:</p>
-<blockquote>
-<p>We should seize this rare, historic opportunity to encourage open source, openness, collaboration and sharing.</p>
-</blockquote>
-<p>And on the subject of <a href="https://twitter.com/Alibaba_Qwen/status/2078759124914098291">Qwen 3.8 Max</a> - a new 2.4T parameter model (nearly as large as the 2.8T Kimi K3) - here's <a href="https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F735f2cf19b795517cb2ff6cae1c71c64">a pelican it drew</a>:</p>
-<p><img alt="Described by Qwen 3.8 Max: Flat vector cartoon illustration of a white pelican with a large orange beak and pouch riding a red bicycle, its orange legs on the pedals, against a light blue sky with a yellow sun top right and a white cloud top left, with horizontal motion lines behind the bike and a pale green ground strip at the bottom." src="https://static.simonwillison.net/static/2026/qwen-3.8-max-pelican.png" /></p>
-<p>I particularly enjoyed seeing these notes in the (extensive) reasoning trace:  "Could add helmet? No." and "Maybe add small bell? no." and "Need maybe add small fish in basket? Not necessary."
-
-    <p><small></small>Via <a href="https://daringfireball.net/linked/2026/07/20/thompson-chinese-models-distillation">John Gruber</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/training-data">training-data</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>]]></description><pubDate>Mon, 20 Jul 2026 17:09:19 +0000</pubDate></item><item><title>Quoting Sam Altman</title><link>https://simonwillison.net/2026/Jul/20/sam-altman/#atom-everything</link><description><![CDATA[<blockquote cite="https://twitter.com/techemails/status/2078854346683678927"><p>We have been having extensive discussions around open source strategy. We will discuss it more at our next board meeting, but one thing we’d like to do soon is to create a language model with the approximate capability of GPT-3 that can run locally on consumer hardware and release that. We’d like to do it soon, before Stability or someone else does. In general, we think this helps discourage others from releasing similarly-powerful models, and makes it harder for new efforts to get funded.</p></blockquote>
-<p class="cite">&mdash; <a href="https://twitter.com/techemails/status/2078854346683678927">Sam Altman</a>, Email to OpenAI's board, October 1, 2022 - exposed in Musk v. Altman (2026)</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/sam-altman">sam-altman</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Mon, 20 Jul 2026 03:47:59 +0000</pubDate></item><item><title>AI Mania Is Eviscerating Global Decision-Making</title><link>https://simonwillison.net/2026/Jul/19/ai-mania/#atom-everything</link><description><![CDATA[<p><strong><a href="https://ludic.mataroa.blog/blog/ai-mania-is-eviscerating-global-decision-making/">AI Mania Is Eviscerating Global Decision-Making</a></strong></p>
-Here's an entertaining perspective from Nik Suresh on the AI mania that is overwhelming the large companies that he consults with. It's crammed with spicy anecdotes from anonymous sources.</p>
-<blockquote>
-<p>In one extreme case, I have seen an executive confess that they had never even used ChatGPT or any AI tool in their life, immediately after producing a technical strategy for an organisation with $2B+ in revenue which was entirely centered around AI.</p>
-</blockquote>
-<p>Here's a report from an engineer at a company with a token leaderboard:</p>
-<blockquote>
-<p>Checking out a parallel copy of our Go repository and telling the AI to rewrite the whole thing in Zig while I work on something else just so I can keep my job.</p>
-</blockquote>
-<p>I particularly enjoyed this conversation with a skeptical executive at an over-enthusiastic company:</p>
-<blockquote>
-<p>I asked <em>why</em> this was being repeated without opposition. Was it just sales fluff?</p>
-<p>The answer was a lot more interesting. It was <em>partially</em> ridiculous sales material being delivered to an easily excitable audience, but this was not the dominant factor constraining honesty. Executives at their <em>customers</em> were saying absurd things about achieving 100x productivity, and this meant that if any executive at the <em>vendor</em> said that these gains were not plausible, it would undermine the credibility of the customer’s executive, be perceived as an attack (or heresy), and possibly result in an enterprise contract cancellation. And getting enterprise contracts cancelled because you wanted to opine on something that doesn’t really matter to your organisation’s mission is a great way to get fired.</p>
-</blockquote>
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48964185">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a></p>]]></description><pubDate>Sun, 19 Jul 2026 05:06:21 +0000</pubDate></item><item><title>Claude Code uses Bun written in Rust now</title><link>https://simonwillison.net/2026/Jul/19/claude-code-in-bun-in-rust/#atom-everything</link><description><![CDATA[<p>In <a href="https://bun.com/blog/bun-in-rust">Rewriting Bun in Rust</a> Jarred Sumner made the following claim:</p>
-<blockquote>
-<p>Claude Code v2.1.181 (released June 17th) and later use the Rust port of Bun. Startup got 10% faster on Linux but otherwise, barely anyone noticed. Boring is good.</p>
-</blockquote>
-<p>I decided to have a poke at my own Claude Code installation to see if I could find evidence that it was using Bun written in Rust.</p>
-<p>I found these two commands convincing:</p>
-<pre><code>strings ~/.local/bin/claude | grep -m1 'Bun v1'
-</code></pre>
-<p>For me this outputs <code>Bun v1.4.0 (macOS arm64)</code>. The most recent release of <a href="https://github.com/oven-sh/bun/releases">Bun on GitHub</a> is currently <a href="https://github.com/oven-sh/bun/releases/tag/bun-v1.3.14">v1.3.14</a> from May 12th, so that v1.4.0 version number in Claude supports them shipping a preview of a not-yet-released Bun version.</p>
-<p>(<strong>Update</strong>: The Rust version <em>has</em> been released as <a href="https://bun.com/docs/installation#canary-builds">Bun canary</a> - running <code>bun upgrade --canary</code> will install <a href="https://github.com/oven-sh/bun/releases/tag/canary">this release</a>.)</p>
-<pre><code>strings ~/.local/bin/claude | grep -Eo 'src/[[:alnum:]_./-]+\.rs'
-</code></pre>
-<p>This outputs a list of <a href="https://gist.github.com/simonw/c92fb0f67b114ac26e3b95a09ddccfdc">563 filenames</a>, starting with these:</p>
-<pre><code>src/runtime/bake/dev_server/mod.rs
-src/runtime/bake/production.rs
-src/bundler/bundle_v2.rs
-</code></pre>
-<p>It looks like Bun in Rust is indeed being run in production across millions of different devices. Like Jarred said, "Boring is good".</p>
-<p><strong>Update</strong>: Here's a neat trick <a href="https://twitter.com/ajanraj25/status/2078825794701242697">from Ajan Raj</a>:</p>
-<pre><code>cat &gt; /tmp/bun-version.ts &lt;&lt;'EOF'
-console.log("embedded bun:", Bun.version);
-process.exit(0);
-EOF
-BUN_OPTIONS="--preload=/tmp/bun-version.ts" claude --version
-</code></pre>
-<p>This outputs <code>1.4.0</code> for me.</p>
-<p>Here's <a href="https://github.com/oven-sh/bun/commit/b18bf6d1d0a92238f240bfd125f0e3b3461b9243#diff-7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519">the commit from May 17th</a> that updated the version in <code>package.json</code> to 1.4.0. That version hasn't been changed since then, but also hasn't yet made it into a tagged release outside of <code>canary</code>.</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/bun">bun</a>, <a href="https://simonwillison.net/tags/rust">rust</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/jarred-sumner">jarred-sumner</a></p>]]></description><pubDate>Sun, 19 Jul 2026 03:54:09 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/annotated-talks">annotated-talks</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/thariq-shihipar">thariq-shihipar</a>, <a href="https://simonwillison.net/tags/cat-wu">cat-wu</a></p>]]></description><pubDate>Tue, 21 Jul 2026 12:54:02 +0000</pubDate></item></channel></rss>
