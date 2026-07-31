@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Adding a backup Internet WAN on my OPNsense Router</title><link>https://www.jeffgeerling.com/blog/2026/opnsense-backup-internet-gateway/</link><description><![CDATA[<p><em>AKA &quot;Spectrum has gone down two weeks in a row and I'm sick of it&quot;.</em></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Getting 25 Gbps Thunderbolt Ethernet on my Mac Studio</title><link>https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/mac-studio-ports-full-back-ethernet.jpg"
+ alt="Mac Studio with all ports plugged in Ethernet 10G" width="700" height="auto">
+</figure>
+
+<p>I've been using the built-in 10 Gigabit Ethernet on my Mac Studio for a few years. It works fine: I can edit 4K video straight off my NAS over the network, and run backups at around 1 GB/sec.</p>
+<p>But... I want <em>more</em>. I upgraded my rack and my NAS to 25 GbE a couple years ago, and wanted to upgrade my main workstation, too.</p>]]></description><pubDate>Fri, 31 Jul 2026 14:00:00 +0000</pubDate></item><item><title>Adding a backup Internet WAN on my OPNsense Router</title><link>https://www.jeffgeerling.com/blog/2026/opnsense-backup-internet-gateway/</link><description><![CDATA[<p><em>AKA &quot;Spectrum has gone down two weeks in a row and I'm sick of it&quot;.</em></p>
 <p>I've been borrowing a portable 5G gateway from my Dad for a few weeks, for testing... and two weeks in a row, I've used it as a backup Internet option, since my Spectrum Business cable Internet has gone down.</p>
 <figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/opnsense-backup-internet-gateway/spectrum-cable-modem-online-offline.jpg"
  alt="Spectrum Business Cable Modem offline" width="700" height="auto">
@@ -117,9 +122,4 @@
  alt="MetaComputing AI PC Mainboard next to Framework 13 laptop" width="700" height="auto">
 </figure>
 
-<p>My Framework 13 has run on x86, RISC-V, and now Arm, making it something of a 'Ship of Theseus'.</p>]]></description><pubDate>Wed, 15 Apr 2026 14:49:00 +0000</pubDate></item><item><title>Build your own Dial-up ISP with a Raspberry Pi</title><link>https://www.jeffgeerling.com/blog/2026/build-your-own-dial-up-isp-with-a-raspberry-pi/</link><description><![CDATA[<p>Last year my aunt let me add her <a href="https://everymac.com/systems/apple/ibook/specs/ibook.html">original Tangerine iBook G3 clamshell</a> to my collection of old Macs<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>.</p>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/build-your-own-dial-up-isp-with-a-raspberry-pi/pi-isp-ibook-hero.jpeg"
- alt="iBook G3 accessing dial-up Internet over WiFi browsing the vintage web" width="700" height="auto">
-</figure>
-
-<p>It came with an AirPort card—a $99 add-on Apple made that ushered in the Wi-Fi era. The iBook G3 was the first consumer laptop with built-in Wi-Fi antennas, and by <em>far</em> <a href="https://www.eetimes.com/the-secret-success-of-steve-jobs-wireless-internet/">the cheapest way</a> to get a computer onto an 802.11 wireless network.</p>]]></description><pubDate>Fri, 3 Apr 2026 14:00:00 +0000</pubDate></item></channel></rss>
+<p>My Framework 13 has run on x86, RISC-V, and now Arm, making it something of a 'Ship of Theseus'.</p>]]></description><pubDate>Wed, 15 Apr 2026 14:49:00 +0000</pubDate></item></channel></rss>
