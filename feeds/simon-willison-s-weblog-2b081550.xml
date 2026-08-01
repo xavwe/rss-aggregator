@@ -1,4 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Oxide and Friends: The Open Weight Revolution with Simon Willison</title><link>https://simonwillison.net/2026/Jul/31/oxide-and-friends/#atom-everything</link><description><![CDATA[<p><strong><a href="https://oxide-and-friends.transistor.fm/episodes/the-open-weight-revolution-with-simon-willison">Oxide and Friends: The Open Weight Revolution with Simon Willison</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Stateless MCP has recaptured my interest (and inspired mcp-explorer and datasette-mcp)</title><link>https://simonwillison.net/2026/Jul/31/stateless-mcp/#atom-everything</link><description><![CDATA[<p>Tuesday was <a href="https://x.com/ade_oshineye/status/2082129440943866149">Stateless MCP day</a> - the rollout of MCP 2.0, or <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28/">the 2026-07-28 Model Context Protocol specification</a> to use the more formal but less memorable name. This is the most significant change to the MCP spec since it first launched, and has also served to reignite my personal interest in the protocol.</p>
+<p>For background: MCP is the Model Context Protocol, which describes a standard way to expose new tools to LLM-powered agent frameworks. It was introduced by Anthropic back <a href="https://www.anthropic.com/news/model-context-protocol">in November 2024</a>, had a <em>huge</em> spike of interest through much of 2025, and then became somewhat eclipsed by <a href="https://simonwillison.net/2025/Oct/16/claude-skills/">Skills</a> (another Anthropic invention) when it became apparent that an agent harness with access to a terminal and <code>curl</code> could do most of what MCP did in a more flexible way. I wrote about that <a href="https://simonwillison.net/2025/Dec/31/the-year-in-llms/#the-only-year-of-mcp">in my review of 2025</a>.</p>
+<p>I'm coming back around to MCP now. Giving an agent a shell environment with the ability to access the internet is <a href="https://simonwillison.net/2026/Jul/22/openai-cyberattack/">fraught with risk</a>, and requires a strong model that is capable of effectively driving such an environment. MCP tools are easier to audit and control, and simple enough that smaller models that run on a laptop can still drive them reasonably well.</p>
+<p>The new stateless MCP specification also greatly decreases the complexity of implementing both clients and servers for the protocol. I built three of those this week!</p>
+<h4 id="what-s-easier-with-stateless-mcp">What's easier with stateless MCP</h4>
+<p>The best demonstration of the difference between stateful and stateless MCP is in this <a href="https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/">May 21st blog post</a> that introduced the RC for the new specification. It included a clear before-and-after example.</p>
+<p>The older stateful MCP (I'm going to call it "legacy MCP") required two HTTP requests - the first to initialize a session and obtain a <code>Mcp-Session-Id</code>, and the second to actually call the tool:</p>
+<pre><code>POST /mcp HTTP/1.1
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "initialize",
+  "params": {
+    "protocolVersion": "2025-11-25",
+    "capabilities": {
+    },
+    "clientInfo": {
+      "name": "my-app",
+      "version": "1.0"
+    }
+  }
+}
+
+POST /mcp HTTP/1.1
+Mcp-Session-Id: 1868a90c-3a3f-4f5b
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 2,
+  "method": "tools/call",
+  "params": {
+    "name": "search",
+    "arguments": {
+      "q": "otters"
+    }
+  }
+}
+</code></pre>
+<p>The new stateless way uses a single HTTP request which looks like this:</p>
+<pre><code>POST /mcp HTTP/1.1
+MCP-Protocol-Version: 2026-07-28
+Mcp-Method: tools/call
+Mcp-Name: search
+Content-Type: application/json
+
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "tools/call",
+  "params": {
+    "name": "search",
+    "arguments": {
+      "q": "otters"
+    },
+    "_meta": {
+      "io.modelcontextprotocol/clientInfo": {
+        "name": "my-app",
+        "version": "1.0"
+      }
+    }
+  }
+}
+</code></pre>
+<p>This is so much cleaner from both a client- and server-side implementation perspective. It's also a better fit for building scalable web applications, since now you don't need to maintain server-side state to keep track of those session IDs, or worry about routing the same session to the same backend machine.</p>
+<h4 id="mcp-explorer">mcp-explorer</h4>
+<p>I couldn't find a great CLI tool for interactively probing an MCP server, so I had Codex help build my own.</p>
+<p><strong><a href="https://github.com/simonw/mcp-explorer">mcp-explorer</a></strong> is the result. It's a stateless Python CLI tool, so you don't even need to install it to try it out - it works with <a href="https://docs.astral.sh/uv/guides/tools/#running-tools">uvx</a> like this:</p>
+<div class="highlight highlight-source-shell"><pre>uvx mcp-explorer list https://agentic-mermaid.dev/mcp</pre></div>
+<p>This queries Ade Oshineye's <a href="https://agentic-mermaid.dev/">agentic-mermaid.dev</a> demo MCP. The above command returns the following list of tools:</p>
+<pre><code>execute(code: string, timeoutMs?: integer) - Execute Mermaid SDK code
+  Run JavaScript in an isolated sandbox; return a value.
+
+describe_sdk(family: string, detail?: string) - Describe Mermaid SDK operations
+  Return version-matched mutation operations for one diagram family.
+
+render_svg(source: string, options?: object) - Render Mermaid as SVG
+  Render a Mermaid source string to themeable SVG. Returns { ok, svg }.
+
+render_ascii(source: string, useAscii?: boolean, targetWidth?: integer, options?: object) - Render Mermaid as text
+  Render a Mermaid source string to text. Returns { ok, text }.
+
+render_png(source: string, scale?: number, background?: string, fitTo?: object, options?: object) - Render Mermaid as PNG
+  Rasterize a Mermaid source string to PNG. Returns { ok, png_base64 }.
+...
+</code></pre>
+<p>Then to inspect a tool:</p>
+<div class="highlight highlight-source-shell"><pre>uvx mcp-explorer inspect render_svg</pre></div>
+<p>This outputs a whole bunch of information, including the JSON schema of the inputs and outputs.</p>
+<p>To call that tool and pass arguments to it:</p>
+<div class="highlight highlight-source-shell"><pre>uvx mcp-explorer call \
+  https://agentic-mermaid.dev/mcp \
+  render_svg \
+  -a <span class="pl-c1">source</span> <span class="pl-s"><span class="pl-pds">'</span>graph TD; A--&gt;B<span class="pl-pds">'</span></span> \
+  -a options <span class="pl-s"><span class="pl-pds">'</span>{"padding":24}<span class="pl-pds">'</span></span></pre></div>
+<p>Which returns:</p>
+<pre><code>{"ok":true,"svg":"&lt;svg xmlns=\"http://www.w3.org/2000/svg\" width=...
+</code></pre>
+<p>To get just the raw SVG try adding <code>| jq .svg -r</code> to that command. I got back <a href="https://gist.github.com/simonw/b07c62f0ce103be6932477659d5dd1ac">this image</a>:</p>
+<p><img src="https://static.simonwillison.net/static/2026/mermaid-example.svg" alt="SVG of as A box on top of a B box with an arrow from A to B" style="max-width: 100%;" /></p>
+<p>There are a <a href="https://github.com/simonw/mcp-explorer/blob/main/README.md">few more commands</a> in the README, but you get the general idea. I find building CLI tools like this to be a really productive way to get familiar with a specification, even if an agent writes most of the actual code.</p>
+<h4 id="datasette-mcp">datasette-mcp</h4>
+<p>The second project is <strong><a href="https://github.com/datasette/datasette-mcp">datasette-mcp</a></strong>, a Datasette plugin which adds a <code>/-/mcp</code> endpoint to any Datasette instance.</p>
+<p>This is probably the fourth time I've tried building this plugin, but thanks to the new stateless MCP specification I finally have a version that feels good to release.</p>
+<p>It provides just three tools: <code>list_databases()</code>, <code>get_database_schema(database_name)</code>, and <code>execute_sql(database_name, sql)</code>. They do exactly what you would expect them to do - though <code>execute_sql()</code> is read-only for the moment.</p>
+<p>Wire these into an agent, or a chat tool like ChatGPT or Claude, and they'll gain the ability to run SQL queries against your hosted Datasette instance.</p>
+<p>So far I'm running it on the Datasette mirror of my blog, at <a href="datasette.simonwillison.net/-/mcp">datasette.simonwillison.net/-/mcp</a>. It took a bit of fiddling to figure out how to attach that to ChatGPT and Claude, but I got there in the end. Here's <a href="https://til.simonwillison.net/llms/mcp-in-claude-and-chatgpt">a new TIL</a> showing exactly how to do that.</p>
+<p>Here's <a href="https://claude.ai/share/de1ad9bf-f7c2-4fb9-a9a0-2a1ae39995db">a shared Claude session</a> where I asked it:</p>
+<blockquote>
+<p><code>list tables in simonwillison.net</code></p>
+</blockquote>
+<p>And then:</p>
+<blockquote>
+<p><code>what has Simon said recently about MCP?</code></p>
+</blockquote>
+<p>It ran 7 separate SQL queries to figure out the answer.</p>
+<h4 id="llm-mcp-client">llm-mcp-client</h4>
+<p>My <a href="https://llm.datasette.io/">LLM tool</a> is long overdue for an official MCP integration. The new alpha <a href="https://github.com/simonw/llm-mcp-client">llm-mcp-client</a> plugin is my attempt at exactly that:</p>
+<div class="highlight highlight-source-shell"><pre>llm install llm-mcp-client
+llm -T <span class="pl-s"><span class="pl-pds">'</span>MCP("https://datasette.simonwillison.net/-/mcp")<span class="pl-pds">'</span></span> <span class="pl-s"><span class="pl-pds">'</span>count the notes<span class="pl-pds">'</span></span></pre></div>
+<p>Here's the output (including reasoning trace, I'm using <a href="https://simonwillison.net/2026/Jul/30/llm-rc2/">LLM 0.32rc2</a>):</p>
+<blockquote>
+<p><em><strong>Considering note count</strong></em></p>
+<p><em>I see the question "count the notes" is probably asking me to tally up blog notes. It could also mean published notes or drafts, so there's some ambiguity there. I'll need to figure out the total number of notes, likely by querying the count for both published notes and drafts to get a clear answer. Let's execute that count!</em></p>
+<p>There are <strong>151 notes</strong>.</p>
+</blockquote>
+<p>And <a href="https://gist.github.com/simonw/4e8f558766150658ce35eab4f0fc3e04">the output of llm logs</a> for that prompt.</p>
+<p>Once this is fully baked, I'm considering bringing it directly into LLM core. I'm excited to experiment with MCP in <a href="https://agent.datasette.io/">Datasette Agent</a> and <a href="https://github.com/simonw/llm-coding-agent">llm-coding-agent</a> as well.</p>
+<h4 id="mcp-is-a-safer-way-to-build-with-agents">MCP is a safer way to build with agents</h4>
+<p>A few months after MCP was first released, I wrote <a href="https://simonwillison.net/2025/Apr/9/mcp-prompt-injection/">Model Context Protocol has prompt injection security problems</a>, where I noted that the pattern of having end users mix and match tools pushed responsibility for avoiding data exfiltration attacks out to the users themselves. I hadn't coined <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">the Lethal Trifecta</a> yet, but that was absolutely what I had in mind.</p>
+<p>Then general agents with arbitrary shell and <code>curl</code> access came along, and that's so much harder to keep secure!</p>
+<p>Something I've come to appreciate about MCP is that it's much easier to reason about agent capabilities and what might go wrong than with arbitrary command execution in an open network environment - the default for most of today's general and coding agent tools.</p>
+<p>I plan to lean into MCP a whole lot more when I'm building sensitive applications on top of LLMs.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/mermaid">mermaid</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a></p>]]></description><pubDate>Fri, 31 Jul 2026 23:13:22 +0000</pubDate></item><item><title>Oxide and Friends: The Open Weight Revolution with Simon Willison</title><link>https://simonwillison.net/2026/Jul/31/oxide-and-friends/#atom-everything</link><description><![CDATA[<p><strong><a href="https://oxide-and-friends.transistor.fm/episodes/the-open-weight-revolution-with-simon-willison">Oxide and Friends: The Open Weight Revolution with Simon Willison</a></strong></p>
 On Monday Bryan Cantrill and Adam Leventhal invited me to join their podcast to talk about the <em>wild</em> week we've had - with Kimi K3 showing open weight models can stand toe-to-toe with proprietary frontier ones, <a href="https://simonwillison.net/2026/Jul/22/openai-cyberattack/">accidental cybersecurity attacks</a>, and public letters about <a href="https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/">Open Weights and American AI Leadership</a> signed by almost every big name in AI (with one <a href="https://www.anthropic.com/news/position-open-weights-models">notable exception</a>).</p>
 <p>It was a great conversation, even though it's already out-of-date! <a href="https://artificialanalysis.ai/models/deepseek-v4-flash">DeepSeek V4 Flash 0731</a> and <a href="https://simonwillison.net/2026/Jul/30/three-real-world-incidents/">Anthropic's own embarrassing cyber incident</a> would absolutely have made the cut if we had recorded just a few days later.</p>
 <p>We also talk about <a href="https://www.anthropic.com/news/golden-gate-claude">Golden Gate Claude</a>, the <a href="https://en.wikipedia.org/wiki/Zizians">Zizians</a>, <a href="https://abc7news.com/post/83-year-old-alameda-woman-attacked-wild-turkeys-city-warns-residents-take-precautions-during-mating-season/19190785/">Alameda wild turkey attacks</a>, <a href="https://en.wikipedia.org/wiki/Soviet_biological_weapons_program">Soviet Marburg virus research</a>, the <a href="https://en.wikipedia.org/wiki/Lead–crime_hypothesis">Lead-crime hypothesis</a>, and a bunch of other worthy digressions.</p>
@@ -27,6 +163,17 @@ I've been working with Jesse Vincent's <a href="https://primeradiant.com">Prime 
 </code></pre>
 <p>Or run the <code>smevals build</code> command to build that report as static HTML, which you can then host anywhere. Here's <a href="https://static.simonwillison.net/static/2026/smevals-haiku-build/#/haiku">an example</a> showing an eval suite I built to evaluate how well models can write haikus.</p>
 <p><img alt="Screenshot of an evaluation dashboard for a haiku-writing benchmark, testing whether models can reply with exactly three non-empty lines. A header describes the eval, with panels below showing a leaderboard ranking three GPT models by score, lists of recent runs and recent grades, tag pass rates, the two haiku prompts that were tested, and details of the graders used with a 0.8 pass threshold." src="https://static.simonwillison.net/static/2026/smevals-report.webp" /></p>
+<p>The most time-consuming part of this project was figuring out the vocabulary for it! Here's what I settled on, quoted from the announcement:</p>
+<blockquote>
+<ul>
+<li>An <strong>eval</strong> is a collection of challenges designed to answer a question about a model, for example, how good is that model at generating SVGs?</li>
+<li>Each eval is a collection of <strong>tasks</strong>. A task is a specific challenge, for example "Generate an SVG of a pelican riding a bicycle".</li>
+<li>When you run the eval you do so against one or more <strong>configs</strong>. Each config specifies a model to be evaluated, but may also include other parameters to test, such as different system prompts, model parameters, or agent harnesses.</li>
+<li>A <strong>run</strong> records what happened when a specific config was used to execute a specific task. A <strong>runner</strong> is the script that executes a run.</li>
+<li>Once you have collected one or more runs, you need to evaluate the results to see how well the model (or config) did. This is done by a <strong>grader</strong>, which produces a <strong>grade</strong>.</li>
+<li>Each grader runs a sequence of <strong>checks</strong>. These can be simple operations, like checking for a specific string in the output, or confirming that the output is valid XML. They can also be more complicated custom operations (implemented as scripts called <strong>checkers</strong>), including using other models to answer questions about the run.</li>
+</ul>
+</blockquote>
 <p>I've been trying to figure out an approach I like for evals for several years now. <code>smevals</code> is my third iteration on the idea and it feels right to me. I'm looking forward to expanding this more in the future, as well as pointing it at some of my own projects.
 
 
@@ -447,7 +594,4 @@ Excellent piece of work by Dylan Castillo, who took a deep-dive into the frequen
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a></p>]]></description><pubDate>Wed, 22 Jul 2026 23:01:00 +0000</pubDate></item><item><title>Orchestrions</title><link>https://simonwillison.net/2026/Jul/22/all-the-orchestrions/#atom-everything</link><description><![CDATA[<p>San Francisco tip: it only costs around $15 ($10 in quarters plus a $5 bill for the self-playing violin) to activate every single Orchestrion in <a href="https://en.wikipedia.org/wiki/Musée_Mécanique">Musée Mécanique</a>.</p>
 <p>And because most people are bad at allocating their funds you may well be the ONLY person activating the Orchestrions, which means you get to craft the soundscape for the entire museum.</p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/san-francisco">san-francisco</a></p>]]></description><pubDate>Wed, 22 Jul 2026 14:48:52 +0000</pubDate></item><item><title>California Sea Lion</title><link>https://simonwillison.net/2026/Jul/21/sighting-383713864/#atom-everything</link><description><![CDATA[<p><img src="https://static.inaturalist.org/photos/702321069/large.jpg" alt="California Sea Lion"></p><p><img src="https://static.inaturalist.org/photos/702321114/large.jpg" alt="California Sea Lion"></p><p>California Sea Lion, in San Francisco County, US, CA</p><p>We took some visiting family to Pier 39 to see the sea lions. They're somehow always even more fun than I remember them being last time.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/san-francisco">san-francisco</a>, <a href="https://simonwillison.net/tags/wildlife">wildlife</a></p>]]></description><pubDate>Tue, 21 Jul 2026 19:51:03 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/san-francisco">san-francisco</a></p>]]></description><pubDate>Wed, 22 Jul 2026 14:48:52 +0000</pubDate></item></channel></rss>
