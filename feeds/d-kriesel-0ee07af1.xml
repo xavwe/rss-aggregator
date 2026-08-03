@@ -1,4 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>D. Kriesel</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/d-kriesel-0ee07af1.xml</link><description>Archived feed from https://www.dkriesel.com/feed.php?linkto=current&amp;content=html&amp;mode=blogtng&amp;blog=blog-de</description><item><title>Wahl-O-Mat-Auswertung Bundestagswahl 2025, Teil 2: Thesen- und Parteienverwandtschaften</title><link>https://www.dkriesel.com/blog/2025/0208_wahl-o-mat-auswertung_bundestagswahl_2025_teil_2_thesen-_und_parteienverwandtschaften</link><description><![CDATA[<div class="level2">
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>D. Kriesel</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/d-kriesel-0ee07af1.xml</link><description>Archived feed from https://www.dkriesel.com/feed.php?linkto=current&amp;content=html&amp;mode=blogtng&amp;blog=blog-de</description><item><title>Die Landtagswahl Sachsen-Anhalt ist aus DataScience-Sicht die interessanteste Wahl des Jahres</title><link>https://www.dkriesel.com/blog/2026/0803_landtagswahl_sachsen-anhalt</link><description><![CDATA[<div class="level2">
+
+<p>
+Große Behauptung, ich weiß. Aber lasst sie mich euch mit tausenden durchgewürfelten Wahlabenden beweisen. Ich nehme die aktuellen Umfragewerte für Sachsen-Anhalt, kippe die ganze Unsicherheit dazu, die in so einer Umfrage steckt, und lasse den Wahlabend <strong>zwanzigtausendmal</strong> ablaufen. Heraus kommt kein Orakel, sondern eine Wahrscheinlichkeitskarte – und die ist hier so schräg, wie ich sie selten gesehen habe: eine Partei, die mit nennenswerter Wahrscheinlichkeit <strong>ganz allein</strong> regieren könnte, ein Lager, das in <strong>100%</strong> der Fälle eine Sitzmehrheit hat und sie trotzdem meistens verschenkt, ein anderes Lager, das in <strong>0%</strong> der Fälle überhaupt eine Mehrheit zusammenbekommt, und vier Parteien, die so nah an der 5%-Hürde sind, dass nicht klar ist, ob sie überhaupt in den Landtag kommen oder nicht. Wenn das nicht interessant ist, dann weiß ich auch nicht. <img src="https://www.dkriesel.com/lib/images/smileys/cool.svg" class="icon smiley" alt="8-)" />
+</p>
+
+<p>
+<a href="https://www.dkriesel.com/_media/blog/2026/montecarlo_heatmap_paarweise.png" class="media" target="_blank" title="blog:2026:montecarlo_heatmap_paarweise.png" rel="noopener"><img src="https://www.dkriesel.com/_media/blog/2026/montecarlo_heatmap_paarweise.png?w=700&amp;tok=c49f03" class="medialeft" loading="lazy" alt="" width="700" /></a>
+</p>
+
+
+
+</div>
+<div class="level2">
+
+<p>
+<a href="https://www.dkriesel.com/blog/2026/0803_landtagswahl_sachsen-anhalt#readmore_blog_2026_0803_landtagswahl_sachsen-anhalt" class="wikilink1" title="blog:2026:0803_landtagswahl_sachsen-anhalt" data-wiki-id="blog:2026:0803_landtagswahl_sachsen-anhalt">Weiter lesen...</a>
+</p>
+
+</div>
+
+<p>
+    <small>
+        Eintrag vom 2026-08-03 um 22:25                    , zuletzt ge&auml;ndert am 2026-08-03 um 23:42                by
+        David Kriesel.
+                    Tags: <a href="https://www.dkriesel.com/start?post-tags=DataScience" class="tag">DataScience</a>, <a href="https://www.dkriesel.com/start?post-tags=Sachsen-Anhalt" class="tag">Sachsen-Anhalt</a>, <a href="https://www.dkriesel.com/start?post-tags=Verhandlungskunst" class="tag">Verhandlungskunst</a>, <a href="https://www.dkriesel.com/start?post-tags=Wahl" class="tag">Wahl</a>.
+            </small>
+</p>]]></description><pubDate>Mon, 3 Aug 2026 22:25:00 +0000</pubDate></item><item><title>Wahl-O-Mat-Auswertung Bundestagswahl 2025, Teil 2: Thesen- und Parteienverwandtschaften</title><link>https://www.dkriesel.com/blog/2025/0208_wahl-o-mat-auswertung_bundestagswahl_2025_teil_2_thesen-_und_parteienverwandtschaften</link><description><![CDATA[<div class="level2">
 
 <p>
 Nach der <a href="https://www.dkriesel.com/blog/2025/0206_wahl-o-mat-auswertung_bundestagswahl_2025_parteienlandkarte" class="wikilink1" title="blog:2025:0206_wahl-o-mat-auswertung_bundestagswahl_2025_parteienlandkarte" data-wiki-id="blog:2025:0206_wahl-o-mat-auswertung_bundestagswahl_2025_parteienlandkarte">Parteienlandkarte</a> gibt es auch dieses Jahr einen zweiten Teil der Wahl-O-Mat-Auswertung mit der ebenfalls schon aus 2017 und 2021 bekannten <em>Cluster Heatmap</em>, die sowohl eine Analyse von Parteinachbarschaften, als auch von verwandten Thesen (=ähnliches Parteizustimmungsmuster) zulässt. Diese Art der Grafik ist sehr Informationstragend. Ich präsentiere sie wieder zuerst, und danach führe ich euch schrittweise heran. 
@@ -212,22 +239,4 @@ Das funktioniert so: Ich wähle zwei verschiedene Umfragen aus der jüngsten Ver
         David Kriesel.
                     Tags: <a href="https://www.dkriesel.com/start?post-tags=Bundestagswahl" class="tag">Bundestagswahl</a>, <a href="https://www.dkriesel.com/start?post-tags=Media-Style" class="tag">Media-Style</a>, <a href="https://www.dkriesel.com/start?post-tags=Sonntagsfrage" class="tag">Sonntagsfrage</a>.
             </small>
-</p>]]></description><pubDate>Fri, 27 Aug 2021 12:46:00 +0000</pubDate></item><item><title>Update zur Sonntagsfrage</title><link>https://www.dkriesel.com/blog/2021/0820_update_zur_sonntagsfrage</link><description><![CDATA[<div class="level2">
-
-<p>
-Es ist Wa-haaaahl! Aufgrund ihres beeindruckenden Erfolges sind die Parteien „Sonstige“ und „Nichtwähler“ (stärkste Kraft – Gratulation zu diesem Qualitätsausweis unserer Kandidaten- und Parteienlandschaft!) jetzt auch in meinen Charts verewigt. Und das Design ist auch etwas erneuert, insbesondere mit Zahlen rechts statt links. Gleichzeitig ist dieser Blogpost willkommenes Mittel, die Sonntagsfrage hier auf der Titelseite zu haben. Detallierte Infos wie immer unter <a href="https://www.dkriesel.com/sonntagsfrage" class="urlextern" target="_blank" title="https://www.dkriesel.com/sonntagsfrage" rel="ugc nofollow noopener">https://www.dkriesel.com/sonntagsfrage</a>.
-</p>
-
-<p>
-<a href="https://www.dkriesel.com/_media/sonntagsfrage_90tage.png" class="media" target="_blank" title="sonntagsfrage_90tage.png" rel="noopener"><img src="https://www.dkriesel.com/_media/sonntagsfrage_90tage.png?w=700&amp;tok=797823" class="mediacenter" loading="lazy" alt="" width="700" /></a>
-</p>
-
-</div>
-
-<p>
-    <small>
-        Eintrag vom 2021-08-20 um 10:17                    , zuletzt ge&auml;ndert am 2021-08-20 um 10:21                by
-        David Kriesel.
-                    Tags: <a href="https://www.dkriesel.com/start?post-tags=Bundestagswahl" class="tag">Bundestagswahl</a>, <a href="https://www.dkriesel.com/start?post-tags=Sonntagsfrage" class="tag">Sonntagsfrage</a>.
-            </small>
-</p>]]></description><pubDate>Fri, 20 Aug 2021 10:17:00 +0000</pubDate></item></channel></rss>
+</p>]]></description><pubDate>Fri, 27 Aug 2021 12:46:00 +0000</pubDate></item></channel></rss>
