@@ -1,4 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting Steve Yegge</title><link>https://simonwillison.net/2026/Aug/4/steve-yegge/#atom-everything</link><description><![CDATA[<blockquote cite="https://yegge.ai/essays/the-shape-of-things-to-come/"><p><a href="https://yegge.ai/gastown.html">Gas Town</a> was intended to be reusable, but I only ever wound up using it to build itself. Gas Town fell apart at the seams with Opus 4.7. Up through 4.6 it was working brilliantly. With 4.7 we saw the introduction of the "just two more things" tic, which prevented Opus from ever converging on being ready to do real work—it always wanted to fiddle with Gas Town itself. The Opus tic never went away, so Gas Town effectively burned down. It had other problems, too, but 4.7 was the final straw.</p></blockquote>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>PipeNetwork/minimax-h3-mlx</title><link>https://simonwillison.net/2026/Aug/4/minimax-h3-mlx/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/PipeNetwork/minimax-h3-mlx">PipeNetwork/minimax-h3-mlx</a></strong></p>
+MiniMax released <a href="https://huggingface.co/MiniMaxAI/MiniMax-H3">MiniMax-H3</a> two days ago - they describe it as a "a general-purpose, omni-modal generative system", which in practice means it accepts text, images, audio and video and can use them to generate up to 15 second video clips with audio included.</p>
+<p>This Python package ports it to MLX for running on Apple Silicon.</p>
+<p>I got it running on my M5 Max MacBook Pro. I cloned the repo and ran the model like this:</p>
+<pre><code># First download the models
+uvx --from huggingface_hub hf download MiniMaxAI/MiniMax-H3 \
+  --include 'FL2VA/*' --exclude 'FL2VA/transformer/*'
+uvx --from huggingface_hub hf download pipenetwork/MiniMax-H3-MLX-8bit
+
+# Now run the prompt
+uv run --with mlx-vlm \
+  --with-requirements requirements.txt python scripts/generate.py \
+  "a rainbow colored skunk leaps over a mossy log in a supermarket" \
+  -o skunk.mp4 \
+  -c ~/.cache/huggingface/hub/models--MiniMaxAI--MiniMax-H3/snapshots/fa9c8ab1eaa21c8ae25e7e40b83b2e6002f340af/FL2VA \
+  -t ~/.cache/huggingface/hub/models--pipenetwork--MiniMax-H3-MLX-8bit/snapshots/3ac52081470b0488921c3ec3ba84a39097bf2361
+</code></pre>
+<p>Here's the video I got for the prompt:</p>
+<blockquote>
+<p><code>a rainbow colored skunk leaps over a mossy log in a supermarket</code></p>
+</blockquote>
+<p><video
+    controls loop
+    preload="none"
+    poster="https://static.simonwillison.net/static/2026/skunk.jpg"
+    width="1344"
+    height="768"
+    style="display: block; width: 100%; height: auto;"
+  >
+    <source src="https://static.simonwillison.net/static/2026/skunk.web.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+</p>
+
+<p>It downloaded ~115 GB of model files, and the video generation took just under 45 minutes.</p>
+<p>The video is impressive, but the audio is weird speech-like garbage, because I didn't provide any prompt guidance as to what the audio should be. The <a href="https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/docs/VIDEO_PROMPT_WRITING_GUIDE_base_en.md">prompting guide</a> (which I didn't read prior to this experiment) has a whole bunch of information on how to get this to work.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/mlx">mlx</a>, <a href="https://simonwillison.net/tags/text-to-video">text-to-video</a>, <a href="https://simonwillison.net/tags/minimax">minimax</a></p>]]></description><pubDate>Tue, 4 Aug 2026 19:10:09 +0000</pubDate></item><item><title>Quoting Steve Yegge</title><link>https://simonwillison.net/2026/Aug/4/steve-yegge/#atom-everything</link><description><![CDATA[<blockquote cite="https://yegge.ai/essays/the-shape-of-things-to-come/"><p><a href="https://yegge.ai/gastown.html">Gas Town</a> was intended to be reusable, but I only ever wound up using it to build itself. Gas Town fell apart at the seams with Opus 4.7. Up through 4.6 it was working brilliantly. With 4.7 we saw the introduction of the "just two more things" tic, which prevented Opus from ever converging on being ready to do real work—it always wanted to fiddle with Gas Town itself. The Opus tic never went away, so Gas Town effectively burned down. It had other problems, too, but 4.7 was the final straw.</p></blockquote>
 <p class="cite">&mdash; <a href="https://yegge.ai/essays/the-shape-of-things-to-come/">Steve Yegge</a>, The Shape of Things to Come</p>
 
     <p>Tags: <a href="https://simonwillison.net/tags/steve-yegge">steve-yegge</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Tue, 4 Aug 2026 00:42:45 +0000</pubDate></item><item><title>Don&apos;t be a meat proxy</title><link>https://simonwillison.net/2026/Aug/3/dont-be-a-meat-proxy/#atom-everything</link><description><![CDATA[<p><strong><a href="https://gruhn.me/blog/2026-08-03/">Don&#x27;t be a meat proxy</a></strong></p>
@@ -456,14 +494,4 @@ The best part of this article (here's <a href="https://github.com/anthropics/cry
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>]]></description><pubDate>Tue, 28 Jul 2026 22:45:37 +0000</pubDate></item><item><title>Quoting Akshat Bubna</title><link>https://simonwillison.net/2026/Jul/28/akshat-bubna/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.reuters.com/business/openais-rogue-agent-compromised-an-account-second-tech-firm-sources-say-2026-07-28/"><p>We’re aware a Modal customer published an unauthenticated endpoint that allowed ​anyone on the internet to use ​their ⁠sandboxes for code execution. This was used by the rogue agent. Modal’s ⁠platform ​or isolation were not ​compromised in anyway.</p></blockquote>
 <p class="cite">&mdash; <a href="https://www.reuters.com/business/openais-rogue-agent-compromised-an-account-second-tech-firm-sources-say-2026-07-28/">Akshat Bubna</a>, Modal's CTO, talking to Reuters about <a href="https://simonwillison.net/2026/Jul/28/anatomy-of-a-frontier-lab-agent-intrusion/">this incident</a></p>
 
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/openai-hugging-face-incident">openai-hugging-face-incident</a></p>]]></description><pubDate>Tue, 28 Jul 2026 22:05:55 +0000</pubDate></item><item><title>uv 0.12.0</title><link>https://simonwillison.net/2026/Jul/28/uv/#atom-everything</link><description><![CDATA[<p><strong><a href="https://github.com/astral-sh/uv/releases/tag/0.12.0">uv 0.12.0</a></strong></p>
-Some interesting breaking changes in this release of <code>uv</code>, in particular to the default project produced by the <code>uv init</code> command.</p>
-<p><a href="https://docs.astral.sh/uv/concepts/projects/init/">uv init</a> is the <code>uv</code> shortcut for creating a new project. The previous version of <code>uv</code>, version 0.11.x, produced <a href="https://github.com/simonw/uv-init-demos/tree/29656a55ec733a632005abfd7b89dea5c04fa10b/uv-init">this directory</a> when you ran <code>uv init uv-init</code>.</p>
-<p>Here's <a href="https://github.com/simonw/uv-init-demos/tree/9111a2bb85741f034eee2fd63efe13ef98b37a14/uv-init">what you get with uv 0.12</a>. I have a GitHub repository that <a href="https://simonwillison.net/2025/Dec/24/uv-init-demos/">automatically snapshots</a> the output of <code>uv init</code>, so you can also <a href="https://github.com/simonw/uv-init-demos/commit/9111a2bb85741f034eee2fd63efe13ef98b37a14#diff-e036881d034aedd813010ffa96464995ae5b0339213d6f4ab492f97442c5bdd4">see the full diff</a>:</p>
-<p><img alt="GitHub diff view. uv-init/main.py is an old __name__==&quot;__main__&quot; file that has been entirely deleted. The pyproject.toml now has an authors list and a new project.scripts block defining uv-init as uv_init:main - and a new build-system block that uses uv_build as the build-backend. A new src/uv_init/__init__.py file contains a main() method with a -&gt; None type annotation that prints Hello from uv-init." src="https://static.simonwillison.net/static/2026/uv-diff.webp" /></p>
-<p><code>uv init</code> now defaults to a <code>src/</code> shaped package, instead of dropping <code>main.py</code> in the root of the project. It also configures the <a href="https://docs.astral.sh/uv/concepts/build-backend/">uv_build backend</a> for building wheels and <code>.tar.gz</code> distribution files when you run <code>uv build</code>. Finally, it sets up <code>uv-init</code> as a script alias which, when run with <code>uv run uv-init</code>, executes a new <code>main()</code> function in <code>src/uv_init/__init__.py</code>.</p>
-<p>I've so far avoided using <a href="https://packaging.python.org/en/latest/discussions/src-layout-vs-flat-layout/">src layout</a> in my own projects just out of inertia. I think it's time I switched.</p>
-<p>I wonder when <code>uv</code> will be judged ready for a 1.0 release?
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>]]></description><pubDate>Tue, 28 Jul 2026 21:51:38 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/openai-hugging-face-incident">openai-hugging-face-incident</a></p>]]></description><pubDate>Tue, 28 Jul 2026 22:05:55 +0000</pubDate></item></channel></rss>
