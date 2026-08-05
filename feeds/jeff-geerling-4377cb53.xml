@@ -1,4 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Getting 25 Gbps Thunderbolt Ethernet on my Mac Studio</title><link>https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/mac-studio-ports-full-back-ethernet.jpg"
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Jeff Geerling</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/jeff-geerling-4377cb53.xml</link><description>Archived feed from https://www.jeffgeerling.com/blog.xml</description><item><title>Proxmox officially supports Arm, with some caveats</title><link>https://www.jeffgeerling.com/blog/2026/proxmox-ve-arm-official/</link><description><![CDATA[<p>Proxmox today announced their <a href="https://forum.proxmox.com/threads/proxmox-virtual-environment-now-available-for-64-bit-arm-arm64.185527/">Proxmox Virtual Environment is now available for 64-bit ARM</a>.</p>
+<p>I tested it on my <a href="https://www.jeffgeerling.com/blog/2023/testing-96-core-ampere-altra-developer-platform/">Ampere Altra Dev Platform</a>—the same machine on which I've <a href="https://www.jeffgeerling.com/blog/2023/ampere-altra-max-windows-gpus-and-gaming/">booted Windows on Arm</a> the first time, messed with multiple GPUs, and most recently <a href="https://www.youtube.com/watch?v=QdU7WszFTAA">tested Houdini's native arm64 support</a>.</p>
+<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/proxmox-ve-arm-official/proxmox-ve-on-arm-vm.jpg"
+ alt="Proxmox VE running on Ampere Altra Max workstation" width="700" height="auto">
+</figure>
+
+<p>Install was easy, as the Ampere Altra uses UEFI / ACPI for its hardware, meaning Proxmox didn't have to tailor it's ISO to specific platforms, like you have to do with Raspberry Pis and most SBCs using a Device Tree setup.</p>]]></description><pubDate>Wed, 5 Aug 2026 16:50:00 +0000</pubDate></item><item><title>Getting 25 Gbps Thunderbolt Ethernet on my Mac Studio</title><link>https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/mac-studio-ports-full-back-ethernet.jpg"
  alt="Mac Studio with all ports plugged in Ethernet 10G" width="700" height="auto">
 </figure>
 
@@ -117,9 +123,4 @@
  alt="10 Gbps Ethernet adapters for Thunderbolt and USB" width="700" height="auto">
 </figure>
 
-<p><a href="https://amzn.to/3QIkfFm">2.5G</a> and even <a href="https://amzn.to/4mytCmZ">5G USB adapters</a> have been out for a while, but sometimes you need more bandwidth.</p>]]></description><pubDate>Fri, 24 Apr 2026 14:00:00 +0000</pubDate></item><item><title>An Arm Mainboard for the Framework Laptop</title><link>https://www.jeffgeerling.com/blog/2026/arm-mainboard-for-framework-laptop/</link><description><![CDATA[<p>Using the repair-friendly Framework 13 laptop chassis, I've tested the low-end x86 option (a <a href="https://github.com/geerlingguy/sbc-reviews/issues/90">Ryzen AI 5 340 Mainboard</a>), the fastest RISC-V option (<a href="https://github.com/geerlingguy/sbc-reviews/issues/82">DC-ROMA II</a>), and today I'm publishing results from the only Arm Mainboard, the <a href="https://github.com/geerlingguy/sbc-reviews/issues/103">MetaComputing AI PC</a>, which has a 12-core Arm SoC and up to 32 GB of soldered-on RAM.</p>
-<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/arm-mainboard-for-framework-laptop/metacomputing-arm-framework-hero.jpg"
- alt="MetaComputing AI PC Mainboard next to Framework 13 laptop" width="700" height="auto">
-</figure>
-
-<p>My Framework 13 has run on x86, RISC-V, and now Arm, making it something of a 'Ship of Theseus'.</p>]]></description><pubDate>Wed, 15 Apr 2026 14:49:00 +0000</pubDate></item></channel></rss>
+<p><a href="https://amzn.to/3QIkfFm">2.5G</a> and even <a href="https://amzn.to/4mytCmZ">5G USB adapters</a> have been out for a while, but sometimes you need more bandwidth.</p>]]></description><pubDate>Fri, 24 Apr 2026 14:00:00 +0000</pubDate></item></channel></rss>
