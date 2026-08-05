@@ -4,7 +4,7 @@
  alt="Proxmox VE running on Ampere Altra Max workstation" width="700" height="auto">
 </figure>
 
-<p>Install was easy, as the Ampere Altra uses UEFI / ACPI for its hardware, meaning Proxmox didn't have to tailor it's ISO to specific platforms, like you have to do with Raspberry Pis and most SBCs using a Device Tree setup.</p>]]></description><pubDate>Wed, 5 Aug 2026 16:50:00 +0000</pubDate></item><item><title>Getting 25 Gbps Thunderbolt Ethernet on my Mac Studio</title><link>https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/mac-studio-ports-full-back-ethernet.jpg"
+<p>Install was easy, as the Ampere Altra uses UEFI / ACPI for its hardware, meaning Proxmox didn't have to tailor its ISO to specific platforms, like you have to do with Raspberry Pis and most SBCs using a Device Tree setup.</p>]]></description><pubDate>Wed, 5 Aug 2026 16:50:00 +0000</pubDate></item><item><title>Getting 25 Gbps Thunderbolt Ethernet on my Mac Studio</title><link>https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/</link><description><![CDATA[<figure class="insert-image"><img src="https://www.jeffgeerling.com/blog/2026/getting-25g-ethernet-mac-thunderbolt/mac-studio-ports-full-back-ethernet.jpg"
  alt="Mac Studio with all ports plugged in Ethernet 10G" width="700" height="auto">
 </figure>
 
