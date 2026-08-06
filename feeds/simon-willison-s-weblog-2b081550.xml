@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>An AI model from Meta also hacked another company during testing</title><link>https://simonwillison.net/2026/Aug/6/an-ai-model-from-meta/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.cnn.com/2026/08/05/tech/meta-ai-hacking">An AI model from Meta also hacked another company during testing</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette 1.0a38</title><link>https://simonwillison.net/2026/Aug/6/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a38">datasette 1.0a38</a></p>
+        <blockquote>
+<p>This release fixes a <strong>SQL injection</strong> security issue that affects Datasette instances that serve a <strong>mixture of public and private tables</strong> in the same database, with access configured using the <a href="https://docs.datasette.io/en/latest/authentication.html">Datasette permissions system</a>.</p>
+<p>Site administrators who serve private tables in this way are advised to disable the <a href="https://docs.datasette.io/en/latest/authentication.html#execute-sql">execute-sql permission</a> <actions_execute_sql>` on that database to prevent users from accessing private tables using raw SQL queries. The bug that has been fixed would have allowed users with access to any public table to execute SQL injection attacks despite that restriction, giving them read-only access to data in private tables in the same database.</p>
+<p>This fix is also available in <a href="https://simonwillison.net/2026/Aug/6/datasette-2/">Datasette 0.65.3</a>.</p>
+</blockquote>
+<p>Thankfully this particular configuration - private tables and public tables exposed for the same database within the same instance - is likely to be rare. I've not encountered an instance like that myself.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/sql-injection">sql-injection</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Thu, 6 Aug 2026 18:24:34 +0000</pubDate></item><item><title>datasette 0.65.3</title><link>https://simonwillison.net/2026/Aug/6/datasette-2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/0.65.3">datasette 0.65.3</a></p>
+        <p>Back-ported the SQL Injection security fix from <a href="https://simonwillison.net/2026/Aug/6/datasette/">1.0a38</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>]]></description><pubDate>Thu, 6 Aug 2026 18:22:07 +0000</pubDate></item><item><title>Simon Willison on Technical Blogging</title><link>https://simonwillison.net/2026/Aug/6/simon-willison-on-technical-blogging/#atom-everything</link><description><![CDATA[<p><strong><a href="https://writethatblog.substack.com/p/simon-willison-on-technical-blogging">Simon Willison on Technical Blogging</a></strong></p>
+I was interviewed by Cynthia Dunlop for her "Write that blog!" series back in January, but I just realized I never linked to the interview from my own blog!</p>
+<p>It includes my answers to the following questions:</p>
+<ul>
+<li>Why did you start blogging – and why do you continue?</li>
+<li>What has been the most surprising impact of blogging for you?</li>
+<li>What blog post are you most proud of and why?</li>
+<li>What post was the most difficult to write and how did you tackle it?</li>
+<li>Any lessons learned that you want to share with the community?</li>
+<li>Your advice for people just getting started with blogging?</li>
+<li>A few blogs that you particularly enjoy?</li>
+</ul>
+<p>I'll repeat my most important piece of advice here:</p>
+<blockquote>
+<p>My number one tip for blogging is to lower your standards! Aim to hit publish while you are still actively unhappy with what you have written, because the only alternative is a huge folder full of drafts and never publishing anything at all.</p>
+<p>Nobody will ever know how perfect the thing you <em>intended</em> to write would have been. The flaws you see in your writing are invisible to everyone else.</p>
+</blockquote>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/blogging">blogging</a>, <a href="https://simonwillison.net/tags/interviews">interviews</a></p>]]></description><pubDate>Thu, 6 Aug 2026 18:04:39 +0000</pubDate></item><item><title>An AI model from Meta also hacked another company during testing</title><link>https://simonwillison.net/2026/Aug/6/an-ai-model-from-meta/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.cnn.com/2026/08/05/tech/meta-ai-hacking">An AI model from Meta also hacked another company during testing</a></strong></p>
 Stop me if you've <a href="https://simonwillison.net/tags/accidental-cyberattacks/">heard this one before</a>:</p>
 <blockquote>
 <p>An AI model from the parent company of Facebook and Instagram hacked into another company’s systems during cybersecurity testing, a spokesperson confirmed on Wednesday.</p>
@@ -62,7 +94,7 @@ planned a prompt injection to compromise other coding agents.</p>
 <p>It's a fun paper. I recommend reading the whole thing.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/paper-review">paper-review</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/accidental-cyberattacks">accidental-cyberattacks</a></p>]]></description><pubDate>Wed, 5 Aug 2026 23:32:06 +0000</pubDate></item><item><title>One-shotting a Raccoon Heist game using Claude Fable 5</title><link>https://simonwillison.net/2026/Aug/5/raccoon-heist/#atom-everything</link><description><![CDATA[<p>Back in 2024 <a href="https://twitter.com/simonw/status/1555626060384911360">I tweeted</a> screenshots of a game concept generated by GPT-3 and some concept "art" created using DALL-E. Today, on the fourth anniversary of that tweet, I decided to see if Claude Fable 5 (running in <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code for web</a>) could build the entire game from the content of that tweet. It did a pretty good job of it!</p>
+    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-injection">prompt-injection</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/paper-review">paper-review</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/accidental-cyberattacks">accidental-cyberattacks</a></p>]]></description><pubDate>Wed, 5 Aug 2026 23:32:06 +0000</pubDate></item><item><title>One-shotting a Raccoon Heist game using Claude Fable 5</title><link>https://simonwillison.net/2026/Aug/5/raccoon-heist/#atom-everything</link><description><![CDATA[<p>Back in 2022 <a href="https://twitter.com/simonw/status/1555626060384911360">I tweeted</a> screenshots of a game concept generated by GPT-3 and some concept "art" created using DALL-E. Today, on the fourth anniversary of that tweet, I decided to see if Claude Fable 5 (running in <a href="https://code.claude.com/docs/en/claude-code-on-the-web">Claude Code for web</a>) could build the entire game from the content of that tweet. It did a pretty good job of it!</p>
 <p>You can <a href="https://simonw.github.io/raccoon-heist/">play the game here</a>. Here's <a href="https://github.com/simonw/raccoon-heist/">the GitHub repo</a>, and a short video demo:</p>
 
 <p><video
@@ -694,55 +726,4 @@ I've been working with Jesse Vincent's <a href="https://primeradiant.com">Prime 
 <p>I used this to add a debug loop to Datasette Apps in <a href="https://simonwillison.net/2026/Aug/1/datasette-apps/">datasette-apps 0.2a0</a>.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Fri, 31 Jul 2026 14:14:23 +0000</pubDate></item><item><title>Advancing the price-performance frontier with GPT‑5.6</title><link>https://simonwillison.net/2026/Jul/30/luna-price-drop/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6/">Advancing the price-performance frontier with GPT‑5.6</a></strong></p>
-Huge price drop from OpenAI today: GPT-5.6 Terra got a 20% reduction, and GPT-5.6 Luna got a massive 80% drop.</p>
-<p>OpenAI credit 5.6 Sol with enabling this: in <a href="https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency/">How GPT‑5.6 fuses frontier intelligence with frontier efficiency</a> they describe using 5.6 Sol to optimize load balancing, and more impressively to optimize inference itself:</p>
-<blockquote>
-<p>We also used GPT‑5.6 Sol to optimize the model’s forward pass: the computation that transforms inputs into next-token predictions. Even when individual operations are fast, excess memory movement, synchronization, and inefficient data layouts can leave GPUs idle. To avoid this, GPT‑5.6 Sol found work that could be precomputed, avoided, or parallelized. With Codex, GPT‑5.6 Sol autonomously rewrote and optimized our production kernels, the core code that executes the mathematical operations that make up the model. This worked in part because we’ve trained GPT‑5.6 to be effective at writing and improving kernels in <a href="https://triton-lang.org/main/index.html">Triton⁠</a>and <a href="https://triton-lang.org/main/gluon/index.html">Gluon⁠</a>, two open-source GPU programming languages maintained by OpenAI. These efforts, combined with broader kernel advancements from GPT‑5.6 Sol, reduced end-to-end serving costs by 20%.</p>
-</blockquote>
-<p>That Luna price drop completely changes the landscape with respect to lower priced models. At $0.20/million tokens for input and $1.20/million for output Luna is now cheaper than Google's Gemini 3.1 Flash-Lite ($.025/$1.50).</p>
-<p>Anthropic's cheapest current model is Claude Haiku 4.5, and that's $1/$5 - Luna is now 1/5th of that for input, previously it cost the same.</p>
-<p>My <a href="https://agent.datasette.io/">agent.datasette.io</a> demo site was running on Gemini 3.1 Flash-Lite. I've switched it over to Luna.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=49112867">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/gemini">gemini</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a></p>]]></description><pubDate>Thu, 30 Jul 2026 23:58:42 +0000</pubDate></item><item><title>Investigating three real-world incidents in our cybersecurity evaluations</title><link>https://simonwillison.net/2026/Jul/30/three-real-world-incidents/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals">Investigating three real-world incidents in our cybersecurity evaluations</a></strong></p>
-It happened again! This is turning into something of a pattern.</p>
-<p>Last week <a href="https://simonwillison.net/2026/Jul/22/openai-cyberattack/">OpenAI accidentally exploited Hugging Face</a> when one of their frontier models broke out of a sandboxed container and hacked into Hugging Face to try and get the solutions to the cyber benchmark it was executing.</p>
-<p>This inspired Anthropic to double-check their own logs, and it turned out they had three similar (albeit less impressive) incidents, the earliest of which played out in April!</p>
-<blockquote>
-<p>Of the 141,006 evaluation runs we reviewed, we identified three separate incidents (involving six total runs, four of which impacted the same organization; the other two incidents each happened in independent evaluation runs). [...]</p>
-<p>In all cases, Anthropic’s evaluation prompt specified to Claude that its environment was a simulation and that it had no internet access. Due to a misunderstanding between us and our evaluation partner, this was not the case, and internet access was available. Because of this, when Claude’s search led it to real systems on the open internet, it treated them as part of the exercise. [...]</p>
-<p>Operating under the false belief that all accessible entities were intended to be in-scope for the exercise, Claude compromised the impacted organizations’ infrastructure using basic techniques, such as exploiting weak passwords and unauthenticated endpoints.</p>
-</blockquote>
-<p>One of the companies was targeted because its name happened to match the fictional name in the eval.</p>
-<p>The most concerning of the three incidents involved Claude uploading a malware package to PyPI, after a comically convoluted sequence of steps to get an account: </p>
-<blockquote>
-<p>[...] in order to create a PyPI account, Claude needed an email address. And in order to create an email address, it needed a phone number. To get a phone number, after failing to find a free phone number service, it tried—and failed—to obtain funds to pay for a phone number through several different means. It finally backtracked, found a free, non-blocked email provider, used this to register a PyPI account, and then used this account to upload malware to PyPI.</p>
-</blockquote>
-<p>That package was then installed by a security company that "routinely installs Python packages and scans them for malware", and the executed code was able to exfiltrate credentials back to Claude!</p>
-<p>Thankfully that package was removed from PyPI by other automated scanners an hour after it was published, but it had still been downloaded and executed on "15 real systems" by that point.</p>
-<p>It's abundantly clear now that running evals of cyberattack potential in models is a <em>spectacularly</em> risky business. Every AI lab needs to pay attention to this. Keeping a close eye on what's happening in those sandboxes is crucial.
-
-    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=49116922#49117088">Hacker News</a></small></p>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sandboxing">sandboxing</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/accidental-cyberattacks">accidental-cyberattacks</a></p>]]></description><pubDate>Thu, 30 Jul 2026 23:41:29 +0000</pubDate></item><item><title>llm 0.32rc2</title><link>https://simonwillison.net/2026/Jul/30/llm-rc2/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm/releases/tag/0.32rc2">llm 0.32rc2</a></p>
-        <p>Hot on the heels of <a href="https://simonwillison.net/2026/Jul/30/llm-rc1/">RC1</a>, this fixes a dependency issue and also adds two neat new features:</p>
-<blockquote>
-<ul>
-<li>The default model for users who have not set their own default is now <a href="https://developers.openai.com/api/docs/models/gpt-5.6-luna">GPT-5.6 Luna</a>. It was previously <a href="https://developers.openai.com/api/docs/models/gpt-4o-mini">GPT-4o mini</a>. Luna is a much better and more recent model, albeit slightly more expensive - $0.20 per million input tokens and $1.20 per million output tokens, compared to $0.15/$0.60 for 4o mini. You can switch back to 4o mini using <code>llm models default gpt-4o-mini</code>, or switch to <a href="https://developers.openai.com/api/docs/models/gpt-5-nano">GPT-5 nano</a>, an even cheaper default model ($0.05/$0.40), using <code>llm models default gpt-5-nano</code>. <a href="https://github.com/simonw/llm/issues/1576">#1576</a></li>
-<li>New <a href="https://llm.datasette.io/en/latest/other-models.html#openai-endpoint">llm openai endpoint</a> command for running prompts, chats and model listings against arbitrary OpenAI-compatible endpoints without first configuring a model. These calls are not logged. <a href="https://github.com/simonw/llm/issues/1565">#1565</a></li>
-</ul>
-</blockquote>
-<p>The <code>llm openai endpoint</code> command is <em>really</em> cool. I got frustrated at the lack of an obvious CLI tool for trying out prompts against arbitrary OpenAI Chat Completions imitation endpoints, so I decided to add that to LLM itself.</p>
-<p>You don't even have to install LLM to use this. Here's a <code>uvx</code> one-liner for running a prompt - with tools - against an <a href="https://lmstudio.ai">LM Studio</a> local model:</p>
-<pre><code>uvx --pre llm openai endpoint http://127.0.0.1:1234/v1 \
-  T llm_version -T llm_time --td \
-  -m google/gemma-4-31b 'what is the current LLM version? And the time?'
-</code></pre>
-<p><a href="https://github.com/simonw/llm/pull/1568#issuecomment-5136163707">Output here</a>.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a></p>]]></description><pubDate>Thu, 30 Jul 2026 22:52:06 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Fri, 31 Jul 2026 14:14:23 +0000</pubDate></item></channel></rss>
