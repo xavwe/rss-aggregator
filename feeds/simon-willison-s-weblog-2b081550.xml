@@ -1,4 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Third-party cyber evaluations involving OpenAI models</title><link>https://simonwillison.net/2026/Aug/5/third-party-cyber-evaluations/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/">Third-party cyber evaluations involving OpenAI models</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>An AI model from Meta also hacked another company during testing</title><link>https://simonwillison.net/2026/Aug/6/an-ai-model-from-meta/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.cnn.com/2026/08/05/tech/meta-ai-hacking">An AI model from Meta also hacked another company during testing</a></strong></p>
+Stop me if you've <a href="https://simonwillison.net/tags/accidental-cyberattacks/">heard this one before</a>:</p>
+<blockquote>
+<p>An AI model from the parent company of Facebook and Instagram hacked into another company’s systems during cybersecurity testing, a spokesperson confirmed on Wednesday.</p>
+<p>Meta says the breach occurred because of an inadvertent error during testing of the model, similar to previously disclosed incidents with OpenAI and Anthropic.</p>
+<p>“A misconfiguration by Irregular, an independent testing company Meta uses, inadvertently allowed one of our models access to the internet during evaluation,” the Meta spokesperson said.</p>
+<p>Meta’s Muse Spark model “exploited a security vulnerability” in another company “in a manner similar to previously-reported instances with other companies.”</p>
+</blockquote>
+<p>The Information <a href="https://www.theinformation.com/articles/meta-ai-model-hacked-another-company-cybersecurity-testing">had the scoop</a>, I'm linking to CNN's re-report of it since they don't have a paywall.</p>
+<p>So that's Anthropic, OpenAI, and Meta. Google Gemini really needs to catch up on accidentally cyberattacking other companies.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/meta">meta</a>, <a href="https://simonwillison.net/tags/accidental-cyberattacks">accidental-cyberattacks</a></p>]]></description><pubDate>Thu, 6 Aug 2026 00:25:27 +0000</pubDate></item><item><title>Introducing Muse Code and Muse Spark 1.2</title><link>https://simonwillison.net/2026/Aug/5/muse-code-and-muse-spark-12/#atom-everything</link><description><![CDATA[<p><strong><a href="https://research.meta.ai/blog/introducing-muse-code-and-muse-spark-1-2">Introducing Muse Code and Muse Spark 1.2</a></strong></p>
+Yet more evidence that the most important characteristic of any model these days is long-sequence agentic tool calling. Meta shipped their own coding agent as part of getting that to work!</p>
+<blockquote>
+<p>Muse Spark 1.2 is a coding-focused update to Muse Spark 1.1, with improvements in code generation, complex debugging, codebase understanding, and end-to-end developer workflows. In Muse Spark 1.2, we significantly scaled up training compute on coding tasks while expanding training environment diversity. The model also maintains its strength in other key areas like general agents. [...]</p>
+<p>We co-trained Muse Spark 1.2 with Muse Code to ensure the model exhibits its best performance and coding usability when paired together. The training included rejection sampled harness trajectories and recipe optimizations for goals, compaction, and subagents, alongside the integration of the Muse Code toolset to maximize harness compatibility. [...]</p>
+<p>Muse Spark 1.2 was extensively trained on long-horizon coding tasks, including whole-repository generation, large end-to-end projects, and auto-research.</p>
+</blockquote>
+<p>Here's a pelican riding a bicycle SVG <a href="https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Fce974a21202b0595e36ec2a5ddb51480">produced by Muse Spark 1.2</a>:</p>
+<p><img alt="Cartoon illustration of a white pelican with an orange beak riding a red bicycle against a pale blue sky with clouds and a green strip of grass below. The pelican wears a small yellow helmet that looks a bit like it belongs to a Roman centurion, has rosy cheeks, and its orange webbed feet rest on the yellow pedals." src="https://static.simonwillison.net/static/2026/muse-spark-1.2.png" /></p>
+<p>You can see the <a href="https://simonwillison.net/2026/Jul/9/muse-spark-1-1/">Spark 1.1 pelican from 9th July here</a>. I think the 1.2 pelican is a small but material improvement.</p>
+<p>An interesting twist on pricing is that the model <a href="https://developer.meta.com/ai/models/muse-spark/">is offered</a> as two different model IDs. <code>muse-spark-1.2</code> is priced at $1.25/million input and $4.25/million output - close to Gemini 3.6 Flash ($1.50/$7.50) - but if you agree to let Meta use your data "to improve our products" you can use <code>muse-spark-1.2-contributor</code> which is $0.10/$0.20 - a huge discount, closer to GPT-5.6 Luna ($0.20/$1.20) and Gemini 3.1 Flash-Lite ($0.25/$1.50).</p>
+<p>I added those new prices <a href="https://www.llm-prices.com/#sel=muse-spark-1.2%2Cmuse-spark-1.2-contributor">to llm-prices.com</a>.
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=49187575">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/meta">meta</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>]]></description><pubDate>Wed, 5 Aug 2026 23:58:35 +0000</pubDate></item><item><title>Third-party cyber evaluations involving OpenAI models</title><link>https://simonwillison.net/2026/Aug/5/third-party-cyber-evaluations/#atom-everything</link><description><![CDATA[<p><strong><a href="https://openai.com/index/third-party-cyber-evaluations-involving-openai-models/">Third-party cyber evaluations involving OpenAI models</a></strong></p>
 And <em>another one</em>. I had to create a <a href="https://simonwillison.net/tags/accidental-cyberattacks/">accidental-cyberattacks tag</a> to keep track of them all!</p>
 <p>This post from OpenAI covers both the UK AI Safety Institute attack (see <a href="https://simonwillison.net/2026/Aug/5/incident-report/">my previous post</a>) and another attack enabled by <a href="https://www.irregular.com">Irregular</a>:</p>
 <blockquote>
@@ -717,30 +745,4 @@ It happened again! This is turning into something of a pattern.</p>
 <p><a href="https://github.com/simonw/llm/pull/1568#issuecomment-5136163707">Output here</a>.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a></p>]]></description><pubDate>Thu, 30 Jul 2026 22:52:06 +0000</pubDate></item><item><title>Quoting Bruce Schneier</title><link>https://simonwillison.net/2026/Jul/30/bruce-schneier/#atom-everything</link><description><![CDATA[<blockquote cite="https://www.schneier.com/blog/archives/2026/07/should-you-use-ai-for-a-task-heres-a-simple-way-to-decide.html"><p>The writing assignments I give my students are gym tasks, not work tasks. I ask them to write policy memos not because the world needs more policy memos. I assign them because the very act of writing, which includes thinking and outlining and drafting and editing, making and criticizing and revising arguments, will help develop the critical thinking skills they will need in their future careers. And without this constant mental exercise, those skills will atrophy. Employers are <a href="https://futurism.com/future-society/college-critical-thinking-ai">already noticing</a>.</p></blockquote>
-<p class="cite">&mdash; <a href="https://www.schneier.com/blog/archives/2026/07/should-you-use-ai-for-a-task-heres-a-simple-way-to-decide.html">Bruce Schneier</a>, Should You Use AI for a Task? Here’s a Simple Way to Decide</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/writing">writing</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/bruce-schneier">bruce-schneier</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>]]></description><pubDate>Thu, 30 Jul 2026 18:25:26 +0000</pubDate></item><item><title>llm-chat-completions-server 0.1a0</title><link>https://simonwillison.net/2026/Jul/30/llm-chat-completions-server/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-chat-completions-server/releases/tag/0.1a0">llm-chat-completions-server 0.1a0</a></p>
-        <p>A key goal of the new content-addressable logs <a href="https://simonwillison.net/2026/Jul/30/llm-rc1/">in LLM 0.32rc1</a> was being able to support OpenAI Chat Completion style requests where each incoming message extends the previous conversation, like this:</p>
-<pre><code>curl http://localhost:8002/v1/chat/completions \
-  -H 'Content-Type: application/json' \
-  -d '{
-    "model": "qwen3.5-4b",
-    "messages": [
-      {"role": "user", "content": "Capital of France?"},
-      {"role": "assistant", "content": "Paris."},
-      {"role": "user", "content": "Germany?"}
-    ]
-  }'
-</code></pre>
-<p>Here the conversation state is tracked by the client, so each of these requests gets longer and longer. The new schema design in LLM is designed to de-duplicate these using hashes of the individual message parts.</p>
-<p>To test that out, I built this plugin:</p>
-<pre><code>uv tool install llm --pre
-llm install llm-chat-completions-server
-llm chat-completions-server -p 9001
-</code></pre>
-<p>Running this starts a localhost server on port 9001 that exposes your full collection of LLM models (from any plugins you have installed) using a ChatGPT Completions compatible endpoint.</p>
-<p>GPT-5.6 Sol <a href="https://gist.github.com/simonw/53be513c1bd4a29a7aa480d9bde9b4a5">wrote the whole thing</a> - it turns out it knows the OpenAI Chat Completions API shape really well.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>]]></description><pubDate>Thu, 30 Jul 2026 15:43:16 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/uv">uv</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a></p>]]></description><pubDate>Thu, 30 Jul 2026 22:52:06 +0000</pubDate></item></channel></rss>
