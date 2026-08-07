@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>datasette 1.0a38</title><link>https://simonwillison.net/2026/Aug/6/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a38">datasette 1.0a38</a></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI</title><link>https://simonwillison.net/2026/Aug/7/pdfs-are-terrible/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.404media.co/the-tokenpocalypse-is-here-companies-are-scrambling-to-stop-spending-so-much-on-ai/">The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI</a></strong></p>
+There's a fun anecdote from Accenture (apparently via leaked meeting audio recordings) in this 404 Media piece from June 24th:</p>
+<blockquote>
+<p>“We’re seeing from some of the data internally at least that it’s actually not our engineers that are driving the token consumption. It’s a lot of the non-engineers that are doing some of those behaviors [...] you were talking about,” Justice Kwak, Accenture’s agentic AI strategy lead, said [...]</p>
+<p>Stuart Henderson, Accenture’s client group lead, interrupts. He jokes he hopes Kwak didn’t just convert a PDF into images and then into markdown files. “I’m learning that’s one of the big token chewers,” Henderson says. “Turning PDFs into markdown: is that right?”</p>
+<p>That’s when Kwak says that’s what Accenture’s own data shows.</p>
+</blockquote>
+<p>Maybe if Accenture figure out that PDFs are a <em>terrible medium for communicating information</em> they'll be able to push that message out to the rest of the business world too!
+
+    <p><small></small>Via <a href="https://www.tiktok.com/@404.media/video/7654962124053171470">@404.media on TikTok</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/pdf">pdf</a>, <a href="https://simonwillison.net/tags/markdown">markdown</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-misuse">ai-misuse</a></p>]]></description><pubDate>Fri, 7 Aug 2026 16:18:51 +0000</pubDate></item><item><title>datasette 1.0a38</title><link>https://simonwillison.net/2026/Aug/6/datasette/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/simonw/datasette/releases/tag/1.0a38">datasette 1.0a38</a></p>
         <blockquote>
 <p>This release fixes a <strong>SQL injection</strong> security issue that affects Datasette instances that serve a <strong>mixture of public and private tables</strong> in the same database, with access configured using the <a href="https://docs.datasette.io/en/latest/authentication.html">Datasette permissions system</a>.</p>
 <p>Site administrators who serve private tables in this way are advised to disable the <a href="https://docs.datasette.io/en/latest/authentication.html#execute-sql">execute-sql permission</a> <actions_execute_sql>` on that database to prevent users from accessing private tables using raw SQL queries. The bug that has been fixed would have allowed users with access to any public table to execute SQL injection attacks despite that restriction, giving them read-only access to data in private tables in the same database.</p>
@@ -716,14 +728,4 @@ I've been working with Jesse Vincent's <a href="https://primeradiant.com">Prime 
         <p>I wanted to create a new Slack emoji, and their tool recommends a square that's 128x128 and has a transparent background... so I <a href="https://github.com/simonw/tools/pull/305">had Fable build me</a> this simple image editor against those requirements.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/slack">slack</a></p>]]></description><pubDate>Fri, 31 Jul 2026 20:18:05 +0000</pubDate></item><item><title>datasette-agent 0.4a0</title><link>https://simonwillison.net/2026/Jul/31/datasette-agent/#atom-everything</link><description><![CDATA[<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-agent/releases/tag/0.4a0">datasette-agent 0.4a0</a></p>
-        <blockquote>
-<ul>
-<li>New <code>await context.browser_task()</code> mechanism allowing agent tools to run code directly in the user's browser. <a href="https://github.com/datasette/datasette-agent/pull/33">#33</a></li>
-</ul>
-</blockquote>
-<p>This is an exciting new capability: it makes it easy for Datasette Agent plugins to provide tools that execute custom JavaScript <em>in the user's browser</em>.</p>
-<p>I used this to add a debug loop to Datasette Apps in <a href="https://simonwillison.net/2026/Aug/1/datasette-apps/">datasette-apps 0.2a0</a>.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/datasette-agent">datasette-agent</a></p>]]></description><pubDate>Fri, 31 Jul 2026 14:14:23 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/slack">slack</a></p>]]></description><pubDate>Fri, 31 Jul 2026 20:18:05 +0000</pubDate></item></channel></rss>
