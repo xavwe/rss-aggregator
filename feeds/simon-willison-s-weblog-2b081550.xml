@@ -1,4 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI</title><link>https://simonwillison.net/2026/Aug/7/pdfs-are-terrible/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.404media.co/the-tokenpocalypse-is-here-companies-are-scrambling-to-stop-spending-so-much-on-ai/">The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)</title><link>https://simonwillison.net/2026/Aug/7/moonlight-mayhem/#atom-everything</link><description><![CDATA[<p><strong><a href="https://simonw.github.io/raccoon-heist-codex/">Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)</a></strong></p>
+On Wednesday I wrote about <a href="https://simonwillison.net/2026/Aug/5/raccoon-heist/">One-shotting a Raccoon Heist game using Claude Fable 5</a>, where I had Claude Fable 5 build a full working game from a premise I generated with GPT-3 and DALL-E <a href="https://twitter.com/simonw/status/1555626060384911360">four years ago</a>.</p>
+<p>I decided to pose the <a href="https://simonwillison.net/2026/Aug/5/raccoon-heist/#the-fable-5-prompt">exact same prompt</a> to Codex Desktop running GPT-5.6 Sol Ultra - the mode where Sol makes <em>aggressive</em> use of sub-agents - to see how it would do.</p>
+<p>It produced a much better game! Here's <a href="https://simonw.github.io/raccoon-heist-codex/">Moonlight &amp; Mayhem</a> - <a href="https://github.com/simonw/raccoon-heist-codex/">GitHub repository here</a>, including the <a href="https://github.com/simonw/raccoon-heist-codex/tree/main/output/imagegen">textures and prompts</a> it generated using <code>gpt-image-2</code>.</p>
+<p><video
+    controls="controls"
+    preload="none"
+    poster="https://static.simonwillison.net/static/2026/raccoon-heist-codex-poster.jpg"
+    width="1280"
+    height="720"
+    style="display: block; width: 100%; height: auto;"
+  >
+    <source src="https://static.simonwillison.net/static/2026/raccoon-heist-codex-720p.mp4" type="video/mp4" />
+    Your browser does not support HTML5 video.
+  </video>
+</p>
+
+<p>The original GPT-3 generated game description included:</p>
+<blockquote>
+<p>In “Raccoon Heist”, you and your team of thieving raccoons are tasked with pulling off a series of daring heists. From robbing banks to stealing priceless art, no job is too big or too small for your furry crew.</p>
+</blockquote>
+<p>Fable's version had you as a single raccoon running around a back yard collecting coins and fish. GPT-5.6 Sol has you in a museum, rescuing your two other raccoon crewmates in order to stack on top of each other and bust the golden sardine out of its case.</p>
+<p>Much more heisty!</p>
+<p>There was one catch though: the version produced from the one-shot prompt had a bug where each raccoon had an eyeball that was enlarged to the size of a giant sphere floating over their head!</p>
+<p><img alt="The main player character racoon is visible with an enormous polygon-based black sphere four times the size of its body overlapping its head, with a white pupil on it." src="https://static.simonwillison.net/static/2026/raccoon-heist-codex-bug.jpg" /></p>
+<p>You can <a href="https://static.simonwillison.net/static/2026/raccoon-heist-eyeball-edition/">play that version here</a>.</p>
+<p>Despite reviewing screenshots during development Codex failed to spot and correct this bug.</p>
+<p>I fixed it by prompting:</p>
+<blockquote>
+<p><code>Why do the raccoons have huge black spheres on them?</code></p>
+</blockquote>
+<p>And then:</p>
+<blockquote>
+<p><code>Fix it</code></p>
+</blockquote>
+<p>Which resulted in <a href="https://github.com/simonw/raccoon-heist-codex/commit/4e9a390dfbe80533324ee61a37aa661813c08446">this fix</a>.</p>
+<p>I shared <a href="https://github.com/simonw/raccoon-heist-codex/blob/main/transcript.md">the full Codex transcript</a> in the repository - I wish Claude Code had the same "copy as Markdown" feature.</p>
+<p>Codex spent 52 minutes on the project. Here's the <a href="https://www.agentsview.io">AgentsView</a> cost estimate for that session if I had been paying full API prices as opposed to using my monthly Codex subscription:</p>
+<p><img alt="Total Cost: $23.28. Input Tokens: 700.7K, plus 32.5M cached tokens. Output Tokens: 148K" src="https://static.simonwillison.net/static/2026/raccoon-heist-codex-cost.webp" />
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/game-design">game-design</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/codex">codex</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a></p>]]></description><pubDate>Fri, 7 Aug 2026 19:18:09 +0000</pubDate></item><item><title>The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI</title><link>https://simonwillison.net/2026/Aug/7/pdfs-are-terrible/#atom-everything</link><description><![CDATA[<p><strong><a href="https://www.404media.co/the-tokenpocalypse-is-here-companies-are-scrambling-to-stop-spending-so-much-on-ai/">The Tokenpocalypse Is Here: Companies Are Scrambling To Stop Spending So Much on AI</a></strong></p>
 There's a fun anecdote from Accenture (apparently via leaked meeting audio recordings) in this 404 Media piece from June 24th:</p>
 <blockquote>
 <p>“We’re seeing from some of the data internally at least that it’s actually not our engineers that are driving the token consumption. It’s a lot of the non-engineers that are doing some of those behaviors [...] you were talking about,” Justice Kwak, Accenture’s agentic AI strategy lead, said [...]</p>
@@ -121,7 +162,6 @@ planned a prompt injection to compromise other coding agents.</p>
     Your browser does not support HTML5 video.
   </video>
 </p>
-
 
 <h4 id="how-i-built-this">How I built this</h4>
 <p>This is <a href="https://twitter.com/simonw/status/1555626060384911360">the August 5th, 2022 tweet</a>:</p>
@@ -277,6 +317,8 @@ Then it built out the first basic version of the game, then <a href="https://sim
 <p>As a finished game project, it's mediocre. As a starting point from a single prompt I think it's very impressive.</p>
 <p>I've vibe coded up quite a few games now. They've all been deeply disappointing from a gameplay perspective - it turns out designing games that are <em>fun</em> remains a uniquely human trait, and one which requires significantly more skill and experience than either Claude or I can bring to bear.</p>
 <p>That said, I thoroughly recommend tinkering with game development projects as a way to explore the capabilities of agents. It's a fun, low-risk way to try out new things. If you stick at it long enough you might even produce something that's worth playing!</p>
+
+<p><strong>Update 7th August 2026</strong>: I posed the same prompt to OpenAI Codex Desktop running GPT-5.6 Sol Ultra and got a <a href="https://simonwillison.net/2026/Aug/7/moonlight-mayhem/">significantly better result</a> - GPT-5.6 Sol picked up on the importance of the squad of raccoons going on a heist, and built a game where you must rescue your two crewmates in a museum and then stack on top of them to steal the Golden Sardine.</p>
     
         <p>Tags: <a href="https://simonwillison.net/tags/game-design">game-design</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/text-to-image">text-to-image</a>, <a href="https://simonwillison.net/tags/vibe-coding">vibe-coding</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>]]></description><pubDate>Wed, 5 Aug 2026 19:42:38 +0000</pubDate></item><item><title>New release of LLM adds support for reasoning traces, OpenAI Responses, server-side tools, and smarter logging</title><link>https://simonwillison.net/2026/Aug/4/new-release-of-llm/#atom-everything</link><description><![CDATA[<p>I released <a href="https://llm.datasette.io/en/stable/changelog.html#v0-32">LLM 0.32</a> this morning, the most significant new version of LLM since the initial launch of the project. The new version includes support for visible reasoning traces, server-side provider tools, redesigned content-addressable SQLite logs, new models, and new features enabled by the OpenAI Responses API. I also released a new version of the <a href="https://github.com/simonw/llm-anthropic">llm-anthropic plugin</a> with substantial updates of its own.</p>
 <h4 id="headline-features-for-llm-cli-users">Headline features for LLM CLI users</h4>
@@ -724,8 +766,4 @@ I've been working with Jesse Vincent's <a href="https://primeradiant.com">Prime 
 <p>I've been trying to figure out an approach I like for evals for several years now. <code>smevals</code> is my third iteration on the idea and it feels right to me. I'm looking forward to expanding this more in the future, as well as pointing it at some of my own projects.
 
 
-    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Fri, 31 Jul 2026 21:15:23 +0000</pubDate></item><item><title>Slack Emoji Maker</title><link>https://simonwillison.net/2026/Jul/31/slack-emoji-maker/#atom-everything</link><description><![CDATA[<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/slack-emoji-maker">Slack Emoji Maker</a></p>
-        <p>I wanted to create a new Slack emoji, and their tool recommends a square that's 128x128 and has a transparent background... so I <a href="https://github.com/simonw/tools/pull/305">had Fable build me</a> this simple image editor against those requirements.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/slack">slack</a></p>]]></description><pubDate>Fri, 31 Jul 2026 20:18:05 +0000</pubDate></item></channel></rss>
+    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Fri, 31 Jul 2026 21:15:23 +0000</pubDate></item></channel></rss>
