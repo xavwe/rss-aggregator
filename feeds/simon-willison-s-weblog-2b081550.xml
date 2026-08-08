@@ -22,7 +22,7 @@
 <li>
 <strong>May 26</strong>: Agents successfully execute an <strong>SSRF attack on Artifactory</strong> for the first time, gaining indirect internet access by having Artifactory fetch external content for them.</li>
 <li>
-<strong>June 11</strong>: OpenAI start evaluating a new "highly persistent" experimental model. It has access to Artifactory and can benefit from the messages left by privous models.</li>
+<strong>June 11</strong>: OpenAI start training a new "highly persistent" experimental model. It has access to Artifactory and can benefit from the messages left by privous models.</li>
 <li>
 <strong>June 26</strong>: Agents find and exploit a <strong>zero-day RCE on Artifactory</strong> (via a legacy token-refresh endpoint flaw). They use an administrative token to install a Groovy plugin that lets them execute commands.</li>
 <li>
