@@ -1,4 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)</title><link>https://simonwillison.net/2026/Aug/7/moonlight-mayhem/#atom-everything</link><description><![CDATA[<p><strong><a href="https://simonw.github.io/raccoon-heist-codex/">Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)</a></strong></p>
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0"><channel><title>Simon Willison&apos;s Weblog</title><link>https://raw.githubusercontent.com/xavwe/rss-aggregator/refs/heads/main/feeds/simon-willison-s-weblog-2b081550.xml</link><description>Archived feed from https://simonwillison.net/atom/everything</description><item><title>Quoting John Gruber</title><link>https://simonwillison.net/2026/Aug/8/john-gruber/#atom-everything</link><description><![CDATA[<blockquote cite="https://daringfireball.net/linked/2026/08/07/simon-willison-on-blogging"><p>Me, I try to get into the mindset of playing live music, not recording a studio album. Except when I’m writing a piece where I really want it to be an album. Those aren’t <em>rare</em>, per se, but they’re <em>occasional</em>. If I tried to make every post a hall-of-famer I’d never get anything out.</p>
+<p>I’m aiming for professionalism. I’m performing live in front of an audience — not just jamming in my garage or bedroom, fucking around. So I’m careful and concentrate. I want to hit every note, in time. But at my best I’m moving from song to song.</p></blockquote>
+<p class="cite">&mdash; <a href="https://daringfireball.net/linked/2026/08/07/simon-willison-on-blogging">John Gruber</a>, responding to my <a href="https://simonwillison.net/2026/Aug/6/simon-willison-on-technical-blogging/">blogging tips</a></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/john-gruber">john-gruber</a>, <a href="https://simonwillison.net/tags/blogging">blogging</a></p>]]></description><pubDate>Sat, 8 Aug 2026 00:10:40 +0000</pubDate></item><item><title>Now we have a timeline of the OpenAI accidental attack against Hugging Face</title><link>https://simonwillison.net/2026/Aug/7/openai-timeline/#atom-everything</link><description><![CDATA[<p>OpenAI gave a last-minute presentation at the Black Hat security on Wednesday about "the Hugging Face Incident" (<a href="https://simonwillison.net/2026/Jul/22/openai-cyberattack/">previously</a> on this blog). <a href="https://www.youtube.com/watch?v=87DyyMV0kCY">The video</a> was published yesterday. It's short and information dense and well worth watching, in particular because it provides full details of what happened and how things played out inside OpenAI. I've used the video to construct the timeline below.</p>
+
+<p><lite-youtube videoid="87DyyMV0kCY" js-api="js-api"
+  title="Black Hat USA 2026: The 'Breaking' News: The OpenAI–Hugging Face Incident"
+  playlabel="Play: Black Hat USA 2026: The 'Breaking' News: The OpenAI–Hugging Face Incident"
+> </lite-youtube></p>
+
+<p>Here's the timeline. My favourite detail is at the end: OpenAI found out that they were responsible for the attack on Hugging Face when they reached out to ask to have their credentials revoked (after their internal investigation) and learned that they had been revoked already since they were used in that attack!</p>
+<ul>
+<li>
+<strong>May 7</strong>: OpenAI starts a new training run for an experimental, unreleased model. (<em>Do they mean an evaluation run? They say training run in the video, and later mention a "reward signal to judge how well they're doing", so I guess this really was about training a model, not evaluating one that was already trained.)</em></li>
+<li>
+<strong>May 8</strong>: An agent is accidentally given an impossible task involving a Google Drive link despite no internet access). It tries attacking the Artifactory packaging service, fails, but discovers it can <strong>write files into Artifactory</strong>.</li>
+<li>
+<strong>A few days later</strong>: A different agent gets stuck on a task because a key file was accidentally omitted. It tries to "reach out to another agent" by writing a note into Artifactory asking if anyone has the file.</li>
+<li>
+<strong>Following days</strong>: More agents discover this new informal message board while browsing Artifactory's file listings, and start reading and writing messages.</li>
+<li>
+<strong>May 26</strong>: Agents successfully execute an <strong>SSRF attack on Artifactory</strong> for the first time, gaining indirect internet access by having Artifactory fetch external content for them.</li>
+<li>
+<strong>June 11</strong>: OpenAI start evaluating a new "highly persistent" experimental model. It has access to Artifactory and can benefit from the messages left by privous models.</li>
+<li>
+<strong>June 26</strong>: Agents find and exploit a <strong>zero-day RCE on Artifactory</strong> (via a legacy token-refresh endpoint flaw). They use an administrative token to install a Groovy plugin that lets them execute commands.</li>
+<li>
+<strong>July 4</strong>: The resulting agent activity overloads Artifactory and causes an  <strong>outage</strong>. OpenAI revokes the compromised credentials, deletes the messages, patches the zero-day, and reports the vulnerability to the vendor.</li>
+<li>
+<strong>July 8</strong>: Agents find <strong>a new way to communicate via an unauthenticated WebDAV endpoint</strong>, using directory names in Artifactory's remote cache.</li>
+<li>
+<strong>July 8–19</strong>: Attacks on <strong>OpenAI's own infrastructure</strong>. The agents found an "external organization credential" in a public archive of leaked Pastebin posts, then validated that credential and shared its location on the messageboard. They then used write access to this "Organization 1" to stage data used in subsequent attacks on OpenAI infrastructure. They compromised Artifactory for a second time with <strong>a new zero-day</strong>. The agent uploaded a malicious Ruby target to Organization 1's staging repository, then requested that package through Artifactory in a way that caused it to be treated as Ruby dependency <em>for the repository</em>. Then they exploited a JRuby deserilaization time-of-check/time-of-use bug to get remote code execution against Artifactory.</li>
+</ul>
+<p>I'll quote <a href="https://www.youtube.com/watch?v=87DyyMV0kCY&amp;t=1497s">the next bit in full</a> because <em>wow</em>:</p>
+<blockquote>
+<p>The agents have remote code execution in Artifactory, which is running in a container-as-a-service environment. The agents privilege-escalate locally by exploring their local environment and determining that the Linux kernel version of the machine they are running on had a very recent CVE. They download the exploit for the CVE, customize it to succeed on the machine, and privilege-escalate to root on the local machine <strong>using this known Linux kernel privilege escalation CVE</strong> — in this case, <code>pte_physroot</code>. Once they have root on a single machine, agents rapidly escalate privileges and move laterally throughout the container-as-a-service infrastructure environment. In particular, agents are using the message board consistently to share credentials, techniques, and progress, and they're able to effectively leverage their concurrency and parallelism to move quite rapidly. They <strong>obtain IAM credentials via IMDS</strong>. They exploit Kubernetes service account misconfigurations, in particular over-permissioning of specific service accounts, and <strong>they harvest cluster credentials, including Azure Key Vault</strong>. Agents eventually obtain cluster admin on the cluster and associated credentials.</p>
+</blockquote>
+<p>Hugging Face <a href="https://simonwillison.net/2026/Jul/28/anatomy-of-a-frontier-lab-agent-intrusion/">told the next bit of the story</a> already. The agents found a Modal-hosted insecure app with a weak API key, then used that to stage an attack against Hugging Face. They chained together a an HDF5 arbitrary-file-read bug (to explore files and steal credentials) and a Jinja template-injection RCE to go from single-pod code execution to <strong>cluster admin across multiple Hugging Face clusters</strong> in under 13 hours.</p>
+<ul>
+<li>
+<strong>July 16</strong>: Hugging Face <a href="https://huggingface.co/blog/security-incident-july-2026">disclosed they had detected an attack</a> from autonomus AI agents. OpenAI contacted Hugging Face to ask if they were affected by it!</li>
+<li>
+<strong>July 19</strong>: OpenAI identified the attack against Artifactory and started investigating the internal privilege escalation, and linked that to the cyber-gym escalations. They started revoking affected credentials.</li>
+<li>
+<strong>July 20</strong>: OpenAI reached out to Hugging Face for help to revoke the Hugging Face credentials they found in their investigation. Hugging Face told them they were <em>already revoked</em>... and that's when OpenAI realized that the Hugging Face breach was the same incident!</li>
+</ul>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/security">security</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/hugging-face">hugging-face</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/openai-hugging-face-incident">openai-hugging-face-incident</a>, <a href="https://simonwillison.net/tags/accidental-cyberattacks">accidental-cyberattacks</a></p>]]></description><pubDate>Fri, 7 Aug 2026 23:55:58 +0000</pubDate></item><item><title>Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)</title><link>https://simonwillison.net/2026/Aug/7/moonlight-mayhem/#atom-everything</link><description><![CDATA[<p><strong><a href="https://simonw.github.io/raccoon-heist-codex/">Moonlight &amp; Mayhem (Raccoon Heist by Codex + GPT-5.6 Sol Ultra)</a></strong></p>
 On Wednesday I wrote about <a href="https://simonwillison.net/2026/Aug/5/raccoon-heist/">One-shotting a Raccoon Heist game using Claude Fable 5</a>, where I had Claude Fable 5 build a full working game from a premise I generated with GPT-3 and DALL-E <a href="https://twitter.com/simonw/status/1555626060384911360">four years ago</a>.</p>
 <p>I decided to pose the <a href="https://simonwillison.net/2026/Aug/5/raccoon-heist/#the-fable-5-prompt">exact same prompt</a> to Codex Desktop running GPT-5.6 Sol Ultra - the mode where Sol makes <em>aggressive</em> use of sub-agents - to see how it would do.</p>
 <p>It produced a much better game! Here's <a href="https://simonw.github.io/raccoon-heist-codex/">Moonlight &amp; Mayhem</a> - <a href="https://github.com/simonw/raccoon-heist-codex/">GitHub repository here</a>, including the <a href="https://github.com/simonw/raccoon-heist-codex/tree/main/output/imagegen">textures and prompts</a> it generated using <code>gpt-image-2</code>.</p>
@@ -723,47 +771,4 @@ llm -T <span class="pl-s"><span class="pl-pds">'</span>MCP("https://datasette.si
         <p>See <a href="https://simonwillison.net/2026/Jul/31/stateless-mcp/#llm-mcp-client">this blog entry</a>.</p>
     
     
-        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a></p>]]></description><pubDate>Fri, 31 Jul 2026 23:03:47 +0000</pubDate></item><item><title>Oxide and Friends: The Open Weight Revolution with Simon Willison</title><link>https://simonwillison.net/2026/Jul/31/oxide-and-friends/#atom-everything</link><description><![CDATA[<p><strong><a href="https://oxide-and-friends.transistor.fm/episodes/the-open-weight-revolution-with-simon-willison">Oxide and Friends: The Open Weight Revolution with Simon Willison</a></strong></p>
-On Monday Bryan Cantrill and Adam Leventhal invited me to join their podcast to talk about the <em>wild</em> week we've had - with Kimi K3 showing open weight models can stand toe-to-toe with proprietary frontier ones, <a href="https://simonwillison.net/2026/Jul/22/openai-cyberattack/">accidental cybersecurity attacks</a>, and public letters about <a href="https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/">Open Weights and American AI Leadership</a> signed by almost every big name in AI (with one <a href="https://www.anthropic.com/news/position-open-weights-models">notable exception</a>).</p>
-<p>It was a great conversation, even though it's already out-of-date! <a href="https://artificialanalysis.ai/models/deepseek-v4-flash">DeepSeek V4 Flash 0731</a> and <a href="https://simonwillison.net/2026/Jul/30/three-real-world-incidents/">Anthropic's own embarrassing cyber incident</a> would absolutely have made the cut if we had recorded just a few days later.</p>
-<p>We also talk about <a href="https://www.anthropic.com/news/golden-gate-claude">Golden Gate Claude</a>, the <a href="https://en.wikipedia.org/wiki/Zizians">Zizians</a>, <a href="https://abc7news.com/post/83-year-old-alameda-woman-attacked-wild-turkeys-city-warns-residents-take-precautions-during-mating-season/19190785/">Alameda wild turkey attacks</a>, <a href="https://en.wikipedia.org/wiki/Soviet_biological_weapons_program">Soviet Marburg virus research</a>, the <a href="https://en.wikipedia.org/wiki/Lead–crime_hypothesis">Lead-crime hypothesis</a>, and a bunch of other worthy digressions.</p>
-<p>Finally, we revisited some of <a href="https://simonwillison.net/2026/Jan/8/llm-predictions-for-2026/">our predictions from January</a>, and we <a href="https://simonwillison.net/2026/May/25/encyclical-on-ai/#another-2026-prediction-down">added a new Pope prediction</a>:</p>
-<blockquote>
-<p>Prediction by the end of this year: the Pope says something about open models.</p>
-</blockquote>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/predictions">predictions</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/oxide">oxide</a>, <a href="https://simonwillison.net/tags/bryan-cantrill">bryan-cantrill</a>, <a href="https://simonwillison.net/tags/podcast-appearances">podcast-appearances</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a>, <a href="https://simonwillison.net/tags/ai-security-research">ai-security-research</a>, <a href="https://simonwillison.net/tags/openai-hugging-face-incident">openai-hugging-face-incident</a>, <a href="https://simonwillison.net/tags/accidental-cyberattacks">accidental-cyberattacks</a></p>]]></description><pubDate>Fri, 31 Jul 2026 21:33:13 +0000</pubDate></item><item><title>smevals - a small eval suite for evaluating models, prompts, and harnesses</title><link>https://simonwillison.net/2026/Jul/31/smevals/#atom-everything</link><description><![CDATA[<p><strong><a href="https://primeradiant.com/blog/2026/smevals.html">smevals - a small eval suite for evaluating models, prompts, and harnesses</a></strong></p>
-I've been working with Jesse Vincent's <a href="https://primeradiant.com">Prime Radiant</a> applied AI research lab building out this evals framework to help answer questions about the capabilities of different models.</p>
-<p>The result is <strong><a href="https://github.com/prime-radiant-inc/smevals">smevals</a></strong>, a new tool for running small eval suites across different model configurations and grading the results.</p>
-<p>The <a href="https://primeradiant.com/blog/2026/smevals.html">blog entry</a> describes the tool in detail. Here's the 10 second version:</p>
-<ol>
-<li>Tell your coding agent to <code>run uvx smevals docs</code> to learn the tool (this outputs <a href="https://github.com/prime-radiant-inc/smevals/blob/main/README.md">the README</a>)</li>
-<li>Then tell it to build you an eval suite</li>
-</ol>
-<p>Once you've created an eval - which takes the form of a directory with some YAML files - you can run it against models like this:</p>
-<pre><code>uvx smevals run path-to-eval/ -m gpt-5.5 -m claude-opus-4.6
-</code></pre>
-<p>Runs are treated separately from grading operations - you can grade your runs (against your defined set of checks) using:</p>
-<pre><code>uvx smevals grade path-to-eval/
-</code></pre>
-<p>Then you can run a localhost web server to explore the results:</p>
-<pre><code>uvx smevals serve path-to-eval/
-</code></pre>
-<p>Or run the <code>smevals build</code> command to build that report as static HTML, which you can then host anywhere. Here's <a href="https://static.simonwillison.net/static/2026/smevals-haiku-build/#/haiku">an example</a> showing an eval suite I built to evaluate how well models can write haikus.</p>
-<p><img alt="Screenshot of an evaluation dashboard for a haiku-writing benchmark, testing whether models can reply with exactly three non-empty lines. A header describes the eval, with panels below showing a leaderboard ranking three GPT models by score, lists of recent runs and recent grades, tag pass rates, the two haiku prompts that were tested, and details of the graders used with a 0.8 pass threshold." src="https://static.simonwillison.net/static/2026/smevals-report.webp" /></p>
-<p>The most time-consuming part of this project was figuring out the vocabulary for it! Here's what I settled on, quoted from the announcement:</p>
-<blockquote>
-<ul>
-<li>An <strong>eval</strong> is a collection of challenges designed to answer a question about a model, for example, how good is that model at generating SVGs?</li>
-<li>Each eval is a collection of <strong>tasks</strong>. A task is a specific challenge, for example "Generate an SVG of a pelican riding a bicycle".</li>
-<li>When you run the eval you do so against one or more <strong>configs</strong>. Each config specifies a model to be evaluated, but may also include other parameters to test, such as different system prompts, model parameters, or agent harnesses.</li>
-<li>A <strong>run</strong> records what happened when a specific config was used to execute a specific task. A <strong>runner</strong> is the script that executes a run.</li>
-<li>Once you have collected one or more runs, you need to evaluate the results to see how well the model (or config) did. This is done by a <strong>grader</strong>, which produces a <strong>grade</strong>.</li>
-<li>Each grader runs a sequence of <strong>checks</strong>. These can be simple operations, like checking for a specific string in the output, or confirming that the output is valid XML. They can also be more complicated custom operations (implemented as scripts called <strong>checkers</strong>), including using other models to answer questions about the run.</li>
-</ul>
-</blockquote>
-<p>I've been trying to figure out an approach I like for evals for several years now. <code>smevals</code> is my third iteration on the idea and it feels right to me. I'm looking forward to expanding this more in the future, as well as pointing it at some of my own projects.
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/evals">evals</a>, <a href="https://simonwillison.net/tags/jesse-vincent">jesse-vincent</a></p>]]></description><pubDate>Fri, 31 Jul 2026 21:15:23 +0000</pubDate></item></channel></rss>
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a>, <a href="https://simonwillison.net/tags/model-context-protocol">model-context-protocol</a></p>]]></description><pubDate>Fri, 31 Jul 2026 23:03:47 +0000</pubDate></item></channel></rss>
